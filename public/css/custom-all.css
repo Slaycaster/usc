@@ -1,0 +1,31 @@
+body, h1, h3, h4, h5
+{
+	font-family: 'Segoe UI', 'Helvetica', sans-serif;
+}
+
+body.modal-open .wrap{
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+}
+
+
+.modal-backdrop {background: #f7f7f7;}
+
+.modal-dialog{
+	position: absolute;
+	left: 50%;
+	/*now you must set a margin left under zero - value is a half width your window*/
+	margin-left: -312px;
+	/*this same situation is with height - example*/
+	height: 500px;
+	top: 50%;
+	margin-top: -250px;
+} 
+
+.close {
+    font-size: 50px;
+    display:block;
+}
