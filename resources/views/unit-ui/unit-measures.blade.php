@@ -48,6 +48,10 @@
 										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitmeasureName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
 									</td>
 							
+									<td ng-click="sort('unit_measure.UnitMeasureType')"><b>Unit Measure Type</b>
+										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitMeasureType'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+									</td>
+
 									</td>
 									<td ng-click="sort('unit_measure.unit.UnitAbbreviation')"><b>Unit</b>
 										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
@@ -59,6 +63,7 @@
 								</thead>
 								<tr dir-paginate='unit_measure in unit_measures|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
 									<td><% unit_measure.UnitMeasureName %></td>
+									<td><% unit_measure.UnitMeasureType %></td>
 									<td><% unit_measure.unit.UnitAbbreviation %></td>
 									<td><% unit_measure.user_unit.rank.RankCode %> <% unit_measure.user_unit.UserUnitFirstName %> <% unit_measure.user_unit.UserUnitLastName %></td>
 									<td>
@@ -96,14 +101,32 @@
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
 
                             <div class="form-group error">
-                                <label for="measure_name" class="col-sm-3 control-label">Measure Name</label>
+                                <label for="measure_name" class="col-sm-3 control-label">Measure Name:</label>
                                 <div class="col-sm-9">
                                     <input type='text' name="measure_name" value="<% unit_measure.UnitMeasureName %>" ng-model="unit_measure.UnitMeasureName" autocomplete="off" class="form-control" required ng-touched>
 									<span class="help-inline" ng-show="userForm.measure_name.$invalid && !userForm.measure_name.$pristine">Measure Name is required.</span>
                                 </div>
                             </div>
 
-                           
+                            <div class="form-group error">
+					            <label for="measure_name" class="col-sm-3 control-label">Measure Type:</label>
+								    <div class="col-sm-3 form-group">
+								        <div class="radio">
+								            <label>
+								                <input type="radio" name="measure_type" value="LG" ng-model="unit_measure.UnitMeasureType">
+								                LG
+								            </label>
+								        </div>
+								        <div class="radio">
+								            <label>
+								                <input type="radio" name="measure_type" value="LD" ng-model="unit_measure.UnitMeasureType">
+								                LD
+								            </label>
+								        </div>
+								    </div>
+
+					            <span class="help-inline" ng-show="userForm.measure_type.$invalid && !userForm.measure_type.$pristine">Measure Type is required.</span>
+					        </div>                         
 
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Unit:</label>

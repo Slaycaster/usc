@@ -16,7 +16,7 @@ class UnitMeasure extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['UnitMeasureName', 'UnitID', 'UserUnitID'];
+	protected $fillable = ['UnitMeasureName', 'UnitMeasureType', 'UnitID', 'UserUnitID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *

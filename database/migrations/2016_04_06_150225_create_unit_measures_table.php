@@ -16,6 +16,7 @@ class CreateUnitMeasuresTable extends Migration {
 		{
 			$table->increments('UnitMeasureID');
 			$table->string('UnitMeasureName')->unique();
+			$table->string('UnitMeasureType');
 			$table->integer('UnitID');
 			$table->integer('UserUnitID');
 			$table->timestamps();

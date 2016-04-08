@@ -62,6 +62,7 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 			console.log(document.getElementById('unit_id').value);
 			$http.put(url, {
 				UnitMeasureName: $scope.unit_measure.UnitMeasureName,
+				UnitMeasureType: $scope.unit_measure.UnitMeasureType,
 				UnitID: document.getElementById('unit_id').value,
 				UserUnitID: document.getElementById('user_unit_id').value
 
@@ -77,6 +78,7 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 		{
 			$http.post(url, {
 				UnitMeasureName: $scope.unit_measure.UnitMeasureName,
+				UnitMeasureType: $scope.unit_measure.UnitMeasureType,
 				UnitID: document.getElementById('unit_id').value,
 				UserUnitID: document.getElementById('user_unit_id').value
 
@@ -96,7 +98,8 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 		$scope.loading = true;
  
 		$http.put('http://localhost/usc/public/api/unit_measures/' + unit_measure.id, {
-			UnitObjectiveName: unit_measure.UnitMeasureName,
+			UnitMeasureName: unit_measure.UnitMeasureName,
+			UnitMeasureType: unit_measure.UnitMeasureType,
 			UnitID: unit_measure.UnitID,
 			UserUnitID: unit_measure.UserUnitID
 		}).success(function(data, status, headers, config) {
