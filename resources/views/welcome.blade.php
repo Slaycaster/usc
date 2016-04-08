@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PNP Unit Scorecard</title>
+    <title>PUP Unit Scorecard</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
