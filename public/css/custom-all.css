@@ -29,3 +29,7 @@ body.modal-open .wrap{
     font-size: 50px;
     display:block;
 }
+
+.modal-body table tr td{             
+    border-top: none !important;
+}
