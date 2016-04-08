@@ -149,53 +149,7 @@
                                 </tr>
                             </table>
                         </form>
-                        
-                        <!-- <form name="frmEditMeasure" class="form-horizontal" novalidate="">
 
-                            <div class="form-group error">
-                                <label for="measure_name" class="col-sm-3 control-label">Measure Name:</label>
-                                <div class="col-sm-9">
-                                    <input type='text' name="measure_name" value="<% unit_measure.UnitMeasureName %>" ng-model="unit_measure.UnitMeasureName" autocomplete="off" class="form-control" required ng-touched>
-									<span class="help-inline" ng-show="userForm.measure_name.$invalid && !userForm.measure_name.$pristine">Measure Name is required.</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group error">
-					            <label for="measure_name" class="col-sm-3 control-label">Measure Type:</label>
-								    <div class="col-sm-3 form-group">
-								        <div class="radio">
-								            <label>
-								                <input type="radio" name="measure_type" value="LG" ng-model="unit_measure.UnitMeasureType">
-								                LG
-								            </label>
-								        </div>
-								        <div class="radio">
-								            <label>
-								                <input type="radio" name="measure_type" value="LD" ng-model="unit_measure.UnitMeasureType">
-								                LD
-								            </label>
-								        </div>
-								    </div>
-
-					            <span class="help-inline" ng-show="userForm.measure_type.$invalid && !userForm.measure_type.$pristine">Measure Type is required.</span>
-					        </div>                         
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Unit:</label>
-                                <div class="col-sm-9">
-                                    <p>{{ $user->unit->UnitName }}</p>
-                                    <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Last Encoded by:</label>
-                                <div class="col-sm-9">
-                                    <p>{{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} </p>
-                                    <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
-                            </div>
-
-                        </form> -->
                     </div>
 
                     <div class="modal-footer">
