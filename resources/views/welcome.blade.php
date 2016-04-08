@@ -51,7 +51,7 @@
     <header id="top" class="header">
         <div class="text-vertical-center" id="firstScreen">
             <h1>PNP Unit Scorecard</h1>
-            <div>
+            <div class="container-fluid">
                 <div class ="col-md-6">
                     <img src="{{ asset('img/pnp_logo.png') }}" style="height:300px;">
                 </div>
@@ -59,15 +59,20 @@
                     <img src="{{ asset('img/pp_logo.png') }}" style="height:300px;">
                 </div>
             </div>
-            @if (Session::has('message2'))
-                <div class="alert alert-success">{{ Session::get('message2') }}</div>
-            @endif
-            @if (Session::has('message'))
-                <div class="alert alert-warning">{{ Session::get('message') }}</div>
-            @endif
-            <h3>Create, and accomplish Unit tasks.</h3>
+            <div class="col-md-6 col-md-offset-3">
+                @if (Session::has('message2'))
+                    <div class="alert alert-success">{{ Session::get('message2') }}</div>
+                @endif
+                @if (Session::has('message'))
+                    <div class="alert alert-warning">{{ Session::get('message') }}</div>
+                @endif
+            </div>
+            
+            <h3 class="col-md-12">Create, and accomplish Unit tasks.</h3>
             <br>
-            <a href="#" class="btn btn-dark btn-lg welcome-style-get-started" id="btnStart">Get Started</a>
+            <div class="col-md-6 col-md-offset-3">
+                <a href="#" class="btn btn-dark btn-lg welcome-style-get-started" id="btnStart">Get Started</a>
+            </div>
         </div>
         <div class="text-vertical-center" id="secondScreen">
             <h1 class="">Login to PNP Unit Scorecard</h1>
@@ -75,13 +80,14 @@
             <div class="container welcome-stylish-container">
                 <div class="row">
                     <center>
+
                         <div class="col-md-6 col-md-offset-3">
                            <form action="unit/login" method="post">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <fieldset>
                                 <div class="row">
                                     <div class="form-group">
-                                        <div class="input-group">
+                                        <div class="input-group col-md-12">
                                             @if (Session::has('message'))
                                                 <div class="alert alert-warning">{{ Session::get('message') }}</div>
                                             @endif
