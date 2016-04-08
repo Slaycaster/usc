@@ -98,7 +98,59 @@
                     </div>
                    	
                     <div class="modal-body">
+
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
+                            <table class="table table-responsive">
+                                <tr>
+                                    <td>
+                                        <label for="measure_name" class="control-label">Measure Name:</label>
+                                    </td>
+                                    <td>
+                                        <input type='text' name="measure_name" value="<% unit_measure.UnitMeasureName %>" ng-model="unit_measure.UnitMeasureName" autocomplete="off" class="form-control" required ng-touched>
+                                    <span class="help-inline" ng-show="userForm.measure_name.$invalid && !userForm.measure_name.$pristine">Measure Name is required.</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="measure_name" class="control-label">Measure Type:</label>
+                                    </td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="measure_type" value="LG" ng-model="unit_measure.UnitMeasureType">
+                                                LG
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="measure_type" value="LD" ng-model="unit_measure.UnitMeasureType">
+                                                LD
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="Unit">Unit:</label>
+                                    </td>
+                                    <td>
+                                        <p>{{ $user->unit->UnitName }}</p>
+                                        <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="LastEncodedBy">Last Encoded by:</label>
+                                    </td>
+                                    <td>
+                                        <p>{{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} </p>
+                                        <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                        
+                        <!-- <form name="frmEditMeasure" class="form-horizontal" novalidate="">
 
                             <div class="form-group error">
                                 <label for="measure_name" class="col-sm-3 control-label">Measure Name:</label>
@@ -143,7 +195,7 @@
                                     <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
                             </div>
 
-                        </form>
+                        </form> -->
                     </div>
 
                     <div class="modal-footer">
