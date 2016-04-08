@@ -51,7 +51,7 @@
     <header id="top" class="header">
         <div class="text-vertical-center" id="firstScreen">
             <h1>PNP Unit Scorecard</h1>
-            <div class="row">
+            <div>
                 <div class ="col-md-6">
                     <img src="{{ asset('img/pnp_logo.png') }}" style="height:300px;">
                 </div>
@@ -67,15 +67,15 @@
             @endif
             <h3>Create, and accomplish Unit tasks.</h3>
             <br>
-            <a href="#" class="btn btn-dark btn-lg" id="btnStart">Get Started</a>
+            <a href="#" class="btn btn-dark btn-lg welcome-style-get-started" id="btnStart">Get Started</a>
         </div>
         <div class="text-vertical-center" id="secondScreen">
-            <h1>Login to PNP Unit Scorecard</h1><hr>
-            <div class="container">
+            <h1 class="">Login to PNP Unit Scorecard</h1>
+            <p class="welcome-stylish-instruction">Hello Officer! Please login using your Badge No. and Password</p>
+            <div class="container welcome-stylish-container">
                 <div class="row">
                     <center>
                         <div class="col-md-6 col-md-offset-3">
-                            
                            <form action="unit/login" method="post">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <fieldset>
@@ -92,7 +92,7 @@
                                                 <span class="input-group-addon">
                                                 <i class="glyphicon glyphicon-user"></i>
                                             </span> 
-                                            <input type="text" name="username" placeholder="Badge No" autocomplete="off" required class="form-control"/>
+                                            <input type="text" name="username" placeholder="Badge No" autocomplete="off" required class="form-control welcome-stylish-badge"/>
                                         </div>
                                         <!--./input-group-->
                                     </div>
@@ -103,7 +103,7 @@
                                             <span class="input-group-addon">
                                                 <i class="glyphicon glyphicon-lock"></i>
                                             </span>
-                                            <input type="password" name="password" placeholder="Password" autocomplete="off" required class="form-control"/>
+                                            <input type="password" name="password" placeholder="Password" autocomplete="off" required class="form-control welcome-stylish-password"/>
                                         </div>
                                         <!--./input-group-->
                                     </div>
