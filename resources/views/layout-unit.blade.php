@@ -11,6 +11,9 @@
 
     <title>Unit Dashboard - PNP Unit Scorecard</title>
 
+    <!-- Favicon.ico -->
+    <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('unit/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -31,7 +34,8 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('unit/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
+    <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'>
+    
     <!-- jQuery -->
     <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
 

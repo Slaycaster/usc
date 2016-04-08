@@ -262,6 +262,19 @@ footer {
     padding-top:10px;
 }
 
+/*.welcome-stylish-objective{
+    
+}*/
+
+.welcome-stylish-objective,
 .welcome-style-get-started{
-    margin-bottom: 3em;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em !important;
+    margin-bottom: 2em;
+}
+
+.welcome-stylish-title,
+.welcome-stylish-login-title{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4em !important;
 }

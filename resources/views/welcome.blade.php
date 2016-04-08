@@ -11,6 +11,9 @@
 
     <title>PNP Unit Scorecard</title>
 
+    <!-- Favicon.ico -->
+    <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -20,6 +23,7 @@
     <!-- Custom Fonts -->
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +54,8 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center" id="firstScreen">
-            <h1>PNP Unit Scorecard</h1>
+            <br /><br />
+            <h1 class="welcome-stylish-title">PNP UNIT SCORECARD</h1>
             <div class="container-fluid">
                 <div class ="col-md-6">
                     <img src="{{ asset('img/pnp_logo.png') }}" style="height:300px;">
@@ -68,14 +73,14 @@
                 @endif
             </div>
             
-            <h3 class="col-md-12">Create, and accomplish Unit tasks.</h3>
+            <h3 class="col-md-12 welcome-stylish-objective">Create, and accomplish Unit tasks.</h3>
             <br>
             <div class="col-md-6 col-md-offset-3">
                 <a href="#" class="btn btn-dark btn-lg welcome-style-get-started" id="btnStart">Get Started</a>
             </div>
         </div>
         <div class="text-vertical-center" id="secondScreen">
-            <h1 class="">Login to PNP Unit Scorecard</h1>
+            <h1 class="welcome-stylish-login-title">Login to PNP Unit Scorecard</h1>
             <p class="welcome-stylish-instruction">Hello Officer! Please login using your Badge No. and Password</p>
             <div class="container welcome-stylish-container">
                 <div class="row">
