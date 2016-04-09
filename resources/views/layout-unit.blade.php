@@ -85,19 +85,22 @@
             <ul class="nav navbar-top-links navbar-right layout-custom-navbrand">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <i class="fa fa-caret-down"></i>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                         <span class="glyphicon glyphicon-user"></span>&nbsp; {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} &nbsp; <i class="fa fa-caret-down"></i>
+
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Settings</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; User Settings</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp; Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="{{ url('unit/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li>
+                            <a href="{{ url('unit/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
             </ul>
@@ -177,9 +180,9 @@
                                 <i class="fa fa-user fa-fw"></i> {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Settings</a>
+                                <li><a href="#"> User Settings</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                                <li><a href="#">Settings</a>
                                 </li>
                                 <li><a href="{{ url('unit/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                                 </li>

@@ -97,7 +97,7 @@
                             <fieldset>
                                 <div class="row">
                                     <div class="form-group">
-                                        <div class="input-group col-md-12 welcome-stylish-message">
+                                        <div class="input-group container-fluid welcome-stylish-message">
                                             @if (Session::has('message'))
                                                 <div class="alert alert-warning">{{ Session::get('message') }}</div>
                                             @endif
