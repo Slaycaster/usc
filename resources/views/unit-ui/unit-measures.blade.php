@@ -42,36 +42,38 @@
 							</div>
 							<!--./div class row-->
 
-							<table class="table table-striped table-responsive table-bordered">
-								<thead>
-									<td ng-click="sort('unit_measure.UnitMeasureName')"><b>Unit Measure Name</b>
-										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitmeasureName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-									</td>
-							
-									<td ng-click="sort('unit_measure.UnitMeasureType')"><b>Unit Measure Type</b>
-										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitMeasureType'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-									</td>
+                            <div class="table-responsive">
+    							<table class="table table-striped table-bordered">
+    								<thead>
+    									<td ng-click="sort('unit_measure.UnitMeasureName')"><b>Unit Measure Name</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitmeasureName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									</td>
+    							
+    									<td ng-click="sort('unit_measure.UnitMeasureType')"><b>Unit Measure Type</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitMeasureType'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									</td>
 
-									</td>
-									<td ng-click="sort('unit_measure.unit.UnitAbbreviation')"><b>Unit</b>
-										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-									</td>
-									<td ng-click="sort('unit_measure.user_unit.rank.RankCode')"><b>Last Encoded by</b>
-										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-									</td>
-									<td></td>
-								</thead>
-								<tr dir-paginate='unit_measure in unit_measures|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
-									<td><% unit_measure.UnitMeasureName %></td>
-									<td><% unit_measure.UnitMeasureType %></td>
-									<td><% unit_measure.unit.UnitAbbreviation %></td>
-									<td><% unit_measure.user_unit.rank.RankCode %> <% unit_measure.user_unit.UserUnitFirstName %> <% unit_measure.user_unit.UserUnitLastName %></td>
-									<td>
-										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', unit_measure.UnitMeasureID)"><span class="fa fa-edit fa-fw"></button>
-										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->
-									</td>
-								</tr>
-							</table>
+    									</td>
+    									<td ng-click="sort('unit_measure.unit.UnitAbbreviation')"><b>Unit</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									</td>
+    									<td ng-click="sort('unit_measure.user_unit.rank.RankCode')"><b>Last Encoded by</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									</td>
+    									<td></td>
+    								</thead>
+    								<tr dir-paginate='unit_measure in unit_measures|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
+    									<td><% unit_measure.UnitMeasureName %></td>
+    									<td><% unit_measure.UnitMeasureType %></td>
+    									<td><% unit_measure.unit.UnitAbbreviation %></td>
+    									<td><% unit_measure.user_unit.rank.RankCode %> <% unit_measure.user_unit.UserUnitFirstName %> <% unit_measure.user_unit.UserUnitLastName %></td>
+    									<td>
+    										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', unit_measure.UnitMeasureID)"><span class="fa fa-edit fa-fw"></button>
+    										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->
+    									</td>
+    								</tr>
+    							</table>
+                            </div>
 							<!--./table table striped-->
 							<center>
 								<dir-pagination-controls
