@@ -3,6 +3,8 @@ var app = angular.module('unitMeasureApp', ['angularUtils.directives.dirPaginati
 	$interpolateProvider.endSymbol('%>');
 });
 
+var local = 'http://localhost';
+
 app.controller('APIUnitMeasureController', function($scope, $http) {
  
 	$scope.unit_measures = [];
@@ -11,7 +13,7 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 	$scope.init = function() 
 	{
 		$scope.loading = true;
-		$http.get('http://localhost/usc/public/api/unit_measures').
+		$http.get(local + '/usc/public/api/unit_measures').
 		success(function(data, status, headers, config) {
 			$scope.unit_measures = data;
 				$scope.loading = false;
@@ -38,7 +40,7 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S MEASURE DETAIL";
                 $scope.id = id;
-                $http.get('http://localhost/usc/public/api/unit_measures/' + id)
+                $http.get(local + '/usc/public/api/unit_measures/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;
@@ -53,7 +55,7 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 
     $scope.save = function(modalstate, id) {
 		$scope.loading = true;
-		var url = 'http://localhost/usc/public/api/unit_measures';
+		var url = local + '/usc/public/api/unit_measures';
 
 		//append Unit Objective ID to the URL if the form is in edit mode
 		if (modalstate === 'edit')
@@ -97,7 +99,7 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 	{
 		$scope.loading = true;
  
-		$http.put('http://localhost/usc/public/api/unit_measures/' + unit_measure.id, {
+		$http.put(local + '/usc/public/api/unit_measures/' + unit_measure.id, {
 			UnitMeasureName: unit_measure.UnitMeasureName,
 			UnitMeasureType: unit_measure.UnitMeasureType,
 			UnitID: unit_measure.UnitID,
