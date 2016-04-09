@@ -1,6 +1,11 @@
+@font-face {
+    font-family: ubuntu;
+    src: url('../fonts/Ubuntu-R.ttf');
+}
+
 body, h1, h3, h4, h5
 {
-	font-family: 'Segoe UI', 'Helvetica', sans-serif;
+	font-family: 'ubuntu';
 }
 
 body.modal-open .wrap{
