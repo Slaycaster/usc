@@ -11,6 +11,11 @@
     src: url('../fonts/Ubuntu-R.ttf');
 }
 
+@font-face {
+    font-family: Orbitron;
+    src: url('../fonts/orbitron-medium.otf');
+}
+
 html,
 body {
     width: 100%;
@@ -282,6 +287,10 @@ footer {
 .welcome-stylish-logo-one,
 .welcome-stylish-logo-two{
     height:300px;
+}
+
+.welcome-stylish-message{
+    text-align: center;
 }
 
 @media(max-width:768px){

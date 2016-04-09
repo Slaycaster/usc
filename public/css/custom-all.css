@@ -3,6 +3,11 @@
     src: url('../fonts/Ubuntu-R.ttf');
 }
 
+@font-face {
+    font-family: Orbitron;
+    src: url('../fonts/orbitron-medium.otf');
+}
+
 body, h1, h3, h4, h5
 {
 	font-family: 'ubuntu';
@@ -42,10 +47,12 @@ body.modal-open .wrap{
 
 @media(max-width:768px){
     .unitdashboard-custom-unit-dash{
-        padding-top: 25px !important;
+        padding-top: 8px !important;
         text-align: center;
         color: #8a6d3b;
-        font-size: 170% !important;
+        font-size: 1.3em !important;
+        position: relative;
+        z-index: 5;
         background-color: #fcf8e3;
         /*#5cb85c;*/
     }   
@@ -58,11 +65,42 @@ body.modal-open .wrap{
 
     .objectives-custom-heading,
     .measures-custom-heading{
-        padding-top: 50px !important;
-        text-align: center;;
+        padding-top: 30px !important;
+        text-align: center;
+        font-size: 1em !important;
+        position: relative;
+    }
+    .unitdashboard-custom-unitpic{
+        height:200px; 
+        width:200px; 
+        /*margin-top: 25px !important;*/
+    }
+    .layout-custom-navbrand{
+        display: none;
+    }
+    .layout-custom-user{
+        text-align: center;
+        padding-left: 12px;
+        background-color: #dff0d8;
+        padding: 5px;
+        color: #3c763d;
+        border-color: #d6e9c6;
+    }
+    
+}
+/*
+.sidebar{
+    overflow: auto;
+}*/
+
+@media(min-width:768px){
+    .layout-custom-user{
+        display: none;
+    }
+    .nav>li.layout-custom-usernavoptions{
+        display: none;
     }
 }
-
 
 .unitdashboard-custom-unit-dash{
     padding-top: 0em;

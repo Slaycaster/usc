@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#3b5998 ">
+    <meta name="msapplication-navbutton-color" content="#3b5998 ">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3b5998">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -34,7 +37,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('unit/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'> -->
     
     <!-- jQuery -->
     <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
@@ -74,9 +77,12 @@
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}">PNP Unit Scorecard</a>
             </div>
+            <div class="layout-custom-user">
+               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}!</i>
+            </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right layout-custom-navbrand">
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -162,6 +168,20 @@
                                 </li>
                                 <li>
                                     <a href="#">Change User Password</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li class="layout-custom-usernavoptions">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user fa-fw"></i> {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Settings</a>
+                                </li>
+                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                                </li>
+                                <li><a href="{{ url('unit/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

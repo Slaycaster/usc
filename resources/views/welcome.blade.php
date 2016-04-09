@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#3b5998 ">
+    <meta name="msapplication-navbutton-color" content="#3b5998 ">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3b5998">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -22,8 +25,8 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'>
+    <!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,7 +97,7 @@
                             <fieldset>
                                 <div class="row">
                                     <div class="form-group">
-                                        <div class="input-group col-md-12">
+                                        <div class="input-group col-md-12 welcome-stylish-message">
                                             @if (Session::has('message'))
                                                 <div class="alert alert-warning">{{ Session::get('message') }}</div>
                                             @endif
