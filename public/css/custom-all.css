@@ -33,3 +33,48 @@ body.modal-open .wrap{
 .modal-body table tr td{             
     border-top: none !important;
 }
+
+
+@media(max-width:768px){
+    .unitdashboard-custom-unit-dash{
+        padding-top: 25px !important;
+        text-align: center;
+        color: #8a6d3b;
+        font-size: 170% !important;
+        background-color: #fcf8e3;
+        /*#5cb85c;*/
+    }   
+        
+    .unitdashboard-custom-unitpic{
+        height:200px; 
+        width:200px; 
+        margin-top: 0em !important;
+    }
+
+    .objectives-custom-heading,
+    .measures-custom-heading{
+        padding-top: 50px !important;
+        text-align: center;;
+    }
+}
+
+
+.unitdashboard-custom-unit-dash{
+    padding-top: 0em;
+    font-size: 250%;
+    text-align: center;
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    /*#5cb85c;*/
+}   
+
+.unitdashboard-custom-unitpic{
+    height:200px; 
+    width:200px; 
+    margin-top: 3em;
+}
+
+
+a{
+    font-family: ubuntu;
+}
