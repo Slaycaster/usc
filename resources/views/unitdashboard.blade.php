@@ -6,17 +6,22 @@
     <script src="{{ asset('unit/bower_components/raphael/raphael-min.js') }}"></script>
     <script src="{{ asset('unit/bower_components/morrisjs/morris.min.js') }}"></script>
     <script src="{{ asset('unit/js/morris-data.js') }}"></script>
+
+    <!-- Slaycaster Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
     
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header"><b>{{ $user->unit->UnitName }} - Unit Dashboard</b></h1>
+        <div class="col-lg-12 unitdashboard-custom-unit-dash">
+            <p class="page-header"><b>{{ $user->unit->UnitName }} Unit Dashboard</b></p>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-3">
-            <img style="height:200px; width:200px;" class="img-responsive" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
+            <center>
+                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
+            </center>
         </div>
         <div class="col-lg-9">
             <div class = "panel panel-info">

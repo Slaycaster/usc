@@ -2,7 +2,8 @@
 
 @section('content')
 
-  <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/unit_measures.js') }}"></script>
@@ -15,7 +16,7 @@
 		    <div class="row">			
 				<div class="col-lg-8">
 					<div class="panel panel-warning">
-						<div class="panel-heading">
+						<div class="panel-heading measures-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Measures</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
@@ -38,7 +39,7 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> To sort, click on the table's column in order to sort ascending/descending.</div>
+								<div class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> Click on the table's column in order to sort ascending or descending.</div>
 							</div>
 							<!--./div class row-->
 
@@ -91,7 +92,7 @@
 
 		<!-- Modal (Pop up when detail button clicked) -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>

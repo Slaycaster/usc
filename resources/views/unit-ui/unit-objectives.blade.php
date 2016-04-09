@@ -16,7 +16,7 @@
 		    <div class="row">			
 				<div class="col-lg-8">
 					<div class="panel panel-warning">
-						<div class="panel-heading">
+						<div class="panel-heading objectives-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Objectives</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
@@ -39,38 +39,39 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> To sort, click on the table's column in order to sort ascending/descending.</div>
+								<div class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> Click on the table's column in order to sort ascending or descending.</div>
 							</div>
 							<!--./div class row-->
-
-							<table class="table table-striped table-responsive table-bordered">
-								<thead>
-									<td ng-click="sort('unit_objective.UnitObjectiveName')"><b>Unit Objective Name</b>
-										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.UnitObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-									</td>
-									<td ng-click="sort('unit_objective.perspective.PerspectiveName')"><b>Perspective</b>
-										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.perspective.PerspectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-									</td>
-									<td ng-click="sort('unit_objective.unit.UnitAbbreviation')"><b>Unit</b>
-										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-									</td>
-									<td ng-click="sort('unit_objective.user_unit.rank.RankCode')"><b>Last Encoded by</b>
-										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-									</td>
-									<td></td>
-								</thead>
-								<tr dir-paginate='unit_objective in unit_objectives|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
-									<td><% unit_objective.UnitObjectiveName %></td>
-									<td><% unit_objective.perspective.PerspectiveName %></td>
-									<td><% unit_objective.unit.UnitAbbreviation %></td>
-									<td><% unit_objective.user_unit.rank.RankCode %> <% unit_objective.user_unit.UserUnitFirstName %> <% unit_objective.user_unit.UserUnitLastName %></td>
-									<td>
-										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', unit_objective.UnitObjectiveID)"><span class="fa fa-edit fa-fw"></button>
-										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->
-									</td>
-								</tr>
-							</table>
+                            <div class="table-responsive">
+    							<table class="table table-striped  table-bordered">
+    								<thead>
+    									<td ng-click="sort('unit_objective.UnitObjectiveName')"><b>Unit Objective Name</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.UnitObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									</td>
+    									<td ng-click="sort('unit_objective.perspective.PerspectiveName')"><b>Perspective</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.perspective.PerspectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									</td>
+    									<td ng-click="sort('unit_objective.unit.UnitAbbreviation')"><b>Unit</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									</td>
+    									<td ng-click="sort('unit_objective.user_unit.rank.RankCode')"><b>Last Encoded by</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									</td>
+    									<td></td>
+    								</thead>
+    								<tr dir-paginate='unit_objective in unit_objectives|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
+    									<td><% unit_objective.UnitObjectiveName %></td>
+    									<td><% unit_objective.perspective.PerspectiveName %></td>
+    									<td><% unit_objective.unit.UnitAbbreviation %></td>
+    									<td><% unit_objective.user_unit.rank.RankCode %> <% unit_objective.user_unit.UserUnitFirstName %> <% unit_objective.user_unit.UserUnitLastName %></td>
+    									<td>
+    										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', unit_objective.UnitObjectiveID)"><span class="fa fa-edit fa-fw"></button>
+    										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->
+    									</td>
+    								</tr>
+    							</table>
 							<!--./table table striped-->
+                            </div>
 							<center>
 								<dir-pagination-controls
 							       max-size="5"
