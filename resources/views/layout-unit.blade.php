@@ -85,8 +85,8 @@
             <ul class="nav navbar-top-links navbar-right layout-custom-navbrand">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                         <span class="glyphicon glyphicon-user"></span>&nbsp; {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} &nbsp; <i class="fa fa-caret-down"></i>
+                    <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
+                         <span class="glyphicon glyphicon-user"></span>&nbsp;Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}! &nbsp; <i class="fa fa-caret-down"></i>
 
                     </a>
                     <ul class="dropdown-menu">

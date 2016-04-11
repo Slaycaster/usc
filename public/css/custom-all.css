@@ -44,6 +44,29 @@ body.modal-open .wrap{
     border-top: none !important;
 }
 
+a.layout-custom-navbaruser,
+a:active{
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-color: #d6e9c6;
+}
+a:hover{
+    color:#333;
+}
+
+@media(max-width: 992px){
+    .unitdashboard-custom-unitpic{
+        margin-top: 0px !important;
+    }
+}
+
+@media(max-width: 1200px){
+    .unitdashboard-custom-unitpic{
+        height:200px; 
+        width:200px;
+        margin-top: 0px !important;
+    }
+}
 
 @media(max-width:768px){
     .unitdashboard-custom-unit-dash{
