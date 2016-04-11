@@ -123,9 +123,25 @@ a:hover{
     .nav>li.layout-custom-usernavoptions{
         display: none;
     }
+    .unitdashboard-custom-unit-activityabb{
+        display: none;
+    }
 }
 
-.unitdashboard-custom-unit-dash{
+@media(max-width: 768px){
+    .unitdashboard-custom-unit-activity{
+        display: none;
+    }
+}
+
+.unitdashboard-custom-unit-activityabb,
+.unitdashboard-custom-unit-activity{
+    padding-top: 1.5em !important;
+}   
+
+.unitdashboard-custom-unit-dash,
+.unitdashboard-custom-unit-activity,
+.unitdashboard-custom-unit-activityabb{
     padding-top: 0em;
     font-size: 250%;
     text-align: center;
