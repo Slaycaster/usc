@@ -2,16 +2,8 @@
 
 @section('content')
 
-    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
-    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
-
-    <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/unit_measures.js') }}"></script>
-
-    <!-- Angular Utils Pagination -->
-    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
     <br>
-    <div ng-app="unitMeasureApp" ng-controller="APIUnitMeasureController">
+    <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-8">
@@ -162,6 +154,17 @@
             </div>
         </div>
 	</div>
+
+    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+
+    <!-- Angular Utils Pagination -->
+    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
   
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/app.js') }}"></script>
+    
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/controllers/unit_measures.js') }}"></script>
 
 @endsection
