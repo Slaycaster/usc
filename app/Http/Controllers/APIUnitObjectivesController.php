@@ -58,7 +58,6 @@ class APIUnitObjectivesController extends Controller {
 	public function update($id)
 	{
 
-		$id = Session::get('unit_user_id', 'default');
 		$action = 'Updated an Objective: "' . Request::input('UnitObjectiveName') . '"';
 
 		DB::insert('insert into audit_trails (Action, UserUnitID) values (?,?)', array($action, $id));
