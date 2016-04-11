@@ -1,8 +1,3 @@
-var app = angular.module('unitMeasureApp', ['angularUtils.directives.dirPagination'], function($interpolateProvider) {
-	$interpolateProvider.startSymbol('<%');
-	$interpolateProvider.endSymbol('%>');
-});
-
 var local = 'http://localhost';
 
 app.controller('APIUnitMeasureController', function($scope, $http) {
@@ -20,13 +15,13 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 		});
 
 		
-	}
+	};
 
 	$scope.sort = function(keyname)
 	{
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-    }
+    };
 
 
      $scope.toggle = function(modalstate, id) 
@@ -51,7 +46,7 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
         }
         console.log(id);
         $('#myModal').modal('show');
-    }
+    };
 
     $scope.save = function(modalstate, id) {
 		$scope.loading = true;
@@ -93,22 +88,6 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 			});
 		}
 
-	};
-
-	$scope.updateUnitMeasure = function(unit_measure) 
-	{
-		$scope.loading = true;
- 
-		$http.put(local + '/usc/public/api/unit_measures/' + unit_measure.id, {
-			UnitMeasureName: unit_measure.UnitMeasureName,
-			UnitMeasureType: unit_measure.UnitMeasureType,
-			UnitID: unit_measure.UnitID,
-			UserUnitID: unit_measure.UserUnitID
-		}).success(function(data, status, headers, config) {
-			unit_measure = data;
-				$scope.loading = false;
- 			$modalInstance.dismiss('myModal');
-		});;
 	};
 
 
