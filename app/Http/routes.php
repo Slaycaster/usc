@@ -23,6 +23,7 @@ Route::get('unit/objectives', 'UnitObjectivesController@index');
 Route::get('unit/setscorecard', 'UnitSetScorecardController@index');
 Route::get('unit/scorecard', 'UnitScorecardController@index');
 Route::get('unit/measures','APIUnitMeasuresController@showIndex');
+Route::get('unit/activity_logs', 'UnitActivityLogsController@index');
 
 
 /*API ROUTES*/
