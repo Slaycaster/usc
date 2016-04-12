@@ -2,6 +2,18 @@
 
 @section('content')
 
+    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+
+    <!-- Angular Utils Pagination -->
+    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+  
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/app.js') }}"></script>
+    
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/controllers/unit_measures.js') }}"></script>
+
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
 	    <div class="wrap">
@@ -38,22 +50,22 @@
                             <div class="table-responsive">
     							<table class="table table-striped table-bordered">
     								<thead>
-    									<td ng-click="sort('unit_measure.UnitMeasureName')"><b>Unit Measure Name</b>
+    									<td class="objective-custom-td1" ng-click="sort('unit_measure.UnitMeasureName')"><b>Unit Measure Name</b>
     										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitmeasureName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
     							
-    									<td ng-click="sort('unit_measure.UnitMeasureType')"><b>Unit Measure Type</b>
+    									<td class="objective-custom-td2" ng-click="sort('unit_measure.UnitMeasureType')"><b>Unit Measure Type</b>
     										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitMeasureType'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
 
     									</td>
-    									<td ng-click="sort('unit_measure.unit.UnitAbbreviation')"><b>Unit</b>
+    									<td class="objective-custom-td3" ng-click="sort('unit_measure.unit.UnitAbbreviation')"><b>Unit</b>
     										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
-    									<td ng-click="sort('unit_measure.user_unit.rank.RankCode')"><b>Last Encoded by</b>
+    									<td class="objective-custom-td4" ng-click="sort('unit_measure.user_unit.rank.RankCode')"><b>Last Encoded by</b>
     										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
-    									<td></td>
+    									<td class="objective-custom-td5"></td>
     								</thead>
     								<tr dir-paginate='unit_measure in unit_measures|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_measure.UnitMeasureName %></td>
@@ -93,7 +105,6 @@
                     </div>
                    	
                     <div class="modal-body">
-
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
@@ -135,7 +146,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for="LastEncodedBy">Last Encoded by:</label>
+                                        <label for="LastEncodedBy">Account User:</label>
                                     </td>
                                     <td>
                                         <p>{{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} </p>
@@ -155,16 +166,6 @@
         </div>
 	</div>
 
-    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
-    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
-
-    <!-- Angular Utils Pagination -->
-    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
-  
-    <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/app.js') }}"></script>
     
-    <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/unit_measures.js') }}"></script>
 
 @endsection
