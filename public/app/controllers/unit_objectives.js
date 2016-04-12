@@ -1,4 +1,4 @@
-
+var local = 'http://localhost';
  
 app.controller('unitObjectiveController', function($scope, $http) {
  
@@ -7,7 +7,7 @@ app.controller('unitObjectiveController', function($scope, $http) {
  
     $scope.init = function() {
         $scope.loading = true;
-        $http.get('http://localhost/usc/public/api/unit_objectives').
+        $http.get(local + '/usc/public/api/unit_objectives').
         success(function(data, status, headers, config) {
             $scope.unit_objectives = data;
                 $scope.loading = false;
@@ -16,7 +16,7 @@ app.controller('unitObjectiveController', function($scope, $http) {
  
     $scope.save = function(modalstate, id) {
         $scope.loading = true;
-        var url = 'http://localhost/usc/public/api/unit_objectives';
+        var url = local + '/usc/public/api/unit_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -70,7 +70,7 @@ app.controller('unitObjectiveController', function($scope, $http) {
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S OBJECTIVE DETAIL";
                 $scope.id = id;
-                $http.get('http://localhost/usc/public/api/unit_objectives/' + id)
+                $http.get(local + '/usc/public/api/unit_objectives/' + id)
                         .success(function(response) {
                             $scope.unit_objective = response;
                         });
