@@ -24,16 +24,6 @@ body.modal-open .wrap{
 
 .modal-backdrop {background: #f7f7f7;}
 
-.modal-dialog{
-	position: absolute;
-	left: 50%;
-	/*now you must set a margin left under zero - value is a half width your window*/
-	margin-left: -312px;
-	/*this same situation is with height - example*/
-	height: 500px;
-	top: 50%;
-	margin-top: -250px;
-} 
 
 .close {
     font-size: 50px;
@@ -156,7 +146,23 @@ a:hover{
     margin-top: 3em;
 }
 
-
 a{
     font-family: ubuntu;
+}
+
+.objective-custom-td1{
+    width:35%;
+}
+
+.objective-custom-td2,
+.objective-custom-td4{
+    width:25%;
+}
+
+.objective-custom-td3{
+    width:10%;
+}
+
+.objective-custom-td5{
+    width:5%;
 }
