@@ -243,7 +243,7 @@
                         </a>
                     </div>
                     <!-- /.list-group -->
-                    <a href="{{ url('unit/activity_logs') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>
