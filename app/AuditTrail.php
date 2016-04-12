@@ -16,7 +16,7 @@ class AuditTrail extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['Action', 'Action', 'UserUnitID'];
+	protected $fillable = ['Action', 'Action', 'UserUnitID', 'UnitID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -28,6 +28,11 @@ class AuditTrail extends Model {
 	public function user_unit()
 	{
 		return $this->belongsTo('App\UserUnit', 'UserUnitID', 'UserUnitID');
+	}
+
+	public function unit()
+	{
+		return $this->belongsTo('App\Unit', 'UnitID', 'UnitID');
 	}
 
 }
