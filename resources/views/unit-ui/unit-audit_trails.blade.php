@@ -1,7 +1,20 @@
 @extends('layout-unit')
 
 @section('content')
-   
+    
+    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+
+    <!-- Angular Utils Pagination -->
+    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+  
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/app.js') }}"></script>
+    
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/controllers/unit_audit_trails.js') }}"></script>
+
+    <br />
     <div ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsController">
         <div class="wrap">
             <div class="row">           
@@ -42,20 +55,19 @@
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <td ng-click="sort('audit_trail.Action ')"><b>Action</b>
-                                        <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.Action" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                    </td>
-                        
-
-                                    <td ng-click="sort(' audit_trail.user_unit.UserUnitLastName ')"><b>Last Encoded By</b>
-                                        <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.user_unit.UserUnitLastName" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.Action'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                     </td>
 
+                                    <td ng-click="sort('audit_trail.user_unit.UserUnitLastName')"><b>Last Encoded By</b>
+                                        <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                     </td>
-                                    <td ng-click=""><b>Created at</b>
-                                        <span class="" ng-show="" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+
                                     </td>
-                                    <td ng-click=""><b>Updated by</b>
-                                        <span class="" ng-show="" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                    <td ng-click="sort(' audit_trail.created_at ')"><b>Created at</b>
+                                        <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                    </td>
+                                    <td ng-click="sort(' audit_trail.updated_at ')"><b>Updated at</b>
+                                        <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.updated_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                     </td>
                                 </thead>
                                 <tr dir-paginate='audit_trail in unit_audit_trails|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
@@ -83,20 +95,5 @@
                 </div>
             </div>
         </div>
-
-
-
-    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
-    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
-
-    <!-- Angular Utils Pagination -->
-    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
-  
-    <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/app.js') }}"></script>
-    
-    <!-- AngularJS Application Scripts -->
-    <!-- does not exist yet -->
-    <script src="{{ asset('app/controllers/unit_audit_trails.js') }}"></script>
      
 @endsection
