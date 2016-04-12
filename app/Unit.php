@@ -50,4 +50,9 @@ class Unit extends Model {
 		return $this->hasMany('App\UnitMeasure', 'UnitMeasureID', 'UnitMeasureID');
 	}
 
+	public function unit_audit_trails()
+	{
+		return $this->hasMany('App\AuditTrails', 'AuditTrailID', 'AuditTrailID');
+	}
+
 }
