@@ -70,7 +70,7 @@
                                         <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.updated_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                     </td>
                                 </thead>
-                                <tr dir-paginate='audit_trail in unit_audit_trails|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
+                                <tr dir-paginate='audit_trail in unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                                     <td><% audit_trail.Action %></td>
                                     <td><% audit_trail.user_unit.rank.RankCode%> 
                                         <% audit_trail.user_unit.UserUnitFirstName %>

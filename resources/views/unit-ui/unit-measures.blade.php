@@ -67,7 +67,7 @@
     									</td>
     									<td class="objective-custom-td5"></td>
     								</thead>
-    								<tr dir-paginate='unit_measure in unit_measures|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
+    								<tr dir-paginate='unit_measure in unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_measure.UnitMeasureName %></td>
     									<td><% unit_measure.UnitMeasureType %></td>
     									<td><% unit_measure.unit.UnitAbbreviation %></td>

@@ -63,7 +63,7 @@
     									</td>
     									<td class="objective-custom-td5"></td>
     								</thead>
-    								<tr dir-paginate='unit_objective in unit_objectives|orderBy:sortKey:reverse|filter:search|itemsPerPage:5'>
+    								<tr dir-paginate='unit_objective in unit_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_objective.UnitObjectiveName %></td>
     									<td><% unit_objective.perspective.PerspectiveName %></td>
     									<td><% unit_objective.unit.UnitAbbreviation %></td>
@@ -144,45 +144,6 @@
                                     </td>
                                 </tr>
                             </table>
-
-
-
-
-                            <!-- <div class="form-group error">
-                                <label for="objective_name" class="col-sm-3 control-label">Objective Name</label>
-                                <div class="col-sm-9">
-                                    <input type='text' name="objective_name" value="<% unit_objective.UnitObjectiveName %>" ng-model="unit_objective.UnitObjectiveName" autocomplete="off" class="form-control" required ng-touched>
-									<span class="help-inline" ng-show="userForm.objective_name.$invalid && !userForm.objective_name.$pristine">Objective Name is required.</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="perspective_id" class="col-sm-3 control-label">Perspective</label>
-                                <div class="col-sm-9">
-                                    <select name="perspective_id" data-ng-model="unit_objective.PerspectiveID" class="form-control" required ng-touched>
-										@foreach($perspectives as $perspective)
-												<option value="<?=$perspective->PerspectiveID?>">{{ $perspective->PerspectiveName }}</option>
-										@endforeach
-									</select>
-									<span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Unit:</label>
-                                <div class="col-sm-9">
-                                    <p>{{ $user->unit->UnitName }}</p>
-                                    <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Account User:</label>
-                                <div class="col-sm-9">
-                                    <p>{{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} </p>
-                                    <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
-                            </div> -->
-
                         </form>
                     </div>
                     <div class="modal-footer">
