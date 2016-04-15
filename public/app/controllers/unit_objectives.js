@@ -5,7 +5,8 @@ app.controller('unitObjectiveController', function($scope, $http) {
     $scope.unit_objectives = [];
     $scope.loading = false;
  
-    $scope.init = function() {
+    $scope.init = function() 
+    {
         $scope.loading = true;
         $http.get(local + '/usc/public/api/unit_objectives').
         success(function(data, status, headers, config) {
@@ -13,6 +14,11 @@ app.controller('unitObjectiveController', function($scope, $http) {
                 $scope.loading = false;
         });
     };
+
+    $scope.sort = function(keyname){
+        $scope.sortKey = keyname;   //set the sortKey to the param passed
+        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+    }
  
     $scope.save = function(modalstate, id) {
         $scope.loading = true;
@@ -21,8 +27,8 @@ app.controller('unitObjectiveController', function($scope, $http) {
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
         {
-            url += "/" + id;
-            console.log(id);
+            url += "/" + id; /*console.log(id);*/
+            console.log(document.getElementById('unit_id').value);
             $http.put(url, {
                 UnitObjectiveName: $scope.unit_objective.UnitObjectiveName,
                 PerspectiveID: $scope.unit_objective.PerspectiveID,
@@ -30,6 +36,7 @@ app.controller('unitObjectiveController', function($scope, $http) {
                 UserUnitID: document.getElementById('user_unit_id').value
 
             }).success(function(data, status, headers, config, response) {
+                console.log(response);
                 $('#myModal').modal('hide');
                 $scope.unit_objective = ' ';
                 $scope.init();
@@ -45,6 +52,7 @@ app.controller('unitObjectiveController', function($scope, $http) {
                 UserUnitID: document.getElementById('user_unit_id').value
 
             }).success(function(data, status, headers, config, response) {
+                console.log(response);
                 $('#myModal').modal('hide');
                 $scope.unit_objective = ' ';
                 $scope.init();
@@ -54,18 +62,16 @@ app.controller('unitObjectiveController', function($scope, $http) {
 
     };
  
-    $scope.sort = function(keyname){
-        $scope.sortKey = keyname;   //set the sortKey to the param passed
-        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-    }
-
     //show modal form
-    $scope.toggle = function(modalstate, id) {
+    $scope.toggle = function(modalstate, id) 
+    {
         $scope.modalstate = modalstate;
 
         switch (modalstate) {
             case 'add':
                 $scope.form_title = "ADD UNIT'S OBJECTIVE";
+                document.getElementById('id_objective_name').value = "";
+                document.getElementById('id_perspective_id').value = "";
                 break;
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S OBJECTIVE DETAIL";

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Request, Session;
 
 
-
 class APIUnitMeasuresController extends Controller {
 
 	/**
