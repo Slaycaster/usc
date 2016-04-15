@@ -166,3 +166,8 @@ a{
 .objective-custom-td5{
     width:5%;
 }
+
+
+thead{
+    text-align: center;
+}
