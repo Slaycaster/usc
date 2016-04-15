@@ -35,7 +35,7 @@
 									            <span class="input-group-addon">
 							                    	<i class="fa fa-search fa-fw"></i>
 							                    </span>
-									            <input type="text" ng-model="search" class="form-control" placeholder="Search here...">
+									            <input type="text" ng-model="search" class="form-control" placeholder="Search here..." />
 								        	</div>
 								        </div>
 								    </form>
@@ -112,7 +112,7 @@
                                         <label for="measure_name" class="control-label">Measure Name:</label>
                                     </td>
                                     <td>
-                                        <input type='text' name="measure_name" value="<% unit_measure.UnitMeasureName %>" ng-model="unit_measure.UnitMeasureName" autocomplete="off" class="form-control" required ng-touched>
+                                        <input type='text' id="id_measure_name" name="measure_name" value="<% unit_measure.UnitMeasureName %>" ng-model="unit_measure.UnitMeasureName" autocomplete="off" class="form-control" required ng-touched />
                                     <span class="help-inline" ng-show="userForm.measure_name.$invalid && !userForm.measure_name.$pristine">Measure Name is required.</span>
                                     </td>
                                 </tr>
@@ -123,13 +123,13 @@
                                     <td>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="measure_type" value="LG" ng-model="unit_measure.UnitMeasureType">
+                                                <input type="radio" id="id_measure_type" name="measure_type" value="LG" ng-model="unit_measure.UnitMeasureType" />
                                                 LG
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="measure_type" value="LD" ng-model="unit_measure.UnitMeasureType">
+                                                <input type="radio" name="measure_type" value="LD" ng-model="unit_measure.UnitMeasureType" />
                                                 LD
                                             </label>
                                         </div>
@@ -165,7 +165,5 @@
             </div>
         </div>
 	</div>
-
-    
 
 @endsection

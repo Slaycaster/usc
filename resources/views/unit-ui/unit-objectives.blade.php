@@ -108,7 +108,7 @@
                                         <label for="objective_name" class="control-label">Objective Name:</label>
                                     </td>
                                     <td>
-                                        <input type='text' name="objective_name" value="<% unit_objective.UnitObjectiveName %>" ng-model="unit_objective.UnitObjectiveName" autocomplete="off" class="form-control" required ng-touched>
+                                        <input type='text' id="id_objective_name" name="objective_name" value="<% unit_objective.UnitObjectiveName %>" ng-model="unit_objective.UnitObjectiveName" autocomplete="off" class="form-control" required ng-touched>
                                         <span class="help-inline" ng-show="userForm.objective_name.$invalid && !userForm.objective_name.$pristine">Objective Name is required.</span>
                                     </td>
                                 </tr>
@@ -117,9 +117,11 @@
                                         <label for="perspective_id" class="control-label">Perspective:</label>
                                     </td>
                                     <td>
-                                        <select name="perspective_id" data-ng-model="unit_objective.PerspectiveID" class="form-control" required ng-touched>
+                                        <select id="id_perspective_id" name="perspective_id" data-ng-model="unit_objective.PerspectiveID" class="form-control" required ng-touched>
                                             @foreach($perspectives as $perspective)
-                                                    <option value="<?=$perspective->PerspectiveID?>">{{ $perspective->PerspectiveName }}</option>
+                                                    <option value="<?=$perspective->PerspectiveID?>">
+                                                        {{ $perspective->PerspectiveName }}
+                                                    </option>
                                             @endforeach
                                         </select>
                                         <span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
