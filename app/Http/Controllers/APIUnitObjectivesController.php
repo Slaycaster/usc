@@ -15,7 +15,7 @@ class APIUnitObjectivesController extends Controller {
 	public function index()
 	{
 		$id = Session::get('unit_user_id', 'default');
-		return UnitObjective::with('perspective')->with('unit')->with('user_unit')->with('user_unit.rank')->get();
+		return UnitObjective::where('UnitID', '=', $id)->with('perspective')->with('unit')->with('user_unit')->with('user_unit.rank')->get();
 	}
 
 	/**
