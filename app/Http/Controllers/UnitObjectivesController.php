@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Validator, Input, Redirect, Session;
 use Illuminate\Http\Request;
 use App\UserUnit;
+use App\Unit;
 use App\UnitObjective;
 use App\Perspective;
 
@@ -23,10 +24,12 @@ class UnitObjectivesController extends Controller {
 			$id = Session::get('unit_user_id', 'default');
 			$user = UserUnit::where('UserUnitID', $id)
 				->first();
+			$unit = Unit::where('UnitID', '=', $user)->get();
 			$unit_objectives = UnitObjective::where('UnitID', '=', $user->UnitID)->get();
 			return view('unit-ui.unit-objectives')
 				->with('user', $user)
 				->with('unit_objectives', $unit_objectives)
+				->with('unit', $unit)
 				->with('perspectives', $perspectives);
 		}
 		else
