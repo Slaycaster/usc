@@ -1,6 +1,6 @@
 var local = 'http://localhost';
  
-app.controller('unitObjectiveController', function($scope, $http) {
+app.controller('APIUnitObjectiveController', function($scope, $http) {
  
     $scope.unit_objectives = [];
     $scope.loading = false;
@@ -15,12 +15,14 @@ app.controller('unitObjectiveController', function($scope, $http) {
         });
     };
 
-    $scope.sort = function(keyname){
+    $scope.sort = function(keyname)
+    {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-    }
+    };
  
-    $scope.save = function(modalstate, id) {
+    $scope.save = function(modalstate, id) 
+    {
         $scope.loading = true;
         var url = local + '/usc/public/api/unit_objectives';
 
@@ -38,7 +40,7 @@ app.controller('unitObjectiveController', function($scope, $http) {
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_objective = ' ';
+                $scope.unit_objective = '';
                 $scope.init();
                 $scope.loading = false;
             });
@@ -54,15 +56,13 @@ app.controller('unitObjectiveController', function($scope, $http) {
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_objective = ' ';
+                $scope.unit_objective = '';
                 $scope.init();
                 $scope.loading = false;
             });
         }
-
     };
  
-    //show modal form
     $scope.toggle = function(modalstate, id) 
     {
         $scope.modalstate = modalstate;
@@ -78,14 +78,16 @@ app.controller('unitObjectiveController', function($scope, $http) {
                 $scope.id = id;
                 $http.get(local + '/usc/public/api/unit_objectives/' + id)
                         .success(function(response) {
+                            console.log(response);
                             $scope.unit_objective = response;
                         });
                 break;
             default:
                 break;
         }
+        console.log(id);
         $('#myModal').modal('show');
-    }
+    };
 
     $scope.init();
  

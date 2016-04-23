@@ -15,12 +15,14 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
 		});	
 	};
 
-	$scope.sort = function(keyname){
+	$scope.sort = function(keyname)
+    {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
 
-    $scope.save = function(modalstate, id) {
+    $scope.save = function(modalstate, id) 
+    {
         $scope.loading = true;
         var url = local + '/usc/public/api/unit_measures';
 
@@ -38,7 +40,7 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_measures = ' ';
+                $scope.unit_measures = '';
                 $scope.init();
                 $scope.loading = false;
             });
@@ -54,14 +56,13 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_measures = ' ';
+                $scope.unit_measures = '';
                 $scope.init();
                 $scope.loading = false;
             });
         }
         // 
     };
-
 
     $scope.toggle = function(modalstate, id) 
     {
@@ -90,7 +91,6 @@ app.controller('APIUnitMeasureController', function($scope, $http) {
     };
 
     
-
 	$scope.init();
 });
 
