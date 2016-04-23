@@ -2,6 +2,7 @@
 
 use App\UnitMeasure;
 use App\UserUnit;
+use App\Unit;
 use App\Http\Controllers\Controller;
 use Request, Session;
 
@@ -17,7 +18,7 @@ class APIUnitMeasuresController extends Controller {
 	{
 		//
 		$id = Session::get('unit_user_id', 'default');
-		return UnitMeasure::with('unit')->with('user_unit')->with('user_unit.rank')->get();
+		return UnitMeasure::where('UnitID', '=', $id)->with('unit')->with('user_unit')->with('user_unit.rank')->get();
 	}
 
 	public function showIndex()
@@ -27,10 +28,12 @@ class APIUnitMeasuresController extends Controller {
 			$id = Session::get('unit_user_id', 'default');
 			$user = UserUnit::where('UserUnitID', $id)
 				->first();
+			$unit = Unit::where('UnitID', '=', $user)->get();
 			$unit_measures = UnitMeasure::where('UnitID', '=', $user->UnitID)->get();
 			
 			return view('unit-ui.unit-measures')
 				->with('user', $user)
+				->with('unit', $unit)
 				->with('unit_measures', $unit_measures);
 		}
 		else
