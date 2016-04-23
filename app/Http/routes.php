@@ -19,7 +19,7 @@ Route::get('home', 'HomeController@index');
 Route::get('unit/dashboard', 'UnitLoginController@dashboard');
 Route::post('unit/login', 'UnitLoginController@doLogin');
 Route::get('unit/logout', 'UnitLoginController@doLogout');
-Route::get('unit/objectives', 'UnitObjectivesController@index');
+Route::get('unit/objectives', 'APIUnitObjectivesController@showIndex');
 Route::get('unit/setscorecard', 'UnitSetScorecardController@index');
 Route::get('unit/scorecard', 'UnitScorecardController@showIndex');
 Route::get('unit/measures','APIUnitMeasuresController@showIndex');
