@@ -4,7 +4,7 @@ use App\AuditTrail;
 use App\UserUnit;
 use App\Unit;
 use App\Http\Controllers\Controller;
-use Request, Session;
+use Request, Session, DB, Validator, Input, Redirect;
 
 
 

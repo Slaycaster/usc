@@ -4,7 +4,7 @@ use App\UnitMeasure;
 use App\UserUnit;
 use App\Unit;
 use App\Http\Controllers\Controller;
-use Request, Session, DB;
+use Request, Session, DB, Validator, Input, Redirect;
 
 
 class APIUnitMeasuresController extends Controller {
@@ -16,7 +16,6 @@ class APIUnitMeasuresController extends Controller {
 	 */
 	public function index()
 	{
-		//
 		$id = Session::get('unit_user_id', 'default');
 		$unit = UserUnit::where('UserUnitID', '=', $id)->select('UnitID')->lists('UnitID'); //Get the Unit of the user
         
@@ -124,7 +123,7 @@ class APIUnitMeasuresController extends Controller {
 		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
 
 
- 
+
 		return $unit_measure;
 
 

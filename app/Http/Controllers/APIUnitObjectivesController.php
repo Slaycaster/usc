@@ -1,10 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\UnitObjective;
+use App\Perspective;
 use App\Unit;
 use App\UserUnit;
 use App\Http\Controllers\Controller;
-use Request, Session, DB;
+use Request, Session, DB, Validator, Input, Redirect;
 
 
 class APIUnitObjectivesController extends Controller {
@@ -25,6 +26,29 @@ class APIUnitObjectivesController extends Controller {
 			->with('user_unit')
 			->with('user_unit.rank')
 			->get();
+	}
+
+	public function showIndex()
+	{
+		if (Session::has('unit_user_id'))
+		{
+			$perspectives = Perspective::all();
+			$id = Session::get('unit_user_id', 'default');
+			$user = UserUnit::where('UserUnitID', $id)
+				->first();
+			$unit = Unit::where('UnitID', '=', $user)->get();
+			$unit_objectives = UnitObjective::where('UnitID', '=', $user->UnitID)->get();
+			return view('unit-ui.unit-objectives')
+				->with('user', $user)
+				->with('unit_objectives', $unit_objectives)
+				->with('unit', $unit)
+				->with('perspectives', $perspectives);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
 	}
 
 	/**
