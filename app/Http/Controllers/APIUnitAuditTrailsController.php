@@ -34,10 +34,12 @@ class APIUnitAuditTrailsController extends Controller {
             $id = Session::get('unit_user_id', 'default');
             $user = UserUnit::where('UserUnitID', $id)
                 ->first();
+            $unit = Unit::where('UnitID', '=', $user)->get();
             $unit_audit_trails = AuditTrail::where('UserUnitID', '=', $user->UnitID)->get();
             
             return view('unit-ui.unit-audit_trails')
                 ->with('user', $user)
+                ->with('unit', $unit)
                 ->with('unit_audit_trails', $unit_audit_trails);
         }
         else

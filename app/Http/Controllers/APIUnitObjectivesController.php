@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\UnitObjective;
+use App\Unit;
+use App\UserUnit;
 use App\Http\Controllers\Controller;
 use Request, Session, DB;
 
@@ -15,7 +17,14 @@ class APIUnitObjectivesController extends Controller {
 	public function index()
 	{
 		$id = Session::get('unit_user_id', 'default');
-		return UnitObjective::where('UnitID', '=', $id)->with('perspective')->with('unit')->with('user_unit')->with('user_unit.rank')->get();
+		$unit = UserUnit::where('UserUnitID', '=', $id)->select('UnitID')->lists('UnitID'); //Get the Unit of the user
+        
+		return UnitObjective::where('UnitID', '=', $unit)
+			->with('perspective')
+			->with('unit')
+			->with('user_unit')
+			->with('user_unit.rank')
+			->get();
 	}
 
 	/**
@@ -27,9 +36,11 @@ class APIUnitObjectivesController extends Controller {
 	{
 
 		$id = Session::get('unit_user_id', 'default');
+		$unit = Request::input('UnitID');
 		$action = 'Added an objective: "' . Request::input('UnitObjectiveName') . '"';
 
-		DB::insert('insert into audit_trails (Action, UserUnitID) values (?,?)', array($action, $id));
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+
 
 		$unit_objective = new UnitObjective(Request::all());
 		$unit_objective->save();
@@ -58,14 +69,19 @@ class APIUnitObjectivesController extends Controller {
 	public function update($id)
 	{
 
-		$action = 'Updated an Objective: "' . Request::input('UnitObjectiveName') . '"';
-
-		DB::insert('insert into audit_trails (Action, UserUnitID) values (?,?)', array($action, $id));
 
 		$unit_objective = UnitObjective::find($id);
 		$unit_objective->update(Request::all());
 		$unit_objective->save();
  
+
+		$id = Session::get('unit_user_id', 'default');
+		$unit = Request::input('UnitID');
+		$action = 'Updated an Objective: "' . Request::input('UnitObjectiveName') . '"';
+
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+
+
 		return $unit_objective;
 
 	}

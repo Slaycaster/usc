@@ -4,7 +4,7 @@ use App\UnitMeasure;
 use App\UserUnit;
 use App\Unit;
 use App\Http\Controllers\Controller;
-use Request, Session;
+use Request, Session, DB;
 
 
 class APIUnitMeasuresController extends Controller {
@@ -18,7 +18,13 @@ class APIUnitMeasuresController extends Controller {
 	{
 		//
 		$id = Session::get('unit_user_id', 'default');
-		return UnitMeasure::where('UnitID', '=', $id)->with('unit')->with('user_unit')->with('user_unit.rank')->get();
+		$unit = UserUnit::where('UserUnitID', '=', $id)->select('UnitID')->lists('UnitID'); //Get the Unit of the user
+        
+		return UnitMeasure::where('UnitID', '=', $unit)
+			->with('unit')
+			->with('user_unit')
+			->with('user_unit.rank')
+			->get();
 	}
 
 	public function showIndex()
@@ -60,7 +66,13 @@ class APIUnitMeasuresController extends Controller {
 	 */
 	public function store()
 	{
-		//
+
+		$id = Session::get('unit_user_id', 'default');
+		$unit = Request::input('UnitID');
+		$action = 'Added a measure: "' . Request::input('UnitMeasureName') . '"';
+
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+
 		$unit_measure = new UnitMeasure(Request::all());
 		$unit_measure->save();
 		return $unit_measure;
@@ -99,11 +111,23 @@ class APIUnitMeasuresController extends Controller {
 	 */
 	public function update($id)
 	{
+
+
 		$unit_measure = UnitMeasure::find($id);
 		$unit_measure->update(Request::all());
 		$unit_measure->save();
  
+		$id = Session::get('unit_user_id', 'default');
+		$unit = Request::input('UnitID');
+		$action = 'Updated a measure: "' . Request::input('UnitMeasureName') . '"';
+
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+
+
+ 
 		return $unit_measure;
+
+
 
 	}
 
