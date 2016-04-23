@@ -15,7 +15,7 @@
     <script src="{{ asset('app/controllers/unit_objectives.js') }}"></script>
 
     <br>
-	<div ng-app="unitScorecardApp" ng-controller="unitObjectiveController">
+	<div ng-app="unitScorecardApp" ng-controller="APIUnitObjectiveController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-8">
