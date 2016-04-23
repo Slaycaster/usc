@@ -16,7 +16,7 @@ class AuditTrail extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['Action', 'Action', 'UserUnitID', 'UnitID'];
+	protected $fillable = ['Action', 'UserUnitID', 'UnitID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
