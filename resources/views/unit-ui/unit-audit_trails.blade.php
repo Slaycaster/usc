@@ -75,7 +75,7 @@
                                     <td><% audit_trail.user_unit.rank.RankCode%> 
                                         <% audit_trail.user_unit.UserUnitFirstName %>
                                         <% audit_trail.user_unit.UserUnitLastName %>
-                                        </td>
+                                    </td>
                                     <td><% audit_trail.created_at %></td>
                                     <td><% audit_trail.updated_at %></td>
                                 </tr>
