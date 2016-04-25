@@ -1,13 +1,13 @@
 var local = 'http://localhost';
  
-app.controller('APIUnitObjectiveController', function($scope, $http) {
+app.controller('APIUnitObjectiveController', function($scope, $http, $interval) {
  
     $scope.unit_objectives = [];
-    $scope.loading = false;
+    $scope.loading = true;
  
     $scope.init = function() 
     {
-        $scope.loading = true;
+        $scope.loading = false;
         $http.get(local + '/usc/public/api/unit_objectives').
         success(function(data, status, headers, config) {
             $scope.unit_objectives = data;
@@ -89,6 +89,6 @@ app.controller('APIUnitObjectiveController', function($scope, $http) {
         $('#myModal').modal('show');
     };
 
-    $scope.init();
+    $interval(function(){ $scope.init(); }, 5000);
  
 });//app.controller(UnitObjectiveController)

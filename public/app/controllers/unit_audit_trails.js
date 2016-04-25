@@ -1,13 +1,11 @@
 var local = 'http://localhost';
 
 app.controller('APIUnitAuditTrailsController', function($scope, $http, $interval) {
-    // $interval(5000);
     $scope.unit_audit_trails = [];
-    $scope.loading = false;
+    $scope.loading = true;
  
     $scope.init = function() {
-        // $interval(1000);
-        $scope.loading = true;
+        $scope.loading = false;
         $http.get(local + '/usc/public/api/unit_audit_trails').
         success(function(data, status, headers, config) {
             $scope.unit_audit_trails = data;
@@ -20,7 +18,7 @@ app.controller('APIUnitAuditTrailsController', function($scope, $http, $interval
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
 
-    $interval( function(){ $scope.init(); }, 3000);
+    $interval( function(){ $scope.init(); }, 5000);
     
 });
 
