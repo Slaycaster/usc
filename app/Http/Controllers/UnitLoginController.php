@@ -32,7 +32,6 @@ class UnitLoginController extends Controller {
 		{
 			$id = Session::get('unit_user_id', 'default');
 			$user = UserUnit::where('UserUnitID', $id)
-				->with('unit.region')
 				->first();
 			$unit_objectives_count = UnitObjective::where('UnitID', $user->UnitID)
 				->count();

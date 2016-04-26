@@ -21,7 +21,7 @@
 				<div class="col-lg-8">
 					<div class="panel panel-warning">
 						<div class="panel-heading objectives-custom-heading">
-							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Objectives</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Objectives</b></h2><i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -43,19 +43,19 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> Click on the table's column in order to sort ascending or descending.</div>
+								<div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> Unit Objectives of {{ $user->unit->UnitName }}.</div>
 							</div>
 							<!--./div class row-->
-                            <div class="table-responsive">
+                            <div class="table-responsive" ng-show="info">
     							<table class="table table-striped table-bordered">
     								<thead>
-    									<td class="objective-custom-td1" ng-click="sort('unit_objective.UnitObjectiveName')"><b>Unit Objective Name</b>
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.UnitObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									<td class="objective-custom-td1">  
+                                            <b>Unit Objective Name</b>
     									</td>
-    									<td class="objective-custom-td2" ng-click="sort('unit_objective.perspective.PerspectiveName')"><b>Perspective</b>
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.perspective.PerspectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									<td class="objective-custom-td2">
+                                            <b>Perspective</b>
     									</td>
-
+                                        
                                         <td class="objective-custom-td3" ng-click="sort('unit_objective.staffobjective.StaffObjectiveName')"><b>Contributory to</b>
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.staffobjective.StaffObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>

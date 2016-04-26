@@ -228,6 +228,7 @@
                 <div class="panel-heading">
                     <i class="fa fa-bell fa-4x pull-right"></i>
                     <h3><b>ACTIVITY LOG</b></h3>
+                    <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
                 <div class="container-fluid" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
@@ -282,11 +283,7 @@
                     <h4><b>ABOUT: {{ $user->unit->UnitName }}</b></h4>
                 </div>
                 <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <h4><b>Region:</b></h4>
-                    <h5>{{ $user->unit->region->RegionAbbreviation }} - {{ $user->unit->region->RegionName }}</h5>
-                    <!-- /input-group -->
-                </div>
+               
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
