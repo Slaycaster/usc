@@ -27,7 +27,7 @@ class Rank extends Model {
 
 	public function user_units()
 	{
-		return $this->hasMany('App\UserUnit', 'UserUnitID', 'UserUnitID');
+		return $this->hasMany('App\UserUnit', 'UserUnitID', 'UserUnitID'); //(model, foreign key, parent key)
 	}
 
 }
