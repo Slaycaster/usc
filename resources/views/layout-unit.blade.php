@@ -128,7 +128,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('unit/objectives') }}">Set Objectives</a>
+                                    <a href="{{ url('unit/objectives') }}">Set Unit Objectives</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('unit/measures') }}">Set Unit Measures</a>

@@ -34,6 +34,7 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
             $http.put(url, {
                 UnitObjectiveName: $scope.unit_objective.UnitObjectiveName,
                 PerspectiveID: $scope.unit_objective.PerspectiveID,
+                StaffObjectiveID: $scope.unit_objective.StaffObjectiveID,
                 UnitID: document.getElementById('unit_id').value,
                 UserUnitID: document.getElementById('user_unit_id').value
 
@@ -50,6 +51,7 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
             $http.post(url, {
                 UnitObjectiveName: $scope.unit_objective.UnitObjectiveName,
                 PerspectiveID: $scope.unit_objective.PerspectiveID,
+                StaffObjectiveID: $scope.unit_objective.StaffObjectiveID,
                 UnitID: document.getElementById('unit_id').value,
                 UserUnitID: document.getElementById('user_unit_id').value
 

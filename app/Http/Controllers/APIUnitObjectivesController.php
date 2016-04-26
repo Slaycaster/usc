@@ -2,6 +2,7 @@
 
 use App\UnitObjective;
 use App\Perspective;
+use App\StaffObjective;
 use App\Unit;
 use App\UserUnit;
 use App\Http\Controllers\Controller;
@@ -23,6 +24,7 @@ class APIUnitObjectivesController extends Controller {
 		return UnitObjective::where('UnitID', '=', $unit)
 			->with('perspective')
 			->with('unit')
+			->with('staffobjective')
 			->with('user_unit')
 			->with('user_unit.rank')
 			->get();
@@ -38,10 +40,13 @@ class APIUnitObjectivesController extends Controller {
 				->first();
 			$unit = Unit::where('UnitID', '=', $user)->get();
 			$unit_objectives = UnitObjective::where('UnitID', '=', $user->UnitID)->get();
+			
+			$staffobjectives = StaffObjective::all();
 			return view('unit-ui.unit-objectives')
 				->with('user', $user)
 				->with('unit_objectives', $unit_objectives)
 				->with('unit', $unit)
+				->with('staffobjectives',$staffobjectives)
 				->with('perspectives', $perspectives);
 		}
 		else

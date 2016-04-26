@@ -26,10 +26,12 @@ class UnitObjectivesController extends Controller {
 				->first();
 			$unit = Unit::where('UnitID', '=', $user)->get();
 			$unit_objectives = UnitObjective::where('UnitID', '=', $user->UnitID)->get();
+			
 			return view('unit-ui.unit-objectives')
 				->with('user', $user)
 				->with('unit_objectives', $unit_objectives)
 				->with('unit', $unit)
+
 				->with('perspectives', $perspectives);
 		}
 		else
