@@ -16,7 +16,7 @@ class Unit extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['UnitName', 'UnitAbbreviation', 'PicturePath', 'RegionID'];
+	protected $fillable = ['UnitName', 'UnitAbbreviation', 'PicturePath', 'StaffID'];
 
 	/**
 	 * The attribute that used as primary key. //Slaycaster
@@ -25,14 +25,10 @@ class Unit extends Model {
 	 */
 	protected $primaryKey = 'UnitID';
 
-	public function region()
-	{
-		return $this->belongsTo('App\Region', 'RegionID', 'RegionID'); //(model, foreign_key, parent_primary_key)
-	}
 
-	public function divisions()
+	public function staff()
 	{
-		return $this->hasMany('App\Division', 'DivisionID', 'DivisionID');
+		return $this->belongsTo('App\Staff', 'StaffID', 'StaffID');
 	}
 
 	public function user_units()
