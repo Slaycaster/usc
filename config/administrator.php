@@ -74,7 +74,9 @@ return array(
 					'Chiefs',
 					'ranks',
 					'Users' => array(
-						'user_units'
+						'user_units',
+						'user_staffs',
+						'user_chiefs'
 					)
 		),
 

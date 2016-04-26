@@ -30,4 +30,9 @@ class Chief extends Model {
 		return $this->hasMany('App\Staff', 'StaffID', 'StaffID');
 	}
 
+	public function userchiefs()
+	{
+		return $this->hasMany('App\UserChief', 'ChiefID', 'ChiefID');
+	}
+
 }

@@ -30,6 +30,12 @@ class Staff extends Model {
 		return $this->hasMany('App\Unit', 'UnitID', 'UnitID');
 	}
 
+	public function userstaffs()
+	{
+		return $this->hasMany('App\UserStaff', 'UserStaffID', 'UserStaffID');
+	}
+
+
 	public function chief()
 	{
 		return $this->belongsTo('App\Chief', 'ChiefID', 'ChiefID');

@@ -25,6 +25,7 @@ class UserUnit extends Model {
 	 */
 	protected $primaryKey = 'UserUnitID';
 
+
 	//FOREIGN KEYS
 	public function rank()
 	{

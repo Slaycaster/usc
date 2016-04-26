@@ -14,7 +14,17 @@ class CreateUserStaffsTable extends Migration {
 	{
 		Schema::create('user_staffs', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('UserStaffID');
+			$table->string('UserStaffBadgeNumber')->unique();
+			$table->string('UserStaffFirstName');
+			$table->string('UserStaffMiddleName');
+			$table->string('UserStaffLastName');
+			$table->string('UserStaffQualifier');
+			$table->string('UserStaffPicturePath');
+			$table->string('UserStaffPassword');
+			$table->integer('RankID');
+			$table->integer('StaffID');
+			$table->boolean('UserStaffIsActive');
 			$table->timestamps();
 		});
 	}
