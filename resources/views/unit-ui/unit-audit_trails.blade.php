@@ -66,9 +66,6 @@
                                     <td ng-click="sort(' audit_trail.created_at ')"><b>Created at</b>
                                         <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                     </td>
-                                    <td ng-click="sort(' audit_trail.updated_at ')"><b>Updated at</b>
-                                        <span class="glyphicon sort-icon" ng-show="sortKey=='audit_trail.updated_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                    </td>
                                 </thead>
                                 <tr dir-paginate='audit_trail in unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                                     <td><% audit_trail.Action %></td>
@@ -77,7 +74,6 @@
                                         <% audit_trail.user_unit.UserUnitLastName %>
                                     </td>
                                     <td><% audit_trail.created_at %></td>
-                                    <td><% audit_trail.updated_at %></td>
                                 </tr>
                             </table>
                         </div>
