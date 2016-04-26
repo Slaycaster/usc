@@ -25,12 +25,14 @@ Route::get('unit/scorecard', 'UnitScorecardController@showIndex');
 Route::get('unit/measures','APIUnitMeasuresController@showIndex');
 Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 Route::get('unit/audit_trails/api', 'APIUnitAuditTrailsController@api');
+Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
 
 
 /*API ROUTES*/
 Route::resource('api/unit_objectives','APIUnitObjectivesController');
 Route::resource('api/unit_measures','APIUnitMeasuresController');
 Route::resource('api/unit_audit_trails','APIUnitAuditTrailsController');
+Route::resource('api/unit_dashboard','APIUnitAuditTrailsDashController');
 
 
 Route::controllers([

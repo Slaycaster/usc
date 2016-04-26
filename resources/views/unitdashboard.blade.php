@@ -9,6 +9,18 @@
 
     <!-- Slaycaster Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
+
+    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+
+    <!-- Angular Utils Pagination -->
+    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/app.js') }}"></script>
+    
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
     
     <div class="row">
         <div class="col-lg-12 unitdashboard-custom-unit-dash">
@@ -208,40 +220,31 @@
         </div>
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
-            <div class="panel panel-warning">
+            
+            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsDashController" >
                 <div class="panel-heading">
                     <i class="fa fa-bell fa-4x pull-right"></i>
                     <h3><b>ACTIVITY LOG</b></h3>
                 </div>
+
+                <div class="container-fluid" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                <br />
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-tasks fa-fw"></i> 
+                            <b><% audit_trail_dash.user_unit.rank.RankCode%> 
+                                <% audit_trail_dash.user_unit.UserUnitFirstName %>
+                                <% audit_trail_dash.user_unit.UserUnitLastName %>
+                            </b> 
+                            <br />
+                            <% audit_trail_dash.Action %>
+                        <br />
+                        <span class="pull-right small"><% audit_trail_dash.updated_at %></span>
+                        <br />
+                    </a>
+                </div>
+
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-fw"></i> <b>PCSUPT BARACEROS</b> updated the accomp...
-                            <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-fw"></i> <b>PSSUPT GARCIA</b> updated the accomplis...
-                            <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-support fa-fw"></i> <b>PSUPT PABLITO</b> updated the Unit's Picture
-                            <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-fw"></i> <b>PSUPT TOMAS</b> updated the Unit Scorecard
-                            <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-fw"></i> <b>PCINSP SALAYA</b> encoded a measure: "% of...
-                            <span class="pull-right text-muted small"><em>Yesterday</em>
-                            </span>
-                        </a>
-                    </div>
                     <!-- /.list-group -->
                     <a href="{{ url('unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>

@@ -1,5 +1,4 @@
 <?php 
-
 namespace App\Http\Controllers;
 
 use App\AuditTrail;
@@ -10,7 +9,7 @@ use Request, Session, DB, Validator, Input, Redirect;
 
 
 
-class APIUnitAuditTrailsController extends Controller {
+class APIUnitAuditTrailsDashController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -37,34 +36,12 @@ class APIUnitAuditTrailsController extends Controller {
             $user = UserUnit::where('UserUnitID', $id)
                 ->first();
             $unit = Unit::where('UnitID', '=', $user)->get();
-            $unit_audit_trails = AuditTrail::where('UserUnitID', '=', $user->UnitID)->get();
+            $unit_audit_trails_dash = AuditTrail::where('UserUnitID', '=', $user->UnitID)->get();
             
-            return view('unit-ui.unit-audit_trails')
+            return view('unitdashboard')
                 ->with('user', $user)
                 ->with('unit', $unit)
-                ->with('unit_audit_trails', $unit_audit_trails);
-        }
-        else
-        {
-            Session::flash('message', 'Please login first!');
-            return Redirect::to('/');
-        }
-    }
-
-    public function api()
-    {
-        if (Session::has('unit_user_id'))
-        {
-            $id = Session::get('unit_user_id', 'default');
-            $user = UserUnit::where('UserUnitID', $id)
-                ->first();
-            $unit = Unit::where('UnitID', '=', $user)->get();
-            $unit_audit_trails = AuditTrail::where('UserUnitID', '=', $user->UnitID)->get();
-            
-            return view('unit-ui.unit-audit_trails_api')
-                ->with('user', $user)
-                ->with('unit', $unit)
-                ->with('unit_audit_trails', $unit_audit_trails);
+                ->with('unit_audit_trails_dash', $unit_audit_trails_dash);
         }
         else
         {
