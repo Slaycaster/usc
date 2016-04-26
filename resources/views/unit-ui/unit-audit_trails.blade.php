@@ -77,7 +77,7 @@
                         <!--./table table striped-->
                         <center>
                             <dir-pagination-controls
-                               max-size="5"
+                               max-size="7"
                                direction-links="true"
                                boundary-links="true" >
                             </dir-pagination-controls>
