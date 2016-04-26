@@ -18,6 +18,9 @@
 
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
+
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/timeago.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
@@ -238,7 +241,7 @@
                             <br />
                             <% audit_trail_dash.Action %>
                         <br />
-                        <span class="pull-right small"><% audit_trail_dash.updated_at %></span>
+                        <span class="pull-right small"><% audit_trail_dash.updated_at |timeago %></span>
                         <br />
                     </a>
                 </div>

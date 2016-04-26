@@ -4,7 +4,6 @@ app.controller('APIUnitAuditTrailsDashController', function($scope, $http, $inte
     $scope.unit_audit_trails_dash = [];
     $scope.loading = true;
 
-
     $scope.init = function() {
         $scope.loading = false;
         $http.get(local + '/usc/public/api/unit_dashboard').
