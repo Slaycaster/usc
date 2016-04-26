@@ -2,31 +2,32 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Region extends Model {
+class Chief extends Model {
 
-	/**
+		/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'regions';
+	protected $table = 'chiefs';
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['RegionName', 'RegionAbbreviation'];
+	protected $fillable = ['ChiefName', 'ChiefAbbreviation',  'PicturePath'];
 
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
 	 * @var array
 	 */
-	protected $primaryKey = 'RegionID';
+	protected $primaryKey = 'ChiefID';
 
-	public function units()
+	public function staffs()
 	{
-		return $this->hasMany('App\Unit', 'RegionID', 'RegionID');
+		return $this->hasMany('App\Staff', 'StaffID', 'StaffID');
 	}
+
 }

@@ -38,10 +38,10 @@ return array(
 	    	'title' => 'Image',
 	    	'output' => "<img src='/usc/public/uploads/unitpictures/cropped/(:value)' height='100' />"
 	    ),
-	    'RegionID' => array(
-	    	'title' => 'Region',
-	    	'relationship' => 'region',
-	    	'select' => "CONCAT((:table).RegionAbbreviation, ' - ', (:table).RegionName)"
+	    'StaffID' => array(
+	    	'title' => 'Staff',
+	    	'relationship' => 'staff',
+	    	'select' => "CONCAT((:table).StaffAbbreviation, ' - ', (:table).StaffName)"
 	    )
 	),
 
@@ -69,10 +69,10 @@ return array(
 	    		array(300, 300, 'crop', public_path() . '/uploads/unitpictures/cropped/', 100)
 	    	)
 	    ),
-	    'region' => array(
-	    	'title' => 'Region',
+	    'staff' => array(
+	    	'title' => 'Staff',
 	    	'type' => 'relationship',
-	    	'name_field' => 'RegionName'
+	    	'name_field' => 'StaffName'
 	    )
 	),
 
@@ -85,23 +85,23 @@ return array(
 	    'UnitName' => array(
 	        'title' => 'By Unit'
 	    ),
-	    'region' => array(
-	    	'title' => 'By Region',
+	    'staff' => array(
+	    	'title' => 'By Staff',
 	    	'type' => 'relationship',
-	    	'name_field' => 'RegionName'
+	    	'name_field' => 'StaffName'
 	    )
 	),
 
 	'rules' => array(
     	'UnitName' => 'required|unique:units,UnitName',
     	'UnitAbbreviation' => 'required|unique:units,UnitAbbreviation',
-    	'RegionID' => 'required'
+    	'StaffID' => 'required'
 	),
 
 	'messages' => array(
     	'UnitName.required' => 'Unit Name is required',
     	'UnitAbbreviation.required' => 'Unit Abbreviation is required',
-    	'RegionID.required' => 'Region is required',
+    	'StaffID.required' => 'Region is required',
     	'UnitName.unique' => 'Unit Name must be unique',
     	'UnitAbbreviation.unique' => 'Unit Abbreviation must be unique'
 	)

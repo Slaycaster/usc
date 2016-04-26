@@ -69,9 +69,9 @@ return array(
 	 */
 	'menu' => array(
 					'perspectives',
-					'regions',
-					'units',
-					'divisions', 
+					'units', 
+					'staffs',
+					'Chiefs',
 					'ranks',
 					'Users' => array(
 						'user_units'

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRegionsTable extends Migration {
+class CreateChiefsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,12 @@ class CreateRegionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('regions', function(Blueprint $table)
+		Schema::create('chiefs', function(Blueprint $table)
 		{
-			$table->increments('RegionID');
-			$table->string('RegionName')->unique();
-			$table->string('RegionAbbreviation')->unique();
+			$table->increments('ChiefID');
+			$table->string('ChiefName')->unique();
+			$table->string('ChiefAbbreviation')->unique();
+			$table->string('PicturePath');
 			$table->timestamps();
 		});
 	}
@@ -28,7 +29,7 @@ class CreateRegionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('regions');
+		Schema::drop('chiefs');
 	}
 
 }
