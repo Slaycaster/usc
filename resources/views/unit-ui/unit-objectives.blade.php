@@ -55,17 +55,24 @@
     									<td class="objective-custom-td2">
                                             <b>Perspective</b>
     									</td>
-    									<td class="objective-custom-td3">
-                                            <b>Unit</b>
+                                        
+                                        <td class="objective-custom-td3" ng-click="sort('unit_objective.staffobjective.StaffObjectiveName')"><b>Contributory to</b>
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.staffobjective.StaffObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </td>
+
+
+    									<td class="objective-custom-td4" ng-click="sort('unit_objective.unit.UnitAbbreviation')"><b>Unit</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
-    									<td class="objective-custom-td4">
-                                            <b>Last Encoded by</b>
+    									<td class="objective-custom-td5" ng-click="sort('unit_objective.user_unit.rank.RankCode')"><b>Last Encoded by</b>
+    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
-    									<td class="objective-custom-td5"></td>
+    									<td class="objective-custom-td6"></td>
     								</thead>
     								<tr dir-paginate='unit_objective in unit_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_objective.UnitObjectiveName %></td>
     									<td><% unit_objective.perspective.PerspectiveName %></td>
+                                        <td><% unit_objective.staffobjective.StaffObjectiveName %></td>
     									<td><% unit_objective.unit.UnitAbbreviation %></td>
     									<td><% unit_objective.user_unit.rank.RankCode %> <% unit_objective.user_unit.UserUnitFirstName %> <% unit_objective.user_unit.UserUnitLastName %></td>
     									<td>
@@ -127,6 +134,22 @@
                                         <span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
                                     </td>
                                 </tr>
+
+                                <tr>
+                                    <td>
+                                        <label for="staffobjective_id" class="control-label">Contributory to:</label>
+                                    </td>
+                                    <td>
+                                        <select id="id_staffobjective_id" name="staffobjective_id" data-ng-model="unit_objective.StaffObjectiveID" class="form-control" required ng-touched>
+                                            @foreach($staffobjectives as $staffobjective)
+                                                    <option value="<?=$staffobjective->StaffObjectiveID?>">
+                                                        {{ $staffobjective->StaffObjectiveName }}
+                                                    </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+
                                 <tr>
                                     <td>
                                         <label for="inputEmail3" class="control-label">Unit:</label>

@@ -19,6 +19,7 @@ class CreateUnitObjectivesTable extends Migration {
 			$table->integer('PerspectiveID');
 			$table->integer('UnitID');
 			$table->integer('UserUnitID');
+			$table->integer('StaffObjectiveID');
 			$table->timestamps();
 		});
 	}

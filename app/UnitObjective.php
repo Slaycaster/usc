@@ -16,7 +16,7 @@ class UnitObjective extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['UnitObjectiveName', 'PerspectiveID', 'UnitID', 'UserUnitID'];
+	protected $fillable = ['UnitObjectiveName', 'PerspectiveID', 'UnitID', 'UserUnitID', 'StaffObjectiveID'];
 
 	/**
 	 * The attribute that used as primary key. //Slaycaster
@@ -38,6 +38,11 @@ class UnitObjective extends Model {
 	public function user_unit()
 	{
 		return $this->belongsTo('App\UserUnit', 'UserUnitID', 'UserUnitID');
+	}
+
+	public function staffobjective()
+	{
+		return $this->belongsTo('App\StaffObjective', 'StaffObjectiveID', 'StaffObjectiveID');
 	}
 
 }

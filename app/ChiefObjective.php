@@ -2,39 +2,35 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model {
+class ChiefObjective extends Model {
 
-		/**
+	//
+	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'staffs';
+	protected $table = 'chief_objectives';
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['StaffName', 'StaffAbbreviation', 'StaffPermission', 'PicturePath', 'ChiefID'];
+	protected $fillable = ['ChiefObjectiveName', 'PerspectiveID', 'ChiefID'];
 
 	/**
-	 * The attribute that used as primary key. //Slaycaster
+	 * The attribute that used as primary key.
 	 *
 	 * @var array
 	 */
-	protected $primaryKey = 'StaffID';
+	protected $primaryKey = 'ChiefObjectiveID';
 
-	public function units()
+
+	public function perspective()
 	{
-		return $this->hasMany('App\Unit', 'UnitID', 'UnitID');
+		return $this->belongsTo('App\Perspective', 'PerspectiveID', 'PerspectiveID'); //(model, foreign_key, parent_primary_key)
 	}
-
-	public function userstaffs()
-	{
-		return $this->hasMany('App\UserStaff', 'UserStaffID', 'UserStaffID');
-	}
-
 
 	public function chief()
 	{
@@ -45,4 +41,7 @@ class Staff extends Model {
 	{
 		return $this->hasMany('App\StaffObjective','StaffObjectiveID','StaffObjectiveID');
 	}
+
+
+
 }
