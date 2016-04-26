@@ -43,27 +43,27 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> Click on the table's column in order to sort ascending or descending.</div>
-							</div>
+                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitName }}.</div>
+                            </div>
 							<!--./div class row-->
 
-                            <div class="table-responsive">
+                            <div class="table-responsive" ng-show="info">
     							<table class="table table-striped table-bordered">
     								<thead>
-    									<td class="objective-custom-td1" ng-click="sort('unit_measure.UnitMeasureName')"><b>Unit Measure Name</b>
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitmeasureName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									<td class="objective-custom-td1">
+                                            <b>Unit Measure Name</b>
     									</td>
     							
-    									<td class="objective-custom-td2" ng-click="sort('unit_measure.UnitMeasureType')"><b>Unit Measure Type</b>
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.UnitMeasureType'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									<td class="objective-custom-td2">
+                                            <b>Unit Measure Type</b>
     									</td>
 
     									</td>
-    									<td class="objective-custom-td3" ng-click="sort('unit_measure.unit.UnitAbbreviation')"><b>Unit</b>
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									<td class="objective-custom-td3">
+                                            <b>Unit</b>
     									</td>
-    									<td class="objective-custom-td4" ng-click="sort('unit_measure.user_unit.rank.RankCode')"><b>Last Encoded by</b>
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_measure.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									<td class="objective-custom-td4">
+                                            <b>Last Encoded by</b>
     									</td>
     									<td class="objective-custom-td5"></td>
     								</thead>

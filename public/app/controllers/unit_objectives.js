@@ -4,10 +4,11 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
  
     $scope.unit_objectives = [];
     $scope.loading = true;
+    $scope.info = false;
  
-    $scope.init = function() 
-    {
+    $scope.init = function() {
         $scope.loading = false;
+        $scope.info = true;
         $http.get(local + '/usc/public/api/unit_objectives').
         success(function(data, status, headers, config) {
             $scope.unit_objectives = data;

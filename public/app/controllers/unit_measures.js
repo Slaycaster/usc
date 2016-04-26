@@ -4,10 +4,11 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 
 	$scope.unit_measures = [];
 	$scope.loading = true;
+    $scope.info = false;
  
-	$scope.init = function() 
-    {
-		$scope.loading = false;
+    $scope.init = function() {
+        $scope.loading = false;
+        $scope.info = true;
 		$http.get(local + '/usc/public/api/unit_measures').
 		success(function(data, status, headers, config) {
 			$scope.unit_measures = data;
