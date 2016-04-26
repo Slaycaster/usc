@@ -283,11 +283,7 @@
                     <h4><b>ABOUT: {{ $user->unit->UnitName }}</b></h4>
                 </div>
                 <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <h4><b>Region:</b></h4>
-                    <h5>{{ $user->unit->region->RegionAbbreviation }} - {{ $user->unit->region->RegionName }}</h5>
-                    <!-- /input-group -->
-                </div>
+               
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
