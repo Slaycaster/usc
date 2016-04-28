@@ -28,6 +28,7 @@ Route::get('unit/audit_trails/api', 'APIUnitAuditTrailsController@api');
 Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
 
 Route::get('staff/dashboard', 'StaffLoginController@dashboard');
+Route::get('staff/objectives', 'APIStaffObjectivesController@showIndex');
 
 
 /*API ROUTES*/
@@ -35,6 +36,7 @@ Route::resource('api/unit_objectives','APIUnitObjectivesController');
 Route::resource('api/unit_measures','APIUnitMeasuresController');
 Route::resource('api/unit_audit_trails','APIUnitAuditTrailsController');
 Route::resource('api/unit_dashboard','APIUnitAuditTrailsDashController');
+Route::resource('api/staff_objectives', 'APIStaffObjectivesController');
 
 
 Route::controllers([

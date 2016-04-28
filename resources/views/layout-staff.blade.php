@@ -128,7 +128,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('unit/objectives') }}">Set Staff Objectives</a>
+                                    <a href="{{ url('staff/objectives') }}">Set Staff Objectives</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('unit/measures') }}">Set Staff Measures</a>

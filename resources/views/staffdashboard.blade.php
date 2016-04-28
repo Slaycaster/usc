@@ -27,7 +27,7 @@
     
     <div class="row">
         <div class="col-lg-12 unitdashboard-custom-unit-dash">
-            <p class="page-header"><b>{{ $user->staff->StaffName }} Unit Dashboard</b></p>
+            <p class="page-header"><b>{{ $user->staff->StaffName }} Staff Dashboard</b></p>
         </div>
         <!-- /.col-lg-12 -->
     </div>

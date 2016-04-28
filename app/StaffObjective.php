@@ -17,7 +17,7 @@ class StaffObjective extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['StaffObjectiveName', 'PerspectiveID', 'StaffID','ChiefObjectiveID'];
+	protected $fillable = ['StaffObjectiveName', 'PerspectiveID', 'StaffID', 'ChiefObjectiveID', 'UserStaffID'];
 
 	/**
 	 * The attribute that used as primary key.
@@ -45,6 +45,11 @@ class StaffObjective extends Model {
 	public function unit_objectives()
 	{ 
 		return $this->hasMany('App\UnitObjective', 'UnitObjectiveID', 'UnitObjectiveID');
+	}
+
+	public function user_staff()
+	{
+		return $this->belongsTo('App\UserStaff', 'UserStaffID', 'UserStaffID');
 	}
 
 }

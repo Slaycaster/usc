@@ -37,5 +37,9 @@ class UserStaff extends Model {
 		return $this->belongsTo('App\Staff', 'StaffID', 'StaffID');
 	}
 
+	public function staff_objectives()
+	{
+		return $this->hasMany('App\StaffObjective', 'StaffObjectiveID', 'StaffObjectiveID');
+	}
 	
 }
