@@ -33,9 +33,9 @@ Route::get('unit/audit_trails/api', 'APIUnitAuditTrailsController@api');
 /*STAFF USER ROUTES*/
 
 /*DASHBOARD*/
-Route::get('chief/chiefdashboard', 'ChiefLoginController@dashboard');
-Route::get('staff/staffdashboard', 'StaffLoginController@dashboard');
+Route::get('chief/dashboard', 'ChiefLoginController@dashboard');
 Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
+Route::get('staff/dashboard', 'StaffLoginController@dashboard');
 
 /*API ROUTES*/
 Route::resource('api/unit_objectives','APIUnitObjectivesController');
