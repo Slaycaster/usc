@@ -17,7 +17,7 @@ class ChiefObjective extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['ChiefObjectiveName', 'PerspectiveID', 'ChiefID'];
+	protected $fillable = ['ChiefObjectiveName', 'PerspectiveID', 'ChiefID', 'UserChiefID'];
 
 	/**
 	 * The attribute that used as primary key.
@@ -40,6 +40,11 @@ class ChiefObjective extends Model {
 	public function staff_objectives()
 	{
 		return $this->hasMany('App\StaffObjective','StaffObjectiveID','StaffObjectiveID');
+	}
+
+	public function user_chief()
+	{
+		return $this->belongsTo('App\UserChief', 'UserChiefID', 'UserChiefID');
 	}
 
 

@@ -18,6 +18,7 @@ class CreateChiefObjectivesTable extends Migration {
 			$table->string('ChiefObjectiveName');
 			$table->integer('PerspectiveID');
 			$table->integer('ChiefID');
+			$table->integer('UserChiefID');
 			$table->timestamps();
 		});
 	}
