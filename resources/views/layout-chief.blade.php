@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Unit Dashboard - PNP Unit Scorecard</title>
+    <title>Chief Dashboard - PNP Unit Scorecard</title>
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
@@ -78,7 +78,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">PNP Unit Scorecard</a>
             </div>
             <div class="layout-custom-user">
-               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}!</i>
+               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}!</i>
             </div>
             <!-- /.navbar-header -->
 
@@ -86,7 +86,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                         <span class="glyphicon glyphicon-user"></span>&nbsp;Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}! &nbsp; <i class="fa fa-caret-down"></i>
+                         <span class="glyphicon glyphicon-user"></span>&nbsp;Welcome {{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserUnitLastName }}! &nbsp; <i class="fa fa-caret-down"></i>
 
                     </a>
                     <ul class="dropdown-menu">
@@ -122,19 +122,19 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ url('unit/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{ url('chief/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('unit/objectives') }}">Set Unit Objectives</a>
+                                    <a href="{{ url('chief/objectives') }}">Set Chief Objectives</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('unit/measures') }}">Set Unit Measures</a>
+                                    <a href="{{ url('chief/measures') }}">Set Chief Measures</a>
                                 </li>
                                 <li>
-                                    <a href="#">Set Unit Initiatives</a>
+                                    <a href="#">Set Chief Initiatives</a>
                                 </li>
                                 <li>
                                     <a href="#">Define Owners</a>
@@ -143,19 +143,19 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ url('unit/setscorecard') }}"><i class="fa fa-table fa-fw"></i> Set Unit Scorecard</a>
+                            <a href="{{ url('chief/setscorecard') }}"><i class="fa fa-table fa-fw"></i> Set Unit Scorecard</a>
                         </li>
                         <li>
-                            <a href="{{ url('unit/scorecard') }}"><i class="fa fa-edit fa-fw"></i> Update Accomplishments</a>
+                            <a href="{{ url('chief/scorecard') }}"><i class="fa fa-edit fa-fw"></i> Update Accomplishments</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Unit Scorecard Report</a>
+                                    <a href="#">Chief Scorecard Report</a>
                                 </li>
                                 <li>
-                                    <a href="#">Unit Scorecard Analysis Report</a>
+                                    <a href="#">Chief Scorecard Analysis Report</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -177,7 +177,7 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user fa-fw"></i> {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <span class="fa arrow"></span>
+                                <i class="fa fa-user fa-fw"></i> {{ $chief_user->rank->RankCode }} {{ $chief_user->UserUnitFirstName }} {{ $chief_user->UserUnitLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li><a href="#"> User Settings</a>

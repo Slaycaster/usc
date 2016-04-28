@@ -1,15 +1,15 @@
 <?php namespace App\Http\Controllers;
 
 //MODELS
-use App\UserUnit;
-use App\UnitObjective;
+use App\UserChief;
+use App\ChiefObjective;
 
 //LARAVEL MODULES
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator, Input, Redirect, Session, DB;
 
-class UnitLoginController extends Controller {
+class ChiefLoginController extends Controller {
 
 	/**
 	 * Create a new controller instance.
@@ -28,16 +28,16 @@ class UnitLoginController extends Controller {
 	 */
 	public function dashboard()
 	{
-		if (Session::has('unit_user_id'))
+		if (Session::has('chief_user_id'))
 		{
-			$id = Session::get('unit_user_id', 'default');
-			$user = UserUnit::where('UserUnitID', $id)
+			$chief_id = Session::get('chief_user_id', 'default');
+			$chief_user = UserChief::where('UserChiefID', $chief_id)
 				->first();
-			$unit_objectives_count = UnitObjective::where('UnitID', '=', $user->UnitID)
+			$chief_objectives_count = ChiefObjective::where('ChiefID', $chief_user->ChiefID)
 				->count();
-			return view('unitdashboard')
-				->with('user', $user)
-				->with('unit_objectives_count', $unit_objectives_count);
+			return view('chiefdashboard')
+				->with('chief_user', $chief_user)
+				->with('chief_objectives_count', $chief_objectives_count);
 		}
 		else
 		{
