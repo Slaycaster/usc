@@ -31,12 +31,14 @@ class APIChiefMeasuresController extends Controller {
 		if (Session::has('chief_user_id'))
 		{
 			$chief_id = Session::get('chief_user_id', 'default');
-			$chief_user = UserChief::where('UserChiefID', $chief_id)
+			$chief_user = UserChief::where('UserChiefID', '=', $chief_id)
 				->first();
-			$chief = Chief::where('ChiefID', '=', $chief_user)->get();
-			$chief_measures = ChiefMeasure::where('ChiefID', '=', $chief_user->ChiefID)->get();
+
+			$chief = Chief::where('ChiefID', '=', $chief_user->ChiefID)->first();
+
+			$chief_measures = ChiefMeasure::with('chief')->where('ChiefID', '=', $chief_user->ChiefID)->get();
 			
-			return view('unit-ui.chief-measures')
+			return view('chief-ui.chief-measures')
 				->with('chief_user', $chief_user)
 				->with('chief', $chief)
 				->with('chief_measures', $chief_measures);
@@ -88,8 +90,8 @@ class APIChiefMeasuresController extends Controller {
 	public function show($id)
 	{
 		//
-		$unit_measure= UnitMeasure::find($id);
- 		return $unit_measure;
+		$chief_measure= ChiefMeasure::find($id);
+ 		return $chief_measure;
 	}
 
 	/**
@@ -113,19 +115,19 @@ class APIChiefMeasuresController extends Controller {
 	{
 
 
-		$unit_measure = UnitMeasure::find($id);
-		$unit_measure->update(Request::all());
-		$unit_measure->save();
+		$chief_measure = ChiefMeasure::find($id);
+		$chief_measure->update(Request::all());
+		$chief_measure->save();
  
-		$id = Session::get('unit_user_id', 'default');
-		$unit = Request::input('UnitID');
-		$action = 'Updated a measure: "' . Request::input('UnitMeasureName') . '"';
+		$chief_id = Session::get('chief_user_id', 'default');
+		$chief = Request::input('UnitID');
+	//	$action = 'Updated a measure: "' . Request::input('UnitMeasureName') . '"';
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+	//	DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
 
 
 
-		return $unit_measure;
+		return $chief_measure;
 
 
 
