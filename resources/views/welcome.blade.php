@@ -92,7 +92,7 @@
                     <center>
 
                         <div class="col-md-6 col-md-offset-3">
-                           <form action="unit/login" method="post">
+                           <form action="login" method="post">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <fieldset>
                                 <div class="row">
