@@ -39,4 +39,9 @@ class Chief extends Model {
 		return $this->hasMany('App\ChiefObjective', 'ChiefObjectiveID','ChiefObjectiveID');
 	}
 
+	public function chief_measures()
+	{
+		return $this->hasMany('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
+	}
+
 }

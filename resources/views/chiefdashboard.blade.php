@@ -1,4 +1,4 @@
-@extends('layout-staff')
+@extends('layout-chief')
 
 @section('content')
 
@@ -27,7 +27,7 @@
     
     <div class="row">
         <div class="col-lg-12 unitdashboard-custom-unit-dash">
-            <p class="page-header"><b> Unit Dashboard</b></p>
+            <p class="page-header"><b>{{ $chief_user->chief->ChiefName }} Chief Dashboard</b></p>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/staffpictures/cropped/'.''.$user->chief->PicturePath.'') }}">
+                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -53,7 +53,7 @@
                                         <i class="fa fa-circle-o-notch fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><!-- {{ $unit_objectives_count }} --></div>
+                                        <div class="huge"><!-- {{ $chief_objectives_count }} --></div>
                                         <div>Objectives</div>
                                     </div>
                                 </div>
@@ -231,21 +231,7 @@
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <!-- <div class="container-fluid" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
-                <br />
-                    <a href="#" class="list-group-item">
-                        <i class="fa fa-tasks fa-fw"></i> 
-                            <b><% audit_trail_dash.user_unit.rank.RankCode%> 
-                                <% audit_trail_dash.user_unit.UserUnitFirstName %>
-                                <% audit_trail_dash.user_unit.UserUnitLastName %>
-                            </b> 
-                            <br />
-                            <% audit_trail_dash.Action %>
-                        <br />
-                        <span class="pull-right small"><% audit_trail_dash.updated_at |timeago %></span>
-                        <br />
-                    </a>
-                </div> -->
+               
 
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -280,7 +266,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <i class="fa fa-at fa-4x pull-right"></i>
-                    <h4><b>ABOUT: <!-- {{ $user->chief->StaffName }} --></b></h4>
+                    <h4><b>ABOUT: <!-- {{ $chief_user->chief->ChiefName }} --></b></h4>
                 </div>
                 <!-- /.panel-heading -->
                

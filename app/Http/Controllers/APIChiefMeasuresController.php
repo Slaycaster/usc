@@ -22,6 +22,7 @@ class APIChiefMeasuresController extends Controller {
 		return ChiefMeasure::where('ChiefID', '=', $chief)
 			->with('chief')
 			->with('user_chief')
+			->with('user_chief.rank')
 			->get();
 	}
 
@@ -30,15 +31,15 @@ class APIChiefMeasuresController extends Controller {
 		if (Session::has('chief_user_id'))
 		{
 			$chief_id = Session::get('chief_user_id', 'default');
-			$user = UserUnit::where('UserUnitID', $id)
+			$chief_user = UserChief::where('UserChiefID', $chief_id)
 				->first();
-			$unit = Unit::where('UnitID', '=', $user)->get();
-			$unit_measures = UnitMeasure::where('UnitID', '=', $user->UnitID)->get();
+			$chief = Chief::where('ChiefID', '=', $chief_user)->get();
+			$chief_measures = ChiefMeasure::where('ChiefID', '=', $chief_user->ChiefID)->get();
 			
-			return view('unit-ui.unit-measures')
-				->with('user', $user)
-				->with('unit', $unit)
-				->with('unit_measures', $unit_measures);
+			return view('unit-ui.chief-measures')
+				->with('chief_user', $chief_user)
+				->with('chief', $chief)
+				->with('chief_measures', $chief_measures);
 		}
 		else
 		{
@@ -65,7 +66,17 @@ class APIChiefMeasuresController extends Controller {
 	 */
 	public function store()
 	{
-		//
+
+		$chief_id = Session::get('chief_user_id', 'default');
+		$chief = Request::input('ChiefID');
+		//$action = 'Added a measure: "' . Request::input('UnitMeasureName') . '"';
+
+		//DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+
+		$chief_measure = new ChiefMeasure(Request::all());
+		$chief_measure->save();
+		return $chief_measure;
+
 	}
 
 	/**
@@ -77,6 +88,8 @@ class APIChiefMeasuresController extends Controller {
 	public function show($id)
 	{
 		//
+		$unit_measure= UnitMeasure::find($id);
+ 		return $unit_measure;
 	}
 
 	/**
@@ -98,7 +111,24 @@ class APIChiefMeasuresController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+
+
+		$unit_measure = UnitMeasure::find($id);
+		$unit_measure->update(Request::all());
+		$unit_measure->save();
+ 
+		$id = Session::get('unit_user_id', 'default');
+		$unit = Request::input('UnitID');
+		$action = 'Updated a measure: "' . Request::input('UnitMeasureName') . '"';
+
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+
+
+
+		return $unit_measure;
+
+
+
 	}
 
 	/**
