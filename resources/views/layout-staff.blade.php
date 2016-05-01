@@ -98,7 +98,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{ url('unit/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -131,7 +131,7 @@
                                     <a href="{{ url('staff/objectives') }}">Set Staff Objectives</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('unit/measures') }}">Set Staff Measures</a>
+                                    <a href="{{ url('staff/measures') }}">Set Staff Measures</a>
                                 </li>
                                 <li>
                                     <a href="#">Set Staff Initiatives</a>
