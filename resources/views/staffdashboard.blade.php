@@ -53,7 +53,7 @@
                                         <i class="fa fa-circle-o-notch fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">{{ $unit_objectives_count }}</div>
+                                        <div class="huge">{{ $staff_objectives_count }}</div>
                                         <div>Objectives</div>
                                     </div>
                                 </div>
