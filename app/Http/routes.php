@@ -34,10 +34,7 @@ Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 
 
 /*CHIEF USER ROUTES*/
-
 Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
-
-
 Route::get('chief/measures','APIChiefMeasuresController@showIndex');
 
 
@@ -45,8 +42,10 @@ Route::get('chief/measures','APIChiefMeasuresController@showIndex');
 Route::get('staff/dashboard', 'StaffLoginController@dashboard');
 Route::get('staff/objectives', 'APIStaffObjectivesController@showIndex');
 
+
 /* DASHBOARD APPLETS */
 Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
+
 
 /*API ROUTES*/
 Route::resource('api/unit_objectives','APIUnitObjectivesController');

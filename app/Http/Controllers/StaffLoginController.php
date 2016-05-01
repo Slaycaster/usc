@@ -2,7 +2,7 @@
 
 //MODELS
 use App\UserStaff;
-use App\UnitObjective;
+use App\StaffObjective;
 
 //LARAVEL MODULES
 use App\Http\Controllers\Controller;
@@ -33,11 +33,11 @@ class StaffLoginController extends Controller {
 			$id = Session::get('unit_user_id', 'default');
 			$user = UserStaff::where('UserStaffID', $id)
 				->first();
-			$unit_objectives_count = UnitObjective::where('UnitID', $user->UnitID)
+			$staff_objectives_count = StaffObjective::where('StaffObjectiveID', $user->UnitID)
 				->count();
 			return view('staffdashboard')
 				->with('user', $user)
-				->with('unit_objectives_count', $unit_objectives_count);
+				->with('staff_objectives_count', $staff_objectives_count);
 		}
 		else
 		{
