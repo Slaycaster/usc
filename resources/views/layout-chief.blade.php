@@ -78,7 +78,8 @@
                 <a class="navbar-brand" href="{{ url('/') }}">PNP Chief Scorecard</a>
             </div>
             <div class="layout-custom-user">
-               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $chief->rank->RankCode }} {{ $chief->UserChiefFirstName }} {{ $chief->UserChiefLastName }}!</i>
+               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $chief_user->rank->RankCode }} 
+               {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}!</i>
             </div>
             <!-- /.navbar-header -->
 
@@ -86,7 +87,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                         <span class="glyphicon glyphicon-user"></span>&nbsp;Welcome {{ $chief->rank->RankCode }} {{ $chief->UserChiefFirstName }} {{ $chief->UserUnitLastName }}! &nbsp; <i class="fa fa-caret-down"></i>
+                         <span class="glyphicon glyphicon-user"></span>&nbsp;Welcome {{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}! &nbsp; <i class="fa fa-caret-down"></i>
 
                     </a>
                     <ul class="dropdown-menu">
@@ -177,7 +178,7 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user fa-fw"></i> {{ $chief->rank->RankCode }} {{ $chief->UserUnitChiefName }} {{ $chief->UserChiefLastName }} <span class="fa arrow"></span>
+                                <i class="fa fa-user fa-fw"></i> {{ $chief_user->rank->RankCode }} {{ $chief_user->UserUnitChiefName }} {{ $chief_user->UserChiefLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li><a href="#"> User Settings</a>

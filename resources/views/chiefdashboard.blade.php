@@ -27,7 +27,7 @@
     
     <div class="row">
         <div class="col-lg-12 unitdashboard-custom-unit-dash">
-            <p class="page-header"><b>{{ $chief_user->chief->ChiefName }} Chief Dashboard</b></p>
+            <p class="page-header"><b>{{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}'s Dashboard</b></p>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
+                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/userpictures/unit/cropped/'.''. $chief_user->UserChiefPicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -53,7 +53,7 @@
                                         <i class="fa fa-circle-o-notch fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><!-- {{ $chief_objectives_count }} --></div>
+                                        <div class="huge">{{ $chief_objectives_count }}</div>
                                         <div>Objectives</div>
                                     </div>
                                 </div>
