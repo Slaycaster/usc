@@ -60,7 +60,7 @@ class LoginController extends Controller {
 						
 						$ip = $_SERVER['REMOTE_ADDR'];
 					
-						//DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
+						DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
 
 					
 
@@ -91,7 +91,7 @@ class LoginController extends Controller {
 						
 						$ip = $_SERVER['REMOTE_ADDR'];
 					
-						//DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
+						DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
 
 					
 
