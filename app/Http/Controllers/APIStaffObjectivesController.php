@@ -9,7 +9,7 @@ use App\UserStaff;
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 
-
+	
 class APIStaffObjectivesController extends Controller {
 
 	/**
@@ -71,7 +71,7 @@ class APIStaffObjectivesController extends Controller {
 
 		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $staff_id, $staff));
 
-		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $staff_id, $staff));
 
 
 		$staff_objective = new StaffObjective(Request::all());
@@ -114,7 +114,7 @@ class APIStaffObjectivesController extends Controller {
 
 		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $staff_id, $staff));
 
-		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $staff_id, $staff));
 
 
 
