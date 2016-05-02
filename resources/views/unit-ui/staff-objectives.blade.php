@@ -21,7 +21,7 @@
 				<div class="col-lg-8">
 					<div class="panel panel-warning">
 						<div class="panel-heading objectives-custom-heading">
-							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->staff->StaffAbbreviation }} Objectives</b></h2><i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $staff_user->staff->StaffAbbreviation }} Objectives</b></h2><i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -43,7 +43,7 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> Staff Objectives of {{ $user->Staff->StaffName }}.</div>
+								<div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> Staff Objectives of {{ $staff_user->Staff->StaffName }}.</div>
 							</div>
 							<!--./div class row-->
                             <div class="table-responsive" ng-show="info">
@@ -160,8 +160,8 @@
                                         <label for="inputEmail3" class="control-label">Staff:</label>
                                     </td>
                                     <td>
-                                        <p>{{ $user->staff->StaffName }}</p>
-                                        <input type="hidden" name="StaffID" value="<?=$user->staff->StaffID?>" id="staff_id">
+                                        <p>{{ $staff_user->staff->StaffName }}</p>
+                                        <input type="hidden" name="StaffID" value="<?=$staff_user->staff->StaffID?>" id="staff_id">
                                     </td>
                                 </tr>
                                 <tr>
@@ -169,8 +169,8 @@
                                         <label for="inputEmail3" class="control-label">Account User:</label>
                                     </td>
                                     <td>
-                                        <p>{{ $user->rank->RankCode }} {{ $user->UserStaffFirstName }} {{ $user->UserStaffLastName }} </p>
-                                        <input type="hidden" name="UserStaffID" value="<?=$user->UserStaffID?>" id="user_staff_id">
+                                        <p>{{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }} </p>
+                                        <input type="hidden" name="UserStaffID" value="<?=$staff_user->UserStaffID?>" id="user_staff_id">
                                     </td>
                                 </tr>
                             </table>

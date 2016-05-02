@@ -36,7 +36,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 StaffMeasureName: $scope.staff_measure.StaffMeasureName,
                 StaffMeasureType: $scope.staff_measure.StaffMeasureType,
                 StaffMeasureFormula: $scope.staff_measure.StaffMeasureFormula,
-                ChiefMeasureID: $scope.staff_measure.ChiefMeasureID,
+                ChiefMeasureID: document.getElementById('id_chief_measure').value,
                 StaffID: document.getElementById('staff_id').value,
                 UserStaffID: document.getElementById('user_staff_id').value
 
@@ -54,7 +54,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 StaffMeasureName: $scope.staff_measure.StaffMeasureName,
                 StaffMeasureType: $scope.staff_measure.StaffMeasureType,
                 StaffMeasureFormula: $scope.staff_measure.StaffMeasureFormula,
-                ChiefMeasureID: $scope.staff_measure.ChiefMeasureID,
+                ChiefMeasureID: document.getElementById('id_chief_measure').value,
                 StaffID: document.getElementById('staff_id').value,
                 UserStaffID: document.getElementById('user_staff_id').value
 
