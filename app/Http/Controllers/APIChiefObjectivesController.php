@@ -67,7 +67,7 @@ class APIChiefObjectivesController extends Controller {
 		$unit = Request::input('ChiefID');
 		$action = 'Added an objective: "' . Request::input('ChiefObjectiveName') . '"';
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $id, $unit));
 
 
 		$chief_objective = new ChiefObjective(Request::all());
@@ -107,7 +107,7 @@ class APIChiefObjectivesController extends Controller {
 		$unit = Request::input('ChiefID');
 		$action = 'Updated an Objective: "' . Request::input('ChiefObjectiveName') . '"';
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $id, $unit));
 
 
 		return $chief_objective;

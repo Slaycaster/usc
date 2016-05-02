@@ -60,7 +60,7 @@ class LoginController extends Controller {
 						
 						$ip = $_SERVER['REMOTE_ADDR'];
 					
-						DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
+						DB::insert('insert into chief_logs (ChiefUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
 
 					
 
@@ -91,7 +91,7 @@ class LoginController extends Controller {
 						
 						$ip = $_SERVER['REMOTE_ADDR'];
 					
-						DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
+						DB::insert('insert into staff_logs (StaffUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
 
 					
 						return Redirect::to('staff/dashboard');
@@ -169,7 +169,7 @@ class LoginController extends Controller {
 					
 			$ip = $_SERVER['REMOTE_ADDR'];
 				
-			//DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($unit_id, $time, 'Logout', $ip ));
+			DB::insert('insert into chief_logs (ChiefUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($chief_id, $time, 'Logout', $ip ));
 
 			Session::flush();
 			Session::flash('message2', 'Successfully logged out. Have a good day!');
@@ -184,7 +184,7 @@ class LoginController extends Controller {
 					
 			$ip = $_SERVER['REMOTE_ADDR'];
 				
-			//DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($unit_id, $time, 'Logout', $ip ));
+			DB::insert('insert into staff_logs (StaffUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($staff_id, $time, 'Logout', $ip ));
 
 			Session::flush();
 			Session::flash('message2', 'Successfully logged out. Have a good day!');

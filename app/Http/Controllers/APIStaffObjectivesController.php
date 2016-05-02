@@ -68,7 +68,7 @@ class APIStaffObjectivesController extends Controller {
 		$unit = Request::input('StaffID');
 		$action = 'Added an objective: "' . Request::input('StaffObjectiveName') . '"';
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $id, $unit));
 
 
 		$staff_objective = new StaffObjective(Request::all());
@@ -108,7 +108,7 @@ class APIStaffObjectivesController extends Controller {
 		$unit = Request::input('StaffID');
 		$action = 'Updated an Objective: "' . Request::input('StaffObjectiveName') . '"';
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $id, $unit));
 
 
 		return $staff_objective;
