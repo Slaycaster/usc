@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2016 at 09:29 AM
+-- Generation Time: May 02, 2016 at 09:48 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -166,6 +166,36 @@ INSERT INTO `chiefs` (`ChiefID`, `ChiefName`, `ChiefAbbreviation`, `PicturePath`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chief_audit_trails`
+--
+
+CREATE TABLE IF NOT EXISTS `chief_audit_trails` (
+  `ChiefAuditTrailID` int(10) unsigned NOT NULL,
+  `Action` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `UserChiefID` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chief_logs`
+--
+
+CREATE TABLE IF NOT EXISTS `chief_logs` (
+  `ChiefLogID` int(10) unsigned NOT NULL,
+  `ChiefUserID` int(11) NOT NULL,
+  `LogDateTime` datetime NOT NULL,
+  `LogType` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `IPAddress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `chief_measures`
 --
 
@@ -245,7 +275,11 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_04_26_055723_create_staff_objectives_table', 13),
 ('2016_04_26_071024_create_user_chiefs_table', 13),
 ('2016_04_28_171855_create_chief_measures_table', 13),
-('2016_05_03_012025_create_staff_measures_table', 14);
+('2016_05_03_012025_create_staff_measures_table', 14),
+('2016_05_02_093523_create_staff_logs_table', 15),
+('2016_05_02_103736_create_chief_logs_table', 15),
+('2016_05_02_133854_create_staff_audit_trails_table', 15),
+('2016_05_02_134952_create_chief_audit_trails_table', 15);
 
 -- --------------------------------------------------------
 
@@ -345,6 +379,36 @@ CREATE TABLE IF NOT EXISTS `staffs` (
 INSERT INTO `staffs` (`StaffID`, `StaffName`, `StaffAbbreviation`, `StaffPermission`, `PicturePath`, `ChiefID`, `created_at`, `updated_at`) VALUES
 (1, 'Directorial for Information and Communication Technology Management', 'DICTM', 'none', 'wtHDmDaW3wF7JzDy0zKZwZfxlnUWPVI0.jpeg', 1, '0000-00-00 00:00:00', '2016-05-02 06:31:50'),
 (2, 'Center for Police Strategy Management', 'CPSM', '', 'wO3AXldVfjOlQBJlZhpUqSchPfrzLFTX.png', 1, '2016-05-02 06:20:52', '2016-05-02 06:32:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_audit_trails`
+--
+
+CREATE TABLE IF NOT EXISTS `staff_audit_trails` (
+  `StaffAuditTrailID` int(10) unsigned NOT NULL,
+  `Action` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `UserStaffID` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_logs`
+--
+
+CREATE TABLE IF NOT EXISTS `staff_logs` (
+  `StaffLogID` int(10) unsigned NOT NULL,
+  `StaffUserID` int(11) NOT NULL,
+  `LogDateTime` datetime NOT NULL,
+  `LogType` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `IPAddress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -468,7 +532,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Administrator', 'usc@cpsm.pnp.gov.ph', '$2y$10$zSC2JGHGr7/A4HbZI/S2mOj4gY6bXd2HkR9sf8YXkojtX4snxTjp2', 'bFROiG1xboguntsv0UBbqmINTQuZALFLjxr4mE8cZC5Qn5aHdjx0soPNdtOt', '2016-03-13 05:42:04', '2016-05-02 06:10:26');
+(1, 'Super Administrator', 'usc@cpsm.pnp.gov.ph', '$2y$10$zSC2JGHGr7/A4HbZI/S2mOj4gY6bXd2HkR9sf8YXkojtX4snxTjp2', 'Im1H7lrWJQZhl6oSQgvu18iKCUGKrb35v3t0i4BWHdIs9FKk4ZSfySWc2Qrv', '2016-03-13 05:42:04', '2016-05-02 07:34:10');
 
 -- --------------------------------------------------------
 
@@ -513,7 +577,7 @@ CREATE TABLE IF NOT EXISTS `user_logs` (
   `IPAddress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user_logs`
@@ -525,7 +589,8 @@ INSERT INTO `user_logs` (`UserLogID`, `UnitUserID`, `LogDateTime`, `LogType`, `I
 (3, 0, '2016-05-02 15:08:16', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 2, '2016-05-02 15:09:36', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (5, 0, '2016-05-02 15:20:49', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 1, '2016-05-02 15:21:34', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(6, 1, '2016-05-02 15:21:34', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 1, '2016-05-02 15:34:16', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -606,6 +671,18 @@ ALTER TABLE `chiefs`
   ADD UNIQUE KEY `chiefs_chiefabbreviation_unique` (`ChiefAbbreviation`);
 
 --
+-- Indexes for table `chief_audit_trails`
+--
+ALTER TABLE `chief_audit_trails`
+  ADD PRIMARY KEY (`ChiefAuditTrailID`);
+
+--
+-- Indexes for table `chief_logs`
+--
+ALTER TABLE `chief_logs`
+  ADD PRIMARY KEY (`ChiefLogID`);
+
+--
 -- Indexes for table `chief_measures`
 --
 ALTER TABLE `chief_measures`
@@ -647,6 +724,18 @@ ALTER TABLE `staffs`
   ADD PRIMARY KEY (`StaffID`),
   ADD UNIQUE KEY `staffs_staffname_unique` (`StaffName`),
   ADD UNIQUE KEY `staffs_staffabbreviation_unique` (`StaffAbbreviation`);
+
+--
+-- Indexes for table `staff_audit_trails`
+--
+ALTER TABLE `staff_audit_trails`
+  ADD PRIMARY KEY (`StaffAuditTrailID`);
+
+--
+-- Indexes for table `staff_logs`
+--
+ALTER TABLE `staff_logs`
+  ADD PRIMARY KEY (`StaffLogID`);
 
 --
 -- Indexes for table `staff_measures`
@@ -731,6 +820,16 @@ ALTER TABLE `audit_trails`
 ALTER TABLE `chiefs`
   MODIFY `ChiefID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `chief_audit_trails`
+--
+ALTER TABLE `chief_audit_trails`
+  MODIFY `ChiefAuditTrailID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `chief_logs`
+--
+ALTER TABLE `chief_logs`
+  MODIFY `ChiefLogID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `chief_measures`
 --
 ALTER TABLE `chief_measures`
@@ -755,6 +854,16 @@ ALTER TABLE `ranks`
 --
 ALTER TABLE `staffs`
   MODIFY `StaffID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `staff_audit_trails`
+--
+ALTER TABLE `staff_audit_trails`
+  MODIFY `StaffAuditTrailID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `staff_logs`
+--
+ALTER TABLE `staff_logs`
+  MODIFY `StaffLogID` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `staff_measures`
 --
@@ -794,7 +903,7 @@ ALTER TABLE `user_chiefs`
 -- AUTO_INCREMENT for table `user_logs`
 --
 ALTER TABLE `user_logs`
-  MODIFY `UserLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `UserLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `user_staffs`
 --
