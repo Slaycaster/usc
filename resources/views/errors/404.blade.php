@@ -58,17 +58,21 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center" id="firstScreen">
-            <br /><br />
-            <h1 class="welcome-stylish-title">Oops! Officer <br /><br /> It seems like you're lost!</h1>
-           
-            <br><br>
-            <p class="col-md-12 welcome-stylish-objective">404 Not Found</p>
-            <div class="col-md-6 col-md-offset-3">
-                <a href="{{ url("/") }}" class="btn btn-dark btn-lg welcome-style-get-started" id="btnStart">Go Home</a>
+             <br /><br />
+            <div class="container">
+                <div class ="col-md-12">
+                    <a href="{{ url("/") }}"><img class="welcome-stylish-logo-one" src="{{ asset('img/404.png') }}"/></a> 
+                </div>
             </div>
+            
+            <h2 class="welcome-stylish-title">Oops! Officer It seems like you're lost!</h2>
+            <br />
+            <p class="col-md-12 welcome-stylish-objective">404 Not Found</p>
+            <!-- <div class="col-md-6 col-md-offset-3">
+                <a href="{{ url("/") }}" class="btn btn-dark btn-lg welcome-style-get-started" id="btnStart">Go Home</a>
+            </div> -->
+            
         </div>
-
-
     </header>
 
     <!-- jQuery -->
