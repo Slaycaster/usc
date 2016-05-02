@@ -94,7 +94,6 @@ class LoginController extends Controller {
 						DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
 
 					
-
 						return Redirect::to('staff/dashboard');
 					}
 					else
