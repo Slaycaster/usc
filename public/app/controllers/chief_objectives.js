@@ -35,7 +35,7 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
             $http.put(url, {
                 ChiefObjectiveName: $scope.chief_objective.ChiefObjectiveName,
                 PerspectiveID: $scope.chief_objective.PerspectiveID,
-                StaffID: document.getElementById('chief_id').value,
+                ChiefID: document.getElementById('chief_id').value,
                 UserChiefID: document.getElementById('user_chief_id').value
 
             }).success(function(data, status, headers, config, response) {
@@ -80,7 +80,7 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
                 $http.get(local + '/usc/public/api/chief_objectives/' + id)
                         .success(function(response) {
                             console.log(response);
-                            $scope.staff_objective = response;
+                            $scope.chief_objective = response;
                         });
                 break;
             default:
