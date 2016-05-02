@@ -1,4 +1,4 @@
-var local = 'http://localhost';
+var local = 'http://' + location.host;
  
 app.controller('APIUnitObjectiveController', function($scope, $http, $interval) {
  
