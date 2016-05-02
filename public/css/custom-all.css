@@ -36,9 +36,9 @@ body.modal-open .wrap{
 
 a.layout-custom-navbaruser,
 a:active{
-    background-color: #dff0d8;
-    color: #3c763d;
-    border-color: #d6e9c6;
+    background-color: #fff;
+    color:rgba(105, 34, 37, 1);
+    border-color:rgba(105, 34, 37, 1);
 }
 a:hover{
     color:#333;
@@ -91,13 +91,13 @@ a:hover{
     .layout-custom-navbrand{
         display: none;
     }
-    .layout-custom-user{
+    .layout-custom-unit{
         text-align: center;
         padding-left: 12px;
-        background-color: #dff0d8;
+        background-color:rgba(105, 34, 37, 1);
         padding: 5px;
-        color: #3c763d;
-        border-color: #d6e9c6;
+        color: #fff;
+        border-color: rgba(105, 34, 37, 1);
     }
     
 }
@@ -107,7 +107,7 @@ a:hover{
 }*/
 
 @media(min-width:768px){
-    .layout-custom-user{
+    .layout-custom-unit{
         display: none;
     }
     .nav>li.layout-custom-usernavoptions{
@@ -171,3 +171,13 @@ a{
 thead{
     text-align: center;
 }
+
+.layout_unit-custom_all-nav{
+    margin-bottom: 0; 
+    background-color:rgba(105, 34, 37, 1);
+}
+
+
+/*rgba(24, 70, 129, 1); - blue*/
+/*rgba(34, 34, 34, 1); - black*/
+/*rgba(120, 34, 37, 1); - red*/
