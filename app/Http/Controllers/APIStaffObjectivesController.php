@@ -19,7 +19,7 @@ class APIStaffObjectivesController extends Controller {
 	 */
 	public function index()
 	{
-		$id = Session::get('unit_user_id', 'default');
+		$id = Session::get('staff_user_id', 'default');
 		$staff = UserStaff::where('UserStaffID', '=', $id)->select('StaffID')->lists('StaffID'); //Get the Unit of the user
         
 		return StaffObjective::where('StaffID', '=', $staff)
@@ -33,10 +33,10 @@ class APIStaffObjectivesController extends Controller {
 
 	public function showIndex()
 	{
-		if (Session::has('unit_user_id'))
+		if (Session::has('staff_user_id'))
 		{
 			$perspectives = Perspective::all();
-			$id = Session::get('unit_user_id', 'default');
+			$id = Session::get('staff_user_id', 'default');
 			$user = UserStaff::where('UserStaffID', $id)
 				->first();
 			$unit = Staff::where('StaffID', '=', $user)->get();
