@@ -1,4 +1,4 @@
-var local = 'http://localhost';
+var local = 'http://' + location.host;
 
 app.controller('APIUnitAuditTrailsDashController', function($scope, $http, $interval) {
     $scope.unit_audit_trails_dash = [];
