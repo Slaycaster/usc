@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\ChiefMeasure;
+use App\ChiefObjective;
 use App\Chief;
 use App\UserChief;
 use App\Http\Controllers\Controller;
@@ -17,9 +18,11 @@ class APIChiefMeasuresController extends Controller {
 	public function index()
 	{	
 		$chief_id = Session::get('chief_user_id', 'default');
+
 		$chief = UserChief::where('UserChiefID', '=', $chief_id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the chief
         
 		return ChiefMeasure::where('ChiefID', '=', $chief)
+			->with('chief_objective')
 			->with('chief')
 			->with('user_chief')
 			->with('user_chief.rank')
@@ -35,10 +38,11 @@ class APIChiefMeasuresController extends Controller {
 				->first();
 
 			$chief = Chief::where('ChiefID', '=', $chief_user->ChiefID)->first();
-
+			$chief_objectives = ChiefObjective::all();
 			$chief_measures = ChiefMeasure::with('chief')->where('ChiefID', '=', $chief_user->ChiefID)->get();
 			
 			return view('chief-ui.chief-measures')
+				->with('chief_objectives', $chief_objectives)
 				->with('chief_user', $chief_user)
 				->with('chief', $chief)
 				->with('chief_measures', $chief_measures);
@@ -73,7 +77,7 @@ class APIChiefMeasuresController extends Controller {
 		$chief = Request::input('ChiefID');
 		$action = 'Added a measure: "' . Request::input('ChiefMeasureName') . '"';
 
-		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $chief_id, $chief));
 
 		$chief_measure = new ChiefMeasure(Request::all());
 		$chief_measure->save();
@@ -123,7 +127,7 @@ class APIChiefMeasuresController extends Controller {
 		$chief = Request::input('ChiefID');
 	    $action = 'Updated a measure: "' . Request::input('ChiefMeasureName') . '"';
 
-		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $chief_id, $chief));
 
 
 

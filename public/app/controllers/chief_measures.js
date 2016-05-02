@@ -36,6 +36,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                 ChiefMeasureName: $scope.chief_measure.ChiefMeasureName,
                 ChiefMeasureType: $scope.chief_measure.ChiefMeasureType,
                 ChiefMeasureFormula: $scope.chief_measure.ChiefMeasureFormula,
+                ChiefObjectiveID: document.getElementById('id_chief_objective').value,
                 ChiefID: document.getElementById('chief_id').value,
                 UserChiefID: document.getElementById('user_chief_id').value
 
@@ -53,6 +54,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                 ChiefMeasureName: $scope.chief_measure.ChiefMeasureName,
                 ChiefMeasureType: $scope.chief_measure.ChiefMeasureType,
                 ChiefMeasureFormula: $scope.chief_measure.ChiefMeasureFormula,
+                ChiefObjectiveID: document.getElementById('id_chief_objective').value,
                 ChiefID: document.getElementById('chief_id').value,
                 UserChiefID: document.getElementById('user_chief_id').value
 
@@ -76,7 +78,8 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                 $scope.form_title = "ADD CHIEF'S MEASURE";
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
-                document.getElementById('id_measure_formula').value = "Summation";
+                document.getElementById('id_measure_formula').value = "";
+                document.getElementById('id_chief_objective').value = "0";
                 break;
             case 'edit':
                 $scope.form_title = "EDIT CHIEF'S MEASURE DETAIL";

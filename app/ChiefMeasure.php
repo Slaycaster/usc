@@ -16,7 +16,7 @@ class ChiefMeasure extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['ChiefMeasureName', 'ChiefMeasureType', 'ChiefMeasureFormula','ChiefID', 'UserChiefID'];
+	protected $fillable = ['ChiefMeasureName', 'ChiefMeasureType', 'ChiefMeasureFormula', 'ChiefObjectiveID','ChiefID', 'UserChiefID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -34,10 +34,17 @@ class ChiefMeasure extends Model {
 		return $this->belongsTo('App\UserChief','UserChiefID','UserChiefID'); //(model, foreign_key, parent_primary_key)
 	}
 
+	public function chief_objective()
+	{
+		return $this->belongsTo('App\ChiefObjective','ChiefObjectiveID','ChiefObjectiveID'); //(model, foreign_key, parent_primary_key)
+	}
+
 	public function staff_measures()
 	{
 		return $this->hasMany('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
 	}
+
+
 
 
 

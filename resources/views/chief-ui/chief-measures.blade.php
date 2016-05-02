@@ -59,23 +59,28 @@
     									</td>
 
 
-                                        <td class="objective-custom-td2">
+                                        <td class="objective-custom-td3">
                                             <b>Chief Measure Formula</b>
                                         </td>
 
+                                        <td class="objective-custom-td4">
+                                            <b>Chief Objective</b>
+                                        </td>
+
     									</td>
-    									<td class="objective-custom-td3">
+    									<td class="objective-custom-td5">
                                             <b>Chief Office</b>
     									</td>
-    									<td class="objective-custom-td4">
+    									<td class="objective-custom-td6">
                                             <b>Last Encoded by</b>
     									</td>
-    									<td class="objective-custom-td5"></td>
+    									<td class="objective-custom-td7"></td>
     								</thead>
     								<tr dir-paginate='chief_measure in chief_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% chief_measure.ChiefMeasureName %></td>
     									<td><% chief_measure.ChiefMeasureType %></td>
                                         <td><% chief_measure.ChiefMeasureFormula %></td>
+                                        <td><% chief_measure.chief_objective.ChiefObjectiveName %></td>
     									<td><% chief_measure.chief.ChiefAbbreviation %></td>
     									<td><% chief_measure.user_chief.rank.RankCode %> <% chief_measure.user_chief.UserChiefFirstName %> <% chief_measure.user_chief.UserChiefLastName %></td>
     									<td>
@@ -148,13 +153,33 @@
                                     </td>
                                     <td>
                                         <select id="id_measure_formula" name="measure_formula" data-ng-model="chief_measure.ChiefMeasureFormula" class="form-control" required ng-touched>
-                                                    
+                                                     <option value="">
+                                                        Select Formula
+                                                    </option>
                                                     <option value="Summation">
                                                         Summation
                                                     </option>
                                                     <option value="Average">
                                                         Average
                                                     </option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                 <tr>
+                                    <td>
+                                        <label for="chief_objective" class="control-label">Chief Measure Objective:</label>
+                                    </td>
+                                    <td>
+                                        <select id="id_chief_objective" name="chief_objective" data-ng-model="chief_measure.ChiefObjectiveID" class="form-control" required ng-touched>
+                                            <option value="0">
+                                                    Select Chief Objective
+                                            </option>
+                                            @foreach($chief_objectives as $chief_objective)
+                                                    <option value="<?=$chief_objective->ChiefObjectiveID?>">
+                                                        {{ $chief_objective->ChiefObjectiveName }}
+                                                    </option>
+                                            @endforeach
                                         </select>
                                     </td>
                                 </tr>
