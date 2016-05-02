@@ -20,9 +20,9 @@ class APIChiefObjectivesController extends Controller {
 	public function index()
 	{
 		$id = Session::get('chief_user_id', 'default');
-		$chief = UserChief::where('UserChiefID', '=', $id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the user
+		$chief_user = UserChief::where('UserChiefID', '=', $id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the user
         
-		return ChiefObjective::where('ChiefID', '=', $chief)
+		return ChiefObjective::where('ChiefID', '=', $chief_user)
 			->with('perspective')
 			->with('chief')
 			->with('user_chief')
@@ -36,15 +36,12 @@ class APIChiefObjectivesController extends Controller {
 		{
 			$perspectives = Perspective::all();
 			$id = Session::get('chief_user_id', 'default');
-			$chief = UserChief::where('UserChiefID', $id)
+			$chief_user = UserChief::where('UserChiefID', $id)
 				->first();
-			$unit = Chief::where('ChiefID', '=', $chief)->get();
+			$unit = Chief::where('ChiefID', '=', $chief_user)->get();
 		
-		
-			
 			return view('unit-ui.chief-objectives')
-				->with('chief', $chief)
-			
+				->with('chief_user', $chief_user)
 				->with('unit', $unit)
 				->with('perspectives', $perspectives);
 		}

@@ -27,7 +27,7 @@
     
     <div class="row">
         <div class="col-lg-12 unitdashboard-custom-unit-dash">
-            <p class="page-header"><b>{{ $user->staff->StaffName }} Staff Dashboard</b></p>
+            <p class="page-header"><b>{{ $staff_user->staff->StaffName }} Staff Dashboard</b></p>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -35,7 +35,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/staffpictures/cropped/'.''.$user->staff->PicturePath.'') }}">
+                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -280,7 +280,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <i class="fa fa-at fa-4x pull-right"></i>
-                    <h4><b>ABOUT: {{ $user->staff->StaffName }}</b></h4>
+                    <h4><b>ABOUT: {{ $staff_user->staff->StaffName }}</b></h4>
                 </div>
                 <!-- /.panel-heading -->
                

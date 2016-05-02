@@ -1,4 +1,4 @@
-var local = 'http://localhost';
+var local = 'http://' + location.host;
  
 app.controller('APIChiefObjectiveController', function($scope, $http, $interval) {
  
@@ -35,7 +35,7 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
             $http.put(url, {
                 ChiefObjectiveName: $scope.chief_objective.ChiefObjectiveName,
                 PerspectiveID: $scope.chief_objective.PerspectiveID,
-                StaffID: document.getElementById('chief_id').value,
+                ChiefID: document.getElementById('chief_id').value,
                 UserChiefID: document.getElementById('user_chief_id').value
 
             }).success(function(data, status, headers, config, response) {
@@ -80,7 +80,7 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
                 $http.get(local + '/usc/public/api/chief_objectives/' + id)
                         .success(function(response) {
                             console.log(response);
-                            $scope.staff_objective = response;
+                            $scope.chief_objective = response;
                         });
                 break;
             default:
@@ -90,6 +90,8 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
         $('#myModal').modal('show');
     };
 
-    $interval(function(){ $scope.init(); }, 5000);
+    $scope.init();
+
+    //$interval(function(){ $scope.init(); }, 1000);
  
 });//app.controller(UnitObjectiveController)

@@ -1,4 +1,4 @@
-var local = 'http://localhost';
+var local = 'http://' + location.host;
 
 app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
 
@@ -42,7 +42,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_measures = '';
+                $scope.chief_measures = '';
                 $scope.init();
                 $scope.loading = false;
             });
@@ -59,7 +59,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_measures = '';
+                $scope.chief_measures = '';
                 $scope.init();
                 $scope.loading = false;
             });
@@ -84,7 +84,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                 $http.get(local + '/usc/public/api/chief_measures/' + id)
                         .success(function(response) {
                             console.log(response);
-                            $scope.unit_measure = response;
+                            $scope.chief_measure = response;
                         });
                 break;
             default:
@@ -94,7 +94,9 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
         $('#myModal').modal('show');
     };
 
+    $scope.init();
+
     
-	$interval( function(){ $scope.init(); }, 5000);
+	//$interval( function(){ $scope.init(); }, 1000);
 });
 

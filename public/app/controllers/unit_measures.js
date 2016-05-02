@@ -1,4 +1,4 @@
-var local = 'http://localhost';
+var local = 'http://' + location.host;
 
 app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 
@@ -91,7 +91,8 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
         $('#myModal').modal('show');
     };
 
-    
-	$interval( function(){ $scope.init(); }, 5000);
+    $scope.init();
+
+	//$interval( function(){ $scope.init(); }, 1000);
 });
 
