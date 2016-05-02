@@ -30,13 +30,13 @@ class StaffLoginController extends Controller {
 	{
 		if (Session::has('staff_user_id'))
 		{
-			$id = Session::get('staff_user_id', 'default');
-			$user = UserStaff::where('UserStaffID', $id)
+			$staff_id = Session::get('staff_user_id', 'default');
+			$staff_user = UserStaff::where('UserStaffID', $staff_id)
 				->first();
-			$staff_objectives_count = StaffObjective::where('StaffObjectiveID', $user->UnitID)
+			$staff_objectives_count = StaffObjective::where('StaffObjectiveID', $staff_user->StaffID)
 				->count();
 			return view('staffdashboard')
-				->with('user', $user)
+				->with('staff_user', $staff_user)
 				->with('staff_objectives_count', $staff_objectives_count);
 		}
 		else

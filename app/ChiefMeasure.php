@@ -34,6 +34,10 @@ class ChiefMeasure extends Model {
 		return $this->belongsTo('App\UserChief','UserChiefID','UserChiefID'); //(model, foreign_key, parent_primary_key)
 	}
 
+	public function staff_measures()
+	{
+		return $this->hasMany('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
+	}
 
 
 

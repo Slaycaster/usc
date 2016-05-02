@@ -42,7 +42,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_measures = '';
+                $scope.chief_measures = '';
                 $scope.init();
                 $scope.loading = false;
             });
@@ -59,7 +59,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_measures = '';
+                $scope.chief_measures = '';
                 $scope.init();
                 $scope.loading = false;
             });
@@ -84,7 +84,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                 $http.get(local + '/usc/public/api/chief_measures/' + id)
                         .success(function(response) {
                             console.log(response);
-                            $scope.unit_measure = response;
+                            $scope.chief_measure = response;
                         });
                 break;
             default:

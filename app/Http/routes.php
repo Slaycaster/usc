@@ -41,7 +41,7 @@ Route::get('chief/measures','APIChiefMeasuresController@showIndex');
 /*STAFF USER ROUTES*/
 Route::get('staff/dashboard', 'StaffLoginController@dashboard');
 Route::get('staff/objectives', 'APIStaffObjectivesController@showIndex');
-
+Route::get('staff/measures','APIStaffMeasuresController@showIndex');
 
 /* DASHBOARD APPLETS */
 Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
@@ -59,6 +59,8 @@ Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
 
 Route::resource('api/chief_measures','APIChiefMeasuresController');
 
+
+Route::resource('api/staff_measures','APIStaffMeasuresController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
