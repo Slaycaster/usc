@@ -20,6 +20,6 @@ app.controller('APIUnitAuditTrailsController', function($scope, $http, $interval
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
 
-    $interval( function(){ $scope.init(); }, 5000);
+    $interval( function(){ $scope.init(); }, 3000);
     
 });

@@ -90,6 +90,6 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
         $('#myModal').modal('show');
     };
 
-    $interval(function(){ $scope.init(); }, 5000);
+    $interval(function(){ $scope.init(); }, 1000);
  
 });//app.controller(UnitObjectiveController)
