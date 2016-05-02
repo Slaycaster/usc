@@ -134,6 +134,10 @@ class LoginController extends Controller {
 						return Redirect::to('/');
 					}
 			}
+			else{
+				Session::flash('message', 'Sorry! Incorrect username/password. Please try again.');
+						return Redirect::to('/');
+			}
 		}
 	}
 
