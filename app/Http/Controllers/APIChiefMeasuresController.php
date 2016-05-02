@@ -71,9 +71,9 @@ class APIChiefMeasuresController extends Controller {
 
 		$chief_id = Session::get('chief_user_id', 'default');
 		$chief = Request::input('ChiefID');
-		//$action = 'Added a measure: "' . Request::input('UnitMeasureName') . '"';
+		$action = 'Added a measure: "' . Request::input('ChiefMeasureName') . '"';
 
-		//DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $id, $unit));
 
 		$chief_measure = new ChiefMeasure(Request::all());
 		$chief_measure->save();
@@ -120,10 +120,10 @@ class APIChiefMeasuresController extends Controller {
 		$chief_measure->save();
  
 		$chief_id = Session::get('chief_user_id', 'default');
-		$chief = Request::input('UnitID');
-	//	$action = 'Updated a measure: "' . Request::input('UnitMeasureName') . '"';
+		$chief = Request::input('ChiefID');
+	    $action = 'Updated a measure: "' . Request::input('ChiefMeasureName') . '"';
 
-	//	DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $id, $unit));
 
 
 

@@ -91,7 +91,8 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
         $('#myModal').modal('show');
     };
 
-    
-	$interval( function(){ $scope.init(); }, 1000);
+    $scope.init();
+
+	//$interval( function(){ $scope.init(); }, 1000);
 });
 
