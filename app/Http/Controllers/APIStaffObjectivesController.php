@@ -37,16 +37,16 @@ class APIStaffObjectivesController extends Controller {
 		{
 			$perspectives = Perspective::all();
 			$id = Session::get('staff_user_id', 'default');
-			$user = UserStaff::where('UserStaffID', $id)
+			$staff_user = UserStaff::where('UserStaffID', $id)
 				->first();
-			$unit = Staff::where('StaffID', '=', $user)->get();
+			$staff = Staff::where('StaffID', '=', $staff_user)->get();
 		
 			$chief_objectives = ChiefObjective::all();
 			
 			return view('unit-ui.staff-objectives')
-				->with('user', $user)
+				->with('staff_user', $staff_user)
 				->with('chief_objectives', $chief_objectives)
-				->with('unit', $unit)
+				->with('staff', $staff)
 				->with('perspectives', $perspectives);
 		}
 		else
