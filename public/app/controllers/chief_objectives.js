@@ -5,6 +5,8 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
     $scope.chief_objectives = [];
     $scope.loading = true;
     $scope.info = false;
+
+
  
     $scope.init = function() {
         $scope.loading = false;
@@ -13,6 +15,8 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
         success(function(data, status, headers, config) {
             $scope.chief_objectives = data;
                 $scope.loading = false;
+
+                
         });
     };
 

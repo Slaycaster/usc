@@ -64,10 +64,10 @@
 
 
     									
-    									<td class="objective-custom-td5" ng-click="sort('chief_objective.user_chief.rank.RankCode')"><b>Last Encoded by</b>
+    									<td class="objective-custom-td3" ng-click="sort('chief_objective.user_chief.rank.RankCode')"><b>Last Encoded by</b>
     										<span class="glyphicon sort-icon" ng-show="sortKey=='chief_objective.user_chief.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
-    									<td class="objective-custom-td6"></td>
+    									<td class="objective-custom-td4"></td>
     								</thead>
     								<tr dir-paginate='chief_objective in chief_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% chief_objective.ChiefObjectiveName %></td>
@@ -130,6 +130,8 @@
                                                     </option>
                                             @endforeach
                                         </select>
+
+                                        
                                         <span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
                                     </td>
                                 </tr>
@@ -137,7 +139,7 @@
                                 
                                 <tr>
                                     <td>
-                                        <label for="inputEmail3" class="control-label">Staff:</label>
+                                        <label for="inputEmail3" class="control-label">Chief:</label>
                                     </td>
                                     <td>
                                         <p>{{ $chief_user->chief->ChiefName }}</p>
