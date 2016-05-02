@@ -97,7 +97,9 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
         $('#myModal').modal('show');
     };
 
+    $scope.init();
+
     
-    $interval( function(){ $scope.init(); }, 1000);
+    //$interval( function(){ $scope.init(); }, 1000);
 });
 
