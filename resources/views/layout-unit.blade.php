@@ -76,11 +76,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand layout-custom-unit-pnpname" style="color:#fff;" href="{{ url('/') }}">Philippine National Police Unit Scorecard</a>
-                <a class="navbar-brand layout-custom-unit-pnpabb" style="color:#fff;" href="{{ url('/') }}">PNP Unit Scorecard</a>
+                <a class="navbar-brand layout-custom-unit-pnpname" href="{{ url('/') }}">Philippine National Police Unit Scorecard</a>
+                <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">PNP Unit Scorecard</a>
             </div>
             <div class="layout_unit-custom_all-unit_user">
-               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}!</i>
+               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $user->rank->RankCode }} 
+               {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}!</i>
             </div>
             <!-- /.navbar-header -->
 
@@ -88,7 +89,9 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                         <span class="glyphicon glyphicon-user"></span>&nbsp; Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}! &nbsp; <i class="fa fa-caret-down"></i>
+                         <span class="glyphicon glyphicon-user"></span>&nbsp; Welcome {{ $user->rank->RankCode }} 
+                         {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}! &nbsp; 
+                         <i class="fa fa-caret-down"></i>
 
                     </a>
                     <ul class="dropdown-menu">
@@ -127,7 +130,7 @@
                             <a href="{{ url('unit/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{ url('unit/scorecard') }}"><i class="fa fa-edit fa-fw"></i> {{ $user->unit->UnitAbbreviation }} Scorecard</a>
+                            <a href="{{ url('unit/scorecard') }}"><i class="fa fa-table fa-fw"></i> {{ $user->unit->UnitAbbreviation }} Scorecard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
