@@ -26,16 +26,24 @@
     <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
     
     <div class="row">
-        <div class="col-lg-12 unitdashboard-custom-unit-dash">
-            <p class="page-header"><b>{{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}'s Dashboard</b></p>
+        <div class="col-lg-12 dashboard-custom-unit-dashname">
+            <p><b>{{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}'s Dashboard</b></p>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
+        <div class="col-lg-12 dashboard-custom-unit-dashabb">
+            <img class="img-responsive unitdashboard-custom-unitpicabb" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}">
+            <p><b>{{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}'s Dashboard</b></p>
+        </div>
+        <div class="col-md-12"><br /></div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/userpictures/unit/cropped/'.''. $chief_user->UserChiefPicturePath.'') }}">
+                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/chiefpictures/unit/cropped/'.''. $chief_user->UserChiefPicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
