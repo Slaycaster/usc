@@ -18,6 +18,7 @@ class CreateChiefMeasuresTable extends Migration {
 			$table->string('ChiefMeasureName')->unique();
 			$table->string('ChiefMeasureType');
 			$table->string('ChiefMeasureFormula');
+			$table->integer('ChiefObjectiveID');
 			$table->integer('ChiefID');
 			$table->integer('UserChiefID');
 			$table->timestamps();
