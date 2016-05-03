@@ -67,7 +67,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+        <nav class="layout_unit-custom_all-nav navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -75,9 +75,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}">PNP Unit Scorecard</a>
+                <a class="navbar-brand" style="color:#fff;" href="{{ url('/') }}">Philippine National Police Unit Scorecard</a>
             </div>
-            <div class="layout-custom-user">
+            <div class="layout-custom-unit">
                <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}!</i>
             </div>
             <!-- /.navbar-header -->
