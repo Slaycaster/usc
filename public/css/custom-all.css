@@ -37,6 +37,8 @@ body.modal-open .wrap{
 
 /* Yujin Custom CSS */
 
+.unitdashboard-custom-unit-activityname,
+.unitdashboard-custom-unit-activityabb,
 .dashboard-custom-unit-dashname,
 .dashboard-custom-unit-dashabb{
     margin-top:.5em;
@@ -64,9 +66,8 @@ body.modal-open .wrap{
     .unitdashboard-custom-unit-activityabb{
         display: none;
     }
-    .layout-custom-unit-pnpabb{
-        display: none;
-    }
+    .unitdashboard-custom-unit-activityabb,
+    .layout-custom-unit-pnpabb,
     .dashboard-custom-unit-dashabb{
         display: none;
     }
@@ -95,12 +96,9 @@ a.navbar-brand{
         z-index: 5;
         background-color:#337ab7;
     }   
-    .layout-custom-unit-pnpname{
-        display: none;
-    }  
-    .dashboard-custom-unit-dashname{
-        display: none;
-    }
+    .layout-custom-unit-pnpname,
+    .unitdashboard-custom-unit-activityname,
+    .dashboard-custom-unit-dashname,
     .unitdashboard-custom-unitpic{
         display: none;
     }
