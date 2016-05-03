@@ -176,7 +176,7 @@
                                         <label for="unit_objective" class="control-label">Unit Measure Objective:</label>
                                     </td>
                                     <td>
-                                        <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control" required ng-touched>
+                                        <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control">
                                             <option value="0">
                                                     Select Unit Objective
                                             </option>

@@ -91,6 +91,8 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             console.log(response);
                             $scope.staff_measure = response;
+                            $scope.staff_measure.StaffObjectiveID = response.StaffObjectiveID.toString();
+                            $scope.staff_measure.ChiefMeasureID = response.ChiefMeasureID.toString();
                         });
                 break;
             default:
