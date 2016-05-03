@@ -9,7 +9,7 @@ use App\UserStaff;
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 
-
+	
 class APIStaffObjectivesController extends Controller {
 
 	/**
@@ -19,8 +19,8 @@ class APIStaffObjectivesController extends Controller {
 	 */
 	public function index()
 	{
-		$id = Session::get('staff_user_id', 'default');
-		$staff = UserStaff::where('UserStaffID', '=', $id)->select('StaffID')->lists('StaffID'); //Get the Unit of the user
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff = UserStaff::where('UserStaffID', '=', $staff_id)->select('StaffID')->lists('StaffID'); //Get the Unit of the user
         
 		return StaffObjective::where('StaffID', '=', $staff)
 			->with('perspective')
@@ -36,14 +36,14 @@ class APIStaffObjectivesController extends Controller {
 		if (Session::has('staff_user_id'))
 		{
 			$perspectives = Perspective::all();
-			$id = Session::get('staff_user_id', 'default');
-			$staff_user = UserStaff::where('UserStaffID', $id)
+			$staff_id = Session::get('staff_user_id', 'default');
+			$staff_user = UserStaff::where('UserStaffID', $staff_id)
 				->first();
 			$staff = Staff::where('StaffID', '=', $staff_user)->get();
 		
 			$chief_objectives = ChiefObjective::all();
 			
-			return view('unit-ui.staff-objectives')
+			return view('staff-ui.staff-objectives')
 				->with('staff_user', $staff_user)
 				->with('chief_objectives', $chief_objectives)
 				->with('staff', $staff)
@@ -64,11 +64,14 @@ class APIStaffObjectivesController extends Controller {
 	public function store()
 	{
 
-		$id = Session::get('unit_user_id', 'default');
-		$unit = Request::input('StaffID');
+		$staff_id = Session::get('unit_user_id', 'default');
+		$staff = Request::input('StaffID');
 		$action = 'Added an objective: "' . Request::input('StaffObjectiveName') . '"';
 
-		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $id, $unit));
+
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $staff_id, $staff));
+
+		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $staff_id, $staff));
 
 
 		$staff_objective = new StaffObjective(Request::all());
@@ -104,11 +107,15 @@ class APIStaffObjectivesController extends Controller {
 		$staff_objective->save();
  
 
-		$id = Session::get('unit_user_id', 'default');
-		$unit = Request::input('StaffID');
+		$staff_id = Session::get('unit_user_id', 'default');
+		$staff = Request::input('StaffID');
 		$action = 'Updated an Objective: "' . Request::input('StaffObjectiveName') . '"';
 
-		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $id, $unit));
+
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $staff_id, $staff));
+
+		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $staff_id, $staff));
+
 
 
 		return $staff_objective;

@@ -142,10 +142,13 @@
 
                                 <tr>
                                     <td>
-                                        <label for="staffobjective_id" class="control-label">Contributory to:</label>
+                                        <label for="staffobjective_id" class="control-label">Contributory to Chief Scorecard:</label>
                                     </td>
                                     <td>
                                         <select id="id_staffobjective_id" name="staffobjective_id" data-ng-model="staff_objective.ChiefObjectiveID" class="form-control" required ng-touched>
+                                            <option value="0">
+                                                    None
+                                            </option>
                                             @foreach($chief_objectives as $chiefobjective)
                                                     <option value="<?=$chiefobjective->ChiefObjectiveID?>">
                                                         {{ $chiefobjective->ChiefObjectiveName }}
