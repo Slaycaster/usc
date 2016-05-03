@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Staff Dashboard - PNP Unit Scorecard</title>
+    <title>Staff Dashboard || Philippine National Police Unit Scorecard</title>
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
@@ -62,12 +62,12 @@
 
 </head> 
 
-<body>
+<body  class="layout_staff-body">
 
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+        <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -75,7 +75,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}">PNP Staff Scorecard</a>
+                <a class="navbar-brand" href="{{ url('/') }}">Philippine National Police Staff Scorecard</a>
             </div>
             <div class="layout-custom-user"> 
                <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}!</i>

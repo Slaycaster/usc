@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PNP Unit Scorecard</title>
+    <title>Philippine National Police Unit Scorecard</title>
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
@@ -77,7 +77,8 @@
                 @endif
             </div>
             
-            <p class="col-md-12 welcome-stylish-objective">Create, and accomplish Unit tasks.</p>
+            <p class="col-md-12 welcome-stylish-objective">Create, track, and accomplish Unit tasks.</p>
+            <p class="col-md-12 welcome-stylish-objective">Philippine National Police</p>
             <br>
             <div class="col-md-6 col-md-offset-3">
                 <a href="#" class="btn btn-dark btn-lg welcome-style-get-started" id="btnStart">Get Started</a>
