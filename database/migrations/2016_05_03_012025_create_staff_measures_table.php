@@ -18,6 +18,7 @@ class CreateStaffMeasuresTable extends Migration {
 			$table->string('StaffMeasureName');
 			$table->string('StaffMeasureType');
 			$table->string('StaffMeasureFormula');
+			$table->integer('StaffObjectiveID');
 			$table->integer('ChiefMeasureID');
 			$table->integer('StaffID');
 			$table->integer('UserStaffID');

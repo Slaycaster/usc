@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\StaffMeasure;
+use App\StaffObjective;
 use App\ChiefMeasure;
 use App\Staff;
 use App\UserStaff;
@@ -19,6 +20,7 @@ class APIStaffMeasuresController extends Controller {
 		$staff_id = Session::get('staff_user_id', 'default');
 		$staff = UserStaff::where('UserStaffID', '=', $staff_id)->select('StaffID')->lists('StaffID'); //Get the Unit of the staff
 		return StaffMeasure::where('StaffID', '=', $staff)
+			->with('staff_objective')
 			->with('staff')
 			->with('chief_measures')
 			->with('user_staff')
@@ -36,9 +38,11 @@ class APIStaffMeasuresController extends Controller {
 
 			$staff = Staff::where('StaffID', '=', $staff_user->StaffID)->first();
 			$chief_measures = ChiefMeasure::all();
+			$staff_objectives = StaffObjective::all();
 			$staff_measures = StaffMeasure::with('staff')->with('chief_measures')->where('StaffID', '=', $staff_user->StaffID)->get();
 			
 			return view('staff-ui.staff-measures')
+				->with('staff_objectives', $staff_objectives)
 				->with('staff_user', $staff_user)
 				->with('staff', $staff)
 				->with('staff_measures', $staff_measures)
