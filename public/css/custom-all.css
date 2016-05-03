@@ -8,7 +8,7 @@
     src: url('../fonts/orbitron-medium.otf');
 }
 
-body, h1, h3, h4, h5
+body, h1, h3, h4, h5, h6
 {
 	font-family: 'ubuntu';
 }
@@ -34,19 +34,85 @@ body.modal-open .wrap{
     border-top: none !important;
 }
 
-a.layout-custom-navbaruser,
-a:active{
-    background-color: #fff;
-    color:rgba(105, 34, 37, 1);
-    border-color:rgba(105, 34, 37, 1);
+
+/* Yujin Custom CSS */
+
+.dashboard-custom-unit-dashname,
+.dashboard-custom-unit-dashabb{
+    margin-top:.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    font-size: 250%;
+    text-align: center;
+    color:#8a6d3b;
+    background-color: #fcf8e3;
 }
-a:hover{
-    color:#333;
+
+.unitdashboard-custom-unitpicabb{
+        height:100px !important; 
+        width:100px !important; 
+        display: inline !important;
+        margin-top: 0px;
+        margin-bottom: 1em;
+}
+
+
+@media(min-width:768px){
+    .nav>li.layout-custom-usernavoptions{
+        display: none;
+    }
+    .unitdashboard-custom-unit-activityabb{
+        display: none;
+    }
+    .layout-custom-unit-pnpabb{
+        display: none;
+    }
+    .dashboard-custom-unit-dashabb{
+        display: none;
+    }
+}
+
+.sidebar ul li a.active{
+    color: rgba(8, 42, 72, 1) !important;
+}
+
+
+a.navbar-brand{
+    color: #fff !important;
+}
+
+
+/* mobile view */
+
+
+@media(max-width:768px){
+    .layout-custom-navbrand{
+        display: none;
+    }
+    .unitdashboard-custom-unit-dashabb{
+        padding-top: 8px !important;
+        text-align: center;
+        color: #8a6d3b;
+        font-size: 1.5em !important;
+        position: relative;
+        z-index: 5;
+        background-color:#337ab7;
+    }   
+    .layout-custom-unit-pnpname{
+        display: none;
+    }  
+    .dashboard-custom-unit-dashname{
+        display: none;
+    }
+    .unitdashboard-custom-unitpic{
+        display: none;
+    }
 }
 
 @media(max-width: 992px){
     .unitdashboard-custom-unitpic{
         margin-top: 0px !important;
+        margin-bottom: 1.5em;
     }
 }
 
@@ -55,25 +121,17 @@ a:hover{
         height:200px; 
         width:200px;
         margin-top: 0px !important;
+        margin-bottom: 1.5em;
     }
 }
 
 @media(max-width:768px){
-    .unitdashboard-custom-unit-dash{
-        padding-top: 8px !important;
-        text-align: center;
-        color: #8a6d3b;
-        font-size: 1.5em !important;
-        position: relative;
-        z-index: 5;
-        background-color: #fcf8e3;
-        /*#5cb85c;*/
-    }   
         
     .unitdashboard-custom-unitpic{
         height:200px; 
         width:200px; 
         margin-top: 0em !important;
+        margin-bottom: 1.5em;
     }
 
     .objectives-custom-heading,
@@ -86,69 +144,23 @@ a:hover{
     .unitdashboard-custom-unitpic{
         height:200px; 
         width:200px; 
-        /*margin-top: 25px !important;*/
-    }
-    .layout-custom-navbrand{
-        display: none;
-    }
-    .layout-custom-unit{
-        text-align: center;
-        padding-left: 12px;
-        background-color:rgba(105, 34, 37, 1);
-        padding: 5px;
-        color: #fff;
-        border-color: rgba(105, 34, 37, 1);
     }
     
-}
-/*
-.sidebar{
-    overflow: auto;
-}*/
-
-@media(min-width:768px){
-    .layout-custom-unit{
-        display: none;
-    }
-    .nav>li.layout-custom-usernavoptions{
-        display: none;
-    }
-    .unitdashboard-custom-unit-activityabb{
-        display: none;
-    }
-}
-
-@media(max-width: 768px){
-    .unitdashboard-custom-unit-activity{
-        display: none;
-    }
-}
-
-.unitdashboard-custom-unit-activityabb,
-.unitdashboard-custom-unit-activity{
-    padding-top: 1.5em !important;
-}   
-
-.unitdashboard-custom-unit-dash,
-.unitdashboard-custom-unit-activity,
-.unitdashboard-custom-unit-activityabb{
-    padding-top: 0em;
-    font-size: 250%;
-    text-align: center;
-    color: #8a6d3b;
-    background-color: #fcf8e3;
-    /*#5cb85c;*/
-}   
-
-.unitdashboard-custom-unitpic{
-    height:200px; 
-    width:200px; 
-    margin-top: 3em;
 }
 
 a{
     font-family: ubuntu;
 }
+
+.unitdashboard-custom-unitpic{
+    height:200px; 
+    width:200px; 
+    margin-top: 2em;
+}
+
+
+
+/*
 
 .objective-custom-td1{
     width:35%;
@@ -172,10 +184,7 @@ thead{
     text-align: center;
 }
 
-.layout_unit-custom_all-nav{
-    margin-bottom: 0; 
-    background-color:rgba(105, 34, 37, 1);
-}
+*/
 
 
 /*rgba(24, 70, 129, 1); - blue*/

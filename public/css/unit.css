@@ -1,0 +1,116 @@
+/* UNIT CSS */
+
+.layout-title-navbar{
+    margin-bottom: 0; 
+    background-color:rgba(8, 42, 72, 1);
+    border-bottom-color: rgba(8, 42, 72, 1);
+}
+
+/* color of the background */
+
+.unit-page-wrapper{
+    background-color:rgba(217, 220, 226, 1) !important;
+}
+
+/*end */
+
+.sidebar-search{
+    background-color:rgba(8, 42, 72, 1) !important;
+}
+
+.layout_unit-body{
+    background-color: rgba(8, 42, 72, 1);
+}
+
+.dropdown-menu>li>a{
+    color:#2A363B !important;
+}
+.dropdown-menu>li>a:hover{
+    color:#fff !important;
+    background-color:rgba(8, 42, 72, 1) !important;
+}
+
+
+
+
+@media(max-width:768px){
+    .layout_unit-custom_all-unit_user{
+        text-align: center;
+        padding-left: 12px;
+        background-color:#fff;
+        padding: 5px;
+        color: #337ab7
+        border-color:#337ab7;
+    }
+}
+
+@media(min-width:768px){
+    .layout_unit-custom_all-unit_user{
+        display: none;
+    }
+}
+
+a.layout-custom-navbaruser{
+    background-color:#082A48;
+    color:#fff;
+    border-color:#082A48;
+}
+
+a.layout-custom-navbaruser:hover{
+    color:#082A48;
+    background-color:#fff !important;
+}
+a.active{
+    background-color: #fff !important;
+    color:#337ab7 !important;
+}
+
+#page-wrapper{
+    background-color: #fff;
+}
+
+.nav>li>a{
+    background-color: #082A48;
+    color:#fff !important;
+}
+
+.nav>li>a:focus, 
+.nav>li>a:hover{
+    color: rgba(8, 42, 72, 1)!important;
+    background-color: #fff;
+}
+
+.sidebar .sidebar-nav.navbar-collapse{
+    overflow: auto !important;
+    max-height: 350px !important;
+}
+.sidebar ul li{
+    border-bottom: none;
+}
+.sidebar-search{
+    background-color: #fff;
+}
+
+
+
+/* scroll bar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);*/ 
+    -webkit-border-radius: 0px;
+    background-color:#eee;
+    border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background:#666; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
