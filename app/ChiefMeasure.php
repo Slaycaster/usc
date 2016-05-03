@@ -39,6 +39,11 @@ class ChiefMeasure extends Model {
 		return $this->belongsTo('App\ChiefObjective','ChiefObjectiveID','ChiefObjectiveID'); //(model, foreign_key, parent_primary_key)
 	}
 
+	public function chief_targets()
+	{
+		return $this->belongsTo('App\ChiefTarget','ChiefTargetID','ChiefTargetID'); //(model, foreign_key, parent_primary_key)
+	}
+
 	public function staff_measures()
 	{
 		return $this->hasMany('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');

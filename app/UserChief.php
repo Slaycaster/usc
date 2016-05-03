@@ -47,4 +47,9 @@ class UserChief extends Model {
 		return $this->hasMany('App\ChiefObjective', 'ChiefObjectiveID', 'ChiefObjectiveID');
 	}
 
+	public function chief_targets()
+	{
+		return $this->hasMany('App\ChiefTarget', 'ChiefTargetID', 'ChiefTargetID');
+	}
+
 }
