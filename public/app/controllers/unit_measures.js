@@ -91,6 +91,8 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;
+                            $scope.unit_measure.UnitObjectiveID = response.UnitObjectiveID.toString();
+                            $scope.unit_measure.StaffMeasureID = response.StaffMeasureID.toString();
                         });
                 break;
             default:
