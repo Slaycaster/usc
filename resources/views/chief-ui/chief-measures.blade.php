@@ -134,13 +134,13 @@
                                     <td>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" id="id_measure_type" name="measure_type" value="LG" ng-model="chief_measure.ChiefMeasureType" />
+                                                <input type="radio" id="id_measure_type" name="measure_type" value="LD" ng-model="chief_measure.ChiefMeasureType" />
                                                 LD
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="measure_type" value="LD" ng-model="chief_measure.ChiefMeasureType" />
+                                                <input type="radio" name="measure_type" value="LG" ng-model="chief_measure.ChiefMeasureType" />
                                                 LG
                                             </label>
                                         </div>
