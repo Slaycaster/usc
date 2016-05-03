@@ -177,11 +177,11 @@
                                     </td>
                                     <td>
                                         <select id="id_staff_objective" name="staff_objective" data-ng-model="staff_measure.StaffObjectiveID" class="form-control" required ng-touched>
-                                            <option value="0">
+                                            <option value= "0">
                                                     Select Staff Objective
                                             </option>
                                             @foreach($staff_objectives as $staff_objective)
-                                                    <option value="<?=$staff_objective->StaffObjectiveID?>">
+                                                    <option value="<?=$staff_objective->StaffObjectiveID?>" >
                                                         {{ $staff_objective->StaffObjectiveName }}
                                                     </option>
                                             @endforeach
@@ -196,7 +196,7 @@
                                     </td>
                                     <td>
                                         <select id="id_chief_measure" name="chief_measure" data-ng-model="staff_measure.ChiefMeasureID" class="form-control" required ng-touched>
-                                            <option value="0">
+                                            <option value= "0" >
                                                     Select Chief Measure
                                             </option>
                                             @foreach($chief_measures as $chief_measure)
