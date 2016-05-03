@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\UnitObjective;
 use App\UnitMeasure;
+use App\StaffMeasure;
 use App\UserUnit;
 use App\Unit;
 use App\Http\Controllers\Controller;
@@ -20,6 +22,8 @@ class APIUnitMeasuresController extends Controller {
 		$unit = UserUnit::where('UserUnitID', '=', $id)->select('UnitID')->lists('UnitID'); //Get the Unit of the user
         
 		return UnitMeasure::where('UnitID', '=', $unit)
+			->with('unit_objective')
+			->with('staff_measure')
 			->with('unit')
 			->with('user_unit')
 			->with('user_unit.rank')
@@ -33,12 +37,17 @@ class APIUnitMeasuresController extends Controller {
 			$id = Session::get('unit_user_id', 'default');
 			$user = UserUnit::where('UserUnitID', $id)
 				->first();
+
+			$staff_measures = StaffMeasure::all();
+			$unit_objectives = UnitObjective::all();
 			$unit = Unit::where('UnitID', '=', $user)->get();
 			$unit_measures = UnitMeasure::where('UnitID', '=', $user->UnitID)->get();
 			
 			return view('unit-ui.unit-measures')
 				->with('user', $user)
 				->with('unit', $unit)
+				->with('staff_measures', $staff_measures)
+				->with('unit_objectives', $unit_objectives)
 				->with('unit_measures', $unit_measures);
 		}
 		else

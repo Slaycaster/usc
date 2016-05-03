@@ -35,6 +35,9 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
             $http.put(url, {
                 UnitMeasureName: $scope.unit_measure.UnitMeasureName,
                 UnitMeasureType: $scope.unit_measure.UnitMeasureType,
+                UnitMeasureFormula: $scope.unit_measure.UnitMeasureFormula,
+                UnitObjectiveID: document.getElementById('id_unit_objective').value,
+                StaffMeasureID: document.getElementById('id_staff_measure').value,
                 UnitID: document.getElementById('unit_id').value,
                 UserUnitID: document.getElementById('user_unit_id').value
 
@@ -51,6 +54,9 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
             $http.post(url, {
                 UnitMeasureName: $scope.unit_measure.UnitMeasureName,
                 UnitMeasureType: $scope.unit_measure.UnitMeasureType,
+                UnitMeasureFormula: $scope.unit_measure.UnitMeasureFormula,
+                UnitObjectiveID: document.getElementById('id_unit_objective').value,
+                StaffMeasureID: document.getElementById('id_staff_measure').value,
                 UnitID: document.getElementById('unit_id').value,
                 UserUnitID: document.getElementById('user_unit_id').value
 
@@ -74,6 +80,9 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                 $scope.form_title = "ADD UNIT'S MEASURE";
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
+                document.getElementById('id_measure_formula').value = "";
+                document.getElementById('id_unit_objective').value = "0";
+                document.getElementById('id_staff_measure').value = "0";
                 break;
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S MEASURE DETAIL";
@@ -82,6 +91,8 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;
+                            $scope.unit_measure.UnitObjectiveID = response.UnitObjectiveID.toString();
+                            $scope.unit_measure.StaffMeasureID = response.StaffMeasureID.toString();
                         });
                 break;
             default:

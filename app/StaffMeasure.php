@@ -44,5 +44,9 @@ class StaffMeasure extends Model {
 		return $this->belongsTo('App\StaffObjective','StaffObjectiveID','StaffObjectiveID'); //(model, foreign_key, parent_primary_key)
 	}
 
+	public function unit_measure()
+	{
+		return $this->hasMany('App\UnitMeasure','UnitMeasureID','UnitMeasureID');
+	}
 
 }

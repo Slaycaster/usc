@@ -88,6 +88,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             console.log(response);
                             $scope.chief_measure = response;
+                             $scope.chief_measure.ChiefObjectiveID = response.ChiefObjectiveID.toString();
                         });
                 break;
             default:

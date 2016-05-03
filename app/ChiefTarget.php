@@ -18,7 +18,7 @@ class ChiefTarget extends Model {
 	 */
 	protected $fillable = ['JanuaryTarget', 'FebruaryTarget', 'MarchTarget', 'AprilTarget', 'MayTarget', 'JuneTarget', 
 						   'JulyTarget', 'AugustTarget', 'SeptemberTarget', 'OctoberTarget', 'NovemberTarget', 'DecemberTarget',
-						   'TargetDate', 'TargetPeriod', 'ChiefMeasureID', 'ChiefID','UserID',];
+						   'TargetDate', 'TargetPeriod', 'ChiefMeasureID', 'ChiefID','ChiefUserID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -36,9 +36,9 @@ class ChiefTarget extends Model {
 		return $this->belongsTo('App\UserChief','UserChiefID','UserChiefID'); //(model, foreign_key, parent_primary_key)
 	}
 
-	public function chief_measures()
+	public function chief_measure()
 	{
-		return $this->hasMany('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
+		return $this->belongsTo('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
 	}
 
 }

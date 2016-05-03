@@ -26,12 +26,21 @@
     <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
     
     <div class="row">
-        <div class="col-lg-12 unitdashboard-custom-unit-dash">
-            <p class="page-header"><b>{{ $staff_user->staff->StaffName }} Staff Dashboard</b></p>
+        <div class="col-lg-12 dashboard-custom-unit-dashname">
+            <p><b>{{ $staff_user->staff->StaffName }} Staff Dashboard</b></p>
         </div>
+        <div class="col-md-12"><br /></div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+     <div class="row">
+        <div class="col-lg-12 dashboard-custom-unit-dashabb">
+            <img class="img-responsive unitdashboard-custom-unitpicabb" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
+            <p><b>{{ $staff_user->staff->StaffAbbreviation }} Staff Dashboard</b></p>
+        </div>
+        <div class="col-md-12"><br /></div>
+        <!-- /.col-lg-12 -->
+    </div>
     <div class="row">
         <div class="col-lg-3">
             <center>

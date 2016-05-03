@@ -58,6 +58,19 @@
                                             <b>Unit Measure Type</b>
     									</td>
 
+                                         <td class="objective-custom-td2">
+                                            <b>Unit Measure Formula</b>
+                                        </td>
+
+                                        <td class="objective-custom-td2">
+                                            <b>Unit Objective</b>
+                                        </td>
+
+                                        <td class="objective-custom-td2">
+                                            <b>Staff Measure Name</b>
+                                        </td>
+
+
     									</td>
     									<td class="objective-custom-td3">
                                             <b>Unit</b>
@@ -70,6 +83,9 @@
     								<tr dir-paginate='unit_measure in unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_measure.UnitMeasureName %></td>
     									<td><% unit_measure.UnitMeasureType %></td>
+                                        <td><% unit_measure.UnitMeasureFormula %></td>
+                                        <td><% unit_measure.unit_objective.UnitObjectiveName %></td>
+                                        <td><% unit_measure.staff_measure.StaffMeasureName %></td>
     									<td><% unit_measure.unit.UnitAbbreviation %></td>
     									<td><% unit_measure.user_unit.rank.RankCode %> <% unit_measure.user_unit.UserUnitFirstName %> <% unit_measure.user_unit.UserUnitLastName %></td>
     									<td>
@@ -123,18 +139,78 @@
                                     <td>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" id="id_measure_type" name="measure_type" value="LG" ng-model="unit_measure.UnitMeasureType" />
+                                                <input type="radio" id="id_measure_type" name="measure_type" value="LD" ng-model="unit_measure.UnitMeasureType" />
                                                 LD
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="measure_type" value="LD" ng-model="unit_measure.UnitMeasureType" />
+                                                <input type="radio" name="measure_type" value="LG" ng-model="unit_measure.UnitMeasureType" />
                                                 LG
                                             </label>
                                         </div>
                                     </td>
                                 </tr>
+
+                                 <tr>
+                                    <td>
+                                        <label for="measure_formula" class="control-label">Measure Formula:</label>
+                                    </td>
+                                    <td>
+                                        <select id="id_measure_formula" name="measure_formula" data-ng-model="unit_measure.UnitMeasureFormula" class="form-control" required ng-touched>
+                                                     <option value="">
+                                                        Select Formula
+                                                    </option>
+                                                    <option value="Summation">
+                                                        Summation
+                                                    </option>
+                                                    <option value="Average">
+                                                        Average
+                                                    </option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                 <tr>
+                                    <td>
+                                        <label for="unit_objective" class="control-label">Unit Measure Objective:</label>
+                                    </td>
+                                    <td>
+                                        <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control">
+                                            <option value="0">
+                                                    Select Unit Objective
+                                            </option>
+                                            @foreach($unit_objectives as $unit_objective)
+                                                    <option value="<?=$unit_objective->UnitObjectiveID?>">
+                                                        {{ $unit_objective->UnitObjectiveName }}
+                                                    </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <label for="staff_measure" class="control-label">Staff Measure Name:</label>
+                                    </td>
+                                    <td>
+                                        <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" required ng-touched>
+                                            <option value="0">
+                                                    Select Staff Measure
+                                            </option>
+                                            @foreach($staff_measures as $staff_measure)
+                                                    <option value="<?=$staff_measure->StaffMeasureID?>">
+                                                        {{ $staff_measure->StaffMeasureName }}
+                                                    </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+
+
+
+
                                 <tr>
                                     <td>
                                         <label for="Unit">Unit:</label>

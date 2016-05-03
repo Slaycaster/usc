@@ -12,6 +12,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 		$http.get(local + '/usc/public/api/chief_targets').
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
+            console.log(data);
 				$scope.loading = false;
 		});	
 	};

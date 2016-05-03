@@ -54,14 +54,10 @@ Route::resource('api/unit_measures','APIUnitMeasuresController');
 Route::resource('api/unit_audit_trails','APIUnitAuditTrailsController');
 Route::resource('api/unit_dashboard','APIUnitAuditTrailsDashController');
 Route::resource('api/staff_objectives', 'APIStaffObjectivesController');
-
 Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
-
-
 Route::resource('api/chief_measures','APIChiefMeasuresController');
-
-
 Route::resource('api/staff_measures','APIStaffMeasuresController');
+Route::resource('api/chief_targets','APIChiefTargetsController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

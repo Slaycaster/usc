@@ -22,7 +22,7 @@
         <div class="wrap">
             <div class="row">           
                 <div class="panel panel-warning">
-                    <div class="col-lg-12 unitdashboard-custom-unit-activity">
+                    <div class="col-lg-12 unitdashboard-custom-unit-activityname">
                         <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitName }} Activity Log</b></h2>
                         <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                     </div>
