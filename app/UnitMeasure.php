@@ -16,7 +16,7 @@ class UnitMeasure extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['UnitMeasureName', 'UnitMeasureType', 'UnitID', 'UserUnitID'];
+	protected $fillable = ['UnitMeasureName', 'UnitMeasureType','UnitMeasureFormula', 'UnitObjectiveID','StaffMeasureID','UnitID', 'UserUnitID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -33,6 +33,16 @@ class UnitMeasure extends Model {
 	public function user_unit()
 	{
 		return $this->belongsTo('App\UserUnit', 'UserUnitID', 'UserUnitID');
+	}
+
+	public function unit_objective()
+	{
+		return $this->belongsTo('App\UnitObjective', 'UnitObjectiveID', 'UnitObjectiveID');
+	}
+
+	public function staff_measure()
+	{
+		return $this->belongsTo('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
 }

@@ -64,6 +64,10 @@
                                         </td>
 
                                         <td class="objective-custom-td2">
+                                            <b>Staff Objective</b>
+                                        </td>
+
+                                        <td class="objective-custom-td2">
                                             <b>Chief Measure Name</b>
                                         </td>
 
@@ -80,6 +84,7 @@
     									<td><% staff_measure.StaffMeasureName %></td>
     									<td><% staff_measure.StaffMeasureType %></td>
                                         <td><% staff_measure.StaffMeasureFormula %></td>
+                                        <td><% staff_measure.staff_objective.StaffObjectiveName %></td>
     									<td><% staff_measure.chief_measures.ChiefMeasureName %></td>
                                         <td><% staff_measure.staff.StaffAbbreviation %></td>
     									<td><% staff_measure.user_staff.rank.RankCode %> <% staff_measure.user_staff.UserStaffFirstName %> <% staff_measure.user_staff.UserStaffLastName %></td>
@@ -134,14 +139,14 @@
                                     <td>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" id="id_measure_type" name="measure_type" value="LG" ng-model="staff_measure.StaffMeasureType" />
-                                                LG
+                                                <input type="radio" id="id_measure_type" name="measure_type" value="LD" ng-model="staff_measure.StaffMeasureType" />
+                                                LD
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="measure_type" value="LD" ng-model="staff_measure.StaffMeasureType" />
-                                                LD
+                                                <input type="radio" name="measure_type" value="LG" ng-model="staff_measure.StaffMeasureType" />
+                                                LG
                                             </label>
                                         </div>
                                     </td>
@@ -165,6 +170,25 @@
                                         </select>
                                     </td>
                                 </tr>
+
+                                 <tr>
+                                    <td>
+                                        <label for="staff_objective" class="control-label">Staff Measure Objective:</label>
+                                    </td>
+                                    <td>
+                                        <select id="id_staff_objective" name="staff_objective" data-ng-model="staff_measure.StaffObjectiveID" class="form-control" required ng-touched>
+                                            <option value="0">
+                                                    Select Staff Objective
+                                            </option>
+                                            @foreach($staff_objectives as $staff_objective)
+                                                    <option value="<?=$staff_objective->StaffObjectiveID?>">
+                                                        {{ $staff_objective->StaffObjectiveName }}
+                                                    </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+
 
                                 <tr>
                                     <td>

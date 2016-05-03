@@ -36,6 +36,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 StaffMeasureName: $scope.staff_measure.StaffMeasureName,
                 StaffMeasureType: $scope.staff_measure.StaffMeasureType,
                 StaffMeasureFormula: $scope.staff_measure.StaffMeasureFormula,
+                StaffObjectiveID: document.getElementById('id_staff_objective').value,
                 ChiefMeasureID: document.getElementById('id_chief_measure').value,
                 StaffID: document.getElementById('staff_id').value,
                 UserStaffID: document.getElementById('user_staff_id').value
@@ -54,6 +55,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 StaffMeasureName: $scope.staff_measure.StaffMeasureName,
                 StaffMeasureType: $scope.staff_measure.StaffMeasureType,
                 StaffMeasureFormula: $scope.staff_measure.StaffMeasureFormula,
+                StaffObjectiveID: document.getElementById('id_staff_objective').value,
                 ChiefMeasureID: document.getElementById('id_chief_measure').value,
                 StaffID: document.getElementById('staff_id').value,
                 UserStaffID: document.getElementById('user_staff_id').value
@@ -79,6 +81,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
                 document.getElementById('id_measure_formula').value = "";
+                document.getElementById('id_staff_objective').value = "0";
                 document.getElementById('id_chief_measure').value = "0";
                 break;
             case 'edit':

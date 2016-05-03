@@ -52,4 +52,8 @@ class StaffObjective extends Model {
 		return $this->belongsTo('App\UserStaff', 'UserStaffID', 'UserStaffID');
 	}
 
+	public function staff_measure()
+	{ 
+		return $this->hasMany('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
+	}
 }

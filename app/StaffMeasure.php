@@ -16,7 +16,7 @@ class StaffMeasure extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['StaffMeasureName', 'StaffMeasureType', 'StaffMeasureFormula','ChiefMeasureID','StaffID', 'UserStaffID'];
+	protected $fillable = ['StaffMeasureName', 'StaffMeasureType', 'StaffMeasureFormula','StaffObjectiveID','ChiefMeasureID','StaffID', 'UserStaffID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -39,5 +39,14 @@ class StaffMeasure extends Model {
 		return $this->belongsTo('App\UserStaff','UserStaffID','UserStaffID'); //(model, foreign_key, parent_primary_key)
 	}
 
+	public function staff_objective()
+	{
+		return $this->belongsTo('App\StaffObjective','StaffObjectiveID','StaffObjectiveID'); //(model, foreign_key, parent_primary_key)
+	}
+
+	public function unit_measure()
+	{
+		return $this->hasMany('App\UnitMeasure','UnitMeasureID','UnitMeasureID');
+	}
 
 }
