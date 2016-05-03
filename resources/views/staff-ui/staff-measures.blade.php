@@ -135,13 +135,13 @@
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" id="id_measure_type" name="measure_type" value="LG" ng-model="staff_measure.StaffMeasureType" />
-                                                LG
+                                                LD
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="measure_type" value="LD" ng-model="staff_measure.StaffMeasureType" />
-                                                LD
+                                                LG
                                             </label>
                                         </div>
                                     </td>
