@@ -37,6 +37,8 @@ body.modal-open .wrap{
 
 /* Yujin Custom CSS */
 
+.unitdashboard-custom-unit-activityname,
+.unitdashboard-custom-unit-activityabb,
 .dashboard-custom-unit-dashname,
 .dashboard-custom-unit-dashabb{
     margin-top:.5em;
@@ -64,17 +66,13 @@ body.modal-open .wrap{
     .unitdashboard-custom-unit-activityabb{
         display: none;
     }
-    .layout-custom-unit-pnpabb{
-        display: none;
-    }
+    .unitdashboard-custom-unit-activityabb,
+    .layout-custom-unit-pnpabb,
     .dashboard-custom-unit-dashabb{
         display: none;
     }
 }
 
-.sidebar ul li a.active{
-    color: rgba(8, 42, 72, 1) !important;
-}
 
 
 a.navbar-brand{
@@ -98,12 +96,9 @@ a.navbar-brand{
         z-index: 5;
         background-color:#337ab7;
     }   
-    .layout-custom-unit-pnpname{
-        display: none;
-    }  
-    .dashboard-custom-unit-dashname{
-        display: none;
-    }
+    .layout-custom-unit-pnpname,
+    .unitdashboard-custom-unit-activityname,
+    .dashboard-custom-unit-dashname,
     .unitdashboard-custom-unitpic{
         display: none;
     }
@@ -148,16 +143,42 @@ a.navbar-brand{
     
 }
 
-a{
-    font-family: ubuntu;
-}
-
 .unitdashboard-custom-unitpic{
     height:200px; 
     width:200px; 
     margin-top: 2em;
 }
 
+
+.dashboard-custom-unit-dashabb,
+.dashboard-custom-unit-dashname{
+    box-shadow: 8px 8px 5px #888888;
+}
+
+
+
+
+/* scroll bar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);*/ 
+    -webkit-border-radius: 0px;
+    background-color:#eee;
+    border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background:#666; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
 
 
 /*

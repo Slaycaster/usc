@@ -60,14 +60,15 @@ a.layout-custom-navbaruser:hover{
     color:#082A48;
     background-color:#fff !important;
 }
+.sidebar ul li a.active{
+    color: rgba(8, 42, 72, 1) !important;
+}
+
 a.active{
     background-color: #fff !important;
     color:#337ab7 !important;
 }
 
-#page-wrapper{
-    background-color: #fff;
-}
 
 .nav>li>a{
     background-color: #082A48;
@@ -91,26 +92,3 @@ a.active{
     background-color: #fff;
 }
 
-
-
-/* scroll bar */
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);*/ 
-    -webkit-border-radius: 0px;
-    background-color:#eee;
-    border-radius: 0px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    background:#666; 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
