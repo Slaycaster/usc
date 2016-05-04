@@ -177,11 +177,11 @@
                                     </td>
                                     <td>
                                         <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control">
-                                            <option value="0">
+                                            <option value= "0">
                                                     Select Unit Objective
                                             </option>
                                             @foreach($unit_objectives as $unit_objective)
-                                                    <option value="<?=$unit_objective->UnitObjectiveID?>">
+                                                    <option value= "<?=$unit_objective->UnitObjectiveID?>">
                                                         {{ $unit_objective->UnitObjectiveName }}
                                                     </option>
                                             @endforeach
@@ -196,11 +196,11 @@
                                     </td>
                                     <td>
                                         <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" required ng-touched>
-                                            <option value="0">
+                                            <option value = "0" >
                                                     Select Staff Measure
                                             </option>
                                             @foreach($staff_measures as $staff_measure)
-                                                    <option value="<?=$staff_measure->StaffMeasureID?>">
+                                                    <option value= "<?=$staff_measure->StaffMeasureID?>">
                                                         {{ $staff_measure->StaffMeasureName }}
                                                     </option>
                                             @endforeach
