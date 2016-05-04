@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+ <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
     <!-- Angular Utils Pagination -->
@@ -12,21 +12,20 @@
     <script src="{{ asset('app/app.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/chief_measures.js') }}"></script>
+    <script src="{{ asset('app/controllers/chief_targets.js') }}"></script>
 
-    <br>
-    <div ng-app="unitScorecardApp" ng-controller="APIChiefMeasureController">
+<div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-8">
 					<div class="panel panel-warning">
 						<div class="panel-heading measures-custom-heading">
-						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief->ChiefAbbreviation }} Measures</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief->ChiefAbbreviation }} Targets</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-4">
-									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Chief's Measure</button>
+									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add Scorecard Target</button>
 								</div>
 								<div class="col-lg-8">
 									<form>
@@ -43,7 +42,7 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Chiefs Measures of {{ $chief_user->chief->ChiefName }}.</div>
+                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Scorecard Target of {{ $chief_user->chief->ChiefName }}.</div>
                             </div>
 							<!--./div class row-->
 
@@ -51,40 +50,45 @@
     							<table class="table table-striped table-bordered">
     								<thead>
     									<td class="objective-custom-td1">
-                                            <b>Chief Measure Name</b>
+                                            <b>Objective</b>
     									</td>
     							
     									<td class="objective-custom-td2">
-                                            <b>Chief Measure Type</b>
+                                            <b>Measure</b>
     									</td>
 
 
                                         <td class="objective-custom-td3">
-                                            <b>Chief Measure Formula</b>
+                                            <b>Formula</b>
                                         </td>
 
                                         <td class="objective-custom-td4">
-                                            <b>Chief Objective</b>
+                                            <b>Target Period</b>
                                         </td>
 
     									</td>
     									<td class="objective-custom-td5">
-                                            <b>Chief Office</b>
+                                            <b>Action</b>
     									</td>
     									<td class="objective-custom-td6">
-                                            <b>Last Encoded by</b>
+                                            <b>Effectivity Date</b>
     									</td>
-    									<td class="objective-custom-td7"></td>
+    									
     								</thead>
-    								<tr dir-paginate='chief_measure in chief_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
-    									<td><% chief_measure.ChiefMeasureName %></td>
-    									<td><% chief_measure.ChiefMeasureType %></td>
-                                        <td><% chief_measure.ChiefMeasureFormula %></td>
-                                        <td><% chief_measure.chief_objective.ChiefObjectiveName %></td>
-    									<td><% chief_measure.chief.ChiefAbbreviation %></td>
-    									<td><% chief_measure.user_chief.rank.RankCode %> <% chief_measure.user_chief.UserChiefFirstName %> <% chief_measure.user_chief.UserChiefLastName %></td>
+    								<tr dir-paginate='chief_target in chief_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+    									<td><% chief_target.chief_measure.chief_objective.ChiefObjectiveName %></td>
+    									<td><% chief_target.chief_measure.ChiefMeasureName %></td>
+                                        <td><% chief_target.chief_measure.ChiefMeasureFormula %></td>
+                                        <td><% chief_target.TargetPeriod %></td>
     									<td>
-    										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', chief_measure.ChiefMeasureID)"><span class="fa fa-edit fa-fw"></button>
+    										<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('view', 0)">View Target</button>
+    										<br>
+    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('add', 0)">Set Target</button>
+
+    									</td>
+    									<td><% chief_target.TargetDate %></td>
+    									<td>
+    										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', chief_target.ChiefTargetID)"><span class="fa fa-edit fa-fw"></button>
     										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->
     									</td>
     								</tr>
@@ -106,7 +110,7 @@
 	    </div>
 
 		<!-- Modal (Pop up when detail button clicked) -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -116,11 +120,11 @@
                     </div>
                    	
                     <div class="modal-body">
-                        <form name="frmEditMeasure" class="form-horizontal" novalidate="">
+                        <form name="frmEditTarget" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
                                     <td>
-                                        <label for="measure_name" class="control-label">Measure Name:</label>
+                                        <label for="measure_name" class="control-label">Set Target for Measure</label>
                                     </td>
                                     <td>
                                         <input type='text' id="id_measure_name" name="measure_name" value="<% chief_measure.ChiefMeasureName %>" ng-model="chief_measure.ChiefMeasureName" autocomplete="off" class="form-control" required ng-touched />
@@ -134,13 +138,13 @@
                                     <td>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" id="id_measure_type" name="measure_type" value="LD" ng-model="chief_measure.ChiefMeasureType" />
+                                                <input type="radio" id="id_measure_type" name="measure_type" value="LG" ng-model="chief_measure.ChiefMeasureType" />
                                                 LD
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="measure_type" value="LG" ng-model="chief_measure.ChiefMeasureType" />
+                                                <input type="radio" name="measure_type" value="LD" ng-model="chief_measure.ChiefMeasureType" />
                                                 LG
                                             </label>
                                         </div>
@@ -172,7 +176,7 @@
                                     </td>
                                     <td>
                                         <select id="id_chief_objective" name="chief_objective" data-ng-model="chief_measure.ChiefObjectiveID" class="form-control" required ng-touched>
-                                            <option value= "0">
+                                            <option value="0">
                                                     Select Chief Objective
                                             </option>
                                             @foreach($chief_objectives as $chief_objective)

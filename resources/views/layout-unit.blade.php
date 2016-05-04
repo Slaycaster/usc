@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Unit Dashboard - PNP Unit Scorecard</title>
+    <title>Unit Dashboard || Philippine National Police Unit Scorecard</title>
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
@@ -31,6 +31,9 @@
 
     <!-- Slaycaster Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
+
+    <!-- Yujin Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/unit.css') }}">
 
     <!-- Morris Charts CSS -->
     <link href="{{ asset('unit/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
@@ -51,8 +54,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('unit/dist/js/sb-admin-2.js') }}"></script>
 
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -62,12 +63,12 @@
 
 </head>
 
-<body>
+<body class="layout_unit-body">
 
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="layout_unit-custom_all-nav navbar navbar-default navbar-fixed-top" role="navigation">
+        <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -75,10 +76,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color:#fff;" href="{{ url('/') }}">Philippine National Police Unit Scorecard</a>
+                <a class="navbar-brand layout-custom-unit-pnpname" href="{{ url('/') }}">Philippine National Police Unit Scorecard</a>
+                <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">PNP Unit Scorecard</a>
             </div>
-            <div class="layout-custom-unit">
-               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}!</i>
+            <div class="layout_unit-custom_all-unit_user">
+               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $user->rank->RankCode }} 
+               {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}!</i>
             </div>
             <!-- /.navbar-header -->
 
@@ -86,7 +89,9 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                         <span class="glyphicon glyphicon-user"></span>&nbsp;Welcome {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}! &nbsp; <i class="fa fa-caret-down"></i>
+                         <span class="glyphicon glyphicon-user"></span>&nbsp; Welcome {{ $user->rank->RankCode }} 
+                         {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}! &nbsp; 
+                         <i class="fa fa-caret-down"></i>
 
                     </a>
                     <ul class="dropdown-menu">
@@ -125,6 +130,9 @@
                             <a href="{{ url('unit/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
+                            <a href="{{ url('unit/scorecard') }}"><i class="fa fa-table fa-fw"></i> {{ $user->unit->UnitAbbreviation }} Scorecard</a>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -133,20 +141,11 @@
                                 <li>
                                     <a href="{{ url('unit/measures') }}">Set Unit Measures</a>
                                 </li>
-                                <li>
-                                    <a href="#">Set Unit Initiatives</a>
-                                </li>
-                                <li>
-                                    <a href="#">Define Owners</a>
-                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ url('unit/setscorecard') }}"><i class="fa fa-table fa-fw"></i> Set Unit Scorecard</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('unit/scorecard') }}"><i class="fa fa-edit fa-fw"></i> Update Accomplishments</a>
+                            <a href="{{ url('unit/setscorecard') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>
@@ -212,7 +211,7 @@
         <div class="the-blur"></div>
 
         <br><br>
-        <div id="page-wrapper">
+        <div id="page-wrapper" class="unit-page-wrapper">
             @yield('content')
         </div>
         <!-- /#page-wrapper -->

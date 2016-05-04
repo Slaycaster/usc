@@ -15,8 +15,11 @@ class CreateUnitMeasuresTable extends Migration {
 		Schema::create('unit_measures', function(Blueprint $table)
 		{
 			$table->increments('UnitMeasureID');
-			$table->string('UnitMeasureName')->unique();
+			$table->string('UnitMeasureName');
 			$table->string('UnitMeasureType');
+			$table->string('UnitMeasureFormula');
+			$table->integer('UnitObjectiveID');
+			$table->integer('StaffMeasureID');
 			$table->integer('UnitID');
 			$table->integer('UserUnitID');
 			$table->timestamps();
