@@ -123,15 +123,24 @@
                                         <label for="perspective_id" class="control-label">Perspective:</label>
                                     </td>
                                     <td>
-                                        <select id="id_perspective_id" name="perspective_id" data-ng-model="chief_objective.PerspectiveID" class="form-control" required ng-touched>
-                                            @foreach($perspectives as $perspective)
-                                                    <option value="<?=$perspective->PerspectiveID?>">
-                                                        {{ $perspective->PerspectiveName }}
-                                                    </option>
-                                            @endforeach
+                                        <select id="id_perspective_id" name="perspective_id" data-ng-model="selectedUserProfile" class="form-control" data-ng-options="userprofile.PerspectiveName for userprofile in perspective" required ng-touched >
+                                           
+
+                                        
+                                               
+                                             
                                         </select>
 
                                         
+
+
+
+
+
+                                        
+            
+                                      
+
                                         <span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
                                     </td>
                                 </tr>

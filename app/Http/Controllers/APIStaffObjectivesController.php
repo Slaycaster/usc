@@ -31,6 +31,8 @@ class APIStaffObjectivesController extends Controller {
 			->get();
 	}
 
+	
+
 	public function showIndex()
 	{
 		if (Session::has('staff_user_id'))
@@ -54,6 +56,11 @@ class APIStaffObjectivesController extends Controller {
 			Session::flash('message', 'Please login first!');
 			return Redirect::to('/');
 		}
+	}
+
+	public function chief_objectives()
+	{
+		return ChiefObjective::all();
 	}
 
 	/**
