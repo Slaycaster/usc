@@ -56,6 +56,11 @@ class APIUnitObjectivesController extends Controller {
 		}
 	}
 
+	public function staff_objectives()
+	{
+		return StaffObjective::all();
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *

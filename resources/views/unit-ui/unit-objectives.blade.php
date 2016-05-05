@@ -124,33 +124,21 @@
                                         <label for="perspective_id" class="control-label">Perspective:</label>
                                     </td>
                                     <td>
-                                        <select id="id_perspective_id" name="perspective_id" data-ng-model="unit_objective.PerspectiveID" class="form-control" required ng-touched>
-                                            @foreach($perspectives as $perspective)
-                                                    <option value="<?=$perspective->PerspectiveID?>">
-                                                        {{ $perspective->PerspectiveName }}
-                                                    </option>
-                                            @endforeach
+                                         <select id="id_perspective_id" name="perspective_id" data-ng-model="selectedUserProfile" class="form-control" data-ng-options="userprofile.PerspectiveName for userprofile in perspective" required ng-touched >
+                                
                                         </select>
+
                                         <span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <label for="staffobjective_id" class="control-label">Contributory to Staff:</label>
+                                        <label for="staffobjective_id" class="control-label">Contributory to Staff Scorecard:</label>
                                     </td>
                                     <td>
-                                        <select id="id_staffobjective_id" name="staffobjective_id" data-ng-model="unit_objective.StaffObjectiveID" class="form-control" required ng-touched>
-                                            <option value="0">
-                                                    None
-                                            </option>
-                                            
-                                            @foreach($staffobjectives as $staffobjective)
-                                                    <option value="<?=$staffobjective->StaffObjectiveID?>">
-                                                        {{ $staffobjective->StaffObjectiveName }}
-                                                    </option>
-                                            @endforeach
-                                        </select>
+                                      
+                                        <select id="id_staffobjective_id" name="staffobjective_id" data-ng-model="selectedStaffObjective" class="form-control" data-ng-options="obj.StaffObjectiveName for obj in staffobjective" required ng-touched>
                                     </td>
                                 </tr>
 

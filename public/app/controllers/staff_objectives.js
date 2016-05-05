@@ -13,6 +13,35 @@ app.controller('APIStaffObjectiveController', function($scope, $http, $interval)
         success(function(data, status, headers, config) {
             $scope.staff_objectives = data;
                 $scope.loading = false;
+
+
+
+        $http.get(local + '/usc/public/api/perspectives').
+        success(function(data, status, headers, config)
+        {   
+            $scope.perspective = data;
+            $scope.selectedUserProfile = $scope.perspective[0];
+        });
+
+        $http.get(local + '/usc/public/api/staff/objectives/chiefobjectives').
+        success(function(data, status, headers, config)
+        {   
+           
+            $scope.chiefobjective = data;
+            //$scope.chiefobjective = [{ChiefObjectiveID : 0, ChiefObjectiveName: "None/No Contributory"}];
+            
+            
+            $scope.none = {ChiefObjectiveID : 0, ChiefObjectiveName: "None/No Contributory"};
+          
+            $scope.chiefobjective.unshift($scope.none);
+            //$scope.chiefobjective.push(data);
+            $scope.selectedChiefObjective = $scope.chiefobjective[0];
+
+
+        });
+
+
+
         });
     };
 
@@ -31,16 +60,16 @@ app.controller('APIStaffObjectiveController', function($scope, $http, $interval)
         if (modalstate === 'edit')
         {
             url += "/" + id; /*console.log(id);*/
-            console.log(document.getElementById('staff_id').value);
+           
             $http.put(url, {
                 StaffObjectiveName: $scope.staff_objective.StaffObjectiveName,
-                PerspectiveID: $scope.staff_objective.PerspectiveID,
-                ChiefObjectiveID: $scope.staff_objective.ChiefObjectiveID,
+                PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
+                ChiefObjectiveID: $scope.selectedChiefObjective.ChiefObjectiveID,
                 StaffID: document.getElementById('staff_id').value,
                 UserStaffID: document.getElementById('user_staff_id').value
 
             }).success(function(data, status, headers, config, response) {
-                console.log(response);
+         
                 $('#myModal').modal('hide');
                 $scope.staff_objective = '';
                 $scope.init();
@@ -51,13 +80,13 @@ app.controller('APIStaffObjectiveController', function($scope, $http, $interval)
         {
             $http.post(url, {
                 StaffObjectiveName: $scope.staff_objective.StaffObjectiveName,
-                PerspectiveID: $scope.staff_objective.PerspectiveID,
-                ChiefObjectiveID: $scope.staff_objective.ChiefObjectiveID,
+                PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
+                ChiefObjectiveID: $scope.selectedChiefObjective.ChiefObjectiveID,
                 StaffID: document.getElementById('staff_id').value,
                 UserStaffID: document.getElementById('user_staff_id').value
 
             }).success(function(data, status, headers, config, response) {
-                console.log(response);
+             
                 $('#myModal').modal('hide');
                 $scope.staff_objective = '';
                 $scope.init();
@@ -74,7 +103,6 @@ app.controller('APIStaffObjectiveController', function($scope, $http, $interval)
             case 'add':
                 $scope.form_title = "ADD STAFF'S OBJECTIVE";
                 document.getElementById('id_objective_name').value = "";
-                document.getElementById('id_perspective_id').value = "";
                 break;
             case 'edit':
                 $scope.form_title = "EDIT STAFF'S OBJECTIVE DETAIL";
@@ -83,12 +111,19 @@ app.controller('APIStaffObjectiveController', function($scope, $http, $interval)
                         .success(function(response) {
                             console.log(response);
                             $scope.staff_objective = response;
+                            $scope.selectedUserProfile = $scope.perspective[response.PerspectiveID-1];
+                            console.log(response.ChiefObjectiveID);
+
+                            
+                                $scope.selectedChiefObjective = $scope.chiefobjective[response.ChiefObjectiveID];
+                            
+                            
                         });
                 break;
             default:
                 break;
         }
-        console.log(id);
+       
         $('#myModal').modal('show');
     };
 

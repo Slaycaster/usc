@@ -56,6 +56,16 @@ Route::resource('api/unit_audit_trails','APIUnitAuditTrailsController');
 Route::resource('api/unit_dashboard','APIUnitAuditTrailsDashController');
 Route::resource('api/staff_objectives', 'APIStaffObjectivesController');
 Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
+
+
+Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
+
+Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
+Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
+
+
+
+
 Route::resource('api/chief_measures','APIChiefMeasuresController');
 Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');

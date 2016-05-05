@@ -5,8 +5,8 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
     $scope.chief_objectives = [];
     $scope.loading = true;
     $scope.info = false;
-
-
+    $scope.perspective = [];
+$scope.feed = {};
  
     $scope.init = function() {
         $scope.loading = false;
@@ -14,10 +14,27 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
         $http.get(local + '/usc/public/api/chief_objectives').
         success(function(data, status, headers, config) {
             $scope.chief_objectives = data;
+
+
                 $scope.loading = false;
 
-                
+
+                   
+        $http.get(local + '/usc/public/api/perspectives').
+        success(function(data, status, headers, config)
+        {   
+            $scope.perspective = data;
+            $scope.selectedUserProfile = $scope.perspective[0];
         });
+
+
+
+    
+
+
+        });
+
+
     };
 
     $scope.sort = function(keyname)
@@ -35,15 +52,13 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
         if (modalstate === 'edit')
         {
             url += "/" + id; /*console.log(id);*/
-            console.log(document.getElementById('chief_id').value);
             $http.put(url, {
                 ChiefObjectiveName: $scope.chief_objective.ChiefObjectiveName,
-                PerspectiveID: $scope.chief_objective.PerspectiveID,
+                PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
                 ChiefID: document.getElementById('chief_id').value,
                 UserChiefID: document.getElementById('user_chief_id').value
 
             }).success(function(data, status, headers, config, response) {
-                console.log(response);
                 $('#myModal').modal('hide');
                 $scope.chief_objective = '';
                 $scope.init();
@@ -54,16 +69,17 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
         {
             $http.post(url, {
                 ChiefObjectiveName: $scope.chief_objective.ChiefObjectiveName,
-                PerspectiveID: $scope.chief_objective.PerspectiveID,
+                PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
                 ChiefID: document.getElementById('chief_id').value,
                 UserChiefID: document.getElementById('user_chief_id').value
 
             }).success(function(data, status, headers, config, response) {
-                console.log(response);
                 $('#myModal').modal('hide');
                 $scope.chief_objective = '';
                 $scope.init();
                 $scope.loading = false;
+
+
             });
         }
     };
@@ -76,21 +92,21 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
             case 'add':
                 $scope.form_title = "ADD CHIEF'S OBJECTIVE";
                 document.getElementById('id_objective_name').value = "";
-                document.getElementById('id_perspective_id').value = "";
+               
                 break;
             case 'edit':
                 $scope.form_title = "EDIT CHIEF'S OBJECTIVE DETAIL";
                 $scope.id = id;
                 $http.get(local + '/usc/public/api/chief_objectives/' + id)
                         .success(function(response) {
-                            console.log(response);
                             $scope.chief_objective = response;
+                            $scope.selectedUserProfile = $scope.perspective[response.PerspectiveID-1];
+                            console.log(response.PerspectiveID);
                         });
                 break;
             default:
                 break;
         }
-        console.log(id);
         $('#myModal').modal('show');
     };
 
