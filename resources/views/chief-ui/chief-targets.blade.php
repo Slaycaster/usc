@@ -81,9 +81,9 @@
                                         <td><% chief_target.chief_measure.ChiefMeasureFormula %></td>
                                         <td><% chief_target.TargetPeriod %></td>
     									<td>
-    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', chief_target.ChiefTargetID )">View Target</button>
+    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', chief_target.ChiefTargetID, chief_target.chief_measure.ChiefMeasureName )">View Target</button>
     										<br>
-    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', chief_target.ChiefTargetID, chief_target.chief_measure.ChiefMeasureName, chief_target.ChiefID, chief_target.UserChiefID)">Set Target</button>
+    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', chief_target.ChiefTargetID, chief_target.chief_measure.ChiefMeasureName)">Set Target</button>
 
     									</td>
     									<td><% chief_target.TargetDate %></td>
@@ -128,7 +128,7 @@
                                         <label for="target_name" class="control-label">Set Target Period:</label>
                                     </td>
                                     <td>
-                                        <select id="id_target_period" name="measure_formula" data-ng-model="chief_target.TargetPeriod" class="form-control" required ng-touched> 
+                                        <select id="id_target_period" name="measure_formula" data-ng-model="chief_target.TargetPeriod" class="form-control"  required ng-touched> 
                                                    
                                                     <option value="Monthly">
                                                         Monthly
@@ -316,7 +316,7 @@
                                                     <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Badge text is required.</span><br>
                                                  <input type='text' id="id_password" name="monthlyform" value="" ng-model="" placeholder="Password" autocomplete="off" class="form-control" required ng-touched />
                                                     <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Password is required.</span> -->
-                                     
+                                           
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmEditTarget.$invalid">Submit</button>
@@ -324,7 +324,7 @@
                                     </div>
 
                                 
-                                 <i>Targets have been already set. You just have to do this once.</i>
+                                 
                         </form>
 
                     </div>
@@ -332,7 +332,88 @@
             </div>
         </div>
 
-        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         
+
+        <div class="modal fade" id="monthModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <i class="fa fa-circle-o-notch fa-4x"></i>
+                        <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                        <label for="measure_name" class="control-label">The Monthly Targets for the Measure: <% chief_measurename %></label>
+                            <table class="table table-responsive">
+                                
+                                <tr ir-paginate='chief_target in chief_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                                    <tr>
+                                    <td>January: <% chief_target.JanuaryTarget %></td>
+                                    <td>February: <% chief_target.FebruaryTarget %></td>
+                                    <td>March: <% chief_target.MarchTarget %></td>
+                                    <td>April: <% chief_target.AprilTarget %></td>
+                                    </tr>
+                                    <tr>
+                                    <td>May: <% chief_target.MayTarget %></td>
+                                    <td>June: <% chief_target.JuneTarget %></td>
+                                    <td>July: <% chief_target.JulyTarget %></td>
+                                    <td>August: <% chief_target.AugustTarget %></td>
+                                    </tr>
+                                    <tr>
+                                    <td>September: <% chief_target.SeptemberTarget %></td>
+                                    <td>October: <% chief_target.OctoberTarget %></td>
+                                    <td>November: <% chief_target.NovemberTarget %></td>
+                                    <td>December: <% chief_target.DecemberTarget %></td>
+                                    </tr>
+                                    
+                                </tr>
+
+                                 
+                            </table>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="modal fade" id="quarterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <i class="fa fa-circle-o-notch fa-4x"></i>
+                        <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                        <label for="measure_name" class="control-label">The Quarterly Targets for the Measure: <% chief_measurename %> </label><br><br>
+                            <table class="table table-responsive">
+                                
+                                <tr ir-paginate='chief_target in chief_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                                    
+                                    <tr><b>Quarter 1:</b> &nbsp;&nbsp;&nbsp;<% firstquarter %></tr><br><br>
+                                    <tr><b>Quarter 2:</b> &nbsp;&nbsp;&nbsp;<% secondquarter %></tr><br><br>
+                                    <tr><b>Quarter 3:</b> &nbsp;&nbsp;&nbsp;<% thirdquarter %></tr><br><br>
+                                    <tr><b>Quarter 4:</b> &nbsp;&nbsp;&nbsp;<% fourthquarter %></tr><br>
+                                    
+                                    
+                                </tr>
+
+                            </table>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="modal fade" id="notsetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -361,7 +442,10 @@
                 </div>
             </div>
         </div>
-	</div>
+
+        
+
+    </div>
 
 <script type="text/javascript">
 $(document).ready(function(){

@@ -121,13 +121,52 @@ class APIChiefTargetsController extends Controller {
 	{
 		$chief_target = ChiefTarget::find($id);
 		$chief_target->update(Request::all());
+
 		$chief_target->save();
  	
 
 		return $chief_target;
 	}
 
+	public function updatequarter($id)
+	{
 
+		$chief_target = ChiefTarget::find($id);
+		$targetperiod = Request::input('TargetPeriod');
+		$targetdate = Request::input('TargetDate');
+
+		$quarter1 = Request::input('Quarter1');
+		$quarter1 = $quarter1 / 3;
+		$chief_target->JanuaryTarget = $quarter1;
+		$chief_target->FebruaryTarget = $quarter1;
+		$chief_target->MarchTarget = $quarter1;
+		
+		$quarter2 = Request::input('Quarter2');
+		$quarter2 = $quarter2 / 3;
+		$chief_target->AprilTarget = $quarter2;
+		$chief_target->MayTarget = $quarter2;
+		$chief_target->JuneTarget = $quarter2;
+
+		$quarter3 = Request::input('Quarter3');
+		$quarter3 = $quarter3 / 3;
+		$chief_target->JulyTarget = $quarter3;
+		$chief_target->AugustTarget = $quarter3;
+		$chief_target->SeptemberTarget = $quarter3;
+
+		$quarter4 = Request::input('Quarter4');
+		$quarter4 = $quarter4 / 3;
+		$chief_target->OctoberTarget = $quarter4;
+		$chief_target->NovemberTarget = $quarter4;
+		$chief_target->DecemberTarget = $quarter4;
+
+
+		$chief_target->TargetPeriod = $targetperiod;
+		$chief_target->TargetDate = $targetdate;
+		$chief_target->save();
+ 	
+
+		return $chief_target;
+	}
 
 	/**
 	 * Remove the specified resource from storage.

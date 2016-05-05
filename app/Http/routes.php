@@ -70,6 +70,7 @@ Route::resource('api/chief_measures','APIChiefMeasuresController');
 Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');
 Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
+Route::post('api/chief_targets/updatequarter/{id}','APIChiefTargetsController@updatequarter');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
