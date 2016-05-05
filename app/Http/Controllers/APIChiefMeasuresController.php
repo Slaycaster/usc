@@ -81,6 +81,13 @@ class APIChiefMeasuresController extends Controller {
 
 		$chief_measure = new ChiefMeasure(Request::all());
 		$chief_measure->save();
+	
+		$chief_measureid = DB::table('chief_measures')->max('ChiefMeasureID');
+
+		DB::insert('insert into chief_targets (ChiefMeasureID, ChiefID, UserChiefID) values (?,?,?)', array($chief_measureid, $chief, $chief_id,));
+
+
+
 		return $chief_measure;
 
 	}

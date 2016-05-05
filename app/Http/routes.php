@@ -37,6 +37,7 @@ Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
 Route::get('chief/measures','APIChiefMeasuresController@showIndex');
 Route::get('chief/targets','APIChiefTargetsController@showIndex');
+Route::get('chief/targets/{id}','APIChiefTargetsController@edit');
 
 
 /*STAFF USER ROUTES*/
@@ -58,6 +59,7 @@ Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
 Route::resource('api/chief_measures','APIChiefMeasuresController');
 Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');
+Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

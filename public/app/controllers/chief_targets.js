@@ -14,6 +14,8 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 			$scope.chief_targets = data;
             console.log(data);
 				$scope.loading = false;
+
+            $scope.date = new Date();
 		});	
 	};
 
@@ -29,40 +31,13 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
         var url = local + '/usc/public/api/chief_targets';
 
         //append Unit Objective ID to the URL if the form is in edit mode
-        if (modalstate === 'edit')
-        {
-            url += "/" + id;
-            console.log(document.getElementById('chief_id').value);
-            $http.put(url, {
-                JanuaryTarget: $scope.chief_target.JanuaryTarget,
-                FebruaryTarget: $scope.chief_target.FebruaryTarget,
-                MarchTarget: $scope.chief_target.MarchTarget,
-                AprilTarget: $scope.chief_target.AprilTarget,
-                MayTarget: $scope.chief_target.MayTarget,
-                JuneTarget: $scope.chief_target.JuneTarget,
-                JulyTarget: $scope.chief_target.JulyTarget,
-                AugustTarget: $scope.chief_target.AugustTarget,
-                SeptemberTarget: $scope.chief_target.SeptemberTarget,
-                OctoberTarget: $scope.chief_target.OctoberTarget,
-                NovemberTarget: $scope.chief_target.NovemberTarget,
-                DecemberTarget: $scope.chief_target.DecemberTarget,
-                TargetData: $scope.chief_target.TargetData,
-                TargetPeriod: $scope.chief_target.TargetPeriod,
-                ChiefMeasureID: document.getElementById('id_chief_measure').value,
-                ChiefID: document.getElementById('chief_id').value,
-                UserChiefID: document.getElementById('user_chief_id').value
 
-            }).success(function(data, status, headers, config, response) {
-                console.log(response);
-                $('#myModal').modal('hide');
-                $scope.chief_targets = '';
-                $scope.init();
-                $scope.loading = false;
-            });
-        }
-        else if (modalstate === 'add')
+        if (modalstate === 'show')
         {
+            url += "/update/" + id;
+
             $http.post(url, {
+                
                 JanuaryTarget: $scope.chief_target.JanuaryTarget,
                 FebruaryTarget: $scope.chief_target.FebruaryTarget,
                 MarchTarget: $scope.chief_target.MarchTarget,
@@ -75,30 +50,38 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 OctoberTarget: $scope.chief_target.OctoberTarget,
                 NovemberTarget: $scope.chief_target.NovemberTarget,
                 DecemberTarget: $scope.chief_target.DecemberTarget,
-                TargetData: $scope.chief_target.TargetData,
-                TargetPeriod: $scope.chief_target.TargetPeriod,
-                ChiefMeasureID: document.getElementById('id_chief_measure').value,
-                ChiefID: document.getElementById('chief_id').value,
-                UserChiefID: document.getElementById('user_chief_id').value
+                TargetDate:document.getElementById('target_date').value,
+                TargetPeriod: document.getElementById('id_target_period').value
+             
+
+    
 
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
-                $('#myModal').modal('hide');
+                $('#targetModal').modal('hide');
                 $scope.chief_targets = '';
                 $scope.init();
                 $scope.loading = false;
             });
         }
+        
         // 
     };
 
-    $scope.toggle = function(modalstate, id) 
+    $scope.toggle = function(modalstate, id, name, chiefid, userchiefid) 
     {
         $scope.modalstate = modalstate;
 
         switch (modalstate) {
-            case 'add':
-                $scope.form_title = "ADD TARGETS";
+            case 'show':
+                $scope.this_title = "ADD TARGETS";
+                
+                $scope.id = id;
+                $http.get(local + '/usc/public/api/chief_targets/' + id)
+                        .success(function(response) {
+                            console.log(response);
+                            $scope.chief_target = response;
+                        });       
                 document.getElementById('id_january_target').value = "";
                 document.getElementById('id_february_target').value = "";
                 document.getElementById('id_march_target').value = "";
@@ -111,13 +94,11 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 document.getElementById('id_october_target').value = "";
                 document.getElementById('id_november_target').value = "";
                 document.getElementById('id_december_target').value = "";
-                
                 break;
-            default:
+                default:
                 break;
             }
-            console.log(id);
-            $('#addModal').modal('show');
+            
 
         switch (modalstate) {
             case 'view':
@@ -132,8 +113,20 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
             default:
                 break;
         }
-        console.log(id);
+        
+
+        if (modalstate === 'show')
+        {
+            console.log(id);
+            $('#targetModal').modal('show');
+        }
+        else if (modalstate === 'view')
+        {
+            console.log(id);
         $('#viewModal').modal('show');
+        }
+
+       
     };
 
     $scope.init();

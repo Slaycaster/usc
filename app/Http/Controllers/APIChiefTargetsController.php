@@ -80,14 +80,11 @@ class APIChiefTargetsController extends Controller {
 	 */
 	public function store()
 	{
-		$chief_id = Session::get('chief_user_id', 'default');
-		$chief = Request::input('ChiefID');
-		$action = 'Added target: "' . Request::input('TargetDate') . '"';
-
-		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $chief_id, $chief));
-
+		
 		$chief_target = new ChiefTarget(Request::all());
 		$chief_target->save();
+
+		
 		return $chief_target;
 	}
 
@@ -120,22 +117,17 @@ class APIChiefTargetsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function updatetarget($id)
 	{
 		$chief_target = ChiefTarget::find($id);
 		$chief_target->update(Request::all());
 		$chief_target->save();
- 
-		$chief_id = Session::get('chief_user_id', 'default');
-		$chief = Request::input('ChiefID');
-	    $action = 'Updated a target: "' . Request::input('TargetDate') . '"';
-
-		DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $chief_id, $chief));
-
-
+ 	
 
 		return $chief_target;
 	}
+
+
 
 	/**
 	 * Remove the specified resource from storage.
@@ -147,5 +139,6 @@ class APIChiefTargetsController extends Controller {
 	{
 		//
 	}
+
 
 }
