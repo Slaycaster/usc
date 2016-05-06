@@ -27,7 +27,7 @@ Route::get('staff/dashboard', 'StaffLoginController@dashboard');
 /*UNIT USER ROUTES*/
 Route::get('unit/objectives', 'APIUnitObjectivesController@showIndex');
 Route::get('unit/setscorecard', 'UnitSetScorecardController@index');
-Route::get('unit/scorecard', 'UnitScorecardController@showIndex');
+Route::get('unit/scorecard', 'UnitScorecardController@index');
 Route::get('unit/measures','APIUnitMeasuresController@showIndex');
 Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 

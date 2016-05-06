@@ -145,12 +145,7 @@
                         </li>
                         <li>
 
-                            <a href="{{ url('chief/targets') }}"><i class="fa fa-table fa-fw"></i> Set Scorecard Target</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('chief/scorecard') }}"><i class="fa fa-edit fa-fw"></i> Update Accomplishments</a>
-
-                            <a href="{{ url('chief/setscorecard') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
+                            <a href="{{ url('chief/targets') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
 
                         </li>
                         <li>
