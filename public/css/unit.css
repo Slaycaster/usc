@@ -92,3 +92,11 @@ a.active{
     background-color: #fff;
 }
 
+thead{
+    background-color:rgba(8, 42, 72, 1);
+    color: #fff;
+}
+tr:hover{
+    background-color:rgba(8, 42, 72, 0.1);
+    
+}
