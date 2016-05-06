@@ -424,18 +424,7 @@
                     
                     <div class="modal-body">
                         <form name="frmEditTarget" class="form-horizontal" novalidate="">
-                                        <label for="measure_name" class="control-label">View Target</label>
-                            <table class="table table-responsive">
-                                
-                                <tr>
-                                    <td>
-                                        <label for="staff_objective" class="control-label">Not Set!</label>
-                                    </td>
-                                    
-                                </tr>
-
-                                 <i>Targets not set yet.</i>
-                            </table>
+                                <i>Oops! It seems that the <b>targets for this measure are not set</b> yet. Go to Set Targets to do so.</i>
                         </form>
 
                     </div>

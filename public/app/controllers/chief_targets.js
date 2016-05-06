@@ -38,11 +38,8 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
             
             if(document.getElementById('id_target_period').value === "Monthly")
             {
-                
                     url += "/update/" + id;
-
-                    $http.post(url, {
-                        
+                    $http.post(url, {    
                         JanuaryTarget: $scope.chief_target.JanuaryTarget,
                         FebruaryTarget: $scope.chief_target.FebruaryTarget,
                         MarchTarget: $scope.chief_target.MarchTarget,
@@ -72,7 +69,6 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
             }
             else if(document.getElementById('id_target_period').value === "Quarterly")
             {
-
                     url += "/updatequarter/" + id;
 
                     $http.post(url, {
@@ -83,10 +79,6 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                         Quarter4:document.getElementById('id_fourthquarter_target').value,
                         TargetDate:document.getElementById('target_date').value,
                         TargetPeriod: document.getElementById('id_target_period').value
-                        
-
-
-                        
 
                     }).success(function(data, status, headers, config, response) {
                         console.log(response);
@@ -139,18 +131,19 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
             case 'view':
                 $scope.form_title = "VIEW TARGET";
                 $scope.id = id;
+
+                $scope.chief_target = []; //Defined here $scope.chief_target first
                 $http.get(local + '/usc/public/api/chief_targets/' + id)
                         .success(function(response) {
-                            console.log(response);
                             $scope.chief_target = response;
                             $scope.chief_measurename = name;
                         });
 
-
-                        $scope.firstquarter = $scope.chief_target.JanuaryTarget;
-                        $scope.secondquarter = $scope.chief_target.AprilTarget;
-                        $scope.thirdquarter = $scope.chief_target.JulyTarget;
-                        $scope.fourthquarter = $scope.chief_target.OctoberTarget;
+                        //Quarter = Month Target * 3 || Di niyo pa rin gets no?
+                        $scope.firstquarter = $scope.chief_target.JanuaryTarget + $scope.chief_target.FebruaryTarget + $scope.chief_target.MarchTarget;
+                        $scope.secondquarter = $scope.chief_target.AprilTarget + $scope.chief_target.MayTarget + $scope.chief_target.JuneTarget;
+                        $scope.thirdquarter = $scope.chief_target.JulyTarget + $scope.chief_target.AugustTarget + $scope.chief_target.SeptemberTarget;
+                        $scope.fourthquarter = $scope.chief_target.OctoberTarget + $scope.chief_target.NovemberTarget + $scope.chief_target.DecemberTarget;
                 break;
             default:
                 break;
@@ -159,12 +152,10 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 
         if (modalstate === 'show')
         {
-            console.log(id);
             $('#targetModal').modal('show');
         }
         else if (modalstate === 'view')
         {
-            console.log(id);
             if ($scope.chief_target.TargetPeriod === 'Monthly')
             {
                 $('#monthModal').modal('show');
