@@ -54,7 +54,7 @@
                     <h3><b>SCORECARD COMPONENTS</b></h3>
                 </div>
                 <div class="panel-body">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
@@ -67,16 +67,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="{{ url('unit/objectives') }}">
                                 <div class="panel-footer">
-                                    <span class="pull-left">View All</span>
+                                    <span class="pull-left">Go to Objectives</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
@@ -84,20 +84,21 @@
                                         <i class="fa fa-bar-chart fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge">{{ $unit_measures_count }}</div>
                                         <div>Measures</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="{{ url('unit/measures') }}">
                                 <div class="panel-footer">
-                                    <span class="pull-left">View All</span>
+                                    <span class="pull-left">Go to Measures</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
                         </div>
                     </div>
+                    <!--
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-yellow">
                             <div class="panel-heading">
@@ -142,6 +143,7 @@
                             </a>
                         </div>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
@@ -282,17 +284,6 @@
                     </div>
                     <!-- /input-group -->
                 </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <i class="fa fa-at fa-4x pull-right"></i>
-                    <h4><b>ABOUT: {{ $user->unit->UnitName }}</b></h4>
-                </div>
-                <!-- /.panel-heading -->
-               
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
