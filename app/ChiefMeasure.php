@@ -49,8 +49,14 @@ class ChiefMeasure extends Model {
 		return $this->hasMany('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
+	public function chief_accomplishments()
+	{
+		return $this->hasMany('App\ChiefAccomplishment', 'ChiefAccomplishmentID', 'ChiefAccomplishmentID');
+	}
 
-
-
+	public function chief_owners()
+	{
+		return $this->hasMany('App\ChiefOwner', 'ChiefOwnerID', 'ChiefOwnerID');
+	}
 
 }

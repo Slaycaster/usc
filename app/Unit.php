@@ -55,5 +55,10 @@ class Unit extends Model {
 	{
 		return $this->hasMany('App\UnitTarget', 'UnitTargetID', 'UnitTargetID');
 	}
+	
+	public function unit_accomplishments()
+	{
+		return $this->hasMany('App\UnitAccomplishment', 'UnitAccomplishmentID', 'UnitAccomplishmentID');
+	}
 
 }

@@ -46,5 +46,10 @@ class UserStaff extends Model {
 	{
 		return $this->hasMany('App\StaffTarget', 'StaffTargetID', 'StaffTargetID');
 	}
+
+	public function staff_accomplishments()
+	{
+		return $this->hasMany('App\StaffAccomplishment', 'StaffAccomplishmentID', 'StaffAccomplishmentID');
+	}
 	
 }
