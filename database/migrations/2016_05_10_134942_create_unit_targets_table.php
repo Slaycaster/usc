@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChiefTargetsTable extends Migration {
+class CreateUnitTargetsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class CreateChiefTargetsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('chief_targets', function(Blueprint $table)
+		Schema::create('unit_targets', function(Blueprint $table)
 		{
-			$table->increments('ChiefTargetID');
+			$table->increments('UnitTargetID');
 			$table->float('JanuaryTarget');
 			$table->float('FebruaryTarget');
 			$table->float('MarchTarget');
@@ -29,9 +29,9 @@ class CreateChiefTargetsTable extends Migration {
 			$table->float('DecemberTarget');
 			$table->date('TargetDate');
 			$table->string('TargetPeriod');
-			$table->integer('ChiefMeasureID');
-			$table->integer('ChiefID');
-			$table->integer('UserChiefID');
+			$table->integer('UnitMeasureID');
+			$table->integer('UnitID');
+			$table->integer('UserUnitID');
 			$table->timestamps();
 		});
 	}
@@ -43,7 +43,7 @@ class CreateChiefTargetsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('chief_targets');
+		Schema::drop('unit_targets');
 	}
 
 }

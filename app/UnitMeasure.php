@@ -45,4 +45,9 @@ class UnitMeasure extends Model {
 		return $this->belongsTo('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
+	public function unit_targets()
+	{
+		return $this->hasMany('App\UnitTarget', 'UnitTargetID', 'UnitTargetID');
+	}
+
 }

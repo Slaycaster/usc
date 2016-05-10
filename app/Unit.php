@@ -51,4 +51,9 @@ class Unit extends Model {
 		return $this->hasMany('App\AuditTrails', 'AuditTrailID', 'AuditTrailID');
 	}
 
+	public function unit_targets()
+	{
+		return $this->hasMany('App\UnitTarget', 'UnitTargetID', 'UnitTargetID');
+	}
+
 }

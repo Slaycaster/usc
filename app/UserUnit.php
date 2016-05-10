@@ -58,4 +58,9 @@ class UserUnit extends Model {
 		return $this->hasMany('App\AuditTrail', 'UserUnitID', 'UserUnitID');
 	}
 
+	public function unit_targets()
+	{
+		return $this->hasMany('App\UnitTarget', 'UnitTargetID', 'UnitTargetID');
+	}
+
 }

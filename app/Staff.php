@@ -45,4 +45,9 @@ class Staff extends Model {
 	{
 		return $this->hasMany('App\StaffObjective','StaffObjectiveID','StaffObjectiveID');
 	}
+
+	public function staff_targets()
+	{
+		return $this->hasMany('App\StaffTarget', 'StaffTargetID', 'StaffTargetID');
+	}
 }
