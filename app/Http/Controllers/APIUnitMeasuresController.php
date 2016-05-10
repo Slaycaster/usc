@@ -1,10 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+//Models
 use App\UnitObjective;
 use App\UnitMeasure;
 use App\StaffMeasure;
 use App\UserUnit;
 use App\Unit;
+use App\UnitTarget;
+
+//Laravel Modules
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 
@@ -83,6 +87,18 @@ class APIUnitMeasuresController extends Controller {
 
 		$unit_measure = new UnitMeasure(Request::all());
 		$unit_measure->save();
+
+		//Get the max id after saving.
+		$unit_measureid = DB::table('unit_measures')->max('UnitMeasureID');
+
+		//Use Eloquent instead! == Inserting into Unit Targets == You forgot target period
+		$unit_target = new UnitTarget;
+		$unit_target->TargetPeriod = "Not Set";
+		$unit_target->UnitMeasureID = $unit_measureid;
+		$unit_target->UnitID = $unit;
+		$unit_target->UserUnitID = $id;
+		$unit_target->save();
+
 		return $unit_measure;
 
 	}

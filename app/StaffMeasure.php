@@ -49,4 +49,9 @@ class StaffMeasure extends Model {
 		return $this->hasMany('App\UnitMeasure','UnitMeasureID','UnitMeasureID');
 	}
 
+	public function staff_targets()
+	{
+		return $this->hasMany('App\StaffTarget', 'StaffTargetID', 'StaffTargetID');
+	}
+
 }

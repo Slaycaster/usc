@@ -144,7 +144,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ url('staff/setscorecard') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
+                            <a href="{{ url('staff/targets') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>

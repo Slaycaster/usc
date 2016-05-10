@@ -45,7 +45,7 @@ class UnitObjective extends Model {
 		return $this->belongsTo('App\StaffObjective', 'StaffObjectiveID', 'StaffObjectiveID');
 	}
 
-	public function unit_measure()
+	public function unit_measures()
 	{
 		return $this->hasMany('App\UnitMeasure','UnitMeasureID','UnitMeasureID');
 	}

@@ -1,10 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+//Laravel Models
 use App\StaffMeasure;
 use App\StaffObjective;
 use App\ChiefMeasure;
+use App\StaffTarget;
 use App\Staff;
 use App\UserStaff;
+
+//Laravel Modules
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 
@@ -82,6 +86,18 @@ class APIStaffMeasuresController extends Controller {
 
 		$staff_measure = new StaffMeasure(Request::all());
 		$staff_measure->save();
+
+		//Get the max id after saving.
+		$staff_measureid = DB::table('staff_measures')->max('StaffMeasureID');
+
+		//Use Eloquent instead! == Inserting into Staff Targets == You forgot target period
+		$staff_target = new StaffTarget;
+		$staff_target->TargetPeriod = "Not Set";
+		$staff_target->StaffMeasureID = $staff_measureid;
+		$staff_target->StaffID = $staff;
+		$staff_target->UserStaffID = $staff_id;
+		$staff_target->save();
+
 		return $staff_measure;
 
 	}
