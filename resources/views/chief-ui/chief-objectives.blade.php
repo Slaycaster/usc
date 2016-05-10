@@ -18,17 +18,17 @@
 	<div ng-app="unitScorecardApp" ng-controller="APIChiefObjectiveController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading objectives-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief_user->chief->ChiefAbbreviation }} Objectives</b></h2><i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Chief's Objective</button>
 								</div>
-								<div class="col-lg-8">
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">
@@ -50,21 +50,15 @@
     							<table class="table table-bordered">
     								<thead>
     									
-                                        <td class="objective-custom-td1" ng-click="sort('chief_objective.ChiefObjectiveName')"><b>Chief Objective Name</b>
+                                        <td class="objective-custom-td1" ng-click="sort('chief_objective.ChiefObjectiveName')">Chief Objective Name
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='chief_objective.ChiefObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
 
-    									
-
-                                        <td class="objective-custom-td2" ng-click="sort('chief_objective.perspective.PerspectiveName')"><b>Perspective</b>
+                                        <td class="objective-custom-td2" ng-click="sort('chief_objective.perspective.PerspectiveName')">Perspective
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='chief_objective.perspective.PerspectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
                                         
-                        
-
-
-    									
-    									<td class="objective-custom-td3" ng-click="sort('chief_objective.user_chief.rank.RankCode')"><b>Last Encoded by</b>
+    									<td class="objective-custom-td3" ng-click="sort('chief_objective.user_chief.rank.RankCode')">Last Encoded by
     										<span class="glyphicon sort-icon" ng-show="sortKey=='chief_objective.user_chief.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
     									<td class="objective-custom-td4"></td>

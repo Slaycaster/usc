@@ -186,6 +186,25 @@ td{
 }
 
 
+.chief-custom-td1{
+    width:30% !important;
+}
+.chief-custom-td2{
+    width:10% !important;
+}
+.chief-custom-td3{
+    width:10% !important;
+}
+.chief-custom-td4{
+    width:25% !important;
+}
+.chief-custom-td5{
+    width:8% !important;
+}
+.chief-custom-td6{
+    width:17% !important;
+}
+
 .custom-audit-activity,
 .objective-custom-td1,
 .objective-custom-td2,
