@@ -164,18 +164,10 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                         $scope.init();
                     }
                 });
-
-                        .success(function(response) {
-                            $scope.chief_target = response;
-                            $scope.chief_measurename = name;
-
-                            
-                        });
-
                 break;
-            default:
+                default:
                 break;
-       
+       }
     };
 
     $scope.init();
