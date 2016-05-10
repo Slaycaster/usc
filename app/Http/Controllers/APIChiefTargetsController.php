@@ -20,20 +20,13 @@ class APIChiefTargetsController extends Controller {
 		$chief_id = Session::get('chief_user_id', 'default');
 
 		$chief = UserChief::where('UserChiefID', '=', $chief_id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the chief
-        /*
-		return ChiefTarget::with('chief_objective')
-			->with('chief_measures')
-			->with('chief')
-			->with('user_chief')
-			->with('user_chief.rank')
-			->where('ChiefID', '=', $chief)
-			->get();
-		*/
+		$currentYear = date("Y");		
 		return ChiefTarget::with('chief_measure')
 			->with('chief_measure.chief_objective')
 			->with('user_chief')
 			->with('user_chief.rank')
 			->where('ChiefID', '=', 1)
+			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->get();
 		
 	}
