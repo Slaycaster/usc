@@ -114,19 +114,19 @@
                         <form name="frmEditObjective" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="objective_name" class="control-label">Objective Name:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <input type='text' id="id_objective_name" name="objective_name" value="<% staff_objective.StaffObjectiveName %>" ng-model="staff_objective.StaffObjectiveName" autocomplete="off" class="form-control" required ng-touched>
                                         <span class="help-inline" ng-show="userForm.objective_name.$invalid && !userForm.objective_name.$pristine">Objective Name is required.</span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="perspective_id" class="control-label">Perspective:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         
 
                                         <select id="id_perspective_id" name="perspective_id" data-ng-model="selectedUserProfile" class="form-control" data-ng-options="userprofile.PerspectiveName for userprofile in perspective" required ng-touched >
@@ -138,10 +138,10 @@
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="staffobjective_id" class="control">Contributory to Chief Scorecard:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                        
 
                                         <select id="id_chiefobjective_id" name="staffobjective_id" data-ng-model="selectedChiefObjective" class="form-control" data-ng-options="obj.ChiefObjectiveName for obj in chiefobjective" required ng-touched>
@@ -152,19 +152,19 @@
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="inputEmail3" class="control-label">Staff:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $staff_user->staff->StaffName }}</p>
                                         <input type="hidden" name="StaffID" value="<?=$staff_user->staff->StaffID?>" id="staff_id">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="inputEmail3" class="control-label">Account User:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }} </p>
                                         <input type="hidden" name="UserStaffID" value="<?=$staff_user->UserStaffID?>" id="user_staff_id">
                                     </td>

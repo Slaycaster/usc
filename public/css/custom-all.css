@@ -157,7 +157,6 @@ a.navbar-brand{
 
 
 
-
 /* scroll bar */
 
 ::-webkit-scrollbar {
@@ -261,6 +260,10 @@ td{
 .staff-custom-td8{
     text-align: center;
     vertical-align: middle !important;
+}
+
+.mod{
+    text-align: left !important;
 }
 /*
 

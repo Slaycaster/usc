@@ -122,19 +122,19 @@
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="measure_name" class="control">Measure Name:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <input type='text' id="id_measure_name" name="measure_name" value="<% staff_measure.StaffMeasureName %>" ng-model="staff_measure.StaffMeasureName" autocomplete="off" class="form-control" required ng-touched />
                                     <span class="help-inline" ng-show="userForm.measure_name.$invalid && !userForm.measure_name.$pristine">Measure Name is required.</span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="measure_name" class="control">Measure Type:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" id="id_measure_type" name="measure_type" value="LD" ng-model="staff_measure.StaffMeasureType" />
@@ -151,10 +151,10 @@
                                 </tr>
 
                                  <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="measure_formula" class="control">Measure Formula:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_measure_formula" name="measure_formula" data-ng-model="staff_measure.StaffMeasureFormula" class="form-control" required ng-touched>
                                                      <option value="">
                                                         Select Formula
@@ -170,10 +170,10 @@
                                 </tr>
 
                                  <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="staff_objective" class="control">Staff Measure Objective:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_staff_objective" name="staff_objective" data-ng-model="staff_measure.StaffObjectiveID" class="form-control" required ng-touched>
                                             <option value= "0">
                                                     Select Staff Objective
@@ -189,10 +189,10 @@
 
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="chief_measure" class="control">Chief Measure Name:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_chief_measure" name="chief_measure" data-ng-model="staff_measure.ChiefMeasureID" class="form-control" required ng-touched>
                                             <option value= "0" >
                                                     Select Chief Measure
@@ -208,19 +208,19 @@
 
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="Chief">Staff Office:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $staff_user->staff->StaffName }}</p>
                                         <input type="hidden" name="StaffID" value="<?=$staff_user->staff->StaffID?>" id="staff_id">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="LastEncodedBy">Account User:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }} </p>
                                         <input type="hidden" name="UserStaffID" value="<?=$staff_user->UserStaffID?>" id="user_staff_id">
                                     </td>
