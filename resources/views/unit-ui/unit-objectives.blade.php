@@ -2,11 +2,9 @@
 
 @section('content')
 
+    
     <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
-
-    <!-- Angular Utils Pagination -->
-    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
@@ -14,21 +12,27 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/unit_objectives.js') }}"></script>
 
+    <!-- Angular Utils Pagination -->
+    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+
+    
+
     <br>
 	<div ng-app="unitScorecardApp" ng-controller="APIUnitObjectiveController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading objectives-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Objectives</b></h2><i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Unit's Objective</button>
 								</div>
-								<div class="col-lg-8">
+
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">
@@ -50,21 +54,21 @@
     							<table class="table table-bordered">
     								<thead>
     									<td class="objective-custom-td1">  
-                                            <b>Unit Objective Name</b>
+                                            Unit Objective Name
     									</td>
     									<td class="objective-custom-td2">
-                                            <b>Perspective</b>
+                                            Perspective
     									</td>
                                         
-                                        <td class="objective-custom-td3" ng-click="sort('unit_objective.staffobjective.StaffObjectiveName')"><b>Contributory to</b>
+                                        <td class="objective-custom-td3" ng-click="sort('unit_objective.staffobjective.StaffObjectiveName')">Contributory to
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.staffobjective.StaffObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
 
 
-    									<td class="objective-custom-td4" ng-click="sort('unit_objective.unit.UnitAbbreviation')"><b>Unit</b>
+    									<td class="objective-custom-td4" ng-click="sort('unit_objective.unit.UnitAbbreviation')">Unit
     										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
-    									<td class="objective-custom-td5" ng-click="sort('unit_objective.user_unit.rank.RankCode')"><b>Last Encoded by</b>
+    									<td class="objective-custom-td5" ng-click="sort('unit_objective.user_unit.rank.RankCode')">Last Encoded by
     										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
     									<td class="objective-custom-td6"></td>
@@ -134,7 +138,7 @@
 
                                 <tr>
                                     <td>
-                                        <label for="staffobjective_id" class="control-label">Contributory to Staff Scorecard:</label>
+                                        <label for="staffobjective_id" class="control">Contributory to Staff Scorecard:</label>
                                     </td>
                                     <td>
                                       

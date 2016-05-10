@@ -34,7 +34,7 @@
                        
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-6 pull-right">
+                            <div class="col-lg-5 pull-right">
                                 <form>
                                     <div class="form-group">
                                     <br/>
@@ -57,9 +57,9 @@
                         <!--./div class row-->
 
                         <div class="table-responsive" ng-show="info">
-                            <table class="table table-striped">
+                            <table class="table table-bordered">
                                 <thead>
-                                    <td colspan="3"><b>Activity</b>
+                                    <td colspan="3" class="custom-audit-activity">Activity
                                     </td>
                                 </thead>
                                 <tr dir-paginate='audit_trail in unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>

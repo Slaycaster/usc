@@ -5,30 +5,31 @@
     <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
-    <!-- Angular Utils Pagination -->
-    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
-  
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/unit_measures.js') }}"></script>
 
+    <!-- Angular Utils Pagination -->
+    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+
+
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading measures-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Measures</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Unit's Measure</button>
 								</div>
-								<div class="col-lg-8">
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">
@@ -50,35 +51,35 @@
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="objective-custom-td1">
-                                            <b>Unit Measure Name</b>
+    									<td class="measure-custom-td1">
+                                            Unit Measure Name
     									</td>
     							
-    									<td class="objective-custom-td2">
-                                            <b>Unit Measure Type</b>
+    									<td class="measure-custom-td2">
+                                            Unit Measure Type
     									</td>
 
-                                         <td class="objective-custom-td2">
-                                            <b>Unit Measure Formula</b>
+                                         <td class="measure-custom-td3">
+                                            Unit Measure Formula
                                         </td>
 
-                                        <td class="objective-custom-td2">
-                                            <b>Unit Objective</b>
+                                        <td class="measure-custom-td4">
+                                            Unit Objective
                                         </td>
 
-                                        <td class="objective-custom-td2">
-                                            <b>Staff Measure Name</b>
+                                        <td class="measure-custom-td5">
+                                            Staff Measure Name
                                         </td>
 
 
     									</td>
-    									<td class="objective-custom-td3">
-                                            <b>Unit</b>
+    									<td class="measure-custom-td6">
+                                            Unit
     									</td>
-    									<td class="objective-custom-td4">
-                                            <b>Last Encoded by</b>
+    									<td class="measure-custom-td7">
+                                            Last Encoded by
     									</td>
-    									<td class="objective-custom-td5"></td>
+    									<td class="measure-custom-td8"></td>
     								</thead>
     								<tr dir-paginate='unit_measure in unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_measure.UnitMeasureName %></td>

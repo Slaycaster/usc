@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-
 Route::get('home', 'HomeController@index');
 
 /*LOGIN ROUTE*/
@@ -20,19 +19,20 @@ Route::post('login', 'LoginController@doLogin');
 Route::get('logout', 'LoginController@doLogout');
 
 /*DASHBOARD*/
-Route::get('chief/dashboard', 'ChiefLoginController@dashboard');
 Route::get('unit/dashboard', 'UnitLoginController@dashboard');
+Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
 Route::get('staff/dashboard', 'StaffLoginController@dashboard');
+Route::get('chief/dashboard', 'ChiefLoginController@dashboard');
+
 
 /*UNIT USER ROUTES*/
 Route::get('unit/objectives', 'APIUnitObjectivesController@showIndex');
-Route::get('unit/setscorecard', 'UnitSetScorecardController@index');
-Route::get('unit/scorecard', 'UnitScorecardController@index');
 Route::get('unit/measures','APIUnitMeasuresController@showIndex');
 Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 Route::get('unit/targets','APIUnitTargetsController@showIndex');
 Route::get('unit/targets/{id}','APIUnitTargetsController@edit');
-
+Route::get('unit/setscorecard', 'UnitSetScorecardController@index');
+Route::get('unit/scorecard', 'UnitScorecardController@index');
 
 /*CHIEF USER ROUTES*/
 Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
@@ -52,6 +52,7 @@ Route::get('staff/targets/{id}','APIStaffTargetsController@edit');
 Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
 
 
+
 /*API ROUTES*/
 Route::resource('api/unit_objectives','APIUnitObjectivesController');
 Route::resource('api/unit_measures','APIUnitMeasuresController');
@@ -62,6 +63,7 @@ Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
+
 
 Route::resource('api/chief_measures','APIChiefMeasuresController');
 Route::resource('api/staff_measures','APIStaffMeasuresController');

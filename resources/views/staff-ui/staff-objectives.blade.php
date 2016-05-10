@@ -18,17 +18,17 @@
 	<div ng-app="unitScorecardApp" ng-controller="APIStaffObjectiveController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading objectives-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $staff_user->staff->StaffAbbreviation }} Objectives</b></h2><i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Staff's Objective</button>
 								</div>
-								<div class="col-lg-8">
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">
@@ -50,25 +50,23 @@
     							<table class="table table-bordered">
     								<thead>
     									
-                                        <td class="objective-custom-td1" ng-click="sort('staff_objective.StaffObjectiveName')"><b>Staff Objective Name</b>
+                                        <td class="objective-custom-td1" ng-click="sort('staff_objective.StaffObjectiveName')">Staff Objective Name
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.StaffObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
 
-    									
-
-                                        <td class="objective-custom-td2" ng-click="sort('staff_objective.perspective.PerspectiveName')"><b>Perspective</b>
+                                        <td class="objective-custom-td2" ng-click="sort('staff_objective.perspective.PerspectiveName')">Perspective
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.perspective.PerspectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
                                         
-                                        <td class="objective-custom-td3" ng-click="sort('staff_objective.chief_objective.ChiefObjectiveName')"><b>Contributory to</b>
+                                        <td class="objective-custom-td3" ng-click="sort('staff_objective.chief_objective.ChiefObjectiveName')">Contributory to
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.chief_objective.ChiefObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
 
 
-    									<td class="objective-custom-td4" ng-click="sort('staff_objective.staff.StaffAbbreviation')"><b>Staff</b>
+    									<td class="objective-custom-td4" ng-click="sort('staff_objective.staff.StaffAbbreviation')">Staff
     										<span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.staff.StaffAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
-    									<td class="objective-custom-td5" ng-click="sort('staff_objective.user_staff.rank.RankCode')"><b>Last Encoded by</b>
+    									<td class="objective-custom-td5" ng-click="sort('staff_objective.user_staff.rank.RankCode')">Last Encoded by
     										<span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.user_staff.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
     									<td class="objective-custom-td6"></td>
@@ -141,7 +139,7 @@
 
                                 <tr>
                                     <td>
-                                        <label for="staffobjective_id" class="control-label">Contributory to Chief Scorecard:</label>
+                                        <label for="staffobjective_id" class="control">Contributory to Chief Scorecard:</label>
                                     </td>
                                     <td>
                                        
