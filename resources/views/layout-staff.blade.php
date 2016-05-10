@@ -80,8 +80,8 @@
                 <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">PNP Unit Scorecard</a>
             </div>
             <div class="layout_unit-custom_all-unit_user"> 
-               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $staff_user->rank->RankCode }} 
-               {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}!</i>
+                <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $staff_user->rank->RankCode }} 
+                    {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}!
             </div>
             <!-- /.navbar-header -->
 

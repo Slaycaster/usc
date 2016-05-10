@@ -115,19 +115,19 @@
                         <form name="frmEditObjective" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="objective_name" class="control-label">Objective Name:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <input type='text' id="id_objective_name" name="objective_name" value="<% unit_objective.UnitObjectiveName %>" ng-model="unit_objective.UnitObjectiveName" autocomplete="off" class="form-control" required ng-touched>
                                         <span class="help-inline" ng-show="userForm.objective_name.$invalid && !userForm.objective_name.$pristine">Objective Name is required.</span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="perspective_id" class="control-label">Perspective:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                          <select id="id_perspective_id" name="perspective_id" data-ng-model="selectedUserProfile" class="form-control" data-ng-options="userprofile.PerspectiveName for userprofile in perspective" required ng-touched >
                                 
                                         </select>
@@ -137,29 +137,29 @@
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="staffobjective_id" class="control">Contributory to Staff Scorecard:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                       
                                         <select id="id_staffobjective_id" name="staffobjective_id" data-ng-model="selectedStaffObjective" class="form-control" data-ng-options="obj.StaffObjectiveName for obj in staffobjective" required ng-touched>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td>
-                                        <label for="inputEmail3" class="control-label">Unit:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="unit" class="control-label">Unit:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $user->unit->UnitName }}</p>
                                         <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <label for="inputEmail3" class="control-label">Account User:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="accountUser" class="control-label">Account User:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} </p>
                                         <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
                                     </td>
