@@ -424,7 +424,7 @@
                     
                     <div class="modal-body">
                         <form name="frmEditTarget" class="form-horizontal" novalidate="">
-                                <i>Oops! It seems that the <b>targets for this measure are not set</b> yet. Go to Set Targets to do so.</i>
+                                <i>Oops! It seems that the <b>targets for this measure are not set</b> yet. <br>Go to Set Targets to do so.</i>
                         </form>
 
                     </div>
