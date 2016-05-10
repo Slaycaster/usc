@@ -181,16 +181,36 @@ a.navbar-brand{
 }
 
 
-/*
 
 .objective-custom-td1{
-    width:35%;
+    width:30% !important;
+    text-align: center;
 }
 
-.objective-custom-td2,
-.objective-custom-td4{
-    width:25%;
+.objective-custom-td2{
+    width:20%;
+    text-align: center;
 }
+.objective-custom-td3{
+    width:25%;
+    text-align: center;
+}
+.objective-custom-td4{
+    width:7%;
+    text-align: center;
+}
+.objective-custom-td5{
+    width:20%;
+    text-align: center;
+}
+
+.custom-audit-activity{
+    text-align: center;
+}
+
+/*
+
+
 
 .objective-custom-td3{
     width:10%;
