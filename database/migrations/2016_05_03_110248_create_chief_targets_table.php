@@ -15,23 +15,23 @@ class CreateChiefTargetsTable extends Migration {
 		Schema::create('chief_targets', function(Blueprint $table)
 		{
 			$table->increments('ChiefTargetID');
-			$table->integer('JanuaryTarget');
-			$table->integer('FebruaryTarget');
-			$table->integer('MarchTarget');
-			$table->integer('AprilTarget');
-			$table->integer('MayTarget');
-			$table->integer('JuneTarget');
-			$table->integer('JulyTarget');
-			$table->integer('AugustTarget');
-			$table->integer('SeptemberTarget');
-			$table->integer('OctoberTarget');
-			$table->integer('NovemberTarget');
-			$table->integer('DecemberTarget');
+			$table->float('JanuaryTarget');
+			$table->float('FebruaryTarget');
+			$table->float('MarchTarget');
+			$table->float('AprilTarget');
+			$table->float('MayTarget');
+			$table->float('JuneTarget');
+			$table->float('JulyTarget');
+			$table->float('AugustTarget');
+			$table->float('SeptemberTarget');
+			$table->float('OctoberTarget');
+			$table->float('NovemberTarget');
+			$table->float('DecemberTarget');
 			$table->date('TargetDate');
 			$table->string('TargetPeriod');
-			$table->integer('ChiefMeasureID');
-			$table->integer('ChiefID');
-			$table->integer('UserID');
+			$table->float('ChiefMeasureID');
+			$table->float('ChiefID');
+			$table->float('UserChiefID');
 			$table->timestamps();
 		});
 	}

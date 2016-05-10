@@ -37,11 +37,8 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
             
             if(document.getElementById('id_target_period').value === "Monthly")
             {
-                
                     url += "/update/" + id;
-
-                    $http.post(url, {
-                        
+                    $http.post(url, {    
                         JanuaryTarget: $scope.chief_target.JanuaryTarget,
                         FebruaryTarget: $scope.chief_target.FebruaryTarget,
                         MarchTarget: $scope.chief_target.MarchTarget,
@@ -71,7 +68,6 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
             }
             else if(document.getElementById('id_target_period').value === "Quarterly")
             {
-
                     url += "/updatequarter/" + id;
 
                     $http.post(url, {
@@ -82,10 +78,6 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                         Quarter4:document.getElementById('id_fourthquarter_target').value,
                         TargetDate:document.getElementById('target_date').value,
                         TargetPeriod: document.getElementById('id_target_period').value
-                        
-
-
-                        
 
                     }).success(function(data, status, headers, config, response) {
         
@@ -103,7 +95,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
     $scope.toggle = function(modalstate, id, name) 
     {
         $scope.modalstate = modalstate;
-        
+
         switch (modalstate) {
             case 'show':
                 $scope.this_title = "ADD TARGETS";
@@ -141,16 +133,21 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
             case 'view':
                 $scope.form_title = "VIEW TARGET";
                 $scope.id = id;
-                $http.get(local + '/usc/public/api/chief_targets/' + id)
-                .success(function(response) {
 
+                $http.get(local + '/usc/public/api/chief_targets/' + id)
+
+                .success(function(response) {
                     $scope.chief_target = response;
                     $scope.chief_measurename = name;
                     $scope.firstquarter = $scope.chief_target.JanuaryTarget;
                     $scope.secondquarter = $scope.chief_target.AprilTarget;
                     $scope.thirdquarter = $scope.chief_target.JulyTarget;
                     $scope.fourthquarter = $scope.chief_target.OctoberTarget;
-                    console.log("VIEW" + $scope.chief_target.TargetPeriod);
+                    $scope.firstquarter = parseFloat($scope.chief_target.JanuaryTarget + $scope.chief_target.FebruaryTarget + $scope.chief_target.MarchTarget).toFixed(2);
+                    $scope.secondquarter = parseFloat($scope.chief_target.AprilTarget + $scope.chief_target.MayTarget + $scope.chief_target.JuneTarget).toFixed(2);
+                    $scope.thirdquarter = parseFloat($scope.chief_target.JulyTarget + $scope.chief_target.AugustTarget + $scope.chief_target.SeptemberTarget).toFixed(2);
+                    $scope.fourthquarter = parseFloat($scope.chief_target.OctoberTarget + $scope.chief_target.NovemberTarget + $scope.chief_target.DecemberTarget).toFixed(2);
+                    //Quarter = Month Target * 3 || Di niyo pa rin gets no?
                     if ($scope.chief_target.TargetPeriod === 'Monthly')
                     {
                         $('#monthModal').modal('show');
@@ -168,12 +165,16 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                     }
                 });
 
-                        
+                        .success(function(response) {
+                            $scope.chief_target = response;
+                            $scope.chief_measurename = name;
+
+                            
+                        });
+
                 break;
             default:
                 break;
-        
-        }
        
     };
 

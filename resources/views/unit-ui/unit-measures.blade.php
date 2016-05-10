@@ -48,7 +48,7 @@
 							<!--./div class row-->
 
                             <div class="table-responsive" ng-show="info">
-    							<table class="table table-striped table-bordered">
+    							<table class="table table-bordered">
     								<thead>
     									<td class="objective-custom-td1">
                                             <b>Unit Measure Name</b>
