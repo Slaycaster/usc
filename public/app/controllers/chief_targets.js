@@ -12,7 +12,6 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 		$http.get(local + '/usc/public/api/chief_targets').
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
-            console.log(data);
 				$scope.loading = false;
 
             $scope.date = new Date();
@@ -60,7 +59,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
             
 
                     }).success(function(data, status, headers, config, response) {
-                        console.log(response);
+        
                         $('#targetModal').modal('hide');
                         $scope.chief_targets = '';
                         $scope.init();
@@ -81,7 +80,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                         TargetPeriod: document.getElementById('id_target_period').value
 
                     }).success(function(data, status, headers, config, response) {
-                        console.log(response);
+        
                         $('#targetModal').modal('hide');
                         $scope.chief_targets = '';
                         $scope.init();
@@ -96,18 +95,27 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
     $scope.toggle = function(modalstate, id, name) 
     {
         $scope.modalstate = modalstate;
-        $scope.chief_target = [];
+
         switch (modalstate) {
             case 'show':
                 $scope.this_title = "ADD TARGETS";
                 
                 $scope.id = id;
                 $http.get(local + '/usc/public/api/chief_targets/' + id)
-                        .success(function(response) {
-                            $scope.chief_target = response;
-                        });       
+                .success(function(response) {            
+                    $scope.chief_target = response;
+                    console.log("SHOW" + $scope.chief_target.TargetPeriod);
+                    if($scope.chief_target.TargetPeriod === 'Monthly' || $scope.chief_target.TargetPeriod === 'Quarterly')
+                    {
+                        $('#alreadysetModal').modal('show');
+                    }
+                    else
+                    {
+                        $('#targetModal').modal('show');
+                    }
+                });       
 
-                            $scope.chief_measurename = name;       
+                $scope.chief_measurename = name;       
                 document.getElementById('id_january_target').value = "";
                 document.getElementById('id_february_target').value = "";
                 document.getElementById('id_march_target').value = "";
@@ -121,45 +129,25 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 document.getElementById('id_november_target').value = "";
                 document.getElementById('id_december_target').value = "";
                 break;
-                default:
-                break;
-            }
-            
-
-        switch (modalstate) {
+        
             case 'view':
                 $scope.form_title = "VIEW TARGET";
                 $scope.id = id;
 
                 $http.get(local + '/usc/public/api/chief_targets/' + id)
-                        .success(function(response) {
-                            $scope.chief_target = response;
-                            $scope.chief_measurename = name;
 
-                            $scope.firstquarter = parseFloat($scope.chief_target.JanuaryTarget + $scope.chief_target.FebruaryTarget + $scope.chief_target.MarchTarget).toFixed(2);
-                            $scope.secondquarter = parseFloat($scope.chief_target.AprilTarget + $scope.chief_target.MayTarget + $scope.chief_target.JuneTarget).toFixed(2);
-                            $scope.thirdquarter = parseFloat($scope.chief_target.JulyTarget + $scope.chief_target.AugustTarget + $scope.chief_target.SeptemberTarget).toFixed(2);
-                            $scope.fourthquarter = parseFloat($scope.chief_target.OctoberTarget + $scope.chief_target.NovemberTarget + $scope.chief_target.DecemberTarget).toFixed(2);
-                            
-                        });
-
-                        //Quarter = Month Target * 3 || Di niyo pa rin gets no?
-                break;
-            default:
-                break;
-        }
-        
-
-        if (modalstate === 'show')
-        {
-            $('#targetModal').modal('show');
-        }
-        else if (modalstate === 'view')
-        {
-            $http.get(local + '/usc/public/api/chief_targets/' + id)
                 .success(function(response) {
                     $scope.chief_target = response;
-
+                    $scope.chief_measurename = name;
+                    $scope.firstquarter = $scope.chief_target.JanuaryTarget;
+                    $scope.secondquarter = $scope.chief_target.AprilTarget;
+                    $scope.thirdquarter = $scope.chief_target.JulyTarget;
+                    $scope.fourthquarter = $scope.chief_target.OctoberTarget;
+                    $scope.firstquarter = parseFloat($scope.chief_target.JanuaryTarget + $scope.chief_target.FebruaryTarget + $scope.chief_target.MarchTarget).toFixed(2);
+                    $scope.secondquarter = parseFloat($scope.chief_target.AprilTarget + $scope.chief_target.MayTarget + $scope.chief_target.JuneTarget).toFixed(2);
+                    $scope.thirdquarter = parseFloat($scope.chief_target.JulyTarget + $scope.chief_target.AugustTarget + $scope.chief_target.SeptemberTarget).toFixed(2);
+                    $scope.fourthquarter = parseFloat($scope.chief_target.OctoberTarget + $scope.chief_target.NovemberTarget + $scope.chief_target.DecemberTarget).toFixed(2);
+                    //Quarter = Month Target * 3 || Di niyo pa rin gets no?
                     if ($scope.chief_target.TargetPeriod === 'Monthly')
                     {
                         $('#monthModal').modal('show');
@@ -176,10 +164,10 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                         $scope.init();
                     }
                 });
-
-        }
-
-       
+                break;
+                default:
+                break;
+       }
     };
 
     $scope.init();
