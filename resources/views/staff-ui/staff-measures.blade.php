@@ -18,17 +18,17 @@
     <div ng-app="unitScorecardApp" ng-controller="APIStaffMeasureController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading measures-custom-heading">
 						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $staff->StaffAbbreviation }} Measures</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Staff's Measure</button>
 								</div>
-								<div class="col-lg-8">
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">
@@ -50,35 +50,33 @@
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="objective-custom-td1">
-                                            <b>Staff Measure Name</b>
+    									<td class="staff-custom-td1">
+                                            Staff Measure Name
     									</td>
     							
-    									<td class="objective-custom-td2">
-                                            <b>Staff Measure Type</b>
+    									<td class="staff-custom-td2">
+                                            Staff Measure Type
     									</td>
-
-
-                                        <td class="objective-custom-td2">
-                                            <b>Staff Measure Formula</b>
+                                        <td class="staff-custom-td3">
+                                            Staff Measure Formula
                                         </td>
 
-                                        <td class="objective-custom-td2">
-                                            <b>Staff Objective</b>
+                                        <td class="staff-custom-td4">
+                                            Staff Objective
                                         </td>
 
-                                        <td class="objective-custom-td2">
-                                            <b>Chief Measure Name</b>
+                                        <td class="staff-custom-td5">
+                                            Chief Measure Name
                                         </td>
 
     									</td>
-    									<td class="objective-custom-td3">
-                                            <b>Staff Office</b>
+    									<td class="staff-custom-td6">
+                                            Staff Office
     									</td>
-    									<td class="objective-custom-td4">
-                                            <b>Last Encoded by</b>
+    									<td class="staff-custom-td7">
+                                            Last Encoded by
     									</td>
-    									<td class="objective-custom-td5"></td>
+    									<td class="staff-custom-td8"></td>
     								</thead>
     								<tr dir-paginate='staff_measure in staff_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% staff_measure.StaffMeasureName %></td>
@@ -112,7 +110,7 @@
 
 		<!-- Modal (Pop up when detail button clicked) -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog ">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -125,7 +123,7 @@
                             <table class="table table-responsive">
                                 <tr>
                                     <td>
-                                        <label for="measure_name" class="control-label">Measure Name:</label>
+                                        <label for="measure_name" class="control">Measure Name:</label>
                                     </td>
                                     <td>
                                         <input type='text' id="id_measure_name" name="measure_name" value="<% staff_measure.StaffMeasureName %>" ng-model="staff_measure.StaffMeasureName" autocomplete="off" class="form-control" required ng-touched />
@@ -134,7 +132,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for="measure_name" class="control-label">Measure Type:</label>
+                                        <label for="measure_name" class="control">Measure Type:</label>
                                     </td>
                                     <td>
                                         <div class="radio">
@@ -154,7 +152,7 @@
 
                                  <tr>
                                     <td>
-                                        <label for="measure_formula" class="control-label">Measure Formula:</label>
+                                        <label for="measure_formula" class="control">Measure Formula:</label>
                                     </td>
                                     <td>
                                         <select id="id_measure_formula" name="measure_formula" data-ng-model="staff_measure.StaffMeasureFormula" class="form-control" required ng-touched>
@@ -173,7 +171,7 @@
 
                                  <tr>
                                     <td>
-                                        <label for="staff_objective" class="control-label">Staff Measure Objective:</label>
+                                        <label for="staff_objective" class="control">Staff Measure Objective:</label>
                                     </td>
                                     <td>
                                         <select id="id_staff_objective" name="staff_objective" data-ng-model="staff_measure.StaffObjectiveID" class="form-control" required ng-touched>
@@ -192,7 +190,7 @@
 
                                 <tr>
                                     <td>
-                                        <label for="chief_measure" class="control-label">Chief Measure Name:</label>
+                                        <label for="chief_measure" class="control">Chief Measure Name:</label>
                                     </td>
                                     <td>
                                         <select id="id_chief_measure" name="chief_measure" data-ng-model="staff_measure.ChiefMeasureID" class="form-control" required ng-touched>
