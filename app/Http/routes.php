@@ -34,13 +34,6 @@ Route::get('unit/targets/{id}','APIUnitTargetsController@edit');
 Route::get('unit/setscorecard', 'UnitSetScorecardController@index');
 Route::get('unit/scorecard', 'UnitScorecardController@index');
 
-/*CHIEF USER ROUTES*/
-Route::get('chief/scorecard', 'ChiefLoginController@scorecard');
-Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
-Route::get('chief/measures','APIChiefMeasuresController@showIndex');
-Route::get('chief/targets','APIChiefTargetsController@showIndex');
-Route::get('chief/targets/{id}','APIChiefTargetsController@edit');
-
 
 /*STAFF USER ROUTES*/
 Route::get('staff/dashboard', 'StaffLoginController@dashboard');
@@ -48,6 +41,15 @@ Route::get('staff/objectives', 'APIStaffObjectivesController@showIndex');
 Route::get('staff/measures','APIStaffMeasuresController@showIndex');
 Route::get('staff/targets','APIStaffTargetsController@showIndex');
 Route::get('staff/targets/{id}','APIStaffTargetsController@edit');
+Route::get('staff/audit_trails', 'APIStaffAuditTrailsController@showIndex');
+
+/*CHIEF USER ROUTES*/
+Route::get('chief/scorecard', 'ChiefLoginController@scorecard');
+Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
+Route::get('chief/measures','APIChiefMeasuresController@showIndex');
+Route::get('chief/targets','APIChiefTargetsController@showIndex');
+Route::get('chief/targets/{id}','APIChiefTargetsController@edit');
+
 
 /* DASHBOARD APPLETS */
 Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
@@ -61,6 +63,7 @@ Route::resource('api/unit_audit_trails','APIUnitAuditTrailsController');
 Route::resource('api/unit_dashboard','APIUnitAuditTrailsDashController');
 Route::resource('api/staff_objectives', 'APIStaffObjectivesController');
 Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
+Route::resource('api/staff_audit_trails','APIStaffAuditTrailsController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
