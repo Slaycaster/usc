@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class ChiefOwner extends Model {
+class ChiefFunding extends Model {
 
 	//
 	/**
@@ -10,19 +10,19 @@ class ChiefOwner extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'chief_owners';
+	protected $table = 'chief_fundings';
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['ChiefOwnerContent', 'ChiefOwnerDate', 'ChiefMeasureID', 'ChiefID','UserChiefID',];
+	protected $fillable = ['ChiefFundingEstimate', 'ChiefFundingActual', 'ChiefFundingDate', 'ChiefMeasureID', 'ChiefID','UserChiefID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
 	 * @var arrayID
 	 */
-	protected $primaryKey = 'ChiefOwnerID';
+	protected $primaryKey = 'ChiefFundingID';
 
 	public function chief()
 	{
@@ -38,5 +38,4 @@ class ChiefOwner extends Model {
 	{
 		return $this->belongsTo('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
 	}
-
 }

@@ -62,4 +62,14 @@ class UserChief extends Model {
 		return $this->hasMany('App\ChiefOwner', 'ChiefOwnerID', 'ChiefOwnerID');
 	}
 
+	public function chief_initiatives()
+	{
+		return $this->hasMany('App\ChiefInitiative', 'ChiefInitiativeID', 'ChiefInitiativeID');
+	}
+
+	public function chief_fundings()
+	{
+		return $this->hasMany('App\ChiefFunding', 'ChiefFundingID', 'ChiefFundingID');
+	}
+
 }
