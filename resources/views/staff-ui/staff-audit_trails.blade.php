@@ -23,8 +23,10 @@
             <div class="row">           
                 <div class="panel panel-warning">
                     <div class="col-lg-12 unitdashboard-custom-unit-activityname">
-                        <i class="fa fa-bell fa-2x"></i></i> <h2><b> {{ $staff_user->staff->StaffName }} Activity Log</b></h2>
-                        <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                        <div  class="col-lg-8 col-md-offset-2">
+                            <i class="fa fa-bell fa-2x"></i></i> <h2><b> {{ $staff_user->staff->StaffName }} Activity Log</b></h2>
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                        </div>
                     </div>
 
                      <div class="col-lg-12 unitdashboard-custom-unit-activityabb">
@@ -64,7 +66,7 @@
                                 </thead>
                                 <tr dir-paginate='audit_trail in staff_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                                     <td>
-                                        <% audit_trail.user_staff.rank.RankCode%> 
+                                        <% audit_trail.user_staff.rank.RankCode %> 
                                         <% audit_trail.user_staff.UserStaffFirstName %>
                                         <% audit_trail.user_staff.UserStaffLastName %>
                                     </td>

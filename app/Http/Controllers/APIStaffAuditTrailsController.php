@@ -24,10 +24,12 @@ class APIStaffAuditTrailsController extends Controller {
 			->select('StaffID')
 			->lists('StaffID'); //Get the Unit of the user
         
-        return StaffAuditTrail::where('StaffID', '=', $staff)
+        $data = StaffAuditTrail::where('StaffID', '=', $staff)
             ->with('user_staff')
             ->with('user_staff.rank')
             ->get();
+
+       	return json_encode($data, JSON_PRETTY_PRINT);
 	}
 
 	public function showIndex()
