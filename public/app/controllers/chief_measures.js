@@ -60,10 +60,10 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
 
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
-                $('#myModal').modal('hide');
-                $scope.chief_measures = '';
-                $scope.init();
-                $scope.loading = false;
+                //$('#myModal').modal('hide');
+                //$scope.chief_measures = '';
+                //$scope.init();
+                //$scope.loading = false;
             });
         }
         // 

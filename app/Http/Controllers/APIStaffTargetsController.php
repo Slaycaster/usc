@@ -24,14 +24,34 @@ class APIStaffTargetsController extends Controller {
 
 		$staff = UserStaff::where('UserStaffID', '=', $staff_id)->select('StaffID')->lists('StaffID'); //Get the Unit of the staff
 
-		$currentYear = date("Y");		
+		$currentYear = date("Y");	
+
+		$staff_targets = StaffTarget::where( DB::raw('YEAR(TargetDate)'), '<', $currentYear )
+		->where('TargetDate','!=','0000-00-00')
+		->where('Termination', '=', null)
+		->get();
+
+		if($staff_targets != null ){
+			foreach ($staff_targets as $staff_target) {
+				StaffTarget::where('StaffTargetID', $staff_target->StaffTargetID)
+		          ->update(['Termination' => 'Terminated']);
+
+				$stafftarget = new StaffTarget;
+				$stafftarget->TargetPeriod = "Not Set";
+				$stafftarget->StaffMeasureID = $staff_target->StaffMeasureID;
+				$stafftarget->StaffID = $staff_target->StaffID;
+				$stafftarget->UserStaffID = $staff_target->UserStaffID;
+				$stafftarget->save();
+			}
+		}		
 
 		return staffTarget::with('staff_measure')
 			->with('staff_measure.staff_objective')
 			->with('user_staff')
 			->with('user_staff.rank')
-			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->where('StaffID', '=', $staff)
+			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
+			->orWhere('TargetDate', '=', '0000-00-00')
 			->get();
 		
 	}
@@ -135,6 +155,11 @@ class APIStaffTargetsController extends Controller {
 		$staff_target->update(Request::all());
 
 		$staff_target->save();
+
+
+ 		$staff_target = StaffTarget::find($id);
+ 		$staff_target->TargetDate = date('Y-m-d');
+		$staff_target->save();
  	
 
 		return $staff_target;
@@ -145,7 +170,7 @@ class APIStaffTargetsController extends Controller {
 
 		$staff_target = StaffTarget::find($id);
 		$targetperiod = Request::input('TargetPeriod');
-		$targetdate = Request::input('TargetDate');
+		$targetdate = date('Y-m-d');
 
 		$quarter1 = Request::input('Quarter1');
 		$quarter1 = $quarter1 / 3;
