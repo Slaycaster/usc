@@ -27,44 +27,125 @@
 							<div class="table-responsive" >
     							<table class="table table-striped table-bordered">
     								<thead>
-    									<td class="objective-custom-td1">
-                                            <b>Objective</b>
-    									</td>
-    							
-    									<td class="objective-custom-td2">
-                                            <b>Measure</b>
-    									</td>
-
-
-                                        <td class="objective-custom-td3">
-                                            <b>Formula</b>
+                                    <tr>
+                                        <td class="objective-custom-td1" rowspan="2">
+                                            <b>OBJECTIVES</b>
+                                        </td>
+                                
+                                        <td class="objective-custom-td2" colspan="4">
+                                            <b>MEASURES</b>
                                         </td>
 
-                                        <td class="objective-custom-td4">
-                                            <b>Target Period</b>
+
+                                        <td class="objective-custom-td3" rowspan="2" >
+                                            <b>OWNER</b>
                                         </td>
 
-    									</td>
-    									<td class="objective-custom-td5">
-                                            <b>Action</b>
-    									</td>
-    									<td class="objective-custom-td6">
-                                            <b>Effectivity Date</b>
-    									</td>
+                                        <td class="objective-custom-td4" colspan="12">
+                                            <b>TARGET/ACCUMULATION</b>
+                                        </td>
+
+                                        <td class="objective-custom-td5" rowspan="2">
+                                            <b>INITIATIVES</b>
+                                        </td>
+                                        <td class="objective-custom-td6" colspan="3">
+                                            <b>FUNDING</b>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        
+                                
+                                        <td class="objective-custom-td8" colspan="2">
+                                            <b>Name</b>
+                                        </td>
+
+                                        <td class="objective-custom-td9">
+                                            <b>LD</b>
+                                        </td>
+                                        <td class="objective-custom-td10">
+                                            <b>LG</b>
+                                        </td>
+
+
+                                        <td class="objective-custom-td12">
+                                            <b>Jan</b>
+                                        </td>
+                                        <td class="objective-custom-td13">
+                                            <b>Feb</b>
+                                        </td>
+                                        <td class="objective-custom-td14">
+                                            <b>Mar</b>
+                                        </td>
+                                        <td class="objective-custom-td15">
+                                            <b>Apr</b>
+                                        </td>
+                                        <td class="objective-custom-td16">
+                                            <b>May</b>
+                                        </td>
+                                        <td class="objective-custom-td17">
+                                            <b>Jun</b>
+                                        </td>
+                                        <td class="objective-custom-td18">
+                                            <b>Jul</b>
+                                        </td>
+                                        <td class="objective-custom-td19">
+                                            <b>Aug</b>
+                                        </td>
+                                        <td class="objective-custom-td20">
+                                            <b>Sep</b>
+                                        </td>
+                                        <td class="objective-custom-td21">
+                                            <b>Oct</b>
+                                        </td>
+                                        <td class="objective-custom-td22">
+                                            <b>Nov</b>
+                                        </td>
+                                        <td class="objective-custom-td23">
+                                            <b>Dec</b>
+                                        </td>
+                                        
+                                        <td class="objective-custom-td25">
+                                            <b>Estimate</b>
+                                        </td>
+                                        <td class="objective-custom-td26">
+                                            <b>Actual</b>
+                                        </td>
+                                        <td class="objective-custom-td27">
+                                            <b>Variance</b>
+                                        </td>
+                                    </tr>
     									
     								</thead>
-    								<tr dir-paginate='chief_target in chief_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
-    									<td><% chief_target.chief_measure.chief_objective.ChiefObjectiveName %></td>
-    									<td><% chief_target.chief_measure.ChiefMeasureName %></td>
-                                        <td><% chief_target.chief_measure.ChiefMeasureFormula %></td>
-                                        <td><% chief_target.TargetPeriod %></td>
-    									<td>
-    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', chief_target.ChiefTargetID, chief_target.chief_measure.ChiefMeasureName )">View Target</button>
-    										<br>
-    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', chief_target.ChiefTargetID, chief_target.chief_measure.ChiefMeasureName)">Set Target</button>
+    								<tr dir-paginate='chief_target in chief_targets|filter:search'>
+    									
+                                        <td><% chief_target.chief_measure.chief_objective.ChiefObjectiveName %></td>
 
-    									</td>
-    									<td><% chief_target.TargetDate %></td>
+                                        <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %></td>
+
+                                        <td><b>LD</b></td>
+                                        <td><b>LG</b></td>
+
+                                        <td><input type='text' id="id_owner" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% chief_target.JanuaryTarget %>/<input type='text' id="id_jan" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.FebruaryTarget %>/<input type='text' id="id_feb" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.MarchTarget %>/<input type='text' id="id_mar" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.AprilTarget %>/<input type='text' id="id_apr" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.MayTarget %>/<input type='text' id="id_may" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.JuneTarget %>/<input type='text' id="id_jun" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.JulyTarget %>/<input type='text' id="id_jul" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.AugustTarget %>/<input type='text' id="id_aug" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.SeptemberTarget %>/<input type='text' id="id_sep" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.OctoberTarget %>/<input type='text' id="id_oct" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.NovemberTarget %>/<input type='text' id="id_nov" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.DecemberTarget %>/<input type='text' id="id_dec" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        
+                                        <td><input type='text' id="id_initiative" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><input type='text' id="id_estimate" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><input type='text' id="id_actual" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td></td>
     									
     								</tr>
     							</table>
