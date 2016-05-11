@@ -1,10 +1,13 @@
 <?php namespace App\Http\Controllers;
 
+//Models
 use App\ChiefMeasure;
 use App\ChiefTarget;
 use App\ChiefObjective;
 use App\Chief;
 use App\UserChief;
+
+//Laravel Modules
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 

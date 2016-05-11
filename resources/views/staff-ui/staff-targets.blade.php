@@ -17,7 +17,7 @@
 <div ng-app="unitScorecardApp" ng-controller="APIStaffTargetController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading measures-custom-heading">
 						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $staff->StaffAbbreviation }} Targets for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
@@ -27,7 +27,7 @@
 								<div class="col-lg-4">
 									
 								</div>
-								<div class="col-lg-8">
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">

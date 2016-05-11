@@ -35,6 +35,7 @@ Route::get('unit/setscorecard', 'UnitSetScorecardController@index');
 Route::get('unit/scorecard', 'UnitScorecardController@index');
 
 /*CHIEF USER ROUTES*/
+Route::get('chief/scorecard', 'ChiefLoginController@scorecard');
 Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
 Route::get('chief/measures','APIChiefMeasuresController@showIndex');
 Route::get('chief/targets','APIChiefTargetsController@showIndex');
@@ -64,7 +65,7 @@ Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
 
-
+Route::resource('api/chief_scorecard', 'APIChiefScorecardController');
 Route::resource('api/chief_measures','APIChiefMeasuresController');
 Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');
