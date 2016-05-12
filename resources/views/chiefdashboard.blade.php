@@ -23,7 +23,7 @@
     <script src="{{ asset('app/timeago.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
+    <script src="{{ asset('app/controllers/chief_dashboard.js') }}"></script>
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-unit-dashname">
@@ -97,52 +97,6 @@
                             </a>
                         </div>
                     </div>
-                    <!--
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-bolt fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">N/A</div>
-                                        <div>Targets</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View All</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-sitemap fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Initiatives</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View All</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    -->
                 </div>
             </div>
         </div>
@@ -234,19 +188,33 @@
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
             
-            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsDashController" >
+            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APIChiefAuditTrailsDashController" >
                 <div class="panel-heading">
                     <i class="fa fa-bell fa-4x pull-right"></i>
                     <h3><b>ACTIVITY LOG</b></h3>
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-               
+                <div class="container-fluid" dir-paginate='audit_trail_dash in chief_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
+                <br />
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-tasks fa-fw"></i> 
+                            <b><% audit_trail_dash.user_chief.rank.RankCode%> 
+                                <% audit_trail_dash.user_chief.UserChiefFirstName %>
+                                <% audit_trail_dash.user_chief.UserChiefLastName %>
+                            </b> 
+                            <br />
+                            <% audit_trail_dash.Action %>
+                        <br />
+                        <span class="pull-right small"><% audit_trail_dash.updated_at |timeago %></span>
+                        <br />
+                    </a>
+                </div>
 
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- /.list-group -->
-                    <a href="{{ url('unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('chief/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>
