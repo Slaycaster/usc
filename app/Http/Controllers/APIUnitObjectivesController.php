@@ -58,7 +58,12 @@ class APIUnitObjectivesController extends Controller {
 
 	public function staff_objectives()
 	{
-		return StaffObjective::all();
+		$id = Session::get('unit_user_id', 'default');
+			$user = UserUnit::where('UserUnitID', $id)
+				->first();
+			$unit = Unit::where('UnitID', '=', $user->UnitID)->first();
+
+		return StaffObjective::where('StaffID','=',$unit->StaffID)->get();
 	}
 
 	/**
