@@ -108,10 +108,12 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                     if($scope.chief_target.TargetPeriod === 'Monthly' || $scope.chief_target.TargetPeriod === 'Quarterly')
                     {
                         $('#alreadysetModal').modal('show');
+                        $scope.init();
                     }
                     else
                     {
                         $('#targetModal').modal('show');
+                        $scope.init();
                     }
                 });       
 

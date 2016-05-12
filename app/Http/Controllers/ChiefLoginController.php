@@ -61,8 +61,11 @@ class ChiefLoginController extends Controller {
 			$chief_user = UserChief::where('UserChiefID', $chief_id)
 				->with('chief')
 				->first();
+			$chief_measures = ChiefMeasure::with('chief')->where('ChiefID', '=', $chief_user->ChiefID)->get();
+
 			return view('chief-ui.chief-scorecard')
-				->with('chief_user', $chief_user);
+				->with('chief_user', $chief_user)
+				->with('chief_measures',$chief_measures);
 		}
 		else
 		{
