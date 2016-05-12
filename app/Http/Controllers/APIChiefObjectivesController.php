@@ -22,12 +22,14 @@ class APIChiefObjectivesController extends Controller {
 		$chief_id = Session::get('chief_user_id', 'default');
 		$chief_user = UserChief::where('UserChiefID', '=', $chief_id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the user
         
-		return ChiefObjective::where('ChiefID', '=', $chief_user)
+		$data = ChiefObjective::where('ChiefID', '=', $chief_user)
 			->with('perspective')
 			->with('chief')
 			->with('user_chief')
 			->with('user_chief.rank')
 			->get();
+
+		return json_encode($data);
 	}
 
 	

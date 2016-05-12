@@ -35,4 +35,9 @@ class Perspective extends Model {
 		return $this->hasMany('App\ChiefObjective', 'ChiefObjectiveID', 'ChiefObjectiveID');
 	}
 
+	public function staff_objectives()
+	{
+		return $this->hasMany('App\StaffObjective', 'StaffObjectiveID', 'StaffObjectiveID');
+	}
+
 }

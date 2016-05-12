@@ -60,10 +60,10 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
 
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
-                //$('#myModal').modal('hide');
-                //$scope.chief_measures = '';
-                //$scope.init();
-                //$scope.loading = false;
+                $('#myModal').modal('hide');
+                $scope.chief_measures = '';
+                $scope.init();
+                $scope.loading = false;
             });
         }
         // 
@@ -79,7 +79,6 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
                 document.getElementById('id_measure_formula').value = "";
-                document.getElementById('id_chief_objective').value = 0;
                 break;
             case 'edit':
                 $scope.form_title = "EDIT CHIEF'S MEASURE DETAIL";
@@ -88,7 +87,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             console.log(response);
                             $scope.chief_measure = response;
-                             $scope.chief_measure.ChiefObjectiveID = response.ChiefObjectiveID.toString();
+                            $scope.chief_measure.ChiefObjectiveID = response.ChiefObjectiveID.toString();
                         });
                 break;
             default:
