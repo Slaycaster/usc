@@ -23,7 +23,7 @@
     <script src="{{ asset('app/timeago.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
+    <script src="{{ asset('app/controllers/staff_dashboard.js') }}"></script>
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-unit-dashname">
@@ -235,14 +235,14 @@
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
             
-            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsDashController" >
+            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APIStaffAuditTrailsDashController" >
                 <div class="panel-heading">
                     <i class="fa fa-bell fa-4x pull-right"></i>
                     <h3><b>ACTIVITY LOG</b></h3>
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <div class="container-fluid" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                <div class="container-fluid" dir-paginate='audit_trail_dash in staff_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
                 <br />
                     <a href="#" class="list-group-item">
                         <i class="fa fa-tasks fa-fw"></i> 
