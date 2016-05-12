@@ -32,7 +32,7 @@
                                             <b>OBJECTIVES</b>
                                         </td>
                                 
-                                        <td class="objective-custom-td2" colspan="4">
+                                        <td class="objective-custom-td2" colspan="3">
                                             <b>MEASURES</b>
                                         </td>
 
@@ -60,16 +60,10 @@
                                             <b>Name</b>
                                         </td>
 
-
-
                                         <td class="objective-custom-td9">
-                                            <b>LD</b>
+                                            <b>Type</b>
                                         </td>
-
-                                        <td class="objective-custom-td10">
-                                            <b>LG</b>
-                                        </td>
-
+                                       
 
                                         <td class="objective-custom-td12">
                                             <b>Jan</b>
@@ -126,43 +120,28 @@
 
                                         <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %></td>
 
-                                                <td>
-                                                    <span ng-if="<% chief_target.chief_measure.ChiefMeasureType %> === 'LD'">
-                                                        <td style="background-color:green"></td>    
-                                                    </span>
-                                                    <span ng-else="<% chief_target.chief_measure.ChiefMeasureType %> !== 'LD'">
-                                                        <td></td>    
-                                                    </span>
-                                                </td>
-
-                                                <td>
-                                                    <span ng-if="<% chief_target.chief_measure.ChiefMeasureType %> === 'LG'">
-                                                        <td style="background-color:green"></td>    
-                                                    </span>
-                                                    <span ng-else="<% chief_target.chief_measure.ChiefMeasureType %> !== 'LG'">
-                                                        <td style="background-color:green"></td>    
-                                                    </span>
-                                                </td> 
-
-                                        <td><input type='text' id="id_owner" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
-
-                                        <td><% chief_target.JanuaryTarget %>/<input type='text' id="id_jan" name="monthlyform" value="<% chief_target.JanuaryTarget %>" ng-model="chief_target.JanuaryTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.FebruaryTarget %>/<input type='text' id="id_feb" name="monthlyform" value="<% chief_target.FebruaryTarget %>" ng-model="chief_target.FebruaryTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.MarchTarget %>/<input type='text' id="id_mar" name="monthlyform" value="<% chief_target.MarchTarget %>" ng-model="chief_target.MarchTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.AprilTarget %>/<input type='text' id="id_apr" name="monthlyform" value="<% chief_target.AprilTarget %>" ng-model="chief_target.AprilTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.MayTarget %>/<input type='text' id="id_may" name="monthlyform" value="<% chief_target.MayTarget %>" ng-model="chief_target.MayTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.JuneTarget %>/<input type='text' id="id_jun" name="monthlyform" value="<% chief_target.JuneTarget %>" ng-model="chief_target.JuneTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.JulyTarget %>/<input type='text' id="id_jul" name="monthlyform" value="<% chief_target.JulyTarget %>" ng-model="chief_target.JulyTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.AugustTarget %>/<input type='text' id="id_aug" name="monthlyform" value="<% chief_target.AugustTarget %>" ng-model="chief_target.AugustTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.SeptemberTarget %>/<input type='text' id="id_sep" name="monthlyform" value="<% chief_target.SeptemberTarget %>" ng-model="chief_target.SeptemberTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.OctoberTarget %>/<input type='text' id="id_oct" name="monthlyform" value="<% chief_target.OctoberTarget %>" ng-model="chief_target.OctoberTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.NovemberTarget %>/<input type='text' id="id_nov" name="monthlyform" value="<% chief_target.NovemberTarget %>" ng-model="chief_target.NovemberTarget" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><% chief_target.DecemberTarget %>/<input type='text' id="id_dec" name="monthlyform" value="<% chief_target.DecemberTarget %>" ng-model="chief_target.DecemberTarget" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><b><% chief_target.chief_measure.ChiefMeasureType %></b></td>
                                         
-                                        <td><input type='text' id="id_initiative" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
 
-                                        <td><input type='text' id="id_estimate" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        <td><input type='text' id="id_actual" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><input type='text' id="id_owner" name="monthlyform" value="<% chief_owner.ChiefOwnerContent %>" ng-model="chief_owner.ChiefOwnerContent" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% chief_target.JanuaryTarget %>/<input type='text' id="id_jan" name="monthlyform" value="<% chief_accomplishment.JanuaryAccomplishment %>" ng-model="chief_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.FebruaryTarget %>/<input type='text' id="id_feb" name="monthlyform" value="<% chief_accomplishment.FebruaryAccomplishment %>" ng-model="chief_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.MarchTarget %>/<input type='text' id="id_mar" name="monthlyform" value="<% chief_accomplishment.MarchAccomplishment %>" ng-model="chief_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.AprilTarget %>/<input type='text' id="id_apr" name="monthlyform" value="<% chief_accomplishment.AprilAccomplishment %>" ng-model="chief_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.MayTarget %>/<input type='text' id="id_may" name="monthlyform" value="<% chief_accomplishment.MayAccomplishment %>" ng-model="chief_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.JuneTarget %>/<input type='text' id="id_jun" name="monthlyform" value="<% chief_accomplishment.JuneAccomplishment %>" ng-model="chief_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.JulyTarget %>/<input type='text' id="id_jul" name="monthlyform" value="<% chief_accomplishment.JulyAccomplishment %>" ng-model="chief_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.AugustTarget %>/<input type='text' id="id_aug" name="monthlyform" value="<% chief_accomplishment.AugustAccomplishment %>" ng-model="chief_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.SeptemberTarget %>/<input type='text' id="id_sep" name="monthlyform" value="<% chief_accomplishment.SeptemberAccomplishment %>" ng-model="chief_accomplishment.SeptemberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.OctoberTarget %>/<input type='text' id="id_oct" name="monthlyform" value="<% chief_accomplishment.OctoberAccomplishment %>" ng-model="chief_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.NovemberTarget %>/<input type='text' id="id_nov" name="monthlyform" value="<% chief_accomplishment.NovemberAccomplishment %>" ng-model="chief_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><% chief_target.DecemberTarget %>/<input type='text' id="id_dec" name="monthlyform" value="<% chief_accomplishment.DecemberAccomplishment %>" ng-model="chief_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        
+                                        <td><input type='text' id="id_initiative" name="monthlyform" value="<% chief_initiative.ChiefInitiativeContent %>" ng-model="chief_initiative.ChiefInitiativeContent" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><input type='text' id="id_estimate" name="monthlyform" value="<% chief_funding.ChiefFundingEstimate %>" ng-model="chief_funding.ChiefFundingEstimate" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><input type='text' id="id_actual" name="monthlyform" value="<% chief_funding.ChiefFundingActual %>" ng-model="chief_funding.ChiefFundingActual" autocomplete="off" class="form-control" required ng-touched /></td>
                                         <td></td>
     									
     								</tr>
