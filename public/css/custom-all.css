@@ -50,6 +50,17 @@ body.modal-open .wrap{
     background-color: #fcf8e3;
 }
 
+.unitdashboard-custom-unit-activitylogname,
+.unitdashboard-custom-unit-activitylogabb{
+    margin-top:0em;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    font-size: 250%;
+    text-align: center;
+    color:#8a6d3b;
+    background-color: #fcf8e3;
+}
+
 .unitdashboard-custom-unitpicabb{
         height:100px !important; 
         width:100px !important; 
@@ -60,12 +71,9 @@ body.modal-open .wrap{
 
 
 @media(min-width:768px){
-    .nav>li.layout-custom-usernavoptions{
-        display: none;
-    }
-    .unitdashboard-custom-unit-activityabb{
-        display: none;
-    }
+    .nav>li.layout-custom-usernavoptions,
+    .unitdashboard-custom-unit-activitylogabb,
+    .unitdashboard-custom-unit-activityabb,
     .unitdashboard-custom-unit-activityabb,
     .layout-custom-unit-pnpabb,
     .dashboard-custom-unit-dashabb{
@@ -98,6 +106,7 @@ a.navbar-brand{
     }   
     .layout-custom-unit-pnpname,
     .unitdashboard-custom-unit-activityname,
+    .unitdashboard-custom-unit-activitylogname,
     .dashboard-custom-unit-dashname,
     .unitdashboard-custom-unitpic{
         display: none;
