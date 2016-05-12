@@ -1,7 +1,7 @@
 var local = 'http://' + location.host;
  
 app.controller('APIChiefObjectiveController', function($scope, $http, $interval) {
- 
+    
     $scope.chief_objectives = [];
     $scope.loading = true;
     $scope.info = false;
