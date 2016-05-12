@@ -14,7 +14,7 @@ class CreateUnitOwnersTable extends Migration {
 	{
 		Schema::create('unit_owners', function(Blueprint $table)
 		{
-			$table->increments('UnitOnwerID');
+			$table->increments('UnitOwnerID');
 			$table->string('UnitOwnerContent');
 			$table->date('UnitOwnerDate');
 			$table->integer('UnitMeasureID');

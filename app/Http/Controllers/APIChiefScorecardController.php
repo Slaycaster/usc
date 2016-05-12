@@ -6,6 +6,10 @@ use App\ChiefMeasure;
 use App\ChiefObjective;
 use App\Chief;
 use App\UserChief;
+use App\ChiefAccomplishment;
+use App\ChiefOwner;
+use App\ChiefInitiative;
+use App\ChiefFunding;
 
 //Laravel Modules
 use App\Http\Controllers\Controller;
@@ -39,6 +43,10 @@ class APIChiefScorecardController extends Controller {
 	
 		return ChiefTarget::with('chief_measure')
 			->with('chief_measure.chief_objective')
+			->with('chief_measure.chief_owners')
+			->with('chief_measure.chief_fundings')
+			->with('chief_measure.chief_initiatives')
+			->with('chief_measure.chief_accomplishments')
 			->with('user_chief')
 			->with('user_chief.rank')
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
