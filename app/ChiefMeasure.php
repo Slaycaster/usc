@@ -23,7 +23,7 @@ class ChiefMeasure extends Model {
 	 * @var array
 	 */
 	protected $primaryKey = 'ChiefMeasureID';
-
+	
 	public function chief()
 	{
 		return $this->belongsTo('App\Chief', 'ChiefID', 'ChiefID');
