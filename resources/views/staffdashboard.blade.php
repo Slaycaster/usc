@@ -246,9 +246,9 @@
                 <br />
                     <a href="#" class="list-group-item">
                         <i class="fa fa-tasks fa-fw"></i> 
-                            <b><% audit_trail_dash.user_unit.rank.RankCode%> 
-                                <% audit_trail_dash.user_unit.UserUnitFirstName %>
-                                <% audit_trail_dash.user_unit.UserUnitLastName %>
+                            <b><% audit_trail_dash.user_staff.rank.RankCode%> 
+                                <% audit_trail_dash.user_staff.UserStaffFirstName %>
+                                <% audit_trail_dash.user_staff.UserStaffLastName %>
                             </b> 
                             <br />
                             <% audit_trail_dash.Action %>
