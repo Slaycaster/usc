@@ -120,6 +120,7 @@
 
                                         <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %></td>
 
+
                                         <td><b><% chief_target.chief_measure.ChiefMeasureType %></b></td>
                                         
 
@@ -137,7 +138,7 @@
                                         <td><% chief_target.OctoberTarget %>/<input type='text' id="id_oct" name="monthlyform" value="<% chief_accomplishment.OctoberAccomplishment %>" ng-model="chief_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
                                         <td><% chief_target.NovemberTarget %>/<input type='text' id="id_nov" name="monthlyform" value="<% chief_accomplishment.NovemberAccomplishment %>" ng-model="chief_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
                                         <td><% chief_target.DecemberTarget %>/<input type='text' id="id_dec" name="monthlyform" value="<% chief_accomplishment.DecemberAccomplishment %>" ng-model="chief_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
-                                        
+
                                         <td><input type='text' id="id_initiative" name="monthlyform" value="<% chief_initiative.ChiefInitiativeContent %>" ng-model="chief_initiative.ChiefInitiativeContent" autocomplete="off" class="form-control" required ng-touched /></td>
 
                                         <td><input type='text' id="id_estimate" name="monthlyform" value="<% chief_funding.ChiefFundingEstimate %>" ng-model="chief_funding.ChiefFundingEstimate" autocomplete="off" class="form-control" required ng-touched /></td>

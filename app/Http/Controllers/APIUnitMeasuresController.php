@@ -42,9 +42,10 @@ class APIUnitMeasuresController extends Controller {
 			$user = UserUnit::where('UserUnitID', $id)
 				->first();
 
-			$staff_measures = StaffMeasure::all();
-			$unit_objectives = UnitObjective::all();
-			$unit = Unit::where('UnitID', '=', $user)->get();
+			$unit = Unit::where('UnitID', '=', $user->UnitID)->first();
+		
+			$staff_measures = StaffMeasure::where('StaffID','=',$unit->StaffID)->get();
+			$unit_objectives = UnitObjective::where('UnitID','=',$unit->UnitID)->get();
 			$unit_measures = UnitMeasure::where('UnitID', '=', $user->UnitID)->get();
 			
 			return view('unit-ui.unit-measures')
