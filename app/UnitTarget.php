@@ -18,7 +18,7 @@ class UnitTarget extends Model {
 	 */
 	protected $fillable = ['JanuaryTarget', 'FebruaryTarget', 'MarchTarget', 'AprilTarget', 'MayTarget', 'JuneTarget', 
 						   'JulyTarget', 'AugustTarget', 'SeptemberTarget', 'OctoberTarget', 'NovemberTarget', 'DecemberTarget',
-						   'TargetDate', 'TargetPeriod', 'UnitMeasureID', 'UnitID','UserUnitID',];
+						   'TargetDate', 'TargetPeriod','Termination', 'UnitMeasureID', 'UnitID','UserUnitID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *

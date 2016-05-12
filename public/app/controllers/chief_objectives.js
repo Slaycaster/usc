@@ -6,7 +6,7 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
     $scope.loading = true;
     $scope.info = false;
     $scope.perspective = [];
-$scope.feed = {};
+    $scope.feed = {};
  
     $scope.init = function() {
         $scope.loading = false;
@@ -14,44 +14,27 @@ $scope.feed = {};
         $http.get(local + '/usc/public/api/chief_objectives').
         success(function(data, status, headers, config) {
             $scope.chief_objectives = data;
-
-
-                $scope.loading = false;
-
-
-                   
-        $http.get(local + '/usc/public/api/perspectives').
-        success(function(data, status, headers, config)
-        {   
-            $scope.perspective = data;
-            $scope.selectedUserProfile = $scope.perspective[0];
+            $scope.loading = false;
+            $http.get(local + '/usc/public/api/perspectives').
+            success(function(data, status, headers, config){   
+                $scope.perspective = data;
+                $scope.selectedUserProfile = $scope.perspective[0];
+            });
         });
-
-
-
-    
-
-
-        });
-
-
     };
 
-    $scope.sort = function(keyname)
-    {
+    $scope.sort = function(keyname){
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
  
-    $scope.save = function(modalstate, id) 
-    {
+    $scope.save = function(modalstate, id) {
         $scope.loading = true;
         var url = local + '/usc/public/api/chief_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
-        if (modalstate === 'edit')
-        {
-            url += "/" + id; /*console.log(id);*/
+        if (modalstate === 'edit'){
+            url += "/" + id; 
             $http.put(url, {
                 ChiefObjectiveName: $scope.chief_objective.ChiefObjectiveName,
                 PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
@@ -65,8 +48,7 @@ $scope.feed = {};
                 $scope.loading = false;
             });
         }
-        else if (modalstate === 'add')
-        {
+        else if (modalstate === 'add'){
             $http.post(url, {
                 ChiefObjectiveName: $scope.chief_objective.ChiefObjectiveName,
                 PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
@@ -78,14 +60,11 @@ $scope.feed = {};
                 $scope.chief_objective = '';
                 $scope.init();
                 $scope.loading = false;
-
-
             });
         }
     };
  
-    $scope.toggle = function(modalstate, id) 
-    {
+    $scope.toggle = function(modalstate, id) {
         $scope.modalstate = modalstate;
 
         switch (modalstate) {
@@ -112,6 +91,4 @@ $scope.feed = {};
 
     $scope.init();
 
-    //$interval(function(){ $scope.init(); }, 1000);
- 
-});//app.controller(UnitObjectiveController)
+});

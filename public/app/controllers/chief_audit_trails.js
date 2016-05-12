@@ -1,17 +1,17 @@
 var local = 'http://' + location.host;
 
-app.controller('APIUnitAuditTrailsController', function($scope, $http, $interval) {
-    $scope.unit_audit_trails = [];
+app.controller('APIChiefAuditTrailsController', function($scope, $http, $interval) {
+    $scope.chief_audit_trails = [];
     $scope.loading = true;
     $scope.info = false;
  
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + '/usc/public/api/unit_audit_trails').
+        $http.get(local + '/usc/public/api/chief_audit_trails').
         success(function(data, status, headers, config) {
-            $scope.unit_audit_trails = data;
-                $scope.loading = false;
+            $scope.chief_audit_trails = data;
+            $scope.loading = false;
         }); 
     };
 

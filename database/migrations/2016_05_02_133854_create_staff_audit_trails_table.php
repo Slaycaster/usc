@@ -17,6 +17,7 @@ class CreateStaffAuditTrailsTable extends Migration {
 			$table->increments('StaffAuditTrailID');
 			$table->string('Action');
 			$table->integer('UserStaffID');
+			$table->integer('StaffID');
 			$table->timestamps();
 		});
 	}

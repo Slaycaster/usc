@@ -29,6 +29,7 @@ class CreateUnitTargetsTable extends Migration {
 			$table->float('DecemberTarget');
 			$table->date('TargetDate');
 			$table->string('TargetPeriod');
+			$table->string('Termination');
 			$table->integer('UnitMeasureID');
 			$table->integer('UnitID');
 			$table->integer('UserUnitID');

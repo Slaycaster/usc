@@ -25,14 +25,34 @@ class APIUnitTargetsController extends Controller {
 
 		$unit = UserUnit::where('UserUnitID', '=', $unit_id)->select('UnitID')->lists('UnitID'); //Get the Unit of the unit
 
-		$currentYear = date("Y");		
+		$currentYear = date("Y");
+		
+		$unit_targets = UnitTarget::where( DB::raw('YEAR(TargetDate)'), '<', $currentYear )
+		->where('TargetDate','!=','0000-00-00')
+		->where('Termination', '=', null)
+		->get();
 
+		if($unit_targets != null ){
+			foreach ($unit_targets as $unit_target) {
+				UnitTarget::where('UnitTargetID', $unit_target->UnitTargetID)
+		          ->update(['Termination' => 'Terminated']);
+
+				$unittarget = new UnitTarget;
+				$unittarget->TargetPeriod = "Not Set";
+				$unittarget->UnitMeasureID = $unit_target->UnitMeasureID;
+				$unittarget->UnitID = $unit_target->UnitID;
+				$unittarget->UserUnitID = $unit_target->UserUnitID;
+				$unittarget->save();
+			}
+		}	
+			
 		return UnitTarget::with('unit_measure')
 			->with('unit_measure.unit_objective')
 			->with('user_unit')
 			->with('user_unit.rank')
-			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->where('UnitID', '=', $unit)
+			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
+			->orWhere('TargetDate', '=', '0000-00-00')
 			->get();
 		
 	}
@@ -137,7 +157,12 @@ class APIUnitTargetsController extends Controller {
 		$unit_target->update(Request::all());
 
 		$unit_target->save();
- 	
+
+		
+ 		$unit_target = UnitTarget::find($id);
+ 		$unit_target->TargetDate = date('Y-m-d');
+		$unit_target->save();
+
 
 		return $unit_target;
 	}
@@ -147,8 +172,7 @@ class APIUnitTargetsController extends Controller {
 
 		$unit_target = UnitTarget::find($id);
 		$targetperiod = Request::input('TargetPeriod');
-		$targetdate = Request::input('TargetDate');
-
+		$targetdate = date('Y-m-d');
 		$quarter1 = Request::input('Quarter1');
 		$quarter1 = $quarter1 / 3;
 		$unit_target->JanuaryTarget = $quarter1;

@@ -168,13 +168,11 @@
 
                                  <tr>
                                     <td>
-                                        <label for="chief_objective" class="control-label">Chief Measure Objective:</label>
+                                        <label for="chief_objective" class="control-label">Chief Objective:</label>
                                     </td>
                                     <td>
                                         <select id="id_chief_objective" name="chief_objective" data-ng-model="chief_measure.ChiefObjectiveID" class="form-control" required ng-touched>
-                                            <option value= "0">
-                                                    Select Chief Objective
-                                            </option>
+                                           
                                             @foreach($chief_objectives as $chief_objective)
                                                     <option value="<?=$chief_objective->ChiefObjectiveID?>">
                                                         {{ $chief_objective->ChiefObjectiveName }}

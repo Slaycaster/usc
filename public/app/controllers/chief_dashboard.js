@@ -1,16 +1,15 @@
 var local = 'http://' + location.host;
 
-app.controller('APIUnitAuditTrailsController', function($scope, $http, $interval) {
-    $scope.unit_audit_trails = [];
+app.controller('APIChiefAuditTrailsDashController', function($scope, $http, $interval) {
+    $scope.chief_audit_trails_dash = [];
     $scope.loading = true;
-    $scope.info = false;
- 
+
     $scope.init = function() {
         $scope.loading = false;
-        $scope.info = true;
-        $http.get(local + '/usc/public/api/unit_audit_trails').
+        $http.get(local + '/usc/public/api/chief_dashboard').
         success(function(data, status, headers, config) {
-            $scope.unit_audit_trails = data;
+            nowTime = (new Date()).getTime();
+            $scope.chief_audit_trails_dash = data;
                 $scope.loading = false;
         }); 
     };
@@ -19,7 +18,6 @@ app.controller('APIUnitAuditTrailsController', function($scope, $http, $interval
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
-
-    $interval( function(){ $scope.init(); }, 3000);
+    $interval( function(){ $scope.init(); }, 5000);
     
 });

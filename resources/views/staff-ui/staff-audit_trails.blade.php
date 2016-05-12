@@ -1,8 +1,8 @@
-@extends('layout-unit')
+@extends('layout-staff')
 
 @section('content')
     
-    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+   <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
     <!-- Angular Utils Pagination -->
@@ -14,21 +14,23 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/timeago.js') }}"></script>
     
-    <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/unit_audit_trails.js') }}"></script>
+    <!-- Audit Trail Scripts -->
+    <script src="{{ asset('app/controllers/staff_audit_trails.js') }}"></script>
 
     <br />
-    <div ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsController">
+    <div ng-app="unitScorecardApp" ng-controller="APIStaffAuditTrailsController">
         <div class="wrap">
             <div class="row">           
                 <div class="panel panel-warning">
                     <div class="col-lg-12 unitdashboard-custom-unit-activitylogname">
-                        <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitName }} Activity Log</b></h2>
-                        <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                        <div  class="col-lg-8 col-md-offset-2">
+                            <i class="fa fa-bell fa-2x"></i></i> <h2><b> {{ $staff_user->staff->StaffName }} Activity Log</b></h2>
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                        </div>
                     </div>
 
                      <div class="col-lg-12 unitdashboard-custom-unit-activitylogabb">
-                        <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitAbbreviation  }} Activity Log</b></h2>
+                        <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $staff_user->staff->StaffAbbreviation }} Activity Log</b></h2>
                         <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                     </div>
                        
@@ -52,7 +54,7 @@
                         <!--/.div class row-->
                         <div class="row">
                             <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> 
-                            Recent activities from {{ $user->unit->UnitName }}</div>
+                            Recent activities from {{ $staff_user->staff->StaffName }} </div>
                         </div>
                         <!--./div class row-->
 
@@ -62,10 +64,11 @@
                                     <td colspan="3" class="custom-audit-activity">Activity
                                     </td>
                                 </thead>
-                                <tr dir-paginate='audit_trail in unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
-                                    <td><% audit_trail.user_unit.rank.RankCode%> 
-                                        <% audit_trail.user_unit.UserUnitFirstName %>
-                                        <% audit_trail.user_unit.UserUnitLastName %>
+                                <tr dir-paginate='audit_trail in staff_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                                    <td>
+                                        <% audit_trail.user_staff.rank.RankCode %> 
+                                        <% audit_trail.user_staff.UserStaffFirstName %>
+                                        <% audit_trail.user_staff.UserStaffLastName %>
                                     </td>
                                     <td><% audit_trail.Action %></td>
                                     
