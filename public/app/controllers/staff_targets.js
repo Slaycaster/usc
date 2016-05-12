@@ -108,10 +108,12 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
                     if($scope.staff_target.TargetPeriod === 'Monthly' || $scope.staff_target.TargetPeriod === 'Quarterly')
                     {
                         $('#alreadysetModal').modal('show');
+                        $scope.init();
                     }
                     else
                     {
                         $('#targetModal').modal('show');
+                        $scope.init();
                     }
                 });       
 
