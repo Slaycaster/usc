@@ -135,13 +135,62 @@ class APIStaffMeasuresController extends Controller {
 	public function update($id)
 	{
 
+		$staff_measure= StaffMeasure::find($id)->with('staff_objective')->with('chief_measures')->with('chief_measures.chief_objective')->with('chief_measures.chief_objective.chief')->first();
+
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff = Request::input('StaffID');
+
+		$new_measurename = Request::input('StaffMeasureName');
+		$new_measuretype = Request::input('StaffMeasureType');
+		$new_measureformula = Request::input('StaffMeasureFormula');
+
+
+
+		$action = 'Made an Update to the Measure: "' . $staff_measure->StaffMeasureName . '" under "' . $staff_measure->staff_objective->StaffObjectiveName;
+
+		if($staff_measure->ChiefMeasureID > 0)
+		{
+			$action .= ' and is contributory to Chief\'s Measure: '.$staff_measure->chief_measures->ChiefMeasureName.' ';
+		}
+
+		$action .= ' with the following: ';
+
+		if($new_measurename != $staff_measure->StaffMeasureName)
+		{
+			$action .= 'Measure name "'.$staff_measure->StaffMeasureName.'" to "'.$new_measurename.'", ';
+		}
+
+		if($new_measuretype != $staff_measure->StaffMeasureType)
+		{
+			$action .= 'Measure type "'.$staff_measure->StaffMeasureType.'" to "'.$new_measuretype.'", ';
+		}
+
+		if($new_measureformula != $staff_measure->StaffMeasureFormula)
+		{
+			$action .= 'Measure Formula "'.$staff_measure->StaffMeasureFormula.'" to "'.$new_measureformula.'", ';
+		}
+
+		if(Request::input('ChiefMeasureID') > 0 && Request::input('ChiefMeasureID') != $staff_measure->ChiefMeasureID)
+		{
+			$new_chiefmeasure = ChiefMeasure::where('ChiefMeasureID', '=', Request::input('ChiefMeasureID'))->first();
+			$action .= 'Chief Measure Name to "'.$new_chiefmeasure->ChiefMeasureName.'", ';
+		}
+
+		if(Request::input('StaffObjectiveID') != $staff_measure->StaffObjectiveID)
+		{
+			$new_objective = StaffObjective::where('StaffObjectiveID', '=', Request::input('StaffObjectiveID'))->first();
+			$action .= 'Staff\'s Objective "'.$staff_measure->staff_objective->StaffObjectiveName.'" to "'.$new_objective->StaffObjectiveName.'"';
+		}
+
+		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $staff_id, $staff));
+		
+
 
 		$staff_measure = StaffMeasure::find($id);
 		$staff_measure->update(Request::all());
 		$staff_measure->save();
  
-		$staff_id = Session::get('staff_user_id', 'default');
-		$staff = Request::input('StaffID');
+		
 	//	$action = 'Updated a measure: "' . Request::input('UnitMeasureName') . '"';
 
 	//	DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));

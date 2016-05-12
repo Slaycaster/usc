@@ -104,16 +104,40 @@ class APIUnitObjectivesController extends Controller {
 	{
 
 
+		$unit_obj = UnitObjective::find($id)->with('perspective')->with('staffobjective')->with('staffobjective.staff')->first();
+ 
+
+		$unitid = Session::get('unit_user_id', 'default');
+		$unit = Request::input('UnitID');
+
+		$new_objectivename = Request::input('UnitObjectiveName');
+		$new_perspective = Perspective::find(Request::input('PerspectiveID'))->first();
+		$new_staffobjective = StaffObjective::find(Request::input('StaffObjectiveID'))->first();
+
+
+		$action = 'Updated the Objective: "' . $unit_obj->UnitObjectiveName . '" under "' . $unit_obj->perspective->PerspectiveName;
+
+		if($unit_obj->StaffObjectiveID > 0)
+		{
+			$action .= ' and is contributory to Staff\'s: "'.$unit_obj->staffobjective->StaffObjectiveName.'" ';
+		}
+
+		$action .= 'to: "'.Request::input('UnitObjectiveName').'" under "'. $new_perspective->PerspectiveName . '"';
+
+
+		if(Request::input('StaffObjectiveID') > 0)
+		{
+			$new_contributory = StaffObjective::find(Request::input('StaffObjectiveID'))->first();
+			$action .= 'and is contributory to Staff\'s: "'.$new_contributory->StaffObjectiveName.'" ';
+		}
+
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $unitid, $unit));
+
+
+
 		$unit_objective = UnitObjective::find($id);
 		$unit_objective->update(Request::all());
 		$unit_objective->save();
- 
-
-		$id = Session::get('unit_user_id', 'default');
-		$unit = Request::input('UnitID');
-		$action = 'Updated an Objective: "' . Request::input('UnitObjectiveName') . '"';
-
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
 
 
 		return $unit_objective;

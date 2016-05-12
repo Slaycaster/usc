@@ -83,7 +83,7 @@ class APIStaffObjectivesController extends Controller {
 
 		return $staff_objective;
 	}
-
+	
 	/**
      * Display the specified resource.
      *
@@ -92,7 +92,9 @@ class APIStaffObjectivesController extends Controller {
      */
     public function show($id) 
     {
-		$staff_objective= StaffObjective::find($id);
+    	$staff_objective = StaffObjective::find($id);
+		//$staff_objective= StaffObjective::find($id)->with('perspective')->first();
+		//$staff_objective = StaffObjective::find($id)->with('perspective')->with('chief_objective')->with('chief_objective.chief')->first();
  		return $staff_objective;
     }
 
@@ -104,21 +106,50 @@ class APIStaffObjectivesController extends Controller {
 	 */
 	public function update($id)
 	{
+		/*
+		$staff_objective = DB::table('staff_objectives')
+		->join('perspectives', 'staff_objectives.PerspectiveID', '=', 'perspectives.PerspectiveID')
+		->join('chief_objectives', 'staff_objectives.ChiefObjectiveID', '=', 'chief_objectives.ChiefObjectiveID')
+		->join('chiefs', 'chief_objectives.ChiefID', '=', 'chiefs.ChiefID')
+		->where('StaffObjectiveID', '=', $id)
+		->select('PerspectiveName', 'StaffObjectiveName', 'ChiefObjectiveName', 'ChiefAbbreviation')
+		->first();
+		*/
+
+		$staff_objective2= StaffObjective::find($id)->with('perspective')->with('chief_objective')->with('chief_objective.chief')->first();
+	
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff = Request::input('StaffID');
+
+		$new_perspective = Perspective::find(Request::input('PerspectiveID'))->first();
+
+		$action = 'Updated the Objective: "' . $staff_objective2->StaffObjectiveName . '" under "' . $staff_objective2->perspective->PerspectiveName;
+
+		if($staff_objective2->ChiefObjectiveID > 0)
+		{
+			$action .= ' and is contributory to Chief\'s: "'.$staff_objective2->chief_objective->ChiefObjectiveName.'" ';
+		}
 
 
+		$action .= 'to: "'.Request::input('StaffObjectiveName').'" under "'. $new_perspective->PerspectiveName . '"';
+
+		if(Request::input('ChiefObjectiveID') > 0)
+		{
+			$new_contributory = ChiefObjective::find(Request::input('ChiefObjectiveID'))->first();
+			$action .= 'and is contributory to Chief\'s: "'.$new_contributory->ChiefObjectiveName.'" ';
+		}
+
+		DB::insert('insert into staff_audit_trails (Action, UserStaffID, StaffID) values (?,?,?)', array($action, $staff_id, $staff));
+	
 		$staff_objective = StaffObjective::find($id);
 		$staff_objective->update(Request::all());
 		$staff_objective->save();
+
  
-
-		$staff_id = Session::get('staff_user_id', 'default');
-		$staff = Request::input('StaffID');
-		$action = 'Updated an Objective: "' . Request::input('StaffObjectiveName') . '"';
+ 		// for new objectives in the controller
 
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $staff_id, $staff));
 
-		DB::insert('insert into staff_audit_trails (Action,  StaffID, UserStaffID) values (?,?,?)', array($action, $staff_id, $staff));
 
 
 

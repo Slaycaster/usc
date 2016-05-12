@@ -137,16 +137,63 @@ class APIUnitMeasuresController extends Controller {
 	{
 
 
+		$unitmeasure = UnitMeasure::find($id)->with('unit_objective')->with('staff_measure')->with('staff_measure.staff_objective')->with('staff_measure.staff_objective.staff')->first();
+ 
+		$unitid = Session::get('unit_user_id', 'default');
+		$unit = Request::input('UnitID');
+		
+
+
+		$new_measurename = Request::input('UnitMeasureName');
+		$new_measuretype = Request::input('UnitMeasureType');
+		$new_measureformula = Request::input('UnitMeasureFormula');
+
+
+		$action = 'Made an Update to the Measure: "' . $unitmeasure->UnitMeasureName . '" under "' . $unitmeasure->unit_objective->UnitObjectiveName;
+
+		if($unitmeasure->StaffMeasureID > 0)
+		{
+			$action .= ' and is contributory to Staff\'s Measure: '.$unitmeasure->staff_measure->StaffMeasureName.' ';
+		}
+
+
+		$action .= ' with the following: ';
+
+		if($new_measurename != $unitmeasure->UnitMeasureName)
+		{
+			$action .= 'Measure name "'.$unitmeasure->UnitMeasureName.'" to "'.$new_measurename.'", ';
+		}
+
+
+		if($new_measuretype != $unitmeasure->UnitMeasureType)
+		{
+			$action .= 'Measure type "'.$unitmeasure->UnitMeasureType.'" to "'.$new_measuretype.'", ';
+		}
+
+		if($new_measureformula != $unitmeasure->UnitMeasureFormula)
+		{
+			$action .= 'Measure Formula "'.$unitmeasure->UnitMeasureFormula.'" to "'.$new_measureformula.'", ';
+		}
+
+		if(Request::input('StaffMeasureID') > 0 && Request::input('StaffMeasureID') != $unitmeasure->StaffMeasureID)
+		{
+			$new_staffmeasure = StaffMeasure::where('StaffMeasureID', '=', Request::input('StaffMeasureID'))->first();
+			$action .= 'Staff Measure Name to "'.$new_staffmeasure->StaffMeasureName.'", ';
+		}
+
+		if(Request::input('UnitObjectiveID') != $unitmeasure->UnitObjectiveID)
+		{
+			$new_objective = UnitObjective::where('UnitObjectiveID', '=', Request::input('UnitObjectiveID'))->first();
+			$action .= 'Unit\'s Objective "'.$unitmeasure->unit_objective->UnitObjectiveName.'" to "'.$new_objective->UnitObjectiveName.'"';
+		}
+
+
+		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $unitid, $unit));
+
+
 		$unit_measure = UnitMeasure::find($id);
 		$unit_measure->update(Request::all());
 		$unit_measure->save();
- 
-		$id = Session::get('unit_user_id', 'default');
-		$unit = Request::input('UnitID');
-		$action = 'Updated a measure: "' . Request::input('UnitMeasureName') . '"';
-
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
-
 
 
 		return $unit_measure;
