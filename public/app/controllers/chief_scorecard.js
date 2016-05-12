@@ -13,9 +13,6 @@ app.controller('ChiefScorecardController', function($scope, $http, $interval) {
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
 				$scope.loading = false;
-
-            $scope.date = new Date();
-
 		});	
 	};
 
@@ -24,4 +21,6 @@ app.controller('ChiefScorecardController', function($scope, $http, $interval) {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
+
+    
 });

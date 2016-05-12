@@ -1,7 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 //Models
-use App\ChiefMeasure;
+use App\ChiefTarget;
+use App\UserChief;
 
 //Laravel Modules
 use App\Http\Controllers\Controller;
@@ -21,14 +22,15 @@ class APIChiefScorecardController extends Controller {
 		$chief = UserChief::where('UserChiefID', '=', $chief_id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the chief
 
 		$currentYear = date("Y");		
-
+		
 		return ChiefTarget::with('chief_measure')
 			->with('chief_measure.chief_objective')
 			->with('user_chief')
 			->with('user_chief.rank')
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
-			->where('ChiefID', '=', $chief)
+			->where('ChiefID', '=', $chief_id)
 			->get();
+		
 	}
 
 	/**
