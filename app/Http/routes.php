@@ -22,8 +22,9 @@ Route::get('logout', 'LoginController@doLogout');
 Route::get('unit/dashboard', 'UnitLoginController@dashboard');
 Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
 Route::get('staff/dashboard', 'StaffLoginController@dashboard');
-Route::get('unit/staffdashboard', 'APIStaffAuditTrailsDashController@showIndex');
+Route::get('staff/staffdashboard', 'APIStaffAuditTrailsDashController@showIndex');
 Route::get('chief/dashboard', 'ChiefLoginController@dashboard');
+Route::get('chief/chiefdashboard', 'APIChiefAuditTrailsDashController@showIndex');
 
 
 /*UNIT USER ROUTES*/
@@ -50,6 +51,7 @@ Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
 Route::get('chief/measures','APIChiefMeasuresController@showIndex');
 Route::get('chief/targets','APIChiefTargetsController@showIndex');
 Route::get('chief/targets/{id}','APIChiefTargetsController@edit');
+Route::get('chief/audit_trails', 'APIChiefAuditTrailsController@showIndex');
 
 
 /*API ROUTES*/
@@ -61,6 +63,8 @@ Route::resource('api/staff_dashboard','APIStaffAuditTrailsDashController');
 Route::resource('api/staff_objectives', 'APIStaffObjectivesController');
 Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
 Route::resource('api/staff_audit_trails','APIStaffAuditTrailsController');
+Route::resource('api/chief_audit_trails','APIChiefAuditTrailsController');
+Route::resource('api/chief_dashboard','APIChiefAuditTrailsDashController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
