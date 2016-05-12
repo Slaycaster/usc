@@ -27,7 +27,7 @@
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-unit-dashname">
-            <p><b>{{ $chief_user->chief->ChiefAbbreviation }} Dashboard</b></p>
+            <p><b>{{ $chief_user->chief->ChiefName }} Dashboard</b></p>
         </div>
         <!-- /.col-lg-12 -->
     </div>
