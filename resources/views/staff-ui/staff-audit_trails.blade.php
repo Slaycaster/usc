@@ -22,14 +22,14 @@
         <div class="wrap">
             <div class="row">           
                 <div class="panel panel-warning">
-                    <div class="col-lg-12 unitdashboard-custom-unit-activityname">
+                    <div class="col-lg-12 unitdashboard-custom-unit-activitylogname">
                         <div  class="col-lg-8 col-md-offset-2">
                             <i class="fa fa-bell fa-2x"></i></i> <h2><b> {{ $staff_user->staff->StaffName }} Activity Log</b></h2>
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                         </div>
                     </div>
 
-                     <div class="col-lg-12 unitdashboard-custom-unit-activityabb">
+                     <div class="col-lg-12 unitdashboard-custom-unit-activitylogabb">
                         <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $staff_user->staff->StaffAbbreviation }} Activity Log</b></h2>
                         <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                     </div>

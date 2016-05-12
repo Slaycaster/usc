@@ -261,7 +261,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- /.list-group -->
-                    <a href="{{ url('unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('staff/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>
