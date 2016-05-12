@@ -126,22 +126,14 @@
 
                                         <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %></td>
 
-                                                <td>
-                                                    <span ng-if="<% chief_target.chief_measure.ChiefMeasureType %> === 'LD'">
-                                                        <td style="background-color:green"></td>    
-                                                    </span>
-                                                    <span ng-else="<% chief_target.chief_measure.ChiefMeasureType %> !== 'LD'">
-                                                        <td></td>    
-                                                    </span>
+                                                    <td style="background-color:green">
+                                                
+                                                    <td></td>
+
+                                                 
                                                 </td>
 
-                                                <td>
-                                                    <span ng-if="<% chief_target.chief_measure.ChiefMeasureType %> === 'LG'">
-                                                        <td style="background-color:green"></td>    
-                                                    </span>
-                                                    <span ng-else="<% chief_target.chief_measure.ChiefMeasureType %> !== 'LG'">
-                                                        <td style="background-color:green"></td>    
-                                                    </span>
+                                                <td style="background-color:green">
                                                 </td> 
 
                                         <td><input type='text' id="id_owner" name="monthlyform" value="" ng-model="" autocomplete="off" class="form-control" required ng-touched /></td>

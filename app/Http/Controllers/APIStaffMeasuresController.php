@@ -42,7 +42,7 @@ class APIStaffMeasuresController extends Controller {
 
 			$staff = Staff::where('StaffID', '=', $staff_user->StaffID)->first();
 			$chief_measures = ChiefMeasure::all();
-			$staff_objectives = StaffObjective::all();
+			$staff_objectives = StaffObjective::where('StaffID','=',$staff_user->StaffID);
 			$staff_measures = StaffMeasure::with('staff')->with('chief_measures')->where('StaffID', '=', $staff_user->StaffID)->get();
 			
 			return view('staff-ui.staff-measures')
