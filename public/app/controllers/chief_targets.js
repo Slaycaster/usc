@@ -12,8 +12,10 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 		$http.get(local + '/usc/public/api/chief_targets').
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
-            console.log(data);
 				$scope.loading = false;
+
+            $scope.date = new Date();
+
 		});	
 	};
 
@@ -29,76 +31,91 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
         var url = local + '/usc/public/api/chief_targets';
 
         //append Unit Objective ID to the URL if the form is in edit mode
-        if (modalstate === 'edit')
-        {
-            url += "/" + id;
-            console.log(document.getElementById('chief_id').value);
-            $http.put(url, {
-                JanuaryTarget: $scope.chief_target.JanuaryTarget,
-                FebruaryTarget: $scope.chief_target.FebruaryTarget,
-                MarchTarget: $scope.chief_target.MarchTarget,
-                AprilTarget: $scope.chief_target.AprilTarget,
-                MayTarget: $scope.chief_target.MayTarget,
-                JuneTarget: $scope.chief_target.JuneTarget,
-                JulyTarget: $scope.chief_target.JulyTarget,
-                AugustTarget: $scope.chief_target.AugustTarget,
-                SeptemberTarget: $scope.chief_target.SeptemberTarget,
-                OctoberTarget: $scope.chief_target.OctoberTarget,
-                NovemberTarget: $scope.chief_target.NovemberTarget,
-                DecemberTarget: $scope.chief_target.DecemberTarget,
-                TargetData: $scope.chief_target.TargetData,
-                TargetPeriod: $scope.chief_target.TargetPeriod,
-                ChiefMeasureID: document.getElementById('id_chief_measure').value,
-                ChiefID: document.getElementById('chief_id').value,
-                UserChiefID: document.getElementById('user_chief_id').value
 
-            }).success(function(data, status, headers, config, response) {
-                console.log(response);
-                $('#myModal').modal('hide');
-                $scope.chief_targets = '';
-                $scope.init();
-                $scope.loading = false;
-            });
-        }
-        else if (modalstate === 'add')
+        if (modalstate === 'show')
         {
-            $http.post(url, {
-                JanuaryTarget: $scope.chief_target.JanuaryTarget,
-                FebruaryTarget: $scope.chief_target.FebruaryTarget,
-                MarchTarget: $scope.chief_target.MarchTarget,
-                AprilTarget: $scope.chief_target.AprilTarget,
-                MayTarget: $scope.chief_target.MayTarget,
-                JuneTarget: $scope.chief_target.JuneTarget,
-                JulyTarget: $scope.chief_target.JulyTarget,
-                AugustTarget: $scope.chief_target.AugustTarget,
-                SeptemberTarget: $scope.chief_target.SeptemberTarget,
-                OctoberTarget: $scope.chief_target.OctoberTarget,
-                NovemberTarget: $scope.chief_target.NovemberTarget,
-                DecemberTarget: $scope.chief_target.DecemberTarget,
-                TargetData: $scope.chief_target.TargetData,
-                TargetPeriod: $scope.chief_target.TargetPeriod,
-                ChiefMeasureID: document.getElementById('id_chief_measure').value,
-                ChiefID: document.getElementById('chief_id').value,
-                UserChiefID: document.getElementById('user_chief_id').value
+            
+            if(document.getElementById('id_target_period').value === "Monthly")
+            {
+                    url += "/update/" + id;
+                    $http.post(url, {    
+                        JanuaryTarget: $scope.chief_target.JanuaryTarget,
+                        FebruaryTarget: $scope.chief_target.FebruaryTarget,
+                        MarchTarget: $scope.chief_target.MarchTarget,
+                        AprilTarget: $scope.chief_target.AprilTarget,
+                        MayTarget: $scope.chief_target.MayTarget,
+                        JuneTarget: $scope.chief_target.JuneTarget,
+                        JulyTarget: $scope.chief_target.JulyTarget,
+                        AugustTarget: $scope.chief_target.AugustTarget,
+                        SeptemberTarget: $scope.chief_target.SeptemberTarget,
+                        OctoberTarget: $scope.chief_target.OctoberTarget,
+                        NovemberTarget: $scope.chief_target.NovemberTarget,
+                        DecemberTarget: $scope.chief_target.DecemberTarget,
+                        TargetDate:document.getElementById('target_date').value,
+                        TargetPeriod: document.getElementById('id_target_period').value
+                        
 
-            }).success(function(data, status, headers, config, response) {
-                console.log(response);
-                $('#myModal').modal('hide');
-                $scope.chief_targets = '';
-                $scope.init();
-                $scope.loading = false;
-            });
+
+            
+
+                    }).success(function(data, status, headers, config, response) {
+        
+                        $('#targetModal').modal('hide');
+                        $scope.chief_targets = '';
+                        $scope.init();
+                        $scope.loading = false;
+                    });
+            }
+            else if(document.getElementById('id_target_period').value === "Quarterly")
+            {
+                    url += "/updatequarter/" + id;
+
+                    $http.post(url, {
+                        
+                        Quarter1:document.getElementById('id_firstquarter_target').value,
+                        Quarter2:document.getElementById('id_secondquarter_target').value,
+                        Quarter3:document.getElementById('id_thirdquarter_target').value,
+                        Quarter4:document.getElementById('id_fourthquarter_target').value,
+                        TargetDate:document.getElementById('target_date').value,
+                        TargetPeriod: document.getElementById('id_target_period').value
+
+                    }).success(function(data, status, headers, config, response) {
+        
+                        $('#targetModal').modal('hide');
+                        $scope.chief_targets = '';
+                        $scope.init();
+                        $scope.loading = false;
+                    });
+            }
         }
+        
         // 
     };
 
-    $scope.toggle = function(modalstate, id) 
+    $scope.toggle = function(modalstate, id, name) 
     {
         $scope.modalstate = modalstate;
 
         switch (modalstate) {
-            case 'add':
-                $scope.form_title = "ADD TARGETS";
+            case 'show':
+                $scope.this_title = "ADD TARGETS";
+                
+                $scope.id = id;
+                $http.get(local + '/usc/public/api/chief_targets/' + id)
+                .success(function(response) {            
+                    $scope.chief_target = response;
+                    console.log("SHOW" + $scope.chief_target.TargetPeriod);
+                    if($scope.chief_target.TargetPeriod === 'Monthly' || $scope.chief_target.TargetPeriod === 'Quarterly')
+                    {
+                        $('#alreadysetModal').modal('show');
+                    }
+                    else
+                    {
+                        $('#targetModal').modal('show');
+                    }
+                });       
+
+                $scope.chief_measurename = name;       
                 document.getElementById('id_january_target').value = "";
                 document.getElementById('id_february_target').value = "";
                 document.getElementById('id_march_target').value = "";
@@ -111,29 +128,46 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 document.getElementById('id_october_target').value = "";
                 document.getElementById('id_november_target').value = "";
                 document.getElementById('id_december_target').value = "";
-                
                 break;
-            default:
-                break;
-            }
-            console.log(id);
-            $('#addModal').modal('show');
-
-        switch (modalstate) {
+        
             case 'view':
                 $scope.form_title = "VIEW TARGET";
                 $scope.id = id;
+
                 $http.get(local + '/usc/public/api/chief_targets/' + id)
-                        .success(function(response) {
-                            console.log(response);
-                            $scope.chief_target = response;
-                        });
+
+                .success(function(response) {
+                    $scope.chief_target = response;
+                    $scope.chief_measurename = name;
+                    $scope.firstquarter = $scope.chief_target.JanuaryTarget;
+                    $scope.secondquarter = $scope.chief_target.AprilTarget;
+                    $scope.thirdquarter = $scope.chief_target.JulyTarget;
+                    $scope.fourthquarter = $scope.chief_target.OctoberTarget;
+                    $scope.firstquarter = parseFloat($scope.chief_target.JanuaryTarget + $scope.chief_target.FebruaryTarget + $scope.chief_target.MarchTarget).toFixed(2);
+                    $scope.secondquarter = parseFloat($scope.chief_target.AprilTarget + $scope.chief_target.MayTarget + $scope.chief_target.JuneTarget).toFixed(2);
+                    $scope.thirdquarter = parseFloat($scope.chief_target.JulyTarget + $scope.chief_target.AugustTarget + $scope.chief_target.SeptemberTarget).toFixed(2);
+                    $scope.fourthquarter = parseFloat($scope.chief_target.OctoberTarget + $scope.chief_target.NovemberTarget + $scope.chief_target.DecemberTarget).toFixed(2);
+                    //Quarter = Month Target * 3 || Di niyo pa rin gets no?
+                    if ($scope.chief_target.TargetPeriod === 'Monthly')
+                    {
+                        $('#monthModal').modal('show');
+                        $scope.init();               
+                    }
+                    else if ($scope.chief_target.TargetPeriod === 'Quarterly')
+                    {
+                        $('#quarterModal').modal('show');
+                        $scope.init();
+                    }
+                    else
+                    {
+                        $('#notsetModal').modal('show');
+                        $scope.init();
+                    }
+                });
                 break;
-            default:
+                default:
                 break;
-        }
-        console.log(id);
-        $('#viewModal').modal('show');
+       }
     };
 
     $scope.init();

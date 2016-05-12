@@ -5,30 +5,31 @@
     <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
-    <!-- Angular Utils Pagination -->
-    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
-  
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/unit_measures.js') }}"></script>
 
+    <!-- Angular Utils Pagination -->
+    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+
+
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading measures-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Measures</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Unit's Measure</button>
 								</div>
-								<div class="col-lg-8">
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">
@@ -48,37 +49,37 @@
 							<!--./div class row-->
 
                             <div class="table-responsive" ng-show="info">
-    							<table class="table table-striped table-bordered">
+    							<table class="table table-bordered">
     								<thead>
-    									<td class="objective-custom-td1">
-                                            <b>Unit Measure Name</b>
+    									<td class="measure-custom-td1">
+                                            Unit Measure Name
     									</td>
     							
-    									<td class="objective-custom-td2">
-                                            <b>Unit Measure Type</b>
+    									<td class="measure-custom-td2">
+                                            Unit Measure Type
     									</td>
 
-                                         <td class="objective-custom-td2">
-                                            <b>Unit Measure Formula</b>
+                                         <td class="measure-custom-td3">
+                                            Unit Measure Formula
                                         </td>
 
-                                        <td class="objective-custom-td2">
-                                            <b>Unit Objective</b>
+                                        <td class="measure-custom-td4">
+                                            Unit Objective
                                         </td>
 
-                                        <td class="objective-custom-td2">
-                                            <b>Staff Measure Name</b>
+                                        <td class="measure-custom-td5">
+                                            Staff Measure Name
                                         </td>
 
 
     									</td>
-    									<td class="objective-custom-td3">
-                                            <b>Unit</b>
+    									<td class="measure-custom-td6">
+                                            Unit
     									</td>
-    									<td class="objective-custom-td4">
-                                            <b>Last Encoded by</b>
+    									<td class="measure-custom-td7">
+                                            Last Encoded by
     									</td>
-    									<td class="objective-custom-td5"></td>
+    									<td class="measure-custom-td8"></td>
     								</thead>
     								<tr dir-paginate='unit_measure in unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_measure.UnitMeasureName %></td>
@@ -124,19 +125,19 @@
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="measure_name" class="control-label">Measure Name:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <input type='text' id="id_measure_name" name="measure_name" value="<% unit_measure.UnitMeasureName %>" ng-model="unit_measure.UnitMeasureName" autocomplete="off" class="form-control" required ng-touched />
                                     <span class="help-inline" ng-show="userForm.measure_name.$invalid && !userForm.measure_name.$pristine">Measure Name is required.</span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="measure_name" class="control-label">Measure Type:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" id="id_measure_type" name="measure_type" value="LD" ng-model="unit_measure.UnitMeasureType" />
@@ -153,10 +154,10 @@
                                 </tr>
 
                                  <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="measure_formula" class="control-label">Measure Formula:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_measure_formula" name="measure_formula" data-ng-model="unit_measure.UnitMeasureFormula" class="form-control" required ng-touched>
                                                      <option value="">
                                                         Select Formula
@@ -172,10 +173,10 @@
                                 </tr>
 
                                  <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="unit_objective" class="control-label">Unit Measure Objective:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control">
                                             <option value= "0">
                                                     Select Unit Objective
@@ -191,10 +192,10 @@
 
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="staff_measure" class="control-label">Staff Measure Name:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" required ng-touched>
                                             <option value = "0" >
                                                     Select Staff Measure
@@ -212,19 +213,19 @@
 
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="Unit">Unit:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $user->unit->UnitName }}</p>
                                         <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="LastEncodedBy">Account User:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} </p>
                                         <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
                                     </td>

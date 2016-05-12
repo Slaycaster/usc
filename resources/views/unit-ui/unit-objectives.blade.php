@@ -2,11 +2,9 @@
 
 @section('content')
 
+    
     <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
-
-    <!-- Angular Utils Pagination -->
-    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
@@ -14,21 +12,27 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/unit_objectives.js') }}"></script>
 
+    <!-- Angular Utils Pagination -->
+    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+
+    
+
     <br>
 	<div ng-app="unitScorecardApp" ng-controller="APIUnitObjectiveController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading objectives-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Objectives</b></h2><i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Unit's Objective</button>
 								</div>
-								<div class="col-lg-8">
+
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">
@@ -47,24 +51,24 @@
 							</div>
 							<!--./div class row-->
                             <div class="table-responsive" ng-show="info">
-    							<table class="table table-striped table-bordered">
+    							<table class="table table-bordered">
     								<thead>
     									<td class="objective-custom-td1">  
-                                            <b>Unit Objective Name</b>
+                                            Unit Objective Name
     									</td>
     									<td class="objective-custom-td2">
-                                            <b>Perspective</b>
+                                            Perspective
     									</td>
                                         
-                                        <td class="objective-custom-td3" ng-click="sort('unit_objective.staffobjective.StaffObjectiveName')"><b>Contributory to</b>
+                                        <td class="objective-custom-td3" ng-click="sort('unit_objective.staffobjective.StaffObjectiveName')">Contributory to
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.staffobjective.StaffObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
 
 
-    									<td class="objective-custom-td4" ng-click="sort('unit_objective.unit.UnitAbbreviation')"><b>Unit</b>
+    									<td class="objective-custom-td4" ng-click="sort('unit_objective.unit.UnitAbbreviation')">Unit
     										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
-    									<td class="objective-custom-td5" ng-click="sort('unit_objective.user_unit.rank.RankCode')"><b>Last Encoded by</b>
+    									<td class="objective-custom-td5" ng-click="sort('unit_objective.user_unit.rank.RankCode')">Last Encoded by
     										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
     									</td>
     									<td class="objective-custom-td6"></td>
@@ -111,63 +115,51 @@
                         <form name="frmEditObjective" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="objective_name" class="control-label">Objective Name:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <input type='text' id="id_objective_name" name="objective_name" value="<% unit_objective.UnitObjectiveName %>" ng-model="unit_objective.UnitObjectiveName" autocomplete="off" class="form-control" required ng-touched>
                                         <span class="help-inline" ng-show="userForm.objective_name.$invalid && !userForm.objective_name.$pristine">Objective Name is required.</span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="perspective_id" class="control-label">Perspective:</label>
                                     </td>
-                                    <td>
-                                        <select id="id_perspective_id" name="perspective_id" data-ng-model="unit_objective.PerspectiveID" class="form-control" required ng-touched>
-                                            @foreach($perspectives as $perspective)
-                                                    <option value="<?=$perspective->PerspectiveID?>">
-                                                        {{ $perspective->PerspectiveName }}
-                                                    </option>
-                                            @endforeach
+                                    <td class="col-md-8">
+                                         <select id="id_perspective_id" name="perspective_id" data-ng-model="selectedUserProfile" class="form-control" data-ng-options="userprofile.PerspectiveName for userprofile in perspective" required ng-touched >
+                                
                                         </select>
+
                                         <span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td>
-                                        <label for="staffobjective_id" class="control-label">Contributory to Staff:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="staffobjective_id" class="control">Contributory to Staff Scorecard:</label>
                                     </td>
-                                    <td>
-                                        <select id="id_staffobjective_id" name="staffobjective_id" data-ng-model="unit_objective.StaffObjectiveID" class="form-control" required ng-touched>
-                                            <option value="0">
-                                                    None
-                                            </option>
-                                            
-                                            @foreach($staffobjectives as $staffobjective)
-                                                    <option value="<?=$staffobjective->StaffObjectiveID?>">
-                                                        {{ $staffobjective->StaffObjectiveName }}
-                                                    </option>
-                                            @endforeach
-                                        </select>
+                                    <td class="col-md-8">
+                                      
+                                        <select id="id_staffobjective_id" name="staffobjective_id" data-ng-model="selectedStaffObjective" class="form-control" data-ng-options="obj.StaffObjectiveName for obj in staffobjective" required ng-touched>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td>
-                                        <label for="inputEmail3" class="control-label">Unit:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="unit" class="control-label">Unit:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $user->unit->UnitName }}</p>
                                         <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <label for="inputEmail3" class="control-label">Account User:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="accountUser" class="control-label">Account User:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8 mod">
                                         <p>{{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} </p>
                                         <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
                                     </td>

@@ -18,17 +18,17 @@
     <div ng-app="unitScorecardApp" ng-controller="APIChiefMeasureController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading measures-custom-heading">
 						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief->ChiefAbbreviation }} Measures</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-3">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Chief's Measure</button>
 								</div>
-								<div class="col-lg-8">
+								<div class="col-lg-6 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">
@@ -48,33 +48,33 @@
 							<!--./div class row-->
 
                             <div class="table-responsive" ng-show="info">
-    							<table class="table table-striped table-bordered">
+    							<table class="table table-bordered">
     								<thead>
-    									<td class="objective-custom-td1">
-                                            <b>Chief Measure Name</b>
+    									<td class="chief-custom-td1">
+                                            Chief Measure Name
     									</td>
     							
-    									<td class="objective-custom-td2">
-                                            <b>Chief Measure Type</b>
+    									<td class="chief-custom-td2">
+                                            Chief Measure Type
     									</td>
 
 
-                                        <td class="objective-custom-td3">
-                                            <b>Chief Measure Formula</b>
+                                        <td class="chief-custom-td3">
+                                            Chief Measure Formula
                                         </td>
 
-                                        <td class="objective-custom-td4">
-                                            <b>Chief Objective</b>
+                                        <td class="chief-custom-td4">
+                                            Chief Objective
                                         </td>
 
     									</td>
-    									<td class="objective-custom-td5">
-                                            <b>Chief Office</b>
+    									<td class="chief-custom-td5">
+                                            Chief Office
     									</td>
-    									<td class="objective-custom-td6">
-                                            <b>Last Encoded by</b>
+    									<td class="chief-custom-td6">
+                                            Last Encoded by
     									</td>
-    									<td class="objective-custom-td7"></td>
+    									<td class="chief-custom-td7"></td>
     								</thead>
     								<tr dir-paginate='chief_measure in chief_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% chief_measure.ChiefMeasureName %></td>

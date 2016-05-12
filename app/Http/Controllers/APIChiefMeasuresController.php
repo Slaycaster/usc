@@ -1,9 +1,13 @@
 <?php namespace App\Http\Controllers;
 
+//Models
 use App\ChiefMeasure;
 use App\ChiefObjective;
 use App\Chief;
 use App\UserChief;
+use App\ChiefTarget;
+
+//Laravel Modules
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 
@@ -81,6 +85,21 @@ class APIChiefMeasuresController extends Controller {
 
 		$chief_measure = new ChiefMeasure(Request::all());
 		$chief_measure->save();
+	
+		$chief_measureid = DB::table('chief_measures')->max('ChiefMeasureID');
+
+		/* Trash
+		DB::insert('insert into chief_targets (ChiefMeasureID, ChiefID, UserChiefID) values (?,?,?)', array($chief_measureid, $chief, $chief_id,));
+		*/
+
+		//Use Eloquent instead! == Inserting into Chief Targets == You forgot target period
+		$chief_target = new ChiefTarget;
+		$chief_target->TargetPeriod = "Not Set";
+		$chief_target->ChiefMeasureID = $chief_measureid;
+		$chief_target->ChiefID = $chief;
+		$chief_target->UserChiefID = $chief_id;
+		$chief_target->save();
+
 		return $chief_measure;
 
 	}
@@ -118,7 +137,6 @@ class APIChiefMeasuresController extends Controller {
 	public function update($id)
 	{
 
-
 		$chief_measure = ChiefMeasure::find($id);
 		$chief_measure->update(Request::all());
 		$chief_measure->save();
@@ -132,8 +150,6 @@ class APIChiefMeasuresController extends Controller {
 
 
 		return $chief_measure;
-
-
 
 	}
 

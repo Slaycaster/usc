@@ -13,6 +13,31 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
         success(function(data, status, headers, config) {
             $scope.unit_objectives = data;
                 $scope.loading = false;
+                 $http.get(local + '/usc/public/api/perspectives').
+                    success(function(data, status, headers, config)
+                {   
+                    $scope.perspective = data;
+                    $scope.selectedUserProfile = $scope.perspective[0];
+                 });
+
+                 $http.get(local + '/usc/public/api/unit/objectives/staffobjectives').
+                    success(function(data, status, headers, config)
+                    {   
+                       
+                        $scope.staffobjective = data;
+                        //$scope.chiefobjective = [{ChiefObjectiveID : 0, ChiefObjectiveName: "None/No Contributory"}];
+                        
+                        
+                        $scope.none = {StaffObjectiveID : 0, StaffObjectiveName: "None/No Contributory"};
+                      
+                        $scope.staffobjective.unshift($scope.none);
+                        //$scope.chiefobjective.push(data);
+                        $scope.selectedStaffObjective = $scope.staffobjective[0];
+
+
+                    });
+
+
         });
     };
 
@@ -34,8 +59,8 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
             console.log(document.getElementById('unit_id').value);
             $http.put(url, {
                 UnitObjectiveName: $scope.unit_objective.UnitObjectiveName,
-                PerspectiveID: $scope.unit_objective.PerspectiveID,
-                StaffObjectiveID: $scope.unit_objective.StaffObjectiveID,
+                PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
+                StaffObjectiveID: $scope.selectedStaffObjective.StaffObjectiveID,
                 UnitID: document.getElementById('unit_id').value,
                 UserUnitID: document.getElementById('user_unit_id').value
 
@@ -51,8 +76,8 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
         {
             $http.post(url, {
                 UnitObjectiveName: $scope.unit_objective.UnitObjectiveName,
-                PerspectiveID: $scope.unit_objective.PerspectiveID,
-                StaffObjectiveID: $scope.unit_objective.StaffObjectiveID,
+                PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
+                StaffObjectiveID: $scope.selectedStaffObjective.StaffObjectiveID,
                 UnitID: document.getElementById('unit_id').value,
                 UserUnitID: document.getElementById('user_unit_id').value
 
@@ -74,7 +99,7 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
             case 'add':
                 $scope.form_title = "ADD UNIT'S OBJECTIVE";
                 document.getElementById('id_objective_name').value = "";
-                document.getElementById('id_perspective_id').value = "";
+                
                 break;
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S OBJECTIVE DETAIL";
@@ -83,6 +108,12 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_objective = response;
+
+                             $scope.selectedUserProfile = $scope.perspective[response.PerspectiveID-1];
+                            console.log(response.ChiefObjectiveID);
+
+                            
+                                $scope.selectedStaffObjective = $scope.staffobjective[response.StaffObjectiveID];
                         });
                 break;
             default:

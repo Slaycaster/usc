@@ -129,7 +129,7 @@
                             <a href="{{ url('chief/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{ url('chief/scorecard') }}"><i class="fa fa-table fa-fw"></i> {{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}'s Scorecard</a>
+                            <a href="{{ url('chief/scorecard') }}"><i class="fa fa-table fa-fw"></i> {{ $chief_user->chief->ChiefAbbreviation }} Scorecard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
@@ -145,12 +145,7 @@
                         </li>
                         <li>
 
-                            <a href="{{ url('chief/targets') }}"><i class="fa fa-table fa-fw"></i> Set Scorecard Target</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('chief/scorecard') }}"><i class="fa fa-edit fa-fw"></i> Update Accomplishments</a>
-
-                            <a href="{{ url('chief/setscorecard') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
+                            <a href="{{ url('chief/targets') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
 
                         </li>
                         <li>

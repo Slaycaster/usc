@@ -18,11 +18,11 @@ class ChiefTarget extends Model {
 	 */
 	protected $fillable = ['JanuaryTarget', 'FebruaryTarget', 'MarchTarget', 'AprilTarget', 'MayTarget', 'JuneTarget', 
 						   'JulyTarget', 'AugustTarget', 'SeptemberTarget', 'OctoberTarget', 'NovemberTarget', 'DecemberTarget',
-						   'TargetDate', 'TargetPeriod', 'ChiefMeasureID', 'ChiefID','ChiefUserID',];
+						   'TargetDate', 'TargetPeriod', 'ChiefMeasureID', 'ChiefID','UserChiefID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
-	 * @var array
+	 * @var arrayID
 	 */
 	protected $primaryKey = 'ChiefTargetID';
 

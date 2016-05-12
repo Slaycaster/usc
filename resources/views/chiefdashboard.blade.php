@@ -27,15 +27,15 @@
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-unit-dashname">
-            <p><b>{{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}'s Dashboard</b></p>
+            <p><b>{{ $chief_user->chief->ChiefAbbreviation }} Dashboard</b></p>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 dashboard-custom-unit-dashabb">
-            <img class="img-responsive unitdashboard-custom-unitpicabb" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}">
-            <p><b>{{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }}'s Dashboard</b></p>
+            <img class="img-responsive unitdashboard-custom-unitpicabb" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
+            <p><b>{{ $chief_user->chief->ChiefAbbreviation }} Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
         <!-- /.col-lg-12 -->
@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/chiefpictures/unit/cropped/'.''. $chief_user->UserChiefPicturePath.'') }}">
+                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -53,7 +53,7 @@
                     <h3><b>SCORECARD COMPONENTS</b></h3>
                 </div>
                 <div class="panel-body">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
@@ -66,16 +66,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="{{ url('chief/objectives')}}">
                                 <div class="panel-footer">
-                                    <span class="pull-left">View All</span>
+                                    <span class="pull-left">Go to Objectives</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
@@ -83,20 +83,21 @@
                                         <i class="fa fa-bar-chart fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge">{{ $chief_measures_count }}</div>
                                         <div>Measures</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="{{ url('chief/measures') }}">
                                 <div class="panel-footer">
-                                    <span class="pull-left">View All</span>
+                                    <span class="pull-left">Go to Measures</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
                         </div>
                     </div>
+                    <!--
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-yellow">
                             <div class="panel-heading">
@@ -105,7 +106,7 @@
                                         <i class="fa fa-bolt fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">36</div>
+                                        <div class="huge">N/A</div>
                                         <div>Targets</div>
                                     </div>
                                 </div>
@@ -141,6 +142,7 @@
                             </a>
                         </div>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
@@ -253,7 +255,7 @@
             <div class="panel panel-warning">
                 <div class="panel-heading">
                     <i class="fa fa-search fa-4x pull-right"></i>
-                    <h4><b>BROWSE OTHER UNIT'S SCORECARD</b></h4>
+                    <h4><b>BROWSE OTHER UNIT/STAFF'S SCORECARD</b></h4>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -267,17 +269,6 @@
                     </div>
                     <!-- /input-group -->
                 </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <i class="fa fa-at fa-4x pull-right"></i>
-                    <h4><b>ABOUT: <!-- {{ $chief_user->chief->ChiefName }} --></b></h4>
-                </div>
-                <!-- /.panel-heading -->
-               
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->

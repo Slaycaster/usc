@@ -30,6 +30,7 @@ class APIChiefObjectivesController extends Controller {
 			->get();
 	}
 
+	
 	public function showIndex()
 	{
 		if (Session::has('chief_user_id'))
@@ -86,6 +87,8 @@ class APIChiefObjectivesController extends Controller {
     public function show($id) 
     {
 		$chief_objective = ChiefObjective::find($id);
+		
+ 		
  		return $chief_objective;
     }
 

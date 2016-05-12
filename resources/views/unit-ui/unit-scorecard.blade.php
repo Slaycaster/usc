@@ -14,6 +14,17 @@
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
+  	<!-- Floating Scrollbar Scripts -->
+    <script src="{{ asset('app/floating_scrollbar.js') }}"></script>
+
+    <script type="text/javascript">
+    	$(document).ready(function () {
+		    $(".panel-body").floatingScrollbar();
+		});
+    </script>
+
+
+
     <div ng-app="uscApp" ng-controller="scorecardController">
     	<div class="wrap">
     		<div class="row">
@@ -30,7 +41,7 @@
 	    					</div>
     					</div>
     					<div class="panel-body table-responsive">
-    						<table class="table table-responsive table-striped table-bordered">
+    						<table class="table table-responsive table-bordered">
     							<thead>
     								<tr>
 	    								

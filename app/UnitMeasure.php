@@ -45,4 +45,30 @@ class UnitMeasure extends Model {
 		return $this->belongsTo('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
+	public function unit_targets()
+	{
+		return $this->hasMany('App\UnitTarget', 'UnitTargetID', 'UnitTargetID');
+	}
+
+	public function unit_accomplishments()
+	{
+		return $this->hasMany('App\UnitAccomplishment', 'UnitAccomplishmentID', 'UnitAccomplishmentID');
+	}
+
+	public function unit_owners()
+	{
+		return $this->hasMany('App\UnitOwner', 'UnitOwnerID', 'UnitOwnerID');
+	}
+
+	public function unit_initiatives()
+	{
+		return $this->hasMany('App\UnitInitiative', 'UnitInitiativeID', 'UnitInitiativeID');
+	}
+
+	public function unit_fundings()
+	{
+		return $this->hasMany('App\UnitFunding', 'UnitFundingID', 'UnitFundingID');
+	}
+
+
 }
