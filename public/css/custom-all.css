@@ -111,7 +111,16 @@ body.modal-open .wrap{
         font-size: 1em !important;
         position: relative;
     }
+    #page-wrapper{
+        margin-left: 251px;
+    }
 }
+
+
+/*#page-wrapper{
+    margin-left: 251px;
+}
+*/
 
 .modal-backdrop {background: #f7f7f7;}
 
