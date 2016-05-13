@@ -190,7 +190,7 @@ a.navbar-brand{
 
 td{
     vertical-align: middle !important;
-    text-align: center;
+    
 }
 
 
@@ -274,26 +274,3 @@ td{
 .mod{
     text-align: left !important;
 }
-/*
-
-
-
-.objective-custom-td3{
-    width:10%;
-}
-
-.objective-custom-td5{
-    width:5%;
-}
-
-
-thead{
-    text-align: center;
-}
-
-*/
-
-
-/*rgba(24, 70, 129, 1); - blue*/
-/*rgba(34, 34, 34, 1); - black*/
-/*rgba(120, 34, 37, 1); - red*/
