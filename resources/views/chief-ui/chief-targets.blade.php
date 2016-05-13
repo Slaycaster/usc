@@ -17,7 +17,7 @@
 <div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
 	    <div class="wrap">
 		    <div class="row">			
-				<div class="col-lg-8">
+				<div class="col-lg-12 col-md-12 col-xs-12">
 					<div class="panel panel-warning">
 						<div class="panel-heading measures-custom-heading">
 						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief->ChiefAbbreviation }} Targets for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>

@@ -66,7 +66,7 @@
                                         </td>
 
                                         <td class="staff-custom-td5">
-                                            Chief Measure Name
+                                            Contributory to Chief's Measure
                                         </td>
 
     									</td>
@@ -188,7 +188,7 @@
 
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="chief_measure" class="control">Chief Measure Name:</label>
+                                        <label for="chief_measure" class="control">Contributory to Chief's Measure:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_chief_measure" name="chief_measure" data-ng-model="staff_measure.ChiefMeasureID" class="form-control" required ng-touched>
