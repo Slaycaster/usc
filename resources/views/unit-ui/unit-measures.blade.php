@@ -174,7 +174,7 @@
 
                                  <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="unit_objective" class="control-label">Unit Measure Objective:</label>
+                                        <label for="unit_objective" class="control-label">Unit Objective:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control">

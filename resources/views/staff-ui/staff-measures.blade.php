@@ -171,7 +171,7 @@
 
                                  <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="staff_objective" class="control">Staff Measure Objective:</label>
+                                        <label for="staff_objective" class="control">Staff Objective:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_staff_objective" name="staff_objective" data-ng-model="staff_measure.StaffObjectiveID" class="form-control" required ng-touched>
