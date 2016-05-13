@@ -22,6 +22,69 @@ body.modal-open .wrap{
 }
 
 
+
+@media(max-width:768px){
+    .layout-custom-navbrand{
+        display: none;
+    }
+    .unitdashboard-custom-unit-dashabb{
+        padding-top: 8px !important;
+        text-align: center;
+        color: #8a6d3b;
+        font-size: 1.5em !important;
+        position: relative;
+        z-index: 5;
+        background-color:#337ab7;
+    }   
+    .layout-custom-unit-pnpname,
+    .unitdashboard-custom-unit-activityname,
+    .unitdashboard-custom-unit-activitylogname,
+    .dashboard-custom-unit-dashname,
+    .unitdashboard-custom-unitpic{
+        display: none;
+    }
+}
+
+@media(max-width: 992px){
+    .unitdashboard-custom-unitpic{
+        margin-top: 0px !important;
+        margin-bottom: 1.5em;
+    }
+}
+
+@media(max-width: 1200px){
+    .unitdashboard-custom-unitpic{
+        height:200px; 
+        width:200px;
+        margin-top: 0px !important;
+        margin-bottom: 1.5em;
+    }
+}
+
+@media(max-width:768px){
+        
+    .unitdashboard-custom-unitpic{
+        height:200px; 
+        width:200px; 
+        margin-top: 0em !important;
+        margin-bottom: 1.5em;
+    }
+
+    .objectives-custom-heading,
+    .measures-custom-heading{
+        padding-top: 6em !important;
+        text-align: center;
+        font-size: 1em !important;
+        position: relative;
+    }
+    .unitdashboard-custom-unitpic{
+        height:200px; 
+        width:200px; 
+    }   
+}
+
+
+
 .modal-backdrop {background: #f7f7f7;}
 
 
@@ -91,66 +154,6 @@ a.navbar-brand{
 /* mobile view */
 
 
-@media(max-width:768px){
-    .layout-custom-navbrand{
-        display: none;
-    }
-    .unitdashboard-custom-unit-dashabb{
-        padding-top: 8px !important;
-        text-align: center;
-        color: #8a6d3b;
-        font-size: 1.5em !important;
-        position: relative;
-        z-index: 5;
-        background-color:#337ab7;
-    }   
-    .layout-custom-unit-pnpname,
-    .unitdashboard-custom-unit-activityname,
-    .unitdashboard-custom-unit-activitylogname,
-    .dashboard-custom-unit-dashname,
-    .unitdashboard-custom-unitpic{
-        display: none;
-    }
-}
-
-@media(max-width: 992px){
-    .unitdashboard-custom-unitpic{
-        margin-top: 0px !important;
-        margin-bottom: 1.5em;
-    }
-}
-
-@media(max-width: 1200px){
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px;
-        margin-top: 0px !important;
-        margin-bottom: 1.5em;
-    }
-}
-
-@media(max-width:768px){
-        
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px; 
-        margin-top: 0em !important;
-        margin-bottom: 1.5em;
-    }
-
-    .objectives-custom-heading,
-    .measures-custom-heading{
-        padding-top: 30px !important;
-        text-align: center;
-        font-size: 1em !important;
-        position: relative;
-    }
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px; 
-    }
-    
-}
 
 .unitdashboard-custom-unitpic{
     height:200px; 
@@ -186,6 +189,11 @@ a.navbar-brand{
     border-radius: 0px;
     background:#666; 
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+* {
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
 }
 
 td{
@@ -274,3 +282,39 @@ td{
 .mod{
     text-align: left !important;
 }
+
+.side-nav{
+    margin-top: 0em;
+}
+
+.sidebar .sidebar-search{
+    padding-top: 4em;
+
+}
+
+#wrapper{
+    margin-top: -3em;
+}
+
+
+@media(max-width:768px){
+    .sidebar-search{
+        margin-top: 6em;
+    }
+}
+
+.layout-title-navbar .navbar .navbar-default .side-nav{
+
+}
+
+
+
+
+/*.sidebar .sidebar-nav.navbar-collapse{
+    padding-right:0em;
+}*/
+
+/*.sidebar .sidebar-nav.navbar-collapse{
+    overflow: auto !important;
+    max-height: 350px !important;
+}*/

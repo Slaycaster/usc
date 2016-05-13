@@ -1,7 +1,7 @@
 /* UNIT CSS */
 
 .layout-title-navbar{
-    margin-bottom: 0; 
+    margin-bottom: -3em; 
     background-color:rgba(8, 42, 72, 1);
     border-bottom-color: rgba(8, 42, 72, 1);
 }
@@ -81,10 +81,7 @@ a.active{
     background-color: #fff;
 }
 
-.sidebar .sidebar-nav.navbar-collapse{
-    overflow: auto !important;
-    max-height: 350px !important;
-}
+
 .sidebar ul li{
     border-bottom: none;
 }
