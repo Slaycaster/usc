@@ -2,3 +2,5 @@ var app = angular.module('unitScorecardApp', ['angularUtils.directives.dirPagina
 	$interpolateProvider.startSymbol('<%');
 	$interpolateProvider.endSymbol('%>');
 });
+
+
