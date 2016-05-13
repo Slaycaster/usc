@@ -22,74 +22,6 @@ body.modal-open .wrap{
 }
 
 
-.modal-backdrop {background: #f7f7f7;}
-
-
-.close {
-    font-size: 50px;
-    display:block;
-}
-
-.modal-body table tr td{             
-    border-top: none !important;
-}
-
-
-/* Yujin Custom CSS */
-
-.unitdashboard-custom-unit-activityname,
-.unitdashboard-custom-unit-activityabb,
-.dashboard-custom-unit-dashname,
-.dashboard-custom-unit-dashabb{
-    margin-top:.5em;
-    padding-top: 1.5em;
-    padding-bottom: 1em;
-    font-size: 250%;
-    text-align: center;
-    color:#8a6d3b;
-    background-color: #fcf8e3;
-}
-
-.unitdashboard-custom-unit-activitylogname,
-.unitdashboard-custom-unit-activitylogabb{
-    margin-top:0em;
-    padding-top: 1.5em;
-    padding-bottom: 1em;
-    font-size: 250%;
-    text-align: center;
-    color:#8a6d3b;
-    background-color: #fcf8e3;
-}
-
-.unitdashboard-custom-unitpicabb{
-        height:100px !important; 
-        width:100px !important; 
-        display: inline !important;
-        margin-top: 0px;
-        margin-bottom: 1em;
-}
-
-
-@media(min-width:768px){
-    .nav>li.layout-custom-usernavoptions,
-    .unitdashboard-custom-unit-activitylogabb,
-    .unitdashboard-custom-unit-activityabb,
-    .unitdashboard-custom-unit-activityabb,
-    .layout-custom-unit-pnpabb,
-    .dashboard-custom-unit-dashabb{
-        display: none;
-    }
-}
-
-
-
-a.navbar-brand{
-    color: #fff !important;
-}
-
-
-/* mobile view */
-
 
 @media(max-width:768px){
     .layout-custom-navbrand{
@@ -140,7 +72,7 @@ a.navbar-brand{
 
     .objectives-custom-heading,
     .measures-custom-heading{
-        padding-top: 30px !important;
+        padding-top: 5em !important;
         text-align: center;
         font-size: 1em !important;
         position: relative;
@@ -148,9 +80,104 @@ a.navbar-brand{
     .unitdashboard-custom-unitpic{
         height:200px; 
         width:200px; 
-    }
-    
+    }   
 }
+
+
+@media(min-width:768px){
+    .nav>li.layout-custom-usernavoptions,
+    .unitdashboard-custom-unit-activitylogabb,
+    .unitdashboard-custom-unit-activityabb,
+    .unitdashboard-custom-unit-activityabb,
+    .layout-custom-unit-pnpabb,
+    .dashboard-custom-unit-dashabb{
+        display: none;
+    }
+}
+
+
+@media(max-width:768px){
+    .sidebar-search{
+        margin-top: 6em;
+    }
+}
+
+
+@media(min-width:768px){
+    .objectives-custom-heading,
+    .measures-custom-heading{
+        padding-top: 5em !important;
+        text-align: center;
+        font-size: 1em !important;
+        position: relative;
+    }
+    #page-wrapper{
+        margin-left: 251px;
+    }
+}
+
+
+/*#page-wrapper{
+    margin-left: 251px;
+}
+*/
+
+.modal-backdrop {background: #f7f7f7;}
+
+
+.close {
+    font-size: 50px;
+    display:block;
+}
+
+.modal-body table tr td{             
+    border-top: none !important;
+}
+
+
+/* Yujin Custom CSS */
+
+.unitdashboard-custom-unit-activityname,
+.unitdashboard-custom-unit-activityabb,
+.dashboard-custom-unit-dashname,
+.dashboard-custom-unit-dashabb{
+    margin-top:1em;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    font-size: 250%;
+    text-align: center;
+    color:#8a6d3b;
+    background-color: #fcf8e3;
+}
+
+.unitdashboard-custom-unit-activitylogname,
+.unitdashboard-custom-unit-activitylogabb{
+    margin-top:0em;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    font-size: 250%;
+    text-align: center;
+    color:#8a6d3b;
+    background-color: #fcf8e3;
+}
+
+.unitdashboard-custom-unitpicabb{
+        height:100px !important; 
+        width:100px !important; 
+        display: inline !important;
+        margin-top: 0px;
+        margin-bottom: 1em;
+}
+
+
+a.navbar-brand{
+    color: #fff !important;
+}
+
+
+/* mobile view */
+
+
 
 .unitdashboard-custom-unitpic{
     height:200px; 
@@ -186,6 +213,11 @@ a.navbar-brand{
     border-radius: 0px;
     background:#666; 
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+* {
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
 }
 
 td{
@@ -257,8 +289,6 @@ td{
     width:20% !important;
 }
 
-
-
 .staff-custom-td1,
 .staff-custom-td2,
 .staff-custom-td3,
@@ -274,3 +304,28 @@ td{
 .mod{
     text-align: left !important;
 }
+
+.side-nav{
+    margin-top: 0em;
+}
+
+.sidebar .sidebar-search{
+    padding-top: 4em;
+
+}
+
+#wrapper{
+    margin-top: -3em;
+}
+
+
+
+
+/*.sidebar .sidebar-nav.navbar-collapse{
+    padding-right:0em;
+}*/
+
+/*.sidebar .sidebar-nav.navbar-collapse{
+    overflow: auto !important;
+    max-height: 350px !important;
+}*/
