@@ -16,7 +16,7 @@ class ChiefInitiative extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['ChiefInitiativeContent', 'ChiefInitiativeDate', 'ChiefMeasureID', 'ChiefID','UserChiefID',];
+	protected $fillable = ['ChiefInitiativeContent', 'ChiefInitiativeDate', 'ChiefMeasureID','ChiefTargetID', 'ChiefID','UserChiefID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -37,6 +37,11 @@ class ChiefInitiative extends Model {
 	public function chief_measure()
 	{
 		return $this->belongsTo('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
+	}
+
+	public function chief_target()
+	{
+		return $this->hasMany('App\ChiefTarget','ChiefTargetID','ChiefTargetID'); //(model, foreign_key, parent_primary_key)
 	}
 
 }

@@ -81,6 +81,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
                 document.getElementById('id_measure_formula').value = "";
+                document.getElementById('id_chief_measure').value = "0";
                 break;
             case 'edit':
                 $scope.form_title = "EDIT STAFF'S MEASURE DETAIL";

@@ -79,6 +79,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
                 document.getElementById('id_measure_formula').value = "";
+              
                 break;
             case 'edit':
                 $scope.form_title = "EDIT CHIEF'S MEASURE DETAIL";
