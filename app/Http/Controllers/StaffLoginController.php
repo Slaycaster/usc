@@ -52,5 +52,26 @@ class StaffLoginController extends Controller {
 		
 	}
 
+	public function scorecard()
+	{
+		if (Session::has('staff_user_id'))
+		{
+			$staff_id = Session::get('staff_user_id', 'default');
+			$staff_user = UserStaff::where('UserStaffID', $staff_id)
+				->with('staff')
+				->first();
+			$staff_measures = StaffMeasure::with('staff')->where('StaffID', '=', $staff_user->StaffID)->get();
+
+			return view('staff-ui.staff-scorecard')
+				->with('staff_user', $staff_user)
+				->with('staff_measures',$staff_measures);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 }

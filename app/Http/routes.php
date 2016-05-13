@@ -28,6 +28,7 @@ Route::get('chief/chiefdashboard', 'APIChiefAuditTrailsDashController@showIndex'
 
 
 /*UNIT USER ROUTES*/
+Route::get('unit/scorecard', 'UnitLoginController@scorecard');
 Route::get('unit/objectives', 'APIUnitObjectivesController@showIndex');
 Route::get('unit/measures','APIUnitMeasuresController@showIndex');
 Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
@@ -38,6 +39,7 @@ Route::get('unit/scorecard', 'UnitScorecardController@index');
 
 
 /*STAFF USER ROUTES*/
+Route::get('staff/scorecard', 'StaffLoginController@scorecard');
 Route::get('staff/dashboard', 'StaffLoginController@dashboard');
 Route::get('staff/objectives', 'APIStaffObjectivesController@showIndex');
 Route::get('staff/measures','APIStaffMeasuresController@showIndex');
@@ -70,6 +72,8 @@ Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
 
 Route::resource('api/chief_scorecard', 'APIChiefScorecardController');
+Route::resource('api/staff_scorecard', 'APIStaffScorecardController');
+Route::resource('api/unit_scorecard', 'APIUnitScorecardController');
 Route::resource('api/chief_measures','APIChiefMeasuresController');
 Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');

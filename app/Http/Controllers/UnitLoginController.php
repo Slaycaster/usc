@@ -52,5 +52,26 @@ class UnitLoginController extends Controller {
 		
 	}
 
+	public function scorecard()
+	{
+		if (Session::has('unit_user_id'))
+		{
+			$unit_id = Session::get('unit_user_id', 'default');
+			$unit_user = UserUnit::where('UserUnitID', $unit_id)
+				->with('unit')
+				->first();
+			$unit_measures = UnitMeasure::with('staff')->where('UnitID', '=', $unit_user->UnitID)->get();
+
+			return view('unit-ui.unit-scorecard')
+				->with('unit_user', $unit_user)
+				->with('unit_measures',$unit_measures);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 }
