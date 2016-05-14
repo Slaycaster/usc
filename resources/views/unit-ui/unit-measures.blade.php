@@ -195,7 +195,9 @@
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" required ng-touched>
-                                           
+                                            <option value="0">
+                                                        Select Staff Measure
+                                                    </option>
                                             @foreach($staff_measures as $staff_measure)
                                                     <option value= "<?=$staff_measure->StaffMeasureID?>">
                                                         {{ $staff_measure->StaffMeasureName }}
