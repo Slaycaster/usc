@@ -1,226 +1,183 @@
 @extends('layout-unit')
-
 @section('content')
 
-	<!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+ 	<!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
-
-    <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/app-angular.js') }}"></script>
-
-    <!-- AngularJS Controller Scripts -->
-    <script src="{{ asset('app/controllers/controller_scorecard.js') }}"></script>
 
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+  
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/app.js') }}"></script>
+    
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/controllers/unit_scorecard.js') }}"></script>
 
-  	<!-- Floating Scrollbar Scripts -->
-    <script src="{{ asset('app/floating_scrollbar.js') }}"></script>
-
-    <script type="text/javascript">
-    	$(document).ready(function () {
-		    $(".panel-body").floatingScrollbar();
-		});
-    </script>
-
-
-
-    <div ng-app="uscApp" ng-controller="scorecardController">
-    	<div class="wrap">
+    <div ng-app="unitScorecardApp" ng-controller="APIUnitScorecardController">
+    	<div id="wrap">
     		<div class="row">
-    			<div class="col-lg-12">
+    			<div class="col-lg-12 col-md-12 col-xs-12">
     				<div class="panel panel-info">
-    					<div class="panel-heading">
-    						<div class="panel-heading">
-		    					<img style="height:200px;" class="img-responsive" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
-		    					<h2><b>{{$user->unit->UnitAbbreviation}} Scorecard</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
-		    					<div class="pull-right">
-		    						<a href="#" class="btn btn-warning btn-sm"><i class="fa fa-table fa-fw"></i> Update Accomplishments</a>
-		    					</div>
-		    					<h5><i>Last updated by: <b>PSINSP Ador de Leon</b> at <b>03/17/2016 - 5:31PM</b></i></h5>
-	    					</div>
-    					</div>
-    					<div class="panel-body table-responsive">
-    						<table class="table table-responsive table-bordered">
-    							<thead>
-    								<tr>
-	    								
-	    								<td><b>Perspective</b></td>
-	    								<td><b>Objective</b></td>
-	    								<td><b>Measure</b></td>
-	    								<td><b>LD</b></td>
-	    								<td><b>LG</b></td>
-	    								<td><b>Owner</b></td>
-	    								<td><b>Baseline</b></td>
-	    								<td><b>Target - for Period</b></td>
-	    								<td colspan="6"><b><center>Accomplishments</center></b></td>
-	    								<td><b>Total</b></td>
-	    								<td><b>Variance</b></td>
-	    								<td colspan="3"><b><center>Funding</center></b></td>
-    								</tr>
-    								<tr>
+    					<div class="panel-heading measures-custom-heading">
+						  <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
+						  <h2 class="heading"><b>{{ $user->unit->UnitAbbreviation }} Scorecard for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+						</div><!--div panel-heading-->
+
+						<div class="panel-body">
+							<div class="table-responsive" >
+    							<table class="table table-striped table-bordered">
+    								<thead>
+                                    <tr>
+                                        <td class="objective-custom-td1" rowspan="2">
+                                            <b>OBJECTIVES</b>
+                                        </td>
+                                
+                                        <td class="objective-custom-td2" colspan="3">
+                                            <b>MEASURES</b>
+                                        </td>
+
+
+                                        <td class="objective-custom-td3" rowspan="2" >
+                                            <b>OWNER</b>
+                                        </td>
+
+                                        <td class="objective-custom-td4" colspan="12">
+                                            <b>TARGET/ACCUMULATION</b>
+                                        </td>
+
+                                        <td class="objective-custom-td5" rowspan="2">
+                                            <b>INITIATIVES</b>
+                                        </td>
+                                        <td class="objective-custom-td6" colspan="3">
+                                            <b>FUNDING</b>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        
+                                
+                                        <td class="objective-custom-td8" colspan="2">
+                                            <b>Name</b>
+                                        </td>
+
+                                        <td class="objective-custom-td9">
+                                            <b>Type</b>
+                                        </td>
+                                       
+
+                                        <td class="objective-custom-td12">
+                                            <b>Jan</b>
+                                        </td>
+                                        <td class="objective-custom-td13">
+                                            <b>Feb</b>
+                                        </td>
+                                        <td class="objective-custom-td14">
+                                            <b>Mar</b>
+                                        </td>
+                                        <td class="objective-custom-td15">
+                                            <b>Apr</b>
+                                        </td>
+                                        <td class="objective-custom-td16">
+                                            <b>May</b>
+                                        </td>
+                                        <td class="objective-custom-td17">
+                                            <b>Jun</b>
+                                        </td>
+                                        <td class="objective-custom-td18">
+                                            <b>Jul</b>
+                                        </td>
+                                        <td class="objective-custom-td19">
+                                            <b>Aug</b>
+                                        </td>
+                                        <td class="objective-custom-td20">
+                                            <b>Sep</b>
+                                        </td>
+                                        <td class="objective-custom-td21">
+                                            <b>Oct</b>
+                                        </td>
+                                        <td class="objective-custom-td22">
+                                            <b>Nov</b>
+                                        </td>
+                                        <td class="objective-custom-td23">
+                                            <b>Dec</b>
+                                        </td>
+                                        
+                                        <td class="objective-custom-td25">
+                                            <b>Estimate</b>
+                                        </td>
+                                        <td class="objective-custom-td26">
+                                            <b>Actual</b>
+                                        </td>
+                                        <td class="objective-custom-td27">
+                                            <b>Variance</b>
+                                        </td>
+                                    </tr>
     									
-    									<td></td>
-    									<td></td>
-    									<td></td>
-    									<td></td>
-    									<td></td>
-    									<td></td>
-    									<td></td>
-    									<td></td>
-    									<td><center><b>2016</b></center></td>
-    									<td><center><b>2017</b></center></td>
-    									<td><center><b>2018</b></center></td>
-    									<td><center><b>2019</b></center></td>
-    									<td><center><b>2020</b></center></td>
-    									<td><center><b>2021</b></center></td>
-    									<td></td>
-    									<td></td>
-    									<td><center><b>Actual</b></center></td>
-    									<td><center><b>Available</b></center></td>
-    									<td><center><b>Variance</b></center></td>
+    								</thead>
+    								<tr dir-paginate='unit_target in unit_targets|filter:search|itemsPerPage:5'>
+    									
+                                        <td><% unit_target.unit_measure.unit_objective.UnitObjectiveName %></td>
+
+                                        <td colspan="2"><% unit_target.unit_measure.UnitMeasureName %></td>
+
+
+                                        <td><b><% unit_target.unit_measure.UnitMeasureType %></b></td>
+                                        
+
+                                        <td><textarea rows="5" id="id_owner" name="monthlyform" value="<% unit_target.unit_measure.unit_owners.UnitOwnerContent %>" ng-model="unit_owner.UnitOwnerContent" autocomplete="off"  required ng-touched /></textarea></td>
+
+                                        <td><% unit_target.JanuaryTarget | number: 2 %>/<input type='text' id="id_jan" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.JanuaryAccomplishment  %>" ng-model="unit_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.FebruaryTarget | number: 2 %>/<input type='text' id="id_feb" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.FebruaryAccomplishment %>" ng-model="unit_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.MarchTarget | number: 2 %>/<input type='text' id="id_mar" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.MarchAccomplishment %>" ng-model="unit_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.AprilTarget | number: 2 %>/<input type='text' id="id_apr" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.AprilAccomplishment %>" ng-model="unit_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.MayTarget | number: 2 %>/<input type='text' id="id_may" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.MayAccomplishment %>" ng-model="unit_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.JuneTarget | number: 2 %>/<input type='text' id="id_jun" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.JuneAccomplishment %>" ng-model="unit_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.JulyTarget | number: 2 %>/<input type='text' id="id_jul" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.JulyAccomplishment %>" ng-model="unit_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.AugustTarget | number: 2 %>/<input type='text' id="id_aug" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.AugustAccomplishment %>" ng-model="unit_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.SeptemberTarget | number: 2 %>/<input type='text' id="id_sep" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.SeptemberAccomplishment %>" ng-model="unit_accomplishment.SeptemberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.OctoberTarget | number: 2 %>/<input type='text' id="id_oct" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.OctoberAccomplishment %>" ng-model="unit_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.NovemberTarget | number: 2 %>/<input type='text' id="id_nov" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.NovemberAccomplishment %>" ng-model="unit_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><% unit_target.DecemberTarget | number: 2 %>/<input type='text' id="id_dec" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.DecemberAccomplishment %>" ng-model="unit_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
+
+                                        <td><textarea rows="5" id="id_initiative" name="monthlyform" value="<% unit_target.unit_measure.unit_initiatives.UnitInitiativeContent %>" ng-model="staff_initiative.staffInitiativeContent" autocomplete="off"  required ng-touched /></textarea></td>
+
+                                        <td><input type='number' id="id_estimate" name="monthlyform" value="<% unit_target.unit_measure.unit_fundings.UnitFundingEstimate %>" ng-model="unit_funding.UnitFundingEstimate" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td><input type='number' id="id_actual" name="monthlyform" value="<% unit_target.unit_measure.unit_fundings.UnitFundingActual %>" ng-model="unit_funding.UnitFundingActual" autocomplete="off" class="form-control" required ng-touched /></td>
+                                        <td></td>
+                                         <input type="hidden" name="UnitMeasureID" value="<%unit_target.unit_measure.UnitMeasureID%>" id="unitmeasure_id">
+    									 <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id">
+                                        <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
     								</tr>
-    							</thead>
-    							<tr>
-    								
-    								<td>Process Excellence</td>
-    								<td>Ensure organizational alignment</td>
-    								<td>Supervise Chief, ITAS in providing technical assistance to CPSM activities</td>
-    								<td></td>
-    								<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-    							</tr>
-    							<tr>
-    								
-    								<td></td>
-    								<td></td>
-    								<td># of days supervising Chief, PBAS in ensuring, monitoring and evaluating all compliances pertinent to the functionality of the TWG for PNP P.A.T.R.O.L Plan 2030</td>
-    								<td></td>
-    								<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-    							</tr>
-    							<tr>
-    								
-    								<td></td>
-    								<td></td>
-    								<td>Administration and maintenance of CPSM Website</td>
-    								<td></td>
-    								<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-    							</tr>
-    							<tr>
-    								
-    								<td></td>
-    								<td></td>
-    								<td>Supervise Chief, ITAS in the maintenance of Information System, ICT Infrastructure, CPSM Website and Social Media Accounts</td>
-    								<td></td>
-    								<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-    							</tr>
-    							<tr>
-    								
-    								<td></td>
-    								<td>Ensure functional PNP Scorecard</td>
-    								<td>Provide support and maintenance to e-Learning Systems (BEL, ELA, and ELACs)</td>
-    								<td></td>
-    								<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-    							</tr>
-    							<tr>
-    								
-    								<td></td>
-    								<td></td>
-    								<td>Administration, support and maintenance of CPSM E-mail System</td>
-    								<td></td>
-    								<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td><input type="number" class="form-control" value="0"/></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-    							</tr>
-    						</table>
-    					</div>
-    					<div class="panel-footer">
-    					</div>
-    				</div>
-    			</div>
+    							</table>
+
+                            </div>
+                            <!--./table table striped-->
+                            <br>
+                                 <button type="button" class="btn btn-success" style='text-align:left; font-size:15px; padding-top:10px; padding-bottom:10px; margin-left:85%;' id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmEditMeasure.$invalid">Save Changes</button>
+                            <center>
+								<dir-pagination-controls
+							       max-size="7"
+							       direction-links="true"
+							       boundary-links="true" >
+							    </dir-pagination-controls>
+							    <!--./dir-pagination-controls-->
+							</center>
+						</div><!-- div panel-body-->
+    				</div><!--div panel panel-info-->
+
+    			</div> <!--div class col-lg-12 -->
     		</div>
     	</div>
     </div>
-
 @endsection

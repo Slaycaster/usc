@@ -54,6 +54,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('unit/dist/js/sb-admin-2.js') }}"></script>
 
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -68,6 +69,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
+        
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -110,8 +112,9 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-            
+        </nav>
 
+        <nav class="layout-title-navbar navbar navbar-default side-nav" role="navigation">
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -201,13 +204,16 @@
                             </ul>
                             
                         </li>
-                    	-->
+                        -->
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+
+
+        
         <div class="the-blur"></div>
 
         <br><br>
