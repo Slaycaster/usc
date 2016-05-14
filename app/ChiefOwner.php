@@ -16,7 +16,7 @@ class ChiefOwner extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['ChiefOwnerContent', 'ChiefOwnerDate', 'ChiefMeasureID','ChiefTargetID', 'ChiefID','UserChiefID',];
+	protected $fillable = ['ChiefOwnerContent', 'ChiefOwnerDate', 'ChiefMeasureID', 'ChiefID','UserChiefID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -39,9 +39,10 @@ class ChiefOwner extends Model {
 		return $this->belongsTo('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
 	}
 
+	
 	public function chief_target()
 	{
-		return $this->hasMany('App\ChiefTarget','ChiefTargetID','ChiefTargetID'); //(model, foreign_key, parent_primary_key)
+		return $this->hasOne('App\ChiefTarget', 'ChiefTargetID', 'ChiefTargetID'); //(model, foreign_key, parent_primary_key)
 	}
 
 }

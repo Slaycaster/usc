@@ -18,7 +18,7 @@ class ChiefTarget extends Model {
 	 */
 	protected $fillable = ['JanuaryTarget', 'FebruaryTarget', 'MarchTarget', 'AprilTarget', 'MayTarget', 'JuneTarget', 
 						   'JulyTarget', 'AugustTarget', 'SeptemberTarget', 'OctoberTarget', 'NovemberTarget', 'DecemberTarget',
-						   'TargetDate', 'TargetPeriod', 'Termination','ChiefMeasureID', 'ChiefID','UserChiefID',];
+						   'TargetDate', 'TargetPeriod', 'Termination','ChiefMeasureID', 'ChiefAccomplishmentID', 'ChiefOwnerID', 'ChiefInitiativeID', 'ChiefFundingID','ChiefID','UserChiefID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -40,5 +40,26 @@ class ChiefTarget extends Model {
 	{
 		return $this->belongsTo('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
 	}
+
+	public function chief_accomplishment()
+	{
+		return $this->belongsTo('App\ChiefAccomplishment', 'ChiefAccomplishmentID', 'ChiefAccomplishmentID');
+	}
+
+	public function chief_owner()
+	{
+		return $this->belongsTo('App\ChiefOwner', 'ChiefOwnerID', 'ChiefOwnerID');
+	}
+
+	public function chief_initiative()
+	{
+		return $this->belongsTo('App\ChiefInitiative', 'ChiefInitiativeID', 'ChiefInitiativeID');
+	}
+
+	public function chief_funding()
+	{
+		return $this->belongsTo('App\ChiefFunding', 'ChiefFundingID', 'ChiefFundingID');
+	}
+
 
 }

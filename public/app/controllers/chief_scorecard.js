@@ -25,12 +25,12 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
     };
 
     
-/*
+
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + '/usc/public/api/chief_accomplishments';
-
+        var url = local + '/usc/public/api/chief_scorecard';
+        
         //append Unit Objective ID to the URL if the form is in edit mode
 
             url += "/" + id;
@@ -64,7 +64,7 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
             });
         // 
     };
-*/
+
 
     $scope.init();
 });

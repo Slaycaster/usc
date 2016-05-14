@@ -14,7 +14,7 @@ class CreateChiefOwnersTable extends Migration {
 	{
 		Schema::create('chief_owners', function(Blueprint $table)
 		{
-			$table->increments('ChiefOnwerID');
+			$table->increments('ChiefOwnerID');
 			$table->string('ChiefOwnerContent');
 			$table->date('ChiefOwnerDate');
 			$table->integer('ChiefMeasureID');

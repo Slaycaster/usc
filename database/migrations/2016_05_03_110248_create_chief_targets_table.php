@@ -31,6 +31,10 @@ class CreateChiefTargetsTable extends Migration {
 			$table->string('TargetPeriod');
 			$table->string('Termination');
 			$table->integer('ChiefMeasureID');
+			$table->integer('ChiefAccomplishmentID');
+			$table->integer('ChiefOwnerID');
+			$table->integer('ChiefInitiativeID');
+			$table->integer('ChiefFundingID');
 			$table->integer('ChiefID');
 			$table->integer('UserChiefID');
 			$table->timestamps();
