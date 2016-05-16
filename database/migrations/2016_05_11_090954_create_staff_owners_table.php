@@ -14,7 +14,7 @@ class CreateStaffOwnersTable extends Migration {
 	{
 		Schema::create('staff_owners', function(Blueprint $table)
 		{
-			$table->increments('StaffOnwerID');
+			$table->increments('StaffOwnerID');
 			$table->string('StaffOwnerContent');
 			$table->date('StaffOwnerDate');
 			$table->integer('StaffMeasureID');

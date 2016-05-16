@@ -6,6 +6,10 @@ use App\StaffTarget;
 use App\StaffObjective;
 use App\Staff;
 use App\UserStaff;
+use App\StaffAccomplishment;
+use App\StaffOwner;
+use App\StaffFunding;
+use App\StaffInitiative;
 
 //Laravel Modules
 use App\Http\Controllers\Controller;
@@ -151,15 +155,46 @@ class APIStaffTargetsController extends Controller {
 	 */
 	public function updatestafftarget($id)
 	{
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)
+				->first();
+
 		$staff_target = StaffTarget::find($id);
 		$staff_target->update(Request::all());
 
 		$staff_target->save();
 
 
- 		$staff_target = StaffTarget::find($id);
+		$staff_accomplishment = new StaffAccomplishment();
+		$staff_accomplishment->StaffID = $staff_user->StaffID;
+		$staff_accomplishment->UserStaffID = $staff_user->UserStaffID;
+		$staff_accomplishment->save();
+
+		$staff_owner = new StaffOwner();
+		$staff_owner->StaffID = $staff_user->StaffID;
+		$staff_owner->UserStaffID = $staff_user->UserStaffID;
+		$staff_owner->save();
+
+		$staff_initiative = new StaffInitiative();
+		$staff_initiative->StaffID = $staff_user->StaffID;
+		$staff_initiative->UserStaffID = $staff_user->UserStaffID;
+		$staff_initiative->save();
+
+		$staff_funding = new StaffFunding();
+		$staff_funding->StaffID = $staff_user->StaffID;
+		$staff_funding->UserStaffID = $staff_user->UserStaffID;
+		$staff_funding->save();
+
+ 		
+		$staff_target = StaffTarget::find($id);
  		$staff_target->TargetDate = date('Y-m-d');
+ 		$staff_target->StaffAccomplishmentID = DB::table('staff_accomplishments')->max('StaffAccomplishmentID');
+ 		$staff_target->StaffOwnerID = DB::table('staff_owners')->max('StaffOwnerID');
+ 		$staff_target->StaffInitiativeID = DB::table('staff_initiatives')->max('StaffInitiativeID');
+ 		$staff_target->StaffFundingID = DB::table('staff_fundings')->max('StaffFundingID');
 		$staff_target->save();
+
+
  	
 
 		return $staff_target;
@@ -168,6 +203,10 @@ class APIStaffTargetsController extends Controller {
 	public function updatestaffquarter($id)
 	{
 
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)
+				->first();
+		
 		$staff_target = StaffTarget::find($id);
 		$targetperiod = Request::input('TargetPeriod');
 		$targetdate = date('Y-m-d');
@@ -200,7 +239,37 @@ class APIStaffTargetsController extends Controller {
 		$staff_target->TargetPeriod = $targetperiod;
 		$staff_target->TargetDate = $targetdate;
 		$staff_target->save();
- 	
+		
+
+		$staff_accomplishment = new StaffAccomplishment();
+		$staff_accomplishment->StaffID = $staff_user->StaffID;
+		$staff_accomplishment->UserStaffID = $staff_user->UserStaffID;
+		$staff_accomplishment->save();
+
+		$staff_owner = new StaffOwner();
+		$staff_owner->StaffID = $staff_user->StaffID;
+		$staff_owner->UserStaffID = $staff_user->UserStaffID;
+		$staff_owner->save();
+
+		$staff_initiative = new StaffInitiative();
+		$staff_initiative->StaffID = $staff_user->StaffID;
+		$staff_initiative->UserStaffID = $staff_user->UserStaffID;
+		$staff_initiative->save();
+
+		$staff_funding = new StaffFunding();
+		$staff_funding->StaffID = $staff_user->StaffID;
+		$staff_funding->UserStaffID = $staff_user->UserStaffID;
+		$staff_funding->save(); 	
+
+
+		$staff_target = StaffTarget::find($id);
+ 		$staff_target->TargetDate = date('Y-m-d');
+ 		$staff_target->StaffAccomplishmentID = DB::table('staff_accomplishments')->max('StaffAccomplishmentID');
+ 		$staff_target->StaffOwnerID = DB::table('staff_owners')->max('StaffOwnerID');
+ 		$staff_target->StaffInitiativeID = DB::table('staff_initiatives')->max('StaffInitiativeID');
+ 		$staff_target->StaffFundingID = DB::table('staff_fundings')->max('StaffFundingID');
+		$staff_target->save();
+
 
 		return $staff_target;
 	}

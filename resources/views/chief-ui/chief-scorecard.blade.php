@@ -1,7 +1,7 @@
 @extends('layout-chief')
 @section('content')
 
- 	<!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
     <!-- Angular Utils Pagination -->
@@ -14,19 +14,19 @@
     <script src="{{ asset('app/controllers/chief_scorecard.js') }}"></script>
 
     <div ng-app="unitScorecardApp" ng-controller="APIChiefScorecardController">
-    	<div id="wrap">
-    		<div class="row">
-    			<div class="col-lg-12 col-md-12 col-xs-12">
-    				<div class="panel panel-info">
-    					<div class="panel-heading measures-custom-heading">
-						  <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
-						  <h2 class="heading"><b>{{ $chief_user->chief->ChiefAbbreviation }} Scorecard for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
-						</div><!--div panel-heading-->
+        <div id="wrap">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading measures-custom-heading">
+                          <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
+                          <h2 class="heading"><b>{{ $chief_user->chief->ChiefAbbreviation }} Scorecard for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                        </div><!--div panel-heading-->
 
-						<div class="panel-body">
-							<div class="table-responsive" >
-    							<table class="table table-striped table-bordered">
-    								<thead>
+                        <div class="panel-body">
+                            <div class="table-responsive" >
+                                <table class="table table-striped table-bordered">
+                                    <thead>
                                     <tr>
                                         <td class="objective-custom-td1" rowspan="2">
                                             <b>OBJECTIVES</b>
@@ -115,10 +115,10 @@
                                             <b>Variance</b>
                                         </td>
                                     </tr>
-    									
-    								</thead>
-    								<tr dir-paginate='chief_target in chief_targets|filter:search|itemsPerPage:5'>
-    									
+                                        
+                                    </thead>
+                                    <tr dir-paginate='chief_target in chief_targets|filter:search|itemsPerPage:5'>
+                                        
                                         <td><% chief_target.chief_measure.chief_objective.ChiefObjectiveName %></td>
 
                                         <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %></td>
@@ -159,34 +159,34 @@
                                         <td><input type='text' onclick="myFunction()" id="id_actual" name="monthlyform" value="<% chief_target.chief_funding.ChiefFundingActual %>" ng-model="chief_target.chief_funding.ChiefFundingActual" autocomplete="off" class="form-control" required ng-touched /></td>
                                         <td></td>
                                          <input type="hidden" name="ChiefMeasureID" value="<%chief_target.chief_measure.ChiefMeasureID%>" id="chiefmeasure_id">
-    									 <input type="hidden" name="ChiefID" value="<?=$chief_user->chief->ChiefID?>" id="chief_id">
+                                         <input type="hidden" name="ChiefID" value="<?=$chief_user->chief->ChiefID?>" id="chief_id">
                                         <input type="hidden" name="UserChiefID" value="<?=$chief_user->UserChiefID?>" id="user_chief_id" >
-    								    <td>
+                                        <td>
                                             
                                                <button type="button"  class="btn btn-success" style=' font-size:15px; padding-top:10px; padding-bottom:10px; ' id="btn-save" ng-click="save(modalstate, chief_target.ChiefTargetID)">Save Changes</button>
                                             
                                         </td>
                                     </tr>
-    							</table>
+                                </table>
 
                             </div>
                             <!--./table table striped-->
                             <br>
                                  
                             <center>
-								<dir-pagination-controls
-							       max-size="7"
-							       direction-links="true"
-							       boundary-links="true" >
-							    </dir-pagination-controls>
-							    <!--./dir-pagination-controls-->
-							</center>
-						</div><!-- div panel-body-->
-    				</div><!--div panel panel-info-->
+                                <dir-pagination-controls
+                                   max-size="7"
+                                   direction-links="true"
+                                   boundary-links="true" >
+                                </dir-pagination-controls>
+                                <!--./dir-pagination-controls-->
+                            </center>
+                        </div><!-- div panel-body-->
+                    </div><!--div panel panel-info-->
 
-    			</div> <!--div class col-lg-12 -->
-    		</div>
-    	</div>
+                </div> <!--div class col-lg-12 -->
+            </div>
+        </div>
     </div>
 
 

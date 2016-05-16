@@ -39,4 +39,10 @@ class StaffOwner extends Model {
 		return $this->belongsTo('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
+	
+		public function staff_target()
+	{
+		return $this->hasOne('App\StaffTarget', 'StaffTargetID', 'StaffTargetID'); //(model, foreign_key, parent_primary_key)
+	}
+
 }

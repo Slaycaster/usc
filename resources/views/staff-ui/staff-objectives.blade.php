@@ -58,7 +58,7 @@
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.perspective.PerspectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
                                         
-                                        <td class="objective-custom-td3" ng-click="sort('staff_objective.chief_objective.ChiefObjectiveName')">Contributory to
+                                        <td class="objective-custom-td3" ng-click="sort('staff_objective.chief_objective.ChiefObjectiveName')">Contributory to Chief's Objective
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.chief_objective.ChiefObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </td>
 

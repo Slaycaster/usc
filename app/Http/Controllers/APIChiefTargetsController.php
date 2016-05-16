@@ -187,6 +187,10 @@ class APIChiefTargetsController extends Controller {
 	public function updatequarter($id)
 	{
 
+		$chief_id = Session::get('chief_user_id', 'default');
+		$chief_user = UserChief::where('UserChiefID', '=', $chief_id)
+				->first();
+
 		$chief_target = ChiefTarget::find($id);
 		$targetperiod = Request::input('TargetPeriod');
 		$targetdate =  date('Y-m-d');
@@ -219,6 +223,38 @@ class APIChiefTargetsController extends Controller {
 		$chief_target->TargetPeriod = $targetperiod;
 		$chief_target->TargetDate = $targetdate;
 		$chief_target->save();
+
+
+		
+		$chief_accomplishment = new ChiefAccomplishment();
+		$chief_accomplishment->ChiefID = $chief_user->ChiefID;
+		$chief_accomplishment->UserChiefID = $chief_user->UserChiefID;
+		$chief_accomplishment->save();
+
+		$chief_owner = new ChiefOwner();
+		$chief_owner->ChiefID = $chief_user->ChiefID;
+		$chief_owner->UserChiefID = $chief_user->UserChiefID;
+		$chief_owner->save();
+
+		$chief_initiative = new ChiefInitiative();
+		$chief_initiative->ChiefID = $chief_user->ChiefID;
+		$chief_initiative->UserChiefID = $chief_user->UserChiefID;
+		$chief_initiative->save();
+
+		$chief_funding = new ChiefFunding();
+		$chief_funding->ChiefID = $chief_user->ChiefID;
+		$chief_funding->UserChiefID = $chief_user->UserChiefID;
+		$chief_funding->save();
+
+		
+		$chief_target = ChiefTarget::find($id);
+ 		$chief_target->TargetDate = date('Y-m-d');
+ 		$chief_target->ChiefAccomplishmentID = DB::table('chief_accomplishments')->max('ChiefAccomplishmentID');
+ 		$chief_target->ChiefOwnerID = DB::table('chief_owners')->max('ChiefOwnerID');
+ 		$chief_target->ChiefInitiativeID = DB::table('chief_initiatives')->max('ChiefInitiativeID');
+ 		$chief_target->ChiefFundingID = DB::table('chief_fundings')->max('ChiefFundingID');
+		$chief_target->save();
+
  	
 
 		return $chief_target;
