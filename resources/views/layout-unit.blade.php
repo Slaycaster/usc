@@ -2,13 +2,12 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#3b5998 ">
-    <meta name="msapplication-navbutton-color" content="#3b5998 ">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#3b5998">
+    <meta name="theme-color" content="#082A48 ">
+    <meta name="msapplication-navbutton-color" content="#082A48 ">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#082A48">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -40,7 +39,6 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('unit/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'> -->
     
     <!-- jQuery -->
     <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
@@ -54,22 +52,17 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('unit/dist/js/sb-admin-2.js') }}"></script>
 
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body class="layout_unit-body">
-
     <div id="wrapper">
-
         <!-- Navigation -->
-        
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -78,12 +71,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand layout-custom-unit-pnpname" href="{{ url('/') }}">Philippine National Police Unit Scorecard</a>
-                <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">PNP Unit Scorecard</a>
+                <a class="navbar-brand layout-custom-unit-pnpname" href="{{ url('/') }}">
+                    Philippine National Police Unit Scorecard
+                </a>
+                <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">
+                    PNP Unit Scorecard
+                </a>
             </div>
             <div class="layout_unit-custom_all-unit_user">
-               <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $user->rank->RankCode }} 
-               {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}!</i>
+                <i class="glyphicon glyphicon-user"></i>&nbsp; 
+                    Welcome 
+                    {{ $user->rank->RankCode }} 
+                    {{ $user->UserUnitFirstName }} 
+                    {{ $user->UserUnitLastName }}!
             </div>
             <!-- /.navbar-header -->
 
@@ -91,10 +91,12 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                         <span class="glyphicon glyphicon-user"></span>&nbsp; Welcome {{ $user->rank->RankCode }} 
-                         {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }}! &nbsp; 
-                         <i class="fa fa-caret-down"></i>
-
+                        <span class="glyphicon glyphicon-user"></span>&nbsp; 
+                            Welcome 
+                            {{ $user->rank->RankCode }} 
+                            {{ $user->UserUnitFirstName }} 
+                            {{ $user->UserUnitLastName }}! &nbsp; 
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -130,13 +132,21 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ url('unit/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{ url('unit/dashboard') }}">
+                                <i class="fa fa-dashboard fa-fw"></i>         
+                                Dashboard
+                            </a>
                         </li>
                         <li>
-                            <a href="{{ url('unit/scorecard') }}"><i class="fa fa-table fa-fw"></i> {{ $user->unit->UnitAbbreviation }} Scorecard</a>
+                            <a href="{{ url('unit/scorecard') }}">
+                                <i class="fa fa-table fa-fw"></i> 
+                                {{ $user->unit->UnitAbbreviation }} Scorecard
+                            </a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> 
+                                    Set Activities<span class="fa arrow"></span>
+                            </a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ url('unit/objectives') }}">Set Unit Objectives</a>
@@ -211,9 +221,7 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
-
-        
+ 
         <div class="the-blur"></div>
 
         <br><br>

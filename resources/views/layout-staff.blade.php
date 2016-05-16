@@ -40,8 +40,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('unit/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'> -->
-    
+
     <!-- jQuery -->
     <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
@@ -54,8 +53,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('unit/dist/js/sb-admin-2.js') }}"></script>
 
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -66,9 +63,7 @@
 </head>
 
 <body class="layout_staff-body">
-
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navbar-header">
@@ -78,12 +73,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand layout-custom-unit-pnpname" href="{{ url('/') }}">Philippine National Police Unit Scorecard</a>
-                <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">PNP Unit Scorecard</a>
+                <a class="navbar-brand layout-custom-unit-pnpname" href="{{ url('/') }}">
+                    Philippine National Police Unit Scorecard
+                </a>
+                <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">
+                    PNP Unit Scorecard
+                </a>
             </div>
             <div class="layout_unit-custom_all-unit_user"> 
-                <i class="glyphicon glyphicon-user"></i>&nbsp; Welcome {{ $staff_user->rank->RankCode }} 
-                    {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}!
+                <i class="glyphicon glyphicon-user"></i>&nbsp;
+                    Welcome 
+                    {{ $staff_user->rank->RankCode }} 
+                    {{ $staff_user->UserStaffFirstName }} 
+                    {{ $staff_user->UserStaffLastName }}!
             </div>
             <!-- /.navbar-header -->
 
@@ -91,28 +93,38 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                         <span class="glyphicon glyphicon-user"></span>&nbsp;Welcome {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}! &nbsp; 
-                         <i class="fa fa-caret-down"></i>
-
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;
+                            Welcome 
+                            {{ $staff_user->rank->RankCode }} 
+                            {{ $staff_user->UserStaffFirstName }} 
+                            {{ $staff_user->UserStaffLastName }}! &nbsp; 
+                        <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; User Settings</a>
+                            <a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; 
+                                User Settings
+                            </a>
                         </li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp; Settings</a>
+                            <a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp; 
+                                Settings
+                            </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </li>
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-            
+        </nav>   
 
+        <nav class="layout-title-navbar navbar navbar-default side-nav" role="navigation">
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -128,13 +140,21 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ url('staff/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{ url('staff/dashboard') }}">
+                                <i class="fa fa-dashboard fa-fw"></i> 
+                                Dashboard
+                            </a>
                         </li>
                         <li>
-                            <a href="{{ url('staff/scorecard') }}"><i class="fa fa-table fa-fw"></i> {{ $staff_user->staff->StaffAbbreviation }} Scorecard</a>
+                            <a href="{{ url('staff/scorecard') }}">
+                                <i class="fa fa-table fa-fw"></i> 
+                                {{ $staff_user->staff->StaffAbbreviation }} Scorecard
+                            </a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> 
+                                Set Activities<span class="fa arrow"></span>
+                            </a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ url('staff/objectives') }}">Set Staff Objectives</a>

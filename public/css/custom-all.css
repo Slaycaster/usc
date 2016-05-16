@@ -81,6 +81,12 @@ body.modal-open .wrap{
         height:200px; 
         width:200px; 
     }   
+    .panel-info{
+        margin-top: 3em !important;
+    }
+    .panel-warning{
+        margin-top: 3em !important;
+    }
 }
 
 
@@ -99,6 +105,11 @@ body.modal-open .wrap{
 @media(max-width:768px){
     .sidebar-search{
         margin-top: 6em;
+    }
+    .unitdashboard-custom-picabb{
+        display: inline !important;
+        height: 100px;
+        width: 100px;
     }
 }
 
@@ -141,8 +152,8 @@ body.modal-open .wrap{
 .unitdashboard-custom-unit-activityabb,
 .dashboard-custom-unit-dashname,
 .dashboard-custom-unit-dashabb{
-    margin-top:1em;
-    padding-top: 1.5em;
+    margin-top:1.5em;
+    padding-top: 1em;
     padding-bottom: 1em;
     font-size: 250%;
     text-align: center;
@@ -169,7 +180,6 @@ body.modal-open .wrap{
         margin-bottom: 1em;
 }
 
-
 a.navbar-brand{
     color: #fff !important;
 }
@@ -177,7 +187,9 @@ a.navbar-brand{
 
 /* mobile view */
 
-
+.unitdashboard-custom-picabb{
+    display: none;
+}
 
 .unitdashboard-custom-unitpic{
     height:200px; 

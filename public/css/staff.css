@@ -79,10 +79,10 @@ a.active{
     background-color: #fff;
 }
 
-.sidebar .sidebar-nav.navbar-collapse{
+/*.sidebar .sidebar-nav.navbar-collapse{
     overflow: auto !important;
     max-height: 350px !important;
-}
+}*/
 .sidebar ul li{
     border-bottom: none;
 }

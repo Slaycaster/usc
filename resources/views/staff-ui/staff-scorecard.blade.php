@@ -132,6 +132,7 @@
                                         <td><b><% staff_target.staff_measure.StaffMeasureType %></b></td>
                                         
 
+<<<
                                         <td><textarea rows="5" id="id_owner" name="monthlyform" value="<% staff_target.staff_owner.StaffOwnerContent %>" ng-model="staff_target.staff_owner.StaffOwnerContent" autocomplete="off"  required ng-touched /></textarea></td>
 
                                         <td><% staff_target.JanuaryTarget | number: 2 %>/<input type='text' id="id_jan" name="monthlyform" value="<% staff_target.staff_accomplishment.JanuaryAccomplishment  %>" ng-model="staff_target.staff_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
@@ -163,6 +164,7 @@
                                         <td><input type='text' id="id_estimate" name="monthlyform" value="<% staff_target.staff_funding.StaffFundingEstimate %>" ng-model="staff_funding.StaffFundingEstimate" autocomplete="off" class="form-control" required ng-touched /></td>
                                         <td ><input type='text' id="id_actual" name="monthlyform" value="<% staff_target.staff_funding.StaffFundingActual %>" ng-model="staff_funding.StaffFundingActual" autocomplete="off" class="form-control" required ng-touched /></td>
                                         <td ></td>
+
                                          <input type="hidden" name="StaffMeasureID" value="<%staff_target.staff_measure.StaffMeasureID%>" id="staffmeasure_id">
     									 <input type="hidden" name="StaffID" value="<?=$staff_user->staff->StaffID?>" id="staff_id">
                                         <input type="hidden" name="UserStaffID" value="<?=$staff_user->UserStaffID?>" id="user_staff_id">
