@@ -144,7 +144,6 @@ class APIUnitMeasuresController extends Controller {
 		$unit = Request::input('UnitID');
 		
 
-
 		$new_measurename = Request::input('UnitMeasureName');
 		$new_measuretype = Request::input('UnitMeasureType');
 		$new_measureformula = Request::input('UnitMeasureFormula');
