@@ -18,7 +18,7 @@
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
-					<div class="panel panel-warning">
+					<div class="panel panel-warning targets-custom-panel">
 						<div class="panel-heading measures-custom-heading">
 						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $unit->unitAbbreviation }} Targets for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
@@ -50,28 +50,28 @@
     							<table class="table table-striped table-bordered">
     								<thead>
     									<td class="objective-custom-td1">
-                                            <b>Objective</b>
+                                            Objective</b>
     									</td>
     							
     									<td class="objective-custom-td2">
-                                            <b>Measure</b>
+                                            Measure
     									</td>
 
 
                                         <td class="objective-custom-td3">
-                                            <b>Formula</b>
+                                            Formula
                                         </td>
 
                                         <td class="objective-custom-td4">
-                                            <b>Target Period</b>
+                                            Target Period
                                         </td>
 
     									</td>
     									<td class="objective-custom-td5">
-                                            <b>Action</b>
+                                            Action
     									</td>
     									<td class="objective-custom-td6">
-                                            <b>Effectivity Date</b>
+                                            Effectivity Date
     									</td>
     									
     								</thead>

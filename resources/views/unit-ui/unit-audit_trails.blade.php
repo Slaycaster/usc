@@ -21,13 +21,13 @@
     <div ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsController">
         <div class="wrap">
             <div class="row">           
-                <div class="panel panel-warning">
-                    <div class="col-lg-12 unitdashboard-custom-unit-activitylogname">
+                <div class="panel panel-warning audit-custom-panel">
+                    <div class="col-lg-12 dashboard-custom-activitylogname">
                         <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitName }} Activity Log</b></h2>
                         <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                     </div>
 
-                     <div class="col-lg-12 unitdashboard-custom-unit-activitylogabb">
+                     <div class="col-lg-12 dashboard-custom-activitylogabb">
                         <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitAbbreviation  }} Activity Log</b></h2>
                         <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                     </div>

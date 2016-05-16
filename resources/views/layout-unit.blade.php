@@ -71,10 +71,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand layout-custom-unit-pnpname" href="{{ url('/') }}">
+                <a class="navbar-brand layout-custom-pnpname" href="{{ url('/') }}">
                     Philippine National Police Unit Scorecard
                 </a>
-                <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">
+                <a class="navbar-brand layout-custom-pnpabb" href="{{ url('/') }}">
                     PNP Unit Scorecard
                 </a>
             </div>
@@ -224,16 +224,12 @@
  
         <div class="the-blur"></div>
 
-        <br><br>
         <div id="page-wrapper" class="unit-page-wrapper">
             @yield('content')
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
-
-    
 
 </body>
 

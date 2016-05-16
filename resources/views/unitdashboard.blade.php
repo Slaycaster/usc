@@ -26,25 +26,30 @@
     <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
     
     <div class="row">
-        <div class="col-lg-12 dashboard-custom-unit-dashname">
+        <div class="col-lg-12 dashboard-custom-dashname">
             <p><b>{{ $user->unit->UnitName }} Unit Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
-        <!-- /.col-lg-12 -->
     </div>
+    
+
     <div class="row">
-        <div class="col-lg-12 dashboard-custom-unit-dashabb">
-            <img class="img-responsive unitdashboard-custom-unitpicabb" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
-            <p><b>{{ $user->unit->UnitAbbreviation }} Unit Dashboard</b></p>
+        <div class="col-lg-12 dashboard-custom-dashabb">
+            <img class="img-responsive dashboard-custom-pictureabb" 
+                    src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}" />
+            <p>
+                <b>{{ $user->unit->UnitAbbreviation }} Unit Dashboard</b>
+            </p>
         </div>
         <div class="col-md-12"><br /></div>
-        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.row -->
+    
+
+
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -102,7 +107,8 @@
             </div>
         </div>
     </div>
-    <!-- /.row -->
+    <!-- /.unitpicture -->
+    
     <div class="row">
         <div class="col-lg-8">
             <div class="panel panel-success">
@@ -245,8 +251,6 @@
         </div>
         <!-- /.col-lg-4 -->
     </div>
-    <!-- /.row -->
-
-    
+    <!-- /.dashboard content -->
 
 @endsection
