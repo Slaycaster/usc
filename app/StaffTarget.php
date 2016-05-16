@@ -18,7 +18,7 @@ class StaffTarget extends Model {
 	 */
 	protected $fillable = ['JanuaryTarget', 'FebruaryTarget', 'MarchTarget', 'AprilTarget', 'MayTarget', 'JuneTarget', 
 						   'JulyTarget', 'AugustTarget', 'SeptemberTarget', 'OctoberTarget', 'NovemberTarget', 'DecemberTarget',
-						   'TargetDate', 'TargetPeriod', 'Termination','StaffMeasureID', 'StaffID','UserStaffID',];
+						   'TargetDate', 'TargetPeriod', 'Termination','StaffMeasureID','StaffAccomplishmentID', 'StaffOwnerID', 'StaffInitiativeID', 'StaffFundingID', 'StaffID','UserStaffID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -39,6 +39,26 @@ class StaffTarget extends Model {
 	public function staff_measure()
 	{
 		return $this->belongsTo('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
+	}
+
+	public function staff_accomplishment()
+	{
+		return $this->belongsTo('App\StaffAccomplishment', 'StaffAccomplishmentID', 'StaffAccomplishmentID');
+	}
+
+	public function staff_owner()
+	{
+		return $this->belongsTo('App\StaffOwner', 'StaffOwnerID', 'StaffOwnerID');
+	}
+
+	public function staff_initiative()
+	{
+		return $this->belongsTo('App\StaffInitiative', 'StaffInitiativeID', 'StaffInitiativeID');
+	}
+
+	public function staff_funding()
+	{
+		return $this->belongsTo('App\StaffFunding', 'StaffFundingID', 'StaffFundingID');
 	}
 
 }

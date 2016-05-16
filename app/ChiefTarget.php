@@ -56,8 +56,10 @@ class ChiefTarget extends Model {
 		return $this->belongsTo('App\ChiefInitiative', 'ChiefInitiativeID', 'ChiefInitiativeID');
 	}
 
+	
 	public function chief_funding()
 	{
+
 		return $this->belongsTo('App\ChiefFunding', 'ChiefFundingID', 'ChiefFundingID');
 	}
 
