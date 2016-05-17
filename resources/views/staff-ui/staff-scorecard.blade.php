@@ -17,10 +17,14 @@
     	<div id="wrap">
     		<div class="row">
     			<div class="col-lg-12 col-md-12 col-xs-12">
-    				<div class="panel panel-info">
-    					<div class="panel-heading measures-custom-heading">
-						  <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
-						  <h2 class="heading"><b>{{ $staff_user->staff->StaffAbbreviation }} Scorecard for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+    				<div class="panel panel-info scorecard-custom-panel">
+    					<div class="panel-heading scorecard-custom-heading">
+						  <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
+						  
+                            <h2 class="heading scorecard-custom-heading">
+                                <b>{{ $staff_user->staff->StaffAbbreviation }} Scorecard for {{ date("Y") }}</b>
+                            </h2>   
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div><!--div panel-heading-->
 
 						<div class="panel-body">

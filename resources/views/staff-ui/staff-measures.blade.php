@@ -19,7 +19,7 @@
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
-					<div class="panel panel-warning">
+					<div class="panel panel-warning measures-custom-panel">
 						<div class="panel-heading measures-custom-heading">
 						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $staff->StaffAbbreviation }} Measures</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>

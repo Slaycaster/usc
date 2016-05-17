@@ -14,11 +14,11 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/staff_targets.js') }}"></script>
 
-<div ng-app="unitScorecardApp" ng-controller="APIStaffTargetController">
+    <div ng-app="unitScorecardApp" ng-controller="APIStaffTargetController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
-					<div class="panel panel-warning">
+					<div class="panel panel-warning targets-custom-panel">
 						<div class="panel-heading measures-custom-heading">
 						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $staff->StaffAbbreviation }} Targets for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
