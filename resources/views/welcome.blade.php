@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-PH">
 
 <head>
 
@@ -10,8 +10,9 @@
     <meta name="theme-color" content="#363636 ">
     <meta name="msapplication-navbutton-color" content="#363636 ">
     <meta name="apple-mobile-web-app-status-bar-style" content="#363636">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Philippine National Police Unit Scorecard">
+    <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
+    <meta name="author" content="Fare Matrix">
 
     <title>Philippine National Police Unit Scorecard</title>
 

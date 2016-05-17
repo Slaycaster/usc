@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-PH">
 
 <head>
     <meta charset="utf-8">
@@ -8,10 +8,11 @@
     <meta name="theme-color" content="#782225 ">
     <meta name="msapplication-navbutton-color" content="#782225 ">
     <meta name="apple-mobile-web-app-status-bar-style" content="#782225">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Philippine National Police Unit Scorecard">
+    <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
+    <meta name="author" content="Fare Matrix">
 
-    <title>Staff Dashboard || Philippine National Police Unit Scorecard</title>
+    <title>Staff Dashboard - Philippine National Police Unit Scorecard</title>
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
