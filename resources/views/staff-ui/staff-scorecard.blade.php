@@ -16,11 +16,14 @@
     <div ng-app="unitScorecardApp" ng-controller="APIStaffScorecardController">
     	<div id="wrap">
     		<div class="row">
-    			<div class="col-lg-12 col-md-12 col-xs-12">
-    				<div class="panel panel-info">
-    					<div class="panel-heading measures-custom-heading">
-						  <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
-						  <h2 class="heading"><b>{{ $staff_user->staff->StaffAbbreviation }} Scorecard for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+    			<div class="panel panel-info scorecard-custom-panel">
+    					<div class="panel-heading scorecard-custom-heading">
+						  <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
+						  
+                            <h2 class="heading scorecard-custom-heading">
+                                <b>{{ $staff_user->staff->StaffAbbreviation }} Scorecard for {{ date("Y") }}</b>
+                            </h2>   
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div><!--div panel-heading-->
 
 						<div class="panel-body">
@@ -29,16 +32,15 @@
     								<thead>
                                     <tr>
                                         <td class="objective-custom-td1" rowspan="2">
-                                            <b>OBJECTIVES</b>
+                                            OBJECTIVES
                                         </td>
                                 
                                         <td class="objective-custom-td2" colspan="3">
-                                            <b>MEASURES</b>
+                                            MEASURES
                                         </td>
 
-
                                         <td class="objective-custom-td3" rowspan="2" >
-                                            <b>OWNER</b>
+                                            OWNER
                                         </td>
 
                                         <td class="objective-custom-td4" colspan="12">
@@ -46,13 +48,13 @@
                                         </td>
 
                                         <td class="objective-custom-td5" rowspan="2">
-                                            <b>INITIATIVES</b>
+                                            INITIATIVES
                                         </td>
                                         <td class="objective-custom-td6" colspan="3">
-                                            <b>FUNDING</b>
+                                            FUNDING
                                         </td>
                                          <td class="objective-custom-td7" rowspan="2">
-                                            <b>Action</b>
+                                            Action
                                         </td>
                                     </tr>
 
@@ -60,59 +62,59 @@
                                         
                                 
                                         <td class="objective-custom-td8" colspan="2">
-                                            <b>Name</b>
+                                            Name
                                         </td>
 
                                         <td class="objective-custom-td9">
-                                            <b>Type</b>
+                                            Type
                                         </td>
                                        
 
                                         <td class="objective-custom-td12">
-                                            <b>Jan</b>
+                                            Jan
                                         </td>
                                         <td class="objective-custom-td13">
-                                            <b>Feb</b>
+                                            Feb
                                         </td>
                                         <td class="objective-custom-td14">
-                                            <b>Mar</b>
+                                            Mar
                                         </td>
                                         <td class="objective-custom-td15">
-                                            <b>Apr</b>
+                                            Apr
                                         </td>
                                         <td class="objective-custom-td16">
-                                            <b>May</b>
+                                            May
                                         </td>
                                         <td class="objective-custom-td17">
-                                            <b>Jun</b>
+                                            Jun
                                         </td>
                                         <td class="objective-custom-td18">
-                                            <b>Jul</b>
+                                            Jul
                                         </td>
                                         <td class="objective-custom-td19">
-                                            <b>Aug</b>
+                                            Aug
                                         </td>
                                         <td class="objective-custom-td20">
-                                            <b>Sep</b>
+                                            Sep
                                         </td>
                                         <td class="objective-custom-td21">
-                                            <b>Oct</b>
+                                            Oct
                                         </td>
                                         <td class="objective-custom-td22">
-                                            <b>Nov</b>
+                                            Nov
                                         </td>
                                         <td class="objective-custom-td23">
-                                            <b>Dec</b>
+                                            Dec
                                         </td>
                                         
                                         <td class="objective-custom-td25">
-                                            <b>Estimate</b>
+                                            Estimate
                                         </td>
                                         <td class="objective-custom-td26">
-                                            <b>Actual(sss)</b>
+                                            Actual(sss)
                                         </td>
                                         <td class="objective-custom-td27">
-                                            <b>Variance</b>
+                                            Variance
                                         </td>
                                     </tr>
     									
@@ -187,9 +189,7 @@
 							    <!--./dir-pagination-controls-->
 							</center>
 						</div><!-- div panel-body-->
-    				</div><!--div panel panel-info-->
-
-    			</div> <!--div class col-lg-12 -->
+    			</div><!--div panel panel-info-->
     		</div>
     	</div>
     </div>

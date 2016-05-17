@@ -16,8 +16,7 @@
     <div ng-app="unitScorecardApp" ng-controller="APIUnitScorecardController">
     	<div id="wrap">
     		<div class="row">
-    			<div class="col-lg-12 col-md-12 col-xs-12">
-    				<div class="panel panel-info scorecard-custom-panel">
+    			<div class="panel panel-info scorecard-custom-panel">
     					<div class="panel-heading scorecard-custom-heading">
                           <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
 						  
@@ -130,8 +129,8 @@
                                         <input type="hidden" value="<% unit_target.unit_measure.StaffMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
 
                                         <td colspan="2"><% unit_target.unit_measure.UnitMeasureName %>
-                                        <span class="label label-info" ng-if="c_measure=unit_target.unit_measure.StaffMeasureID">Contributory</span>
-                                    </td>
+                                            <span class="label label-info" ng-if="c_measure=unit_target.unit_measure.StaffMeasureID">Contributory</span>
+                                        </td>
 
 
                                         <td><b><% unit_target.unit_measure.UnitMeasureType %></b></td>
@@ -183,9 +182,7 @@
                             <!--./table table striped-->
                             
 						</div><!-- div panel-body-->
-    				</div><!--div panel panel-info-->
-
-    			</div> <!--div class col-lg-12 -->
+    			</div><!--div panel panel-info-->
     		</div>
     	</div>
     </div>

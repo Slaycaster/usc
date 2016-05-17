@@ -14,7 +14,6 @@
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
-
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
 	    <div class="wrap">

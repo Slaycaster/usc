@@ -26,16 +26,19 @@
     <script src="{{ asset('app/controllers/chief_dashboard.js') }}"></script>
     
     <div class="row">
-        <div class="col-lg-12 dashboard-custom-unit-dashname">
+        <div class="col-lg-12 dashboard-custom-dashname">
             <p><b>{{ $chief_user->chief->ChiefName }} Dashboard</b></p>
         </div>
-        <!-- /.col-lg-12 -->
+        <div class="col-md-12"><br /></div>
     </div>
-    <!-- /.row -->
+    
     <div class="row">
-        <div class="col-lg-12 dashboard-custom-unit-dashabb">
-            <img class="img-responsive unitdashboard-custom-unitpicabb" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
-            <p><b>{{ $chief_user->chief->ChiefAbbreviation }} Dashboard</b></p>
+        <div class="col-lg-12 dashboard-custom-dashabb">
+            <img class="img-responsive dashboard-custom-pictureabb" 
+                src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
+            <p>
+                <b>{{ $chief_user->chief->ChiefAbbreviation }} Dashboard</b>
+            </p>
         </div>
         <div class="col-md-12"><br /></div>
         <!-- /.col-lg-12 -->
@@ -43,7 +46,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">

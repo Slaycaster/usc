@@ -32,11 +32,10 @@
         <div class="col-md-12"><br /></div>
     </div>
     
-
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
             <img class="img-responsive dashboard-custom-pictureabb" 
-                    src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}" />
+                src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
             <p>
                 <b>{{ $user->unit->UnitAbbreviation }} Unit Dashboard</b>
             </p>
@@ -44,8 +43,6 @@
         <div class="col-md-12"><br /></div>
     </div>
     
-
-
     <div class="row">
         <div class="col-lg-3">
             <center>

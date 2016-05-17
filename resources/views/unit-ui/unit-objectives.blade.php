@@ -2,7 +2,6 @@
 
 @section('content')
 
-    
     <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
@@ -15,8 +14,6 @@
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
-    
-
     <br>
 	<div ng-app="unitScorecardApp" ng-controller="APIUnitObjectiveController">
 	    <div class="wrap">
@@ -24,7 +21,11 @@
 				<div class="col-lg-12">
 					<div class="panel panel-warning objectives-custom-panel">
 						<div class="panel-heading objectives-custom-heading">
-							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Objectives</b></h2><i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+							<i class="fa fa-circle-o-notch fa-5x"></i> 
+                            <h2>
+                                <b>{{ $user->unit->UnitAbbreviation }} Objectives</b>
+                            </h2>
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
