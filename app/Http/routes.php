@@ -34,8 +34,6 @@ Route::get('unit/measures','APIUnitMeasuresController@showIndex');
 Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 Route::get('unit/targets','APIUnitTargetsController@showIndex');
 Route::get('unit/targets/{id}','APIUnitTargetsController@edit');
-Route::get('unit/setscorecard', 'UnitSetScorecardController@index');
-Route::get('unit/scorecard', 'UnitScorecardController@index');
 
 
 /*STAFF USER ROUTES*/

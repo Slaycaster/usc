@@ -34,9 +34,10 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
         //append Unit Objective ID to the URL if the form is in edit mode
 
             url += "/" + id;
-            console.log(document.getElementById('chief_id').value);
+            console.log(document.getElementById('chief_id'+id).value);
             $http.put(url, {
-                ChiefOwnerContent: document.getElementById('id_owner').value,
+                ChiefOwnerContent: document.getElementById('id_owner'+id).value,
+                /*
                 JanuaryAccomplishment: document.getElementById('id_jan').value,
                 FebruaryAccomplishment: document.getElementById('id_feb').value,
                 MarchAccomplishment: document.getElementById('id_mar').value,
@@ -49,15 +50,16 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
                 OctoberAccomplishment: document.getElementById('id_oct').value,
                 NovemberAccomplishment: document.getElementById('id_nov').value,
                 DecemberAccomplishment: document.getElementById('id_dec').value,
-                ChiefInitiativeContent: document.getElementById('id_initiative').value,
-                ChiefFundingEstimate: document.getElementById('id_estimate').value,
-                ChiefFundingActual: document.getElementById('id_actual').value,
-                ChiefMeasureID: document.getElementById('chiefmeasure_id').value,
-                ChiefID: document.getElementById('chief_id').value,
-                UserChiefID: document.getElementById('user_chief_id').value
+                */
+                ChiefInitiativeContent: document.getElementById('id_initiative'+id).value,
+                ChiefFundingEstimate: document.getElementById('id_estimate'+id).value,
+                ChiefFundingActual: document.getElementById('id_actual'+id).value,
+                ChiefMeasureID: document.getElementById('chiefmeasure_id'+id).value,
+                ChiefID: document.getElementById('chief_id'+id).value,
+                UserChiefID: document.getElementById('user_chief_id'+id).value
 
             }).success(function(data, status, headers, config, response) {
-                console.log(response);
+                //console.log(response);
                 $scope.chief_targets = '';
                 $scope.init();
                 $scope.loading = false;

@@ -83,7 +83,7 @@
     									<td><% staff_measure.StaffMeasureType %></td>
                                         <td><% staff_measure.StaffMeasureFormula %></td>
                                         <td><% staff_measure.staff_objective.StaffObjectiveName %></td>
-    									<td><% staff_measure.chief_measures.ChiefMeasureName %></td>
+    									<td><% staff_measure.chief_measure.ChiefMeasureName %></td>
                                         <td><% staff_measure.staff.StaffAbbreviation %></td>
     									<td><% staff_measure.user_staff.rank.RankCode %> <% staff_measure.user_staff.UserStaffFirstName %> <% staff_measure.user_staff.UserStaffLastName %></td>
     									<td>

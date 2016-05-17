@@ -18,7 +18,7 @@ class UnitTarget extends Model {
 	 */
 	protected $fillable = ['JanuaryTarget', 'FebruaryTarget', 'MarchTarget', 'AprilTarget', 'MayTarget', 'JuneTarget', 
 						   'JulyTarget', 'AugustTarget', 'SeptemberTarget', 'OctoberTarget', 'NovemberTarget', 'DecemberTarget',
-						   'TargetDate', 'TargetPeriod','Termination', 'UnitMeasureID', 'UnitID','UserUnitID',];
+						   'TargetDate', 'TargetPeriod','Termination', 'UnitMeasureID','UnitAccomplishmentID', 'UnitOwnerID', 'UnitInitiativeID', 'UnitFundingID', 'UnitID','UserUnitID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -39,6 +39,26 @@ class UnitTarget extends Model {
 	public function unit_measure()
 	{
 		return $this->belongsTo('App\UnitMeasure', 'UnitMeasureID', 'UnitMeasureID');
+	}
+
+	public function unit_accomplishment()
+	{
+		return $this->belongsTo('App\UnitAccomplishment', 'UnitAccomplishmentID', 'UnitAccomplishmentID');
+	}
+
+	public function unit_owner()
+	{
+		return $this->belongsTo('App\UnitOwner', 'UnitOwnerID', 'UnitOwnerID');
+	}
+
+	public function unit_initiative()
+	{
+		return $this->belongsTo('App\UnitInitiative', 'UnitInitiativeID', 'UnitInitiativeID');
+	}
+
+	public function unit_funding()
+	{
+		return $this->belongsTo('App\UnitFunding', 'UnitFundingID', 'UnitFundingID');
 	}
 
 }

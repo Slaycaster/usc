@@ -24,7 +24,7 @@ class StaffMeasure extends Model {
 	 */
 	protected $primaryKey = 'StaffMeasureID';
 
-	public function chief_measures()
+	public function chief_measure()
 	{
 		return $this->belongsTo('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
 	}

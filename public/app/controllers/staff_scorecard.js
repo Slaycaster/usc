@@ -31,39 +31,37 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
         $scope.loading = true;
         var url = local + '/usc/public/api/staff_scorecard';
         
-        //append Unit Objective ID to the URL if the form is in edit mode
-         
             url += "/" + id;
-            console.log($document.find('#owner'));
-            /*
+            console.log(document.getElementById('id_owner'+id));
+            
             $http.put(url, {
-                StaffOwnerContent: document.getElementById('id_owner').value,
-                JanuaryAccomplishment: document.getElementById('id_jan').value,
-                FebruaryAccomplishment: document.getElementById('id_feb').value,
-                MarchAccomplishment: document.getElementById('id_mar').value,
-                AprilAccomplishment: document.getElementById('id_apr').value,
-                MayAccomplishment: document.getElementById('id_may').value,
-                JuneAccomplishment: document.getElementById('id_jun').value,
-                JulyAccomplishment: document.getElementById('id_jul').value,
-                AugustAccomplishment: document.getElementById('id_aug').value,
-                SeptemberAccomplishment: document.getElementById('id_sep').value,
-                OctoberAccomplishment: document.getElementById('id_oct').value,
-                NovemberAccomplishment: document.getElementById('id_nov').value,
-                DecemberAccomplishment: document.getElementById('id_dec').value,
-                StaffInitiativeContent: document.getElementById('id_initiative').value,
-                StaffFundingEstimate: document.getElementById('id_estimate').value,
-                StaffFundingActual: document.getElementById('id_actual').value,
-                StaffMeasureID: document.getElementById('staffmeasure_id').value,
-                StaffID: document.getElementById('staff_id').value,
-                UserStaffID: document.getElementById('user_staff_id').value
+                StaffOwnerContent: document.getElementById('id_owner'+id).value,
+                JanuaryAccomplishment: document.getElementById('id_jan'+id).value,
+                FebruaryAccomplishment: document.getElementById('id_feb'+id).value,
+                MarchAccomplishment: document.getElementById('id_mar'+id).value,
+                AprilAccomplishment: document.getElementById('id_apr'+id).value,
+                MayAccomplishment: document.getElementById('id_may'+id).value,
+                JuneAccomplishment: document.getElementById('id_jun'+id).value,
+                JulyAccomplishment: document.getElementById('id_jul'+id).value,
+                AugustAccomplishment: document.getElementById('id_aug'+id).value,
+                SeptemberAccomplishment: document.getElementById('id_sep'+id).value,
+                OctoberAccomplishment: document.getElementById('id_oct'+id).value,
+                NovemberAccomplishment: document.getElementById('id_nov'+id).value,
+                DecemberAccomplishment: document.getElementById('id_dec'+id).value,
+                StaffInitiativeContent: document.getElementById('id_initiative'+id).value,
+                StaffFundingEstimate: document.getElementById('id_estimate'+id).value,
+                StaffFundingActual: document.getElementById('id_actual'+id).value,
+                StaffMeasureID: document.getElementById('staffmeasure_id'+id).value,
+                StaffID: document.getElementById('staff_id'+id).value,
+                UserStaffID: document.getElementById('user_staff_id'+id).value
 
             }).success(function(data, status, headers, config, response) {
-                console.log(response);
+                //console.log(response);
                 $scope.staff_targets = '';
                 $scope.init();
                 $scope.loading = false;
             });
-*/
+
         // 
 
     };

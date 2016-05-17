@@ -68,7 +68,7 @@
                                         </td>
 
                                         <td class="measure-custom-td5">
-                                            Staff Measure Name
+                                            Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure
                                         </td>
 
 
@@ -191,12 +191,12 @@
 
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="staff_measure" class="control-label">Staff Measure Name:</label>
+                                        <label for="staff_measure" class="control-label">Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure:</label>
                                     </td>
                                     <td class="col-md-8">
-                                        <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" required ng-touched>
+                                        <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" ng-touched>
                                             <option value="0">
-                                                        Select Staff Measure
+                                                        Select {{ $unit->staff->StaffAbbreviation }} Measure
                                                     </option>
                                             @foreach($staff_measures as $staff_measure)
                                                     <option value= "<?=$staff_measure->StaffMeasureID?>">

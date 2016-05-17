@@ -57,13 +57,13 @@ class UnitLoginController extends Controller {
 		if (Session::has('unit_user_id'))
 		{
 			$unit_id = Session::get('unit_user_id', 'default');
-			$unit_user = UserUnit::where('UserUnitID', $unit_id)
+			$user = UserUnit::where('UserUnitID', $unit_id)
 				->with('unit')
 				->first();
-			$unit_measures = UnitMeasure::with('staff')->where('UnitID', '=', $unit_user->UnitID)->get();
+			$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $user->UnitID)->get();
 
 			return view('unit-ui.unit-scorecard')
-				->with('unit_user', $unit_user)
+				->with('user', $user)
 				->with('unit_measures',$unit_measures);
 		}
 		else
