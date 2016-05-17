@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2016 at 04:21 AM
+-- Generation Time: May 17, 2016 at 04:54 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `audit_trails` (
   `UnitID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `audit_trails`
@@ -65,7 +65,28 @@ INSERT INTO `audit_trails` (`AuditTrailID`, `Action`, `UserUnitID`, `UnitID`, `c
 (23, 'Added an objective: "Sample Staff Objectives 1"', 0, 1, '2016-05-10 05:46:32', '2016-05-10 05:46:32'),
 (24, 'Updated a measure: "Development Measures"', 1, 2, '2016-05-10 06:38:50', '2016-05-10 06:38:50'),
 (25, 'Updated an Objective: "Sample Staff Objectives 2"', 0, 1, '2016-05-10 06:45:27', '2016-05-10 06:45:27'),
-(26, 'Updated an Objective: "updated new staff number v2"', 2, 1, '2016-05-10 07:21:05', '2016-05-10 07:21:05');
+(26, 'Updated an Objective: "updated new staff number v2"', 2, 1, '2016-05-10 07:21:05', '2016-05-10 07:21:05'),
+(27, 'Added an objective: "Untouchable"', 1, 2, '2016-05-12 04:42:01', '2016-05-12 04:42:01'),
+(28, 'Updated an Objective: "Untouchable"', 1, 2, '2016-05-12 04:42:13', '2016-05-12 04:42:13'),
+(29, 'Updated an Objective: "Untouchable"', 1, 2, '2016-05-12 04:42:22', '2016-05-12 04:42:22'),
+(30, 'Updated the Objective: "Development objective purpose only version 2" under "Learning and Growth and is contributory to Staff''s: "Develop a fully-responsive and Highly Professional Police Organization" to: "ITMS Objective 1" under "Community"and is contri', 1, 2, '2016-05-17 04:59:56', '2016-05-17 04:59:56'),
+(31, 'Updated the Objective: "ITMS Objective 1" under "Learning and Growth and is contributory to Staff''s: "Develop a fully-responsive and Highly Professional Police Organization" to: "ITMS Objective 2" under "Community"and is contributory to Staff''s: "Improve ', 1, 2, '2016-05-17 05:00:05', '2016-05-17 05:00:05'),
+(32, 'Updated the Objective: "ITMS Objective 1" under "Learning and Growth and is contributory to Staff''s: "Develop a fully-responsive and Highly Professional Police Organization" to: "ITMS Objective 2" under "Community"', 1, 2, '2016-05-17 05:01:45', '2016-05-17 05:01:45'),
+(33, 'Updated the Objective: "ITMS Objective 1" under "Learning and Growth and is contributory to Staff''s: "Develop a fully-responsive and Highly Professional Police Organization" to: "ITMS Objective 3" under "Community"and is contributory to Staff''s: "Improve ', 1, 2, '2016-05-17 05:01:56', '2016-05-17 05:01:56'),
+(34, 'Updated the Objective: "ITMS Objective 1" under "Learning and Growth and is contributory to Staff''s: "Develop a fully-responsive and Highly Professional Police Organization" to: "ITMS Objective 4" under "Community"and is contributory to Staff''s: "Improve ', 1, 2, '2016-05-17 05:02:05', '2016-05-17 05:02:05'),
+(35, 'Added a measure: "DICTM Summation Measure 1 Non-contributory"', 1, 2, '2016-05-17 05:13:45', '2016-05-17 05:13:45'),
+(36, 'Added a measure: "DICTM Summation Measure 2 Contributory"', 1, 2, '2016-05-17 05:14:21', '2016-05-17 05:14:21'),
+(37, 'Added a measure: "DICTM Measure 3 Average Contributory"', 1, 2, '2016-05-17 05:14:47', '2016-05-17 05:14:47'),
+(38, 'Made an Update to the Measure: "DICTM Summation Measure 1 Non-contributory" under "ITMS Objective 1 with the following: Measure name "DICTM Summation Measure 1 Non-contributory" to "ITMS Summation Measure 1 Non-contributory", ', 1, 2, '2016-05-17 05:15:03', '2016-05-17 05:15:03'),
+(39, 'Made an Update to the Measure: "ITMS Summation Measure 1 Non-contributory" under "ITMS Objective 1 with the following: Measure name "ITMS Summation Measure 1 Non-contributory" to "ITMS Summation Measure 2 Contributory", Staff Measure Name to "DICTM Summat', 1, 2, '2016-05-17 05:15:09', '2016-05-17 05:15:09'),
+(40, 'Made an Update to the Measure: "ITMS Summation Measure 1 Non-contributory" under "ITMS Objective 1 with the following: Measure name "ITMS Summation Measure 1 Non-contributory" to "ITMS Average Measure 3 Contributory", Measure type "LD" to "LG", Measure Fo', 1, 2, '2016-05-17 05:15:21', '2016-05-17 05:15:21'),
+(41, 'Added a measure: "ITMS Summation Measure 1 Non-contributory"', 1, 2, '2016-05-17 05:32:14', '2016-05-17 05:32:14'),
+(42, 'Added a measure: "ITMS Summation Measure 2 Contributory"', 1, 2, '2016-05-17 05:32:49', '2016-05-17 05:32:49'),
+(43, 'Added a measure: "ITMS Average Measure 3 Contributory"', 1, 2, '2016-05-17 05:33:10', '2016-05-17 05:33:10'),
+(44, 'Made an Update to the Measure: "ITMS Summation Measure 1 Non-contributory" under "ITMS Objective 1 with the following: Measure name "ITMS Summation Measure 1 Non-contributory" to "ITMS Summation Measure 2 Contributory", Staff Measure Name to "DICTM Summat', 1, 2, '2016-05-17 05:33:19', '2016-05-17 05:33:19'),
+(45, 'Added a measure: "ITMS Summation Measure 1 Non-contributory"', 1, 2, '2016-05-17 05:37:51', '2016-05-17 05:37:51'),
+(46, 'Added a measure: "ITMS Summation Measure 2 Contributory"', 1, 2, '2016-05-17 05:38:09', '2016-05-17 05:38:09'),
+(47, 'Added a measure: "ITMS Average Measure 3 Contributory"', 1, 2, '2016-05-17 05:38:25', '2016-05-17 05:38:25');
 
 -- --------------------------------------------------------
 
@@ -115,7 +136,24 @@ CREATE TABLE IF NOT EXISTS `chief_accomplishments` (
   `UserChiefID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chief_accomplishments`
+--
+
+INSERT INTO `chief_accomplishments` (`ChiefAccomplishmentID`, `JanuaryAccomplishment`, `FebruaryAccomplishment`, `MarchAccomplishment`, `AprilAccomplishment`, `MayAccomplishment`, `JuneAccomplishment`, `JulyAccomplishment`, `AugustAccomplishment`, `SeptemberAccomplishment`, `OctoberAccomplishment`, `NovemberAccomplishment`, `DecemberAccomplishment`, `AccomplishmentDate`, `ChiefMeasureID`, `ChiefID`, `UserChiefID`, `created_at`, `updated_at`) VALUES
+(1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:16:26', '2016-05-17 03:16:26'),
+(2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:16:50', '2016-05-17 03:16:50'),
+(3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:16:50', '2016-05-17 03:16:50'),
+(4, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:16:51', '2016-05-17 03:16:51'),
+(5, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:16:51', '2016-05-17 03:16:51'),
+(6, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:20:34', '2016-05-17 03:20:34'),
+(7, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:20:45', '2016-05-17 03:20:45'),
+(8, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:21:31', '2016-05-17 03:21:31'),
+(9, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:27:39', '2016-05-17 03:27:39'),
+(10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:27:53', '2016-05-17 03:27:53'),
+(11, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 03:28:41', '2016-05-17 03:28:41');
 
 -- --------------------------------------------------------
 
@@ -130,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `chief_audit_trails` (
   `ChiefID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `chief_audit_trails`
@@ -145,7 +183,27 @@ INSERT INTO `chief_audit_trails` (`ChiefAuditTrailID`, `Action`, `UserChiefID`, 
 (6, 'Added a measure: "Percentage of funds obligated in support of Strategic Initiatives"', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (7, 'Updated an Objective: "Improve crime preventions"', 1, 1, '2016-05-06 01:27:08', '2016-05-06 01:27:08'),
 (8, 'Updated an Objective: "Optimize use of financial and logistical resource"', 1, 1, '2016-05-06 07:02:42', '2016-05-06 07:02:42'),
-(9, 'Updated an Objective: "Optimize use of financial and logistical resource"', 1, 1, '2016-05-06 07:02:48', '2016-05-06 07:02:48');
+(9, 'Updated an Objective: "Optimize use of financial and logistical resource"', 1, 1, '2016-05-06 07:02:48', '2016-05-06 07:02:48'),
+(10, 'Added a measure: "National Safety Index"', 1, 1, '2016-05-17 03:14:27', '2016-05-17 03:14:27'),
+(11, 'Added a measure: "Index Crime Solution Efficiency"', 1, 1, '2016-05-17 03:14:50', '2016-05-17 03:14:50'),
+(12, 'Added a measure: "Index Crime Clearance Efficiency"', 1, 1, '2016-05-17 03:15:03', '2016-05-17 03:15:03'),
+(13, 'Added a measure: "Percentage of Strategic Initiatives funded from the Annual Operations Plans and Budget (AOPB) based on the GAA provisions"', 1, 1, '2016-05-17 03:15:20', '2016-05-17 03:15:20'),
+(14, 'Added a measure: "Percentage of funds released in support of Strategic Initiatives"', 1, 1, '2016-05-17 03:15:36', '2016-05-17 03:15:36'),
+(15, 'Added a measure: "Percentage of funds obligated in support of Strategic Initiatives"', 1, 1, '2016-05-17 03:15:51', '2016-05-17 03:15:51'),
+(16, 'Added a measure: "National Safety Index"', 1, 1, '2016-05-17 03:17:54', '2016-05-17 03:17:54'),
+(17, 'Added a measure: "Index Crime Solution Efficiency"', 1, 1, '2016-05-17 03:18:09', '2016-05-17 03:18:09'),
+(18, 'Added a measure: "Index Crime Clearance Efficiency"', 1, 1, '2016-05-17 03:18:22', '2016-05-17 03:18:22'),
+(19, 'Added a measure: "Percentage of Strategic Initiatives funded from the Annual Operations Plans and Budget (AOPB) based on the GAA provisions"', 1, 1, '2016-05-17 03:18:33', '2016-05-17 03:18:33'),
+(20, 'Added a measure: "Percentage of Strategic Initiatives funded from the Annual Operations Plans and Budget (AOPB) based on the GAA provisions"', 1, 1, '2016-05-17 03:18:46', '2016-05-17 03:18:46'),
+(21, 'Added a measure: "Percentage of funds released in support of Strategic Initiatives"', 1, 1, '2016-05-17 03:18:53', '2016-05-17 03:18:53'),
+(22, 'Updated a measure: "Percentage of funds released in support of Strategic Initiatives"', 1, 1, '2016-05-17 03:19:01', '2016-05-17 03:19:01'),
+(23, 'Added a measure: "Percentage of funds obligated in support of Strategic Initiatives"', 1, 1, '2016-05-17 03:19:16', '2016-05-17 03:19:16'),
+(24, 'Added a measure: "National Safety Index"', 1, 1, '2016-05-17 03:25:05', '2016-05-17 03:25:05'),
+(25, 'Added a measure: "Index Crime Solution Efficiency"', 1, 1, '2016-05-17 03:25:18', '2016-05-17 03:25:18'),
+(26, 'Added a measure: "Index Crime Clearance Efficiency"', 1, 1, '2016-05-17 03:25:27', '2016-05-17 03:25:27'),
+(27, 'Added a measure: "Percentage of Strategic Initiatives funded from the Annual Operations Plans and Budget (AOPB) based on the GAA provisions"', 1, 1, '2016-05-17 03:25:35', '2016-05-17 03:25:35'),
+(28, 'Added a measure: "Percentage of funds released in support of Strategic Initiatives"', 1, 1, '2016-05-17 03:25:49', '2016-05-17 03:25:49'),
+(29, 'Added a measure: "Percentage of funds obligated in support of Strategic Initiatives"', 1, 1, '2016-05-17 03:26:00', '2016-05-17 03:26:00');
 
 -- --------------------------------------------------------
 
@@ -155,15 +213,24 @@ INSERT INTO `chief_audit_trails` (`ChiefAuditTrailID`, `Action`, `UserChiefID`, 
 
 CREATE TABLE IF NOT EXISTS `chief_fundings` (
   `ChiefFundingID` int(10) unsigned NOT NULL,
-  `ChiefFundingEstimate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ChiefFundingActual` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ChiefFundingEstimate` float NOT NULL,
+  `ChiefFundingActual` float NOT NULL,
   `ChiefFundingDate` date NOT NULL,
   `ChiefMeasureID` int(11) NOT NULL,
   `ChiefID` int(11) NOT NULL,
   `UserChiefID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chief_fundings`
+--
+
+INSERT INTO `chief_fundings` (`ChiefFundingID`, `ChiefFundingEstimate`, `ChiefFundingActual`, `ChiefFundingDate`, `ChiefMeasureID`, `ChiefID`, `UserChiefID`, `created_at`, `updated_at`) VALUES
+(1, 20, 10, '2016-05-17', 6, 1, 1, '2016-05-17 03:27:39', '2016-05-17 03:48:51'),
+(2, 30000, 28057, '2016-05-17', 5, 1, 1, '2016-05-17 03:27:54', '2016-05-17 09:14:48'),
+(3, 30, 28, '2016-05-17', 4, 1, 1, '2016-05-17 03:28:41', '2016-05-17 03:51:04');
 
 -- --------------------------------------------------------
 
@@ -180,7 +247,16 @@ CREATE TABLE IF NOT EXISTS `chief_initiatives` (
   `UserChiefID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chief_initiatives`
+--
+
+INSERT INTO `chief_initiatives` (`ChiefInitiativeID`, `ChiefInitiativeContent`, `ChiefInitiativeDate`, `ChiefMeasureID`, `ChiefID`, `UserChiefID`, `created_at`, `updated_at`) VALUES
+(1, 'Chief Initiative 3', '2016-05-17', 6, 1, 1, '2016-05-17 03:27:39', '2016-05-17 03:48:51'),
+(2, 'Chief Initiative 2', '2016-05-17', 5, 1, 1, '2016-05-17 03:27:54', '2016-05-17 03:47:45'),
+(3, 'Chief Initiative 1', '2016-05-17', 4, 1, 1, '2016-05-17 03:28:41', '2016-05-17 03:36:51');
 
 -- --------------------------------------------------------
 
@@ -196,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `chief_logs` (
   `IPAddress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `chief_logs`
@@ -214,7 +290,22 @@ INSERT INTO `chief_logs` (`ChiefLogID`, `ChiefUserID`, `LogDateTime`, `LogType`,
 (9, 1, '2016-05-06 15:49:20', 'Login', '::1', '2016-05-06 07:49:20', '2016-05-06 07:49:20'),
 (10, 1, '2016-05-10 09:58:26', 'Login', '::1', '2016-05-10 01:58:26', '2016-05-10 01:58:26'),
 (11, 1, '2016-05-10 13:44:45', 'Login', '192.168.33.231', '2016-05-10 05:44:45', '2016-05-10 05:44:45'),
-(12, 1, '2016-05-11 10:02:20', 'Login', '::1', '2016-05-11 02:02:20', '2016-05-11 02:02:20');
+(12, 1, '2016-05-11 10:02:20', 'Login', '::1', '2016-05-11 02:02:20', '2016-05-11 02:02:20'),
+(13, 1, '2016-05-11 11:10:22', 'Login', '::1', '2016-05-11 03:10:22', '2016-05-11 03:10:22'),
+(14, 1, '2016-05-12 09:01:49', 'Login', '::1', '2016-05-12 01:01:49', '2016-05-12 01:01:49'),
+(15, 1, '2016-05-13 08:47:30', 'Login', '::1', '2016-05-13 00:47:30', '2016-05-13 00:47:30'),
+(16, 1, '2016-05-13 09:03:48', 'Login', '::1', '2016-05-13 01:03:48', '2016-05-13 01:03:48'),
+(17, 1, '2016-05-13 10:03:40', 'Login', '::1', '2016-05-13 02:03:40', '2016-05-13 02:03:40'),
+(18, 1, '2016-05-16 08:30:37', 'Login', '::1', '2016-05-16 00:30:37', '2016-05-16 00:30:37'),
+(19, 1, '2016-05-16 13:18:44', 'Login', '::1', '2016-05-16 05:18:44', '2016-05-16 05:18:44'),
+(20, 1, '2016-05-16 13:54:43', 'Login', '::1', '2016-05-16 05:54:43', '2016-05-16 05:54:43'),
+(21, 1, '2016-05-16 13:58:00', 'Login', '::1', '2016-05-16 05:58:00', '2016-05-16 05:58:00'),
+(22, 1, '2016-05-17 10:06:42', 'Login', '::1', '2016-05-17 02:06:42', '2016-05-17 02:06:42'),
+(23, 1, '2016-05-17 14:38:19', 'Login', '::1', '2016-05-17 06:38:19', '2016-05-17 06:38:19'),
+(24, 1, '2016-05-17 15:05:38', 'Login', '::1', '2016-05-17 07:05:38', '2016-05-17 07:05:38'),
+(25, 1, '2016-05-17 18:48:09', 'Login', '::1', '2016-05-17 10:48:09', '2016-05-17 10:48:09'),
+(26, 1, '2016-05-17 20:04:51', 'Login', '::1', '2016-05-17 12:04:51', '2016-05-17 12:04:51'),
+(27, 1, '2016-05-17 21:36:43', 'Login', '::1', '2016-05-17 13:36:43', '2016-05-17 13:36:43');
 
 -- --------------------------------------------------------
 
@@ -239,12 +330,12 @@ CREATE TABLE IF NOT EXISTS `chief_measures` (
 --
 
 INSERT INTO `chief_measures` (`ChiefMeasureID`, `ChiefMeasureName`, `ChiefMeasureType`, `ChiefMeasureFormula`, `ChiefObjectiveID`, `ChiefID`, `UserChiefID`, `created_at`, `updated_at`) VALUES
-(1, 'National Safety Index', 'LG', 'Summation', 1, 1, 1, '2016-05-03 01:04:22', '2016-05-03 01:04:22'),
-(2, 'Index Crime Solution Efficiency', 'LG', 'Average', 3, 1, 1, '2016-05-03 01:12:05', '2016-05-03 01:12:05'),
-(3, 'Index Crime Clearance Efficiency', 'LG', 'Average', 3, 1, 1, '2016-05-03 01:14:17', '2016-05-03 01:14:17'),
-(4, 'Percentage of Strategic Initiatives funded from the Annual Operations Plans and Budget (AOPB) based on the GAA provisions', 'LG', 'Average', 7, 1, 1, '2016-05-03 01:20:34', '2016-05-03 01:20:34'),
-(5, 'Percentage of funds released in support of Strategic Initiatives', 'LD', 'Average', 7, 1, 1, '2016-05-03 01:34:45', '2016-05-03 01:34:45'),
-(6, 'Percentage of funds obligated in support of Strategic Initiatives', 'LG', 'Average', 7, 1, 1, '2016-05-03 01:39:34', '2016-05-03 01:39:34');
+(1, 'National Safety Index', 'LG', 'Summation', 1, 1, 1, '2016-05-17 03:25:06', '2016-05-17 03:25:06'),
+(2, 'Index Crime Solution Efficiency', 'LG', 'Average', 3, 1, 1, '2016-05-17 03:25:18', '2016-05-17 03:25:18'),
+(3, 'Index Crime Clearance Efficiency', 'LG', 'Average', 3, 1, 1, '2016-05-17 03:25:27', '2016-05-17 03:25:27'),
+(4, 'Percentage of Strategic Initiatives funded from the Annual Operations Plans and Budget (AOPB) based on the GAA provisions', 'LG', 'Average', 7, 1, 1, '2016-05-17 03:25:36', '2016-05-17 03:25:36'),
+(5, 'Percentage of funds released in support of Strategic Initiatives', 'LD', 'Average', 7, 1, 1, '2016-05-17 03:25:49', '2016-05-17 03:25:49'),
+(6, 'Percentage of funds obligated in support of Strategic Initiatives', 'LG', 'Average', 7, 1, 1, '2016-05-17 03:26:00', '2016-05-17 03:26:00');
 
 -- --------------------------------------------------------
 
@@ -282,7 +373,7 @@ INSERT INTO `chief_objectives` (`ChiefObjectiveID`, `ChiefObjectiveName`, `Persp
 --
 
 CREATE TABLE IF NOT EXISTS `chief_owners` (
-  `ChiefOnwerID` int(10) unsigned NOT NULL,
+  `ChiefOwnerID` int(10) unsigned NOT NULL,
   `ChiefOwnerContent` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ChiefOwnerDate` date NOT NULL,
   `ChiefMeasureID` int(11) NOT NULL,
@@ -290,7 +381,16 @@ CREATE TABLE IF NOT EXISTS `chief_owners` (
   `UserChiefID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chief_owners`
+--
+
+INSERT INTO `chief_owners` (`ChiefOwnerID`, `ChiefOwnerContent`, `ChiefOwnerDate`, `ChiefMeasureID`, `ChiefID`, `UserChiefID`, `created_at`, `updated_at`) VALUES
+(1, 'Chief Owner 3', '2016-05-17', 6, 1, 1, '2016-05-17 03:27:39', '2016-05-17 03:48:51'),
+(2, 'Chief Owner 2', '2016-05-17', 5, 1, 1, '2016-05-17 03:27:54', '2016-05-17 03:47:45'),
+(3, 'Chief Owner 1', '2016-05-17', 4, 1, 1, '2016-05-17 03:28:41', '2016-05-17 09:13:49');
 
 -- --------------------------------------------------------
 
@@ -313,8 +413,13 @@ CREATE TABLE IF NOT EXISTS `chief_targets` (
   `NovemberTarget` float NOT NULL,
   `DecemberTarget` float NOT NULL,
   `TargetDate` date NOT NULL,
+  `Termination` date DEFAULT NULL,
   `TargetPeriod` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ChiefMeasureID` int(11) NOT NULL,
+  `ChiefAccomplishmentID` int(11) NOT NULL,
+  `ChiefOwnerID` int(11) NOT NULL,
+  `ChiefInitiativeID` int(11) NOT NULL,
+  `ChiefFundingID` int(11) NOT NULL,
   `ChiefID` int(11) NOT NULL,
   `UserChiefID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -325,13 +430,13 @@ CREATE TABLE IF NOT EXISTS `chief_targets` (
 -- Dumping data for table `chief_targets`
 --
 
-INSERT INTO `chief_targets` (`ChiefTargetID`, `JanuaryTarget`, `FebruaryTarget`, `MarchTarget`, `AprilTarget`, `MayTarget`, `JuneTarget`, `JulyTarget`, `AugustTarget`, `SeptemberTarget`, `OctoberTarget`, `NovemberTarget`, `DecemberTarget`, `TargetDate`, `TargetPeriod`, `ChiefMeasureID`, `ChiefID`, `UserChiefID`, `created_at`, `updated_at`) VALUES
-(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0000-00-00', 'Not set', 1, 1, 1, '2016-05-06 03:50:18', '2016-05-06 03:50:18'),
-(2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0000-00-00', 'Not set', 2, 1, 1, '2016-05-06 03:50:35', '2016-05-06 03:50:35'),
-(3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0000-00-00', 'Not set', 3, 1, 1, '2016-05-06 03:50:51', '2016-05-06 03:50:51'),
-(4, 3, 4, 5, 6, 7, 8, 5, 6, 4, 6, 4, 5, '2016-05-06', 'Monthly', 4, 1, 1, '2016-05-06 03:51:06', '2016-05-06 07:08:31'),
-(5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0000-00-00', 'Not set', 5, 1, 1, '2016-05-05 16:00:00', '2016-05-05 16:00:00'),
-(6, 11.6667, 11.6667, 11.6667, 13.3333, 13.3333, 13.3333, 16.6667, 16.6667, 16.6667, 20, 20, 20, '2016-05-06', 'Quarterly', 6, 1, 1, '2016-05-06 03:51:49', '2016-05-06 05:44:23');
+INSERT INTO `chief_targets` (`ChiefTargetID`, `JanuaryTarget`, `FebruaryTarget`, `MarchTarget`, `AprilTarget`, `MayTarget`, `JuneTarget`, `JulyTarget`, `AugustTarget`, `SeptemberTarget`, `OctoberTarget`, `NovemberTarget`, `DecemberTarget`, `TargetDate`, `Termination`, `TargetPeriod`, `ChiefMeasureID`, `ChiefAccomplishmentID`, `ChiefOwnerID`, `ChiefInitiativeID`, `ChiefFundingID`, `ChiefID`, `UserChiefID`, `created_at`, `updated_at`) VALUES
+(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0000-00-00', NULL, 'Not Set', 1, 0, 0, 0, 0, 1, 1, '2016-05-17 03:25:06', '2016-05-17 03:25:06'),
+(2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0000-00-00', NULL, 'Not Set', 2, 0, 0, 0, 0, 1, 1, '2016-05-17 03:25:18', '2016-05-17 03:25:18'),
+(3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0000-00-00', NULL, 'Not Set', 3, 0, 0, 0, 0, 1, 1, '2016-05-17 03:25:27', '2016-05-17 03:25:27'),
+(4, 1.2, 2.2, 3.2, 4.3, 5.3, 6.3, 7.3, 8.3, 9.3, 10.4, 11.4, 12.4, '2016-05-17', NULL, 'Monthly', 4, 11, 3, 3, 3, 1, 1, '2016-05-17 03:25:36', '2016-05-17 03:28:41'),
+(5, 10, 10, 10, 16.6667, 16.6667, 16.6667, 23.3333, 23.3333, 23.3333, 30, 30, 30, '2016-05-17', NULL, 'Quarterly', 5, 10, 2, 2, 2, 1, 1, '2016-05-17 03:25:49', '2016-05-17 03:27:54'),
+(6, 6.66667, 6.66667, 6.66667, 13.3333, 13.3333, 13.3333, 20, 20, 20, 26.6667, 26.6667, 26.6667, '2016-05-17', NULL, 'Quarterly', 6, 9, 1, 1, 1, 1, 1, '2016-05-17 03:26:00', '2016-05-17 03:27:39');
 
 -- --------------------------------------------------------
 
@@ -474,6 +579,7 @@ CREATE TABLE IF NOT EXISTS `staffs` (
   `StaffName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `StaffAbbreviation` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `StaffPermission` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `UserStaffID` int(11) NOT NULL,
   `PicturePath` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ChiefID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -484,9 +590,9 @@ CREATE TABLE IF NOT EXISTS `staffs` (
 -- Dumping data for table `staffs`
 --
 
-INSERT INTO `staffs` (`StaffID`, `StaffName`, `StaffAbbreviation`, `StaffPermission`, `PicturePath`, `ChiefID`, `created_at`, `updated_at`) VALUES
-(1, 'Directorial for Information and Communication Technology Management', 'DICTM', 'none', 'wtHDmDaW3wF7JzDy0zKZwZfxlnUWPVI0.jpeg', 1, '0000-00-00 00:00:00', '2016-05-02 06:31:50'),
-(2, 'Center for Police Strategy Management', 'CPSM', '', 'wO3AXldVfjOlQBJlZhpUqSchPfrzLFTX.png', 1, '2016-05-02 06:20:52', '2016-05-02 06:32:17');
+INSERT INTO `staffs` (`StaffID`, `StaffName`, `StaffAbbreviation`, `StaffPermission`, `UserStaffID`, `PicturePath`, `ChiefID`, `created_at`, `updated_at`) VALUES
+(1, 'Directorial for Information and Communication Technology Management', 'DICTM', 'none', 1, 'wtHDmDaW3wF7JzDy0zKZwZfxlnUWPVI0.jpeg', 1, '0000-00-00 00:00:00', '2016-05-02 06:31:50'),
+(2, 'Center for Police Strategy Management', 'CPSM', '', 3, 'wO3AXldVfjOlQBJlZhpUqSchPfrzLFTX.png', 1, '2016-05-02 06:20:52', '2016-05-02 06:32:17');
 
 -- --------------------------------------------------------
 
@@ -514,7 +620,17 @@ CREATE TABLE IF NOT EXISTS `staff_accomplishments` (
   `UserStaffID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `staff_accomplishments`
+--
+
+INSERT INTO `staff_accomplishments` (`StaffAccomplishmentID`, `JanuaryAccomplishment`, `FebruaryAccomplishment`, `MarchAccomplishment`, `AprilAccomplishment`, `MayAccomplishment`, `JuneAccomplishment`, `JulyAccomplishment`, `AugustAccomplishment`, `SeptemberAccomplishment`, `OctoberAccomplishment`, `NovemberAccomplishment`, `DecemberAccomplishment`, `AccomplishmentDate`, `StaffMeasureID`, `StaffID`, `UserStaffID`, `created_at`, `updated_at`) VALUES
+(1, 3.31, 3.36, 3.00, 4.00, 0.00, 1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2016-05-17', 1, 1, 1, '2016-05-17 03:59:02', '2016-05-17 11:58:26'),
+(2, 0.20, 0.30, 0.40, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2016-05-17', 0, 1, 1, '2016-05-17 03:59:59', '2016-05-17 04:53:21'),
+(3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 1, 1, '2016-05-17 04:00:33', '2016-05-17 04:00:33'),
+(4, 6.00, 6.30, 6.50, 10.00, 11.00, 12.00, 19.00, 20.00, 21.00, 25.00, 24.49, 26.00, '2016-05-17', 4, 2, 3, '2016-05-17 12:05:52', '2016-05-17 12:06:40');
 
 -- --------------------------------------------------------
 
@@ -529,7 +645,7 @@ CREATE TABLE IF NOT EXISTS `staff_audit_trails` (
   `UserStaffID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `staff_audit_trails`
@@ -544,7 +660,18 @@ INSERT INTO `staff_audit_trails` (`StaffAuditTrailID`, `Action`, `StaffID`, `Use
 (6, 'Added an objective: "sample objective 5"', 2, 1, '2016-05-10 06:52:22', '2016-05-10 06:52:22'),
 (7, 'Updated an Objective: "sample objective 4.1"', 2, 1, '2016-05-10 06:56:40', '2016-05-10 06:56:40'),
 (8, 'Added an objective: "added new staff number 1"', 2, 1, '2016-05-10 07:20:29', '2016-05-10 07:20:29'),
-(9, 'Updated an Objective: "updated new staff number v2"', 2, 1, '2016-05-10 07:21:05', '2016-05-10 07:21:05');
+(9, 'Updated an Objective: "updated new staff number v2"', 2, 1, '2016-05-10 07:21:05', '2016-05-10 07:21:05'),
+(10, 'Updated the Objective: "Improve DICTM Crime Solution" under "Process Excellence and is contributory to Chief''s: "Improve crime preventions" to: "sample objective 4.1" under "Community"', 1, 1, '2016-05-13 01:36:31', '2016-05-13 01:36:31'),
+(11, 'Made an Update to the Measure: "Sample Measure for Development 1" under "Develop a fully-responsive and Highly Professional Police Organization and is contributory to Chief''s Measure: Percentage of Strategic Initiatives funded from the Annual Operations P', 1, 1, '2016-05-13 01:47:19', '2016-05-13 01:47:19'),
+(12, 'Updated the Objective: "Improve DICTM Crime Solution" under "Process Excellence and is contributory to Chief''s: "Improve crime preventions" to: "Improve DICTM IT Solutions" under "Community"', 1, 1, '2016-05-16 01:14:46', '2016-05-16 01:14:46'),
+(13, 'Updated the Objective: "Improve DICTM IT Solutions" under "Process Excellenceto: "Sample DICTM Objectives 2" under "Community"and is contributory to Chief''s: "A safer place to live, work and do business" ', 1, 1, '2016-05-16 01:15:06', '2016-05-16 01:15:06'),
+(14, 'Updated the Objective: "Improve DICTM IT Solutions" under "Process Excellenceto: "Sample Objective 3" under "Community"', 1, 1, '2016-05-16 01:16:22', '2016-05-16 01:16:22'),
+(15, 'Updated the Objective: "Improve DICTM IT Solutions" under "Process Excellenceto: "Sample Objective 4" under "Community"', 1, 1, '2016-05-16 01:16:40', '2016-05-16 01:16:40'),
+(16, 'Updated the Objective: "Improve DICTM IT Solutions" under "Process Excellenceto: "Sample DICTM Objective 5" under "Community"and is contributory to Chief''s: "A safer place to live, work and do business" ', 1, 1, '2016-05-16 01:16:57', '2016-05-16 01:16:57'),
+(17, 'Made an Update to the Measure: "DICTM Measure 1" under "Sample Objective 4 and is contributory to Chief''s Measure: Percentage of funds released in support of Strategic Initiatives  with the following: Measure name "DICTM Measure 1" to "DICTM Measure 1 Con', 1, 1, '2016-05-16 01:23:02', '2016-05-16 01:23:02'),
+(18, 'Made an Update to the Measure: "DICTM Measure 1 Contributory" under "Sample Objective 4 and is contributory to Chief''s Measure: Percentage of funds released in support of Strategic Initiatives  with the following: Measure name "DICTM Measure 1 Contributor', 1, 1, '2016-05-16 01:23:17', '2016-05-16 01:23:17'),
+(19, 'Updated the Objective: "Improve DICTM IT Solutions" under "Process Excellenceto: "CPSM Objective 1 Non-contributory" under "Community"', 2, 3, '2016-05-17 12:04:02', '2016-05-17 12:04:02'),
+(20, 'Added an objective: "CPSM Objective 2 Contributory"', 2, 3, '2016-05-17 12:04:31', '2016-05-17 12:04:31');
 
 -- --------------------------------------------------------
 
@@ -554,15 +681,25 @@ INSERT INTO `staff_audit_trails` (`StaffAuditTrailID`, `Action`, `StaffID`, `Use
 
 CREATE TABLE IF NOT EXISTS `staff_fundings` (
   `StaffFundingID` int(10) unsigned NOT NULL,
-  `StaffFundingEstimate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `StaffFundingActual` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `StaffFundingEstimate` float NOT NULL,
+  `StaffFundingActual` float NOT NULL,
   `StaffFundingDate` date NOT NULL,
   `StaffMeasureID` int(11) NOT NULL,
   `StaffID` int(11) NOT NULL,
   `UserStaffID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `staff_fundings`
+--
+
+INSERT INTO `staff_fundings` (`StaffFundingID`, `StaffFundingEstimate`, `StaffFundingActual`, `StaffFundingDate`, `StaffMeasureID`, `StaffID`, `UserStaffID`, `created_at`, `updated_at`) VALUES
+(1, 0, 0, '2016-05-17', 1, 1, 1, '2016-05-17 03:59:03', '2016-05-17 04:43:53'),
+(2, 1.2, 2.3, '2016-05-17', 2, 1, 1, '2016-05-17 03:59:59', '2016-05-17 04:38:59'),
+(3, 0, 0, '0000-00-00', 0, 1, 1, '2016-05-17 04:00:33', '2016-05-17 04:00:33'),
+(4, 2000, 2012, '2016-05-17', 4, 2, 3, '2016-05-17 12:05:52', '2016-05-17 12:06:40');
 
 -- --------------------------------------------------------
 
@@ -579,7 +716,17 @@ CREATE TABLE IF NOT EXISTS `staff_initiatives` (
   `UserStaffID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `staff_initiatives`
+--
+
+INSERT INTO `staff_initiatives` (`StaffInitiativeID`, `StaffInitiativeContent`, `StaffInitiativeDate`, `StaffMeasureID`, `StaffID`, `UserStaffID`, `created_at`, `updated_at`) VALUES
+(1, 'DICTM Initiative 1', '2016-05-17', 1, 1, 1, '2016-05-17 03:59:02', '2016-05-17 11:16:24'),
+(2, 'DICTM Initiative 2', '2016-05-17', 2, 1, 1, '2016-05-17 03:59:59', '2016-05-17 04:38:59'),
+(3, '', '0000-00-00', 0, 1, 1, '2016-05-17 04:00:33', '2016-05-17 04:00:33'),
+(4, 'CPSM Initiative 1', '2016-05-17', 4, 2, 3, '2016-05-17 12:05:52', '2016-05-17 12:06:40');
 
 -- --------------------------------------------------------
 
@@ -595,7 +742,7 @@ CREATE TABLE IF NOT EXISTS `staff_logs` (
   `IPAddress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `staff_logs`
@@ -608,7 +755,30 @@ INSERT INTO `staff_logs` (`StaffLogID`, `StaffUserID`, `LogDateTime`, `LogType`,
 (4, 1, '2016-05-06 15:10:54', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (5, 1, '2016-05-06 15:42:20', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (6, 1, '2016-05-06 16:13:36', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 2, '2016-05-10 13:38:39', 'Login', '127.0.0.1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(7, 2, '2016-05-10 13:38:39', 'Login', '127.0.0.1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 2, '2016-05-12 11:53:14', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 1, '2016-05-13 09:35:29', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 1, '2016-05-13 09:39:33', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 1, '2016-05-13 09:50:55', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 1, '2016-05-16 09:12:09', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 2, '2016-05-16 10:46:08', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 2, '2016-05-16 10:47:36', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 1, '2016-05-16 11:00:25', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 2, '2016-05-16 11:02:42', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 2, '2016-05-16 13:33:51', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 2, '2016-05-16 13:55:27', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 2, '2016-05-16 14:32:39', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 1, '2016-05-17 11:54:56', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 1, '2016-05-17 15:04:51', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 1, '2016-05-17 18:36:21', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 1, '2016-05-17 18:45:39', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 1, '2016-05-17 18:46:37', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, 1, '2016-05-17 19:15:37', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(26, 1, '2016-05-17 19:58:14', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 3, '2016-05-17 20:03:41', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 2, '2016-05-17 21:05:22', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 2, '2016-05-17 21:06:00', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 1, '2016-05-17 22:42:58', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -627,14 +797,17 @@ CREATE TABLE IF NOT EXISTS `staff_measures` (
   `UserStaffID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `staff_measures`
 --
 
 INSERT INTO `staff_measures` (`StaffMeasureID`, `StaffMeasureName`, `StaffMeasureType`, `StaffMeasureFormula`, `StaffObjectiveID`, `ChiefMeasureID`, `StaffID`, `UserStaffID`, `created_at`, `updated_at`) VALUES
-(1, 'Sample Measure for Development 1', 'LD', 'Summation', 2, 4, 1, 2, '2016-05-10 05:51:00', '2016-05-10 05:51:00');
+(1, 'DICTM Summation 1 Contributory', 'LG', 'Summation', 1, 5, 1, 1, '2016-05-17 03:57:45', '2016-05-17 03:57:45'),
+(2, 'DICTM Summation 2 Non-contributory', 'LD', 'Summation', 1, 0, 1, 1, '2016-05-17 03:58:12', '2016-05-17 03:58:12'),
+(3, 'DICTM Average 3 Contributory', 'LD', 'Average', 3, 2, 1, 1, '2016-05-17 03:58:34', '2016-05-17 03:58:34'),
+(4, 'CPSM Staff Measure 1 Contributory', 'LD', 'Summation', 8, 5, 2, 3, '2016-05-17 12:05:38', '2016-05-17 12:05:38');
 
 -- --------------------------------------------------------
 
@@ -651,20 +824,21 @@ CREATE TABLE IF NOT EXISTS `staff_objectives` (
   `ChiefObjectiveID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `staff_objectives`
 --
 
 INSERT INTO `staff_objectives` (`StaffObjectiveID`, `StaffObjectiveName`, `PerspectiveID`, `StaffID`, `UserStaffID`, `ChiefObjectiveID`, `created_at`, `updated_at`) VALUES
-(1, 'Improve DICTM Crime Solution', 3, 1, 2, 2, '2016-05-02 07:13:28', '2016-05-02 07:13:28'),
+(1, 'Improve DICTM IT Solutions', 3, 1, 1, 0, '2016-05-02 07:13:28', '2016-05-16 01:14:47'),
 (2, 'Develop a fully-responsive and Highly Professional Police Organization', 2, 1, 1, 6, '2016-05-06 08:16:04', '2016-05-06 08:16:04'),
-(3, 'Sample Staff Objectives 2', 3, 1, 2, 5, '2016-05-10 05:46:33', '2016-05-10 06:45:27'),
-(4, 'sample objective 3', 1, 1, 2, 2, '2016-05-10 06:49:40', '2016-05-10 06:49:40'),
-(5, 'sample objective 4.1', 3, 1, 2, 5, '2016-05-10 06:51:34', '2016-05-10 06:56:40'),
-(6, 'sample objective 5', 4, 1, 2, 4, '2016-05-10 06:52:23', '2016-05-10 06:52:23'),
-(7, 'updated new staff number v2', 4, 1, 2, 4, '2016-05-10 07:20:29', '2016-05-10 07:21:05');
+(3, 'Sample DICTM Objectives 2', 3, 1, 1, 1, '2016-05-10 05:46:33', '2016-05-16 01:15:06'),
+(4, 'Sample Objective 4', 1, 1, 1, 0, '2016-05-10 06:49:40', '2016-05-16 01:16:40'),
+(5, 'Sample Objective 3', 3, 1, 1, 0, '2016-05-10 06:51:34', '2016-05-16 01:16:23'),
+(6, 'Sample DICTM Objective 5', 4, 1, 1, 4, '2016-05-10 06:52:23', '2016-05-16 01:16:57'),
+(7, 'CPSM Objective 1 Non-contributory', 4, 2, 3, 0, '2016-05-10 07:20:29', '2016-05-17 12:04:02'),
+(8, 'CPSM Objective 2 Contributory', 1, 2, 3, 1, '2016-05-17 12:04:31', '2016-05-17 12:04:31');
 
 -- --------------------------------------------------------
 
@@ -673,7 +847,7 @@ INSERT INTO `staff_objectives` (`StaffObjectiveID`, `StaffObjectiveName`, `Persp
 --
 
 CREATE TABLE IF NOT EXISTS `staff_owners` (
-  `StaffOnwerID` int(10) unsigned NOT NULL,
+  `StaffOwnerID` int(10) unsigned NOT NULL,
   `StaffOwnerContent` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `StaffOwnerDate` date NOT NULL,
   `StaffMeasureID` int(11) NOT NULL,
@@ -681,7 +855,17 @@ CREATE TABLE IF NOT EXISTS `staff_owners` (
   `UserStaffID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `staff_owners`
+--
+
+INSERT INTO `staff_owners` (`StaffOwnerID`, `StaffOwnerContent`, `StaffOwnerDate`, `StaffMeasureID`, `StaffID`, `UserStaffID`, `created_at`, `updated_at`) VALUES
+(1, 'DICTM Owner 1', '2016-05-17', 1, 1, 1, '2016-05-17 03:59:02', '2016-05-17 11:16:24'),
+(2, 'DICTM Owner 2', '2016-05-17', 2, 1, 1, '2016-05-17 03:59:59', '2016-05-17 04:38:59'),
+(3, '', '0000-00-00', 0, 1, 1, '2016-05-17 04:00:33', '2016-05-17 04:00:33'),
+(4, 'CPSM Owner 1', '2016-05-17', 4, 2, 3, '2016-05-17 12:05:52', '2016-05-17 12:06:40');
 
 -- --------------------------------------------------------
 
@@ -705,12 +889,27 @@ CREATE TABLE IF NOT EXISTS `staff_targets` (
   `DecemberTarget` double(8,2) NOT NULL,
   `TargetDate` date NOT NULL,
   `TargetPeriod` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Termination` date DEFAULT NULL,
   `StaffMeasureID` int(11) NOT NULL,
+  `StaffAccomplishmentID` int(11) NOT NULL,
+  `StaffOwnerID` int(11) NOT NULL,
+  `StaffInitiativeID` int(11) NOT NULL,
+  `StaffFundingID` int(11) NOT NULL,
   `StaffID` int(11) NOT NULL,
   `UserStaffID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `staff_targets`
+--
+
+INSERT INTO `staff_targets` (`StaffTargetID`, `JanuaryTarget`, `FebruaryTarget`, `MarchTarget`, `AprilTarget`, `MayTarget`, `JuneTarget`, `JulyTarget`, `AugustTarget`, `SeptemberTarget`, `OctoberTarget`, `NovemberTarget`, `DecemberTarget`, `TargetDate`, `TargetPeriod`, `Termination`, `StaffMeasureID`, `StaffAccomplishmentID`, `StaffOwnerID`, `StaffInitiativeID`, `StaffFundingID`, `StaffID`, `UserStaffID`, `created_at`, `updated_at`) VALUES
+(1, 3.37, 3.37, 3.37, 6.73, 6.73, 6.73, 10.10, 10.10, 10.10, 13.47, 13.47, 13.47, '2016-05-17', 'Quarterly', NULL, 1, 1, 1, 1, 1, 1, 1, '2016-05-17 03:57:45', '2016-05-17 03:59:03'),
+(2, 1.00, 2.00, 3.00, 4.00, 5.00, 6.00, 7.00, 8.00, 9.00, 10.00, 11.00, 12.00, '2016-05-17', 'Monthly', NULL, 2, 2, 2, 2, 2, 1, 1, '2016-05-17 03:58:12', '2016-05-17 03:59:59'),
+(3, 1.10, 1.20, 1.30, 1.40, 1.50, 1.60, 1.70, 1.80, 1.90, 2.00, 2.10, 2.10, '2016-05-17', 'Monthly', NULL, 3, 3, 3, 3, 3, 1, 1, '2016-05-17 03:58:34', '2016-05-17 04:00:33'),
+(4, 6.67, 6.67, 6.67, 13.33, 13.33, 13.33, 20.00, 20.00, 20.00, 26.67, 26.67, 26.67, '2016-05-17', 'Quarterly', NULL, 4, 4, 4, 4, 4, 2, 3, '2016-05-17 12:05:38', '2016-05-17 12:05:53');
 
 -- --------------------------------------------------------
 
@@ -761,7 +960,16 @@ CREATE TABLE IF NOT EXISTS `unit_accomplishments` (
   `UserUnitID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `unit_accomplishments`
+--
+
+INSERT INTO `unit_accomplishments` (`UnitAccomplishmentID`, `JanuaryAccomplishment`, `FebruaryAccomplishment`, `MarchAccomplishment`, `AprilAccomplishment`, `MayAccomplishment`, `JuneAccomplishment`, `JulyAccomplishment`, `AugustAccomplishment`, `SeptemberAccomplishment`, `OctoberAccomplishment`, `NovemberAccomplishment`, `DecemberAccomplishment`, `AccomplishmentDate`, `UnitMeasureID`, `UnitID`, `UserUnitID`, `created_at`, `updated_at`) VALUES
+(1, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 2, 1, '2016-05-17 05:38:37', '2016-05-17 05:38:37'),
+(2, 3.00, 4.00, 5.00, 10.00, 9.50, 10.00, 17.18, 0.00, 0.00, 1.00, 0.00, 0.00, '2016-05-17', 2, 2, 1, '2016-05-17 05:39:23', '2016-05-17 14:42:24'),
+(3, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '0000-00-00', 0, 2, 1, '2016-05-17 05:39:53', '2016-05-17 05:39:53');
 
 -- --------------------------------------------------------
 
@@ -779,7 +987,16 @@ CREATE TABLE IF NOT EXISTS `unit_fundings` (
   `UserUnitID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `unit_fundings`
+--
+
+INSERT INTO `unit_fundings` (`UnitFundingID`, `UnitFundingEstimate`, `UnitFundingActual`, `UnitFundingDate`, `UnitMeasureID`, `UnitID`, `UserUnitID`, `created_at`, `updated_at`) VALUES
+(1, '', '', '0000-00-00', 0, 2, 1, '2016-05-17 05:38:37', '2016-05-17 05:38:37'),
+(2, '1', '2', '2016-05-17', 2, 2, 1, '2016-05-17 05:39:23', '2016-05-17 06:16:43'),
+(3, '', '', '0000-00-00', 0, 2, 1, '2016-05-17 05:39:53', '2016-05-17 05:39:53');
 
 -- --------------------------------------------------------
 
@@ -796,7 +1013,16 @@ CREATE TABLE IF NOT EXISTS `unit_initiatives` (
   `UserUnitID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `unit_initiatives`
+--
+
+INSERT INTO `unit_initiatives` (`UnitInitiativeID`, `UnitInitiativeContent`, `UnitInitiativeDate`, `UnitMeasureID`, `UnitID`, `UserUnitID`, `created_at`, `updated_at`) VALUES
+(1, '', '0000-00-00', 0, 2, 1, '2016-05-17 05:38:37', '2016-05-17 05:38:37'),
+(2, 'Unit Initiative 2', '2016-05-17', 2, 2, 1, '2016-05-17 05:39:23', '2016-05-17 06:16:43'),
+(3, '', '0000-00-00', 0, 2, 1, '2016-05-17 05:39:53', '2016-05-17 05:39:53');
 
 -- --------------------------------------------------------
 
@@ -815,14 +1041,16 @@ CREATE TABLE IF NOT EXISTS `unit_measures` (
   `UserUnitID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `unit_measures`
 --
 
 INSERT INTO `unit_measures` (`UnitMeasureID`, `UnitMeasureName`, `UnitMeasureType`, `UnitMeasureFormula`, `UnitObjectiveID`, `StaffMeasureID`, `UnitID`, `UserUnitID`, `created_at`, `updated_at`) VALUES
-(1, 'Development Measures', 'LD', 'Average', 2, 1, 2, 1, '2016-05-10 04:05:11', '2016-05-10 06:38:50');
+(1, 'ITMS Summation Measure 1 Non-contributory', 'LD', 'Summation', 2, 0, 2, 1, '2016-05-17 05:37:51', '2016-05-17 05:37:51'),
+(2, 'ITMS Summation Measure 2 Contributory', 'LD', 'Summation', 2, 1, 2, 1, '2016-05-17 05:38:09', '2016-05-17 05:38:09'),
+(3, 'ITMS Average Measure 3 Contributory', 'LG', 'Average', 10, 3, 2, 1, '2016-05-17 05:38:25', '2016-05-17 05:38:25');
 
 -- --------------------------------------------------------
 
@@ -839,16 +1067,17 @@ CREATE TABLE IF NOT EXISTS `unit_objectives` (
   `UserUnitID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `unit_objectives`
 --
 
 INSERT INTO `unit_objectives` (`UnitObjectiveID`, `UnitObjectiveName`, `PerspectiveID`, `StaffObjectiveID`, `UnitID`, `UserUnitID`, `created_at`, `updated_at`) VALUES
-(2, 'Development objective purpose only version 2', 2, 2, 2, 1, '2016-05-10 03:21:48', '2016-05-10 03:35:04'),
-(3, 'Development objective 3', 4, 1, 2, 1, '2016-05-10 03:35:52', '2016-05-10 03:35:52'),
-(9, 'Development objective 4', 3, 2, 2, 1, '2016-05-10 04:59:48', '2016-05-10 04:59:48');
+(2, 'ITMS Objective 1', 2, 2, 2, 1, '2016-05-10 03:21:48', '2016-05-17 04:59:56'),
+(3, 'ITMS Objective 3', 4, 1, 2, 1, '2016-05-10 03:35:52', '2016-05-17 05:01:56'),
+(9, 'ITMS Objective 4', 3, 2, 2, 1, '2016-05-10 04:59:48', '2016-05-17 05:02:05'),
+(10, 'ITMS Objective 2', 2, 0, 2, 1, '2016-05-12 04:42:01', '2016-05-17 05:01:45');
 
 -- --------------------------------------------------------
 
@@ -857,7 +1086,7 @@ INSERT INTO `unit_objectives` (`UnitObjectiveID`, `UnitObjectiveName`, `Perspect
 --
 
 CREATE TABLE IF NOT EXISTS `unit_owners` (
-  `UnitOnwerID` int(10) unsigned NOT NULL,
+  `UnitOwnerID` int(10) unsigned NOT NULL,
   `UnitOwnerContent` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `UnitOwnerDate` date NOT NULL,
   `UnitMeasureID` int(11) NOT NULL,
@@ -865,7 +1094,16 @@ CREATE TABLE IF NOT EXISTS `unit_owners` (
   `UserUnitID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `unit_owners`
+--
+
+INSERT INTO `unit_owners` (`UnitOwnerID`, `UnitOwnerContent`, `UnitOwnerDate`, `UnitMeasureID`, `UnitID`, `UserUnitID`, `created_at`, `updated_at`) VALUES
+(1, '', '0000-00-00', 0, 2, 1, '2016-05-17 05:38:37', '2016-05-17 05:38:37'),
+(2, 'Unit Owner 2', '2016-05-17', 2, 2, 1, '2016-05-17 05:39:23', '2016-05-17 06:16:42'),
+(3, '', '0000-00-00', 0, 2, 1, '2016-05-17 05:39:53', '2016-05-17 05:39:53');
 
 -- --------------------------------------------------------
 
@@ -889,12 +1127,26 @@ CREATE TABLE IF NOT EXISTS `unit_targets` (
   `DecemberTarget` double(8,2) NOT NULL,
   `TargetDate` date NOT NULL,
   `TargetPeriod` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Termination` date DEFAULT NULL,
+  `UnitAccomplishmentID` int(11) NOT NULL,
+  `UnitOwnerID` int(11) NOT NULL,
+  `UnitInitiativeID` int(11) NOT NULL,
+  `UnitFundingID` int(11) NOT NULL,
   `UnitMeasureID` int(11) NOT NULL,
   `UnitID` int(11) NOT NULL,
   `UserUnitID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `unit_targets`
+--
+
+INSERT INTO `unit_targets` (`UnitTargetID`, `JanuaryTarget`, `FebruaryTarget`, `MarchTarget`, `AprilTarget`, `MayTarget`, `JuneTarget`, `JulyTarget`, `AugustTarget`, `SeptemberTarget`, `OctoberTarget`, `NovemberTarget`, `DecemberTarget`, `TargetDate`, `TargetPeriod`, `Termination`, `UnitAccomplishmentID`, `UnitOwnerID`, `UnitInitiativeID`, `UnitFundingID`, `UnitMeasureID`, `UnitID`, `UserUnitID`, `created_at`, `updated_at`) VALUES
+(1, 6.67, 6.67, 6.67, 10.00, 10.00, 10.00, 13.33, 13.33, 13.33, 16.67, 16.67, 16.67, '2016-05-17', 'Quarterly', NULL, 1, 1, 1, 1, 1, 2, 1, '2016-05-17 05:37:51', '2016-05-17 05:38:37'),
+(2, 3.20, 4.10, 5.00, 9.00, 10.00, 11.00, 20.00, 21.00, 23.00, 30.00, 35.00, 37.00, '2016-05-17', 'Monthly', NULL, 2, 2, 2, 2, 2, 2, 1, '2016-05-17 05:38:09', '2016-05-17 05:39:24'),
+(3, 33.33, 33.33, 33.33, 49.00, 49.00, 49.00, 53.33, 53.33, 53.33, 66.00, 66.00, 66.00, '2016-05-17', 'Quarterly', NULL, 3, 3, 3, 3, 3, 2, 1, '2016-05-17 05:38:25', '2016-05-17 05:39:53');
 
 -- --------------------------------------------------------
 
@@ -962,7 +1214,7 @@ CREATE TABLE IF NOT EXISTS `user_logs` (
   `IPAddress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user_logs`
@@ -995,7 +1247,47 @@ INSERT INTO `user_logs` (`UserLogID`, `UnitUserID`, `LogDateTime`, `LogType`, `I
 (24, 1, '2016-05-06 15:49:10', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (25, 0, '2016-05-10 10:28:27', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (26, 1, '2016-05-10 10:28:55', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(27, 1, '2016-05-10 13:04:40', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(27, 1, '2016-05-10 13:04:40', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 0, '2016-05-11 11:25:58', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 0, '2016-05-12 11:52:56', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 0, '2016-05-12 11:53:41', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 1, '2016-05-12 11:54:37', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, 0, '2016-05-12 13:47:32', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 0, '2016-05-13 09:03:38', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 0, '2016-05-13 09:34:38', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(35, 0, '2016-05-13 09:51:29', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(36, 1, '2016-05-13 09:51:40', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(37, 0, '2016-05-16 09:11:57', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(38, 0, '2016-05-16 11:00:08', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(39, 0, '2016-05-16 11:02:22', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(40, 0, '2016-05-16 13:18:32', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(41, 0, '2016-05-16 13:33:41', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(42, 0, '2016-05-16 13:54:28', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(43, 0, '2016-05-16 13:55:10', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(44, 0, '2016-05-16 13:57:51', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(45, 0, '2016-05-16 14:32:31', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(46, 0, '2016-05-17 11:54:46', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(47, 0, '2016-05-17 12:59:04', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(48, 1, '2016-05-17 12:59:14', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(49, 0, '2016-05-17 15:04:44', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(50, 0, '2016-05-17 15:05:29', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(51, 0, '2016-05-17 18:39:54', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(52, 0, '2016-05-17 18:46:29', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(53, 0, '2016-05-17 18:47:58', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(54, 0, '2016-05-17 20:03:04', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(55, 0, '2016-05-17 20:04:45', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(56, 0, '2016-05-17 21:04:08', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(57, 1, '2016-05-17 21:04:15', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(58, 1, '2016-05-17 21:05:01', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(59, 0, '2016-05-17 21:05:48', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(60, 0, '2016-05-17 21:05:51', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(61, 1, '2016-05-17 21:06:11', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(62, 1, '2016-05-17 21:36:37', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(63, 1, '2016-05-17 22:41:06', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(64, 1, '2016-05-17 22:42:50', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(65, 0, '2016-05-17 22:49:32', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(66, 1, '2016-05-17 22:49:40', 'Login', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(67, 1, '2016-05-17 22:52:35', 'Logout', '::1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1122,7 +1414,7 @@ ALTER TABLE `chief_objectives`
 -- Indexes for table `chief_owners`
 --
 ALTER TABLE `chief_owners`
-  ADD PRIMARY KEY (`ChiefOnwerID`);
+  ADD PRIMARY KEY (`ChiefOwnerID`);
 
 --
 -- Indexes for table `chief_targets`
@@ -1206,7 +1498,7 @@ ALTER TABLE `staff_objectives`
 -- Indexes for table `staff_owners`
 --
 ALTER TABLE `staff_owners`
-  ADD PRIMARY KEY (`StaffOnwerID`);
+  ADD PRIMARY KEY (`StaffOwnerID`);
 
 --
 -- Indexes for table `staff_targets`
@@ -1258,7 +1550,7 @@ ALTER TABLE `unit_objectives`
 -- Indexes for table `unit_owners`
 --
 ALTER TABLE `unit_owners`
-  ADD PRIMARY KEY (`UnitOnwerID`);
+  ADD PRIMARY KEY (`UnitOwnerID`);
 
 --
 -- Indexes for table `unit_targets`
@@ -1308,7 +1600,7 @@ ALTER TABLE `user_units`
 -- AUTO_INCREMENT for table `audit_trails`
 --
 ALTER TABLE `audit_trails`
-  MODIFY `AuditTrailID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `AuditTrailID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `chiefs`
 --
@@ -1318,27 +1610,27 @@ ALTER TABLE `chiefs`
 -- AUTO_INCREMENT for table `chief_accomplishments`
 --
 ALTER TABLE `chief_accomplishments`
-  MODIFY `ChiefAccomplishmentID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `ChiefAccomplishmentID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `chief_audit_trails`
 --
 ALTER TABLE `chief_audit_trails`
-  MODIFY `ChiefAuditTrailID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `ChiefAuditTrailID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `chief_fundings`
 --
 ALTER TABLE `chief_fundings`
-  MODIFY `ChiefFundingID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `ChiefFundingID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `chief_initiatives`
 --
 ALTER TABLE `chief_initiatives`
-  MODIFY `ChiefInitiativeID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `ChiefInitiativeID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `chief_logs`
 --
 ALTER TABLE `chief_logs`
-  MODIFY `ChiefLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `ChiefLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `chief_measures`
 --
@@ -1353,7 +1645,7 @@ ALTER TABLE `chief_objectives`
 -- AUTO_INCREMENT for table `chief_owners`
 --
 ALTER TABLE `chief_owners`
-  MODIFY `ChiefOnwerID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `ChiefOwnerID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `chief_targets`
 --
@@ -1378,47 +1670,47 @@ ALTER TABLE `staffs`
 -- AUTO_INCREMENT for table `staff_accomplishments`
 --
 ALTER TABLE `staff_accomplishments`
-  MODIFY `StaffAccomplishmentID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `StaffAccomplishmentID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `staff_audit_trails`
 --
 ALTER TABLE `staff_audit_trails`
-  MODIFY `StaffAuditTrailID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `StaffAuditTrailID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `staff_fundings`
 --
 ALTER TABLE `staff_fundings`
-  MODIFY `StaffFundingID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `StaffFundingID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `staff_initiatives`
 --
 ALTER TABLE `staff_initiatives`
-  MODIFY `StaffInitiativeID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `StaffInitiativeID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `staff_logs`
 --
 ALTER TABLE `staff_logs`
-  MODIFY `StaffLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `StaffLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `staff_measures`
 --
 ALTER TABLE `staff_measures`
-  MODIFY `StaffMeasureID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `StaffMeasureID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `staff_objectives`
 --
 ALTER TABLE `staff_objectives`
-  MODIFY `StaffObjectiveID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `StaffObjectiveID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `staff_owners`
 --
 ALTER TABLE `staff_owners`
-  MODIFY `StaffOnwerID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `StaffOwnerID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `staff_targets`
 --
 ALTER TABLE `staff_targets`
-  MODIFY `StaffTargetID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `StaffTargetID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `units`
 --
@@ -1428,37 +1720,37 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `unit_accomplishments`
 --
 ALTER TABLE `unit_accomplishments`
-  MODIFY `UnitAccomplishmentID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `UnitAccomplishmentID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `unit_fundings`
 --
 ALTER TABLE `unit_fundings`
-  MODIFY `UnitFundingID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `UnitFundingID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `unit_initiatives`
 --
 ALTER TABLE `unit_initiatives`
-  MODIFY `UnitInitiativeID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `UnitInitiativeID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `unit_measures`
 --
 ALTER TABLE `unit_measures`
-  MODIFY `UnitMeasureID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `UnitMeasureID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `unit_objectives`
 --
 ALTER TABLE `unit_objectives`
-  MODIFY `UnitObjectiveID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `UnitObjectiveID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `unit_owners`
 --
 ALTER TABLE `unit_owners`
-  MODIFY `UnitOnwerID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `UnitOwnerID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `unit_targets`
 --
 ALTER TABLE `unit_targets`
-  MODIFY `UnitTargetID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `UnitTargetID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -1473,7 +1765,7 @@ ALTER TABLE `user_chiefs`
 -- AUTO_INCREMENT for table `user_logs`
 --
 ALTER TABLE `user_logs`
-  MODIFY `UserLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `UserLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT for table `user_staffs`
 --
