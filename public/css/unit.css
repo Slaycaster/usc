@@ -102,3 +102,12 @@ tr:hover{
     background-color:rgba(8, 42, 72, 0.1);
     
 }
+
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
+    -webkit-border-radius: 0px;
+    background-color:rgba(217, 220, 226, 1);
+    border-radius: 0px;
+}
