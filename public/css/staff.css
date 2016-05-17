@@ -107,5 +107,5 @@ tr:hover{
 }
 
 .modal-backdrop{
-     background-color:rgba(120, 34, 37, 0.1);
+     background-color:rgba(120, 34, 37, .5);
 }
