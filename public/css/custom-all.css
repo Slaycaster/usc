@@ -60,6 +60,9 @@ a.navbar-brand.layout-custom-pnpabb:visited{
         .sidebar-search{
             margin-top: 5.5em;
         }
+        .alert-info{
+            text-align: left !important;
+        }
     }
 
 /* /. layout css */
@@ -296,6 +299,10 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 
 .modal-body table tr td{             
     border-top: none !important;
+}
+
+.modal-backdrop{
+     background-color:rgba(54, 54, 54, 1);
 }
 /* /.css for modal */
 

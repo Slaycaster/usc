@@ -1,6 +1,5 @@
 /* STAFF CSS */
 
-
 .unit-page-wrapper{
     background-color:rgba(250, 237, 242, 1) !important;
     /* color of the background */
@@ -62,7 +61,6 @@ a.layout-custom-navbaruser:hover{
     background-color:#fff !important;
 }
 
-
 .sidebar ul li a.active{
     color: rgba(120, 34, 37, 1) !important;
 }
@@ -104,8 +102,4 @@ thead{
 tr:hover{
     background-color:rgba(120, 34, 37, 0.1);
     
-}
-
-.modal-backdrop{
-     background-color:rgba(120, 34, 37, .5);
 }
