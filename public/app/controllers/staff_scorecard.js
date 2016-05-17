@@ -34,7 +34,8 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
         //append Unit Objective ID to the URL if the form is in edit mode
          
             url += "/" + id;
-            console.log(document.getElementById('staff_id').value);
+            console.log($document.find('#owner'));
+            /*
             $http.put(url, {
                 StaffOwnerContent: document.getElementById('id_owner').value,
                 JanuaryAccomplishment: document.getElementById('id_jan').value,
@@ -62,6 +63,7 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
                 $scope.init();
                 $scope.loading = false;
             });
+*/
         // 
 
     };
