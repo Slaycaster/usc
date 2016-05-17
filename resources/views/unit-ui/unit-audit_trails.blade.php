@@ -14,7 +14,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/timeago.js') }}"></script>
     
-    <!-- AngularJS Application Scripts -->
+    <!-- Audit Trails Scripts -->
     <script src="{{ asset('app/controllers/unit_audit_trails.js') }}"></script>
 
     <br />
@@ -23,8 +23,10 @@
             <div class="row">           
                 <div class="panel panel-warning audit-custom-panel">
                     <div class="col-lg-12 dashboard-custom-activitylogname">
-                        <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitName }} Activity Log</b></h2>
-                        <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                        <div  class="col-lg-8 col-md-offset-2">
+                            <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitName }} Activity Log</b></h2>
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                        </div>
                     </div>
 
                      <div class="col-lg-12 dashboard-custom-activitylogabb">

@@ -19,12 +19,12 @@
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
-					<div class="panel panel-warning">
+					<div class="panel panel-warning objectives-custom-panel">
 						<div class="panel-heading objectives-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> 
-                                <h2>
-                                    <b>{{ $chief_user->chief->ChiefName }} Objectives</b>
-                                </h2>
+                            <h2>
+                                <b>{{ $chief_user->chief->ChiefName }} Objectives</b>
+                            </h2>
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">

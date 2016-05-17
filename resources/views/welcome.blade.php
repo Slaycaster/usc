@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="refresh" content="60">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#3b5998 ">
-    <meta name="msapplication-navbutton-color" content="#3b5998 ">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#3b5998">
+    <meta name="theme-color" content="#363636 ">
+    <meta name="msapplication-navbutton-color" content="#363636 ">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#363636">
     <meta name="description" content="">
     <meta name="author" content="">
 

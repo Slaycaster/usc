@@ -16,8 +16,7 @@
     <div ng-app="unitScorecardApp" ng-controller="APIUnitScorecardController">
     	<div id="wrap">
     		<div class="row">
-    			<div class="col-lg-12 col-md-12 col-xs-12">
-    				<div class="panel panel-info scorecard-custom-panel">
+    			<div class="panel panel-info scorecard-custom-panel">
     					<div class="panel-heading scorecard-custom-heading">
                           <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
 						  
@@ -188,9 +187,7 @@
 							    <!--./dir-pagination-controls-->
 							</center>
 						</div><!-- div panel-body-->
-    				</div><!--div panel panel-info-->
-
-    			</div> <!--div class col-lg-12 -->
+    			</div><!--div panel panel-info-->
     		</div>
     	</div>
     </div>

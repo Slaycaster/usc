@@ -2,7 +2,7 @@
 
 @section('content')
     
-   <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
     <!-- Angular Utils Pagination -->
@@ -21,15 +21,15 @@
     <div ng-app="unitScorecardApp" ng-controller="APIChiefAuditTrailsController">
         <div class="wrap">
             <div class="row">           
-                <div class="panel panel-warning">
-                    <div class="col-lg-12 unitdashboard-custom-unit-activitylogname">
+                <div class="panel panel-warning audit-custom-panel">
+                    <div class="col-lg-12 dashboard-custom-activitylogname">
                         <div  class="col-lg-8 col-md-offset-2">
                             <i class="fa fa-bell fa-2x"></i> <h2><b> {{ $chief_user->chief->ChiefName }} Activity Log</b></h2>
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                         </div>
                     </div>
 
-                     <div class="col-lg-12 unitdashboard-custom-unit-activitylogabb">
+                     <div class="col-lg-12 dashboard-custom-activitylogabb">
                         <i class="fa fa-bell fa-2x"></i> <h2><b>{{ $chief_user->chief->ChiefAbbreviation }} Activity Log</b></h2>
                         <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                     </div>
