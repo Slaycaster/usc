@@ -1,18 +1,37 @@
 /* STAFF CSS */
 
+
+.unit-page-wrapper{
+    background-color:rgba(250, 237, 242, 1) !important;
+    /* color of the background */
+}
+
+
+/* css for layout */
+
+@media(max-width:768px){
+    .layout-custom-username{
+        text-align: center;
+        padding-left: 12px;
+        background-color:#fff;
+        padding: 5px;
+        color: #782225;
+        border-color:#782225;
+    }
+}
+
+@media(min-width:768px){
+    .layout-custom-username{
+        display: none;
+    }
+}
+
 .layout-title-navbar{
-    margin-bottom: 0; 
+    margin-bottom: -3em;  
     background-color:rgba(120, 34, 37, 1);
     border-bottom-color:rgba(120, 34, 37, 1);
 }
 
-/* color of the background */
-
-.unit-page-wrapper{
-    background-color:rgba(250, 237, 242, 1) !important;
-}
-
-/*end */
 
 .sidebar-search{
     background-color:rgba(120, 34, 37, 1) !important;
@@ -22,6 +41,7 @@
     background-color: rgba(120, 34, 37, 1);
 }
 
+
 .dropdown-menu>li>a{
     color:#2A363B !important;
 }
@@ -30,24 +50,6 @@
     background-color:rgba(120, 34, 37, 1) !important;
 }
 
-
-
-@media(max-width:768px){
-    .layout_unit-custom_all-unit_user{
-        text-align: center;
-        padding-left: 12px;
-        background-color:#fff;
-        padding: 5px;
-        color: rgba(120, 34, 37, 1);
-        border-color:rgba(120, 34, 37, 1);
-    }
-}
-
-@media(min-width:768px){
-    .layout_unit-custom_all-unit_user{
-        display: none;
-    }
-}
 
 a.layout-custom-navbaruser{
     background-color:rgba(120, 34, 37, 1);
@@ -59,19 +61,24 @@ a.layout-custom-navbaruser:hover{
     color:rgba(120, 34, 37, 1);
     background-color:#fff !important;
 }
+
+
 .sidebar ul li a.active{
     color: rgba(120, 34, 37, 1) !important;
 }
+
 
 a.active{
     background-color: #fff !important;
     color:rgba(120, 34, 37, 1) !important;
 }
 
+
 .nav>li>a{
     background-color: rgba(120, 34, 37, 1);
     color:#fff !important;
 }
+
 
 .nav>li>a:focus, 
 .nav>li>a:hover{
@@ -79,17 +86,16 @@ a.active{
     background-color: #fff;
 }
 
-/*.sidebar .sidebar-nav.navbar-collapse{
-    overflow: auto !important;
-    max-height: 350px !important;
-}*/
 .sidebar ul li{
     border-bottom: none;
 }
+
 .sidebar-search{
     background-color: #fff;
 }
 
+
+/* /.css for layout */
 
 thead{
     background-color:rgba(120, 34, 37, 1);
@@ -98,4 +104,8 @@ thead{
 tr:hover{
     background-color:rgba(120, 34, 37, 0.1);
     
+}
+
+.modal-backdrop{
+     background-color:rgba(120, 34, 37, 0.1);
 }

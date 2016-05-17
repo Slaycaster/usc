@@ -9,7 +9,7 @@
 /* css for layout */
 
 @media(max-width:768px){
-    .layout_unit-custom_all-unit_user{
+    .layout-custom-username{
         text-align: center;
         padding-left: 12px;
         background-color:#fff;
@@ -20,7 +20,7 @@
 }
 
 @media(min-width:768px){
-    .layout_unit-custom_all-unit_user{
+    .layout-custom-username{
         display: none;
     }
 }
