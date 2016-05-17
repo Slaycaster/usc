@@ -26,25 +26,27 @@
     <script src="{{ asset('app/controllers/staff_dashboard.js') }}"></script>
     
     <div class="row">
-        <div class="col-lg-12 dashboard-custom-unit-dashname">
+        <div class="col-lg-12 dashboard-custom-dashname">
             <p><b>{{ $staff_user->staff->StaffName }} Staff Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
-        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.row -->
-     <div class="row">
-        <div class="col-lg-12 dashboard-custom-unit-dashabb">
-            <img class="img-responsive unitdashboard-custom-unitpicabb" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
-            <p><b>{{ $staff_user->staff->StaffAbbreviation }} Staff Dashboard</b></p>
+
+    <div class="row">
+        <div class="col-lg-12 dashboard-custom-dashabb">
+            <img class="img-responsive dashboard-custom-pictureabb" 
+                src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
+            <p>
+                <b>{{ $staff_user->staff->StaffAbbreviation }} Staff Dashboard</b>
+            </p>
         </div>
         <div class="col-md-12"><br /></div>
-        <!-- /.col-lg-12 -->
     </div>
+
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -98,52 +100,6 @@
                             </a>
                         </div>
                     </div>
-                    <!--
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-bolt fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">36</div>
-                                        <div>Targets</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View All</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-sitemap fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Initiatives</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View All</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    -->
                 </div>
             </div>
         </div>
