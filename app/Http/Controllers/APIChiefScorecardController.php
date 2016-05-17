@@ -43,11 +43,12 @@ class APIChiefScorecardController extends Controller {
 			$chief_objectives = ChiefObjective::all();
 			$chief_measures = ChiefMeasure::with('chief')->where('ChiefID', '=', $chief_user->ChiefID)->get();
 
-		$staff_accomplishments = StaffAccomplishment::with('staff_measure')->with('staff')->get();
 
 		return ChiefTarget::with('chief_measure')
-			->with('chief_measure.staff_measures')
 			->with('chief_measure.chief_objective')
+			->with('chief_measure.staff_measures.staff_accomplishments')
+			->with('chief_measure.staff_measures.staff_accomplishments.staff')
+			->with('chief_measure.staff_measures.unit_measures.unit_accomplishments')
 			->with('chief_accomplishment')
 			->with('chief_owner')
 			->with('chief_initiative')
@@ -118,6 +119,10 @@ class APIChiefScorecardController extends Controller {
 	 */
 	public function update($id)
 	{
+		$chief_id = Session::get('chief_user_id', 'default');
+		$chief_user = UserChief::where('UserChiefID', '=', $chief_id)
+			->first();
+
 		$chief_target = ChiefTarget::find($id);
 		$chief_accomplishmentID = $chief_target->ChiefAccomplishmentID;
 		$chief_ownerID = $chief_target->ChiefOwnerID;

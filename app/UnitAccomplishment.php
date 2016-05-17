@@ -43,6 +43,6 @@ class UnitAccomplishment extends Model {
 
 	public function unit_target()
 	{
-		return $this->hasOne('App\UnitTarget', 'UnitTargetID', 'UnitTargetID'); //(model, foreign_key, parent_primary_key)
+		return $this->hasOne('App\UnitTarget', 'UnitAccomplishmentID', 'UnitAccomplishmentID'); //(model, foreign_key, parent_primary_key)
 	}
 }

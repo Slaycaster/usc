@@ -59,6 +59,7 @@ class UnitLoginController extends Controller {
 			$unit_id = Session::get('unit_user_id', 'default');
 			$user = UserUnit::where('UserUnitID', $unit_id)
 				->with('unit')
+				->with('unit.staff')
 				->first();
 			$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $user->UnitID)->get();
 

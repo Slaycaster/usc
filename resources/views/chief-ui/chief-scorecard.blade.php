@@ -123,36 +123,128 @@
                                         
                                         <td><% chief_target.chief_measure.chief_objective.ChiefObjectiveName %></td>
 
-                                        <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %></td>
+                                        <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %>
+                                            <i style="font-size:10px;">Contributory/ies to this Measure</i>
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+                                        </td>
 
                                         <td><b><% chief_target.chief_measure.ChiefMeasureType %></b></td>
                                         
 
                                         <td><textarea rows="5" id="id_owner<%chief_target.chief_measure.ChiefMeasureID%>" name="monthlyform"  value="<% chief_target.chief_owner.ChiefOwnerContent %>" ng-model="chief_target.chief_owner.ChiefOwnerContent" autocomplete="off"  required ng-touched /></textarea></td>
 
-                                        <td><% chief_target.JanuaryTarget | number: 2 %></td>
+                                        <td><% chief_target.JanuaryTarget | number: 2 %>
 
-                                        <td><% chief_target.FebruaryTarget | number: 2 %></td>
+                                            <!--Contributory Accomplishment-->
+                                            <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].JanuaryAccomplishment | number: 2 %></strong> 
+                                                <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                
+                                            </div>
 
-                                        <td><% chief_target.MarchTarget | number: 2 %></td>
+                                        </td>
 
-                                        <td><% chief_target.AprilTarget | number: 2 %></td>
+                                        <td><% chief_target.FebruaryTarget | number: 2 %>
 
-                                        <td><% chief_target.MayTarget | number: 2 %></td>
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].FebruaryAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
 
-                                        <td><% chief_target.JuneTarget | number: 2 %></td>
+                                        </td>
 
-                                        <td><% chief_target.JulyTarget | number: 2 %></td>
+                                        <td><% chief_target.MarchTarget | number: 2 %>
 
-                                        <td><% chief_target.AugustTarget | number: 2 %></td>
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].MarchAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
 
-                                        <td><% chief_target.SeptemberTarget | number: 2 %></td>
+                                        </td>
 
-                                        <td><% chief_target.OctoberTarget | number: 2 %></td>
+                                        <td><% chief_target.AprilTarget | number: 2 %>
 
-                                        <td><% chief_target.NovemberTarget | number: 2 %></td>
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].AprilAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
 
-                                        <td><% chief_target.DecemberTarget | number: 2 %></td>
+                                        </td>
+
+                                        <td><% chief_target.MayTarget | number: 2 %>
+
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].MayAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+
+                                        </td>
+
+                                        <td><% chief_target.JuneTarget | number: 2 %>
+
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].JuneAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+
+                                        </td>
+
+                                        <td><% chief_target.JulyTarget | number: 2 %>
+
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].JulyAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+
+                                        </td>
+
+                                        <td><% chief_target.AugustTarget | number: 2 %>
+
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].AugustAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+
+                                        </td>
+
+                                        <td><% chief_target.SeptemberTarget | number: 2 %>
+
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].SeptemberAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+
+                                        </td>
+
+                                        <td><% chief_target.OctoberTarget | number: 2 %>
+
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].OctoberAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+
+                                        </td>
+
+                                        <td><% chief_target.NovemberTarget | number: 2 %>
+
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].NovemberAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+
+                                        </td>
+
+                                        <td><% chief_target.DecemberTarget | number: 2 %>
+
+                                            <!--Contributory Accomplishment-->
+                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                / <strong><% staff_measure.staff_accomplishments[0].DecemberAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                            </p>
+
+                                        </td>
 
                                         <td><textarea rows="5" id="id_initiative<%chief_target.chief_measure.ChiefMeasureID%>" name="monthlyform" value="<% chief_target.chief_initiative.ChiefInitiativeContent %>" ng-model="chief_target.chief_initiative.ChiefInitiativeContent" autocomplete="off"  required ng-touched /></textarea></td>
 

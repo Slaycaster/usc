@@ -11,10 +11,44 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
         $scope.info = true;
         $http.get(local + '/usc/public/api/chief_scorecard').
         success(function(data, status, headers, config) {
-
+            //console.log(data);
+           // console.log(data[1].chief_measure.staff_measures[0].unit_measures[0].unit_accomplishments[0]);
             $scope.chief_targets = data;
-            console.log($scope.chief_targets);
-                $scope.loading = false;
+            
+            // Accumulating values from unit offices under staff and assigning it to StaffAccomplishment in order to have one summation of all.
+            // All this, all contributory must have the same formula within!!!
+            for (var i = 0, len = data.length; i < len; i++)
+            {
+                for (var j = 0, len2 = data[i].chief_measure.staff_measures.length; j < len2; j++)
+                {
+                    for (var j2 = 0, len22 = data[i].chief_measure.staff_measures[j].staff_accomplishments.length; j2 < len22; j2++)
+                    {
+                    }
+                    for (var k = 0, len3 = data[i].chief_measure.staff_measures[j].unit_measures.length; k < len3; j++)
+                    {
+                        for (var l = 0, len4 = data[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments.length; l < len4; l++)
+                        {
+                            //console.log($scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].JanuaryAccomplishment)
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].JanuaryAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].JanuaryAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].FebruaryAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].FebruaryAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].MarchAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].MarchAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].AprilAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].AprilAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].MayAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].MayAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].JuneAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].JuneAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].JulyAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].JulyAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].AugustAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].AugustAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].SeptemberAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].SeptemberAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].OctoberAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].OctoberAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].NovemberAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].NovemberAccomplishment;
+                            $scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].DecemberAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].DecemberAccomplishment;
+                            //$scope.chief_targets[i].chief_measure.staff_measures[j].staff_accomplishments[0].JanuaryAccomplishment += $scope.chief_targets[i].chief_measure.staff_measures[j].unit_measures[k].unit_accomplishments[l].JanuaryAccomplishment;
+
+                        }
+                    }
+                }
+            }
+
+            $scope.loading = false;
         }); 
     };
 

@@ -11,9 +11,8 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
         $scope.info = true;
 		$http.get(local + '/usc/public/api/staff_scorecard').
 		success(function(data, status, headers, config) {
-
+            console.log(data);
 			$scope.staff_targets = data;
-			console.log($scope.staff_targets);
 				$scope.loading = false;
 		});	
 	};

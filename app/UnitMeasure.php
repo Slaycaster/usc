@@ -47,27 +47,27 @@ class UnitMeasure extends Model {
 
 	public function unit_targets()
 	{
-		return $this->hasMany('App\UnitTarget', 'UnitTargetID', 'UnitTargetID');
+		return $this->hasMany('App\UnitTarget', 'UnitMeasureID', 'UnitMeasureID');
 	}
 
 	public function unit_accomplishments()
 	{
-		return $this->hasMany('App\UnitAccomplishment', 'UnitAccomplishmentID', 'UnitAccomplishmentID');
+		return $this->hasMany('App\UnitAccomplishment', 'UnitMeasureID', 'UnitMeasureID');
 	}
 
 	public function unit_owners()
 	{
-		return $this->hasMany('App\UnitOwner', 'UnitOwnerID', 'UnitOwnerID');
+		return $this->hasMany('App\UnitOwner', 'UnitMeasureID', 'UnitMeasureID');
 	}
 
 	public function unit_initiatives()
 	{
-		return $this->hasMany('App\UnitInitiative', 'UnitInitiativeID', 'UnitInitiativeID');
+		return $this->hasMany('App\UnitInitiative', 'UnitMeasureID', 'UnitMeasureID');
 	}
 
 	public function unit_fundings()
 	{
-		return $this->hasMany('App\UnitFunding', 'UnitFundingID', 'UnitFundingID');
+		return $this->hasMany('App\UnitFunding', 'UnitMeasureID', 'UnitMeasureID');
 	}
 
 

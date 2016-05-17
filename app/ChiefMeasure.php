@@ -41,12 +41,12 @@ class ChiefMeasure extends Model {
 
 	public function chief_targets()
 	{
-		return $this->hasMany('App\ChiefTarget','ChiefTargetID','ChiefTargetID'); //(model, foreign_key, parent_primary_key)
+		return $this->hasMany('App\ChiefTarget','ChiefMeasureID','ChiefMeasureID'); //(model, foreign_key, parent_primary_key)
 	}
 
 	public function staff_measures()
 	{
-		return $this->hasMany('App\StaffMeasure', 'StaffMeasureID', 'StaffMeasureID');
+		return $this->hasMany('App\StaffMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
 	}
 
 

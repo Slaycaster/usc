@@ -113,6 +113,10 @@ class APIUnitScorecardController extends Controller {
 	 */
 	public function update($id)
 	{
+		$unit_id = Session::get('unit_user_id', 'default');
+		$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
+			->first();
+
 		$unit_target = UnitTarget::find($id);
 		
 		$unit_accomplishmentID = $unit_target->UnitAccomplishmentID;
@@ -182,6 +186,9 @@ class APIUnitScorecardController extends Controller {
 			$unit_accomplishment->DecemberAccomplishment = 0;
 
 		$unit_accomplishment->AccomplishmentDate = date('Y-m-d');
+		$unit_accomplishment->UnitMeasureID = Request::input('UnitMeasureID');
+		$unit_accomplishment->UserUnitID = $unit_id;
+		$unit_accomplishment->UnitID = $unit_user->UnitID;
 		$unit_accomplishment->save();
 		
 		

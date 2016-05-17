@@ -129,7 +129,7 @@
                                         <input type="hidden" value="<% unit_target.unit_measure.StaffMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
 
                                         <td colspan="2"><% unit_target.unit_measure.UnitMeasureName %>
-                                            <span class="label label-info" ng-if="c_measure=unit_target.unit_measure.StaffMeasureID">Contributory</span>
+                                            <span class="label label-danger" ng-if="c_measure=unit_target.unit_measure.StaffMeasureID">Contributory to {{ $user->unit->staff->StaffAbbreviation }}</span>
                                         </td>
 
 

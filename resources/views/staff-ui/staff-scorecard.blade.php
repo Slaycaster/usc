@@ -127,7 +127,13 @@
                                         <input type="hidden" value="<% staff_target.staff_measure.ChiefMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
 
                                         <td colspan="2"><% staff_target.staff_measure.StaffMeasureName %>
-                                        <span class="label label-info" ng-if="c_measure=staff_target.staff_measure.ChiefMeasureID">Contributory</span>
+                                        <span class="label label-primary" ng-if="c_measure=staff_target.staff_measure.ChiefMeasureID">Contributory to C, PNP</span>
+
+                                         <i style="font-size:10px;">Contributory/ies to this Measure</i>
+                                            <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
                                     </td>
 
 
@@ -137,29 +143,113 @@
 
                                         <td><textarea rows="5" id="id_owner<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_owner.StaffOwnerContent %>" ng-model="staff_target.staff_owner.StaffOwnerContent" autocomplete="off"  ng-touched /></textarea></td>
 
-                                        <td><% staff_target.JanuaryTarget | number: 2 %>/<input type='text' id="id_jan<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JanuaryAccomplishment  %>" ng-model="staff_target.staff_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                        <td><% staff_target.JanuaryTarget | number: 2 %>/<input type='text' id="id_jan<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JanuaryAccomplishment  %>" ng-model="staff_target.staff_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
-                                        <td><% staff_target.FebruaryTarget | number: 2 %>/<input type='text' id="id_feb<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.FebruaryAccomplishment %>" ng-model="staff_target.staff_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                            <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].JanuaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
 
-                                        <td><% staff_target.MarchTarget | number: 2 %>/<input type='text' id="id_mar<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MarchAccomplishment %>" ng-model="staff_target.staff_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                        </td>
 
-                                        <td><% staff_target.AprilTarget | number: 2 %>/<input type='text' id="id_apr<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AprilAccomplishment %>" ng-model="staff_target.staff_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                        <td><% staff_target.FebruaryTarget | number: 2 %>/<input type='text' id="id_feb<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.FebruaryAccomplishment %>" ng-model="staff_target.staff_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
-                                        <td><% staff_target.MayTarget | number: 2 %>/<input type='text' id="id_may<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MayAccomplishment %>" ng-model="staff_target.staff_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                            <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].FebruaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
 
-                                        <td><% staff_target.JuneTarget | number: 2 %>/<input type='text' id="id_jun<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JuneAccomplishment %>" ng-model="staff_target.staff_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                        </td>
 
-                                        <td><% staff_target.JulyTarget | number: 2 %>/<input type='text' id="id_jul<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JulyAccomplishment %>" ng-model="staff_target.staff_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                        <td><% staff_target.MarchTarget | number: 2 %>/<input type='text' id="id_mar<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MarchAccomplishment %>" ng-model="staff_target.staff_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
-                                        <td><% staff_target.AugustTarget | number: 2 %>/<input type='text' id="id_aug<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AugustAccomplishment %>" ng-model="staff_target.staff_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].MarchAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
 
-                                        <td><% staff_target.SeptemberTarget | number: 2 %>/<input type='text' id="id_sep<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.SeptemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.SeptemberAccomplishment " autocomplete="off" class="form-control" ng-touched /></td>
+                                        </td>
 
-                                        <td><% staff_target.OctoberTarget | number: 2 %>/<input type='text' id="id_oct<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.OctoberAccomplishment %>" ng-model="staff_target.staff_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                        <td><% staff_target.AprilTarget | number: 2 %>/<input type='text' id="id_apr<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AprilAccomplishment %>" ng-model="staff_target.staff_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
-                                        <td><% staff_target.NovemberTarget | number: 2 %>/<input type='text' id="id_nov<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.NovemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].AprilAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
 
-                                        <td><% staff_target.DecemberTarget | number: 2 %>/<input type='text' id="id_dec<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.DecemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
+                                        </td>
+
+                                        <td><% staff_target.MayTarget | number: 2 %>/<input type='text' id="id_may<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MayAccomplishment %>" ng-model="staff_target.staff_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" ng-touched />
+
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].MayAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
+
+                                        </td>
+
+                                        <td><% staff_target.JuneTarget | number: 2 %>/<input type='text' id="id_jun<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JuneAccomplishment %>" ng-model="staff_target.staff_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" ng-touched />
+
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].JuneAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
+
+                                        </td>
+
+                                        <td><% staff_target.JulyTarget | number: 2 %>/<input type='text' id="id_jul<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JulyAccomplishment %>" ng-model="staff_target.staff_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" ng-touched />
+
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].JulyAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
+
+                                        </td>
+
+                                        <td><% staff_target.AugustTarget | number: 2 %>/<input type='text' id="id_aug<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AugustAccomplishment %>" ng-model="staff_target.staff_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" ng-touched />
+
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].AugustAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
+
+                                        </td>
+
+                                        <td><% staff_target.SeptemberTarget | number: 2 %>/<input type='text' id="id_sep<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.SeptemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.SeptemberAccomplishment " autocomplete="off" class="form-control" ng-touched />
+
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].SeptemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
+
+                                        </td>
+
+                                        <td><% staff_target.OctoberTarget | number: 2 %>/<input type='text' id="id_oct<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.OctoberAccomplishment %>" ng-model="staff_target.staff_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched />
+
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].OctoberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
+
+                                        </td>
+
+                                        <td><% staff_target.NovemberTarget | number: 2 %>/<input type='text' id="id_nov<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.NovemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" ng-touched />
+
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].NovemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
+
+                                        </td>
+
+                                        <td><% staff_target.DecemberTarget | number: 2 %>/<input type='text' id="id_dec<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.DecemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" ng-touched />
+
+                                             <!--Contributory Accomplishment-->
+                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                + <strong><% unit_measure.unit_accomplishments[0].DecemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </div>
+
+                                        </td>
 
                                         <td><textarea rows="5" id="id_initiative<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_initiative.StaffInitiativeContent %>" ng-model="staff_target.staff_initiative.StaffInitiativeContent" autocomplete="off" ng-touched /></textarea></td>
 
