@@ -2,7 +2,6 @@
 
 @section('content')
 
-    
     <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
@@ -14,8 +13,6 @@
 
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
-
-    
 
     <br>
 	<div ng-app="unitScorecardApp" ng-controller="APIUnitObjectiveController">

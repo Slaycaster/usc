@@ -133,36 +133,15 @@
                                         </td>
                         
                                         <td>
-                                            <textarea rows="5" 
-                                                        id="id_owner" 
-                                                        name="monthlyform" 
-                                                        value="<% unit_target.unit_measure.unit_owners.UnitOwnerContent %>" 
-                                                        ng-model="unit_owner.UnitOwnerContent" 
-                                                        autocomplete="off"  
-                                                        required 
-                                                        ng-touched></textarea>
+                                            <textarea rows="5" id="id_owner" name="monthlyform" value="<% unit_target.unit_measure.unit_owners.UnitOwnerContent %>"ng-model="unit_owner.UnitOwnerContent" autocomplete="off" required ng-touched></textarea>
                                         </td>
 
                                         <td><% unit_target.JanuaryTarget | number: 2 %>/
-                                            <input 
-                                            type='text' 
-                                            id="id_jan" 
-                                            name="monthlyform" 
-                                            value="<% unit_target.unit_measure.unit_accomplishments.JanuaryAccomplishment  %>" 
-                                            ng-model="unit_accomplishment.JanuaryAccomplishment" autocomplete="off" 
-                                            class="form-control" 
-                                            required ng-touched />
+                                            <input type='text' id="id_jan" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.JanuaryAccomplishment  %>" ng-model="unit_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" required ng-touched />
                                         </td>
 
                                         <td><% unit_target.FebruaryTarget | number: 2 %>/
-                                            <input 
-                                            type='text' 
-                                            id="id_feb" 
-                                            name="monthlyform" 
-                                            value="<% unit_target.unit_measure.unit_accomplishments.FebruaryAccomplishment %>" 
-                                            ng-model="unit_accomplishment.FebruaryAccomplishment" autocomplete="off" 
-                                            class="form-control" 
-                                            required ng-touched />
+                                            <input type='text' id="id_feb" name="monthlyform" value="<% unit_target.unit_measure.unit_accomplishments.FebruaryAccomplishment %>" ng-model="unit_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" required ng-touched />
                                         </td>
 
                                         <td><% unit_target.MarchTarget | number: 2 %>/<input type='text' id="id_mar" name="monthlyform" valid-number value="<% unit_target.unit_measure.unit_accomplishments.MarchAccomplishment %>" ng-model="unit_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" required ng-touched /></td>
