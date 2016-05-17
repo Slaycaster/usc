@@ -78,7 +78,7 @@
                     PNP Unit Scorecard
                 </a>
             </div>
-            <div class="layout_unit-custom_all-unit_user">
+            <div class="layout-custom-username">
                 <i class="glyphicon glyphicon-user"></i>&nbsp; 
                     Welcome 
                     {{ $user->rank->RankCode }} 
@@ -100,14 +100,20 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; User Settings</a>
+                            <a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; 
+                                User Settings
+                            </a>
                         </li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp; Settings</a>
+                            <a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp; 
+                                Settings
+                            </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> 
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -145,7 +151,7 @@
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> 
-                                    Set Activities<span class="fa arrow"></span>
+                                Set Activities<span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -201,20 +207,6 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            
-                        </li>
-                        -->
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
