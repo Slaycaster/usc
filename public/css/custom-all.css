@@ -305,6 +305,26 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 /* /.css for modal */
 
 
+
+/*  scorecard  */
+.table>tbody>tr>td{
+    vertical-align: middle;
+}
+.scorecard-objective{
+    vertical-align: middle !important;
+}
+.table-bordered>thead>tr>td{
+    border-bottom-width: 1px; 
+}
+
+.scorecard-type,
+.scorecard-month{
+    text-align: center;
+}
+
+/*  /.scorecard  */
+
+
 /* scroll bar plug-in */
 ::-webkit-scrollbar {
     width: 10px;
@@ -336,169 +356,9 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 
 
 
-/*
-@media(max-width:768px){
-    .unitdashboard-custom-unit-dashabb{
-        padding-top: 8px !important;
-        text-align: center;
-        color: #8a6d3b;
-        font-size: 1.5em !important;
-        position: relative;
-        z-index: 5;
-        background-color:#337ab7;
-    }   
-    .layout-custom-unit-pnpname,
-    .unitdashboard-custom-unit-activityname,
-    .unitdashboard-custom-unit-activitylogname,
-    .dashboard-custom-unit-dashname,
-    .unitdashboard-custom-unitpic{
-        display: none;
-    }
-}
-
-@media(max-width: 992px){
-    .unitdashboard-custom-unitpic{
-        margin-top: 0px !important;
-        margin-bottom: 1.5em;
-    }
-}
-
-@media(max-width: 1200px){
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px;
-        margin-top: 0px !important;
-        margin-bottom: 1.5em;
-    }
-}
-
-@media(max-width:768px){
-        
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px; 
-        margin-top: 0em !important;
-        margin-bottom: 1.5em;
-    }
-
-    .objectives-custom-heading,
-    .measures-custom-heading{
-        padding-top: 5em !important;
-        text-align: center;
-        font-size: 1em !important;
-        position: relative;
-    }
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px; 
-    }   
-    .panel-info{
-        margin-top: 3em !important;
-    }
-    .panel-warning{
-        margin-top: 3em !important;
-    }
-}
 
 
-@media(min-width:768px){
-    .nav>li.layout-custom-usernavoptions,
-    .unitdashboard-custom-unit-activitylogabb,
-    .unitdashboard-custom-unit-activityabb,
-    .unitdashboard-custom-unit-activityabb,
-    .layout-custom-unit-pnpabb,
-    .dashboard-custom-unit-dashabb{
-        display: none;
-    }
-}
 
-
-@media(max-width:768px){
-    .sidebar-search{
-        margin-top: 6em;
-    }
-    .unitdashboard-custom-picabb{
-        display: inline !important;
-        height: 7em;
-        width: 7em;
-    }
-}
-
-
-@media(min-width:768px){
-    .objectives-custom-heading,
-    .measures-custom-heading{
-        padding-top: 5em !important;
-        text-align: center;
-        font-size: 1em !important;
-        position: relative;
-    }
-    
-}
-*/
-
-/*#page-wrapper{
-    margin-left: 251px;
-}
-*/
-
-
-/* Yujin Custom CSS */
-
-
-/*
-.dashboard-custom-dashname{
-    margin-top: 1.5em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    font-size: 250%;
-    text-align: center;
-    color:#8a6d3b;
-    background-color: #fcf8e3;
-}
-
-
-.unitdashboard-custom-unit-activityname,
-.unitdashboard-custom-unit-activityabb,
-.dashboard-custom-unit-dashname,
-.dashboard-custom-unit-dashabb{
-    margin-top:1.5em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    font-size: 250%;
-    text-align: center;
-    color:#8a6d3b;
-    background-color: #fcf8e3;
-}
-
-.unitdashboard-custom-unit-activitylogname,
-.unitdashboard-custom-unit-activitylogabb{
-    margin-top:0em;
-    padding-top: 1.5em;
-    padding-bottom: 1em;
-    font-size: 250%;
-    text-align: center;
-    color:#8a6d3b;
-    background-color: #fcf8e3;
-}
-
-.unitdashboard-custom-unitpicabb{
-        height:100px !important; 
-        width:100px !important; 
-        display: inline !important;
-        margin-top: 0px;
-        margin-bottom: 1em;
-}
-
-a.navbar-brand{
-    color: #fff !important;
-}
-*/
-
-/* mobile view */
-/*
-
-*/
 
 
 
@@ -550,9 +410,7 @@ a.navbar-brand{
 
 }
 
-#wrapper{
-    margin-top: -3em;
-}
+
 
 */
 
