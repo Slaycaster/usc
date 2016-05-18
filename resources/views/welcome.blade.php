@@ -27,8 +27,6 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,25 +38,8 @@
 </head>
 
 <body>
-
-    <!--
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand">
-                <a href="#top"  onclick = $("#menu-close").click(); >PNP Unit Scorecard</a>
-            </li>
-            <li>
-                <a href="#top" onclick = $("#menu-close").click(); >Login</a>
-            </li>
-        </ul>
-    </nav>
-     Navigation -->
-
-    <!-- Header -->
     <header id="top" class="header">
-        <div class="text-vertical-center" id="firstScreen">
+        <div class="col-md-12 text-vertical-center" id="firstScreen">
             <br /><br />
             <h1 class="welcome-stylish-title">PNP UNIT SCORECARD</h1>
             <div class="container">
@@ -87,7 +68,8 @@
         </div>
 
 
-        <div class="text-vertical-center" id="secondScreen">
+        <div class="col-md-12 text-vertical-center" id="secondScreen">
+            <br /><br />
             <h1 class="welcome-stylish-login-title">Login to PNP Unit Scorecard</h1>
             <p class="welcome-stylish-instruction">Hello Officer! Please login using your Badge No. and Password</p>
             <div class="container welcome-stylish-container">
@@ -150,21 +132,6 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script>
-    // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-
-    </script>
-
     <script type="text/javascript">
         $(document).ready(function(){
             $("#secondScreen").hide();
