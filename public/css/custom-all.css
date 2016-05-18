@@ -65,6 +65,17 @@ a.navbar-brand.layout-custom-pnpabb:visited{
         }
     }
 
+    @media screen and (max-width: 767px){
+        .table-responsive>.table>tbody>tr>td{
+            white-space: pre-line;
+            word-wrap:break-word;
+            text-align: left;
+        }
+        .scorecard-minilabel{
+            margin-top: -2em;
+        }
+    }
+
 /* /. layout css */
 
 
@@ -154,6 +165,60 @@ a.navbar-brand.layout-custom-pnpabb:visited{
             width:10em;
             margin-top: 2em;
         }
+    }
+
+
+    .scorecard-objectives{
+        width:20em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+        padding-top: 1.5em;
+    }
+    .scorecard-owner,
+    .scorecard-initiatives{
+        width:15em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+        padding-top: 1.5em;
+    }
+    .scorecard-action{
+        width:8em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+        padding-top: 1.5em;
+    }
+    .scorecard-month{
+        width:8em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+    }
+    .scorecard-input-month{
+        width:4.5em;   
+        text-align:center;
+    }
+    .scorecard-input-estimate,
+    .scorecard-input-actual,
+    .scorecard-input-variance{
+        width:10em;  
+        text-align:center;
+    }
+    .scorecard-name{
+        width:20em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+    }
+    .scorecard-estimate,
+    .scorecard-actual,
+    .scorecard-variance{
+        width:10em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
     }
 
 /*  /.css for scorecard */
