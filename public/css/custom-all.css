@@ -323,23 +323,6 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     background: rgba(36,36,36,.1); 
 }
 
-
-/* Track */
-/*::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
-    -webkit-border-radius: 10px;
-    background-color:#eee;
-    border-radius: 0px;
-}
-*/
-/* Handle */
-/*::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 0px;
-    background:#666; 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); 
-}*/
-
 * {
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
