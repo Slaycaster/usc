@@ -77,7 +77,7 @@ a.active{
 /* css for chief objectives */
 @media screen and (max-width: 767px){
     .table-responsive>.table>tbody>tr>td{
-        white-space: line-wrap;
+        white-space: inherit !important;
     }
 }
 .chief_objective-name{

@@ -74,6 +74,27 @@ a.active{
 /* /.css for layout */
 
 
+/* css for unit objectives */
+@media screen and (max-width: 767px){
+    .table-responsive>.table>tbody>tr>td{
+        white-space: inherit !important;
+    }
+}
+.unit_objective-name{
+    width: 30%;
+}
+.unit_objective-perspective{
+    width: 20%;
+}
+.unit_objective-contributory{
+    width: 30%;
+}
+.unit_objective-encoder{
+    width: 15%;
+}
+/* ./css for unit objectives */
+
+
 /* css for table */
 thead{
     background-color:rgba(8, 42, 72, 1);

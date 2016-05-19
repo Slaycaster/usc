@@ -73,6 +73,26 @@ a.active{
 }
 /* /.css for layout */
 
+/* css for staff objectives */
+@media screen and (max-width: 767px){
+    .table-responsive>.table>tbody>tr>td{
+        white-space: inherit !important;
+    }
+}
+.staff_objective-name{
+    width: 30%;
+}
+.staff_objective-perspective{
+    width: 20%;
+}
+.staff_objective-contributory{
+    width: 30%;
+}
+.staff_objective-encoder{
+    width: 15%;
+}
+/* ./css for staff objectives */
+
 
 /* css for table */
 thead{
