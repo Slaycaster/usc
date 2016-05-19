@@ -94,6 +94,9 @@ a.active{
 .chief_objective-perspective{
      width: 25%;
 }
+.unit_objective-edit{
+    width: 5%;
+}
 /* ./css for chief objectives */
 
 
@@ -109,6 +112,9 @@ a.active{
 }
 .chief_measure-objective{
     width: 30%;
+}
+.chief_measure-edit{
+    width: 5%;
 }
 /* /.css for cheif measures */
 

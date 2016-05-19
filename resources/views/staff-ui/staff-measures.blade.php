@@ -72,7 +72,7 @@
     									<td class="staff_measure-encoder">
                                             Last Encoded by
     									</td>
-    									<td></td>
+    									<td class="staff_measure-edit"></td>
     								</thead>
     								<tr dir-paginate='staff_measure in staff_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% staff_measure.StaffMeasureName %></td>

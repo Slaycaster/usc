@@ -73,7 +73,7 @@
     									<td class="unit_measure-encoder">
                                             Last Encoded by
     									</td>
-    									<td></td>
+    									<td class="unit_measure-edit"></td>
     								</thead>
     								<tr dir-paginate='unit_measure in unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_measure.UnitMeasureName %></td>

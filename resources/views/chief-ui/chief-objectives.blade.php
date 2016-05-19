@@ -73,7 +73,7 @@
                                             Perspective
                                         </td>
                                         
-    									<td></td>
+    									<td class="chief_objective-edit"></td>
     								</thead>
     								
                                     <tr dir-paginate='chief_objective in chief_objectives|

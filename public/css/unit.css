@@ -100,6 +100,9 @@ a.active{
 .unit_objective-encoder{
     width: 15%;
 }
+.unit_objective-edit{
+    width: 5%;
+}
 /* ./css for unit objectives */
 
 
@@ -121,6 +124,9 @@ a.active{
 }
 .unit_measure-encoder{
     width: 25%;
+}
+.unit_measure-edit{
+    width: 5%;
 }
 /* /.css for unit measures */
 

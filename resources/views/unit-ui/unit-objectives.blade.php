@@ -69,7 +69,7 @@
     									<td class="unit_objective-encoder">
                                             Last Encoded by
     									</td>
-    									<td></td>
+    									<td class="unit_objective-edit"></td>
     								</thead>
     								<tr dir-paginate='unit_objective in unit_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_objective.UnitObjectiveName %></td>

@@ -66,7 +66,7 @@
                                             Objective
                                         </td>
     	
-    									<td></td>
+    									<td class="staff_measure-edit"></td>
     								</thead>
     								<tr dir-paginate='chief_measure in chief_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% chief_measure.ChiefMeasureName %></td>

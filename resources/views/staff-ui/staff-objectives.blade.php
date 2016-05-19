@@ -66,7 +66,7 @@
     									<td class="staff_objective-encoder">
                                             Last Encoded by	
     									</td>
-    									<td></td>
+    									<td class="staff_objective-edit"></td>
     								</thead>
     								<tr dir-paginate='staff_objective in staff_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% staff_objective.StaffObjectiveName %></td>

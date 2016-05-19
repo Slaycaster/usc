@@ -100,6 +100,9 @@ a.active{
 .staff_objective-encoder{
     width: 15%;
 }
+.staff_objective-edit{
+    width: 5%;
+}
 /* ./css for staff objectives */
 
 
@@ -121,6 +124,9 @@ a.active{
 }
 .staff_measure-encoder{
     width: 25%;
+}
+.staff_measure-edit{
+    width: 5%;
 }
 /* /.css for staff measures */
 
