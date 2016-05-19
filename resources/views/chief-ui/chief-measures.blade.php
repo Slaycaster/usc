@@ -64,8 +64,7 @@
                                         <td class="chief_measure-objective">
                                             Objective
                                         </td>
-
-    									</td>
+    	
     									<td></td>
     								</thead>
     								<tr dir-paginate='chief_measure in chief_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
@@ -118,7 +117,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="measure_name" class="control-label">Measure Type:</label>
+                                        <label for="measure_name" class="control">Measure Type:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <div class="radio">
@@ -138,7 +137,7 @@
 
                                  <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="measure_formula" class="control-label">Measure Formula:</label>
+                                        <label for="measure_formula" class="control">Measure Formula:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_measure_formula" name="measure_formula" data-ng-model="chief_measure.ChiefMeasureFormula" class="form-control" required ng-touched>
@@ -157,7 +156,7 @@
 
                                  <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="chief_objective" class="control-label">Chief Objective:</label>
+                                        <label for="chief_objective" class="control">Chief Objective:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_chief_objective" name="chief_objective" data-ng-model="chief_measure.ChiefObjectiveID" class="form-control" required ng-touched>

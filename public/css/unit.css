@@ -103,10 +103,35 @@ a.active{
 /* ./css for unit objectives */
 
 
+/* css for unit measures */
+.unit_measure-name{
+    width: 25%;
+}
+.unit_measure-type{
+    width: 5%;
+}
+.unit_measure-formula{
+    width: 5%;
+}
+.unit_measure-objective{
+    width: 25%;
+}
+.unit_measure-contributory{
+    width: 20%;
+}
+.unit_measure-encoder{
+    width: 25%;
+}
+/* /.css for unit measures */
+
+
 /* css for table */
 thead{
     background-color:rgba(8, 42, 72, 1);
     color: #fff;
+}
+thead>tr>td{
+    vertical-align: middle !important;
 }
 tr:hover{
     background-color:rgba(8, 42, 72, 0.1);

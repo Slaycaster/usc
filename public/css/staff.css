@@ -103,10 +103,35 @@ a.active{
 /* ./css for staff objectives */
 
 
+/* css for staff measures */
+.staff_measure-name{
+    width: 25%;
+}
+.staff_measure-type{
+    width: 5%;
+}
+.staff_measure-formula{
+    width: 5%;
+}
+.staff_measure-objective{
+    width: 25%;
+}
+.staff_measure-contributory{
+    width: 20%;
+}
+.staff_measure-encoder{
+    width: 25%;
+}
+/* /.css for staff measures */
+
+
 /* css for table */
 thead{
     background-color:rgba(120, 34, 37, 1);
     color: #fff;
+}
+thead>tr>td{
+    vertical-align: middle !important;
 }
 tr:hover{
     background-color:rgba(120, 34, 37, 0.1);

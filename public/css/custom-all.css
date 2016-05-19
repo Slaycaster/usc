@@ -226,6 +226,9 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 .table-bordered>thead>tr>td{
     border-bottom-width: 1px; 
 }
+table {
+    border: 0px !important;
+}
 /*  /.css for scorecard */
 
 

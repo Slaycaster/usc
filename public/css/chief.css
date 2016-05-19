@@ -118,6 +118,9 @@ thead{
     background-color:rgba(54, 54, 54, 1);
     color: #fff;
 }
+thead>tr>td{
+    vertical-align: middle !important;
+}
 tr:hover{
     background-color:rgba(54, 54, 54, .1);
     
