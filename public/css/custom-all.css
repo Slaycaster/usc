@@ -29,6 +29,10 @@ body.modal-open .wrap{
     /* blur modal on show */
 }
 
+/*.mod{
+    text-align: left !important;
+}
+*/
 a.navbar-brand.layout-custom-pnpname:link,
 a.navbar-brand.layout-custom-pnpabb:link,
 a.navbar-brand.layout-custom-pnpname:hover,
@@ -415,67 +419,5 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-.chief-custom-td1{
-    width:30% !important;
-}
-.chief-custom-td2{
-    width:10% !important;
-}
-.chief-custom-td3{
-    width:10% !important;
-}
-.chief-custom-td4{
-    width:25% !important;
-}
-.chief-custom-td5{
-    width:8% !important;
-}
-.chief-custom-td6{
-    width:17% !important;
-}
-
-
-.staff-custom-td1,
-.staff-custom-td2,
-.staff-custom-td3,
-.staff-custom-td4,
-.staff-custom-td5,
-.staff-custom-td6,
-.staff-custom-td7,
-.staff-custom-td8{
-    text-align: center;
-    vertical-align: middle !important;
-}
-
-.mod{
-    text-align: left !important;
-}
-
-.side-nav{
-    margin-top: 0em;
-}
-
-.sidebar .sidebar-search{
-    padding-top: 4em;
-
-}
-
-
-
-*/
 
 
