@@ -43,39 +43,35 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> Staff Objectives of {{ $staff_user->Staff->StaffName }}.</div>
+								<div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw">    </i> Staff Objectives of {{ $staff_user->Staff->StaffName }}.
+                                </div>
+                                <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw">    </i> Staff Objectives of {{ $staff_user->Staff->StaffAbbreviation }}.
+                                </div>
 							</div>
 							<!--./div class row-->
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-    									
-                                        <td class="objective-custom-td1" ng-click="sort('staff_objective.StaffObjectiveName')">Staff Objective Name
-                                            <span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.StaffObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        <td class="staff_objective-name">
+                                            Objective Name
                                         </td>
 
-                                        <td class="objective-custom-td2" ng-click="sort('staff_objective.perspective.PerspectiveName')">Perspective
-                                            <span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.perspective.PerspectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        <td class="staff_objective-perspective">
+                                            Perspective
                                         </td>
                                         
-                                        <td class="objective-custom-td3" ng-click="sort('staff_objective.chief_objective.ChiefObjectiveName')">Contributory to Chief's Objective
-                                            <span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.chief_objective.ChiefObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        <td class="staff_objective-contributory">
+                                            Contributory to Chief's Objective
                                         </td>
-
-
-    									<td class="objective-custom-td4" ng-click="sort('staff_objective.staff.StaffAbbreviation')">Staff
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.staff.StaffAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									<td class="staff_objective-encoder">
+                                            Last Encoded by	
     									</td>
-    									<td class="objective-custom-td5" ng-click="sort('staff_objective.user_staff.rank.RankCode')">Last Encoded by
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='staff_objective.user_staff.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-    									</td>
-    									<td class="objective-custom-td6"></td>
+    									<td></td>
     								</thead>
     								<tr dir-paginate='staff_objective in staff_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% staff_objective.StaffObjectiveName %></td>
     									<td><% staff_objective.perspective.PerspectiveName %></td>
                                         <td><% staff_objective.chief_objective.ChiefObjectiveName %></td>
-    									<td><% staff_objective.staff.StaffAbbreviation %></td>
     									<td><% staff_objective.user_staff.rank.RankCode %> <% staff_objective.user_staff.UserStaffName %> <% staff_objective.user_staff.UserStaffLastName %></td>
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', staff_objective.StaffObjectiveID)"><span class="fa fa-edit fa-fw"></button>

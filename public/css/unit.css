@@ -7,7 +7,6 @@
 
 
 /* css for layout */
-
 @media(max-width:768px){
     .layout-custom-username{
         text-align: center;
@@ -18,28 +17,22 @@
         border-color:#082A48;
     }
 }
-
 @media(min-width:768px){
     .layout-custom-username{
         display: none;
     }
 }
-
 .layout-title-navbar{
     margin-bottom: -3em; 
     background-color:rgba(8, 42, 72, 1);
     border-bottom-color: rgba(8, 42, 72, 1);
 }
-
 .sidebar-search{
 background-color:rgba(8, 42, 72, 1) !important;
 }
-
 .layout_unit-body{
     background-color: rgba(8, 42, 72, 1);
 }
-
-
 .dropdown-menu>li>a{
     color:#2A363B !important;
 }
@@ -47,61 +40,104 @@ background-color:rgba(8, 42, 72, 1) !important;
     color:#fff !important;
     background-color:rgba(8, 42, 72, 1) !important;
 }
-
-
 a.layout-custom-navbaruser{
     background-color:#082A48;
     color:#fff;
     border-color:#082A48;
 }
-
 a.layout-custom-navbaruser:hover{
     color:#082A48;
     background-color:#fff !important;
 }
-
 .sidebar ul li a.active{
     color: rgba(8, 42, 72, 1) !important;
 }
-
 a.active{
     background-color: #fff !important;
     color:#337ab7 !important;
 }
-
-
 .nav>li>a{
     background-color: #082A48;
     color:#fff !important;
 }
-
 .nav>li>a:focus, 
 .nav>li>a:hover{
     color: rgba(8, 42, 72, 1)!important;
     background-color: #fff;
 }
-
-
 .sidebar ul li{
     border-bottom: none;
 }
 .sidebar-search{
     background-color: #fff;
 }
-
-
 /* /.css for layout */
 
 
+/* css for unit objectives */
+@media screen and (max-width: 767px){
+    .table-responsive>.table>tbody>tr>td{
+        white-space: inherit !important;
+    }
+    .objective-info-name{
+        display: none;
+    }
+}
+@media screen and (min-width: 767px){
+    .objective-info-abb{
+        display: none;
+    }
+}
+.unit_objective-name{
+    width: 30%;
+}
+.unit_objective-perspective{
+    width: 20%;
+}
+.unit_objective-contributory{
+    width: 30%;
+}
+.unit_objective-encoder{
+    width: 15%;
+}
+/* ./css for unit objectives */
 
+
+/* css for unit measures */
+.unit_measure-name{
+    width: 25%;
+}
+.unit_measure-type{
+    width: 5%;
+}
+.unit_measure-formula{
+    width: 5%;
+}
+.unit_measure-objective{
+    width: 25%;
+}
+.unit_measure-contributory{
+    width: 20%;
+}
+.unit_measure-encoder{
+    width: 25%;
+}
+/* /.css for unit measures */
+
+
+/* css for table */
 thead{
     background-color:rgba(8, 42, 72, 1);
     color: #fff;
+}
+thead>tr>td{
+    vertical-align: middle !important;
 }
 tr:hover{
     background-color:rgba(8, 42, 72, 0.1);
     
 }
+/* /.css for table */
 
 
 /* Track */

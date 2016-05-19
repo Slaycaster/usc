@@ -52,26 +52,32 @@
                         </div>
                         <!--/.div class row-->
                         <div class="row">
-                            <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i> 
+                            <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i> 
                             Recent activities from {{ $chief_user->chief->ChiefName }} </div>
+                            <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i> 
+                            Recent activities from {{ $chief_user->chief->ChiefAbbreviation }} </div>
                         </div>
                         <!--./div class row-->
 
                         <div class="table-responsive" ng-show="info">
                             <table class="table table-bordered">
                                 <thead>
-                                    <td colspan="3" class="custom-audit-activity">Activity
+                                    <td colspan="3">
+                                        Activity
                                     </td>
                                 </thead>
                                 <tr dir-paginate='audit_trail in chief_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
-                                    <td>
+                                    <td class="audit-encoder">
                                         <% audit_trail.user_chief.rank.RankCode %> 
                                         <% audit_trail.user_chief.UserChiefFirstName %>
                                         <% audit_trail.user_chief.UserChiefLastName %>
                                     </td>
-                                    <td><% audit_trail.Action %></td>
-                                    
-                                    <td><% audit_trail.created_at | timeago %></td>
+                                    <td class="audit-action">
+                                        <% audit_trail.Action %>
+                                    </td>
+                                    <td class="audit-time">
+                                        <% audit_trail.created_at | timeago %>
+                                    </td>
                                 </tr>
                             </table>
                         </div>

@@ -13,8 +13,20 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
 		success(function(data, status, headers, config) {
 
 			$scope.unit_targets = data;
+
+
+            for(i = 1; i < $scope.unit_targets.length; i++)
+            {
+               if($scope.unit_targets[i - 1].unit_measure.UnitObjectiveID == $scope.unit_targets[i].unit_measure.UnitObjectiveID )    
+               {
+                      $scope.unit_targets[i].unit_measure.unit_objective.UnitObjectiveName = " ";
+               }
+                
+            }
+
+
 			console.log(data);
-				$scope.loading = false;
+			$scope.loading = false;
 		});	
 	};
 
