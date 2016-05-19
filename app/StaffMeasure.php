@@ -24,7 +24,7 @@ class StaffMeasure extends Model {
 	 */
 	protected $primaryKey = 'StaffMeasureID';
 
-	public function chief_measures()
+	public function chief_measure()
 	{
 		return $this->belongsTo('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
 	}
@@ -44,33 +44,33 @@ class StaffMeasure extends Model {
 		return $this->belongsTo('App\StaffObjective','StaffObjectiveID','StaffObjectiveID'); //(model, foreign_key, parent_primary_key)
 	}
 
-	public function unit_measure()
+	public function unit_measures()
 	{
-		return $this->hasMany('App\UnitMeasure','UnitMeasureID','UnitMeasureID');
+		return $this->hasMany('App\UnitMeasure','StaffMeasureID','StaffMeasureID');
 	}
 
 	public function staff_targets()
 	{
-		return $this->hasMany('App\StaffTarget', 'StaffTargetID', 'StaffTargetID');
+		return $this->hasMany('App\StaffTarget', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
 	public function staff_accomplishments()
 	{
-		return $this->hasMany('App\StaffAccomplishment', 'StaffAccomplishmentID', 'StaffAccomplishmentID');
+		return $this->hasMany('App\StaffAccomplishment', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
 	public function staff_owners()
 	{
-		return $this->hasMany('App\StaffOwner', 'StaffOwnerID', 'StaffOwnerID');
+		return $this->hasMany('App\StaffOwner', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
 	public function staff_initiatives()
 	{
-		return $this->hasMany('App\StaffInitiative', 'StaffInitiativeID', 'StaffInitiativeID');
+		return $this->hasMany('App\StaffInitiative', 'StaffMeasureID', 'StaffMeasureID');
 	}
 
 	public function staff_fundings()
 	{
-		return $this->hasMany('App\StaffFunding', 'StaffFundingID', 'StaffFundingID');
+		return $this->hasMany('App\StaffFunding', 'StaffMeasureID', 'StaffMeasureID');
 	}
 }

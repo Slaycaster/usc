@@ -7,6 +7,10 @@ use App\UnitTarget;
 use App\UnitObjective;
 use App\Unit;
 use App\UserUnit;
+use App\UnitAccomplishment;
+use App\UnitOwner;
+use App\UnitInitiative;
+use App\UnitFunding;
 
 //Laravel Modules
 use App\Http\Controllers\Controller;
@@ -153,23 +157,57 @@ class APIUnitTargetsController extends Controller {
 	 */
 	public function updateunitarget($id)
 	{
+		$unit_id = Session::get('unit_user_id', 'default');
+		$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
+				->with('unit')
+				->first();
+
 		$unit_target = UnitTarget::find($id);
 		$unit_target->update(Request::all());
 
 		$unit_target->save();
 
-		
+
+		/*Saving to Accomplishments etc...*/
+
+		$unit_accomplishment = new UnitAccomplishment();
+		$unit_accomplishment->UnitID = $unit_user->UnitID;
+		$unit_accomplishment->UserUnitID = $unit_user->UserUnitID;
+		$unit_accomplishment->save();
+
+		$unit_owner = new UnitOwner();
+		$unit_owner->UnitID = $unit_user->UnitID;
+		$unit_owner->UserUnitID = $unit_user->UserUnitID;
+		$unit_owner->save();
+
+		$unit_initiative = new UnitInitiative();
+		$unit_initiative->UnitID = $unit_user->UnitID;
+		$unit_initiative->UserUnitID = $unit_user->UserUnitID;
+		$unit_initiative->save();
+
+		$unit_funding = new UnitFunding();
+		$unit_funding->UnitID = $unit_user->UnitID;
+		$unit_funding->UserUnitID = $unit_user->UserUnitID;
+		$unit_funding->save();
+
  		$unit_target = UnitTarget::find($id);
  		$unit_target->TargetDate = date('Y-m-d');
+ 		$unit_target->UnitAccomplishmentID = DB::table('unit_accomplishments')->max('UnitAccomplishmentID');
+ 		$unit_target->UnitOwnerID = DB::table('unit_owners')->max('UnitOwnerID');
+ 		$unit_target->UnitInitiativeID = DB::table('unit_initiatives')->max('UnitInitiativeID');
+ 		$unit_target->UnitFundingID = DB::table('unit_fundings')->max('UnitFundingID');
 		$unit_target->save();
-
 
 		return $unit_target;
 	}
 
 	public function updateunitquarter($id)
 	{
-
+		$unit_id = Session::get('unit_user_id', 'default');
+		$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
+				->with('unit')
+				->first();
+		
 		$unit_target = UnitTarget::find($id);
 		$targetperiod = Request::input('TargetPeriod');
 		$targetdate = date('Y-m-d');
@@ -201,6 +239,37 @@ class APIUnitTargetsController extends Controller {
 		$unit_target->TargetPeriod = $targetperiod;
 		$unit_target->TargetDate = $targetdate;
 		$unit_target->save();
+
+		/*Saving to Accomplishments etc...*/
+
+		$unit_accomplishment = new UnitAccomplishment();
+		$unit_accomplishment->UnitID = $unit_user->UnitID;
+		$unit_accomplishment->UserUnitID = $unit_user->UserUnitID;
+		$unit_accomplishment->save();
+
+		$unit_owner = new UnitOwner();
+		$unit_owner->UnitID = $unit_user->UnitID;
+		$unit_owner->UserUnitID = $unit_user->UserUnitID;
+		$unit_owner->save();
+
+		$unit_initiative = new UnitInitiative();
+		$unit_initiative->UnitID = $unit_user->UnitID;
+		$unit_initiative->UserUnitID = $unit_user->UserUnitID;
+		$unit_initiative->save();
+
+		$unit_funding = new UnitFunding();
+		$unit_funding->UnitID = $unit_user->UnitID;
+		$unit_funding->UserUnitID = $unit_user->UserUnitID;
+		$unit_funding->save();
+
+ 		$unit_target = UnitTarget::find($id);
+ 		$unit_target->TargetDate = date('Y-m-d');
+ 		$unit_target->UnitAccomplishmentID = DB::table('unit_accomplishments')->max('UnitAccomplishmentID');
+ 		$unit_target->UnitOwnerID = DB::table('unit_owners')->max('UnitOwnerID');
+ 		$unit_target->UnitInitiativeID = DB::table('unit_initiatives')->max('UnitInitiativeID');
+ 		$unit_target->UnitFundingID = DB::table('unit_fundings')->max('UnitFundingID');
+		$unit_target->save();
+
  	
 
 		return $unit_target;

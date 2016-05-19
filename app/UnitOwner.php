@@ -39,4 +39,9 @@ class UnitOwner extends Model {
 		return $this->belongsTo('App\UnitMeasure', 'UnitMeasureID', 'UnitMeasureID');
 	}
 
+	public function unit_target()
+	{
+		return $this->hasOne('App\UnitTarget', 'UnitTargetID', 'UnitTargetID'); //(model, foreign_key, parent_primary_key)
+	}
+
 }

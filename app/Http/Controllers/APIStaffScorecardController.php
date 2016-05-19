@@ -43,6 +43,8 @@ class APIStaffScorecardController extends Controller {
 	
 		return StaffTarget::with('staff_measure')
 			->with('staff_measure.staff_objective')
+			->with('staff_measure.unit_measures.unit_accomplishments')
+			->with('staff_measure.unit_measures.unit_accomplishments.unit')
 			->with('staff_owner')
 			->with('staff_funding')
 			->with('staff_initiative')
@@ -113,7 +115,10 @@ class APIStaffScorecardController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)
+				->first();
+
 		$staff_target = StaffTarget::find($id);
 		
 		$staff_accomplishmentID = $staff_target->StaffAccomplishmentID;
@@ -183,6 +188,9 @@ class APIStaffScorecardController extends Controller {
 			$staff_accomplishment->DecemberAccomplishment = 0;
 
 		$staff_accomplishment->AccomplishmentDate = date('Y-m-d');
+		$staff_accomplishment->StaffMeasureID = Request::input('StaffMeasureID');
+		$staff_accomplishment->UserStaffID = $staff_id;
+		$staff_accomplishment->StaffID = $staff_user->StaffID;
 		$staff_accomplishment->save();
 		
 		

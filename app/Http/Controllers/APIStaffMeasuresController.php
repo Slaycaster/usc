@@ -26,7 +26,7 @@ class APIStaffMeasuresController extends Controller {
 		return StaffMeasure::where('StaffID', '=', $staff)
 			->with('staff_objective')
 			->with('staff')
-			->with('chief_measures')
+			->with('chief_measure')
 			->with('user_staff')
 			->with('user_staff.rank')
 			->get();
@@ -44,7 +44,7 @@ class APIStaffMeasuresController extends Controller {
 			$chief_measures = ChiefMeasure::all();
 			$staff_objectives = StaffObjective::where('StaffID','=', $staff->StaffID)->get();
 
-			$staff_measures = StaffMeasure::with('staff')->with('chief_measures')->where('StaffID', '=', $staff_user->StaffID)->get();
+			$staff_measures = StaffMeasure::with('staff')->with('chief_measure')->where('StaffID', '=', $staff_user->StaffID)->get();
 			
 			return view('staff-ui.staff-measures')
 				->with('staff_objectives', $staff_objectives)
@@ -136,7 +136,7 @@ class APIStaffMeasuresController extends Controller {
 	public function update($id)
 	{
 
-		$staff_measure= StaffMeasure::find($id)->with('staff_objective')->with('chief_measures')->with('chief_measures.chief_objective')->with('chief_measures.chief_objective.chief')->first();
+		$staff_measure= StaffMeasure::find($id)->with('staff_objective')->with('chief_measure')->with('chief_measure.chief_objective')->with('chief_measure.chief_objective.chief')->first();
 
 		$staff_id = Session::get('staff_user_id', 'default');
 		$staff = Request::input('StaffID');

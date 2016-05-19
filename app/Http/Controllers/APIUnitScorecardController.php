@@ -33,7 +33,7 @@ class APIUnitScorecardController extends Controller {
 
 		$unit_id = Session::get('unit_user_id', 'default'); //get the UserunitID stored in session.
 
-		$unit = UserChief::where('UserUnitID', '=', $unit_id)->select('UnitID')->lists('UnitID'); //Get the Unit of the chief
+		$unit = UserUnit::where('UserUnitID', '=', $unit_id)->select('UnitID')->first(); //Get the Unit of the unit
 
 		$currentYear = date("Y");		
 		
@@ -43,14 +43,14 @@ class APIUnitScorecardController extends Controller {
 	
 		return UnitTarget::with('unit_measure')
 			->with('unit_measure.unit_objective')
-			->with('unit_measure.unit_owners')
-			->with('unit_measure.unit_fundings')
-			->with('unit_measure.unit_initiatives')
-			->with('unit_measure.unit_accomplishments')
+			->with('unit_owner')
+			->with('unit_funding')
+			->with('unit_initiative')
+			->with('unit_accomplishment')
 			->with('user_unit')
 			->with('user_unit.rank')
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
-			->where('UnitID', '=', $unit_id)
+			->where('UnitID', '=', $unit->UnitID)
 			->get();
 		}
 		else
@@ -113,7 +113,105 @@ class APIUnitScorecardController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$unit_id = Session::get('unit_user_id', 'default');
+		$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
+			->first();
+
+		$unit_target = UnitTarget::find($id);
+		
+		$unit_accomplishmentID = $unit_target->UnitAccomplishmentID;
+		$unit_ownerID = $unit_target->UnitOwnerID;
+		$unit_initiativeID = $unit_target->UnitInitiativeID;
+		$unit_fundingID = $unit_target->UnitFundingID;
+
+		$unit_accomplishment = UnitAccomplishment::find($unit_accomplishmentID);
+		if (Request::input('JanuaryAccomplishment'))
+			$unit_accomplishment->JanuaryAccomplishment = Request::input('JanuaryAccomplishment');
+		else
+			$unit_accomplishment->JanuaryAccomplishment = 0;	
+
+		if(Request::input('FebruaryAccomplishment'))
+			$unit_accomplishment->FebruaryAccomplishment = Request::input('FebruaryAccomplishment');
+		else
+			$unit_accomplishment->FebruaryAccomplishment = 0;
+
+		if(Request::input('MarchAccomplishment'))
+			$unit_accomplishment->MarchAccomplishment = Request::input('MarchAccomplishment');
+		else
+			$unit_accomplishment->MarchAccomplishment = 0;
+
+		if(Request::input('AprilAccomplishment'))
+			$unit_accomplishment->AprilAccomplishment = Request::input('AprilAccomplishment');
+		else
+			$unit_accomplishment->AprilAccomplishment = 0;
+
+		if(Request::input('MayAccomplishment'))
+			$unit_accomplishment->MayAccomplishment = Request::input('MayAccomplishment');
+		else
+			$unit_accomplishment->MayAccomplishment = 0;
+
+		if(Request::input('JuneAccomplishment'))
+			$unit_accomplishment->JuneAccomplishment = Request::input('JuneAccomplishment');
+		else
+			$unit_accomplishment->JuneAccomplishment = 0;
+
+		if(Request::input('JulyAccomplishment'))
+			$unit_accomplishment->JulyAccomplishment = Request::input('JulyAccomplishment');
+		else
+			$unit_accomplishment->JulyAccomplishment = 0;
+
+		if(Request::input('AugustAccomplishment'))
+			$unit_accomplishment->AugustAccomplishment = Request::input('AugustAccomplishment');
+		else
+			$unit_accomplishment->AugustAccomplishment = 0;
+
+		if(Request::input('SeptemberAccomplishment'))
+			$unit_accomplishment->SeptemberAccomplishment = Request::input('SeptemberAccomplishment');
+		else
+			$unit_accomplishment->SeptemberAccomplishment = 0;
+		
+		if(Request::input('OctoberAccomplishment'))
+			$unit_accomplishment->OctoberAccomplishment = Request::input('OctoberAccomplishment');
+		else
+			$unit_accomplishment->OctoberAccomplishment = 0;
+
+		if(Request::input('NovemberAccomplishment'))
+			$unit_accomplishment->NovemberAccomplishment = Request::input('NovemberAccomplishment');
+		else
+			$unit_accomplishment->NovemberAccomplishment = 0;
+
+		if(Request::input('DecemberAccomplishment'))
+			$unit_accomplishment->DecemberAccomplishment = Request::input('DecemberAccomplishment');
+		else
+			$unit_accomplishment->DecemberAccomplishment = 0;
+
+		$unit_accomplishment->AccomplishmentDate = date('Y-m-d');
+		$unit_accomplishment->UnitMeasureID = Request::input('UnitMeasureID');
+		$unit_accomplishment->UserUnitID = $unit_id;
+		$unit_accomplishment->UnitID = $unit_user->UnitID;
+		$unit_accomplishment->save();
+		
+		
+		$unit_owner = UnitOwner::find($unit_ownerID);
+		$unit_owner->UnitOwnerContent = Request::input('UnitOwnerContent');
+		$unit_owner->UnitOwnerDate = date('Y-m-d');
+		$unit_owner->UnitMeasureID = Request::input('UnitMeasureID');
+		$unit_owner->save();
+
+		$unit_initiative = UnitInitiative::find($unit_initiativeID);
+		$unit_initiative->UnitInitiativeContent = Request::input('UnitInitiativeContent');
+		$unit_initiative->UnitInitiativeDate = date('Y-m-d');
+		$unit_initiative->UnitMeasureID = Request::input('UnitMeasureID');
+		$unit_initiative->save();
+
+		$unit_funding = UnitFunding::find($unit_fundingID);
+		$unit_funding->UnitFundingEstimate = Request::input('UnitFundingEstimate');
+		$unit_funding->UnitFundingActual = Request::input('UnitFundingActual');
+		$unit_funding->UnitFundingDate = date('Y-m-d');
+		$unit_funding->UnitMeasureID = Request::input('UnitMeasureID');
+		$unit_funding->save();
+
+		return $unit_target;
 	}
 
 	/**

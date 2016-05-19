@@ -117,8 +117,6 @@ class APIUnitObjectivesController extends Controller {
 
 		$new_objectivename = Request::input('UnitObjectiveName');
 		$new_perspective = Perspective::find(Request::input('PerspectiveID'))->first();
-		$new_staffobjective = StaffObjective::find(Request::input('StaffObjectiveID'))->first();
-
 
 		$action = 'Updated the Objective: "' . $unit_obj->UnitObjectiveName . '" under "' . $unit_obj->perspective->PerspectiveName;
 
@@ -137,7 +135,6 @@ class APIUnitObjectivesController extends Controller {
 		}
 
 		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $unitid, $unit));
-
 
 
 		$unit_objective = UnitObjective::find($id);

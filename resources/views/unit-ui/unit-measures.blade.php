@@ -14,13 +14,12 @@
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
-
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
-					<div class="panel panel-warning">
+					<div class="panel panel-warning measures-custom-panel">
 						<div class="panel-heading measures-custom-heading">
 							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Measures</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
@@ -68,7 +67,7 @@
                                         </td>
 
                                         <td class="measure-custom-td5">
-                                            Staff Measure Name
+                                            Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure
                                         </td>
 
 
@@ -191,12 +190,12 @@
 
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="staff_measure" class="control-label">Staff Measure Name:</label>
+                                        <label for="staff_measure" class="control-label">Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure:</label>
                                     </td>
                                     <td class="col-md-8">
-                                        <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" required ng-touched>
+                                        <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" ng-touched>
                                             <option value="0">
-                                                        Select Staff Measure
+                                                        Select {{ $unit->staff->StaffAbbreviation }} Measure
                                                     </option>
                                             @foreach($staff_measures as $staff_measure)
                                                     <option value= "<?=$staff_measure->StaffMeasureID?>">

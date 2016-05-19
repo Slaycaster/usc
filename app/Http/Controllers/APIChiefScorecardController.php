@@ -11,6 +11,8 @@ use App\ChiefOwner;
 use App\ChiefInitiative;
 use App\ChiefFunding;
 
+use App\StaffAccomplishment;
+
 //Laravel Modules
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
@@ -40,9 +42,13 @@ class APIChiefScorecardController extends Controller {
 		$chief = Chief::where('ChiefID', '=', $chief_user->ChiefID)->first();
 			$chief_objectives = ChiefObjective::all();
 			$chief_measures = ChiefMeasure::with('chief')->where('ChiefID', '=', $chief_user->ChiefID)->get();
-	
+
+
 		return ChiefTarget::with('chief_measure')
 			->with('chief_measure.chief_objective')
+			->with('chief_measure.staff_measures.staff_accomplishments')
+			->with('chief_measure.staff_measures.staff_accomplishments.staff')
+			->with('chief_measure.staff_measures.unit_measures.unit_accomplishments')
 			->with('chief_accomplishment')
 			->with('chief_owner')
 			->with('chief_initiative')
@@ -50,7 +56,7 @@ class APIChiefScorecardController extends Controller {
 			->with('user_chief')
 			->with('user_chief.rank')
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
-			//->where('ChiefID', '=', $chief_id)
+			->where('ChiefID', '=', $chief_user->ChiefID)
 			->get();
 		}
 		else
@@ -113,11 +119,17 @@ class APIChiefScorecardController extends Controller {
 	 */
 	public function update($id)
 	{
+		$chief_id = Session::get('chief_user_id', 'default');
+		$chief_user = UserChief::where('UserChiefID', '=', $chief_id)
+			->first();
+
 		$chief_target = ChiefTarget::find($id);
 		$chief_accomplishmentID = $chief_target->ChiefAccomplishmentID;
 		$chief_ownerID = $chief_target->ChiefOwnerID;
 		$chief_initiativeID = $chief_target->ChiefInitiativeID;
 		$chief_fundingID = $chief_target->ChiefFundingID;
+
+		/*
 
 		$chief_accomplishment = ChiefAccomplishment::find($chief_accomplishmentID);
 		$chief_accomplishment->JanuaryAccomplishment = Request::input('JanuaryAccomplishment');
@@ -135,21 +147,47 @@ class APIChiefScorecardController extends Controller {
 		$chief_accomplishment->AccomplishmentDate = date('Y-m-d');
 		$chief_accomplishment->save();
 
+		*/
+
 		$chief_owner = ChiefOwner::find($chief_ownerID);
-		$chief_owner->ChiefOwnerContent = Request::input('ChiefOwnerContent');
+		
+		// Checks if there's an input or not. [Resolving ErrorException: Creating default object from empty value]~
+		if(Request::input('ChiefOwnerContent'))
+			$chief_owner->ChiefOwnerContent = Request::input('ChiefOwnerContent');
+		else
+			$chief_owner->ChiefOwnerContent = '';
+
 		$chief_owner->ChiefOwnerDate = date('Y-m-d');
 		$chief_owner->ChiefMeasureID = Request::input('ChiefMeasureID');
 		$chief_owner->save();
 
 		$chief_initiative = ChiefInitiative::find($chief_initiativeID);
-		$chief_initiative->ChiefInitiativeContent = Request::input('ChiefInitiativeContent');
+
+		// Checks if there's an input or not. [Resolving ErrorException: Creating default object from empty value]~
+		if(Request::input('ChiefInitiativeContent'))
+			$chief_initiative->ChiefInitiativeContent = Request::input('ChiefInitiativeContent');
+		else
+			$chief_initiative->ChiefInitiativeContent = '';
+
+
 		$chief_initiative->ChiefInitiativeDate = date('Y-m-d');
 		$chief_initiative->ChiefMeasureID = Request::input('ChiefMeasureID');
 		$chief_initiative->save();
 
 		$chief_funding = ChiefFunding::find($chief_fundingID);
-		$chief_funding->ChiefFundingEstimate = Request::input('ChiefFundingEstimate');
-		$chief_funding->ChiefFundingActual = Request::input('ChiefFundingActual');
+
+		// Checks if there's an input or not. [Resolving ErrorException: Creating default object from empty value]~
+		if(Request::input('ChiefFundingEstimate'))
+			$chief_funding->ChiefFundingEstimate = Request::input('ChiefFundingEstimate');
+		else
+			$chief_funding->ChiefFundingEstimate = 0;
+
+		// Checks if there's an input or not. [Resolving ErrorException: Creating default object from empty value]~
+		if(Request::input('ChiefFundingActual'))
+			$chief_funding->ChiefFundingActual = Request::input('ChiefFundingActual');
+		else
+			$chief_funding->ChiefFundingActual = 0;
+
 		$chief_funding->ChiefFundingDate = date('Y-m-d');
 		$chief_funding->ChiefMeasureID = Request::input('ChiefMeasureID');
 		$chief_funding->save();

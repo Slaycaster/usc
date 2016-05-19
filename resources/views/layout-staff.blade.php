@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-PH">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#3b5998 ">
-    <meta name="msapplication-navbutton-color" content="#3b5998 ">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#3b5998">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="theme-color" content="#782225 ">
+    <meta name="msapplication-navbutton-color" content="#782225 ">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#782225">
+    <meta name="description" content="Philippine National Police Unit Scorecard">
+    <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
+    <meta name="author" content="Fare Matrix">
 
-    <title>Staff Dashboard || Philippine National Police Unit Scorecard</title>
+    <title>Staff Dashboard - Philippine National Police Unit Scorecard</title>
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
@@ -59,7 +59,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body class="layout_staff-body">
@@ -73,14 +72,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand layout-custom-unit-pnpname" href="{{ url('/') }}">
+                <a class="navbar-brand layout-custom-pnpname" href="{{ url('/') }}">
                     Philippine National Police Unit Scorecard
                 </a>
-                <a class="navbar-brand layout-custom-unit-pnpabb" href="{{ url('/') }}">
+                <a class="navbar-brand layout-custom-pnpabb" href="{{ url('/') }}">
                     PNP Unit Scorecard
                 </a>
             </div>
-            <div class="layout_unit-custom_all-unit_user"> 
+            <div class="layout-custom-username"> 
                 <i class="glyphicon glyphicon-user"></i>&nbsp;
                     Welcome 
                     {{ $staff_user->rank->RankCode }} 
@@ -209,20 +208,6 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            
-                        </li>
-                    	-->
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -231,7 +216,6 @@
         </nav>
         <div class="the-blur"></div>
 
-        <br><br>
         <div id="page-wrapper" class="unit-page-wrapper">
             @yield('content')
         </div>

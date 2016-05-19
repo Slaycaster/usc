@@ -8,9 +8,16 @@
     src: url('../fonts/orbitron-medium.otf');
 }
 
-body, h1, h3, h4, h5, h6
+/* font import */
+
+body, h1, h3, h4, h5, h6, table
 {
-	font-family: 'ubuntu';
+    font-family: 'ubuntu';
+    /* use ubuntu for the ff tags   */
+}
+
+thead{
+    text-align: center;
 }
 
 body.modal-open .wrap{
@@ -19,123 +26,335 @@ body.modal-open .wrap{
     -o-filter: blur(15px);
     -ms-filter: blur(15px);
     filter: blur(15px);
+    /* blur modal on show */
 }
 
+a.navbar-brand.layout-custom-pnpname:link,
+a.navbar-brand.layout-custom-pnpabb:link,
+a.navbar-brand.layout-custom-pnpname:hover,
+a.navbar-brand.layout-custom-pnpabb:hover,
+a.navbar-brand.layout-custom-pnpname:visited,
+a.navbar-brand.layout-custom-pnpabb:visited{
+    color:#fff;
+    /* color of navbar-brand, active, hover, and visited */
 
-
-@media(max-width:768px){
-    .layout-custom-navbrand{
-        display: none;
-    }
-    .unitdashboard-custom-unit-dashabb{
-        padding-top: 8px !important;
-        text-align: center;
-        color: #8a6d3b;
-        font-size: 1.5em !important;
-        position: relative;
-        z-index: 5;
-        background-color:#337ab7;
-    }   
-    .layout-custom-unit-pnpname,
-    .unitdashboard-custom-unit-activityname,
-    .unitdashboard-custom-unit-activitylogname,
-    .dashboard-custom-unit-dashname,
-    .unitdashboard-custom-unitpic{
-        display: none;
-    }
 }
 
-@media(max-width: 992px){
-    .unitdashboard-custom-unitpic{
-        margin-top: 0px !important;
-        margin-bottom: 1.5em;
-    }
-}
+/* layout css */
 
-@media(max-width: 1200px){
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px;
-        margin-top: 0px !important;
-        margin-bottom: 1.5em;
-    }
-}
-
-@media(max-width:768px){
-        
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px; 
-        margin-top: 0em !important;
-        margin-bottom: 1.5em;
+    @media (min-width: 768px){
+        a.navbar-brand.layout-custom-pnpabb,
+        .nav>li.layout-custom-usernavoptions{
+            display: none;
+        }
+        #page-wrapper{
+            margin-left: 251px;
+        }
     }
 
-    .objectives-custom-heading,
-    .measures-custom-heading{
-        padding-top: 5em !important;
-        text-align: center;
-        font-size: 1em !important;
-        position: relative;
+    @media (max-width: 768px){
+        a.navbar-brand.layout-custom-pnpname,
+        .layout-custom-navbrand{
+            display: none;
+        }
+        .sidebar-search{
+            margin-top: 5.5em;
+        }
+        .alert-info{
+            text-align: left !important;
+        }
     }
-    .unitdashboard-custom-unitpic{
-        height:200px; 
-        width:200px; 
-    }   
-    .panel-info{
-        margin-top: 3em !important;
+
+    @media screen and (max-width: 767px){
+        .table-responsive>.table>tbody>tr>td{
+            white-space: pre-line;
+            word-wrap:break-word;
+            text-align: left;
+        }
+        .scorecard-minilabel{
+            margin-top: -2em;
+        }
     }
-    .panel-warning{
-        margin-top: 3em !important;
+
+/* /. layout css */
+
+
+
+/* dashboard css */
+    
+    /*  
+    .dashboard-custom-dashabb,
+    .dashboard-custom-dashname{
+        box-shadow: 8px 8px 5px #888888;
+    }*/
+
+    @media (min-width: 768px){
+        .dashboard-custom-dashabb{
+            display: none;
+        }
+        .dashboard-custom-dashname{
+            padding: 1em;
+            color:#8a6d3b;
+            font-size: 250%;
+            margin-top:1.7em;
+            text-align: center;
+            background-color: #fcf8e3;
+        }
+        .dashboard-custom-picture{
+            height:200px; 
+            width:200px;
+            margin-top: 2em !important;
+            margin-bottom: 1.5em;
+        }
     }
-}
 
+    @media (max-width: 768px){
+        .dashboard-custom-dashname,
+        .dashboard-custom-picture{
+            display: none;
+        }
+        .dashboard-custom-dashabb{
+            padding: 1em;
+            color:#8a6d3b;
+            font-size: 250%;
+            margin-top:1.7em;
+            text-align: center;
+            background-color: #fcf8e3;
+        }
+        .dashboard-custom-pictureabb{
+            display: inline !important;
+            height: 3em;
+            width: 3em;
+            margin-bottom: .5em;
+        }
 
-@media(min-width:768px){
-    .nav>li.layout-custom-usernavoptions,
-    .unitdashboard-custom-unit-activitylogabb,
-    .unitdashboard-custom-unit-activityabb,
-    .unitdashboard-custom-unit-activityabb,
-    .layout-custom-unit-pnpabb,
-    .dashboard-custom-unit-dashabb{
-        display: none;
     }
-}
 
-
-@media(max-width:768px){
-    .sidebar-search{
-        margin-top: 6em;
+    @media (min-width: 768px) and (max-width: 1200px){
+        .dashboard-custom-picture{
+            height:200px; 
+            width:200px;
+            margin-top: -1em !important;
+            margin-bottom: 1.5em;
+        }
     }
-    .unitdashboard-custom-picabb{
-        display: inline !important;
-        height: 100px;
-        width: 100px;
+
+/* /. dashboard css */
+
+
+/*  css for scorecard */
+
+    @media (min-width: 768px){
+        .scorecard-custom-panel{
+            margin-top: 4.5em;
+        }
+        .unitdashboard-custom-picabb{
+            height:200px; 
+            width:200px;
+            margin-bottom: 1.5em;
+        }
     }
-}
-
-
-@media(min-width:768px){
-    .objectives-custom-heading,
-    .measures-custom-heading{
-        padding-top: 5em !important;
-        text-align: center;
-        font-size: 1em !important;
-        position: relative;
+    @media (max-width: 768px){
+        .scorecard-custom-panel{
+            margin-top: 6.5em;
+            text-align: center;
+        }
+        .unitdashboard-custom-picabb{
+            display: inline !important;
+            height:10em; 
+            width:10em;
+            margin-top: 2em;
+        }
     }
-    #page-wrapper{
-        margin-left: 251px;
+
+
+    .scorecard-objectives{
+        width:20em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+        padding-top: 1.5em;
     }
-}
+    .scorecard-owner,
+    .scorecard-initiatives{
+        width:15em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+        padding-top: 1.5em;
+    }
+    .scorecard-action{
+        width:8em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+        padding-top: 1.5em;
+    }
+    .scorecard-month{
+        width:8em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+    }
+    .scorecard-input-month{
+        width:4.5em;   
+        text-align:center;
+    }
+    .scorecard-input-estimate,
+    .scorecard-input-actual,
+    .scorecard-input-variance{
+        width:10em;  
+        text-align:center;
+    }
+    .scorecard-name{
+        width:20em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+    }
+    .scorecard-estimate,
+    .scorecard-actual,
+    .scorecard-variance{
+        width:10em; 
+        border-color:transparent; 
+        background-color:transparent;  
+        text-align:center;
+    }
+
+/*  /.css for scorecard */
 
 
-/*#page-wrapper{
-    margin-left: 251px;
-}
-*/
+/*  css for objectives */
 
-.modal-backdrop {background: #f7f7f7;}
+    @media (min-width: 768px){
+        .objectives-custom-panel{
+            margin-top: 3em;
+        }
+    }
+    @media (max-width: 768px){
+        .objectives-custom-panel{
+            margin-top: 5em;
+            text-align: center;
+        }
+    }
+
+    /* obectives table */
+    .objective-custom-td1{
+        width:30% !important;
+    }
+    .objective-custom-td2{
+        width:20% !important;
+    }
+    .objective-custom-td3{
+        width:25% !important;
+    }
+    .objective-custom-td4{
+        width:7% !important;
+    }
+    .objective-custom-td5{
+        width:20% !important;
+    }
+
+    .objective-custom-td1,
+    .objective-custom-td2,
+    .objective-custom-td3,
+    .objective-custom-td4,
+    .objective-custom-td5,
+    .objective-custom-td6,
+    .objective-custom-td7,
+    .objective-custom-td8{
+        vertical-align: middle !important;
+    }
 
 
+    /* /.obectives table */
+
+/*  /.css for objectives */
+
+/*  css for measures */
+
+    @media (min-width: 768px){
+        .measures-custom-panel{
+            margin-top: 3em;
+        }
+    }
+    @media (max-width: 768px){
+        .measures-custom-panel{
+            margin-top: 5em;
+            text-align: center;
+        }
+    }
+
+    .measure-custom-td1,
+    .measure-custom-td2,
+    .measure-custom-td3,
+    .measure-custom-td4,
+    .measure-custom-td5,
+    .measure-custom-td6,
+    .measure-custom-td7,
+    .measure-custom-td8{
+        vertical-align: middle !important;
+    }
+
+/*  /.css for measures */
+
+/*  css for targets */
+
+    @media (min-width: 768px){
+        .targets-custom-panel{
+            margin-top: 4.5em;
+        }
+    }
+    @media (max-width: 768px){
+        .targets-custom-panel{
+            margin-top: 6.5em;
+            text-align: center;
+        }
+    }
+/*  /.css for targets */
+
+/*  css for audit trails  */
+
+    @media (min-width: 768px){
+        .dashboard-custom-activitylogabb{
+            display: none;
+        }
+        .dashboard-custom-activitylogname{
+            font-size: 250%;
+            padding-top:1.5em;
+            padding-bottom: 1em;
+            text-align: center;
+            color:#8a6d3b;
+            background-color: #fcf8e3;
+        }
+        .audit-custom-panel{
+            margin-top:3em;
+        }
+    }
+
+    @media (max-width: 768px){
+        .dashboard-custom-activitylogname{
+            display: none;
+        }
+        .dashboard-custom-activitylogabb{
+            font-size: 250%;
+            padding-top:1.5em;
+            padding-bottom: 1em;
+            text-align: center;
+            color:#8a6d3b;
+            background-color: #fcf8e3;
+        }
+        .audit-custom-panel{
+            margin-top: 5em;
+            text-align: center;
+        }
+    }
+
+
+/*  /.css for audit trails  */
+
+
+/*  css for modal */
 .close {
     font-size: 50px;
     display:block;
@@ -145,86 +364,48 @@ body.modal-open .wrap{
     border-top: none !important;
 }
 
+.modal-backdrop{
+     background-color:rgba(54, 54, 54, 1);
+}
+/* /.css for modal */
 
-/* Yujin Custom CSS */
 
-.unitdashboard-custom-unit-activityname,
-.unitdashboard-custom-unit-activityabb,
-.dashboard-custom-unit-dashname,
-.dashboard-custom-unit-dashabb{
-    margin-top:1.5em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    font-size: 250%;
+
+/*  scorecard  */
+.table>tbody>tr>td{
+    vertical-align: middle;
+}
+.scorecard-objective{
+    vertical-align: middle !important;
+}
+.table-bordered>thead>tr>td{
+    border-bottom-width: 1px; 
+}
+
+.scorecard-type,
+.scorecard-month{
     text-align: center;
-    color:#8a6d3b;
-    background-color: #fcf8e3;
 }
 
-.unitdashboard-custom-unit-activitylogname,
-.unitdashboard-custom-unit-activitylogabb{
-    margin-top:0em;
-    padding-top: 1.5em;
-    padding-bottom: 1em;
-    font-size: 250%;
-    text-align: center;
-    color:#8a6d3b;
-    background-color: #fcf8e3;
-}
-
-.unitdashboard-custom-unitpicabb{
-        height:100px !important; 
-        width:100px !important; 
-        display: inline !important;
-        margin-top: 0px;
-        margin-bottom: 1em;
-}
-
-a.navbar-brand{
-    color: #fff !important;
-}
+/*  /.scorecard  */
 
 
-/* mobile view */
-
-.unitdashboard-custom-picabb{
-    display: none;
-}
-
-.unitdashboard-custom-unitpic{
-    height:200px; 
-    width:200px; 
-    margin-top: 2em;
-}
-
-
-.dashboard-custom-unit-dashabb,
-.dashboard-custom-unit-dashname{
-    box-shadow: 8px 8px 5px #888888;
-}
-
-
-
-/* scroll bar */
-
+/* scroll bar plug-in */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);*/ 
-    -webkit-border-radius: 0px;
-    background-color:#eee;
-    border-radius: 0px;
-}
-
+ 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 0px;
     border-radius: 0px;
-    background:#666; 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background: rgba(36,36,36,.5); 
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1); */
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(36,36,36,.1); 
 }
 
 * {
@@ -232,10 +413,21 @@ a.navbar-brand{
   -moz-border-radius: 0 !important;
 }
 
-td{
-    vertical-align: middle !important;
-    
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 
 .chief-custom-td1{
@@ -257,49 +449,6 @@ td{
     width:17% !important;
 }
 
-.custom-audit-activity,
-.objective-custom-td1,
-.objective-custom-td2,
-.objective-custom-td3,
-.objective-custom-td4,
-.objective-custom-td5,
-.objective-custom-td6,
-.objective-custom-td7,
-.objective-custom-td8{
-    text-align: center;
-    vertical-align: middle !important;
-}
-
-.measure-custom-td1,
-.measure-custom-td2,
-.measure-custom-td3,
-.measure-custom-td4,
-.measure-custom-td5,
-.measure-custom-td6,
-.measure-custom-td7,
-.measure-custom-td8{
-    text-align: center;
-    vertical-align: middle !important;
-}
-
-
-
-.objective-custom-td1{
-    width:30% !important;
-}
-
-.objective-custom-td2{
-    width:20% !important;
-}
-.objective-custom-td3{
-    width:25% !important;
-}
-.objective-custom-td4{
-    width:7% !important;
-}
-.objective-custom-td5{
-    width:20% !important;
-}
 
 .staff-custom-td1,
 .staff-custom-td2,
@@ -326,18 +475,8 @@ td{
 
 }
 
-#wrapper{
-    margin-top: -3em;
-}
 
 
+*/
 
 
-/*.sidebar .sidebar-nav.navbar-collapse{
-    padding-right:0em;
-}*/
-
-/*.sidebar .sidebar-nav.navbar-collapse{
-    overflow: auto !important;
-    max-height: 350px !important;
-}*/
