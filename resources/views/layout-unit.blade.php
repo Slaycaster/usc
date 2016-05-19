@@ -171,7 +171,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Unit Scorecard Report</a>
+                                    <a href="{{ url('unit/reports') }}">Unit Scorecard Report</a>
                                 </li>
                                 <li>
                                     <a href="#">Unit Scorecard Analysis Report</a>
