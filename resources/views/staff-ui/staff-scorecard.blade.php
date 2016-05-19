@@ -31,90 +31,90 @@
     							<table class="table table-striped table-bordered">
     								<thead>
                                     <tr>
-                                        <td class="objective-custom-td1" rowspan="2">
-                                            OBJECTIVES
+                                        <td rowspan="2">
+                                            <input type="text" class="scorecard-objectives" value="OBJECTIVES" disabled/>
                                         </td>
                                 
-                                        <td class="objective-custom-td2" colspan="3">
+                                        <td colspan="3">
                                             MEASURES
                                         </td>
 
-                                        <td class="objective-custom-td3" rowspan="2" >
-                                            OWNER
+                                        <td rowspan="2" >
+                                            <input type="text" class="scorecard-owner" value="OWNER" disabled/>
                                         </td>
 
-                                        <td class="objective-custom-td4" colspan="12">
+                                        <td colspan="12">
                                             <b>TARGET/ACCOMPLISHMENT</b>
                                         </td>
 
-                                        <td class="objective-custom-td5" rowspan="2">
-                                            INITIATIVES
+                                        <td rowspan="2">
+                                             <input type="text" class="scorecard-initiatives" value="INITIATIVES" disabled/>
                                         </td>
-                                        <td class="objective-custom-td6" colspan="3">
+                                        <td colspan="3">
                                             FUNDING
                                         </td>
-                                         <td class="objective-custom-td7" rowspan="2">
-                                            Action
+                                         <td rowspan="2">
+                                            <input type="text" class="scorecard-action" value="Action" disabled/>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         
                                 
-                                        <td class="objective-custom-td8" colspan="2">
-                                            Name
+                                        <td colspan="2">
+                                             <input type="text" class="scorecard-name" value="Name" disabled/>
                                         </td>
 
-                                        <td class="objective-custom-td9">
+                                        <td>
                                             Type
                                         </td>
                                        
 
-                                        <td class="objective-custom-td12">
-                                            Jan
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="January" disabled/>
                                         </td>
-                                        <td class="objective-custom-td13">
-                                            Feb
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="February" disabled/>
                                         </td>
-                                        <td class="objective-custom-td14">
-                                            Mar
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="March" disabled/>
                                         </td>
-                                        <td class="objective-custom-td15">
-                                            Apr
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="April" disabled/>
                                         </td>
-                                        <td class="objective-custom-td16">
-                                            May
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="May" disabled/>
                                         </td>
-                                        <td class="objective-custom-td17">
-                                            Jun
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="June" disabled/>
                                         </td>
-                                        <td class="objective-custom-td18">
-                                            Jul
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="July" disabled/>
                                         </td>
-                                        <td class="objective-custom-td19">
-                                            Aug
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="August" disabled/>
                                         </td>
-                                        <td class="objective-custom-td20">
-                                            Sep
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="September" disabled/>
                                         </td>
-                                        <td class="objective-custom-td21">
-                                            Oct
+                                        <td>
+                                            <input type="text" class="scorecard-month" value="October" disabled/>
                                         </td>
-                                        <td class="objective-custom-td22">
-                                            Nov
+                                        <td>
+                                            <input type="text"  class="scorecard-month" value="November" disabled/>
                                         </td>
-                                        <td class="objective-custom-td23">
-                                            Dec
+                                        <td>
+                                            <input type="text"  class="scorecard-month" value="December" disabled/>
                                         </td>
                                         
-                                        <td class="objective-custom-td25">
-                                            Estimate
+                                        <td>
+                                            <input type="text" class="scorecard-estimate" value="Estimate" disabled/>
                                         </td>
-                                        <td class="objective-custom-td26">
-                                            Actual(sss)
+                                        <td>
+                                            <input type="text" class="scorecard-actual"  value="Actual" disabled/>
                                         </td>
-                                        <td class="objective-custom-td27">
-                                            Variance
+                                        <td>
+                                            <input type="text" class="scorecard-variance" value="Variance" disabled/>
                                         </td>
                                     </tr>
     									
@@ -122,28 +122,25 @@
     								<tr dir-paginate='staff_target in staff_targets|filter:search|itemsPerPage:5'>
     									
                                         <td><% staff_target.staff_measure.staff_objective.StaffObjectiveName %>
-                                            </td>
+                                        </td>
 
                                         <input type="hidden" value="<% staff_target.staff_measure.ChiefMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
 
                                         <td colspan="2"><% staff_target.staff_measure.StaffMeasureName %>
-                                        <span class="label label-primary" ng-if="c_measure=staff_target.staff_measure.ChiefMeasureID">Contributory to C, PNP</span>
-
-                                         <i style="font-size:10px;">Contributory/ies to this Measure</i>
-                                            <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
-                                            </div>
-                                    </td>
+                                            <span class="label label-primary" ng-if="c_measure=staff_target.staff_measure.ChiefMeasureID">Contributory to C, PNP</span><br /><i style="font-size:10px;">Contributory/ies to this Measure</i>
+                                            <!--Contributory Accomplishment--><br /><p ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'><span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            </p>
+                                            
+                                        </td>
 
 
                                         <td><b><% staff_target.staff_measure.StaffMeasureType %></b></td>
                                         
 
 
-                                        <td><textarea rows="5" id="id_owner<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_owner.StaffOwnerContent %>" ng-model="staff_target.staff_owner.StaffOwnerContent" autocomplete="off"  ng-touched /></textarea></td>
+                                        <td><textarea rows="5" cols="30" id="id_owner<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_owner.StaffOwnerContent %>" ng-model="staff_target.staff_owner.StaffOwnerContent" autocomplete="off"  ng-touched /></textarea></td>
 
-                                        <td><% staff_target.JanuaryTarget | number: 2 %>/<input type='text' id="id_jan<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JanuaryAccomplishment  %>" ng-model="staff_target.staff_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.JanuaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month"  id="id_jan<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JanuaryAccomplishment  %>" ng-model="staff_target.staff_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                             <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -152,7 +149,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.FebruaryTarget | number: 2 %>/<input type='text' id="id_feb<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.FebruaryAccomplishment %>" ng-model="staff_target.staff_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.FebruaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_feb<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.FebruaryAccomplishment %>" ng-model="staff_target.staff_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                             <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -161,7 +158,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.MarchTarget | number: 2 %>/<input type='text' id="id_mar<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MarchAccomplishment %>" ng-model="staff_target.staff_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.MarchTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_mar<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MarchAccomplishment %>" ng-model="staff_target.staff_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -170,7 +167,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.AprilTarget | number: 2 %>/<input type='text' id="id_apr<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AprilAccomplishment %>" ng-model="staff_target.staff_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.AprilTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_apr<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AprilAccomplishment %>" ng-model="staff_target.staff_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -179,7 +176,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.MayTarget | number: 2 %>/<input type='text' id="id_may<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MayAccomplishment %>" ng-model="staff_target.staff_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.MayTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_may<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MayAccomplishment %>" ng-model="staff_target.staff_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -188,7 +185,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.JuneTarget | number: 2 %>/<input type='text' id="id_jun<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JuneAccomplishment %>" ng-model="staff_target.staff_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.JuneTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jun<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JuneAccomplishment %>" ng-model="staff_target.staff_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -197,7 +194,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.JulyTarget | number: 2 %>/<input type='text' id="id_jul<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JulyAccomplishment %>" ng-model="staff_target.staff_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.JulyTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jul<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JulyAccomplishment %>" ng-model="staff_target.staff_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -206,7 +203,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.AugustTarget | number: 2 %>/<input type='text' id="id_aug<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AugustAccomplishment %>" ng-model="staff_target.staff_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.AugustTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_aug<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AugustAccomplishment %>" ng-model="staff_target.staff_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -215,7 +212,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.SeptemberTarget | number: 2 %>/<input type='text' id="id_sep<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.SeptemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.SeptemberAccomplishment " autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.SeptemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_sep<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.SeptemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.SeptemberAccomplishment " autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -224,7 +221,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.OctoberTarget | number: 2 %>/<input type='text' id="id_oct<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.OctoberAccomplishment %>" ng-model="staff_target.staff_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.OctoberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_oct<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.OctoberAccomplishment %>" ng-model="staff_target.staff_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -233,7 +230,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.NovemberTarget | number: 2 %>/<input type='text' id="id_nov<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.NovemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.NovemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_nov<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.NovemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -242,7 +239,7 @@
 
                                         </td>
 
-                                        <td><% staff_target.DecemberTarget | number: 2 %>/<input type='text' id="id_dec<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.DecemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" ng-touched />
+                                        <td><% staff_target.DecemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_dec<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.DecemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" ng-touched />
 
                                              <!--Contributory Accomplishment-->
                                             <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
@@ -251,7 +248,7 @@
 
                                         </td>
 
-                                        <td><textarea rows="5" id="id_initiative<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_initiative.StaffInitiativeContent %>" ng-model="staff_target.staff_initiative.StaffInitiativeContent" autocomplete="off" ng-touched /></textarea></td>
+                                        <td><textarea rows="5" cols="30" id="id_initiative<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_initiative.StaffInitiativeContent %>" ng-model="staff_target.staff_initiative.StaffInitiativeContent" autocomplete="off" ng-touched /></textarea></td>
 
                                         <td><input type='text' id="id_estimate<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_funding.StaffFundingEstimate %>" ng-model="staff_target.staff_funding.StaffFundingEstimate" autocomplete="off" class="form-control" ng-touched /></td>
                                         <td ><input type='text' id="id_actual<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_funding.StaffFundingActual %>" ng-model="staff_target.staff_funding.StaffFundingActual" autocomplete="off" class="form-control" ng-touched /></td>
