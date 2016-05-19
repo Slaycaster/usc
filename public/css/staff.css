@@ -78,6 +78,15 @@ a.active{
     .table-responsive>.table>tbody>tr>td{
         white-space: inherit !important;
     }
+    .objective-info-name{
+        display: none;
+    }
+}
+@media screen and (min-width: 767px){
+    .objective-info-abb{
+        display: none;
+    }
+}
 }
 .staff_objective-name{
     width: 30%;
