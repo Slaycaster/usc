@@ -123,8 +123,9 @@
                                         
                                         <td><% chief_target.chief_measure.chief_objective.ChiefObjectiveName %></td>
 
-                                        <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %><br /><i style="font-size:10px;">Contributory/ies to this Measure</i><br /><!--Contributory Accomplishment--><p class="scorecard-minilabel" ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                            <br /><span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                        <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %><br /><i style="font-size:10px;">Contributory/ies to this Measure</i>
+                                            <br /><!--Contributory Accomplishment--><p class="scorecard-minilabel" ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                            <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
                                             </p>
                                         </td>
 
