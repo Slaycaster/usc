@@ -54,31 +54,24 @@
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="objective-custom-td1">  
-                                            Unit Objective Name
+    									<td class="unit_objective-name">  
+                                            Objective Name
     									</td>
-    									<td class="objective-custom-td2">
+    									<td class="unit_objective-perspective">
                                             Perspective
     									</td>
-                                        
-                                        <td class="objective-custom-td3" ng-click="sort('unit_objective.staffobjective.StaffObjectiveName')">Contributory to
-                                            <span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.staffobjective.StaffObjectiveName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        <td class="unit_objective-contributory">
+                                            Contributory to Staff's Objective
                                         </td>
-
-
-    									<td class="objective-custom-td4" ng-click="sort('unit_objective.unit.UnitAbbreviation')">Unit
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.unit.UnitAbbreviation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    									<td class="unit_objective-encoder">
+                                            Last Encoded by
     									</td>
-    									<td class="objective-custom-td5" ng-click="sort('unit_objective.user_unit.rank.RankCode')">Last Encoded by
-    										<span class="glyphicon sort-icon" ng-show="sortKey=='unit_objective.user_unit.rank.RankCode'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-    									</td>
-    									<td class="objective-custom-td6"></td>
+    									<td></td>
     								</thead>
     								<tr dir-paginate='unit_objective in unit_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_objective.UnitObjectiveName %></td>
     									<td><% unit_objective.perspective.PerspectiveName %></td>
                                         <td><% unit_objective.staffobjective.StaffObjectiveName %></td>
-    									<td><% unit_objective.unit.UnitAbbreviation %></td>
     									<td><% unit_objective.user_unit.rank.RankCode %> <% unit_objective.user_unit.UserUnitFirstName %> <% unit_objective.user_unit.UserUnitLastName %></td>
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', unit_objective.UnitObjectiveID)"><span class="fa fa-edit fa-fw"></button>

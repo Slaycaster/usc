@@ -49,18 +49,18 @@
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-                                        <td>
+                                        <td class="staff_objective-name">
                                             Objective Name
                                         </td>
 
-                                        <td>
+                                        <td class="staff_objective-perspective">
                                             Perspective
                                         </td>
                                         
-                                        <td>
+                                        <td class="staff_objective-contributory">
                                             Contributory to Chief's Objective
                                         </td>
-    									<td>
+    									<td class="staff_objective-encoder">
                                             Last Encoded by	
     									</td>
     									<td></td>
