@@ -7,7 +7,6 @@
 
 
 /* css for layout */
-
 @media(max-width:768px){
     .layout-custom-username{
         text-align: center;
@@ -18,28 +17,22 @@
         border-color:#082A48;
     }
 }
-
 @media(min-width:768px){
     .layout-custom-username{
         display: none;
     }
 }
-
 .layout-title-navbar{
     margin-bottom: -3em; 
     background-color:rgba(8, 42, 72, 1);
     border-bottom-color: rgba(8, 42, 72, 1);
 }
-
 .sidebar-search{
 background-color:rgba(8, 42, 72, 1) !important;
 }
-
 .layout_unit-body{
     background-color: rgba(8, 42, 72, 1);
 }
-
-
 .dropdown-menu>li>a{
     color:#2A363B !important;
 }
@@ -47,53 +40,41 @@ background-color:rgba(8, 42, 72, 1) !important;
     color:#fff !important;
     background-color:rgba(8, 42, 72, 1) !important;
 }
-
-
 a.layout-custom-navbaruser{
     background-color:#082A48;
     color:#fff;
     border-color:#082A48;
 }
-
 a.layout-custom-navbaruser:hover{
     color:#082A48;
     background-color:#fff !important;
 }
-
 .sidebar ul li a.active{
     color: rgba(8, 42, 72, 1) !important;
 }
-
 a.active{
     background-color: #fff !important;
     color:#337ab7 !important;
 }
-
-
 .nav>li>a{
     background-color: #082A48;
     color:#fff !important;
 }
-
 .nav>li>a:focus, 
 .nav>li>a:hover{
     color: rgba(8, 42, 72, 1)!important;
     background-color: #fff;
 }
-
-
 .sidebar ul li{
     border-bottom: none;
 }
 .sidebar-search{
     background-color: #fff;
 }
-
-
 /* /.css for layout */
 
 
-
+/* css for table */
 thead{
     background-color:rgba(8, 42, 72, 1);
     color: #fff;
@@ -102,6 +83,7 @@ tr:hover{
     background-color:rgba(8, 42, 72, 0.1);
     
 }
+/* /.css for table */
 
 
 /* Track */

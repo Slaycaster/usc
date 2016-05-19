@@ -80,10 +80,10 @@
                                         itemsPerPage:5'>
 
     									<td>
-                                                <% chief_objective.ChiefObjectiveName %>
+                                            <% chief_objective.ChiefObjectiveName %>
                                         </td>
     									<td>
-                                                <% chief_objective.perspective.PerspectiveName %>
+                                            <% chief_objective.perspective.PerspectiveName %>
                                         </td>
 
     									<td>

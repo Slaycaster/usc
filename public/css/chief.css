@@ -7,7 +7,6 @@
 
 
 /* css for layout */
-
 @media(max-width:768px){
     .layout-custom-username{
         text-align: center;
@@ -18,28 +17,22 @@
         border-color:#082A48;
     }
 }
-
 @media(min-width:768px){
     .layout-custom-username{
         display: none;
     }
 }
-
 .layout-title-navbar{
     margin-bottom: -3em; 
     background-color:rgba(54, 54, 54, 1);
     border-bottom-color:rgba(54, 54, 54, 1);
 }
-
 .sidebar-search{
     background-color:rgba(54, 54, 54, 1) !important;
 }
-
 .layout_chief-body{
     background-color: rgba(54, 54, 54, 1);
 }
-
-
 .dropdown-menu>li>a{
     color:#2A363B !important;
 }
@@ -47,48 +40,37 @@
     color:#fff !important;
     background-color:rgba(54, 54, 54, 1) !important;
 }
-
-
 a.layout-custom-navbaruser{
     background-color:rgba(54, 54, 54, 1);
     color:#fff;
     border-color:rgba(54, 54, 54, 1);
 }
-
 a.layout-custom-navbaruser:hover{
     color:rgba(54, 54, 54, 1);
     background-color:#fff !important;
 }
-
 .sidebar ul li a.active{
     color: rgba(54, 54, 54, 1) !important;
 }
-
 a.active{
     background-color: #fff !important;
     color:rgba(54, 54, 54, 1) !important;
 }
-
-
 .nav>li>a{
     background-color:rgba(54, 54, 54, 1);
     color:#fff !important;
 }
-
 .nav>li>a:focus, 
 .nav>li>a:hover{
     color:rgba(54, 54, 54, 1) !important;
     background-color: #fff;
 }
-
-
 .sidebar ul li{
     border-bottom: none;
 }
 .sidebar-search{
     background-color: #fff;
 }
-
 /* /.css for layout */
 
 
@@ -98,7 +80,6 @@ a.active{
         white-space: line-wrap;
     }
 }
-
 .chief_objective-name{
     width: 70%;
 }
@@ -124,7 +105,7 @@ a.active{
 /* /.css for cheif measures */
 
 
-
+/* css for table */
 thead{
     background-color:rgba(54, 54, 54, 1);
     color: #fff;
@@ -133,6 +114,7 @@ tr:hover{
     background-color:rgba(54, 54, 54, .1);
     
 }
+/* /.css for table */
 
 
 /* Track */
