@@ -54,9 +54,11 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div ng-show="info" class="alert alert-info">
-                                    <i class="fa fa-info-circle fa-fw"></i> 
-                                        Staff Objectives of {{ $chief_user->chief->ChiefName }}.
+								<div ng-show="info" class="alert alert-info objective-info-name">
+                                    <i class="fa fa-info-circle fa-fw"></i>Chief Objectives of {{ $chief_user->chief->ChiefName }}.
+                                </div>
+                                <div ng-show="info" class="alert alert-info objective-info-abb">
+                                    <i class="fa fa-info-circle fa-fw"></i>Chief Objectives of {{ $chief_user->chief->ChiefAbbreviation }}.
                                 </div>
 							</div>
 							<!--./div class row-->
