@@ -43,7 +43,8 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Staff Measures of {{ $staff_user->staff->StaffName }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Staff Measures of {{ $staff_user->staff->StaffName }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Staff Measures of {{ $staff_user->staff->StaffAbbreviation }}.</div>
                             </div>
 							<!--./div class row-->
 
