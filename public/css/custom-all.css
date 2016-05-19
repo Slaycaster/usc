@@ -312,6 +312,15 @@ table {
         text-align: center;
     }
 }
+.audit-encoder{
+    width: 20%;
+}
+.audit-action{
+    width: 70%;
+}
+.aduti-time{
+    width: 10%;
+}
 /*  /.css for audit trails  */
 
 
