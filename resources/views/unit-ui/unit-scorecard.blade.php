@@ -39,7 +39,7 @@
                                                 <input type="text" class="scorecard-objectives" value="OBJECTIVES" disabled/>
                                             </td>
                                     
-                                            <td colspan="3">
+                                            <td colspan="4">
                                                 MEASURES
                                             </td>
 
@@ -69,7 +69,10 @@
                                             </td>
 
                                             <td>
-                                                Type
+                                            LG
+                                            </td>
+                                            <td>
+                                            LD
                                             </td>
                                            
 
@@ -132,9 +135,13 @@
                                             <span class="label label-danger" ng-if="c_measure=unit_target.unit_measure.StaffMeasureID">Contributory to {{ $user->unit->staff->StaffAbbreviation }}</span>
                                         </td>
 
+                                        <input type="hidden" ng-model="unittype" ng-init="c_type=unit_target.unit_measure.UnitMeasureType">
 
-                                        <td class="scorecard-type"><b><% unit_target.unit_measure.UnitMeasureType %></b></td>
-                                        
+
+                                        <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LG'"></td>
+                                        <td style="text-align:center;" ng-if="c_type!='LG'"></td>
+                                        <td style="text-align:center;" ng-if="c_type!='LD'"></td>
+                                        <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LD'"></td>
 
 
                                         <td><textarea rows="5" cols="30" id="id_owner<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" value="<% unit_target.unit_owner.UnitOwnerContent %>" ng-model="unit_target.unit_owner.UnitOwnerContent" autocomplete="off"  ng-touched /></textarea></td>

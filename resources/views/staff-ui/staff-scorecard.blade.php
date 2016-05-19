@@ -35,7 +35,7 @@
                                             <input type="text" class="scorecard-objectives" value="OBJECTIVES" disabled/>
                                         </td>
                                 
-                                        <td colspan="3">
+                                        <td colspan="4">
                                             MEASURES
                                         </td>
 
@@ -66,7 +66,10 @@
                                         </td>
 
                                         <td>
-                                            Type
+                                            LG
+                                        </td>
+                                        <td>
+                                            LD
                                         </td>
                                        
 
@@ -133,9 +136,13 @@
                                             
                                         </td>
 
+                                        <input type="hidden" ng-model="stafftype" ng-init="c_type=staff_target.staff_measure.StaffMeasureType">
 
-                                        <td><b><% staff_target.staff_measure.StaffMeasureType %></b></td>
-                                        
+
+                                        <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LG'"></td>
+                                        <td style="text-align:center;" ng-if="c_type!='LG'"></td>
+                                        <td style="text-align:center;" ng-if="c_type!='LD'"></td>
+                                        <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LD'"></td>
 
 
                                         <td><textarea rows="5" cols="30" id="id_owner<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_owner.StaffOwnerContent %>" ng-model="staff_target.staff_owner.StaffOwnerContent" autocomplete="off"  ng-touched /></textarea></td>
