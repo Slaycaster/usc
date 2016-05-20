@@ -19,6 +19,8 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
+    <script src="{{ asset('app/cut.js') }}"></script>
+
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/timeago.js') }}"></script>
     
@@ -200,14 +202,14 @@
 
                 <div class="container-fluid" dir-paginate='audit_trail_dash in chief_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
                 <br />
-                    <a href="#" class="list-group-item">
+                    <a href="{{ url('chief/audit_trails') }}" class="list-group-item">
                         <i class="fa fa-tasks fa-fw"></i> 
                             <b><% audit_trail_dash.user_chief.rank.RankCode%> 
                                 <% audit_trail_dash.user_chief.UserChiefFirstName %>
                                 <% audit_trail_dash.user_chief.UserChiefLastName %>
                             </b> 
                             <br />
-                            <% audit_trail_dash.Action %>
+                            <% audit_trail_dash.Action | cut:true:75:' ...' %>
                         <br />
                         <span class="pull-right small"><% audit_trail_dash.updated_at |timeago %></span>
                         <br />
