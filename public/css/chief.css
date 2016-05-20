@@ -7,7 +7,6 @@
 
 
 /* css for layout */
-
 @media(max-width:768px){
     .layout-custom-username{
         text-align: center;
@@ -18,28 +17,22 @@
         border-color:#082A48;
     }
 }
-
 @media(min-width:768px){
     .layout-custom-username{
         display: none;
     }
 }
-
 .layout-title-navbar{
     margin-bottom: -3em; 
     background-color:rgba(54, 54, 54, 1);
     border-bottom-color:rgba(54, 54, 54, 1);
 }
-
 .sidebar-search{
     background-color:rgba(54, 54, 54, 1) !important;
 }
-
 .layout_chief-body{
     background-color: rgba(54, 54, 54, 1);
 }
-
-
 .dropdown-menu>li>a{
     color:#2A363B !important;
 }
@@ -47,61 +40,98 @@
     color:#fff !important;
     background-color:rgba(54, 54, 54, 1) !important;
 }
-
-
 a.layout-custom-navbaruser{
     background-color:rgba(54, 54, 54, 1);
     color:#fff;
     border-color:rgba(54, 54, 54, 1);
 }
-
 a.layout-custom-navbaruser:hover{
     color:rgba(54, 54, 54, 1);
     background-color:#fff !important;
 }
-
 .sidebar ul li a.active{
     color: rgba(54, 54, 54, 1) !important;
 }
-
 a.active{
     background-color: #fff !important;
     color:rgba(54, 54, 54, 1) !important;
 }
-
-
 .nav>li>a{
     background-color:rgba(54, 54, 54, 1);
     color:#fff !important;
 }
-
 .nav>li>a:focus, 
 .nav>li>a:hover{
     color:rgba(54, 54, 54, 1) !important;
     background-color: #fff;
 }
-
-
 .sidebar ul li{
     border-bottom: none;
 }
 .sidebar-search{
     background-color: #fff;
 }
-
-
 /* /.css for layout */
 
 
+/* css for chief objectives */
+@media screen and (max-width: 767px){
+    .table-responsive>.table>tbody>tr>td{
+        white-space: inherit !important;
+    }
+    .objective-info-name{
+        display: none;
+    }
+}
+@media screen and (min-width: 767px){
+    .objective-info-abb{
+        display: none;
+    }
+}
+.chief_objective-name{
+    width: 70%;
+}
+.chief_objective-perspective{
+     width: 25%;
+}
+.unit_objective-edit{
+    width: 5%;
+}
+/* ./css for chief objectives */
 
+
+/* css for chief measures */
+.chief_measure-name{
+    width: 50%;
+}
+.chief_measure-type{
+    width: 5%;
+}
+.chief_measure-formula{
+    width: 10%;
+}
+.chief_measure-objective{
+    width: 30%;
+}
+.chief_measure-edit{
+    width: 5%;
+}
+/* /.css for cheif measures */
+
+
+/* css for table */
 thead{
     background-color:rgba(54, 54, 54, 1);
     color: #fff;
+}
+thead>tr>td{
+    vertical-align: middle !important;
 }
 tr:hover{
     background-color:rgba(54, 54, 54, .1);
     
 }
+/* /.css for table */
 
 
 /* Track */
@@ -112,109 +142,3 @@ tr:hover{
     border-radius: 0px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Chief CSS */
-
-
-
-
-
-/*end */
-
-
-/*
-.layout_chief-body{
-    background-color: rgba(54, 54, 54, 1);
-}
-
-.dropdown-menu>li>a{
-    color:#2A363B !important;
-}
-.dropdown-menu>li>a:hover{
-    color:#fff !important;
-    background-color:rgba(54, 54, 54, 1) !important;
-}
-
-
-
-@media(max-width:768px){
-    .layout_unit-custom_all-unit_user{
-        text-align: center;
-        padding-left: 12px;
-        background-color:#fff;
-        padding: 5px;
-        color: rgba(54, 54, 54, 1);
-        border-color:rgba(54, 54, 54, 1);
-    }
-}
-
-@media(min-width:768px){
-    .layout_unit-custom_all-unit_user{
-        display: none;
-    }
-}
-
-a.layout-custom-navbaruser{
-    background-color:rgba(54, 54, 54, 1);
-    color:#fff;
-    border-color:rgba(54, 54, 54, 1);
-}
-
-a.layout-custom-navbaruser:hover{
-    color:rgba(54, 54, 54, 1);
-    background-color:#fff !important;
-}
-.sidebar ul li a.active{
-    color:rgba(54, 54, 54, 1) !important;
-}
-
-a.active{
-    background-color: #fff !important;
-    color:rgba(54, 54, 54, 1) !important;
-}
-
-.nav>li>a{
-    background-color: rgba(54, 54, 54, 1);
-    color:#fff !important;
-}
-
-.nav>li>a:focus, 
-.nav>li>a:hover{
-    color: rgba(54, 54, 54, 1) !important;
-    background-color: #fff;
-}
-
-.sidebar .sidebar-nav.navbar-collapse{
-    overflow: auto !important;
-    max-height: 350px !important;
-}
-.sidebar ul li{
-    border-bottom: none;
-}
-.sidebar-search{
-    background-color: #fff;
-}
-
-
-thead{
-    background-color:rgba(54, 54, 54, 1);
-    color: #fff;
-}
-tr:hover{
-    background-color:rgba(54, 54, 54, 0.1);
-    
-}*/

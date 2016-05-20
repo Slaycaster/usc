@@ -36,7 +36,7 @@
                                             <input type="text" class="scorecard-objectives" value="OBJECTIVES" disabled/>
                                         </td>
                                 
-                                        <td colspan="3">
+                                        <td colspan="4">
                                             MEASURES
                                         </td>
 
@@ -66,7 +66,10 @@
                                         </td>
 
                                         <td>
-                                            Type
+                                            LG
+                                        </td>
+                                        <td>
+                                            LD
                                         </td>
                                        
 
@@ -129,7 +132,14 @@
                                             </p>
                                         </td>
 
-                                        <td style="text-align:center;"><b><% chief_target.chief_measure.ChiefMeasureType %></b></td>
+
+                                        <input type="hidden" ng-model="chieftype" ng-init="c_type=chief_target.chief_measure.ChiefMeasureType">
+
+
+                                        <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LG'"></td>
+                                        <td style="text-align:center;" ng-if="c_type!='LG'"></td>
+                                        <td style="text-align:center;" ng-if="c_type!='LD'"></td>
+                                        <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LD'"></td>
                                         
 
                                         <td>

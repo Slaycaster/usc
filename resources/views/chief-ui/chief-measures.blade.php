@@ -43,49 +43,38 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Chiefs Measures of {{ $chief_user->chief->ChiefName }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Chief Measures of {{ $chief_user->chief->ChiefName }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Chief Measures of {{ $chief_user->chief->ChiefAbbreviation }}.</div>
                             </div>
 							<!--./div class row-->
 
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="chief-custom-td1">
-                                            Chief Measure Name
+    									<td class="chief_measure-name">
+                                            Measure Name
     									</td>
     							
-    									<td class="chief-custom-td2">
-                                            Chief Measure Type
+    									<td class="chief_measure-type">
+                                            Type
     									</td>
-
-
-                                        <td class="chief-custom-td3">
-                                            Chief Measure Formula
+                                        <td class="chief_measure-formula">
+                                            Formula
                                         </td>
 
-                                        <td class="chief-custom-td4">
-                                            Chief Objective
+                                        <td class="chief_measure-objective">
+                                            Objective
                                         </td>
-
-    									</td>
-    									<td class="chief-custom-td5">
-                                            Chief Office
-    									</td>
-    									<td class="chief-custom-td6">
-                                            Last Encoded by
-    									</td>
-    									<td class="chief-custom-td7"></td>
+    	
+    									<td class="staff_measure-edit"></td>
     								</thead>
     								<tr dir-paginate='chief_measure in chief_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% chief_measure.ChiefMeasureName %></td>
     									<td><% chief_measure.ChiefMeasureType %></td>
                                         <td><% chief_measure.ChiefMeasureFormula %></td>
                                         <td><% chief_measure.chief_objective.ChiefObjectiveName %></td>
-    									<td><% chief_measure.chief.ChiefAbbreviation %></td>
-    									<td><% chief_measure.user_chief.rank.RankCode %> <% chief_measure.user_chief.UserChiefFirstName %> <% chief_measure.user_chief.UserChiefLastName %></td>
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', chief_measure.ChiefMeasureID)"><span class="fa fa-edit fa-fw"></button>
-    										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->
     									</td>
     								</tr>
     							</table>
@@ -119,19 +108,19 @@
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
-                                    <td>
-                                        <label for="measure_name" class="control-label">Measure Name:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="measure_name" class="control">Measure Name:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <input type='text' id="id_measure_name" name="measure_name" value="<% chief_measure.ChiefMeasureName %>" ng-model="chief_measure.ChiefMeasureName" autocomplete="off" class="form-control" required ng-touched />
                                     <span class="help-inline" ng-show="userForm.measure_name.$invalid && !userForm.measure_name.$pristine">Measure Name is required.</span>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <label for="measure_name" class="control-label">Measure Type:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="measure_name" class="control">Measure Type:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" id="id_measure_type" name="measure_type" value="LD" ng-model="chief_measure.ChiefMeasureType" />
@@ -148,10 +137,10 @@
                                 </tr>
 
                                  <tr>
-                                    <td>
-                                        <label for="measure_formula" class="control-label">Measure Formula:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="measure_formula" class="control">Measure Formula:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_measure_formula" name="measure_formula" data-ng-model="chief_measure.ChiefMeasureFormula" class="form-control" required ng-touched>
                                                      <option value="">
                                                         Select Formula
@@ -167,10 +156,10 @@
                                 </tr>
 
                                  <tr>
-                                    <td>
-                                        <label for="chief_objective" class="control-label">Chief Objective:</label>
+                                    <td class="col-md-4 mod">
+                                        <label for="chief_objective" class="control">Chief Objective:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_chief_objective" name="chief_objective" data-ng-model="chief_measure.ChiefObjectiveID" class="form-control" required ng-touched>
                                            
                                             @foreach($chief_objectives as $chief_objective)
@@ -184,19 +173,19 @@
 
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="Chief">Chief Office:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <p>{{ $chief_user->chief->ChiefName }}</p>
                                         <input type="hidden" name="ChiefID" value="<?=$chief_user->chief->ChiefID?>" id="chief_id">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="LastEncodedBy">Account User:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <p>{{ $chief_user->rank->RankCode }} {{ $chief_user->UserChiefFirstName }} {{ $chief_user->UserChiefLastName }} </p>
                                         <input type="hidden" name="UserChiefID" value="<?=$chief_user->UserChiefID?>" id="user_chief_id">
                                     </td>

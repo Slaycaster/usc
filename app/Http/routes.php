@@ -14,6 +14,9 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
+/*REPORTS ROUTES*/
+Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
+
 /*LOGIN ROUTE*/
 Route::post('login', 'LoginController@doLogin');
 Route::get('logout', 'LoginController@doLogout');
@@ -37,6 +40,7 @@ Route::get('unit/measures','APIUnitMeasuresController@showIndex');
 Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 Route::get('unit/targets','APIUnitTargetsController@showIndex');
 Route::get('unit/targets/{id}','APIUnitTargetsController@edit');
+Route::get('unit/reports','ReportsController@unitIndex');
 
 
 /*STAFF USER ROUTES*/

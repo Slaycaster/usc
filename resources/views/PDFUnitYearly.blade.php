@@ -1,0 +1,219 @@
+<?php
+	
+//Models
+use App\UnitTarget;
+use App\UnitMeasure;
+use App\UnitObjective;
+use App\Unit;
+use App\UserUnit;
+use App\UnitAccomplishment;
+use App\UnitOwner;
+use App\UnitInitiative;
+use App\UnitFunding;
+
+	$selectedYear = Session::get('year', 'default');	
+
+ 	$unit_id = Session::get('unit_user_id', 'default');
+	$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
+							->first();
+	$unit_id = Session::get('unit_user_id', 'default'); //get the UserunitID stored in session.
+	$unit = UserUnit::where('UserUnitID', '=', $unit_id)->select('UnitID')->first(); //Get the Unit of the unit		
+	
+	$unit = Unit::where('UnitID', '=', $unit_user->UnitID)->first();
+	$unit_objectives = UnitObjective::all();
+	$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $unit_user->UnitID)->get();
+	
+	$accomplishments = UnitTarget::with('unit_measure')
+									->with('unit_measure.unit_objective')
+									->with('unit_owner')
+									->with('unit_funding')
+									->with('unit_initiative')
+									->with('unit_accomplishment')
+									->with('user_unit')
+									->with('user_unit.rank')
+									->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+									->where('UnitID', '=', $unit->UnitID)
+									->get();
+	foreach ($accomplishments as $accomplishment)
+	{
+		//dd($accomplishment);
+	}
+	//dd($accomplishments);	
+	$logoPath = 'img/pnp_logo2.png';
+	$unitlogoPath = 'uploads/unitpictures/cropped/'.$unit->PicturePath;
+?>
+
+<!DOCTYPE html>
+
+<head>
+    <title>Report | PNP</title>
+    <style type="text/css">
+    table
+    {
+    	font-size: 8;
+    	text-align: center;
+    	width: 875;
+    	border-collapse: collapse;
+    	page-break-inside: auto;
+    }
+    tr
+    { 
+    	page-break-inside: avoid;
+    	page-break-after: auto; 
+    }
+    p, strong
+    {
+    	font-family: helvetica;
+    }
+    img 
+    {
+    	position: absolute;
+    	left: 10px;
+    	top: 5px;
+	}
+	.unitlogo
+	{
+    	position: absolute;
+    	left: 1000px;
+    	top: 20px;
+	}
+    </style>
+</head>
+
+<body>
+	<img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
+	<img class="unitlogo" src="{{URL::asset($unitlogoPath)}}" style="height: 120px;width: 120px;">
+	<p style="text-align: center;">
+		<normal style="font-size: 15px">Republic of the Philippines</normal>
+		<br>
+		<strong>NATIONAL POLICE COMMISSION<br>PHILIPPINE NATIONAL POLICE</strong>
+		<br>
+		<normal style="font-size: 15px">{{ $unit->UnitName }}</normal>
+		<br>
+		<normal style="font-size: 10px">usc.pulis.net</normal>
+	</p>
+	<p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $unit->UnitAbbreviation }} Scorecard for {{ $selectedYear }}</p>
+	<table border="1">
+    	<thead style="font-weight: bold;font-family: arial,helvetica">
+            <tr>
+                <td width="60" rowspan="2">OBJECTIVES</td>
+                <td colspan="2">MEASURES</td>
+                <td width="95" rowspan="2" >OWNER</td>
+                <td colspan="12" height="12">TARGET/ACCOMPLISHMENT</td>
+                <td rowspan="2">INITIATIVES</td>
+                <td colspan="3">FUNDING</td>
+            </tr>
+            <tr>
+                <td width="88">Name</td>
+                <td width="22">Type</td>
+                <td width="30">Jan</td>
+                <td width="30">Feb</td>
+                <td width="30">Mar</td>
+                <td width="30">Apr</td>
+                <td width="30">May</td>
+                <td width="30">Jun</td>
+                <td width="30">Jul</td>
+                <td width="30">Aug</td>
+                <td width="30">Sep</td>
+                <td width="30">Oct</td>
+				<td width="30">Nov</td>
+				<td width="30">Dec</td>
+                <td width="35">Estimate</td>
+                <td width="35">Actual</td>
+                <td width="35">Variance</td>
+            </tr>	
+    	</thead>
+    	<tbody>
+    		@foreach($accomplishments as $accomplishment)
+    		<tr style="font-family: arial;">
+    			<td>
+    				{{ $accomplishment->unit_measure->unit_objective->UnitObjectiveName }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->unit_measure->UnitMeasureName }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->unit_measure->UnitMeasureType }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->unit_owner->UnitOwnerContent }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->JanuaryTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->JanuaryAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->FebruaryTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->FebruaryAccomplishment }}
+				</td>
+    			<td>
+    				{{ $accomplishment->MarchTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->MarchAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->AprilTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->AprilAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->MayTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->MayAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->JuneTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->JuneAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->JulyTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->JulyAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->AugustTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->AugustAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->SeptemberTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->SeptemberAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->OctoberTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->OctoberAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->NovemberTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->NovemberAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->DecemberTarget }}/
+    				<br>
+    				{{ $accomplishment->unit_accomplishment->DecemberAccomplishment }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->unit_initiative->UnitInitiativeContent }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->unit_funding->UnitFundingEstimate }}
+    			</td>
+    			<td>
+    				{{ $accomplishment->unit_funding->UnitFundingActual }}
+    			</td>
+    			<td>
+    				{{ round(($accomplishment->unit_funding->UnitFundingEstimate - $accomplishment->unit_funding->UnitFundingActual), 2) }}
+    			</td>
+    		</tr>
+    		@endforeach
+    	</tbody>
+	</table>
+
+	
+</body>

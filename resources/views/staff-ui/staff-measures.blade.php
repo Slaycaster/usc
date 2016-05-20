@@ -43,40 +43,36 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Staff's Measures of {{ $staff_user->staff->StaffName }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Staff Measures of {{ $staff_user->staff->StaffName }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Staff Measures of {{ $staff_user->staff->StaffAbbreviation }}.</div>
                             </div>
 							<!--./div class row-->
 
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="staff-custom-td1">
-                                            Staff Measure Name
+    									<td class="staff_measure-name">
+                                            Measure Name
     									</td>
     							
-    									<td class="staff-custom-td2">
-                                            Staff Measure Type
+    									<td class="staff_measure-type">
+                                            Type
     									</td>
-                                        <td class="staff-custom-td3">
-                                            Staff Measure Formula
+                                        <td class="staff_measure-formula">
+                                            Formula
                                         </td>
 
-                                        <td class="staff-custom-td4">
-                                            Staff Objective
+                                        <td class="staff_measure-objective">
+                                            Objective
                                         </td>
 
-                                        <td class="staff-custom-td5">
+                                        <td class="staff_measure-contributory">
                                             Contributory to Chief's Measure
                                         </td>
-
-    									</td>
-    									<td class="staff-custom-td6">
-                                            Staff Office
-    									</td>
-    									<td class="staff-custom-td7">
+    									<td class="staff_measure-encoder">
                                             Last Encoded by
     									</td>
-    									<td class="staff-custom-td8"></td>
+    									<td class="staff_measure-edit"></td>
     								</thead>
     								<tr dir-paginate='staff_measure in staff_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% staff_measure.StaffMeasureName %></td>
@@ -84,11 +80,10 @@
                                         <td><% staff_measure.StaffMeasureFormula %></td>
                                         <td><% staff_measure.staff_objective.StaffObjectiveName %></td>
     									<td><% staff_measure.chief_measure.ChiefMeasureName %></td>
-                                        <td><% staff_measure.staff.StaffAbbreviation %></td>
     									<td><% staff_measure.user_staff.rank.RankCode %> <% staff_measure.user_staff.UserStaffFirstName %> <% staff_measure.user_staff.UserStaffLastName %></td>
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', staff_measure.StaffMeasureID)"><span class="fa fa-edit fa-fw"></button>
-    										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->
+
     									</td>
     								</tr>
     							</table>
@@ -122,11 +117,9 @@
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
-                                    <td class="col-md-4 mod">
-                                        <label for="measure_name" class="control">Measure Name:</label>
+                                    <td class="col-md-4 mod"><label for="measure_name" class="control">Measure Name:</label>
                                     </td>
-                                    <td class="col-md-8">
-                                        <input type='text' id="id_measure_name" name="measure_name" value="<% staff_measure.StaffMeasureName %>" ng-model="staff_measure.StaffMeasureName" autocomplete="off" class="form-control" required ng-touched />
+                                    <td class="col-md-8"><input type='text' id="id_measure_name" name="measure_name" value="<% staff_measure.StaffMeasureName %>" ng-model="staff_measure.StaffMeasureName" autocomplete="off" class="form-control" required ng-touched />
                                     <span class="help-inline" ng-show="userForm.measure_name.$invalid && !userForm.measure_name.$pristine">Measure Name is required.</span>
                                     </td>
                                 </tr>

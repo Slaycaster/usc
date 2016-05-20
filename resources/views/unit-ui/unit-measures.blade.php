@@ -43,42 +43,37 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitName }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitName }}.</div>
+                                 <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitAbbreviation }}.</div>
                             </div>
 							<!--./div class row-->
 
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="measure-custom-td1">
-                                            Unit Measure Name
+    									<td class="unit_measure-name">
+                                            Measure Name
     									</td>
     							
-    									<td class="measure-custom-td2">
-                                            Unit Measure Type
+    									<td class="unit_measure-type">
+                                            Type
     									</td>
 
-                                         <td class="measure-custom-td3">
-                                            Unit Measure Formula
+                                         <td class="unit_measure-formula">
+                                            Formula
                                         </td>
 
-                                        <td class="measure-custom-td4">
-                                            Unit Objective
+                                        <td class="unit_measure-objective">
+                                            Objective
                                         </td>
 
-                                        <td class="measure-custom-td5">
+                                        <td class="unit_measure-contributory">
                                             Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure
                                         </td>
-
-
-    									</td>
-    									<td class="measure-custom-td6">
-                                            Unit
-    									</td>
-    									<td class="measure-custom-td7">
+    									<td class="unit_measure-encoder">
                                             Last Encoded by
     									</td>
-    									<td class="measure-custom-td8"></td>
+    									<td class="unit_measure-edit"></td>
     								</thead>
     								<tr dir-paginate='unit_measure in unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_measure.UnitMeasureName %></td>
@@ -86,7 +81,6 @@
                                         <td><% unit_measure.UnitMeasureFormula %></td>
                                         <td><% unit_measure.unit_objective.UnitObjectiveName %></td>
                                         <td><% unit_measure.staff_measure.StaffMeasureName %></td>
-    									<td><% unit_measure.unit.UnitAbbreviation %></td>
     									<td><% unit_measure.user_unit.rank.RankCode %> <% unit_measure.user_unit.UserUnitFirstName %> <% unit_measure.user_unit.UserUnitLastName %></td>
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', unit_measure.UnitMeasureID)"><span class="fa fa-edit fa-fw"></button>
@@ -125,7 +119,7 @@
                             <table class="table table-responsive">
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="measure_name" class="control-label">Measure Name:</label>
+                                        <label for="measure_name" class="control">Measure Name:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <input type='text' id="id_measure_name" name="measure_name" value="<% unit_measure.UnitMeasureName %>" ng-model="unit_measure.UnitMeasureName" autocomplete="off" class="form-control" required ng-touched />
@@ -134,7 +128,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="measure_name" class="control-label">Measure Type:</label>
+                                        <label for="measure_name" class="control">Measure Type:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <div class="radio">
@@ -154,7 +148,7 @@
 
                                  <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="measure_formula" class="control-label">Measure Formula:</label>
+                                        <label for="measure_formula" class="control">Measure Formula:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_measure_formula" name="measure_formula" data-ng-model="unit_measure.UnitMeasureFormula" class="form-control" required ng-touched>
@@ -173,7 +167,7 @@
 
                                  <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="unit_objective" class="control-label">Unit Objective:</label>
+                                        <label for="unit_objective" class="control">Unit Objective:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control">
@@ -190,7 +184,7 @@
 
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="staff_measure" class="control-label">Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure:</label>
+                                        <label for="staff_measure" class="control">Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure:</label>
                                     </td>
                                     <td class="col-md-8">
                                         <select id="id_staff_measure" name="staff_measure" data-ng-model="unit_measure.StaffMeasureID" class="form-control" ng-touched>
