@@ -54,27 +54,26 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div ng-show="info" class="alert alert-info">
-                                    <i class="fa fa-info-circle fa-fw"></i> 
-                                        Staff Objectives of {{ $chief_user->chief->ChiefName }}.
+								<div ng-show="info" class="alert alert-info objective-info-name">
+                                    <i class="fa fa-info-circle fa-fw"></i>Chief Objectives of {{ $chief_user->chief->ChiefName }}.
+                                </div>
+                                <div ng-show="info" class="alert alert-info objective-info-abb">
+                                    <i class="fa fa-info-circle fa-fw"></i>Chief Objectives of {{ $chief_user->chief->ChiefAbbreviation }}.
                                 </div>
 							</div>
 							<!--./div class row-->
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-                                        <td class="objective-custom-td1">
-                                            Chief Objective Name
+                                        <td class="chief_objective-name">
+                                            Objective Name
                                         </td>
 
-                                        <td class="objective-custom-td2">
+                                        <td class="chief_objective-perspective">
                                             Perspective
                                         </td>
                                         
-    									<td class="objective-custom-td3">
-                                            Last Encoded by
-    									</td>
-    									<td class="objective-custom-td4"></td>
+    									<td></td>
     								</thead>
     								
                                     <tr dir-paginate='chief_objective in chief_objectives|
@@ -83,16 +82,12 @@
                                         itemsPerPage:5'>
 
     									<td>
-                                                <% chief_objective.ChiefObjectiveName %>
+                                            <% chief_objective.ChiefObjectiveName %>
                                         </td>
     									<td>
-                                                <% chief_objective.perspective.PerspectiveName %>
+                                            <% chief_objective.perspective.PerspectiveName %>
                                         </td>
-    									<td>
-                                                <% chief_objective.user_chief.rank.RankCode %> 
-                                                <% chief_objective.user_chief.UserChiefFirstName %> 
-                                                <% chief_objective.user_chief.UserChiefLastName %>
-                                        </td>
+
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" 
                                                     ng-click="toggle('edit', chief_objective.ChiefObjectiveID)">
@@ -137,12 +132,12 @@
                         <form name="frmEditObjective" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="objective_name" 
                                                 class="control-label">Objective Name:
                                         </label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <input type='text' 
                                                 id="id_objective_name" 
                                                 name="objective_name" 
@@ -158,12 +153,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="perspective_id" class="control-label">
                                             Perspective:
                                         </label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <select id="id_perspective_id" 
                                                 name="perspective_id"
                                                 data-ng-model="selectedUserProfile" 
@@ -178,10 +173,10 @@
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="inputEmail3" class="control-label">Chief:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <p>{{ $chief_user->chief->ChiefName }}</p>
                                         <input type="hidden" 
                                                 name="StaffID" 
@@ -190,10 +185,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="col-md-4 mod">
                                         <label for="inputEmail3" class="control-label">Account User:</label>
                                     </td>
-                                    <td>
+                                    <td class="col-md-8">
                                         <p>
                                             {{ $chief_user->rank->RankCode }} 
                                             {{ $chief_user->UserChiefFirstName }} 
