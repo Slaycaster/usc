@@ -23,23 +23,24 @@ class LoginController extends Controller {
 		if($validator -> fails()){
 			return Redirect::to('/')
 			->withErrors($validator)
-			->withInput(Input::except('password')); 
+			->withInput(Input::except('password'));
+
 		}
 		else
 		{
 			$user = Input::get('username');
 			$pass = Input::get('password');
 
-			$chief = UserChief::where('UserChiefBadgeNumber','=',$user)
-			->where('UserChiefPassword', '=', $pass)
+			$chief = UserChief::whereRaw("BINARY `UserChiefBadgeNumber`= ?",array($user))
+			->whereRaw("BINARY `UserChiefPassword`= ?",array($pass))
 			->first();
 
-			$staff = UserStaff::where('UserStaffBadgeNumber','=',$user)
-			->where('UserStaffPassword', '=', $pass)
+			$staff = UserStaff::whereRaw("BINARY `UserStaffBadgeNumber`= ?",array($user))
+			->whereRaw("BINARY `UserStaffPassword`= ?",array($pass))
 			->first();
 
-			$unit = UserUnit::where('UserUnitBadgeNumber','=',$user)
-			->where('UserUnitPassword', '=', $pass)
+			$unit = UserUnit::whereRaw("BINARY `UserUnitBadgeNumber`= ?",array($user))
+			->whereRaw("BINARY `UserUnitPassword`= ?",array($pass))
 			->first();
 
 			if($chief != null)

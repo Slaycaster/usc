@@ -189,7 +189,7 @@
                                     <a href="#">Change User Picture</a>
                                 </li>
                                 <li>
-                                    <a href="#">Change User Password</a>
+                                    <a href="{{ url('unit/changepassword') }}">Change User Password</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

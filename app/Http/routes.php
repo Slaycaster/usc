@@ -42,6 +42,7 @@ Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 Route::get('unit/targets','APIUnitTargetsController@showIndex');
 Route::get('unit/targets/{id}','APIUnitTargetsController@edit');
 Route::get('unit/reports','ReportsController@unitIndex');
+Route::get('unit/changepassword','UnitLoginController@changepass');
 
 
 /*STAFF USER ROUTES*/
