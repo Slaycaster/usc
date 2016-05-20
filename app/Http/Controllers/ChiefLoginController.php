@@ -74,5 +74,26 @@ class ChiefLoginController extends Controller {
 		}
 	}
 
+	public function changepass()
+	{
+		if (Session::has('chief_user_id'))
+		{
+			$chief_id = Session::get('chief_user_id', 'default');
+			$chief_user = UserChief::where('UserChiefID', $chief_id)
+				->with('chief')
+				->first();
+			$chief_measures = ChiefMeasure::with('chief')->where('ChiefID', '=', $chief_user->ChiefID)->get();
+
+			return view('chief-ui.chief-changepassword')
+				->with('chief_user', $chief_user)
+				->with('chief_measures',$chief_measures);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 }

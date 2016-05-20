@@ -74,5 +74,27 @@ class UnitLoginController extends Controller {
 		}
 	}
 
+	public function changepass()
+	{
+		if (Session::has('unit_user_id'))
+		{
+			$unit_id = Session::get('unit_user_id', 'default');
+			$user = UserUnit::where('UserUnitID', $unit_id)
+				->with('unit')
+				->with('unit.staff')
+				->first();
+			$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $user->UnitID)->get();
+
+			return view('unit-ui.unit-changepassword')
+				->with('user', $user)
+				->with('unit_measures',$unit_measures);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 }
