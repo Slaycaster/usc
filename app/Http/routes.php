@@ -16,6 +16,7 @@ Route::get('home', 'HomeController@index');
 
 /*REPORTS ROUTES*/
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
+Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecard');
 
 /*LOGIN ROUTE*/
 Route::post('login', 'LoginController@doLogin');
@@ -48,6 +49,7 @@ Route::get('staff/measures','APIStaffMeasuresController@showIndex');
 Route::get('staff/targets','APIStaffTargetsController@showIndex');
 Route::get('staff/targets/{id}','APIStaffTargetsController@edit');
 Route::get('staff/audit_trails', 'APIStaffAuditTrailsController@showIndex');
+Route::get('staff/reports','ReportsController@staffIndex');
 
 /*CHIEF USER ROUTES*/
 Route::get('chief/scorecard', 'ChiefLoginController@scorecard');
