@@ -1,4 +1,4 @@
-@extends('layout-unit')
+@extends('layout-staff')
 
 @section('content')
 
@@ -7,12 +7,14 @@
 
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
+    
+    <!-- AngularJS Application Scripts -->
 
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
     <br>
-    <div ng-app="unitScorecardApp" ng-controller="UnitLoginController">
+    <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
@@ -34,17 +36,17 @@
                             	<label>Old password:</label>
                             	
                             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='password' id="id_old_password" name="old_password" value="" ng-model="" autocomplete="off" required ng-touched />
-                                    <br><br>
+                                    <span class="help-inline" ng-show="userForm.old_password.$invalid && !userForm.old_password.$pristine">Old Password is required.</span><br><br>
 
                             	<label>New password:</label>
                             	
                             	&nbsp;&nbsp;&nbsp;&nbsp;<input type='password' id="id_new_password" name="new_password" value="" ng-model="" autocomplete="off" required ng-touched />
-                                   <br><br>
+                                    <span class="help-inline" ng-show="userForm.new_password.$invalid && !userForm.new_password.$pristine">New Password is required.</span><br><br>
 
                             	<label>Re-enter New password:</label>
                             	
                             	&nbsp;&nbsp;&nbsp;<input type='password' id="id_new_password" name="new_password" value="" ng-model="" autocomplete="off" required ng-touched />
-                                    
+                                    <span class="help-inline" ng-show="userForm.new_password.$invalid && !userForm.new_password.$pristine">Re-enter New Password is required.</span>
     							
                             	
 
