@@ -11,6 +11,7 @@
     <meta name="description" content="Philippine National Police Unit Scorecard">
     <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
     <meta name="author" content="Fare Matrix">
+    <meta name="csrf_token" ="{{ $encrypted_csrf_token }}" />
 
     <title>Staff Dashboard - Philippine National Police Unit Scorecard</title>
 

@@ -5,7 +5,6 @@
     <!-- Morris Charts JavaScript -->
     <script src="{{ asset('unit/bower_components/raphael/raphael-min.js') }}"></script>
     <script src="{{ asset('unit/bower_components/morrisjs/morris.min.js') }}"></script>
-    <script src="{{ asset('unit/js/morris-data.js') }}"></script>
 
     <!-- Slaycaster Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
@@ -246,8 +245,72 @@
            
         </div>
         <!-- /.col-lg-4 -->
+
+        <select id="year">
+  <option value="2016">2016</option>
+  <option value="2015">2015</option>
+  <option value="2014">2014</option>
+  <option value="2013">2013</option>
+</select>
+
     </div>
     <!-- /.row -->
+
+
+
+<script type="text/javascript">
+
+  $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+  $(document).ready(function()
+  {
+
+      //Unit Office dropdown
+      $('#year').change(function()
+      {
+
+          var year = $('option:selected').val();
+          var staff_id = "<?php echo $staff_id ?>";
+
+          $.ajax({
+              type: "POST",
+              url: "../bargraph",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'staff_id' : staff_id},
+              success: function(response){
+                var arr = response;
+                Morris.Bar({
+                element: 'morris-area-chart',
+                data: [
+                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
+                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
+                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
+                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
+                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
+                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
+                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
+                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
+                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
+                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
+                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
+                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                ],
+                xkey: 'month',
+                ykeys: ['target', 'accomp'],
+                labels: ['target', 'accomplishments']
+            });              }
+
+          })
+      });
+
+
+    });
+
+
+
+</script>
+
+
 
     
 

@@ -35,8 +35,7 @@
     <!-- Yujin Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/chief.css') }}">
 
-    <!-- Morris Charts CSS -->
-    <link href="{{ asset('unit/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
+    
 
     <!-- Custom Fonts -->
     <link href="{{ asset('unit/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
