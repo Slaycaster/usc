@@ -14,6 +14,16 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
             //console.log(data);
            // console.log(data[1].chief_measure.staff_measures[0].unit_measures[0].unit_accomplishments[0]);
             $scope.chief_targets = data;
+
+            for(i = 1; i < $scope.chief_targets.length; i++)
+            {
+                       if($scope.chief_targets[i - 1].chief_measure.ChiefObjectiveID == $scope.chief_targets[i].chief_measure.ChiefObjectiveID )    
+                       {
+                              $scope.chief_targets[i].chief_measure.chief_objective.ChiefObjectiveName = " ";
+                       }
+                
+            }
+
             
             // Accumulating values from unit offices under staff and assigning it to StaffAccomplishment in order to have one summation of all.
             // All this, all contributory must have the same formula within!!!
