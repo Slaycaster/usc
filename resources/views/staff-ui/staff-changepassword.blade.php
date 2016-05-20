@@ -7,26 +7,25 @@
 
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
-    
-    <!-- AngularJS Application Scripts -->
+
 
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
     <br>
-    <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
+    <div ng-app="unitScorecardApp" ng-controller="StaffLoginController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
 					<div class="panel panel-warning measures-custom-panel">
 						<div class="panel-heading measures-custom-heading">
-							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Change Password</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $staff_user->staff->StaffAbbreviation }} Change Password</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Change password for {{ $user->unit->UnitName }}.<br> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Confirm changing your password by filling up below.&nbsp;<strong style="color:red"><i>Special characters like /,!,@,# are not allowed.</i> </strong> </strong></div>
-                                 <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitAbbreviation }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Change password for {{ $staff_user->staff->StaffName }}.<br> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Confirm changing your password by filling up below.&nbsp;<strong style="color:red"><i>Special characters like /,!,@,# are not allowed.</i> </strong> </strong></div>
+                                 <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Change password for {{ $staff_user->staff->StaffAbbreviation }}.</div>
 
                             </div>
 							<!--./div class row-->
@@ -36,17 +35,17 @@
                             	<label>Old password:</label>
                             	
                             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='password' id="id_old_password" name="old_password" value="" ng-model="" autocomplete="off" required ng-touched />
-                                    <span class="help-inline" ng-show="userForm.old_password.$invalid && !userForm.old_password.$pristine">Old Password is required.</span><br><br>
+                                    <br><br>
 
                             	<label>New password:</label>
                             	
                             	&nbsp;&nbsp;&nbsp;&nbsp;<input type='password' id="id_new_password" name="new_password" value="" ng-model="" autocomplete="off" required ng-touched />
-                                    <span class="help-inline" ng-show="userForm.new_password.$invalid && !userForm.new_password.$pristine">New Password is required.</span><br><br>
+                                   <br><br>
 
                             	<label>Re-enter New password:</label>
                             	
                             	&nbsp;&nbsp;&nbsp;<input type='password' id="id_new_password" name="new_password" value="" ng-model="" autocomplete="off" required ng-touched />
-                                    <span class="help-inline" ng-show="userForm.new_password.$invalid && !userForm.new_password.$pristine">Re-enter New Password is required.</span>
+                                    
     							
                             	
 

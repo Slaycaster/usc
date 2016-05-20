@@ -11,7 +11,6 @@
     <meta name="description" content="Philippine National Police Unit Scorecard">
     <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
     <meta name="author" content="Fare Matrix">
-    <meta name="csrf_token" ="{{ $encrypted_csrf_token }}" />
 
     <title>Staff Dashboard - Philippine National Police Unit Scorecard</title>
 
@@ -190,7 +189,7 @@
                                     <a href="#">Change Staff Picture</a>
                                 </li>
                                 <li>
-                                    <a href="#">Change Staff Password</a>
+                                    <a href="{{ url('staff/changepassword') }}">Change Staff Password</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

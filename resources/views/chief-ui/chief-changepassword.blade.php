@@ -1,4 +1,4 @@
-@extends('layout-unit')
+@extends('layout-chief')
 
 @section('content')
 
@@ -8,23 +8,24 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
+
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
     <br>
-    <div ng-app="unitScorecardApp" ng-controller="UnitLoginController">
+    <div ng-app="unitScorecardApp" ng-controller="StaffLoginController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
 					<div class="panel panel-warning measures-custom-panel">
 						<div class="panel-heading measures-custom-heading">
-							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $user->unit->UnitAbbreviation }} Change Password</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+							<i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief_user->chief->ChiefAbbreviation }} Change Password</b></h2>
 						</div>
 						<div class="panel-body">
 							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Change password for {{ $user->unit->UnitName }}.<br> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Confirm changing your password by filling up below.&nbsp;<strong style="color:red"><i>Special characters like /,!,@,# are not allowed.</i> </strong> </strong></div>
-                                 <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Change password for {{ $user->unit->UnitAbbreviation }}.</div>
+                                <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Change password for {{ $chief_user->chief->ChiefName }}.<br> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Confirm changing your password by filling up below.&nbsp;<strong style="color:red"><i>Special characters like /,!,@,# are not allowed.</i> </strong> </strong></div>
+                                 <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Change password for {{ $chief_user->chief->ChiefAbbreviation }}.</div>
 
                             </div>
 							<!--./div class row-->
