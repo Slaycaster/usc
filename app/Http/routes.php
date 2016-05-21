@@ -42,6 +42,7 @@ Route::get('unit/audit_trails', 'APIUnitAuditTrailsController@showIndex');
 Route::get('unit/targets','APIUnitTargetsController@showIndex');
 Route::get('unit/targets/{id}','APIUnitTargetsController@edit');
 Route::get('unit/reports','ReportsController@unitIndex');
+Route::get('unit/changepassword','UnitLoginController@changepass');
 
 
 /*STAFF USER ROUTES*/
@@ -53,6 +54,7 @@ Route::get('staff/targets','APIStaffTargetsController@showIndex');
 Route::get('staff/targets/{id}','APIStaffTargetsController@edit');
 Route::get('staff/audit_trails', 'APIStaffAuditTrailsController@showIndex');
 Route::get('staff/reports','ReportsController@staffIndex');
+Route::get('staff/changepassword','StaffLoginController@changepass');
 
 /*CHIEF USER ROUTES*/
 Route::get('chief/scorecard', 'ChiefLoginController@scorecard');
@@ -61,6 +63,7 @@ Route::get('chief/measures','APIChiefMeasuresController@showIndex');
 Route::get('chief/targets','APIChiefTargetsController@showIndex');
 Route::get('chief/targets/{id}','APIChiefTargetsController@edit');
 Route::get('chief/audit_trails', 'APIChiefAuditTrailsController@showIndex');
+Route::get('chief/changepassword','ChiefLoginController@changepass');
 
 
 
