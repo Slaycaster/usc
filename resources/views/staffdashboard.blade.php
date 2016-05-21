@@ -124,7 +124,8 @@
                                 <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="#"><i class="fa fa-calendar fa-fw"></i> Choose date...</a>
+                                <li>
+                                    <a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="fa fa-calendar fa-fw"></i>Launch demo modal</a>
                                 </li>
                             </ul>
                         </div>
@@ -155,17 +156,13 @@
                                         <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
                                         </li>
                                         <li class="divider"></li>
-                                        <li><a href="#"><i class="fa fa-calendar fa-fw"></i> Choose date...</a>
+                                        <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Choose Date</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-bar-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
+                      
                     </div>
                     <!-- /.panel -->
                     
@@ -177,9 +174,7 @@
                             <i class="fa fa-bar-chart-o fa-4x pull-right"></i>
                             <h4><b>PERFORMANCE THIS YEAR, QUARTERLY - (BY % PERCENTAGE)</b></h4>
                         </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                        </div>
+                   
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
@@ -248,14 +243,30 @@
         </div>
         <!-- /.col-lg-4 -->
 
-        <select id="year">
-  <option value="2016">2016</option>
-  <option value="2015">2015</option>
-  <option value="2014">2014</option>
-  <option value="2013">2013</option>
-</select>
 
+<!-- /.bargraph date modal -->
+<!-- Button to trigger modal -->
+
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <div id="datetimepicker1" class="input-append date">
+      <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+      <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
     </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+
+
     <!-- /.row -->
 
 
@@ -270,6 +281,9 @@
       //Unit Office dropdown
       $('#year').change(function()
       {
+
+
+            $('#morris-area-chart').empty();
 
           var year = $('option:selected').val();
           var staff_id = "<?php echo $staff_id ?>";
@@ -299,6 +313,7 @@
                 ],
                 xkey: 'month',
                 ykeys: ['target', 'accomp'],
+                
                 labels: ['target', 'accomplishments']
             });              }
 
@@ -312,6 +327,15 @@
 
 </script>
 
+<script type="text/javascript">
+
+$(function() {
+  $('#datetimepicker1').datetimepicker({
+    language: 'pt-BR'
+  });
+});
+
+</script>
 
 
     
