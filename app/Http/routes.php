@@ -22,6 +22,9 @@ Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecar
 Route::post('login', 'LoginController@doLogin');
 Route::get('logout', 'LoginController@doLogout');
 
+/*UTILITIES ROUTE*/
+Route::post('change_password', 'ChangePasswordController@ChangePassword');
+
 /*DASHBOARD*/
 Route::get('unit/dashboard', 'UnitLoginController@dashboard');
 Route::get('unit/unitdashboard', 'APIUnitAuditTrailsDashController@showIndex');
