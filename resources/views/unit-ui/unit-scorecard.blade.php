@@ -116,7 +116,7 @@ td.user-name {
                             <h2 class="heading scorecard-custom-heading">
                                 <b>{{ $user->unit->UnitAbbreviation }} Scorecard for {{ date("Y") }}</b>
                                 <div class="col-md-3 pull-right">
-                                    <a href="/">
+                                    <a href="{{ url('report/currentYearUnitScorecard') }}" target="_blank">
                                         <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
                                     </a> 
                                 </div>

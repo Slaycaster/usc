@@ -15,8 +15,12 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 /*REPORTS ROUTES*/
+Route::get('report/currentYearUnitScorecard', 'ReportsController@currentYearUnitScorecard');
+Route::get('report/currentYearStaffScorecard', 'ReportsController@currentYearStaffScorecard');
+Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChiefScorecard');
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
 Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecard');
+Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
 
 /*LOGIN ROUTE*/
 Route::post('login', 'LoginController@doLogin');
@@ -66,6 +70,7 @@ Route::get('chief/measures','APIChiefMeasuresController@showIndex');
 Route::get('chief/targets','APIChiefTargetsController@showIndex');
 Route::get('chief/targets/{id}','APIChiefTargetsController@edit');
 Route::get('chief/audit_trails', 'APIChiefAuditTrailsController@showIndex');
+Route::get('chief/reports','ReportsController@chiefIndex');
 Route::get('chief/changepassword','ChiefLoginController@changepass');
 
 

@@ -111,7 +111,7 @@ td.user-name {
                                 <b>{{ $chief_user->chief->ChiefAbbreviation }} Scorecard for {{ date("Y") }}
                                 </b>
                                 <div class="col-md-3 pull-right">
-                                    <a href="/">
+                                    <a href="{{ url('report/currentYearChiefScorecard') }}" target="_blank">
                                         <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
                                     </a> 
                                 </div>

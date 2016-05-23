@@ -47,14 +47,12 @@ use App\StaffFunding;
 	$stafflogoPath = 'uploads/staffpictures/cropped/'.$staff->PicturePath;
 ?>
 
-<!DOCTYPE html>
-
 <head>
     <title>Report | PNP</title>
     <style type="text/css">
     table
     {
-    	font-size: 8;
+    	font-size: 10;
     	text-align: center;
     	width: 875;
     	border-collapse: collapse;
@@ -72,20 +70,55 @@ use App\StaffFunding;
     img 
     {
     	position: absolute;
-    	left: 10px;
+    	left: 70px;
     	top: 5px;
 	}
+    .label 
+    {
+        display: inline;
+        padding: .2em .6em .3em;
+        font-size: 60%;
+        font-family: helvetica;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+    }
+    .label-default 
+    {
+        background-color: #777;
+    }
+    .labelc
+    {
+        display: inline;
+        font-size: 60%;
+        font-family: helvetica;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+    }
+    .label-primary 
+    {
+        background-color: #337ab7;
+    }
 	.unitlogo
 	{
     	position: absolute;
-    	left: 1000px;
-    	top: 20px;
+    	left: 960px;
+    	top: 17px;
 	}
     </style>
 </head>
 
 <body>
-	<img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
+	<img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 122px;">
 	<img class="unitlogo" src="{{URL::asset($stafflogoPath)}}" style="height: 120px;width: 120px;">
 	<p style="text-align: center;">
 		<normal style="font-size: 15px">Republic of the Philippines</normal>
@@ -99,200 +132,197 @@ use App\StaffFunding;
 	<p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $staff->StaffAbbreviation }} Scorecard for {{ $selectedYear }}</p>
     @if(count($accomplishments) > 0)
     	<table border="1">
-        	<thead style="font-weight: bold;font-family: arial,helvetica">
+        	<thead style="font-weight: bold;font-family: arial,helvetica;">
                 <tr>
-                    <td width="55" rowspan="2">OBJECTIVES</td>
-                    <td colspan="2">MEASURES</td>
-                    <td width="80" rowspan="2" >OWNER</td>
+                    <td width="53" rowspan="2">OBJECTIVES</td>
+                    <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
+                    <td width="65" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
                     <td colspan="12" height="12">TARGET/ACCOMPLISHMENT</td>
-                    <td rowspan="2">INITIATIVES</td>
+                    <td rowspan="2" style="text-align: left;padding-left: 3px;">INITIATIVES</td>
                     <td colspan="3">FUNDING</td>
                 </tr>
                 <tr>
-                    <td width="78">Name</td>
-                    <td width="22">Type</td>
-                    <td width="35">Jan</td>
-                    <td width="35">Feb</td>
-                    <td width="35">Mar</td>
-                    <td width="35">Apr</td>
-                    <td width="35">May</td>
-                    <td width="35">Jun</td>
-                    <td width="35">Jul</td>
-                    <td width="35">Aug</td>
-                    <td width="35">Sep</td>
-                    <td width="35">Oct</td>
-    				<td width="35">Nov</td>
-    				<td width="35">Dec</td>
+                    <td width="70" style="text-align: left;padding-left: 3px;">Name</td>
+                    <td>LG</td>
+                    <td>LD</td>
+                    <td width="33">Jan</td>
+                    <td width="33">Feb</td>
+                    <td width="33">Mar</td>
+                    <td width="33">Apr</td>
+                    <td width="33">May</td>
+                    <td width="33">Jun</td>
+                    <td width="33">Jul</td>
+                    <td width="33">Aug</td>
+                    <td width="33">Sep</td>
+                    <td width="33">Oct</td>
+                    <td width="33">Nov</td>
+                    <td width="33">Dec</td>
                     <td width="32">Estimate</td>
                     <td width="28">Actual</td>
                     <td width="32">Variance</td>
-                </tr>	
-        	</thead>
+                </tr>   
+            </thead>
         	<tbody>
         		@foreach($accomplishments as $accomplishment)
         		<tr style="font-family: arial;">
-        			<td>
+        			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->staff_measure->staff_objective->StaffObjectiveName }}
         			</td>
-        			<td>
+        			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->staff_measure->StaffMeasureName }}
                         <br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+                        @if($accomplishment->staff_measure->StaffMeasureID > 0)
+                            <span class="labelc label-primary">Contributory to C, PNP</span>
+                        @endif
+                        <div style="font-size: 9px;font-style: italic;">Contributory/ies to this Measure</div>
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div style="font-size: 9px;">
+                                    <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
-        			<td>
-        				{{ $accomplishment->staff_measure->StaffMeasureType }}
-        			</td>
-        			<td>
+        			@if($accomplishment->staff_measure->StaffMeasureType == 'LG')
+                        <td style="background-color: #5cb85c;"></td>
+                        <td></td>
+                    @else
+                        <td></td>
+                        <td style="background-color: #5cb85c;"></td>
+                    @endif
+        			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->staff_owner->StaffOwnerContent }}
         			</td>
         			<td>
-        				{{ $accomplishment->JanuaryTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->JanuaryAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->JanuaryAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->JanuaryAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->JanuaryAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->FebruaryTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->FebruaryAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->FebruaryAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->FebruaryTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->FebruaryAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->FebruaryAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
     				</td>
         			<td>
-        				{{ $accomplishment->MarchTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->MarchAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->MarchAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->MarchTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->MarchAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->MarchAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->AprilTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->AprilAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->AprilAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->AprilTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->AprilAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->AprilAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->MayTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->MayAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->MayAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->MayTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->MayAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->MayAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->JuneTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->JuneAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->JuneAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->JuneTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->JuneAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->JuneAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->JulyTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->JulyAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->JulyAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->JulyTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->JulyAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->JulyAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->AugustTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->AugustAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->AugustAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->AugustTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->AugustAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->AugustAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->SeptemberTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->SeptemberAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->SeptemberAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->SeptemberTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->SeptemberAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->SeptemberAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->OctoberTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->OctoberAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->OctoberAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->OctoberTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->OctoberAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->OctoberAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->NovemberTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->NovemberAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->NovemberAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->NovemberTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->NovemberAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->NovemberAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
         			<td>
-        				{{ $accomplishment->DecemberTarget }}<b>/ </b>{{ $accomplishment->staff_accomplishment->DecemberAccomplishment }}
-        				<br>
-                        <div style="font-size: 9px">
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <strong>+{{ $contributory->DecemberAccomplishment }}</strong> ({{ $contributory->unit->UnitAbbreviation }})
-                                @endforeach
+        				{{ round($accomplishment->DecemberTarget, 2) }}<b>/ </b><br>{{ round($accomplishment->staff_accomplishment->DecemberAccomplishment, 2) }}
+                        @foreach($accomplishment->staff_measure->unit_measures as $contributor)
+                            @foreach($contributor->unit_accomplishments as $contributory)
+                                <div>
+                                    <b>+{{ round($contributory->DecemberAccomplishment, 2) }}</b> <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
+                                </div>
                             @endforeach
-                        </div>
+                        @endforeach
         			</td>
-        			<td>
+        			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->staff_initiative->StaffInitiativeContent }}
         			</td>
-        			<td>
-        				{{ $accomplishment->staff_funding->StaffFundingEstimate }}
+        			<td style="text-align: right;">
+        				{{ round($accomplishment->staff_funding->StaffFundingEstimate, 2) }}
         			</td>
-        			<td>
-        				{{ $accomplishment->staff_funding->StaffFundingActual }}
+        			<td style="text-align: right;">
+        				{{ round($accomplishment->staff_funding->StaffFundingActual, 2) }}
         			</td>
-        			<td>
+        			<td style="text-align: right;">
         				{{ round(($accomplishment->staff_funding->StaffFundingEstimate - $accomplishment->staff_funding->StaffFundingActual), 2) }}
         			</td>
         		</tr>

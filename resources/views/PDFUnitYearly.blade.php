@@ -34,6 +34,10 @@ use App\UnitFunding;
 									->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
 									->where('UnitID', '=', $unit->UnitID)
 									->get();
+
+    $user = UserUnit::where('UserUnitID', $unit_id)
+                    ->first();
+
 	foreach ($accomplishments as $accomplishment)
 	{
 		//dd($accomplishment);
@@ -50,7 +54,7 @@ use App\UnitFunding;
     <style type="text/css">
     table
     {
-    	font-size: 8;
+    	font-size: 10;
     	text-align: center;
     	width: 875;
     	border-collapse: collapse;
@@ -68,14 +72,31 @@ use App\UnitFunding;
     img 
     {
     	position: absolute;
-    	left: 10px;
+    	left: 70px;
     	top: 5px;
 	}
+    .label 
+    {
+        display: inline;
+        font-size: 60%;
+        font-family: helvetica;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+    }
+    .label-primary 
+    {
+        background-color: #d9534f;
+    }
 	.unitlogo
 	{
     	position: absolute;
-    	left: 1000px;
-    	top: 20px;
+    	left: 960px;
+    	top: 17px;
 	}
     </style>
 </head>
@@ -97,16 +118,17 @@ use App\UnitFunding;
     	<table border="1">
         	<thead style="font-weight: bold;font-family: arial,helvetica">
                 <tr>
-                    <td width="60" rowspan="2">OBJECTIVES</td>
-                    <td colspan="2">MEASURES</td>
-                    <td width="95" rowspan="2" >OWNER</td>
+                    <td width="53" rowspan="2">OBJECTIVES</td>
+                    <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
+                    <td width="83" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
                     <td colspan="12" height="12">TARGET/ACCOMPLISHMENT</td>
-                    <td rowspan="2">INITIATIVES</td>
+                    <td rowspan="2" style="text-align: left;padding-left: 3px;">INITIATIVES</td>
                     <td colspan="3">FUNDING</td>
                 </tr>
                 <tr>
-                    <td width="88">Name</td>
-                    <td width="22">Type</td>
+                    <td width="88" style="text-align: left;padding-left: 3px;">Name</td>
+                    <td width="15">LG</td>
+                    <td width="15">LD</td>
                     <td width="30">Jan</td>
                     <td width="30">Feb</td>
                     <td width="30">Mar</td>
@@ -119,96 +141,104 @@ use App\UnitFunding;
                     <td width="30">Oct</td>
     				<td width="30">Nov</td>
     				<td width="30">Dec</td>
-                    <td width="35">Estimate</td>
-                    <td width="35">Actual</td>
-                    <td width="35">Variance</td>
+                    <td width="32">Estimate</td>
+                    <td width="28">Actual</td>
+                    <td width="32">Variance</td>
                 </tr>	
         	</thead>
         	<tbody>
         		@foreach($accomplishments as $accomplishment)
         		<tr style="font-family: arial;">
-        			<td>
+        			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->unit_measure->unit_objective->UnitObjectiveName }}
         			</td>
-        			<td>
+        			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->unit_measure->UnitMeasureName }}
+                        @if($accomplishment->unit_measure->StaffMeasureID > 0)
+                            <br>
+                            <span class="label label-primary">Contributory to {{ $user->unit->staff->StaffAbbreviation }}</span>
+                        @endif
         			</td>
-        			<td>
-        				{{ $accomplishment->unit_measure->UnitMeasureType }}
-        			</td>
-        			<td>
+                    @if($accomplishment->unit_measure->UnitMeasureType == 'LG')
+                        <td style="background-color: #5cb85c;"></td>
+                        <td></td>
+                    @else
+                        <td></td>
+                        <td style="background-color: #5cb85c;"></td>
+                    @endif
+        			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->unit_owner->UnitOwnerContent }}
         			</td>
         			<td>
-        				{{ $accomplishment->JanuaryTarget }}/
+        				{{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->JanuaryAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->JanuaryAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->FebruaryTarget }}/
+        				{{ round($accomplishment->FebruaryTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->FebruaryAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->FebruaryAccomplishment, 2) }}
     				</td>
         			<td>
-        				{{ $accomplishment->MarchTarget }}/
+        				{{ round($accomplishment->MarchTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->MarchAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->MarchAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->AprilTarget }}/
+        				{{ round($accomplishment->AprilTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->AprilAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->AprilAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->MayTarget }}/
+        				{{ round($accomplishment->MayTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->MayAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->MayAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->JuneTarget }}/
+        				{{ round($accomplishment->JuneTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->JuneAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->JuneAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->JulyTarget }}/
+        				{{ round($accomplishment->JulyTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->JulyAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->JulyAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->AugustTarget }}/
+        				{{ round($accomplishment->AugustTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->AugustAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->AugustAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->SeptemberTarget }}/
+        				{{ round($accomplishment->SeptemberTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->SeptemberAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->SeptemberAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->OctoberTarget }}/
+        				{{ round($accomplishment->OctoberTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->OctoberAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->OctoberAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->NovemberTarget }}/
+        				{{ round($accomplishment->NovemberTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->NovemberAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->NovemberAccomplishment, 2) }}
         			</td>
         			<td>
-        				{{ $accomplishment->DecemberTarget }}/
+        				{{ round($accomplishment->DecemberTarget, 2) }}<b>/ </b>
         				<br>
-        				{{ $accomplishment->unit_accomplishment->DecemberAccomplishment }}
+        				{{ round($accomplishment->unit_accomplishment->DecemberAccomplishment, 2) }}
         			</td>
-        			<td>
+        			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->unit_initiative->UnitInitiativeContent }}
         			</td>
-        			<td>
-        				{{ $accomplishment->unit_funding->UnitFundingEstimate }}
+        			<td style="text-align: right;">
+        				{{ round($accomplishment->unit_funding->UnitFundingEstimate, 2) }}
         			</td>
-        			<td>
-        				{{ $accomplishment->unit_funding->UnitFundingActual }}
+        			<td style="text-align: right;">
+        				{{ round($accomplishment->unit_funding->UnitFundingActual, 2) }}
         			</td>
-        			<td>
+        			<td style="text-align: right;">
         				{{ round(($accomplishment->unit_funding->UnitFundingEstimate - $accomplishment->unit_funding->UnitFundingActual), 2) }}
         			</td>
         		</tr>

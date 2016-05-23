@@ -180,7 +180,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ url('chief/reports') }}">
                                         Chief Scorecard Report
                                     </a>
                                 </li>

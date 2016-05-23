@@ -127,7 +127,7 @@ use App\StaffAccomplishment;
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
                     <td width="65" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
                     <td colspan="12" height="12">TARGET/ACCOMPLISHMENT</td>
-                    <td rowspan="2">INITIATIVES</td>
+                    <td rowspan="2" style="text-align: left;padding-left: 3px;">INITIATIVES</td>
                     <td colspan="3">FUNDING</td>
                 </tr>
                 <tr>
