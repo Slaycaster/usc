@@ -95,5 +95,25 @@ class ChiefLoginController extends Controller {
 		}
 	}
 
+	public function changechiefpicture()
+	{
+		if (Session::has('chief_user_id'))
+		{
+			$chief_id = Session::get('chief_user_id', 'default');
+			$chief_user = UserChief::where('UserChiefID', $chief_id)
+				->with('chief')
+				->first();
+		
+
+			return view('chief-ui.chief-changechiefpicture')
+				->with('chief_user', $chief_user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 }

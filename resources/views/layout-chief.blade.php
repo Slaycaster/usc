@@ -196,13 +196,13 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Change Unit Picture</a>
+                                    <a href="{{ url('chief/changechiefpicture') }}">Change Chief Picture</a>
                                 </li>
                                 <li>
                                     <a href="#">Change User Picture</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('chief/changepassword') }}">Change User Password</a>
+                                    <a href="{{ url('chief/changepassword') }}">Change Chief Password</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

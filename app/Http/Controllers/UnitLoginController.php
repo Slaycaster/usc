@@ -96,5 +96,25 @@ class UnitLoginController extends Controller {
 		}
 	}
 
+	public function changeunitpicture()
+	{
+		if (Session::has('unit_user_id'))
+		{
+			$unit_id = Session::get('unit_user_id', 'default');
+			$user = UserUnit::where('UserUnitID', $unit_id)
+				->with('unit')
+				->with('unit.staff')
+				->first();
+			
+			return view('unit-ui.unit-changeunitpicture')
+				->with('user', $user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 }
