@@ -35,6 +35,9 @@
     <!-- Yujin Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/chief.css') }}">
 
+     <!-- datetimepicker-->
+    <link href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css">
+
     
 
     <!-- Custom Fonts -->
@@ -53,6 +56,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('unit/dist/js/sb-admin-2.js') }}"></script>
 
+    <!-- Datetimepicker-->
+    <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
+     <script src="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
