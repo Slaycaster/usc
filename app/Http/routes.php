@@ -35,6 +35,8 @@ Route::get('chief/chiefdashboard', 'APIChiefAuditTrailsDashController@showIndex'
 
 /*BARGRAPH*/
 Route::post('bargraph', 'StaffLoginController@bargraph');
+Route::post('bargraphchief', 'ChiefLoginController@bargraph');
+
 
 
 /*UNIT USER ROUTES*/
