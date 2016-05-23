@@ -1,20 +1,18 @@
 var local = 'http://' + location.host;
 
 app.controller('APIUnitScorecardController', function($scope, $http, $interval) {
-
+    
 	$scope.unit_targets = [];
-	$scope.loading = true;
     $scope.info = false;
+	$scope.loading = true;
+    
  
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
 		$http.get(local + '/usc/public/api/unit_scorecard').
 		success(function(data, status, headers, config) {
-
 			$scope.unit_targets = data;
-
-
             for(i = 1; i < $scope.unit_targets.length; i++)
             {
                if($scope.unit_targets[i - 1].unit_measure.UnitObjectiveID == $scope.unit_targets[i].unit_measure.UnitObjectiveID )    
@@ -23,10 +21,9 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
                }
                 
             }
-
-
 			console.log(data);
 			$scope.loading = false;
+            $scope.info = true;
 		});	
 	};
 
@@ -37,7 +34,6 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
     };
 
     
-
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;

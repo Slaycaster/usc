@@ -148,6 +148,9 @@ a.navbar-brand.layout-custom-pnpabb:visited{
         width:200px;
         margin-bottom: 1.5em;
     }
+    button.btn-generate{
+        margin-right:0em;
+    }
 }
 @media (max-width: 768px){
     .scorecard-custom-panel{
@@ -159,6 +162,12 @@ a.navbar-brand.layout-custom-pnpabb:visited{
         height:10em; 
         width:10em;
         margin-top: 2em;
+    }
+    button.btn-generate{
+        margin-top:5em;
+    }
+    .scorecard-custom-heading{
+        padding-bottom: .75em;
     }
 }
 
@@ -189,7 +198,7 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     text-align: center;
 }
 .scorecard-month{
-    width:8em; 
+    width:10em; 
     border-color:transparent; 
     background-color:transparent;  
     text-align:center;

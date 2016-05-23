@@ -9,7 +9,7 @@ use App\ChiefMeasure;
 //LARAVEL MODULES
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Validator, Input, Redirect, Session, DB;
+use Validator, Input, Redirect, Session, Crypt, DB, Response;
 
 class ChiefLoginController extends Controller {
 
@@ -41,9 +41,11 @@ class ChiefLoginController extends Controller {
 			$chief_measures_count = ChiefMeasure::where('ChiefID', $chief_user->ChiefID)
 				->count();
 			return view('chiefdashboard')
+				->with('chief_id', $chief_id)
 				->with('chief_user', $chief_user)
 				->with('chief_objectives_count', $chief_objectives_count)
-				->with('chief_measures_count', $chief_measures_count);
+				->with('chief_measures_count', $chief_measures_count)
+				->withEncryptedCsrfToken(Crypt::encrypt(csrf_token()));
 		}
 		else
 		{
@@ -95,6 +97,7 @@ class ChiefLoginController extends Controller {
 		}
 	}
 
+
 	public function changechiefpicture()
 	{
 		if (Session::has('chief_user_id'))
@@ -114,6 +117,160 @@ class ChiefLoginController extends Controller {
 			return Redirect::to('/');
 		}
 	}
+
+
+	public function bargraph()
+		{
+
+			
+			$year = $_REQUEST['year'];
+			$chief_id = $_REQUEST['chief_id'];
+
+			$january = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('JanuaryTarget');
+
+			$february = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('FebruaryTarget');
+
+			$march = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('MarchTarget');
+
+			$april = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('AprilTarget');
+
+			$may = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('MayTarget');
+
+			$june = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('JuneTarget');
+
+			$july = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('JulyTarget');
+
+			$august = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('AugustTarget');
+
+			$september = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('SeptemberTarget');
+
+			$october = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('OctoberTarget');
+
+			$november = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('NovemberTarget');
+
+			$december = DB::table('chief_targets')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('DecemberTarget');
+
+
+
+
+
+			$januaryaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JanuaryAccomplishment');
+
+			$februaryaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('FebruaryAccomplishment');
+
+			$marchaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MarchAccomplishment');
+
+			$aprilaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AprilAccomplishment');
+
+			$mayaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MayAccomplishment');
+
+			$juneaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JuneAccomplishment');
+
+			$julyaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JulyAccomplishment');
+
+			$augustaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AugustAccomplishment');
+
+			$septemberaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('SeptemberAccomplishment');
+
+			$octoberaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('OctoberAccomplishment');
+
+			$novemberaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('NovemberAccomplishment');
+
+			$decemberaccomp = DB::table('chief_accomplishments')
+			->where('ChiefID', '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('DecemberAccomplishment');
+
+
+
+			$targetaccomp = array(
+				  array("January", $january, $januaryaccomp),
+				  array("February",$february, $februaryaccomp),
+				  array("March", $march, $marchaccomp),
+				  array("April", $april, $aprilaccomp),
+				  array("May", $may, $mayaccomp),
+				  array("June", $june, $juneaccomp),
+				  array("July", $july, $julyaccomp),
+				  array("August", $august, $augustaccomp),
+				  array("September", $september, $septemberaccomp),
+				  array("October", $october, $octoberaccomp),
+				  array("November", $november, $novemberaccomp),
+				  array("December", $december, $decemberaccomp)
+				  );
+			
+
+			return Response::json($targetaccomp);
+		}
+
 
 	
 }

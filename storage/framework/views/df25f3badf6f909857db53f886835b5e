@@ -1,17 +1,16 @@
-@extends('layout-staff')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
-    <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+    <script src="<?php echo e(asset('bower_components/angular/angular.min.js')); ?>"></script>
 
     <!-- Angular Utils Pagination -->
-    <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+    <script src="<?php echo e(asset('bower_components/angularUtils-pagination/dirPagination.js')); ?>"></script>
   
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/app.js') }}"></script>
+    <script src="<?php echo e(asset('app/app.js')); ?>"></script>
     
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/staff_scorecard.js') }}"></script>
+    <script src="<?php echo e(asset('app/controllers/staff_scorecard.js')); ?>"></script>
 
 
     <style type="text/css">
@@ -106,15 +105,10 @@ td.user-name {
             <div class="row">
                 <div class="panel panel-info scorecard-custom-panel">
                         <div class="panel-heading scorecard-custom-heading">
-                          <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
+                          <img class="img-responsive unitdashboard-custom-picabb" src="<?php echo e(asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'')); ?>">
                           
                             <h2 class="heading scorecard-custom-heading">
-                                <b>{{ $staff_user->staff->StaffAbbreviation }} Scorecard for {{ date("Y") }}</b>
-                                <div class="col-md-3 pull-right">
-                                    <a href="{{ url('report/currentYearStaffScorecard') }}" target="_blank">
-                                        <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
-                                    </a> 
-                                </div>
+                                <b><?php echo e($staff_user->staff->StaffAbbreviation); ?> Scorecard for <?php echo e(date("Y")); ?></b>
                             </h2>   
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                         </div><!--div panel-heading-->
@@ -541,4 +535,5 @@ td.user-name {
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout-staff', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

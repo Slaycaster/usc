@@ -124,22 +124,19 @@
                                 <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li>
-                                    <a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="fa fa-calendar fa-fw"></i>Launch demo modal</a>
+                                <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Choose Date</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div id="morris-area-chart"></div>
-                </div>
+                
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-4x pull-right"></i> 
@@ -156,11 +153,15 @@
                                         <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
                                         </li>
                                         <li class="divider"></li>
-                                        <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Choose Date</a>
-                                        </li>
+                                        <li>
+                                    <a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="fa fa-calendar fa-fw"></i>Choose Date</a>
+                                </li>
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                        <div class="panel-body">
+                            <div id="morris-area-chart"></div>
                         </div>
                       
                     </div>
@@ -248,23 +249,45 @@
 <!-- Button to trigger modal -->
 
  
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <div id="datetimepicker1" class="input-append date">
-      <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
-      <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+
+            </div>
+            <div class="modal-body">
+              
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+     
+
     </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  </div>
 </div>
 
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
 
     <!-- /.row -->
@@ -278,14 +301,14 @@
   $(document).ready(function()
   {
 
-      //Unit Office dropdown
-      $('#year').change(function()
-      {
 
+     $("#datetimepicker1").on("dp.change", function(e) {
+            
+        
+        $('#morris-area-chart').empty();
 
-            $('#morris-area-chart').empty();
-
-          var year = $('option:selected').val();
+          var year = $("#datetimepicker1").find("input").val();
+          console.log(year);
           var staff_id = "<?php echo $staff_id ?>";
 
           $.ajax({
@@ -318,7 +341,50 @@
             });              }
 
           })
-      });
+   });
+
+
+      //Unit Office dropdown
+  /*    $('#datetimepicker1').change(function()
+      {
+
+            $('#morris-area-chart').empty();
+
+          var year = $('#datetimepicker1').val();
+
+          var staff_id = "<?php echo $staff_id ?>";
+
+          $.ajax({
+              type: "POST",
+              url: "../bargraph",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'staff_id' : staff_id},
+              success: function(response){
+                var arr = response;
+                Morris.Bar({
+                element: 'morris-area-chart',
+                data: [
+                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
+                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
+                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
+                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
+                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
+                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
+                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
+                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
+                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
+                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
+                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
+                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                ],
+                xkey: 'month',
+                ykeys: ['target', 'accomp'],
+                
+                labels: ['target', 'accomplishments']
+            });              }
+
+          })
+      }); */
 
 
     });
@@ -327,17 +393,69 @@
 
 </script>
 
+
 <script type="text/javascript">
 
-$(function() {
-  $('#datetimepicker1').datetimepicker({
-    language: 'pt-BR'
-  });
-});
+     $(document).ready(function()
+      {
+
+            
+            $('#morris-area-chart').empty();
+
+          var year = new Date().getFullYear()
+          var staff_id = "<?php echo $staff_id ?>";
+
+          $.ajax({
+              type: "POST",
+              url: "../bargraph",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'staff_id' : staff_id},
+              success: function(response){
+                var arr = response;
+                Morris.Bar({
+                element: 'morris-area-chart',
+                data: [
+                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
+                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
+                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
+                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
+                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
+                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
+                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
+                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
+                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
+                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
+                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
+                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                ],
+                xkey: 'month',
+                ykeys: ['target', 'accomp'],
+                
+                labels: ['target', 'accomplishments']
+            });              }
+
+          })
+
+
+      });
+
 
 </script>
 
 
-    
+<script type="text/javascript">
+            $(function () {
+               $('#datetimepicker1').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY',
+                useCurrent: true
+                });
 
+             
+
+               
+            });
+</script>
+
+    
 @endsection
