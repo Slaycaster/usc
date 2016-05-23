@@ -115,9 +115,11 @@ td.user-name {
 						  
                             <h2 class="heading scorecard-custom-heading">
                                 <b>{{ $user->unit->UnitAbbreviation }} Scorecard for {{ date("Y") }}</b>
+
                                 <div class="col-md-3 pull-right">
                                     <a href="{{ url('report/currentYearUnitScorecard') }}" target="_blank">
                                         <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
+
                                     </a> 
                                 </div>
                             </h2>   
@@ -128,7 +130,7 @@ td.user-name {
 
 
 						<div class="panel-body">
-							<div class="table-responsive" >
+							<div class="table-responsive" ng-show="info">
     							<table class="table table-bordered floatThead-table">
     								<thead>
                                         <tr>
@@ -223,16 +225,15 @@ td.user-name {
     								</thead>
     								<tr dir-paginate='unit_target in unit_targets|filter:search|itemsPerPage:5'>
                                         
-                                        <td><% unit_target.unit_measure.unit_objective.UnitObjectiveName %>
-                                            </td>
+                                        <td><% unit_target.unit_measure.unit_objective.UnitObjectiveName %></td>
 
-                                        <input type="hidden" value="<% unit_target.unit_measure.StaffMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
+                                        <input type="hidden" value="<% unit_target.unit_measure.StaffMeasureID %>" ng-model="contributory" ng-init="c_measure=false" />
 
                                         <td colspan="2"><% unit_target.unit_measure.UnitMeasureName %>
                                             <span class="label label-danger" ng-if="c_measure=unit_target.unit_measure.StaffMeasureID">Contributory to {{ $user->unit->staff->StaffAbbreviation }}</span>
                                         </td>
 
-                                        <input type="hidden" ng-model="unittype" ng-init="c_type=unit_target.unit_measure.UnitMeasureType">
+                                        <input type="hidden" ng-model="unittype" ng-init="c_type=unit_target.unit_measure.UnitMeasureType" />
 
 
                                         <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LG'"></td>
@@ -241,7 +242,7 @@ td.user-name {
                                         <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LD'"></td>
 
 
-                                        <td><textarea rows="5" cols="30" id="id_owner<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" value="<% unit_target.unit_owner.UnitOwnerContent %>" ng-model="unit_target.unit_owner.UnitOwnerContent" autocomplete="off"  ng-touched /></textarea></td>
+                                        <td><textarea rows="5" cols="30" id="id_owner<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" value="<% unit_target.unit_owner.UnitOwnerContent %>" ng-model="unit_target.unit_owner.UnitOwnerContent" autocomplete="off"  ng-touched></textarea></td>
 
                                         <td class="scorecard-month"><% unit_target.JanuaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jan<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" valid-number value="<% unit_target.unit_accomplishment.JanuaryAccomplishment  %>" ng-model="unit_target.unit_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
 
@@ -267,17 +268,18 @@ td.user-name {
 
                                         <td class="scorecard-month"><% unit_target.DecemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_dec<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" valid-number value="<% unit_target.unit_accomplishment.DecemberAccomplishment %>" ng-model="unit_target.unit_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" ng-touched /></td>
 
-                                        <td><textarea rows="5" cols="30" id="id_initiative<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" value="<% unit_target.unit_initiative.UnitInitiativeContent %>" ng-model="unit_target.unit_initiative.UnitInitiativeContent" autocomplete="off" ng-touched /></textarea></td>
+                                        <td><textarea rows="5" cols="30" id="id_initiative<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" value="<% unit_target.unit_initiative.UnitInitiativeContent %>" ng-model="unit_target.unit_initiative.UnitInitiativeContent" autocomplete="off" ng-touched></textarea></td>
 
-                                        <td><input type='text' id="id_estimate<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" valid-number value="<% unit_target.unit_funding.UnitFundingEstimate %>" ng-model="unit_target.unit_funding.UnitFundingEstimate" autocomplete="off" class="form-control scorecard-input-estimate" ng-touched /></td>
+                                        <td><input type='text' id="id_estimate<%unit_target.unit_measure.UnitMeasureID%>" class="scorecard-input-estimate" name="monthlyform" valid-number value="<% unit_target.unit_funding.UnitFundingEstimate %>" ng-model="unit_target.unit_funding.UnitFundingEstimate" autocomplete="off" ng-touched /></td>
                                        
-                                        <td ><input type='text' id="id_actual<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" valid-number value="<% unit_target.unit_funding.UnitFundingActual %>" ng-model="unit_target.unit_funding.UnitFundingActual" autocomplete="off" class="form-control scorecard-input-actual" ng-touched /></td>
+                                        <td><input type='text' id="id_actual<%unit_target.unit_measure.UnitMeasureID%>" class="scorecard-input-actual" name="monthlyform" valid-number value="<% unit_target.unit_funding.UnitFundingActual %>" ng-model="unit_target.unit_funding.UnitFundingActual" autocomplete="off" ng-touched /></td>
                                         
                                         <td><% unit_target.unit_funding.UnitFundingEstimate - unit_target.unit_funding.UnitFundingActual | number: 2 %></td>
 
-                                         <input type="hidden" name="UnitMeasureID" value="<%unit_target.unit_measure.UnitMeasureID%>" id="unitmeasure_id<%unit_target.unit_measure.UnitMeasureID%>">
-                                         <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id<%unit_target.unit_measure.UnitMeasureID%>">
-                                        <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id<%unit_target.unit_measure.UnitMeasureID%>">
+                                        <input type="hidden" name="UnitMeasureID" value="<%unit_target.unit_measure.UnitMeasureID%>" id="unitmeasure_id<%unit_target.unit_measure.UnitMeasureID%>" />
+                                        <input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id<%unit_target.unit_measure.UnitMeasureID%>" />
+                                        <input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id<%unit_target.unit_measure.UnitMeasureID%>" />
+                                        
                                         <td>
                                                <button type="button"  class="btn btn-success btn-sm" id="btn-save" ng-click="save(modalstate, unit_target.UnitTargetID)"><i class="fa fa-save fa-fw"></i> Save Changes</button>
                                         </td>
