@@ -183,7 +183,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Change Unit Picture</a>
+                                    <a href="{{ url('unit/changeunitpicture') }}">Change Unit Picture</a>
                                 </li>
                                 <li>
                                     <a href="#">Change User Picture</a>

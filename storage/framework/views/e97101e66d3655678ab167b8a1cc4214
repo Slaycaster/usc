@@ -4,7 +4,6 @@
     <script src="<?php echo e(asset('unit/bower_components/raphael/raphael-min.js')); ?>"></script>
     <script src="<?php echo e(asset('unit/bower_components/morrisjs/morris.min.js')); ?>"></script>
     <script src="<?php echo e(asset('unit/js/morris-data.js')); ?>"></script>
-<<<<<<< HEAD
 
     <!-- Slaycaster Custom CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/custom-all.css')); ?>">
@@ -20,42 +19,35 @@
 
     <!-- AngularJS Application Scripts -->
     <script src="<?php echo e(asset('app/timeago.js')); ?>"></script>
+
+    <script src="<?php echo e(asset('app/cut.js')); ?>"></script>
     
     <!-- AngularJS Application Scripts -->
     <script src="<?php echo e(asset('app/controllers/unit_dashboard.js')); ?>"></script>
     
     <div class="row">
-        <div class="col-lg-12 dashboard-custom-unit-dashname">
+        <div class="col-lg-12 dashboard-custom-dashname">
             <p><b><?php echo e($user->unit->UnitName); ?> Unit Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
-        <!-- /.col-lg-12 -->
     </div>
-    <div class="row">
-        <div class="col-lg-12 dashboard-custom-unit-dashabb">
-            <img class="img-responsive unitdashboard-custom-unitpicabb" src="<?php echo e(asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'')); ?>">
-            <p><b><?php echo e($user->unit->UnitAbbreviation); ?> Unit Dashboard</b></p>
-        </div>
-        <div class="col-md-12"><br /></div>
-=======
     
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header"><b><?php echo e($user->unit->UnitName); ?> - Unit Dashboard</b></h1>
+        <div class="col-lg-12 dashboard-custom-dashabb">
+            <img class="img-responsive dashboard-custom-pictureabb" 
+                src="<?php echo e(asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'')); ?>">
+            <p>
+                <b><?php echo e($user->unit->UnitAbbreviation); ?> Unit Dashboard</b>
+            </p>
         </div>
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
-        <!-- /.col-lg-12 -->
+        <div class="col-md-12"><br /></div>
     </div>
-    <!-- /.row -->
+    
     <div class="row">
         <div class="col-lg-3">
-<<<<<<< HEAD
             <center>
-                <img class="img-responsive unitdashboard-custom-unitpic" src="<?php echo e(asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'')); ?>">
+                <img class="img-responsive dashboard-custom-picture" src="<?php echo e(asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'')); ?>">
             </center>
-=======
-            <img style="height:200px; width:200px;" class="img-responsive" src="<?php echo e(asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'')); ?>">
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
         </div>
         <div class="col-lg-9">
             <div class = "panel panel-info">
@@ -64,11 +56,7 @@
                     <h3><b>SCORECARD COMPONENTS</b></h3>
                 </div>
                 <div class="panel-body">
-<<<<<<< HEAD
                     <div class="col-lg-6 col-md-6 col-xs-6">
-=======
-                    <div class="col-lg-3 col-md-6">
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
@@ -81,26 +69,16 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <a href="<?php echo e(url('unit/objectives')); ?>">
                                 <div class="panel-footer">
                                     <span class="pull-left">Go to Objectives</span>
-=======
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">See All Objectives</span>
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <div class="col-lg-6 col-md-6 col-xs-6">
-=======
-                    <div class="col-lg-3 col-md-6">
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
@@ -108,68 +86,14 @@
                                         <i class="fa fa-bar-chart fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-<<<<<<< HEAD
                                         <div class="huge"><?php echo e($unit_measures_count); ?></div>
-=======
-                                        <div class="huge">12</div>
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                                         <div>Measures</div>
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <a href="<?php echo e(url('unit/measures')); ?>">
                                 <div class="panel-footer">
                                     <span class="pull-left">Go to Measures</span>
-=======
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">See All Measures</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-bolt fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">36</div>
-                                        <div>Targets</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">See All Targets</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-sitemap fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Initiatives</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">See All Initiatives</span>
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -180,7 +104,8 @@
             </div>
         </div>
     </div>
-    <!-- /.row -->
+    <!-- /.unitpicture -->
+    
     <div class="row">
         <div class="col-lg-8">
             <div class="panel panel-success">
@@ -266,7 +191,6 @@
         </div>
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
-<<<<<<< HEAD
             
             <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsDashController" >
                 <div class="panel-heading">
@@ -277,14 +201,14 @@
 
                 <div class="container-fluid" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                 <br />
-                    <a href="#" class="list-group-item">
+                    <a href="<?php echo e(url('unit/audit_trails')); ?>" class="list-group-item">
                         <i class="fa fa-tasks fa-fw"></i> 
                             <b><% audit_trail_dash.user_unit.rank.RankCode%> 
                                 <% audit_trail_dash.user_unit.UserUnitFirstName %>
                                 <% audit_trail_dash.user_unit.UserUnitLastName %>
                             </b> 
                             <br />
-                            <% audit_trail_dash.Action %>
+                            <% audit_trail_dash.Action | cut:true:75:' ...' %>
                         <br />
                         <span class="pull-right small"><% audit_trail_dash.updated_at |timeago %></span>
                         <br />
@@ -295,44 +219,6 @@
                 <div class="panel-body">
                     <!-- /.list-group -->
                     <a href="<?php echo e(url('unit/audit_trails')); ?>" class="btn btn-default btn-block">View All Activity Logs</a>
-=======
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-4x pull-right"></i>
-                    <h3><b>ACTIVITY LOG</b></h3>
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-fw"></i> <b>PCSUPT BARACEROS</b> updated the accomp...
-                            <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-fw"></i> <b>PSSUPT GARCIA</b> updated the accomplis...
-                            <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-support fa-fw"></i> <b>PSUPT PABLITO</b> updated the Unit's Picture
-                            <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-fw"></i> <b>PSUPT TOMAS</b> updated the Unit Scorecard
-                            <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-tasks fa-fw"></i> <b>PCINSP SALAYA</b> encoded a measure: "% of...
-                            <span class="pull-right text-muted small"><em>Yesterday</em>
-                            </span>
-                        </a>
-                    </div>
-                    <!-- /.list-group -->
-                    <a href="#" class="btn btn-default btn-block">View All Activity Logs</a>
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -358,31 +244,11 @@
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
-<<<<<<< HEAD
-=======
-
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <i class="fa fa-at fa-4x pull-right"></i>
-                    <h4><b>ABOUT: <?php echo e($user->unit->UnitName); ?></b></h4>
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <h4><b>Region:</b></h4>
-                    <h5><?php echo e($user->unit->region->RegionAbbreviation); ?> - <?php echo e($user->unit->region->RegionName); ?></h5>
-                    <!-- /input-group -->
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
            
         </div>
         <!-- /.col-lg-4 -->
     </div>
-    <!-- /.row -->
-
-    
+    <!-- /.dashboard content -->
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout-unit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

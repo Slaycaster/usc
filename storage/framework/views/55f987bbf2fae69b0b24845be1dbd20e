@@ -5,61 +5,53 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#363636 ">
-    <meta name="msapplication-navbutton-color" content="#363636 ">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#363636">
+    <meta name="theme-color" content="#782225 ">
+    <meta name="msapplication-navbutton-color" content="#782225 ">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#782225">
     <meta name="description" content="Philippine National Police Unit Scorecard">
     <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
     <meta name="author" content="Fare Matrix">
 
-    <title>Chief Dashboard - Philippine National Police Unit Scorecard</title>
+    <title>Staff Dashboard - Philippine National Police Unit Scorecard</title>
 
     <!-- Favicon.ico -->
-    <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
+    <link rel="shortcut icon" href="<?php echo e(asset('favicon.ico')); ?>">
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('unit/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('unit/bower_components/bootstrap/dist/css/bootstrap.min.css')); ?>" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="{{ asset('unit/bower_components/metisMenu/dist/metisMenu.min.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('unit/bower_components/metisMenu/dist/metisMenu.min.css')); ?>" rel="stylesheet">
 
     <!-- Timeline CSS -->
-    <link href="{{ asset('unit/dist/css/timeline.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('unit/dist/css/timeline.css')); ?>" rel="stylesheet">
 
     <!-- SB Admin Custom CSS -->
-    <link href="{{ asset('unit/dist/css/sb-admin-2.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('unit/dist/css/sb-admin-2.css')); ?>" rel="stylesheet">
 
     <!-- Slaycaster Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/custom-all.css')); ?>">
 
     <!-- Yujin Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/chief.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/staff.css')); ?>">
 
-     <!-- datetimepicker-->
-    <link href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css">
-
-    
+    <!-- Morris Charts CSS -->
+    <link href="<?php echo e(asset('unit/bower_components/morrisjs/morris.css')); ?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="{{ asset('unit/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'> -->
-    
+    <link href="<?php echo e(asset('unit/bower_components/font-awesome/css/font-awesome.min.css')); ?>" rel="stylesheet" type="text/css">
+
     <!-- jQuery -->
-    <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="<?php echo e(asset('unit/bower_components/jquery/dist/jquery.min.js')); ?>"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('unit/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="<?php echo e(asset('unit/bower_components/bootstrap/dist/js/bootstrap.min.js')); ?>"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ asset('unit/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
+    <script src="<?php echo e(asset('unit/bower_components/metisMenu/dist/metisMenu.min.js')); ?>"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('unit/dist/js/sb-admin-2.js') }}"></script>
-
-    <!-- Datetimepicker-->
-    <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
-     <script src="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-    
+    <script src="<?php echo e(asset('unit/dist/js/sb-admin-2.js')); ?>"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,7 +61,7 @@
     <![endif]-->
 </head>
 
-<body class="layout_chief-body">
+<body class="layout_staff-body">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,19 +72,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand layout-custom-pnpname" href="{{ url('/') }}">
+                <a class="navbar-brand layout-custom-pnpname" href="<?php echo e(url('/')); ?>">
                     Philippine National Police Unit Scorecard
                 </a>
-                <a class="navbar-brand layout-custom-pnpabb" href="{{ url('/') }}">
+                <a class="navbar-brand layout-custom-pnpabb" href="<?php echo e(url('/')); ?>">
                     PNP Unit Scorecard
                 </a>
             </div>
-            <div class="layout-custom-username">
-                <i class="glyphicon glyphicon-user"></i>&nbsp; 
+            <div class="layout-custom-username"> 
+                <i class="glyphicon glyphicon-user"></i>&nbsp;
                     Welcome 
-                    {{ $chief_user->rank->RankCode }} 
-                    {{ $chief_user->UserChiefFirstName }} 
-                    {{ $chief_user->UserChiefLastName }}!</i>
+                    <?php echo e($staff_user->rank->RankCode); ?> 
+                    <?php echo e($staff_user->UserStaffFirstName); ?> 
+                    <?php echo e($staff_user->UserStaffLastName); ?>!
             </div>
             <!-- /.navbar-header -->
 
@@ -102,9 +94,9 @@
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span>&nbsp;
                             Welcome 
-                            {{ $chief_user->rank->RankCode }} 
-                            {{ $chief_user->UserChiefFirstName }} 
-                            {{ $chief_user->UserChiefLastName }}! &nbsp; 
+                            <?php echo e($staff_user->rank->RankCode); ?> 
+                            <?php echo e($staff_user->UserStaffFirstName); ?> 
+                            <?php echo e($staff_user->UserStaffLastName); ?>! &nbsp; 
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -120,7 +112,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> 
+                            <a href="<?php echo e(url('logout')); ?>"><i class="fa fa-sign-out fa-fw"></i>
                                 Logout
                             </a>
                         </li>
@@ -129,8 +121,8 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-        </nav>
-            
+        </nav>   
+
         <nav class="layout-title-navbar navbar navbar-default side-nav" role="navigation">
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -147,12 +139,15 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ url('chief/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i>    Dashboard
+                            <a href="<?php echo e(url('staff/dashboard')); ?>">
+                                <i class="fa fa-dashboard fa-fw"></i> 
+                                Dashboard
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('chief/scorecard') }}"><i class="fa fa-table fa-fw"></i> 
-                                {{ $chief_user->chief->ChiefAbbreviation }} Scorecard
+                            <a href="<?php echo e(url('staff/scorecard')); ?>">
+                                <i class="fa fa-table fa-fw"></i> 
+                                <?php echo e($staff_user->staff->StaffAbbreviation); ?> Scorecard
                             </a>
                         </li>
                         <li>
@@ -161,39 +156,25 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('chief/objectives') }}">
-                                        Set Chief Objectives
-                                    </a>
+                                    <a href="<?php echo e(url('staff/objectives')); ?>">Set Staff Objectives</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('chief/measures') }}">
-                                        Set Chief Measures
-                                    </a>
+                                    <a href="<?php echo e(url('staff/measures')); ?>">Set Staff Measures</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-
-                            <a href="{{ url('chief/targets') }}"><i class="fa fa-table fa-fw"></i> 
-                                Set Measure Targets
-                            </a>
-
+                            <a href="<?php echo e(url('staff/targets')); ?>"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 
-                                Queries/Reports<span class="fa arrow"></span>
-                            </a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('chief/reports') }}">
-                                        Chief Scorecard Report
-                                    </a>
+                                    <a href="<?php echo e(url('staff/reports')); ?>">Staff Scorecard Report</a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        Chief Scorecard Analysis Report
-                                    </a>
+                                    <a href="#">Staff Scorecard Analysis Report</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -202,45 +183,31 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('chief/changechiefpicture') }}">Change Chief Picture</a>
+                                    <a href="<?php echo e(url('staff/changestaffpicture')); ?>">Change Staff Picture</a>
                                 </li>
                                 <li>
-                                    <a href="#">Change User Picture</a>
+                                    <a href="#">Change Staff Picture</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('chief/changepassword') }}">Change Chief Password</a>
+                                    <a href="<?php echo e(url('staff/changepassword')); ?>">Change Staff Password</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user fa-fw"></i> {{ $chief_user->rank->RankCode }} {{ $chief_user->UserUnitChiefName }} {{ $chief_user->UserChiefLastName }} <span class="fa arrow"></span>
+                                <i class="fa fa-user fa-fw"></i> <?php echo e($staff_user->rank->RankCode); ?> <?php echo e($staff_user->UserStaffFirstName); ?> <?php echo e($staff_user->UserStaffLastName); ?> <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li><a href="#"> User Settings</a>
                                 </li>
                                 <li><a href="#">Settings</a>
                                 </li>
-                                <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                <li><a href="<?php echo e(url('logout')); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <!--
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            
-                        </li>
-                    	-->
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -249,8 +216,8 @@
         </nav>
         <div class="the-blur"></div>
 
-        <div id="page-wrapper" class="chief-page-wrapper">
-            @yield('content')
+        <div id="page-wrapper" class="unit-page-wrapper">
+            <?php echo $__env->yieldContent('content'); ?>
         </div>
         <!-- /#page-wrapper -->
 

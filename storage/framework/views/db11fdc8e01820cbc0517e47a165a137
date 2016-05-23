@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <meta name="theme-color" content="#3b5998 ">
     <meta name="msapplication-navbutton-color" content="#3b5998 ">
     <meta name="apple-mobile-web-app-status-bar-style" content="#3b5998">
@@ -16,6 +17,12 @@
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="<?php echo e(asset('favicon.ico')); ?>">
+=======
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Unit Dashboard - PNP Unit Scorecard</title>
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo e(asset('unit/bower_components/bootstrap/dist/css/bootstrap.min.css')); ?>" rel="stylesheet">
@@ -32,16 +39,23 @@
     <!-- Slaycaster Custom CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/custom-all.css')); ?>">
 
+<<<<<<< HEAD
     <!-- Yujin Custom CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/unit.css')); ?>">
 
+=======
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
     <!-- Morris Charts CSS -->
     <link href="<?php echo e(asset('unit/bower_components/morrisjs/morris.css')); ?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="<?php echo e(asset('unit/bower_components/font-awesome/css/font-awesome.min.css')); ?>" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
     <!-- <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'> -->
     
+=======
+
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
     <!-- jQuery -->
     <script src="<?php echo e(asset('unit/bower_components/jquery/dist/jquery.min.js')); ?>"></script>
 
@@ -63,12 +77,20 @@
 
 </head>
 
+<<<<<<< HEAD
 <body class="layout_unit-body">
+=======
+<body>
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
 
     <div id="wrapper">
 
         <!-- Navigation -->
+<<<<<<< HEAD
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
+=======
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -76,6 +98,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+<<<<<<< HEAD
                 <a class="navbar-brand layout-custom-unit-pnpname" href="<?php echo e(url('/')); ?>">Philippine National Police Unit Scorecard</a>
                 <a class="navbar-brand layout-custom-unit-pnpabb" href="<?php echo e(url('/')); ?>">PNP Unit Scorecard</a>
             </div>
@@ -106,6 +129,28 @@
                             <a href="<?php echo e(url('logout')); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
+=======
+                <a class="navbar-brand" href="<?php echo e(url('/')); ?>">PNP Unit Scorecard</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <?php echo e($user->rank->RankCode); ?> <?php echo e($user->UserUnitFirstName); ?> <?php echo e($user->UserUnitLastName); ?> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"> User Settings</i> </a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="<?php echo e(url('unit/logout')); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                 </li>
                 <!-- /.dropdown -->
             </ul>
@@ -130,6 +175,7 @@
                             <a href="<?php echo e(url('unit/dashboard')); ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
+<<<<<<< HEAD
                             <a href="<?php echo e(url('unit/scorecard')); ?>"><i class="fa fa-table fa-fw"></i> <?php echo e($user->unit->UnitAbbreviation); ?> Scorecard</a>
                         </li>
                         <li>
@@ -137,15 +183,37 @@
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="<?php echo e(url('unit/objectives')); ?>">Set Unit Objectives</a>
+=======
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Set Activities<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo e(url('unit/objectives')); ?>">Set Objectives</a>
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                                 </li>
                                 <li>
                                     <a href="<?php echo e(url('unit/measures')); ?>">Set Unit Measures</a>
                                 </li>
+<<<<<<< HEAD
+=======
+                                <li>
+                                    <a href="#">Set Unit Initiatives</a>
+                                </li>
+                                <li>
+                                    <a href="#">Define Owners</a>
+                                </li>
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+<<<<<<< HEAD
                             <a href="<?php echo e(url('unit/targets')); ?>"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
+=======
+                            <a href="<?php echo e(url('unit/setscorecard')); ?>"><i class="fa fa-table fa-fw"></i> Set Unit Scorecard</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo e(url('unit/scorecard')); ?>"><i class="fa fa-edit fa-fw"></i> Update Accomplishments</a>
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>
@@ -174,6 +242,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<<<<<<< HEAD
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="fa fa-user fa-fw"></i> <?php echo e($user->rank->RankCode); ?> <?php echo e($user->UserUnitFirstName); ?> <?php echo e($user->UserUnitLastName); ?> <span class="fa arrow"></span>
@@ -188,6 +257,8 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+=======
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
                         <!--
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
@@ -211,7 +282,11 @@
         <div class="the-blur"></div>
 
         <br><br>
+<<<<<<< HEAD
         <div id="page-wrapper" class="unit-page-wrapper">
+=======
+        <div id="page-wrapper">
+>>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
             <?php echo $__env->yieldContent('content'); ?>
         </div>
         <!-- /#page-wrapper -->

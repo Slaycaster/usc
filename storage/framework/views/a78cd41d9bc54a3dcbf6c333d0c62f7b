@@ -1,0 +1,88 @@
+<?php $__env->startSection('content'); ?>
+	  
+		<!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+        <script src="<?php echo e(asset('app/lib/angular/angular.min.js')); ?>"></script>
+        
+        <!-- AngularJS Application Scripts -->
+        <script src="<?php echo e(asset('app/app.js')); ?>"></script>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b><?php echo e($user->unit->UnitName); ?> - Unit Objectives</b></h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="row" ng-app="unitObjectiveApp" ng-controller="unitObjectiveController">
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<p><b>Add Unit Objective</b></p>
+				</div>
+				<div class="panel-body">
+					<form name="userForm" ng-submit="addUnitObjective()" novalidate>
+					<fieldset>
+						
+						<div class="form-group">
+							<div class="input-group">
+								<label>Unit's Objective Name</label>
+								<input type='text' name="objective_name" ng-model="unit_objective.UnitObjectiveName" autocomplete="off" class="form-control" required ng-touched>
+								<p ng-show="userForm.objective_name.$invalid && !userForm.objective_name.$pristine" class="help-block">Objective Name is required.</p>
+							</div>
+
+							<div class="input-group">
+								<label>Perspective</label>
+								<select name="perspective_id" ng-model="unit_objective.PerspectiveID" class="form-control" required ng-touched>
+									<?php foreach($perspectives as $perspective): ?>
+										<option value="<?=$perspective->PerspectiveID?>"><?php echo e($perspective->PerspectiveName); ?></option>
+									<?php endforeach; ?>
+								</select>
+								<p ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-block">Perspective is required.</p>
+							</div>
+
+							<hr>
+
+							<div class="input-group">
+								<label>Unit:</label>
+								<p><?php echo e($user->unit->UnitName); ?></p>
+								<input type="hidden" name="UnitID" value="<?=$user->unit->UnitID?>" id="unit_id">
+							</div>
+
+							<div class="input-group">
+								<label>Encoded by:</label>
+								<p><?php echo e($user->rank->RankCode); ?> <?php echo e($user->UserUnitFirstName); ?> <?php echo e($user->UserUnitLastName); ?> </p>
+								<input type="hidden" name="UserUnitID" value="<?=$user->UserUnitID?>" id="user_unit_id">
+							</div>
+						</div>
+						
+					</fieldset>
+					<button type="submit" ng-disabled="userForm.$invalid" class="btn btn-primary">Add Unit's Objectives</button>
+					</form>
+					<!--<button class="btn btn-primary btn-md"  ng-click="addUnitObjective()">Add Unit's Objective</button>-->
+					<i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-8">
+			<table class="table table-striped">
+				<thead>
+					<td>Perspective</td>
+					<td>Unit Objective Name</td>
+					<td>Unit</td>
+					<td>Encoded by</td>
+				</thead>
+				<tr ng-repeat='unit_objective in unit_objectives'>
+					<td><% unit_objective.perspective.PerspectiveName %></td>
+					<td><% unit_objective.UnitObjectiveName %></td>
+					<td><% unit_objective.unit.UnitAbbreviation %></td>
+					<td><% unit_objective.user_unit.rank.RankCode %> <% unit_objective.user_unit.UserUnitFirstName %>, <% unit_objective.user_unit.UserUnitLastName %></td>
+					<td><button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button></td>
+				</tr>
+				<tr>
+				</tr>
+			</table>
+		</div>
+	</div>
+   
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout-unit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
