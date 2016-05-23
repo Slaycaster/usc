@@ -110,6 +110,11 @@ td.user-name {
                             <h2 class="heading">
                                 <b>{{ $chief_user->chief->ChiefAbbreviation }} Scorecard for {{ date("Y") }}
                                 </b>
+                                <div class="col-md-3 pull-right">
+                                    <a href="/">
+                                        <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
+                                    </a> 
+                                </div>
                             </h2>   
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                         </div><!--div panel-heading-->

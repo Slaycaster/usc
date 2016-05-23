@@ -109,12 +109,20 @@ td.user-name {
     		<div class="row">
     			<div class="panel panel-info scorecard-custom-panel">
     					<div class="panel-heading scorecard-custom-heading">
+
+                          
                           <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}">
 						  
                             <h2 class="heading scorecard-custom-heading">
                                 <b>{{ $user->unit->UnitAbbreviation }} Scorecard for {{ date("Y") }}</b>
+                                <div class="col-md-3 pull-right">
+                                    <a href="/">
+                                        <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
+                                    </a> 
+                                </div>
                             </h2>   
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+
 
 						</div><!--div panel-heading-->
 
