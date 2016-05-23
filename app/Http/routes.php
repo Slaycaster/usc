@@ -41,6 +41,8 @@ Route::get('chief/chiefdashboard', 'APIChiefAuditTrailsDashController@showIndex'
 Route::post('bargraph', 'StaffLoginController@bargraph');
 Route::post('bargraphchief', 'ChiefLoginController@bargraph');
 
+/*SEARCHUNIT*/
+Route::post('searchunit', 'ChiefLoginController@searchunit');
 
 
 /*UNIT USER ROUTES*/
