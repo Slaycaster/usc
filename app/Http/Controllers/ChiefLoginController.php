@@ -270,24 +270,5 @@ class ChiefLoginController extends Controller {
 
 			return Response::json($targetaccomp);
 		}
-
-
-<<<<<<< HEAD
-
-	public function searchunit()
-	{
-		$search = $_REQUEST['search'];
-
-		$searchresults = DB::table('units')
-		->where('UnitName', 'like', $search.'%')
-		->get();
-
-
-		return Response::json($searchresults);
-		
-	}
-
-=======
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
 	
 }
