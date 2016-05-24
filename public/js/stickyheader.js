@@ -91,12 +91,12 @@ $(function(){
             //     }
             // });
 
-            
+
             if($w.scrollTop() > $t.offset().top && $w.scrollTop() < $t.offset().top + $t.outerHeight() - allowance) {
               // When top of viewport is in the table itself
               $stickyHead.add($stickyInsct).css({
                 opacity: 1,
-                top: $w.scrollTop() - $t.offset().top + 50
+                top: $w.scrollTop() - $t.offset().top + 80
               });
             } 
             // If it is not overflowing (basic layout)
