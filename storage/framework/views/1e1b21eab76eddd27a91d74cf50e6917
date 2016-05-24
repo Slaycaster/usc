@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <html lang="en-PH">
 =======
 <html lang="en">
 >>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
+=======
+<html lang="en-PH">
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
 
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
     <meta http-equiv="refresh" content="60">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#363636 ">
@@ -23,6 +30,7 @@
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="<?php echo e(asset('favicon.ico')); ?>">
+<<<<<<< HEAD
 =======
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -30,6 +38,8 @@
 
     <title>PNP Unit Scorecard</title>
 >>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
+=======
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
@@ -40,9 +50,12 @@
     <!-- Custom Fonts -->
     <link href="<?php echo e(asset('font-awesome/css/font-awesome.min.css')); ?>" rel="stylesheet" type="text/css">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 >>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
+=======
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,6 +68,9 @@
 
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
     <header id="top" class="header">
         <div class="col-md-12 text-vertical-center" id="firstScreen">
             <br /><br />
@@ -95,6 +111,7 @@
 
                         <div class="col-md-6 col-md-offset-3">
                            <form action="login" method="post">
+<<<<<<< HEAD
 =======
 
     <!--
@@ -143,15 +160,21 @@
                             
                            <form action="unit/login" method="post">
 >>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
+=======
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
                             <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                             <fieldset>
                                 <div class="row">
                                     <div class="form-group">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                         <div class="input-group container-fluid welcome-stylish-message">
 =======
                                         <div class="input-group">
 >>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
+=======
+                                        <div class="input-group container-fluid welcome-stylish-message">
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
                                             <?php if(Session::has('message')): ?>
                                                 <div class="alert alert-warning"><?php echo e(Session::get('message')); ?></div>
                                             <?php endif; ?>
@@ -163,10 +186,14 @@
                                                 <i class="glyphicon glyphicon-user"></i>
                                             </span> 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                             <input type="text" name="username" placeholder="Badge No" autocomplete="off" required class="form-control welcome-stylish-badge"/>
 =======
                                             <input type="text" name="username" placeholder="Badge No" autocomplete="off" required class="form-control"/>
 >>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
+=======
+                                            <input type="text" name="username" placeholder="Badge No" autocomplete="off" required class="form-control welcome-stylish-badge"/>
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
                                         </div>
                                         <!--./input-group-->
                                     </div>
@@ -178,10 +205,14 @@
                                                 <i class="glyphicon glyphicon-lock"></i>
                                             </span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                             <input type="password" name="password" placeholder="Password" autocomplete="off" required class="form-control welcome-stylish-password"/>
 =======
                                             <input type="password" name="password" placeholder="Password" autocomplete="off" required class="form-control"/>
 >>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
+=======
+                                            <input type="password" name="password" placeholder="Password" autocomplete="off" required class="form-control welcome-stylish-password"/>
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
                                         </div>
                                         <!--./input-group-->
                                     </div>
@@ -210,6 +241,7 @@
 
     <!-- Custom Theme JavaScript -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <script>
     // Closes the sidebar menu
@@ -227,6 +259,8 @@
     </script>
 
 >>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
+=======
+>>>>>>> 54637afca580212dca2f3f2bfb8cf07a12806815
     <script type="text/javascript">
         $(document).ready(function(){
             $("#secondScreen").hide();

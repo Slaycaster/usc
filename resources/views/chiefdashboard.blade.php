@@ -219,6 +219,7 @@
             </div>
             <!-- /.panel -->
 
+          
             <div class="panel panel-warning">
                 <div class="panel-heading">
                     <i class="fa fa-search fa-4x pull-right"></i>
@@ -237,10 +238,8 @@
                     <!-- /input-group -->
 
                     <!-- /search results -->
-                    <div>
-                        <ul id="searchresults">
-
-                        </ul>
+                    <div  id="searchresults">
+                        
 
                     </div>
 
@@ -430,6 +429,7 @@
 
 
 
+
 <script type="text/javascript">
 
 var timer;
@@ -447,15 +447,46 @@ function up()
                       headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
                       data: {'search' : search},
                       success: function(response){
-                         $("#searchresults").empty();
+                        console.log(response);
+                        $("#searchresults").empty();
                         var arr = response ;
                         var i;
-                        var ul = document.getElementById("searchresults");
+                        var div = document.getElementById("searchresults");
                         for(i = 0; i < arr.length; i++) 
                         {
                             var li = document.createElement('li');
-                            li.appendChild(document.createTextNode(arr[i].UnitName));
-                            ul.appendChild(li);
+                            var a = document.createElement('a');
+                          
+                            if(arr[i].UnitName != null)
+                            {
+                                //Append UnitName/UnitAbbreviation
+                                a.appendChild(document.createTextNode(arr[i].UnitAbbreviation+' - '+arr[i].UnitName));
+                                a.style.color = "black";
+                                a.setAttribute("href", "{{ url('report/yearlyUnitScorecard') }}");
+                                li.appendChild(a);
+                                div.appendChild(li);       
+                            }
+
+                            if(arr[i].StaffName != null)
+                            {
+                                //Append StaffName/StaffAbbreviation
+                                a.appendChild(document.createTextNode(arr[i].StaffAbbreviation+' - '+arr[i].StaffName));
+                                a.style.color = "black";
+                                a.setAttribute("href", "{{ url('chief/reports') }}");
+                                li.appendChild(a);
+                                div.appendChild(li);       
+                            }
+
+                            if(arr[i].ChiefName != null)
+                            {
+                                //Append ChiefName/ChiefAbbreviation
+                                a.appendChild(document.createTextNode(arr[i].ChiefAbbreviation+' - '+arr[i].ChiefName));
+                                a.style.color = "black";
+                                a.setAttribute("href", "{{ url('chief/reports') }}");
+                                li.appendChild(a);
+                                div.appendChild(li);       
+                            }
+
                         }
 
 
@@ -473,7 +504,6 @@ function down()
     clearTimeout(timer);
 }
 
-</script>
-    
+</script>    
 
 @endsection
