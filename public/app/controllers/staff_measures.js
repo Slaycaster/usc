@@ -1,4 +1,6 @@
 var local = 'http://' + location.host;
+var public = '/usc/public/'; // replace this with '/' for production
+
 
 app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
 
@@ -9,7 +11,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + '/usc/public/api/staff_measures').
+        $http.get(local + public + 'api/staff_measures').
         success(function(data, status, headers, config) {
             $scope.staff_measures = data;
                 $scope.loading = false;
@@ -25,7 +27,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + '/usc/public/api/staff_measures';
+        var url = local + public + 'api/staff_measures';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -86,7 +88,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
             case 'edit':
                 $scope.form_title = "EDIT STAFF'S MEASURE DETAIL";
                 $scope.id = id;
-                $http.get(local + '/usc/public/api/staff_measures/' + id)
+                $http.get(local + public + 'api/staff_measures/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.staff_measure = response;
