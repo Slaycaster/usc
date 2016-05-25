@@ -40,14 +40,29 @@ class ChangePictureController extends Controller {
 
 		if($unit_user != null)
 		{
+			if(Input::get('userpicture') == '1')
+			{
+				return $this->changeUserUnitPicture();
+			}
+
 			return $this->changeUnitPicture();
 		}
 		if($staff_user != null)
 		{
+			if(Input::get('userpicture') == '1')
+			{
+				return $this->changeUserStaffPicture();
+			}
+
 			return $this->changeStaffPicture();
 		}
 		if($chief_user != null)
 		{
+			if(Input::get('userpicture') == '1')
+			{
+				return $this->changeUserChiefPicture();
+			}
+
 			return $this->changeChiefPicture();
 		}
 
@@ -81,11 +96,53 @@ class ChangePictureController extends Controller {
 		 	$unit->save();
 
 		 	Session::flash('upload-success', 'Unit Picture successfully updated!');
-		 	return Redirect::to('unit/changeunitpicture');
+		 	
+
+
+		 	$user = UserUnit::where('UserUnitID', $unitid)
+				->with('unit')
+				->with('unit.staff')
+				->first();
+			
+			return view('unit-ui.unit-changeunitpicture')
+				->with('user', $user);
 		 }
 		 else{
 	 		Session::flash('upload-error', 'Please select a photo');
 	 		return Redirect::to('unit/changeunitpicture');
+	 	}
+	 }
+
+	 public function changeUserUnitPicture()
+	 {
+	 	if(Input::file('picturepath')!= null)
+	 	{
+		 	if($_FILES['picturepath']['size'] > 1048576){
+	  			//You can not upload this file
+	  			Session::flash('upload-error', 'File exceeded 1mb file upload limit. Try compressing the image and try again');
+	  			return Redirect::to('unit/changeuserpicture');
+
+			}
+		 	$unitid = Input::get('unitid');
+
+		 	$file = Input::file('picturepath')->getClientOriginalName();
+		 	
+		 	$userunit = UserUnit::find($unitid);
+
+		 	$file = $userunit->UserUnitPicturePath;
+
+		 	$destinationPath = 'uploads/userpictures/unit/cropped';
+		 	Input::file('picturepath')->move($destinationPath, $file);
+		 	
+		 	$userunit->UserUnitPicturePath = $file;
+		 	$userunit->save();
+
+		 	Session::flash('upload-success', 'Your Picture successfully updated!');
+		 	return Redirect::to('unit/changeuserpicture');
+		 }
+		 else{
+	 		Session::flash('upload-error', 'Please select a photo');
+	 		return Redirect::to('unit/changeuserpicture');
 	 	}
 	 }
 
@@ -114,11 +171,52 @@ class ChangePictureController extends Controller {
 			 	$staff->save();
 
 			 	Session::flash('upload-success', 'Staff Picture successfully updated!');
-			 	return Redirect::to('staff/changestaffpicture');
+			
+
+			 	$staff_user = UserStaff::where('UserStaffID', $staffid)
+				->with('staff')
+				->first();
+			
+
+			return view('staff-ui.staff-changestaffpicture')
+				->with('staff_user', $staff_user);
 	 	}
 	 	else{
 	 		Session::flash('upload-error', 'Please select a photo');
 	 		return Redirect::to('staff/changestaffpicture');
+	 	}
+	 }
+
+	 public function changeUserStaffPicture()
+	 {
+	 	if(Input::file('picturepath')!= null)
+	 	{
+			 	if($_FILES['picturepath']['size'] > 1048576){
+		  			//You can not upload this file
+		  			Session::flash('upload-error', 'File exceeded 1mb file upload limit. Try compressing the image and try again');
+		  			return Redirect::to('staff/changeuserpicture');
+
+				}
+			 	$staffid = Input::get('staffid');
+
+			 	$file = Input::file('picturepath')->getClientOriginalName();
+			 	
+			 	$userstaff = UserStaff::find($staffid);
+
+			 	$file = $userstaff->UserStaffPicturePath;
+
+			 	$destinationPath = 'uploads/userpictures/unit/cropped';
+			 	Input::file('picturepath')->move($destinationPath, $file);
+			 	
+			 	$userstaff->UserStaffPicturePath = $file;
+			 	$userstaff->save();
+
+			 	Session::flash('upload-success', 'Your Picture successfully updated!');
+			 	return Redirect::to('staff/changeuserpicture');
+	 	}
+	 	else{
+	 		Session::flash('upload-error', 'Please select a photo');
+	 		return Redirect::to('staff/changeuserpicture');
 	 	}
 	 }
 
@@ -147,11 +245,52 @@ class ChangePictureController extends Controller {
 			 	$chief->save();
 
 			 	Session::flash('upload-success', 'Chief Picture successfully updated!');
-			 	return Redirect::to('chief/changechiefpicture');
+			 	
+
+			 	$chief_user = UserChief::where('UserChiefID', $chiefid)
+				->with('chief')
+				->first();
+		
+
+			return view('chief-ui.chief-changechiefpicture')
+				->with('chief_user', $chief_user);
 	 	}
 	 	else{
 	 		Session::flash('upload-error', 'Please select a photo');
 	 		return Redirect::to('chief/changechiefpicture');
+	 	}
+	 }
+
+	 public function changeUserChiefPicture()
+	 {
+	 	if(Input::file('picturepath')!= null)
+	 	{
+			 	if($_FILES['picturepath']['size'] > 1048576){
+		  			//You can not upload this file
+		  			Session::flash('upload-error', 'File exceeded 1mb file upload limit. Try compressing the image and try again');
+		  			return Redirect::to('chief/changeuserpicture');
+
+				}
+			 	$chiefid = Input::get('chiefid');
+
+			 	$file = Input::file('picturepath')->getClientOriginalName();
+			 	
+			 	$userchief = UserChief::find($chiefid);
+
+			 	$file = $userchief->UserChiefPicturePath;
+
+			 	$destinationPath = 'uploads/userpictures/unit/cropped';
+			 	Input::file('picturepath')->move($destinationPath, $file);
+			 	
+			 	$userchief->UserChiefPicturePath = $file;
+			 	$userchief->save();
+
+			 	Session::flash('upload-success', 'Your Picture successfully updated!');
+			 	return Redirect::to('chief/changeuserpicture');
+	 	}
+	 	else{
+	 		Session::flash('upload-error', 'Please select a photo');
+	 		return Redirect::to('chief/changeuserpicture');
 	 	}
 	 }
 

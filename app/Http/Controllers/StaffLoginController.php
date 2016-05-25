@@ -116,6 +116,26 @@ class StaffLoginController extends Controller {
 		}
 	}
 
+	public function changeuserpicture()
+	{
+		if (Session::has('staff_user_id'))
+		{
+			$staff_id = Session::get('staff_user_id', 'default');
+			$staff_user = UserStaff::where('UserStaffID', $staff_id)
+				->with('staff')
+				->first();
+			
+
+			return view('staff-ui.staff-changeuserpicture')
+				->with('staff_user', $staff_user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 
 	public function bargraph()
 		{
