@@ -27,17 +27,17 @@ class Perspective extends Model {
 
 	public function unit_objectives()
 	{
-		return $this->hasMany('App\UnitObjective', 'UnitObjectiveID', 'UnitObjectiveID');
+		return $this->hasMany('App\UnitObjective', 'PerspectiveID', 'PerspectiveID');
 	}
 
 	public function chief_objectives()
 	{
-		return $this->hasMany('App\ChiefObjective', 'ChiefObjectiveID', 'ChiefObjectiveID');
+		return $this->hasMany('App\ChiefObjective', 'PerspectiveID', 'PerspectiveID');
 	}
 
 	public function staff_objectives()
 	{
-		return $this->hasMany('App\StaffObjective', 'StaffObjectiveID', 'StaffObjectiveID');
+		return $this->hasMany('App\StaffObjective', 'PerspectiveID', 'PerspectiveID');
 	}
 
 }
