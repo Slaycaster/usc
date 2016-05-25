@@ -134,7 +134,7 @@
             </div>
             <!-- /.panel -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-4x pull-right"></i> 
@@ -158,15 +158,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
+                        <div class="table table-responsive">
+                            <div class="panel-body">
+                                <div id="morris-area-chart"></div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.panel -->
                     
                 </div>
                 <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-4x pull-right"></i>

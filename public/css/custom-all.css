@@ -73,7 +73,7 @@ a.navbar-brand.layout-custom-pnpabb:visited{
         text-align: left;
     }
     .scorecard-minilabel{
-        margin-top: -2em;
+        margin-top: .5em;
     }
 }
 /* /. layout css */
@@ -155,7 +155,7 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 @media (max-width: 768px){
     .scorecard-custom-panel{
         margin-top: 6.5em;
-        text-align: center;
+        
     }
     .unitdashboard-custom-picabb{
         display: inline !important;
@@ -168,6 +168,7 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     }
     .scorecard-custom-heading{
         padding-bottom: .75em;
+        text-align: center;
     }
 }
 
@@ -178,14 +179,16 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     background-color:transparent;  
     text-align:center;
     padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 .scorecard-owner,
 .scorecard-initiatives{
-    width:15em; 
+    width:17em; 
     border-color:transparent; 
     background-color:transparent;  
-    text-align:center;
+    text-align:center !important;
     padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 .scorecard-action{
     width:8em; 
@@ -193,6 +196,7 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     background-color:transparent;  
     text-align:center;
     padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 .scorecard-type{
     text-align: center;
