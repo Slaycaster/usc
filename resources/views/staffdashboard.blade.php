@@ -245,54 +245,40 @@
         <!-- /.col-lg-4 -->
 
 
-<!-- /.bargraph date modal -->
-<!-- Button to trigger modal -->
-
- 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-
-            </div>
-            <div class="modal-body">
-              
-
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-
-     
-
-    </div>
-</div>
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+        <!-- /.bargraph date modal -->
+        <!-- Button to trigger modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                         <h4 class="modal-title" id="myModalLabel">Choose Year</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-    </div>
     <!-- /.modal -->
-
-
-    <!-- /.row -->
-
-
+    </div>
 
 <script type="text/javascript">
 
@@ -300,11 +286,7 @@
 
   $(document).ready(function()
   {
-
-
-     $("#datetimepicker1").on("dp.change", function(e) {
-            
-        
+     $("#datetimepicker1").on("dp.change", function(e) {  
         $('#morris-area-chart').empty();
 
           var year = $("#datetimepicker1").find("input").val();
@@ -321,23 +303,23 @@
                 Morris.Bar({
                 element: 'morris-area-chart',
                 data: [
-                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
-                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
-                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
-                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
-                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
-                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
-                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
-                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
-                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
-                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
-                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
-                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                    {month: arr[0][0] , target: arr[0][1].toFixed(2) , accomp: arr[0][2].toFixed(2)},
+                    {month: arr[1][0] , target: arr[1][1].toFixed(2) , accomp: arr[1][2].toFixed(2)},
+                    {month: arr[2][0] , target: arr[2][1].toFixed(2) , accomp: arr[2][2].toFixed(2)},
+                    {month: arr[3][0] , target: arr[3][1].toFixed(2) , accomp: arr[3][2].toFixed(2)},
+                    {month: arr[4][0] , target: arr[4][1].toFixed(2) , accomp: arr[4][2].toFixed(2)},
+                    {month: arr[5][0] , target: arr[5][1].toFixed(2) , accomp: arr[5][2].toFixed(2)},
+                    {month: arr[6][0] , target: arr[6][1].toFixed(2) , accomp: arr[6][2].toFixed(2)},
+                    {month: arr[7][0] , target: arr[7][1].toFixed(2) , accomp: arr[7][2].toFixed(2)},
+                    {month: arr[8][0] , target: arr[8][1].toFixed(2) , accomp: arr[8][2].toFixed(2)},
+                    {month: arr[9][0] , target: arr[9][1].toFixed(2) , accomp: arr[9][2].toFixed(2)},
+                    {month: arr[10][0] , target: arr[10][1].toFixed(2) , accomp: arr[10][2].toFixed(2)},
+                    {month: arr[11][0] , target: arr[11][1].toFixed(2) , accomp: arr[11][2].toFixed(2)}
                 ],
                 xkey: 'month',
                 ykeys: ['target', 'accomp'],
                 
-                labels: ['target', 'accomplishments']
+                labels: ['Target', 'Accomplishment']
             });              }
 
           })
@@ -415,47 +397,37 @@
                 Morris.Bar({
                 element: 'morris-area-chart',
                 data: [
-                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
-                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
-                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
-                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
-                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
-                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
-                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
-                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
-                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
-                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
-                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
-                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                    {month: arr[0][0] , target: arr[0][1].toFixed(2) , accomp: arr[0][2].toFixed(2)},
+                    {month: arr[1][0] , target: arr[1][1].toFixed(2) , accomp: arr[1][2].toFixed(2)},
+                    {month: arr[2][0] , target: arr[2][1].toFixed(2) , accomp: arr[2][2].toFixed(2)},
+                    {month: arr[3][0] , target: arr[3][1].toFixed(2) , accomp: arr[3][2].toFixed(2)},
+                    {month: arr[4][0] , target: arr[4][1].toFixed(2) , accomp: arr[4][2].toFixed(2)},
+                    {month: arr[5][0] , target: arr[5][1].toFixed(2) , accomp: arr[5][2].toFixed(2)},
+                    {month: arr[6][0] , target: arr[6][1].toFixed(2) , accomp: arr[6][2].toFixed(2)},
+                    {month: arr[7][0] , target: arr[7][1].toFixed(2) , accomp: arr[7][2].toFixed(2)},
+                    {month: arr[8][0] , target: arr[8][1].toFixed(2) , accomp: arr[8][2].toFixed(2)},
+                    {month: arr[9][0] , target: arr[9][1].toFixed(2) , accomp: arr[9][2].toFixed(2)},
+                    {month: arr[10][0] , target: arr[10][1].toFixed(2) , accomp: arr[10][2].toFixed(2)},
+                    {month: arr[11][0] , target: arr[11][1].toFixed(2) , accomp: arr[11][2].toFixed(2)}
                 ],
                 xkey: 'month',
                 ykeys: ['target', 'accomp'],
-                
-                labels: ['target', 'accomplishments']
-            });              }
-
-          })
-
-
+                labels: ['Target', 'Accomplishment']
+            });              
+            }})
       });
-
 
 </script>
 
 
 <script type="text/javascript">
-            $(function () {
-               $('#datetimepicker1').datetimepicker({
-                viewMode: 'years',
-                format: 'YYYY',
-                useCurrent: true
-                });
-
-             
-
-               
-            });
+    $(function () {
+       $('#datetimepicker1').datetimepicker({
+        viewMode: 'years',
+        format: 'YYYY',
+        useCurrent: true
+        });
+    });
 </script>
-
     
 @endsection
