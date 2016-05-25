@@ -83,13 +83,18 @@
                 <a class="navbar-brand layout-custom-pnpabb" href="{{ url('/') }}">
                     PNP Unit Scorecard
                 </a>
+
+
+                <img class="img-responsive dashboard-custom-pictureabb" 
+                     src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
+                     style="width:25px; height:25px; margin-left: 1056px; margin-top: 14px">&nbsp;
             </div>
             <div class="layout-custom-username"> 
-                <i class="glyphicon glyphicon-user"></i>&nbsp;
+                <img class="img-responsive dashboard-custom-pictureabb" 
+                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
+                                style="width:20px; height:20px;">&nbsp;
                     Welcome 
-                    {{ $staff_user->rank->RankCode }} 
-                    {{ $staff_user->UserStaffFirstName }} 
-                    {{ $staff_user->UserStaffLastName }}!
+                    {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}!
             </div>
             <!-- /.navbar-header -->
 
@@ -97,11 +102,10 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"></span>&nbsp;
-                            Welcome 
-                            {{ $staff_user->rank->RankCode }} 
-                            {{ $staff_user->UserStaffFirstName }} 
-                            {{ $staff_user->UserStaffLastName }}! &nbsp; 
+
+                        Welcome      
+                    {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}! &nbsp; 
+                    
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -193,12 +197,18 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user fa-fw"></i> {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }} <span class="fa arrow"></span>
+                                <img class="img-responsive dashboard-custom-pictureabb" 
+                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
+                                style="width:20px; height:20px;"> {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="#"> User Settings</a>
+                                <li>
+                                    <a href="{{ url('staff/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                                        Change Profile Picture</a>
                                 </li>
-                                <li><a href="#">Settings</a>
+                                <li>
+                                    <a href="{{ url('staff/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                                        Change User Password</a>
                                 </li>
                                 <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                                 </li>

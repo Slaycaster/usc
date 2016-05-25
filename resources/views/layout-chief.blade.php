@@ -86,9 +86,15 @@
                 <a class="navbar-brand layout-custom-pnpabb" href="{{ url('/') }}">
                     PNP Unit Scorecard
                 </a>
+
+                <img class="img-responsive dashboard-custom-pictureabb" 
+                     src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
+                     style="width:25px; height:25px; margin-left: 1056px; margin-top: 14px">&nbsp;
             </div>
             <div class="layout-custom-username">
-                <i class="glyphicon glyphicon-user"></i>&nbsp; 
+                <img class="img-responsive dashboard-custom-pictureabb" 
+                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
+                                style="width:20px; height:20px;">&nbsp;</i>&nbsp; 
                     Welcome 
                     {{ $chief_user->rank->RankCode }} 
                     {{ $chief_user->UserChiefFirstName }} 
@@ -100,7 +106,9 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"></span>&nbsp;
+                        <img class="img-responsive dashboard-custom-pictureabb" 
+                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
+                                style="width:20px; height:20px;">&nbsp;
                             Welcome 
                             {{ $chief_user->rank->RankCode }} 
                             {{ $chief_user->UserChiefFirstName }} 
@@ -209,12 +217,19 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user fa-fw"></i> {{ $chief_user->rank->RankCode }} {{ $chief_user->UserUnitChiefName }} {{ $chief_user->UserChiefLastName }} <span class="fa arrow"></span>
+                                <img class="img-responsive dashboard-custom-pictureabb" 
+                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
+                                style="width:20px; height:20px;">&nbsp;  {{ $chief_user->rank->RankCode }} {{ $chief_user->UserUnitChiefName }} {{ $chief_user->UserChiefLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="#"> User Settings</a>
+                                <li>
+                                    <a href="{{ url('chief/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                                        Change Profile Picture</a>
                                 </li>
-                                <li><a href="#">Settings</a>
+
+                                <li>
+                                    <a href="{{ url('chief/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                                        Change User Password</a>
                                 </li>
                                 <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                                 </li>
