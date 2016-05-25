@@ -68,9 +68,17 @@
                                 </thead>
                                 <tr dir-paginate='audit_trail in chief_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                                     <td class="audit-encoder">
-                                        <% audit_trail.user_chief.rank.RankCode %> 
-                                        <% audit_trail.user_chief.UserChiefFirstName %>
-                                        <% audit_trail.user_chief.UserChiefLastName %>
+                                     <div class="col-md-5">
+                                            <center>
+                                                <img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail.user_chief.UserChiefPicturePath%>" height="30px;"" class="thumbnail">
+                                            </center>
+                                        </div>
+
+                                        <div style="font-size:12px;">
+                                            <% audit_trail.user_chief.rank.RankCode %> 
+                                            <% audit_trail.user_chief.UserChiefFirstName %>
+                                            <% audit_trail.user_chief.UserChiefLastName %>
+                                        </div>
                                     </td>
                                     <td class="audit-action">
                                         <% audit_trail.Action %>
