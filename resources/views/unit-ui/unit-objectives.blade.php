@@ -75,7 +75,22 @@
     									<td><% unit_objective.UnitObjectiveName %></td>
     									<td><% unit_objective.perspective.PerspectiveName %></td>
                                         <td><% unit_objective.staffobjective.StaffObjectiveName %></td>
-    									<td><% unit_objective.user_unit.rank.RankCode %> <% unit_objective.user_unit.UserUnitFirstName %> <% unit_objective.user_unit.UserUnitLastName %></td>
+    									<td>
+
+                                            <div class="col-md-5">
+                                                <center>
+                                                   <img ng-src="../uploads/userpictures/unit/cropped/<%unit_objective.user_unit.UserUnitPicturePath%>" height="30px;" class="thumbnail">
+                                                </center>
+                                            </div>
+
+                                            
+                                            <div style="font-size:12px;">
+                                            <% unit_objective.user_unit.rank.RankCode %> 
+                                            <% unit_objective.user_unit.UserUnitFirstName %> 
+                                            <% unit_objective.user_unit.UserUnitLastName %>
+                                            </div>
+                                        </div>
+                                        </td>
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', unit_objective.UnitObjectiveID)"><span class="fa fa-edit fa-fw"></button>
     										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->
