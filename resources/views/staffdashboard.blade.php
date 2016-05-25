@@ -397,15 +397,6 @@
     });
 </script>
 
-<<<<<<< HEAD
-             
-               
-            });
-</script>
-=======
-
->>>>>>> 4c723f42cee79f28d9497c03fbdb8bfb1476bf20
-
 
 <script type="text/javascript">
 
