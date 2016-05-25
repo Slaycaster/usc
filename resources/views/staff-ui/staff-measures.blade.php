@@ -14,6 +14,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/staff_measures.js') }}"></script>
 
+
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIStaffMeasureController">
 	    <div class="wrap">
@@ -80,7 +81,19 @@
                                         <td><% staff_measure.StaffMeasureFormula %></td>
                                         <td><% staff_measure.staff_objective.StaffObjectiveName %></td>
     									<td><% staff_measure.chief_measure.ChiefMeasureName %></td>
-    									<td><% staff_measure.user_staff.rank.RankCode %> <% staff_measure.user_staff.UserStaffFirstName %> <% staff_measure.user_staff.UserStaffLastName %></td>
+    									<td>
+                                            <div class="col-md-5">
+                                                <center>
+                                                <img ng-src="../uploads/userpictures/unit/cropped/<%staff_measure.user_staff.UserStaffPicturePath%>" height="30px;" class="thumbnail">
+                                                </center>
+                                            </div>
+
+                                            <div style="font-size:12px;">
+                                                <% staff_measure.user_staff.rank.RankCode %> 
+                                                <% staff_measure.user_staff.UserStaffFirstName %> 
+                                                <% staff_measure.user_staff.UserStaffLastName %>
+                                            </div>
+                                        </td>
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', staff_measure.StaffMeasureID)"><span class="fa fa-edit fa-fw"></button>
 
