@@ -219,6 +219,7 @@
             </div>
             <!-- /.panel -->
 
+          
             <div class="panel panel-warning">
                 <div class="panel-heading">
                     <i class="fa fa-search fa-4x pull-right"></i>
@@ -428,6 +429,7 @@
 
 
 
+
 <script type="text/javascript">
 
 var timer;
@@ -502,7 +504,6 @@ function down()
     clearTimeout(timer);
 }
 
-</script>
-    
+</script>    
 
 @endsection

@@ -271,7 +271,10 @@ class ChiefLoginController extends Controller {
 			return Response::json($targetaccomp);
 		}
 
-	public function searchunit()
+
+
+
+		public function searchunit()
 	{
 		$search = $_REQUEST['search'];
 
@@ -297,6 +300,5 @@ class ChiefLoginController extends Controller {
 		return Response::json($searchresults);
 		
 	}
-
 
 }
