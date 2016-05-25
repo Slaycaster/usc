@@ -72,7 +72,20 @@
     									<td><% staff_objective.StaffObjectiveName %></td>
     									<td><% staff_objective.perspective.PerspectiveName %></td>
                                         <td><% staff_objective.chief_objective.ChiefObjectiveName %></td>
-    									<td><% staff_objective.user_staff.rank.RankCode %> <% staff_objective.user_staff.UserStaffName %> <% staff_objective.user_staff.UserStaffLastName %></td>
+    									<td>
+
+                                            <div class="col-md-5">
+                                                <center>
+                                                    <img ng-src="../uploads/userpictures/unit/cropped/<%staff_objective.user_staff.UserStaffPicturePath%>" height="30px;"" class="thumbnail">
+                                                </center>
+                                            </div>
+
+                                            <div style="font-size:12px;">
+                                                <% staff_objective.user_staff.rank.RankCode %> 
+                                                <% staff_objective.user_staff.UserStaffName %> 
+                                                <% staff_objective.user_staff.UserStaffLastName %>
+                                        </div>
+                                        </td>
     									<td>
     										<button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', staff_objective.StaffObjectiveID)"><span class="fa fa-edit fa-fw"></button>
     										<!--<button class="btn btn-danger btn-xs" ng-click="deleteUnitObjective($index)">  <span class="glyphicon glyphicon-trash" ></span></button>-->

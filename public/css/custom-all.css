@@ -40,6 +40,11 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     /* color of navbar-brand, active, hover, and visited */
 }
 
+ .thumbnail:hover {
+    position:relative;
+    top:0em;
+    height: 250px;
+}
 
 
 /* layout css */
