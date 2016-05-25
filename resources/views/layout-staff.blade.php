@@ -106,14 +106,12 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp; 
-                                User Settings
-                            </a>
+                            <a href="{{ url('staff/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                                Change Profile Picture</a>
                         </li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp; 
-                                Settings
-                            </a>
+                            <a href="{{ url('staff/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                                Change User Password</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -190,9 +188,7 @@
                                 <li>
                                     <a href="{{ url('staff/changestaffpicture') }}">Change Staff Picture</a>
                                 </li>
-                                <li>
-                                    <a href="#">Change Staff Picture</a>
-                                </li>
+                                
                                 <li>
                                     <a href="{{ url('staff/changepassword') }}">Change Staff Password</a>
                                 </li>
