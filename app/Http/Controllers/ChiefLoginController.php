@@ -271,23 +271,32 @@ class ChiefLoginController extends Controller {
 			return Response::json($targetaccomp);
 		}
 
-
-<<<<<<< HEAD
-
 	public function searchunit()
 	{
 		$search = $_REQUEST['search'];
 
-		$searchresults = DB::table('units')
-		->where('UnitName', 'like', $search.'%')
+
+		$unitresults = DB::table('units')
+		->where('UnitName', 'like','%'.$search.'%')
+		->orWhere('UnitAbbreviation', 'like','%'.$search.'%')
 		->get();
 
+		$staffresults = DB::table('staffs')
+		->where('StaffName', 'like', '%'.$search.'%')
+		->orWhere('StaffAbbreviation', 'like','%'.$search.'%')
+		->get();
+
+		$chiefresults = DB::table('chiefs')
+		->where('ChiefName', 'like', '%'.$search.'%')
+		->orWhere('ChiefAbbreviation', 'like','%'.$search.'%')
+		->get();
+
+		$searchresults = $unitresults + $staffresults + $chiefresults;
+	
 
 		return Response::json($searchresults);
 		
 	}
 
-=======
->>>>>>> e0fcbfa5f79cb9b75b9461da9101f8a11840984b
-	
+
 }

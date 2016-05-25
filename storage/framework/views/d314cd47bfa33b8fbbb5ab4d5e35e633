@@ -188,7 +188,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Change Staff Picture</a>
+                                    <a href="<?php echo e(url('staff/changestaffpicture')); ?>">Change Staff Picture</a>
                                 </li>
                                 <li>
                                     <a href="#">Change Staff Picture</a>
