@@ -268,5 +268,38 @@ class StaffLoginController extends Controller {
 
 			return Response::json($targetaccomp);
 		}
+
+	public function searchstaff()
+	{
+		$search = $_REQUEST['search'];
+
+		if($search != '')
+		{
+			$unitresults = DB::table('units')
+			->where('UnitName', 'like','%'.$search.'%')
+			->orWhere('UnitAbbreviation', 'like','%'.$search.'%')
+			->get();
+
+			$staffresults = DB::table('staffs')
+			->where('StaffName', 'like', '%'.$search.'%')
+			->orWhere('StaffAbbreviation', 'like','%'.$search.'%')
+			->get();
+
+			$chiefresults = DB::table('chiefs')
+			->where('ChiefName', 'like', '%'.$search.'%')
+			->orWhere('ChiefAbbreviation', 'like','%'.$search.'%')
+			->get();
+		}
+		else
+		{
+			$unitresults = null;
+			$staffresults = null;
+			$chiefresults = null;	
+		}
+		
+
+		return Response::json(array("u" => $unitresults, "s" => $staffresults, "c" => $chiefresults,));
+		
+	}
 	
 }
