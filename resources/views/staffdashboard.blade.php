@@ -459,6 +459,7 @@ function up()
                     $("#searchresults").empty();
                     var unit = response.u ;
                     var staff = response.s ;
+                    var chief = response.c ;
                     var i;
                     var div = document.getElementById("searchresults");
                     for(i = 0; i < unit.length; i++) 
@@ -528,6 +529,48 @@ function up()
                             //Append StaffName/StaffAbbreviation
                             h4.setAttribute("class", "list-group-item-heading");
                             h4.appendChild(document.createTextNode(staff[i].StaffAbbreviation+' - '+staff[i].StaffName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+
+
+                     for(i = 0; i < chief.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(chief[i].ChiefName != null)
+                        {   
+                            var id = chief[i].ChiefID;
+                            var picture = chief[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/chiefpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentYearStaffChiefScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(chief[i].ChiefAbbreviation+' - '+chief[i].ChiefName));
 
                             p.setAttribute("class", "list-group-item-text");
                             p.appendChild(document.createTextNode("Scorecard Report"));

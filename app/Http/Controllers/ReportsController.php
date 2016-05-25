@@ -213,4 +213,18 @@ class ReportsController extends Controller
 		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
 	}
+
+	public function currentYearStaffChiefScorecard($id)
+	{	
+		$year = date("Y");
+		Session::put('chief_id', $id);
+		Session::put('year', $year);
+
+		$pdf = PDF::loadView('pdf-layouts.PDFStaffChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+  	    return $pdf->stream();
+	}
 }

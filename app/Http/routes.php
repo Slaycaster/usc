@@ -23,6 +23,7 @@ Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecar
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
 Route::get('report/currentYearChiefUnitScorecard/{id}', 'ReportsController@currentYearChiefUnitScorecard');
 Route::get('report/currentYearChiefStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
+Route::get('report/currentYearStaffChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
 
 
 /*LOGIN ROUTE*/
