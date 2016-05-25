@@ -582,6 +582,8 @@ function up()
                             div.appendChild(a);      
                         }
                     }
+
+                     div.setAttribute("style","height:300px; overflow-x:scroll; overflow-x:hidden")
                 }
 
         }) 
