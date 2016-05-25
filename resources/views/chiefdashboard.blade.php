@@ -240,9 +240,8 @@
                     <!-- /input-group -->
 
                     <!-- /search results -->
-                    <div  id="searchresults">
+                    <div class="list-group" id="searchresults">
                         
-
                     </div>
 
                 </div>
@@ -261,35 +260,31 @@
     <!-- /.bargraph date modal -->
 <!-- Button to trigger modal -->
 
- 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                 <h4 class="modal-title" id="myModalLabel">Choose Year</h4>
 
             </div>
             <div class="modal-body">
               
 
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
+                <div class="container">
+                    <div class="row">
+                        <div class='col-sm-6'>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-     
-
-    </div>
-</div>
 
 
                 <div class="modal-footer">
@@ -312,10 +307,7 @@
 
   $(document).ready(function()
   {
-
-
      $("#datetimepicker1").on("dp.change", function(e) {
-            
         
         $('#morris-area-chart').empty();
 
@@ -333,33 +325,27 @@
                 Morris.Bar({
                 element: 'morris-area-chart',
                 data: [
-                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
-                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
-                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
-                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
-                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
-                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
-                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
-                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
-                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
-                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
-                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
-                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                    {month: arr[0][0] , target: arr[0][1].toFixed(2) , accomp: arr[0][2].toFixed(2)},
+                    {month: arr[1][0] , target: arr[1][1].toFixed(2) , accomp: arr[1][2].toFixed(2)},
+                    {month: arr[2][0] , target: arr[2][1].toFixed(2) , accomp: arr[2][2].toFixed(2)},
+                    {month: arr[3][0] , target: arr[3][1].toFixed(2) , accomp: arr[3][2].toFixed(2)},
+                    {month: arr[4][0] , target: arr[4][1].toFixed(2) , accomp: arr[4][2].toFixed(2)},
+                    {month: arr[5][0] , target: arr[5][1].toFixed(2) , accomp: arr[5][2].toFixed(2)},
+                    {month: arr[6][0] , target: arr[6][1].toFixed(2) , accomp: arr[6][2].toFixed(2)},
+                    {month: arr[7][0] , target: arr[7][1].toFixed(2) , accomp: arr[7][2].toFixed(2)},
+                    {month: arr[8][0] , target: arr[8][1].toFixed(2) , accomp: arr[8][2].toFixed(2)},
+                    {month: arr[9][0] , target: arr[9][1].toFixed(2) , accomp: arr[9][2].toFixed(2)},
+                    {month: arr[10][0] , target: arr[10][1].toFixed(2) , accomp: arr[10][2].toFixed(2)},
+                    {month: arr[11][0] , target: arr[11][1].toFixed(2) , accomp: arr[11][2].toFixed(2)}
                 ],
                 xkey: 'month',
                 ykeys: ['target', 'accomp'],
                 
-                labels: ['target', 'accomplishments']
-            });              }
-
-          })
-   });
-
-
-
-
+                labels: ['Target', 'Accomplishment']
+            });              
+            }})
+        });
     });
-
 
 
 </script>
@@ -370,10 +356,7 @@
 
      $(document).ready(function()
       {
-
-            
-            $('#morris-area-chart').empty();
-
+        $('#morris-area-chart').empty();
           var year = new Date().getFullYear()
           var chief_id = "<?php echo $chief_id ?>";
 
@@ -387,28 +370,24 @@
                 Morris.Bar({
                 element: 'morris-area-chart',
                 data: [
-                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
-                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
-                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
-                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
-                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
-                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
-                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
-                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
-                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
-                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
-                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
-                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                    {month: arr[0][0] , target: arr[0][1].toFixed(2) , accomp: arr[0][2].toFixed(2)},
+                    {month: arr[1][0] , target: arr[1][1].toFixed(2) , accomp: arr[1][2].toFixed(2)},
+                    {month: arr[2][0] , target: arr[2][1].toFixed(2) , accomp: arr[2][2].toFixed(2)},
+                    {month: arr[3][0] , target: arr[3][1].toFixed(2) , accomp: arr[3][2].toFixed(2)},
+                    {month: arr[4][0] , target: arr[4][1].toFixed(2) , accomp: arr[4][2].toFixed(2)},
+                    {month: arr[5][0] , target: arr[5][1].toFixed(2) , accomp: arr[5][2].toFixed(2)},
+                    {month: arr[6][0] , target: arr[6][1].toFixed(2) , accomp: arr[6][2].toFixed(2)},
+                    {month: arr[7][0] , target: arr[7][1].toFixed(2) , accomp: arr[7][2].toFixed(2)},
+                    {month: arr[8][0] , target: arr[8][1].toFixed(2) , accomp: arr[8][2].toFixed(2)},
+                    {month: arr[9][0] , target: arr[9][1].toFixed(2) , accomp: arr[9][2].toFixed(2)},
+                    {month: arr[10][0] , target: arr[10][1].toFixed(2) , accomp: arr[10][2].toFixed(2)},
+                    {month: arr[11][0] , target: arr[11][1].toFixed(2) , accomp: arr[11][2].toFixed(2)}
                 ],
                 xkey: 'month',
                 ykeys: ['target', 'accomp'],
-                
-                labels: ['target', 'accomplishments']
+                labels: ['Target', 'Accomplishment']
             });              }
-
           })
-
-
       });
 
 
@@ -416,92 +395,122 @@
 
 
 <script type="text/javascript">
-            $(function () {
-               $('#datetimepicker1').datetimepicker({
-                viewMode: 'years',
-                format: 'YYYY',
-                useCurrent: true
-                });
-
-             
-
-               
-            });
+    $(function () {
+       $('#datetimepicker1').datetimepicker({
+        viewMode: 'years',
+        format: 'YYYY',
+        useCurrent: true
+        });
+    });
 </script>
-
-
-
 
 <script type="text/javascript">
 
 var timer;
-
 function up()
 {
     timer = setTimeout(function()
-        {
-            var search = $('#unitsearch').val();
-            $("#searchresults").empty();
-
-            $.ajax({
-                      type: "POST",
-                      url: "../searchunit",
-                      headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-                      data: {'search' : search},
-                      success: function(response){
-                        console.log(response);
-                        $("#searchresults").empty();
-                        var unit = response.u ;
-                        var staff = response.s ;
-                        var i;
-                        var div = document.getElementById("searchresults");
-                        for(i = 0; i < unit.length; i++) 
+    {
+        var search = $('#unitsearch').val();
+        $("#searchresults").empty();
+        $.ajax({
+                  type: "POST",
+                  url: "../searchunit",
+                  headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+                  data: {'search' : search},
+                  success: function(response){
+                    console.log(response);
+                    $("#searchresults").empty();
+                    var unit = response.u ;
+                    var staff = response.s ;
+                    var i;
+                    var div = document.getElementById("searchresults");
+                    for(i = 0; i < unit.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+                        
+                        if(unit[i].UnitName != null)
                         {
-                            var li = document.createElement('li');
-                            var a = document.createElement('a');
-                          
-                            if(unit[i].UnitName != null)
-                            {
-                                var id = unit[i].UnitID;
-                                //Append UnitName/UnitAbbreviation
-                                a.appendChild(document.createTextNode(unit[i].UnitAbbreviation+' - '+unit[i].UnitName));
-                                a.style.color = "black";
-                                a.setAttribute("href", "{{ url('report/currentYearChiefUnitScorecard') }}"+'/'+id);
-                                a.target = "_blank";
-                                li.appendChild(a);
-                                div.appendChild(li);       
-                            }
+                            var id = unit[i].UnitID;
+                            var picture = unit[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/unitpictures/cropped') }}"+"/"+picture;
 
+                            a.setAttribute("href", "{{ url('report/currentYearChiefUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
 
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
 
+                            //Append UnitName/UnitAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(unit[i].UnitAbbreviation+' - '+unit[i].UnitName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);       
                         }
+                    }
 
-                        for(i = 0; i < staff.length; i++) 
-                        {
-                            var li = document.createElement('li');
-                            var a = document.createElement('a');  
+                    for(i = 0; i < staff.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
 
-                            if(staff[i].StaffName != null)
-                            {   
-                                var id = staff[i].StaffID;
-                                //Append StaffName/StaffAbbreviation
-                                a.appendChild(document.createTextNode(staff[i].StaffAbbreviation+' - '+staff[i].StaffName));
-                                a.style.color = "black";
-                                a.setAttribute("href", "{{ url('report/currentYearChiefStaffScorecard') }}"+'/'+id);
-                                a.target = "_blank";
-                                li.appendChild(a);
-                                div.appendChild(li);       
-                            }
+                        if(staff[i].StaffName != null)
+                        {   
+                            var id = staff[i].StaffID;
+                            var picture = staff[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/staffpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentYearChiefStaffScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append StaffName/StaffAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(staff[i].StaffAbbreviation+' - '+staff[i].StaffName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
                         }
+                    }
+                }
 
-                      }
-
-            })
-            
-        }, 1000);
+        }) 
+    }, 1000);
 }
-
-
 
 function down()
 {

@@ -111,9 +111,12 @@ class ReportsController extends Controller
 		$year = date("Y");
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('PDFUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
-
 	}
 
 	public function currentYearStaffScorecard()
@@ -121,9 +124,12 @@ class ReportsController extends Controller
 		$year = date("Y");
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('PDFStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
-
 	}
 
 	public function currentYearChiefScorecard()
@@ -131,9 +137,12 @@ class ReportsController extends Controller
 		$year = date("Y");
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
-
 	}
 
 	public function yearlyUnitScorecard()
@@ -141,9 +150,12 @@ class ReportsController extends Controller
 		$year = Input::get('year');
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('PDFUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
-
 	}
 
 	public function yearlyStaffScorecard()
@@ -151,9 +163,12 @@ class ReportsController extends Controller
 		$year = Input::get('year');
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('PDFStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
-
 	}
 
 	public function yearlyChiefScorecard()
@@ -161,9 +176,12 @@ class ReportsController extends Controller
 		$year = Input::get('year');
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
-
 	}
 
 
@@ -174,9 +192,12 @@ class ReportsController extends Controller
 		Session::put('unit_id', $id);
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('PDFChiefUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFChiefUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
-
 	}
 
 	public function currentYearChiefStaffScorecard($id)
@@ -185,8 +206,11 @@ class ReportsController extends Controller
 		Session::put('staff_id', $id);
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('PDFChiefStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFChiefStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
-
 	}
 }

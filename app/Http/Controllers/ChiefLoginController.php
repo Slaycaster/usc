@@ -118,6 +118,26 @@ class ChiefLoginController extends Controller {
 		}
 	}
 
+	public function changeuserpicture()
+	{
+		if (Session::has('chief_user_id'))
+		{
+			$chief_id = Session::get('chief_user_id', 'default');
+			$chief_user = UserChief::where('UserChiefID', $chief_id)
+				->with('chief')
+				->first();
+		
+
+			return view('chief-ui.chief-changeuserpicture')
+				->with('chief_user', $chief_user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 
 	public function bargraph()
 		{
@@ -418,7 +438,7 @@ class ChiefLoginController extends Controller {
 
 
 
-		public function searchunit()
+	public function searchunit()
 	{
 		$search = $_REQUEST['search'];
 

@@ -13,16 +13,12 @@ use App\StaffFunding;
 
 	$selectedYear = Session::get('year', 'default');	
 
-    $staff_id = Session::get('staff_user_id', 'default');
-    $staff_user = UserStaff::where('UserStaffID', '=', $staff_id)
-                            ->first();
+    $staff_id = Session::get('staff_id', 'default');
 
-    $staff_id = Session::get('staff_user_id', 'default'); //get the UserstaffID stored in session.
-    $staff = UserStaff::where('UserStaffID', '=', $staff_id)->select('StaffID')->first(); //Get the Unit of the chief
       
-    $staff = Staff::where('StaffID', '=', $staff_user->StaffID)->first();
+    $staff = Staff::where('StaffID', '=', $staff_id)->first();
     $staff_objectives = StaffObjective::all();
-    $staff_measures = StaffMeasure::with('staff')->where('StaffID', '=', $staff_user->StaffID)->get();
+    $staff_measures = StaffMeasure::with('staff')->where('StaffID', '=', $staff_id)->get();
     
     $accomplishments = StaffTarget::with('staff_measure')
                                     ->with('staff_measure.staff_objective')
@@ -136,15 +132,15 @@ use App\StaffFunding;
                 <tr>
                     <td width="53" rowspan="2">OBJECTIVES</td>
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
-                    <td width="65" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
+                    <td width="68" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
                     <td colspan="12" height="12">TARGET/ACCOMPLISHMENT</td>
-                    <td rowspan="2" style="text-align: left;padding-left: 3px;">INITIATIVES</td>
+                    <td width="65" rowspan="2" style="text-align: left;padding-left: 3px;">INITIATIVES</td>
                     <td colspan="3">FUNDING</td>
                 </tr>
                 <tr>
                     <td width="70" style="text-align: left;padding-left: 3px;">Name</td>
-                    <td>LG</td>
-                    <td>LD</td>
+                    <td width="15">LG</td>
+                    <td width="15">LD</td>
                     <td width="33">Jan</td>
                     <td width="33">Feb</td>
                     <td width="33">Mar</td>

@@ -121,6 +121,7 @@ class UnitLoginController extends Controller {
 
 
 
+
 	public function bargraph()
 		{
 
@@ -273,6 +274,26 @@ class UnitLoginController extends Controller {
 
 			return Response::json($targetaccomp);
 		}
+
+	public function changeuserpicture()
+	{
+		if (Session::has('unit_user_id'))
+		{
+			$unit_id = Session::get('unit_user_id', 'default');
+			$user = UserUnit::where('UserUnitID', $unit_id)
+				->with('unit')
+				->with('unit.staff')
+				->first();
+			
+			return view('unit-ui.unit-changeuserpicture')
+				->with('user', $user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
 
 	
 }
