@@ -273,7 +273,6 @@ class ChiefLoginController extends Controller {
 
 
 
-
 		public function searchunit()
 	{
 		$search = $_REQUEST['search'];
