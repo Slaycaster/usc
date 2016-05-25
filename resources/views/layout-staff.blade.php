@@ -188,10 +188,6 @@
                                 <li>
                                     <a href="{{ url('staff/changestaffpicture') }}">Change Staff Picture</a>
                                 </li>
-                                
-                                <li>
-                                    <a href="{{ url('staff/changepassword') }}">Change Staff Password</a>
-                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
