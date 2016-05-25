@@ -146,6 +146,8 @@ class ChiefLoginController extends Controller {
 			$year = $_REQUEST['year'];
 			$chief_id = $_REQUEST['chief_id'];
 
+			//CHIEF TARGETS
+
 			$january = DB::table('chief_targets')
 			->where('ChiefID', '=', $chief_id)
 			->whereYear('TargetDate', '=', date($year))
@@ -210,67 +212,210 @@ class ChiefLoginController extends Controller {
 
 
 
-			$januaryaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			//CONTRIBUTORIES UNITS
+
+			$januaryunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JanuaryAccomplishment');
 
-			$februaryaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$februaryunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('FebruaryAccomplishment');
 
-			$marchaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$marchunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('MarchAccomplishment');
 
-			$aprilaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$aprilunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('AprilAccomplishment');
 
-			$mayaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$mayunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('MayAccomplishment');
 
-			$juneaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$juneunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JuneAccomplishment');
 
-			$julyaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$julyunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JulyAccomplishment');
 
-			$augustaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$augustunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('AugustAccomplishment');
 
-			$septemberaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$septemberunit= DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('SeptemberAccomplishment');
 
-			$octoberaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$octoberunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('OctoberAccomplishment');
 
-			$novemberaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$novemberunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('NovemberAccomplishment');
 
-			$decemberaccomp = DB::table('chief_accomplishments')
-			->where('ChiefID', '=', $chief_id)
+			$decemberunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('DecemberAccomplishment');
 
 
+
+
+			//CONTRIBUTORIES STAFF
+			$januarystaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JanuaryAccomplishment');
+
+			$februarystaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('FebruaryAccomplishment');
+
+			$marchstaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MarchAccomplishment');
+
+			$aprilstaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AprilAccomplishment');
+
+			$maystaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MayAccomplishment');
+
+			$junestaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JuneAccomplishment');
+
+			$julystaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JulyAccomplishment');
+
+			$auguststaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AugustAccomplishment');
+
+			$septemberstaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('SeptemberAccomplishment');
+
+			$octoberstaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('OctoberAccomplishment');
+
+			$novemberstaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('NovemberAccomplishment');
+
+			$decemberstaff = DB::table('staff_accomplishments')
+			->join('staff_measures', 'staff_accomplishments.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->join('chief_measures', 'staff_measures.ChiefMeasureID', '=', 'chief_measures.ChiefMeasureID')
+			->where('chief_measures.ChiefID' , '=', $chief_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('DecemberAccomplishment');
+
+
+
+
+			//UNIT + STAFF
+
+
+			$januaryaccomp = $januarystaff + $januaryunit ;
+			$februaryaccomp = $februarystaff + $februaryunit ;
+			$marchaccomp = $marchstaff + $marchunit ;
+			$aprilaccomp = $aprilstaff + $aprilunit ;
+			$mayaccomp = $maystaff + $mayunit ;
+			$juneaccomp = $junestaff + $juneunit ;
+			$julyaccomp = $julystaff + $julyunit ;
+			$augustaccomp = $auguststaff + $augustunit ;
+			$septemberaccomp = $septemberstaff + $septemberunit ;
+			$octoberaccomp = $octoberstaff + $octoberunit ;
+			$novemberaccomp = $novemberstaff + $novemberunit ;
+			$decemberaccomp = $decemberstaff + $decemberunit ;
 
 			$targetaccomp = array(
 				  array("January", $january, $januaryaccomp),
