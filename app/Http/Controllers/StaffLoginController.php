@@ -124,6 +124,8 @@ class StaffLoginController extends Controller {
 			$year = $_REQUEST['year'];
 			$staff_id = $_REQUEST['staff_id'];
 
+
+			//TARGETS
 			$january = DB::table('staff_targets')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('TargetDate', '=', date($year))
@@ -187,66 +189,170 @@ class StaffLoginController extends Controller {
 
 
 
+			//CONTRIBUTORIES
+			$januaryunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JanuaryAccomplishment');
 
-			$januaryaccomp = DB::table('staff_accomplishments')
+			$februaryunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('FebruaryAccomplishment');
+
+			$marchunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MarchAccomplishment');
+
+			$aprilunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AprilAccomplishment');
+
+			$mayunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MayAccomplishment');
+
+			$juneunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JuneAccomplishment');
+
+			$julyunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JulyAccomplishment');
+
+			$augustunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AugustAccomplishment');
+
+			$septemberunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('SeptemberAccomplishment');
+
+			$octoberunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('OctoberAccomplishment');
+
+			$novemberunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('NovemberAccomplishment');
+
+			$decemberunit = DB::table('unit_accomplishments')
+			->join('unit_measures', 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('staff_measures.StaffID' , '=', $staff_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('DecemberAccomplishment');
+
+
+
+			//STAFF ACCOMPLISHMENTS
+			$januarystaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JanuaryAccomplishment');
 
-			$februaryaccomp = DB::table('staff_accomplishments')
+			$februarystaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('FebruaryAccomplishment');
 
-			$marchaccomp = DB::table('staff_accomplishments')
+			$marchstaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('MarchAccomplishment');
 
-			$aprilaccomp = DB::table('staff_accomplishments')
+			$aprilstaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('AprilAccomplishment');
 
-			$mayaccomp = DB::table('staff_accomplishments')
+			$maystaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('MayAccomplishment');
 
-			$juneaccomp = DB::table('staff_accomplishments')
+			$junestaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JuneAccomplishment');
 
-			$julyaccomp = DB::table('staff_accomplishments')
+			$julystaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JulyAccomplishment');
 
-			$augustaccomp = DB::table('staff_accomplishments')
+			$auguststaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('AugustAccomplishment');
 
-			$septemberaccomp = DB::table('staff_accomplishments')
+			$septemberstaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('SeptemberAccomplishment');
 
-			$octoberaccomp = DB::table('staff_accomplishments')
+			$octoberstaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('OctoberAccomplishment');
 
-			$novemberaccomp = DB::table('staff_accomplishments')
+			$novemberstaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('NovemberAccomplishment');
 
-			$decemberaccomp = DB::table('staff_accomplishments')
+			$decemberstaff = DB::table('staff_accomplishments')
 			->where('StaffID', '=', $staff_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('DecemberAccomplishment');
+
+
+
+			//STAFF ACCOMP PLUS CONTRIBUTORIES
+
+			$januaryaccomp = $januarystaff + $januaryunit;
+			$februaryaccomp = $februarystaff + $februaryunit;
+			$marchaccomp = $marchstaff + $marchunit;
+			$aprilaccomp = $januarystaff + $januaryunit;
+			$mayaccomp = $maystaff + $mayunit;
+			$juneaccomp = $junestaff + $juneunit;
+			$julyaccomp = $julystaff + $julyunit;
+			$augustaccomp = $auguststaff + $augustunit;
+			$septemberaccomp = $septemberstaff + $septemberunit;
+			$octoberaccomp = $octoberstaff + $octoberunit;
+			$novemberaccomp = $novemberstaff + $novemberunit;
+			$decemberaccomp = $decemberstaff + $decemberunit;
 
 
 

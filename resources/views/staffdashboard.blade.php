@@ -344,50 +344,10 @@
    });
 
 
-      //Unit Office dropdown
-  /*    $('#datetimepicker1').change(function()
-      {
-
-            $('#morris-area-chart').empty();
-
-          var year = $('#datetimepicker1').val();
-
-          var staff_id = "<?php echo $staff_id ?>";
-
-          $.ajax({
-              type: "POST",
-              url: "../bargraph",
-              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'staff_id' : staff_id},
-              success: function(response){
-                var arr = response;
-                Morris.Bar({
-                element: 'morris-area-chart',
-                data: [
-                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
-                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
-                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
-                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
-                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
-                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
-                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
-                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
-                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
-                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
-                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
-                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
-                ],
-                xkey: 'month',
-                ykeys: ['target', 'accomp'],
-                
-                labels: ['target', 'accomplishments']
-            });              }
-
-          })
-      }); */
+   
 
 
-    });
+ });
 
 
 
@@ -452,7 +412,6 @@
                 });
 
              
-
                
             });
 </script>
