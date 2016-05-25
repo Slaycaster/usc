@@ -5,7 +5,6 @@
     <!-- Morris Charts JavaScript -->
     <script src="{{ asset('unit/bower_components/raphael/raphael-min.js') }}"></script>
     <script src="{{ asset('unit/bower_components/morrisjs/morris.min.js') }}"></script>
-    <script src="{{ asset('unit/js/morris-data.js') }}"></script>
 
     <!-- Slaycaster Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
@@ -133,10 +132,15 @@
                     </div>
                 </div>
                 <!-- /.panel-heading -->
+<<<<<<< HEAD
+                <div class="panel-body">
+                    <div id="morris-bar-chart"></div>
+=======
                 <div class="table table-responsive">
                     <div class="panel-body">
                         <div id="morris-area-chart"></div>
                     </div>
+>>>>>>> 4c723f42cee79f28d9497c03fbdb8bfb1476bf20
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -159,15 +163,16 @@
                                         <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
                                         </li>
                                         <li class="divider"></li>
-                                        <li><a href="#"><i class="fa fa-calendar fa-fw"></i> Choose date...</a>
-                                        </li>
+                                        <li>
+                                    <a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="fa fa-calendar fa-fw"></i>Choose Date</a>
+                                </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="morris-bar-chart"></div>
+                            <div id="morris-area-chart"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -233,10 +238,10 @@
                     <i class="fa fa-search fa-4x pull-right"></i>
                     <h4><b>BROWSE OTHER UNIT'S SCORECARD</b></h4>
                 </div>
-                <!-- /.panel-heading -->
+                  <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text" class="form-control" placeholder="Search..." id="staffsearch" onkeydown="down()" onkeyup="up()">
                         <span class="input-group-btn">
                         <button class="btn btn-default" type="button">
                             <i class="fa fa-search"></i>
@@ -244,6 +249,12 @@
                     </span>
                     </div>
                     <!-- /input-group -->
+
+                    <!-- /search results -->
+                    <div class="list-group" id="searchresults">
+                        
+                    </div>
+
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -253,5 +264,339 @@
         <!-- /.col-lg-4 -->
     </div>
     <!-- /.dashboard content -->
+
+
+
+    <!-- /.bargraph date modal -->
+<!-- Button to trigger modal -->
+
+ 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+
+            </div>
+            <div class="modal-body">
+              
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+     
+
+    </div>
+</div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <!-- /.row -->
+
+
+
+
+
+<script type="text/javascript">
+
+  $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+  $(document).ready(function()
+  {
+
+
+     $("#datetimepicker1").on("dp.change", function(e) {
+            
+        
+        $('#morris-area-chart').empty();
+
+          var year = $("#datetimepicker1").find("input").val();
+          var unit_id = "<?php echo $unit_id ?>";
+
+          console.log(unit_id);
+          $.ajax({
+              type: "POST",
+              url: "../bargraphunit",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'unit_id' : unit_id},
+              success: function(response){
+                var arr = response;
+                Morris.Bar({
+                element: 'morris-area-chart',
+                data: [
+                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
+                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
+                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
+                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
+                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
+                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
+                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
+                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
+                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
+                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
+                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
+                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                ],
+                xkey: 'month',
+                ykeys: ['target', 'accomp'],
+                
+                labels: ['target', 'accomplishments']
+            });              }
+
+          })
+   });
+
+
+   
+
+
+ });
+
+
+
+</script>
+
+
+<script type="text/javascript">
+
+     $(document).ready(function()
+      {
+
+            
+            $('#morris-area-chart').empty();
+
+          var year = new Date().getFullYear()
+          var unit_id = "<?php echo $unit_id ?>";
+
+          $.ajax({
+              type: "POST",
+              url: "../bargraphunit",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'unit_id' : unit_id},
+              success: function(response){
+                var arr = response;
+                Morris.Bar({
+                element: 'morris-area-chart',
+                data: [
+                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
+                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
+                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
+                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
+                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
+                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
+                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
+                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
+                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
+                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
+                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
+                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                ],
+                xkey: 'month',
+                ykeys: ['target', 'accomp'],
+                
+                labels: ['target', 'accomplishments']
+            });              }
+
+          })
+
+
+      });
+
+
+</script>
+
+
+<script type="text/javascript">
+            $(function () {
+               $('#datetimepicker1').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY',
+                useCurrent: true
+                });
+
+             
+               
+            });
+</script>
+
+ <script type="text/javascript">
+
+var timer;
+function up()
+{
+    timer = setTimeout(function()
+    {
+        var search = $('#staffsearch').val();
+        $("#searchresults").empty();
+        $.ajax({
+                  type: "POST",
+                  url: "../searchstaff",
+                  headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+                  data: {'search' : search},
+                  success: function(response){
+                    console.log(response);
+                    $("#searchresults").empty();
+                    var unit = response.u ;
+                    var staff = response.s ;
+                    var chief = response.c ;
+                    var i;
+                    var div = document.getElementById("searchresults");
+                    for(i = 0; i < unit.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+                        
+                        if(unit[i].UnitName != null)
+                        {
+                            var id = unit[i].UnitID;
+                            var picture = unit[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/unitpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentYearChiefUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append UnitName/UnitAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(unit[i].UnitAbbreviation+' - '+unit[i].UnitName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);       
+                        }
+                    }
+
+                    for(i = 0; i < staff.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(staff[i].StaffName != null)
+                        {   
+                            var id = staff[i].StaffID;
+                            var picture = staff[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/staffpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentYearChiefStaffScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append StaffName/StaffAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(staff[i].StaffAbbreviation+' - '+staff[i].StaffName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+
+
+                     for(i = 0; i < chief.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(chief[i].ChiefName != null)
+                        {   
+                            var id = chief[i].ChiefID;
+                            var picture = chief[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/chiefpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentYearStaffChiefScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(chief[i].ChiefAbbreviation+' - '+chief[i].ChiefName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+                }
+
+        }) 
+    }, 1000);
+}
+
+function down()
+{
+    clearTimeout(timer);
+}
+
+</script>    
+ 
 
 @endsection

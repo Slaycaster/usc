@@ -41,6 +41,9 @@
     <!-- Custom Fonts -->
     <link href="{{ asset('unit/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     
+    <!-- Morris JS -->
+    <link href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css">
+
     <!-- jQuery -->
     <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
@@ -52,6 +55,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('unit/dist/js/sb-admin-2.js') }}"></script>
+
+    <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
+     <script src="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

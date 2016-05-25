@@ -23,6 +23,7 @@ Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecar
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
 Route::get('report/currentYearChiefUnitScorecard/{id}', 'ReportsController@currentYearChiefUnitScorecard');
 Route::get('report/currentYearChiefStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
+Route::get('report/currentYearStaffChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
 
 
 /*LOGIN ROUTE*/
@@ -44,11 +45,13 @@ Route::get('chief/dashboard', 'ChiefLoginController@dashboard');
 Route::get('chief/chiefdashboard', 'APIChiefAuditTrailsDashController@showIndex');
 
 /*BARGRAPH*/
+Route::post('bargraphunit', 'UnitLoginController@bargraph');
 Route::post('bargraph', 'StaffLoginController@bargraph');
 Route::post('bargraphchief', 'ChiefLoginController@bargraph');
 
 /*SEARCHUNIT*/
 Route::post('searchunit', 'ChiefLoginController@searchunit');
+Route::post('searchstaff', 'StaffLoginController@searchstaff');
 
 
 /*UNIT USER ROUTES*/
