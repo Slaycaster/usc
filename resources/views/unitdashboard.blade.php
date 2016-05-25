@@ -132,15 +132,11 @@
                     </div>
                 </div>
                 <!-- /.panel-heading -->
-<<<<<<< HEAD
-                <div class="panel-body">
-                    <div id="morris-bar-chart"></div>
-=======
+
                 <div class="table table-responsive">
                     <div class="panel-body">
                         <div id="morris-area-chart"></div>
                     </div>
->>>>>>> 4c723f42cee79f28d9497c03fbdb8bfb1476bf20
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -208,10 +204,11 @@
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <div class="container-fluid" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
-                <br />
-                    <a href="{{ url('unit/audit_trails') }}" class="list-group-item">
-                        <i class="fa fa-tasks fa-fw"></i> 
+                <div class="list-group" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                
+                    <a href="{{ url('unit/audit_trails') }}" class="list-group-item" style="font-size:12px;">
+                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserUnitPicturePath%>" height="40px;">
+                    </span>  
                             <b><% audit_trail_dash.user_unit.rank.RankCode%> 
                                 <% audit_trail_dash.user_unit.UserUnitFirstName %>
                                 <% audit_trail_dash.user_unit.UserUnitLastName %>
