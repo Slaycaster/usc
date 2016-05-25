@@ -449,46 +449,48 @@ function up()
                       success: function(response){
                         console.log(response);
                         $("#searchresults").empty();
-                        var arr = response ;
+                        var unit = response.u ;
+                        var staff = response.s ;
                         var i;
                         var div = document.getElementById("searchresults");
-                        for(i = 0; i < arr.length; i++) 
+                        for(i = 0; i < unit.length; i++) 
                         {
                             var li = document.createElement('li');
                             var a = document.createElement('a');
                           
-                            if(arr[i].UnitName != null)
+                            if(unit[i].UnitName != null)
                             {
+                                var id = unit[i].UnitID;
                                 //Append UnitName/UnitAbbreviation
-                                a.appendChild(document.createTextNode(arr[i].UnitAbbreviation+' - '+arr[i].UnitName));
+                                a.appendChild(document.createTextNode(unit[i].UnitAbbreviation+' - '+unit[i].UnitName));
                                 a.style.color = "black";
-                                a.setAttribute("href", "{{ url('report/yearlyUnitScorecard') }}");
+                                a.setAttribute("href", "{{ url('report/currentYearChiefUnitScorecard') }}"+'/'+id);
+                                a.target = "_blank";
                                 li.appendChild(a);
                                 div.appendChild(li);       
                             }
 
-                            if(arr[i].StaffName != null)
-                            {
-                                //Append StaffName/StaffAbbreviation
-                                a.appendChild(document.createTextNode(arr[i].StaffAbbreviation+' - '+arr[i].StaffName));
-                                a.style.color = "black";
-                                a.setAttribute("href", "{{ url('chief/reports') }}");
-                                li.appendChild(a);
-                                div.appendChild(li);       
-                            }
 
-                            if(arr[i].ChiefName != null)
-                            {
-                                //Append ChiefName/ChiefAbbreviation
-                                a.appendChild(document.createTextNode(arr[i].ChiefAbbreviation+' - '+arr[i].ChiefName));
-                                a.style.color = "black";
-                                a.setAttribute("href", "{{ url('chief/reports') }}");
-                                li.appendChild(a);
-                                div.appendChild(li);       
-                            }
 
                         }
 
+                        for(i = 0; i < staff.length; i++) 
+                        {
+                            var li = document.createElement('li');
+                            var a = document.createElement('a');  
+
+                            if(staff[i].StaffName != null)
+                            {   
+                                var id = staff[i].StaffID;
+                                //Append StaffName/StaffAbbreviation
+                                a.appendChild(document.createTextNode(staff[i].StaffAbbreviation+' - '+staff[i].StaffName));
+                                a.style.color = "black";
+                                a.setAttribute("href", "{{ url('report/currentYearChiefStaffScorecard') }}"+'/'+id);
+                                a.target = "_blank";
+                                li.appendChild(a);
+                                div.appendChild(li);       
+                            }
+                        }
 
                       }
 

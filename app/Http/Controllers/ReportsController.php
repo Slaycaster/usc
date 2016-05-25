@@ -165,4 +165,28 @@ class ReportsController extends Controller
   	    return $pdf->stream();
 
 	}
+
+
+
+	public function currentYearChiefUnitScorecard($id)
+	{	
+		$year = date("Y");
+		Session::put('unit_id', $id);
+		Session::put('year', $year);
+
+		$pdf = PDF::loadView('PDFChiefUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+  	    return $pdf->stream();
+
+	}
+
+	public function currentYearChiefStaffScorecard($id)
+	{	
+		$year = date("Y");
+		Session::put('staff_id', $id);
+		Session::put('year', $year);
+
+		$pdf = PDF::loadView('PDFChiefStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
+  	    return $pdf->stream();
+
+	}
 }

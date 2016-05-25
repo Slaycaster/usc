@@ -288,15 +288,9 @@ class ChiefLoginController extends Controller {
 		->orWhere('StaffAbbreviation', 'like','%'.$search.'%')
 		->get();
 
-		$chiefresults = DB::table('chiefs')
-		->where('ChiefName', 'like', '%'.$search.'%')
-		->orWhere('ChiefAbbreviation', 'like','%'.$search.'%')
-		->get();
+		
 
-		$searchresults = $unitresults + $staffresults + $chiefresults;
-	
-
-		return Response::json($searchresults);
+		return Response::json(array("u" => $unitresults, "s" => $staffresults));
 		
 	}
 

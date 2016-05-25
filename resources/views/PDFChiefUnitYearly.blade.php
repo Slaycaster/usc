@@ -13,14 +13,13 @@ use App\UnitFunding;
 
 	$selectedYear = Session::get('year', 'default');	
 
- 	$unit_id = Session::get('unit_user_id', 'default');
-	$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
-							->first();
-	$unit = UserUnit::where('UserUnitID', '=', $unit_id)->select('UnitID')->first(); //Get the Unit of the unit		
+ 	$unit_id = Session::get('unit_id', 'default');
+
+	$unit = Unit::where('UnitID', '=', $unit_id)->first();
 	
-	$unit = Unit::where('UnitID', '=', $unit_user->UnitID)->first();
-	$unit_objectives = UnitObjective::all();
-	$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $unit_user->UnitID)->get();
+    $unit_objectives = UnitObjective::all();
+
+	$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $unit_id)->get();
 	
 	$accomplishments = UnitTarget::with('unit_measure')
 									->with('unit_measure.unit_objective')
@@ -34,7 +33,8 @@ use App\UnitFunding;
 									->where('UnitID', '=', $unit->UnitID)
 									->get();
 
-    $user = UserUnit::where('UserUnitID', $unit_id)
+
+    $user = UserUnit::where('UnitID', $unit_id)
                     ->first();
 
 	foreach ($accomplishments as $accomplishment)

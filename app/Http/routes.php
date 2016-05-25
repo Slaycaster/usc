@@ -21,6 +21,9 @@ Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChi
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
 Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecard');
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
+Route::get('report/currentYearChiefUnitScorecard/{id}', 'ReportsController@currentYearChiefUnitScorecard');
+Route::get('report/currentYearChiefStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
+
 
 /*LOGIN ROUTE*/
 Route::post('login', 'LoginController@doLogin');
