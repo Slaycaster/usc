@@ -104,9 +104,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                        <img class="img-responsive dashboard-custom-pictureabb" 
-                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
-                                style="width:20px; height:20px;">&nbsp; 
+                       
                             Welcome 
                             {{ $user->rank->RankCode }} 
                             {{ $user->UserUnitFirstName }} 

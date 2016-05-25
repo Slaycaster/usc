@@ -89,7 +89,7 @@
 
                 <img class="img-responsive dashboard-custom-pictureabb" 
                      src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
-                     style="width:25px; height:25px; margin-left: 1056px; margin-top: 14px">&nbsp;
+                     style="width:25px; height:25px; margin-left: 1106px; margin-top: 14px">&nbsp;
             </div>
             <div class="layout-custom-username">
                 <img class="img-responsive dashboard-custom-pictureabb" 
@@ -106,9 +106,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                        <img class="img-responsive dashboard-custom-pictureabb" 
-                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
-                                style="width:20px; height:20px;">&nbsp;
+                        
                             Welcome 
                             {{ $chief_user->rank->RankCode }} 
                             {{ $chief_user->UserChiefFirstName }} 
