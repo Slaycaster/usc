@@ -49,6 +49,10 @@ Route::post('bargraphunit', 'UnitLoginController@bargraph');
 Route::post('bargraph', 'StaffLoginController@bargraph');
 Route::post('bargraphchief', 'ChiefLoginController@bargraph');
 
+/*DONUTGRAPH*/
+Route::post('donutgraphunit', 'UnitLoginController@donutgraph');
+
+
 /*SEARCHUNIT*/
 Route::post('searchunit', 'ChiefLoginController@searchunit');
 Route::post('searchstaff', 'StaffLoginController@searchstaff');

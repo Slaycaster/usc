@@ -135,7 +135,7 @@
 
                 <div class="table table-responsive">
                     <div class="panel-body">
-                        <div id="morris-area-chart"></div>
+                        <div id="morris-line-chart"></div>
                     </div>
                 </div>
                 <!-- /.panel-body -->
@@ -181,6 +181,24 @@
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-4x pull-right"></i>
                             <h4><b>PERFORMANCE THIS YEAR, QUARTERLY - (BY % PERCENTAGE)</b></h4>
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                   <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#"><i class="fa fa-list fa-fw"></i> Hide/Show</a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                    <a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="fa fa-calendar fa-fw"></i>Choose Date</a>
+                                </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <div id="morris-donut-chart"></div>
@@ -207,7 +225,7 @@
                 <div class="list-group" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                 
                     <a href="{{ url('unit/audit_trails') }}" class="list-group-item" style="font-size:12px;">
-                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserUnitPicturePath%>" height="30px;"">
+                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserUnitPicturePath%>" height="30px;">
                     </span>  
                             <b><% audit_trail_dash.user_unit.rank.RankCode%> 
                                 <% audit_trail_dash.user_unit.UserUnitFirstName %>
@@ -315,6 +333,8 @@
 
 
 
+
+<!-- Morris bar chart on date change-->
 <script type="text/javascript">
 
   $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
@@ -375,6 +395,8 @@
 </script>
 
 
+
+<!-- Morris bar chart on load change-->
 <script type="text/javascript">
 
      $(document).ready(function()
@@ -424,6 +446,61 @@
 </script>
 
 
+
+
+<!-- Morris donut chart on date change-->
+<script type="text/javascript">
+
+  $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+  $(document).ready(function()
+  {
+
+
+     $("#datetimepicker1").on("dp.change", function(e) {
+            
+        
+        $('#morris-donut-chart').empty();
+
+          var year = $("#datetimepicker1").find("input").val();
+          var unit_id = "<?php echo $unit_id ?>";
+
+          console.log(unit_id);
+          $.ajax({
+              type: "POST",
+              url: "../donutgraphunit",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'unit_id' : unit_id},
+              success: function(response){
+                var arr = response;
+                Morris.Donut({
+                  element: 'morris-donut-chart',
+                  data: [
+                    {label: "1st Quarter", value: arr[0]},
+                    {label: "2nd Quarter", value: arr[1]},
+                    {label: "3rd Quarter", value: arr[2]},
+                    {label: "4th Quarter", value: arr[3]}
+                  ]
+                });     
+
+              }
+
+          })
+   });
+
+
+   
+
+
+ });
+
+
+
+</script>
+
+
+
+
 <script type="text/javascript">
             $(function () {
                $('#datetimepicker1').datetimepicker({
@@ -436,6 +513,23 @@
                
             });
 </script>
+
+
+
+<script type="text/javascript">
+            $(function () {
+               $('#datetimepicker2').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY',
+                useCurrent: true
+                });
+
+             
+               
+            });
+</script>
+
+
 
  <script type="text/javascript">
 

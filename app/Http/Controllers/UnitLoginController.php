@@ -282,6 +282,83 @@ class UnitLoginController extends Controller {
 			return Response::json($targetaccomp);
 		}
 
+
+
+
+		public function donutgraph()
+		{
+
+			
+			$year = $_REQUEST['year'];
+			$unit_id = $_REQUEST['unit_id'];
+
+
+			$scorecards = DB::table('unit_accomplishments')
+			->join('unit_targets', 'unit_accomplishments.UnitAccomplishmentID', '=', 'unit_targets.UnitAccomplishmentID')
+			->join('unit_measures' , 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->where('unit_measures.UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->get();
+
+			$measurecount = DB::table('unit_measures')
+			->where('UnitID', '=', $unit_id)
+			->count();
+
+			$i = 0;
+
+			foreach($scorecards as $scorecard)
+			{
+				$january[$i] = ($scorecard->JanuaryAccomplishment / $scorecard->JanuaryTarget) * 100;
+				$february[$i] = ($scorecard->FebruaryAccomplishment / $scorecard->FebruaryTarget) * 100;
+				$march[$i] = ($scorecard->MarchAccomplishment / $scorecard->MarchTarget) * 100;
+				$april[$i] = ($scorecard->AprilAccomplishment / $scorecard->AprilTarget) * 100;
+				$may[$i] = ($scorecard->MayAccomplishment / $scorecard->MayTarget) * 100;
+				$june[$i] = ($scorecard->JuneAccomplishment / $scorecard->JuneTarget) * 100;
+				$july[$i] = ($scorecard->JulyAccomplishment / $scorecard->JulyTarget) * 100;
+				$august[$i] = ($scorecard->AugustAccomplishment / $scorecard->AugustTarget) * 100;
+				$september[$i] = ($scorecard->SeptemberAccomplishment / $scorecard->SeptemberTarget) * 100;
+				$october[$i] = ($scorecard->OctoberAccomplishment / $scorecard->OctoberTarget) * 100;
+				$november[$i] = ($scorecard->NovemberAccomplishment / $scorecard->NovemberTarget) * 100;		
+				$december[$i] = ($scorecard->DecemberAccomplishment / $scorecard->DecemberTarget) * 100;
+
+				$i = $i + 1;
+			}
+
+
+			$firstquarter = 0;
+			$secondquarter = 0;
+			$thirdquarter = 0;
+			$fourthquarter = 0;
+
+
+			for($j = 0 ; $j < $i ; $j++)
+			{
+				$firstquarter = $firstquarter + (($january[$j] + $february[$j] + $march[$j]) / 3);
+				$secondquarter = $secondquarter + (($april[$j] + $may[$j] + $june[$j]) / 3);
+				$thirdquarter = $thirdquarter + (($july[$j] + $august[$j] + $september[$j]) / 3);
+				$fourthquarter = $fourthquarter + (($october[$j] + $november[$j] + $december[$j]) / 3 );
+			}
+
+
+			$firstquarter = $firstquarter / $measurecount;
+			$secondquarter = $secondquarter / $measurecount;
+			$thirdquarter = $thirdquarter / $measurecount;
+			$fourthquarter = $firstquarter / $measurecount;
+			
+
+
+			$targetaccomp = array(
+				  array($firstquarter),
+				  array($secondquarter),
+				  array($thirdquarter),
+				  array($fourthquarter)
+				  );
+				
+			
+
+			return Response::json($targetaccomp);
+		}
+
 	public function changeuserpicture()
 	{
 		if (Session::has('unit_user_id'))
