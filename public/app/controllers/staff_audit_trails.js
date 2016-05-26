@@ -1,4 +1,5 @@
 var local = 'http://' + location.host;
+var public = '/usc/public/'; // replace this with '/' for production
 
 app.controller('APIStaffAuditTrailsController', function($scope, $http, $interval) {
     $scope.staff_audit_trails = [];
@@ -8,7 +9,7 @@ app.controller('APIStaffAuditTrailsController', function($scope, $http, $interva
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + '/usc/public/api/staff_audit_trails').
+        $http.get(local + public + 'api/staff_audit_trails').
         success(function(data, status, headers, config) {
             $scope.staff_audit_trails = data;
             $scope.loading = false;

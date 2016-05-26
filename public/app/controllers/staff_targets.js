@@ -1,4 +1,5 @@
 var local = 'http://' + location.host;
+var public = '/usc/public/'; // replace this with '/' for production
 
 app.controller('APIStaffTargetController', function($scope, $http, $interval) {
 
@@ -9,7 +10,7 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(local + '/usc/public/api/staff_targets').
+		$http.get(local + public + 'api/staff_targets').
 		success(function(data, status, headers, config) {
 			$scope.staff_targets = data;
 				$scope.loading = false;
@@ -28,7 +29,7 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + '/usc/public/api/staff_targets';
+        var url = local + public + 'api/staff_targets';
 
         //append Unit Objective ID to the URL if the form is in edit mode
 
@@ -101,7 +102,7 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
                 $scope.this_title = "ADD TARGETS";
                 
                 $scope.id = id;
-                $http.get(local + '/usc/public/api/staff_targets/' + id)
+                $http.get(local + public + 'api/staff_targets/' + id)
                 .success(function(response) {            
                     $scope.staff_target = response;
                     console.log("SHOW" + $scope.staff_target.TargetPeriod);
@@ -136,7 +137,7 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
                 $scope.form_title = "VIEW TARGET";
                 $scope.id = id;
 
-                $http.get(local + '/usc/public/api/staff_targets/' + id)
+                $http.get(local + public + 'api/staff_targets/' + id)
 
                 .success(function(response) {
                     $scope.staff_target = response;
