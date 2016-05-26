@@ -68,7 +68,7 @@
                                             </th>
                                     
                                             <th colspan="4">
-                                                MEASURES
+                                                <center>MEASURES</center>
                                             </th>
 
 
@@ -76,15 +76,19 @@
                                                 <input type="text" class="scorecard-owner" value="OWNER" disabled/>
                                             </th>
 
-                                            <th colspan="12">
-                                                TARGET/ACCOMPLISHMENT
+                                            <th colspan="6">
+                                                <center>TARGET/ACCOMPLISHMENT</center>
+                                            </th>
+
+                                            <th colspan="6">
+                                                <center>TARGET/ACCOMPLISHMENT</center>
                                             </th>
 
                                             <th rowspan="2" class="thinitiatives">
                                                  <input type="text" class="scorecard-initiatives" value="INITIATIVES" disabled/>
                                             </th>
                                             <th colspan="3">
-                                                FUNDING
+                                                <center>FUNDING</center>
                                             </th>
                                             <th rowspan="2" class="thlast">
                                                 <input type="text" class="scorecard-action" value="Action" disabled/>
