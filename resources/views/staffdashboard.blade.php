@@ -200,7 +200,7 @@
                 <div class="list-group" dir-paginate='audit_trail_dash in staff_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
                     <!-- <a href="{{ url('staff/audit_trails') }}" class="list-group-item"> -->
                     <a href="{{ url('staff/audit_trails') }}" class="list-group-item" style="font-size:12px;">
-                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_staff.UserStaffPicturePath%>" height="40px;">
+                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_staff.UserStaffPicturePath%>" height="30px;">
                     </span>  
                             <b><% audit_trail_dash.user_staff.rank.RankCode%> 
                                 <% audit_trail_dash.user_staff.UserStaffFirstName %>
