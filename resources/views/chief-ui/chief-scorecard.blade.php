@@ -19,6 +19,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/chief_scorecard.js') }}"></script>
 
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
 
 
     <div ng-app="unitScorecardApp" ng-controller="APIChiefScorecardController">
@@ -41,7 +42,7 @@
                         </div><!--div panel-heading-->
 
                         <div class="panel-body">
-                            <div class="table-responsive table-data">
+                            <div class="table-responsive tabledata" id="tabledata" style="display:none;">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -299,5 +300,10 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        
+   
+    </script>
 
 @endsection
