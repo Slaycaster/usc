@@ -254,6 +254,8 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 table {
     border: 0px !important;
 }
+
+
 /*  /.css for scorecard */
 
 
@@ -299,7 +301,30 @@ table {
         text-align: center;
     }
 }
+
+
+.chief_target-objective{
+    width: 25%;
+}
+.chief_target-measure{
+    width: 25%;
+}
+.chief_target-formula{
+    width: 5%;
+}
+.chief_target-target{
+    width: 5%;
+}
+.chief_target-action{
+    width: 5%;
+}
+.chief_target-date{
+    width: 10%;
+}
+
+
 /*  /.css for targets */
+
 
 
 /*  css for audit trails  */
