@@ -21,7 +21,6 @@
 
     <script src="{{ asset('js/showtabledata.js') }}"></script>
 
-
     <div ng-app="unitScorecardApp" ng-controller="APIChiefScorecardController">
         <div id="wrap">
             <div class="row">
