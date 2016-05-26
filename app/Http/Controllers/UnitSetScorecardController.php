@@ -24,6 +24,7 @@ class UnitSetScorecardController extends Controller {
 			$user = UserUnit::where('UserUnitID', $id)
 				->first();
 			$unit_objectives = UnitObjective::where('UserUnitID', '=', $user->UnitID)->get();
+			
 			return view('unit-ui.unit-setscorecard')
 				->with('user', $user)
 				->with('unit_objectives', $unit_objectives)

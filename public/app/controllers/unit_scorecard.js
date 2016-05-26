@@ -10,6 +10,10 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
+        $scope.changed = false;
+        $scope.accompchanged = false;
+        $scope.initchanged = false;
+        $scope.fundingchanged = false;
 		$http.get(local + '/usc/public/api/unit_scorecard').
 		success(function(data, status, headers, config) {
 			$scope.unit_targets = data;
@@ -24,8 +28,53 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
 			console.log(data);
 			$scope.loading = false;
             $scope.info = true;
-		});	
+		});
+
+        $http.get(local + '/usc/public/api/unit_scorecard/lastupdatedby').
+        success(function(response){
+            console.log(response);
+            
+                $scope.updatedby = response.updated1;
+                $scope.updatedby2 = response.updated2;
+                $scope.updatedby3 = response.updated3;
+                $scope.updatedby4 = response.updated4;
+           
+
+                $scope.updatedby.updated_at = Date.parse($scope.updatedby.updated_at);
+                $scope.updatedby2.updated_at = Date.parse($scope.updatedby2.updated_at);
+                $scope.updatedby3.updated_at = Date.parse($scope.updatedby3.updated_at);
+                $scope.updatedby4.updated_at = Date.parse($scope.updatedby4.updated_at);
+
+            $scope.loading = false;
+
+        });	
 	};
+
+    $scope.ownerchange = function() 
+    {
+                
+        $scope.changed = true;
+       
+                
+                
+    };
+
+    $scope.accompchange = function()
+    {   
+        $scope.accompchanged = true;
+
+
+    }
+
+    $scope.initchange = function()
+    {
+        $scope.initchanged = true;
+    }
+
+    $scope.fundingchange = function()
+    {
+        $scope.fundingchanged = true;
+    }
 
 	$scope.sort = function(keyname)
     {
@@ -61,7 +110,11 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
                 UnitFundingActual: document.getElementById('id_actual'+id).value,
                 UnitMeasureID: document.getElementById('unitmeasure_id'+id).value,
                 UnitID: document.getElementById('unit_id'+id).value,
-                UserUnitID: document.getElementById('user_unit_id'+id).value
+                UserUnitID: document.getElementById('user_unit_id'+id).value,
+                Ownerpressed: $scope.changed,
+                Accomplishmentpressed: $scope.accompchanged,
+                Initiativepressed: $scope.initchanged,
+                Fundingpressed: $scope.fundingchanged
 
             }).success(function(data, status, headers, config, response) {
                 //console.log(response);
