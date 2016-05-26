@@ -25,8 +25,6 @@ class APIChiefObjectivesController extends Controller {
 		$data = ChiefObjective::where('ChiefID', '=', $chief_user)
 			->with('perspective')
 			->with('chief')
-			->with('user_chief')
-			->with('user_chief.rank')
 			->get();
 
 		return json_encode($data);
