@@ -2,6 +2,7 @@
 
 .unit-page-wrapper{
     background-color:rgba(250, 237, 242, 1) !important;
+    border-color: rgba(250, 237, 242, 1) !important;
     /* color of the background */
 }
 
@@ -53,7 +54,7 @@ a.layout-custom-navbaruser:hover{
     color: rgba(120, 34, 37, 1) !important;
 }
 a.active{
-    background-color: #fff !important;
+    background-color:rgba(250, 237, 242, 1) !important;
     color:rgba(120, 34, 37, 1) !important;
 }
 .nav>li>a{

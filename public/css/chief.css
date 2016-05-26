@@ -2,6 +2,7 @@
 
 .chief-page-wrapper{
     background-color:rgba(226, 226, 226, 1) !important;
+    border-color: rgba(226, 226, 226, 1) !important;
     /*  color of the background  */
 }
 
@@ -53,7 +54,7 @@ a.layout-custom-navbaruser:hover{
     color: rgba(54, 54, 54, 1) !important;
 }
 a.active{
-    background-color: #fff !important;
+    background-color:rgba(226, 226, 226, 1) !important;
     color:rgba(54, 54, 54, 1) !important;
 }
 .nav>li>a{
@@ -71,6 +72,7 @@ a.active{
 .sidebar-search{
     background-color: #fff;
 }
+
 /* /.css for layout */
 
 
@@ -117,6 +119,29 @@ a.active{
     width: 5%;
 }
 /* /.css for cheif measures */
+
+
+/* css for chief measure targets */
+.chief_target-objective{
+    width: 25%;
+}
+.chief_target-measure{
+    width: 25%;
+}
+.chief_target-formula{
+    width: 5%;
+}
+.chief_target-target{
+    width: 5%;
+}
+.chief_target-action{
+    width: 5%;
+}
+.chief_target-date{
+    width: 10%;
+}
+/* /.css for cheif measures */
+
 
 
 /* css for table */

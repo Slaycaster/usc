@@ -236,7 +236,11 @@ class APIUnitScorecardController extends Controller {
 
 			$unit_accomplishment->AccomplishmentDate = date('Y-m-d');
 			$unit_accomplishment->UnitMeasureID = Request::input('UnitMeasureID');
-			$unit_accomplishment->UserUnitID = $unit_id;
+			if($unit_accomplishment->UserUnitID != $unit_id)
+			{
+				$unit_accomplishment->UserUnitID = $unit_id;	
+			}
+			//$unit_accomplishment->UserUnitID = $unit_id;
 			$unit_accomplishment->UnitID = $unit_user->UnitID;
 			$unit_accomplishment->save();
 		}
@@ -247,6 +251,10 @@ class APIUnitScorecardController extends Controller {
 			$unit_owner->UnitOwnerContent = Request::input('UnitOwnerContent');
 			$unit_owner->UnitOwnerDate = date('Y-m-d');
 			$unit_owner->UnitMeasureID = Request::input('UnitMeasureID');
+			if($unit_owner->UserUnitID != $unit_id)
+			{
+				$unit_owner->UserUnitID = $unit_id;	
+			}
 			$unit_owner->save();
 		}
 		if(Request::input('Initiativepressed') == true)
@@ -256,6 +264,10 @@ class APIUnitScorecardController extends Controller {
 			$unit_initiative->UnitInitiativeContent = Request::input('UnitInitiativeContent');
 			$unit_initiative->UnitInitiativeDate = date('Y-m-d');
 			$unit_initiative->UnitMeasureID = Request::input('UnitMeasureID');
+			if($unit_initiative->UserUnitID != $unit_id)
+			{
+				$unit_initiative->UserUnitID = $unit_id;	
+			}
 			$unit_initiative->save();
 		}
 
@@ -267,6 +279,10 @@ class APIUnitScorecardController extends Controller {
 			$unit_funding->UnitFundingActual = Request::input('UnitFundingActual');
 			$unit_funding->UnitFundingDate = date('Y-m-d');
 			$unit_funding->UnitMeasureID = Request::input('UnitMeasureID');
+			if($unit_funding->UserUnitID != $unit_id)
+			{
+				$unit_funding->UserUnitID = $unit_id;	
+			}
 			
 			$unit_funding->save();
 		}
