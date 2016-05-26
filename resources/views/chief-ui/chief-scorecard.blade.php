@@ -58,7 +58,11 @@
                                             <input type="text" class="scorecard-owner" value="OWNER" disabled/>
                                         </th>
 
-                                        <th colspan="12">
+                                        <th colspan="6">
+                                            <center>TARGET/ACCOMPLISHMENT</center>
+                                        </th>
+
+                                        <th colspan="6">
                                             <center>TARGET/ACCOMPLISHMENT</center>
                                         </th>
 

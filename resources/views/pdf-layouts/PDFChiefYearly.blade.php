@@ -92,7 +92,7 @@ use App\StaffAccomplishment;
 	{
     	position: absolute;
     	left: 960px;
-    	top: 17px;
+    	top: 16px;
 	}
     .label 
     {
