@@ -55,27 +55,27 @@
                             <div class="table-responsive" id="tabledata" style="display:none;">
     							<table class="table table-bordered" ng-show="info" >
     								<thead>
-    									<td>
+    									<td class="chief_target-objective">
                                             <b>Objective</b>
     									</td>
     							
-    									<td>
+    									<td class="chief_target-measure">
                                             <b>Measure</b>
     									</td>
 
 
-                                        <td>
+                                        <td class="chief_target-formula">
                                             <b>Formula</b>
                                         </td>
 
-                                        <td>
+                                        <td class="chief_target-target">
                                             <b>Target Period</b>
                                         </td>
 
-    									<td>
+    									<td class="chief_target-action">
                                             <b>Action</b>
     									</td>
-    									<td>
+    									<td class="chief_target-date">
                                             <b>Effectivity Date</b>
     									</td>
     									
