@@ -98,7 +98,7 @@
                     Welcome 
                     {{ $chief_user->rank->RankCode }} 
                     {{ $chief_user->UserChiefFirstName }} 
-                    {{ $chief_user->UserChiefLastName }}!</i>
+                    {{ $chief_user->UserChiefLastName }}!
             </div>
             <!-- /.navbar-header -->
 

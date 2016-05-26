@@ -55,6 +55,10 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     #page-wrapper{
         margin-left: 251px;
     }
+    .sidebar{
+        position: fixed;
+        z-index: 999;
+    }
 }
 
 @media (max-width: 768px){
