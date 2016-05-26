@@ -11,9 +11,7 @@ th{
 .thinitiatives{
     padding-left: .5em;
 }
-tbody tr:hover {
-    background-color: rgba(226, 226, 226, 1);
-}
+
 /* For appearance */
 .sticky-wrap{
     overflow-x: auto;

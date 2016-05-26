@@ -51,7 +51,7 @@
 
                         <div class="panel-body">
                             <div class="table-responsive tabledata" id="tabledata" style="display:none;">
-                                <table class="table table-striped table-bordered">
+                                <table class="table table-bordered">
                                     <thead>
                                     <tr>
                                         <th rowspan="2" >
