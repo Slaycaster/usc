@@ -98,8 +98,8 @@ class ChangePictureController extends Controller {
 		 	Session::flash('upload-success', 'Unit Picture successfully updated!');
 		 	
 
-
-		 	$user = UserUnit::where('UserUnitID', $unitid)
+		 	$unit_id = Session::get('unit_user_id', 'default');
+		 	$user = UserUnit::where('UserUnitID', $unit_id)
 				->with('unit')
 				->with('unit.staff')
 				->first();
@@ -172,8 +172,8 @@ class ChangePictureController extends Controller {
 
 			 	Session::flash('upload-success', 'Staff Picture successfully updated!');
 			
-
-			 	$staff_user = UserStaff::where('UserStaffID', $staffid)
+			 	$staff_id = Session::get('staff_user_id', 'default');
+			 	$staff_user = UserStaff::where('UserStaffID', $staff_id)
 				->with('staff')
 				->first();
 			
@@ -246,8 +246,8 @@ class ChangePictureController extends Controller {
 
 			 	Session::flash('upload-success', 'Chief Picture successfully updated!');
 			 	
-
-			 	$chief_user = UserChief::where('UserChiefID', $chiefid)
+			 	$chief_id = Session::get('chief_user_id', 'default');
+			 	$chief_user = UserChief::where('UserChiefID', $chief_id)
 				->with('chief')
 				->first();
 		
