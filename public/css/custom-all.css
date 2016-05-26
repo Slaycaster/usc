@@ -88,10 +88,10 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 
 
 /* dashboard css */   
-.dashboard-custom-dashabb,
+/*.dashboard-custom-dashabb,
 .dashboard-custom-dashname{
     box-shadow: 8px 8px 5px #888888;
-}
+}*/
 
 @media (min-width: 768px){
     .dashboard-custom-dashabb{
