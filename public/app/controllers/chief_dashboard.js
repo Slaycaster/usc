@@ -19,6 +19,6 @@ app.controller('APIChiefAuditTrailsDashController', function($scope, $http, $int
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
-    $interval( function(){ $scope.init(); }, 1000);
+    $interval( function(){ $scope.init(); }, 3000);
     
 });
