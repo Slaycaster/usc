@@ -10,6 +10,10 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
+        $scope.changed = false;
+        $scope.accompchanged = false;
+        $scope.initchanged = false;
+        $scope.fundingchanged = false;
 		$http.get(local + '/usc/public/api/staff_scorecard').
 		success(function(data, status, headers, config) {
            
@@ -26,7 +30,56 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
 
 				$scope.loading = false;
 		});	
+
+        $http.get(local + '/usc/public/api/staff_scorecard/lastupdatedby').
+        success(function(response){
+            console.log(response);
+            
+                $scope.updatedby = response.updated1;
+                $scope.updatedby2 = response.updated2;
+                $scope.updatedby3 = response.updated3;
+                $scope.updatedby4 = response.updated4;
+           
+
+                $scope.updatedby.updated_at = Date.parse($scope.updatedby.updated_at);
+                $scope.updatedby2.updated_at = Date.parse($scope.updatedby2.updated_at);
+                $scope.updatedby3.updated_at = Date.parse($scope.updatedby3.updated_at);
+                $scope.updatedby4.updated_at = Date.parse($scope.updatedby4.updated_at);
+
+            $scope.loading = false;
+
+        }); 
+
+                
 	};
+
+   
+    
+    $scope.ownerchange = function() 
+    {
+                
+        $scope.changed = true;
+       
+                
+                
+    };
+
+    $scope.accompchange = function()
+    {   
+        $scope.accompchanged = true;
+
+
+    }
+
+    $scope.initchange = function()
+    {
+        $scope.initchanged = true;
+    }
+
+    $scope.fundingchange = function()
+    {
+        $scope.fundingchanged = true;
+    }
 
 	$scope.sort = function(keyname)
     {
@@ -63,7 +116,11 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
                 StaffFundingActual: document.getElementById('id_actual'+id).value,
                 StaffMeasureID: document.getElementById('staffmeasure_id'+id).value,
                 StaffID: document.getElementById('staff_id'+id).value,
-                UserStaffID: document.getElementById('user_staff_id'+id).value
+                UserStaffID: document.getElementById('user_staff_id'+id).value,
+                Ownerpressed: $scope.changed,
+                Accomplishmentpressed: $scope.accompchanged,
+                Initiativepressed: $scope.initchanged,
+                Fundingpressed: $scope.fundingchanged
 
             }).success(function(data, status, headers, config, response) {
                 //console.log(response);

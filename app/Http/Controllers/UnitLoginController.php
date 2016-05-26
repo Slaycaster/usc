@@ -4,6 +4,7 @@
 use App\UserUnit;
 use App\UnitObjective;
 use App\UnitMeasure;
+use App\UnitAccomplishment;
 
 //LARAVEL MODULES
 use App\Http\Controllers\Controller;
@@ -65,10 +66,16 @@ class UnitLoginController extends Controller {
 				->with('unit.staff')
 				->first();
 			$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $user->UnitID)->get();
-
+			$maxid = UnitAccomplishment::max('updated_at');
+		
+			$updatedby = UnitAccomplishment::where('updated_at','=',$maxid)
+				->with('user_unit')
+				->first();
+			//dd($updatedby);
 			return view('unit-ui.unit-scorecard')
 				->with('user', $user)
-				->with('unit_measures',$unit_measures);
+				->with('unit_measures',$unit_measures)
+				->with('updatedby',$updatedby);
 		}
 		else
 		{
