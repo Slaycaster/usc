@@ -12,7 +12,6 @@ use App\UnitInitiative;
 use App\UnitFunding;
 
 	$selectedYear = Session::get('year', 'default');	
-
  	$unit_id = Session::get('unit_id', 'default');
 
 	$unit = Unit::where('UnitID', '=', $unit_id)->first();
@@ -95,7 +94,7 @@ use App\UnitFunding;
 	{
     	position: absolute;
     	left: 960px;
-    	top: 17px;
+    	top: 16px;
 	}
     </style>
 </head>
@@ -247,4 +246,56 @@ use App\UnitFunding;
     @else
         <p>No Accomplisments found for the year {{ $selectedYear }}</p>
     @endif
+    <?php
+
+        $maxid = UnitAccomplishment::where('UnitID','=',$unit->UnitID)->max('updated_at');
+            $maxid2 = UnitOwner::where('UnitID','=',$unit->UnitID)->max('updated_at');
+            $maxid3 = UnitInitiative::where('UnitID','=',$unit->UnitID)->max('updated_at');
+            $maxid4 = UnitFunding::where('UnitID','=',$unit->UnitID)->max('updated_at');
+
+
+            $updatedby = UnitAccomplishment::where('updated_at','=',$maxid)
+                ->with('user_unit')
+                ->with('user_unit.rank')
+                ->first();
+
+            $updatedby2 = UnitOwner::where('updated_at','=',$maxid2)
+                ->with('user_unit')
+                ->with('user_unit.rank')
+                ->first(); 
+
+            $updatedby3 = UnitInitiative::where('updated_at','=',$maxid3)
+                ->with('user_unit')
+                ->with('user_unit.rank')
+                ->first();
+
+            $updatedby4 = UnitFunding::where('updated_at','=',$maxid4)
+                ->with('user_unit')
+                ->with('user_unit.rank')
+                ->first(); 
+
+        //dd($updatedby);
+    ?>
+    <br>
+    <div>
+        <i>
+            Accomplishment last updated by: 
+            <b>{{ $updatedby->user_unit->rank->RankCode }} {{ $updatedby->user_unit->UserUnitLastName }}, {{ $updatedby->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby->updated_at)) }}</b>
+        </i>
+        <br>
+        <i>
+            Owner last updated by:  
+            <b>{{ $updatedby2->user_unit->rank->RankCode }} {{ $updatedby2->user_unit->UserUnitLastName }}, {{ $updatedby2->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby2->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby2->updated_at)) }}</b>
+        </i>
+        <br>
+        <i>
+            Initiative last updated by:  
+            <b>{{ $updatedby3->user_unit->rank->RankCode }} {{ $updatedby3->user_unit->UserUnitLastName }}, {{ $updatedby3->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby3->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby3->updated_at)) }}</b>
+        </i>
+        <br>
+        <i>
+            Funding last updated by:  
+            <b>{{ $updatedby4->user_unit->rank->RankCode }} {{ $updatedby4->user_unit->UserUnitLastName }}, {{ $updatedby4->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby4->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby4->updated_at)) }}</b>
+        </i>
+    </div>
 </body>
