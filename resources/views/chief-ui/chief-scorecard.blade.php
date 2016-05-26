@@ -154,8 +154,9 @@
                                         <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LD'"></td>
                                         
 
-                                        <td>
+                                        <td><center>
                                             <textarea rows="5" cols="27" id="id_owner<%chief_target.chief_measure.ChiefMeasureID%>" name="monthlyform"  value="<% chief_target.chief_owner.ChiefOwnerContent %>" ng-model="chief_target.chief_owner.ChiefOwnerContent" autocomplete="off"  required ng-touched></textarea>
+                                            </center>
                                         </td>
 
                                         <td><% chief_target.JanuaryTarget | number: 2 %>
@@ -265,7 +266,7 @@
 
                                         </td>
 
-                                        <td><textarea rows="5" cols="27" id="id_initiative<%chief_target.chief_measure.ChiefMeasureID%>" name="monthlyform" value="<% chief_target.chief_initiative.ChiefInitiativeContent %>" ng-model="chief_target.chief_initiative.ChiefInitiativeContent" autocomplete="off"  required ng-touched ></textarea></td>
+                                        <td><center><textarea rows="5" cols="27" id="id_initiative<%chief_target.chief_measure.ChiefMeasureID%>" name="monthlyform" value="<% chief_target.chief_initiative.ChiefInitiativeContent %>" ng-model="chief_target.chief_initiative.ChiefInitiativeContent" autocomplete="off"  required ng-touched ></textarea></center></td>
 
                                         <td><input type='text' id="id_estimate<%chief_target.chief_measure.ChiefMeasureID%>" name="monthlyform" valid-number value="<% chief_target.chief_funding.ChiefFundingEstimate %>" ng-model="chief_target.chief_funding.ChiefFundingEstimate" autocomplete="off" class="form-control" required ng-touched /></td>
 
