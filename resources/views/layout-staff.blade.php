@@ -84,17 +84,18 @@
                     PNP Unit Scorecard
                 </a>
 
-
-                <img class="img-responsive dashboard-custom-pictureabb" 
-                     src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
-                     style="width:25px; height:25px; margin-left: 1056px; margin-top: 14px">&nbsp;
             </div>
             <div class="layout-custom-username"> 
-                <img class="img-responsive dashboard-custom-pictureabb" 
-                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
-                                style="width:20px; height:20px;">&nbsp;
+                <span>    
+                            <img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
+                            style="width:20px; height:20px; margin-top:-5px; margin-bottom:-2px;">
+                    </span>&nbsp;
+
                     Welcome 
-                    {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}!
+                    {{ $staff_user->rank->RankCode }}
+                    {{ $staff_user->UserStaffFirstName }}
+                    {{ $staff_user->UserStaffLastName }}!
             </div>
             <!-- /.navbar-header -->
 
@@ -102,9 +103,14 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-
+                        <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
+                            style="width:30px; height:30px; margin-top:-5px;">
+                        </span>&nbsp;
                         Welcome      
-                    {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }}! &nbsp; 
+                    {{ $staff_user->rank->RankCode }}
+                    {{ $staff_user->UserStaffFirstName }}
+                    {{ $staff_user->UserStaffLastName }}! &nbsp; 
                     
                         <i class="fa fa-caret-down"></i>
                     </a>
@@ -197,9 +203,13 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <img class="img-responsive dashboard-custom-pictureabb" 
-                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
-                                style="width:20px; height:20px;"> {{ $staff_user->rank->RankCode }} {{ $staff_user->UserStaffFirstName }} {{ $staff_user->UserStaffLastName }} <span class="fa arrow"></span>
+                                <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
+                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$staff_user->UserStaffPicturePath.'') }}"
+                                    style="width:15px; height:15px; margin-top:-5px; margin-bottom:-3px;">
+                                </span>&nbsp;
+                                {{ $staff_user->rank->RankCode }}
+                                {{ $staff_user->UserStaffFirstName }}
+                                {{ $staff_user->UserStaffLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>

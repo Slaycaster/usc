@@ -87,14 +87,14 @@
                     PNP Unit Scorecard
                 </a>
 
-                <img class="img-responsive dashboard-custom-pictureabb" 
-                     src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
-                     style="width:25px; height:25px; margin-left: 1106px; margin-top: 14px">&nbsp;
+                
             </div>
             <div class="layout-custom-username">
-                <img class="img-responsive dashboard-custom-pictureabb" 
-                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
-                                style="width:20px; height:20px;">&nbsp;</i>&nbsp; 
+                <span>    
+                            <img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
+                            style="width:20px; height:20px; margin-top:-5px; margin-bottom:-2px;">
+                    </span>&nbsp;
                     Welcome 
                     {{ $chief_user->rank->RankCode }} 
                     {{ $chief_user->UserChiefFirstName }} 
@@ -106,7 +106,10 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                        
+                        <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
+                            style="width:30px; height:30px; margin-top:-5px;">
+                        </span>&nbsp;
                             Welcome 
                             {{ $chief_user->rank->RankCode }} 
                             {{ $chief_user->UserChiefFirstName }} 
@@ -215,9 +218,10 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <img class="img-responsive dashboard-custom-pictureabb" 
-                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
-                                style="width:20px; height:20px;">&nbsp;  {{ $chief_user->rank->RankCode }} {{ $chief_user->UserUnitChiefName }} {{ $chief_user->UserChiefLastName }} <span class="fa arrow"></span>
+                                <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
+                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}"
+                                    style="width:15px; height:15px; margin-top:-5px; margin-bottom:-3px;">
+                                </span>&nbsp;  {{ $chief_user->rank->RankCode }} {{ $chief_user->UserUnitChiefName }} {{ $chief_user->UserChiefLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
