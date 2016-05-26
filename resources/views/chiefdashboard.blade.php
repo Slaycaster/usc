@@ -196,10 +196,12 @@
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <div class="container-fluid" dir-paginate='audit_trail_dash in chief_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
-                <br />
-                    <a href="{{ url('chief/audit_trails') }}" class="list-group-item">
-                        <i class="fa fa-tasks fa-fw"></i> 
+                <div class="list-group" dir-paginate='audit_trail_dash in chief_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
+                    <!-- <a href="{{ url('staff/audit_trails') }}" class="list-group-item"> -->
+                    <a href="{{ url('chief/audit_trails') }}" class="list-group-item" style="font-size:12px;">
+                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_chief.UserChiefPicturePath%>" height="40px;">
+                    </span>  
+
                             <b><% audit_trail_dash.user_chief.rank.RankCode%> 
                                 <% audit_trail_dash.user_chief.UserChiefFirstName %>
                                 <% audit_trail_dash.user_chief.UserChiefLastName %>
@@ -506,6 +508,8 @@ function up()
                             div.appendChild(a);      
                         }
                     }
+
+                     div.setAttribute("style","height:300px; overflow-x:scroll; overflow-x:hidden")
                 }
 
         }) 

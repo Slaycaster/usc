@@ -41,6 +41,9 @@
     <!-- Custom Fonts -->
     <link href="{{ asset('unit/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     
+    <!-- Morris JS -->
+    <link href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css">
+
     <!-- jQuery -->
     <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
@@ -52,6 +55,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('unit/dist/js/sb-admin-2.js') }}"></script>
+
+    <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
+     <script src="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,9 +84,15 @@
                 <a class="navbar-brand layout-custom-pnpabb" href="{{ url('/') }}">
                     PNP Unit Scorecard
                 </a>
+
+                <img class="img-responsive dashboard-custom-pictureabb" 
+                     src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
+                     style="width:25px; height:25px; margin-left: 1056px; margin-top: 14px">&nbsp;
             </div>
             <div class="layout-custom-username">
-                <i class="glyphicon glyphicon-user"></i>&nbsp; 
+                <img class="img-responsive dashboard-custom-pictureabb" 
+                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
+                                style="width:20px; height:20px;">&nbsp; 
                     Welcome 
                     {{ $user->rank->RankCode }} 
                     {{ $user->UserUnitFirstName }} 
@@ -92,7 +104,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"></span>&nbsp; 
+                       
                             Welcome 
                             {{ $user->rank->RankCode }} 
                             {{ $user->UserUnitFirstName }} 
@@ -189,12 +201,19 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user fa-fw"></i> {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <span class="fa arrow"></span>
+                                <img class="img-responsive dashboard-custom-pictureabb" 
+                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
+                                style="width:20px; height:20px;">&nbsp; {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="#"> User Settings</a>
+                                <li>
+                                    <a href="{{ url('unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                                        Change Profile Picture</a>
                                 </li>
-                                <li><a href="#">Settings</a>
+
+                                <li>
+                                    <a href="{{ url('unit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                                        Change User Password</a>
                                 </li>
                                 <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                                 </li>

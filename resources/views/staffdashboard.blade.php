@@ -197,10 +197,11 @@
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <div class="container-fluid" dir-paginate='audit_trail_dash in staff_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
-                <br />
-                    <a href="{{ url('staff/audit_trails') }}" class="list-group-item">
-                        <i class="fa fa-tasks fa-fw"></i> 
+                <div class="list-group" dir-paginate='audit_trail_dash in staff_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
+                    <!-- <a href="{{ url('staff/audit_trails') }}" class="list-group-item"> -->
+                    <a href="{{ url('staff/audit_trails') }}" class="list-group-item" style="font-size:12px;">
+                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_staff.UserStaffPicturePath%>" height="40px;">
+                    </span>  
                             <b><% audit_trail_dash.user_staff.rank.RankCode%> 
                                 <% audit_trail_dash.user_staff.UserStaffFirstName %>
                                 <% audit_trail_dash.user_staff.UserStaffLastName %>
@@ -227,10 +228,10 @@
                     <i class="fa fa-search fa-4x pull-right"></i>
                     <h4><b>BROWSE OTHER UNIT'S SCORECARD</b></h4>
                 </div>
-                <!-- /.panel-heading -->
+                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text" class="form-control" placeholder="Search..." id="staffsearch" onkeydown="down()" onkeyup="up()">
                         <span class="input-group-btn">
                         <button class="btn btn-default" type="button">
                             <i class="fa fa-search"></i>
@@ -238,8 +239,13 @@
                     </span>
                     </div>
                     <!-- /input-group -->
+
+                    <!-- /search results -->
+                    <div class="list-group" id="searchresults">
+                        
+                    </div>
+
                 </div>
-                <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
            
@@ -328,50 +334,10 @@
    });
 
 
-      //Unit Office dropdown
-  /*    $('#datetimepicker1').change(function()
-      {
-
-            $('#morris-area-chart').empty();
-
-          var year = $('#datetimepicker1').val();
-
-          var staff_id = "<?php echo $staff_id ?>";
-
-          $.ajax({
-              type: "POST",
-              url: "../bargraph",
-              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'staff_id' : staff_id},
-              success: function(response){
-                var arr = response;
-                Morris.Bar({
-                element: 'morris-area-chart',
-                data: [
-                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
-                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
-                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
-                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
-                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
-                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
-                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
-                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
-                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
-                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
-                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
-                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
-                ],
-                xkey: 'month',
-                ykeys: ['target', 'accomp'],
-                
-                labels: ['target', 'accomplishments']
-            });              }
-
-          })
-      }); */
+   
 
 
-    });
+ });
 
 
 
@@ -431,5 +397,166 @@
         });
     });
 </script>
+
+
+<script type="text/javascript">
+
+var timer;
+function up()
+{
+    timer = setTimeout(function()
+    {
+        var search = $('#staffsearch').val();
+        $("#searchresults").empty();
+        $.ajax({
+                  type: "POST",
+                  url: "../searchstaff",
+                  headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+                  data: {'search' : search},
+                  success: function(response){
+                    console.log(response);
+                    $("#searchresults").empty();
+                    var unit = response.u ;
+                    var staff = response.s ;
+                    var chief = response.c ;
+                    var i;
+                    var div = document.getElementById("searchresults");
+                    for(i = 0; i < unit.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+                        
+                        if(unit[i].UnitName != null)
+                        {
+                            var id = unit[i].UnitID;
+                            var picture = unit[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/unitpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentYearChiefUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append UnitName/UnitAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(unit[i].UnitAbbreviation+' - '+unit[i].UnitName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);       
+                        }
+                    }
+
+                    for(i = 0; i < staff.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(staff[i].StaffName != null)
+                        {   
+                            var id = staff[i].StaffID;
+                            var picture = staff[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/staffpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentYearChiefStaffScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append StaffName/StaffAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(staff[i].StaffAbbreviation+' - '+staff[i].StaffName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+
+
+                     for(i = 0; i < chief.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(chief[i].ChiefName != null)
+                        {   
+                            var id = chief[i].ChiefID;
+                            var picture = chief[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/chiefpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentYearStaffChiefScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(chief[i].ChiefAbbreviation+' - '+chief[i].ChiefName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+
+                        div.setAttribute("style","height:300px; overflow-x:scroll; overflow-x:hidden")
+                    }
+                }
+
+        }) 
+    }, 1000);
+}
+
+function down()
+{
+    clearTimeout(timer);
+}
+
+</script>    
     
 @endsection

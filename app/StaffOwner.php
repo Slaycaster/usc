@@ -41,7 +41,7 @@ class StaffOwner extends Model {
 	
 	public function staff_target()
 	{
-		return $this->hasOne('App\StaffTarget', 'StaffTargetID', 'StaffTargetID'); //(model, foreign_key, parent_primary_key)
+		return $this->hasOne('App\StaffTarget', 'StaffOwnerID', 'StaffOwnerID'); //(model, foreign_key, parent_primary_key)
 	}
 
 }

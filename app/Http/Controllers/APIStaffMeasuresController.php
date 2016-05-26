@@ -151,7 +151,7 @@ class APIStaffMeasuresController extends Controller {
 
 		if($staff_measure->ChiefMeasureID > 0)
 		{
-			$action .= ' and is contributory to Chief\'s Measure: '.$staff_measure->chief_measures->ChiefMeasureName.' ';
+			$action .= ' and is contributory to Chief\'s Measure: '.$staff_measure->chief_measure->ChiefMeasureName.' ';
 		}
 
 		$action .= ' with the following: ';

@@ -35,7 +35,7 @@ class ChiefTarget extends Model {
 	{
 		return $this->belongsTo('App\UserChief','UserChiefID','UserChiefID'); //(model, foreign_key, parent_primary_key)
 	}
-
+	
 	public function chief_measure()
 	{
 		return $this->belongsTo('App\ChiefMeasure', 'ChiefMeasureID', 'ChiefMeasureID');
@@ -56,10 +56,8 @@ class ChiefTarget extends Model {
 		return $this->belongsTo('App\ChiefInitiative', 'ChiefInitiativeID', 'ChiefInitiativeID');
 	}
 
-	
 	public function chief_funding()
 	{
-
 		return $this->belongsTo('App\ChiefFunding', 'ChiefFundingID', 'ChiefFundingID');
 	}
 

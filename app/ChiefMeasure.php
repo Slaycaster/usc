@@ -36,7 +36,7 @@ class ChiefMeasure extends Model {
 
 	public function chief_objective()
 	{
-		return $this->belongsTo('App\ChiefObjective','ChiefObjectiveID','ChiefObjectiveID'); //(model, foreign_key, parent_primary_key)
+		return $this->belongsTo('App\ChiefObjective','ChiefObjectiveID','ChiefObjectiveID')->orderBy('ChiefObjectiveID', 'asc'); //(model, foreign_key, parent_primary_key)
 	}
 
 	public function chief_targets()
