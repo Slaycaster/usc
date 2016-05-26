@@ -16,13 +16,17 @@
 
     <script src="{{ asset('bower_components/ng-decimal/ng-decimal.js') }}"></script>
 
+     <script src="{{ asset('js/showtabledata.js') }}"></script>
+
+
     <div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
 					<div class="panel panel-warning  targets-custom-panel">
 						<div class="panel-heading measures-custom-heading">
-						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief->ChiefAbbreviation }} Targets for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief->ChiefAbbreviation }} Targets for {{ date("Y") }}</b></h2>   
+                          <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -47,32 +51,31 @@
                                 <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Scorecard Target of {{ $chief_user->chief->ChiefName }}.</div>
                             </div>
 							<!--./div class row-->
-
-                            <div class="table-responsive" ng-show="info">
-    							<table class="table table-striped table-bordered">
+                            
+                            <div class="table-responsive" id="tabledata" style="display:none;">
+    							<table class="table table-bordered" ng-show="info" >
     								<thead>
-    									<td class="objective-custom-td1">
+    									<td>
                                             <b>Objective</b>
     									</td>
     							
-    									<td class="objective-custom-td2">
+    									<td>
                                             <b>Measure</b>
     									</td>
 
 
-                                        <td class="objective-custom-td3">
+                                        <td>
                                             <b>Formula</b>
                                         </td>
 
-                                        <td class="objective-custom-td4">
+                                        <td>
                                             <b>Target Period</b>
                                         </td>
 
-    									</td>
-    									<td class="objective-custom-td5">
+    									<td>
                                             <b>Action</b>
     									</td>
-    									<td class="objective-custom-td6">
+    									<td>
                                             <b>Effectivity Date</b>
     									</td>
     									
@@ -88,11 +91,12 @@
     										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', chief_target.ChiefTargetID, chief_target.chief_measure.ChiefMeasureName)">Set Target</button>
 
     									</td>
-    									<td><% chief_target.TargetDate %></td>
+    									<td><% chief_target.TargetDate | date:"MMM d, y" %></td>
     									
     								</tr>
     							</table>
                             </div>
+                            
 							<!--./table table striped-->
 							<center>
 								<dir-pagination-controls
