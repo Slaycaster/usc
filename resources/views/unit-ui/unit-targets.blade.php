@@ -49,7 +49,7 @@
 							<!--./div class row-->
 
                             <div class="table-responsive" id="tabledata" style="display:none;">
-    							<table class="table table-striped table-bordered">
+    							<table class="table table-bordered">
     								<thead>
     									<td class="chief_target-objective">
                                             Objective
