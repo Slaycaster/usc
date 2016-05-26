@@ -180,6 +180,10 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     }
 }
 
+.custom_scorecard-info{
+    font-size:12px; 
+    text-align:left;
+}
 
 .scorecard-objectives{
     width:20em; 
