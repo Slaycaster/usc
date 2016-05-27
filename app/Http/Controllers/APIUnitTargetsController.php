@@ -171,21 +171,25 @@ class APIUnitTargetsController extends Controller {
 		/*Saving to Accomplishments etc...*/
 
 		$unit_accomplishment = new UnitAccomplishment();
+		$unit_accomplishment->UnitMeasureID = $unit_target->UnitMeasureID;
 		$unit_accomplishment->UnitID = $unit_user->UnitID;
 		$unit_accomplishment->UserUnitID = $unit_user->UserUnitID;
 		$unit_accomplishment->save();
 
 		$unit_owner = new UnitOwner();
+		$unit_owner->UnitMeasureID = $unit_target->UnitMeasureID;
 		$unit_owner->UnitID = $unit_user->UnitID;
 		$unit_owner->UserUnitID = $unit_user->UserUnitID;
 		$unit_owner->save();
 
 		$unit_initiative = new UnitInitiative();
+		$unit_initiative->UnitMeasureID = $unit_target->UnitMeasureID;
 		$unit_initiative->UnitID = $unit_user->UnitID;
 		$unit_initiative->UserUnitID = $unit_user->UserUnitID;
 		$unit_initiative->save();
 
 		$unit_funding = new UnitFunding();
+		$unit_funding->UnitMeasureID = $unit_target->UnitMeasureID;
 		$unit_funding->UnitID = $unit_user->UnitID;
 		$unit_funding->UserUnitID = $unit_user->UserUnitID;
 		$unit_funding->save();
@@ -243,21 +247,25 @@ class APIUnitTargetsController extends Controller {
 		/*Saving to Accomplishments etc...*/
 
 		$unit_accomplishment = new UnitAccomplishment();
+		$unit_accomplishment->UnitMeasureID = $unit_target->UnitMeasureID;
 		$unit_accomplishment->UnitID = $unit_user->UnitID;
 		$unit_accomplishment->UserUnitID = $unit_user->UserUnitID;
 		$unit_accomplishment->save();
 
 		$unit_owner = new UnitOwner();
+		$unit_owner->UnitMeasureID = $unit_target->UnitMeasureID;
 		$unit_owner->UnitID = $unit_user->UnitID;
 		$unit_owner->UserUnitID = $unit_user->UserUnitID;
 		$unit_owner->save();
 
 		$unit_initiative = new UnitInitiative();
+		$unit_initiative->UnitMeasureID = $unit_target->UnitMeasureID;
 		$unit_initiative->UnitID = $unit_user->UnitID;
 		$unit_initiative->UserUnitID = $unit_user->UserUnitID;
 		$unit_initiative->save();
 
 		$unit_funding = new UnitFunding();
+		$unit_funding->UnitMeasureID = $unit_target->UnitMeasureID;
 		$unit_funding->UnitID = $unit_user->UnitID;
 		$unit_funding->UserUnitID = $unit_user->UserUnitID;
 		$unit_funding->save();

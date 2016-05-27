@@ -185,7 +185,7 @@
                                         <label for="unit_objective" class="control">Unit Objective:</label>
                                     </td>
                                     <td class="col-md-8">
-                                        <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control">
+                                        <select id="id_unit_objective" name="unit_objective" data-ng-model="unit_measure.UnitObjectiveID" class="form-control" required ng-touched>
                                             
                                             @foreach($unit_objectives as $unit_objective)
                                                     <option value= "<?=$unit_objective->UnitObjectiveID?>">

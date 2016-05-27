@@ -87,7 +87,9 @@
     										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', unit_target.UnitTargetID, unit_target.unit_measure.UnitMeasureName)">Set Target</button>
 
     									</td>
-    									<td><% unit_target.TargetDate | date:"MMM d, y" %></td>
+                                        <input type="hidden" ng-model="targetdate" ng-init="target_date=unit_target.TargetDate" />
+    									<td  ng-if="target_date!='0000-00-00'"><% unit_target.TargetDate | date:"MMM d, y" %></td>
+                                        <td  ng-if="target_date=='0000-00-00'">Not set</td>
     									
     								</tr>
     							</table>
