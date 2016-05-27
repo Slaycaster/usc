@@ -176,6 +176,29 @@
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-4x pull-right"></i>
                             <h4><b>PERFORMANCE THIS YEAR, QUARTERLY - (BY % PERCENTAGE)</b></h4>
+                             <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                   <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#"><i class="fa fa-list fa-fw"></i> Hide/Show</a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                    <a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="fa fa-calendar fa-fw"></i>Choose Date</a>
+                                </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                            <div id="morris-donut-chart"></div>
+                        </div>
+
                         </div>
                    
                         <!-- /.panel-body -->
@@ -288,6 +311,10 @@
     <!-- /.modal -->
     </div>
 
+
+
+
+
 <script type="text/javascript">
 
   $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
@@ -386,6 +413,60 @@
       });
 
 </script>
+
+
+
+
+<!-- Morris donut chart on date change-->
+<script type="text/javascript">
+
+  $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+  $(document).ready(function()
+  {
+
+
+     $("#datetimepicker1").on("dp.change", function(e) {
+            
+        
+        $('#morris-donut-chart').empty();
+
+          var year = $("#datetimepicker1").find("input").val();
+          var staff_id = "<?php echo $staff_id ?>";
+
+          $.ajax({
+              type: "POST",
+              url: "../donutgraphstaff",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'staff_id' : staff_id},
+              success: function(response){
+                var arr = response;
+                Morris.Donut({
+                  element: 'morris-donut-chart',
+                  data: [
+                    {label: "1st Quarter", value: arr[0]},
+                    {label: "2nd Quarter", value: arr[1]},
+                    {label: "3rd Quarter", value: arr[2]},
+                    {label: "4th Quarter", value: arr[3]}
+                  ]
+                });     
+
+              }
+
+          })
+   });
+
+
+   
+
+
+ });
+
+
+
+</script>
+
+
 
 
 <script type="text/javascript">
