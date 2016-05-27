@@ -1,3 +1,6 @@
+var local = 'http://' + location.host;
+var public = '/usc/public/'; // replace this with '/' for production
+
 app.controller('scorecardController', function($scope, $http) {
  
 	$scope.unit_objectives = [];
@@ -5,7 +8,7 @@ app.controller('scorecardController', function($scope, $http) {
  
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('http://localhost/usc/public/api/unit_objectives').
+		$http.get(local + public + 'api/unit_objectives').
 		success(function(data, status, headers, config) {
 			$scope.unit_objectives = data;
 				$scope.loading = false;
@@ -14,7 +17,7 @@ app.controller('scorecardController', function($scope, $http) {
  
 	$scope.save = function(modalstate, id) {
 		$scope.loading = true;
-		var url = 'http://localhost/usc/public/api/unit_objectives';
+		var url = local + public + 'api/unit_objectives';
 
 		//append Unit Objective ID to the URL if the form is in edit mode
 		if (modalstate === 'edit')
@@ -55,7 +58,7 @@ app.controller('scorecardController', function($scope, $http) {
 	$scope.updateUnitObjective = function(unit_objective) {
 		$scope.loading = true;
  
-		$http.put('http://localhost/usc/public/api/unit_objectives/' + unit_objective.id, {
+		$http.put(local + public + 'api/unit_objectives/' + unit_objective.id, {
 			UnitObjectiveName: unit_objective.UnitObjectiveName,
 			PerspectiveID: unit_objective.PerspectiveID,
 			UnitID: unit_objective.UnitID,
@@ -72,7 +75,7 @@ app.controller('scorecardController', function($scope, $http) {
  
 		var unit_objective = $scope.unit_objectives[index];
  
-		$http.delete('http://localhost/usc/public/api/unit_objectives/' + unit_objective.id)
+		$http.delete(local + public + 'api/unit_objectives/' + unit_objective.id)
 			.success(function() {
 				$scope.unit_objectives.splice(index, 1);
 					$scope.loading = false;
@@ -96,7 +99,7 @@ app.controller('scorecardController', function($scope, $http) {
             case 'edit':
                 $scope.form_title = "Edit Unit's Objective Detail";
                 $scope.id = id;
-                $http.get('http://localhost/usc/public/api/unit_objectives/' + id)
+                $http.get(local + public + 'api/unit_objectives/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_objective = response;

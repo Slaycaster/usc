@@ -16,7 +16,7 @@
 
     <script src="{{ asset('bower_components/ng-decimal/ng-decimal.js') }}"></script>
 
-     <script src="{{ asset('js/showtabledata.js') }}"></script>
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
 
 
     <div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
@@ -56,27 +56,27 @@
     							<table class="table table-bordered" ng-show="info" >
     								<thead>
     									<td class="chief_target-objective">
-                                            <b>Objective</b>
+                                            Objective
     									</td>
     							
     									<td class="chief_target-measure">
-                                            <b>Measure</b>
+                                            Measure
     									</td>
 
 
                                         <td class="chief_target-formula">
-                                            <b>Formula</b>
+                                            Formula
                                         </td>
 
                                         <td class="chief_target-target">
-                                            <b>Target Period</b>
+                                            Target Period
                                         </td>
 
     									<td class="chief_target-action">
-                                            <b>Action</b>
+                                            Action
     									</td>
     									<td class="chief_target-date">
-                                            <b>Effectivity Date</b>
+                                            Effectivity Date
     									</td>
     									
     								</thead>

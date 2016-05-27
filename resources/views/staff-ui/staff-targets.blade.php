@@ -14,6 +14,8 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/staff_targets.js') }}"></script>
 
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
+
     <div ng-app="unitScorecardApp" ng-controller="APIStaffTargetController">
 	    <div class="wrap">
 		    <div class="row">			
@@ -46,32 +48,31 @@
                             </div>
 							<!--./div class row-->
 
-                            <div class="table-responsive" ng-show="info">
-    							<table class="table table-striped table-bordered">
+                            <div class="table-responsive" id="tabledata" style="display:none;">
+    							<table class="table table-bordered">
     								<thead>
-    									<td class="objective-custom-td1">
-                                            <b>Objective</b>
+    									<td class="chief_target-objective">
+                                            Objective
     									</td>
     							
-    									<td class="objective-custom-td2">
-                                            <b>Measure</b>
+    									<td class="chief_target-measure">
+                                            Measure
     									</td>
 
 
-                                        <td class="objective-custom-td3">
-                                            <b>Formula</b>
+                                        <td class="chief_target-formula">
+                                            Formula
                                         </td>
 
-                                        <td class="objective-custom-td4">
-                                            <b>Target Period</b>
+                                        <td class="chief_target-target">
+                                            Target Period
                                         </td>
 
+    									<td class="chief_target-action">
+                                            Action
     									</td>
-    									<td class="objective-custom-td5">
-                                            <b>Action</b>
-    									</td>
-    									<td class="objective-custom-td6">
-                                            <b>Effectivity Date</b>
+    									<td class="chief_target-date">
+                                            Effectivity Date
     									</td>
     									
     								</thead>
@@ -86,7 +87,7 @@
     										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName)">Set Target</button>
 
     									</td>
-    									<td><% staff_target.TargetDate %></td>
+    									<td><% staff_target.TargetDate | date:"MMM d, y" %></td>
     									
     								</tr>
     							</table>

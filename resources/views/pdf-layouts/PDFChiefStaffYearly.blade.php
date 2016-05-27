@@ -165,7 +165,7 @@ use App\StaffFunding;
         			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->staff_measure->StaffMeasureName }}
                         <br>
-                        @if($accomplishment->staff_measure->StaffMeasureID > 0)
+                        @if($accomplishment->staff_measure->ChiefMeasureID > 0)
                             <span class="labelc label-primary">Contributory to C, PNP</span>
                         @endif
                         <div style="font-size: 9px;font-style: italic;">Contributory/ies to this Measure</div>
@@ -377,6 +377,5 @@ use App\StaffFunding;
             Funding last updated by:  
             <b>{{ $updatedby4->user_staff->rank->RankCode }} {{ $updatedby4->user_staff->UserStaffLastName }}, {{ $updatedby4->user_staff->UserStaffFirstName }} {{ date('F d, Y', strtotime($updatedby4->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby4->updated_at)) }}</b>
         </i>
-
     </div>
 </body>

@@ -1,20 +1,15 @@
-
 th{
     padding: 0.5em 0.70em 0.5em 0.5em;
     border: 1px solid white;
 }
-
 .thlast{
     padding-left: 0.8em;
 }
-
 .thowner{
     padding-left: .5em;
 }
-
-
-tbody tr:hover {
-    background-color: rgba(226, 226, 226, 1);
+.thinitiatives{
+    padding-left: .5em;
 }
 
 /* For appearance */
@@ -25,7 +20,6 @@ tbody tr:hover {
     margin: 3em 0;
     width: 100%;
 }
-
 .sticky-wrap .sticky-thead,
 .sticky-wrap .sticky-col,
 .sticky-wrap .sticky-intersect{
@@ -39,7 +33,6 @@ tbody tr:hover {
     width: auto; 
     /* Prevent table from stretching to full size */
 }
-
 @media(max-width:768px){
     .sticky-wrap .sticky-thead,
     .sticky-wrap .sticky-col,
@@ -55,34 +48,28 @@ tbody tr:hover {
         /* Prevent table from stretching to full size */
     }
 }
-
 .sticky-wrap .sticky-thead {
         box-shadow: 0 0.25em 0.1em -0.1em rgba(0,0,0,.125);
         z-index: 100;
         width: 50px; 
         /* Force stretch */
 }
-
 .sticky-wrap .sticky-intersect {
     opacity: 1;
     z-index: 150;
 }
-
 .sticky-wrap .sticky-intersect th {
     background-color: #666;
     color: #eee;
 }
-
 .sticky-wrap td,
 .sticky-wrap th {
     box-sizing: border-box;
 }
-
 /* Not needed for sticky header/column functionality */
 td.user-name {
     text-transform: capitalize;
 }
-
 .sticky-wrap.overflow-y{
     overflow-y: auto;
     max-height: 50vh;

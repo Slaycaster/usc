@@ -51,29 +51,31 @@
                             <div class="table-responsive" ng-show="info">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="unit_measure-name">
-                                            Measure Name
-    									</td>
-    							
-    									<td class="unit_measure-type">
-                                            Type
-    									</td>
+                                        <tr>
+        									<td class="unit_measure-name">
+                                                Measure Name
+        									</td>
+        							
+        									<td class="unit_measure-type">
+                                                Type
+        									</td>
 
-                                         <td class="unit_measure-formula">
-                                            Formula
-                                        </td>
+                                             <td class="unit_measure-formula">
+                                                Formula
+                                            </td>
 
-                                        <td class="unit_measure-objective">
-                                            Objective
-                                        </td>
+                                            <td class="unit_measure-objective">
+                                                Objective
+                                            </td>
 
-                                        <td class="unit_measure-contributory">
-                                            Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure
-                                        </td>
-    									<td class="unit_measure-encoder">
-                                            Last Encoded by
-    									</td>
-    									<td class="unit_measure-edit"></td>
+                                            <td class="unit_measure-contributory">
+                                                Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure
+                                            </td>
+        									<td class="unit_measure-encoder">
+                                                Last Encoded by
+        									</td>
+        									<td class="unit_measure-edit"></td>
+                                        </tr>
     								</thead>
     								<tr dir-paginate='unit_measure in unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_measure.UnitMeasureName %></td>

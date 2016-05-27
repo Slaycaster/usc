@@ -9,97 +9,17 @@
   
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
+
+    <script src="{{ asset('js/stickyheader.js') }}"></script>
+
+    <script src="{{ asset('js/debounce.min.js') }}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/stickyheader.css') }}">
     
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/staff_scorecard.js') }}"></script>
 
-
-    <style type="text/css">
-        /* Component styles */
-
-
-
-
-th {
-    padding: 0.5em 0.70em 0.5em 0.5em;
-    text-align: center;
-    border: 1px solid white;
-
-
-}
-
-.thlast{
-    padding-left: 0.8em;
-}
-
-.thowner{
-    padding-left: 2.1em;
-}
-
-.thinitiatives{
-    padding-left: 2.1em;
-}
-
- 
- 
-tbody tr:nth-child(2n-1) {
-    background-color: #f5f5f5;
-    transition: all 5s ease-in-out;
-}
-tbody tr:hover {
-    background-color: rgba(129,208,177,.3);
-}
-
-/* For appearance */
-.sticky-wrap {
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-    margin: 3em 0;
-    width: 100%;
-}
-.sticky-wrap .sticky-thead,
-.sticky-wrap .sticky-col,
-.sticky-wrap .sticky-intersect {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all .125s ease-in-out;
-    z-index: 50;
-    width: auto; /* Prevent table from stretching to full size */
-}
-    .sticky-wrap .sticky-thead {
-        box-shadow: 0 0.25em 0.1em -0.1em rgba(0,0,0,.125);
-        z-index: 100;
-        width: 50px; /* Force stretch */
-    }
-    .sticky-wrap .sticky-intersect {
-        opacity: 1;
-        z-index: 150;
-
-    }
-        .sticky-wrap .sticky-intersect th {
-            background-color: #666;
-            color: #eee;
-        }
-.sticky-wrap td,
-.sticky-wrap th {
-    box-sizing: border-box;
-}
-
-/* Not needed for sticky header/column functionality */
-td.user-name {
-    text-transform: capitalize;
-}
-.sticky-wrap.overflow-y {
-    overflow-y: auto;
-    max-height: 50vh;
-}
-
-
-}
-    </style>
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
 
     <div ng-app="unitScorecardApp" ng-controller="APIStaffScorecardController">
         <div id="wrap">
@@ -116,19 +36,22 @@ td.user-name {
                                     </a> 
                                 </div>
                             </h2>  
-                            <i><span class="fa fa-list fa-fw"></span> Accomplishment last updated by: <b><% updatedby.user_staff.rank.RankCode %> <% updatedby.user_staff.UserStaffLastName %>, <% updatedby.user_staff.UserStaffFirstName %> on 
-                                <% updatedby.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
-                            <i><span class="fa fa-user fa-fw"></span> Owner last updated by: <b><% updatedby2.user_staff.rank.RankCode %> <% updatedby2.user_staff.UserStaffLastName %>, <% updatedby2.user_staff.UserStaffFirstName %> on 
-                                <% updatedby2.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br>
-                            <i><span class="fa fa-sitemap fa-fw"></span> Initiative last updated by: <b><% updatedby3.user_staff.rank.RankCode %> <% updatedby3.user_staff.UserStaffLastName %>, <% updatedby3.user_staff.UserStaffFirstName %> on 
-                                <% updatedby3.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
-                            <i><span class="fa fa-money fa-fw"></span> Funding last updated by: <b><% updatedby4.user_staff.rank.RankCode %> <% updatedby4.user_staff.UserStaffLastName %>, <% updatedby4.user_staff.UserStaffFirstName %> on 
-                                <% updatedby4.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i>  
-                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                            <div class="custom_scorecard-info">
+                                <i><span class="fa fa-list fa-fw"></span> Accomplishment last updated by: <b><% updatedby.user_staff.rank.RankCode %> <% updatedby.user_staff.UserStaffLastName %>, <% updatedby.user_staff.UserStaffFirstName %> on 
+                                    <% updatedby.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
+                                <i><span class="fa fa-user fa-fw"></span> Owner last updated by: <b><% updatedby2.user_staff.rank.RankCode %> <% updatedby2.user_staff.UserStaffLastName %>, <% updatedby2.user_staff.UserStaffFirstName %> on 
+                                    <% updatedby2.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br>
+                                <i><span class="fa fa-sitemap fa-fw"></span> Initiative last updated by: <b><% updatedby3.user_staff.rank.RankCode %> <% updatedby3.user_staff.UserStaffLastName %>, <% updatedby3.user_staff.UserStaffFirstName %> on 
+                                    <% updatedby3.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
+                                <i><span class="fa fa-money fa-fw"></span> Funding last updated by: <b><% updatedby4.user_staff.rank.RankCode %> <% updatedby4.user_staff.UserStaffLastName %>, <% updatedby4.user_staff.UserStaffFirstName %> on 
+                                    <% updatedby4.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i>  
+                                <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                            </div>
                         </div><!--div panel-heading-->
 
                         <div class="panel-body">
-                                <table class="table table-striped table-bordered">
+                            <div class="table-responsive tabledata" id="tabledata" style="display:none;">
+                                <table class="table table-bordered">
                                     <thead>
                                     <tr>
                                         <th rowspan="2" >
@@ -136,22 +59,25 @@ td.user-name {
                                         </th>
                                 
                                         <th colspan="4">
-                                            MEASURES
+                                            <center>MEASURES</center>
                                         </th>
 
                                         <th rowspan="2" class="thowner">
                                             <input type="text" class="scorecard-owner" value="OWNER" disabled/>
                                         </th>
 
-                                        <th colspan="12">
-                                            <b>TARGET/ACCOMPLISHMENT</b>
+                                        <th colspan="6">
+                                            <center>TARGET/ACCOMPLISHMENT</center>
                                         </th>
 
+                                        <th colspan="6">
+                                            <center>TARGET/ACCOMPLISHMENT</center>
+                                        </th>
                                         <th rowspan="2" class="thinitiatives">
                                              <input type="text" class="scorecard-initiatives" value="INITIATIVES" disabled/>
                                         </th>
                                         <th colspan="3">
-                                            FUNDING
+                                            <center>FUNDING</center>
                                         </th>
                                          <th rowspan="2" class="thlast">
                                             <input type="text" class="scorecard-action" value="Action" disabled/>
@@ -246,7 +172,7 @@ td.user-name {
                                         <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LD'"></td>
 
 
-                                        <td><textarea rows="5" cols="30" id="id_owner<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_owner.StaffOwnerContent %>" ng-model="staff_target.staff_owner.StaffOwnerContent" autocomplete="off" ng-touched ng-change="ownerchange()"/></textarea></td>
+                                        <td><center><textarea rows="5" cols="27" id="id_owner<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_owner.StaffOwnerContent %>" ng-model="staff_target.staff_owner.StaffOwnerContent" autocomplete="off" ng-touched ng-change="ownerchange()"/></textarea></center></td>
 
      
                                         <td><% staff_target.JanuaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month"  id="id_jan<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JanuaryAccomplishment  %>" ng-model="staff_target.staff_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
@@ -358,7 +284,7 @@ td.user-name {
 
                                         </td>
 
-                                        <td><textarea rows="5" cols="30" id="id_initiative<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_initiative.StaffInitiativeContent %>" ng-model="staff_target.staff_initiative.StaffInitiativeContent" autocomplete="off" ng-touched ng-change="initchange()"/></textarea></td>
+                                        <td><center><textarea rows="5" cols="27" id="id_initiative<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" value="<% staff_target.staff_initiative.StaffInitiativeContent %>" ng-model="staff_target.staff_initiative.StaffInitiativeContent" autocomplete="off" ng-touched ng-change="initchange()"/></textarea></center></td>
 
                                         <td><input type='text' id="id_estimate<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_funding.StaffFundingEstimate %>" ng-model="staff_target.staff_funding.StaffFundingEstimate" autocomplete="off" class="form-control" ng-touched ng-change="fundingchange()"/></td>
                                         <td ><input type='text' id="id_actual<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_funding.StaffFundingActual %>" ng-model="staff_target.staff_funding.StaffFundingActual" autocomplete="off" class="form-control" ng-touched ng-change="fundingchange()"/></td>
@@ -374,6 +300,7 @@ td.user-name {
                                     </tr>
                                     </tbody>
                                 </table>
+                            </div>
 
                         </div>
                             <!--./table table striped-->
@@ -385,168 +312,5 @@ td.user-name {
             </div>
         </div>
     </div>
-
-  
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
-
-<script type="text/javascript">
-            
-
-   $(function(){
-  $('table').each(function() {
-    if($(this).find('thead').length > 0 && $(this).find('th').length > 0) {
-      // Clone <thead>
-      var $w     = $(window),
-        $t     = $(this),
-        $thead = $t.find('thead').clone(),
-        $col   = $t.find('thead, tbody').clone();
-
-      // Add class, remove margins, reset width and wrap table
-      $t
-      .addClass('sticky-enabled')
-      .css({
-        margin: 0,
-        width: '100%'
-      }).wrap('<div class="sticky-wrap" />');
-
-      if($t.hasClass('overflow-y')) $t.removeClass('overflow-y').parent().addClass('overflow-y');
-
-      // Create new sticky table head (basic)
-      $t.after('<table class="sticky-thead" />');
-
-      // If <tbody> contains <th>, then we create sticky column and intersect (advanced)
-      if($t.find('tbody th').length > 0) {
-        $t.after('<table class="sticky-col" /><table class="sticky-intersect" />');
-      }
-
-      // Create shorthand for things
-      var $stickyHead  = $(this).siblings('.sticky-thead'),
-        $stickyCol   = $(this).siblings('.sticky-col'),
-        $stickyInsct = $(this).siblings('.sticky-intersect'),
-        $stickyWrap  = $(this).parent('.sticky-wrap');
-
-      $stickyHead.append($thead);
-
-      $stickyCol
-      .append($col)
-        .find('thead th:gt(0)').remove()
-        .end()
-        .find('tbody td').remove();
-
-      $stickyInsct.html('<thead><tr><th>'+$t.find('thead th:first-child').html()+'</th></tr></thead>');
-      
-      // Set widths
-      var setWidths = function () {
-          $t
-          .find('thead th').each(function (i) {
-            $stickyHead.find('th').eq(i).width($(this).width());
-          })
-          .end()
-          .find('tr').each(function (i) {
-            $stickyCol.find('tr').eq(i).height($(this).height());
-          });
-
-          // Set width of sticky table head
-          $stickyHead.width($t.width());
-
-          // Set width of sticky table col
-          $stickyCol.find('th').add($stickyInsct.find('th')).width($t.find('thead th').width())
-        },
-        repositionStickyHead = function () {
-          // Return value of calculated allowance
-          var allowance = calcAllowance();
-        
-          // Check if wrapper parent is overflowing along the y-axis
-          if($t.height() > $stickyWrap.height()) {
-            // If it is overflowing (advanced layout)
-            // Position sticky header based on wrapper scrollTop()
-            if($stickyWrap.scrollTop() > 0) {
-              // When top of wrapping parent is out of view
-              $stickyHead.add($stickyInsct).css({
-                opacity: 1,
-                top: $stickyWrap.scrollTop()
-              });
-            } else {
-              // When top of wrapping parent is in view
-              $stickyHead.add($stickyInsct).css({
-                opacity: 0,
-                top: 0
-              });
-            }
-          } else {
-            // If it is not overflowing (basic layout)
-            // Position sticky header based on viewport scrollTop
-            if($w.scrollTop() > $t.offset().top && $w.scrollTop() < $t.offset().top + $t.outerHeight() - allowance) {
-              // When top of viewport is in the table itself
-              $stickyHead.add($stickyInsct).css({
-                opacity: 1,
-                top: $w.scrollTop() - $t.offset().top + 55
-              });
-            } else {
-              // When top of viewport is above or below table
-              $stickyHead.add($stickyInsct).css({
-                opacity: 0,
-                top: 0
-              });
-            }
-          }
-        },
-        repositionStickyCol = function () {
-          if($stickyWrap.scrollLeft() > 0) {
-            // When left of wrapping parent is out of view
-            $stickyCol.add($stickyInsct).css({
-              opacity: 1,
-              left: $stickyWrap.scrollLeft()
-            });
-          } else {
-            // When left of wrapping parent is in view
-            $stickyCol
-            .css({ opacity: 0 })
-            .add($stickyInsct).css({ left: 0 });
-          }
-        },
-        calcAllowance = function () {
-          var a = 0;
-          // Calculate allowance
-          $t.find('tbody tr:lt(3)').each(function () {
-            a += $(this).height();
-          });
-          
-          // Set fail safe limit (last three row might be too tall)
-          // Set arbitrary limit at 0.25 of viewport height, or you can use an arbitrary pixel value
-          if(a > $w.height()*0.25) {
-            a = $w.height()*0.25;
-          }
-          
-          // Add the height of sticky header
-          a += $stickyHead.height();
-          return a;
-        };
-
-      setWidths();
-
-      $t.parent('.sticky-wrap').scroll($.throttle(250, function() {
-        repositionStickyHead();
-        repositionStickyCol();
-      }));
-
-      $w
-      .load(setWidths)
-      .resize($.debounce(250, function () {
-        setWidths();
-        repositionStickyHead();
-        repositionStickyCol();
-      }))
-      .scroll($.throttle(250, repositionStickyHead));
-    }
-  });
-});
-
-
-
-
-        </script>
-
-
 
 @endsection

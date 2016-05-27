@@ -55,6 +55,10 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     #page-wrapper{
         margin-left: 251px;
     }
+    .sidebar{
+        position: fixed;
+        z-index: 999;
+    }
 }
 
 @media (max-width: 768px){
@@ -84,10 +88,10 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 
 
 /* dashboard css */   
-.dashboard-custom-dashabb,
+/*.dashboard-custom-dashabb,
 .dashboard-custom-dashname{
     box-shadow: 8px 8px 5px #888888;
-}
+}*/
 
 @media (min-width: 768px){
     .dashboard-custom-dashabb{
@@ -176,6 +180,10 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     }
 }
 
+.custom_scorecard-info{
+    font-size:12px; 
+    text-align:left;
+}
 
 .scorecard-objectives{
     width:20em; 
@@ -246,6 +254,8 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 table {
     border: 0px !important;
 }
+
+
 /*  /.css for scorecard */
 
 
@@ -291,7 +301,30 @@ table {
         text-align: center;
     }
 }
+
+
+.chief_target-objective{
+    width: 25%;
+}
+.chief_target-measure{
+    width: 25%;
+}
+.chief_target-formula{
+    width: 5%;
+}
+.chief_target-target{
+    width: 5%;
+}
+.chief_target-action{
+    width: 5%;
+}
+.chief_target-date{
+    width: 10%;
+}
+
+
 /*  /.css for targets */
+
 
 
 /*  css for audit trails  */

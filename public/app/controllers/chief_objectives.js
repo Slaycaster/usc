@@ -1,5 +1,6 @@
 var local = 'http://' + location.host;
- 
+var public = '/usc/public/'; // replace this with '/' for production
+
 app.controller('APIChiefObjectiveController', function($scope, $http, $interval) {
     
     $scope.chief_objectives = [];
@@ -11,11 +12,11 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + '/usc/public/api/chief_objectives').
+        $http.get(local + public + 'api/chief_objectives').
         success(function(data, status, headers, config) {
             $scope.chief_objectives = data;
             $scope.loading = false;
-            $http.get(local + '/usc/public/api/perspectives').
+            $http.get(local + public + 'api/perspectives').
             success(function(data, status, headers, config){   
                 $scope.perspective = data;
                 $scope.selectedUserProfile = $scope.perspective[0];
@@ -30,7 +31,7 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
  
     $scope.save = function(modalstate, id) {
         $scope.loading = true;
-        var url = local + '/usc/public/api/chief_objectives';
+        var url = local + public + 'api/chief_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit'){
@@ -76,7 +77,7 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
             case 'edit':
                 $scope.form_title = "EDIT CHIEF'S OBJECTIVE DETAIL";
                 $scope.id = id;
-                $http.get(local + '/usc/public/api/chief_objectives/' + id)
+                $http.get(local + public + 'api/chief_objectives/' + id)
                         .success(function(response) {
                             $scope.chief_objective = response;
                             $scope.selectedUserProfile = $scope.perspective[response.PerspectiveID-1];

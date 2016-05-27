@@ -121,29 +121,6 @@ a.active{
 /* /.css for cheif measures */
 
 
-/* css for chief measure targets */
-.chief_target-objective{
-    width: 25%;
-}
-.chief_target-measure{
-    width: 25%;
-}
-.chief_target-formula{
-    width: 5%;
-}
-.chief_target-target{
-    width: 5%;
-}
-.chief_target-action{
-    width: 5%;
-}
-.chief_target-date{
-    width: 10%;
-}
-/* /.css for cheif measures */
-
-
-
 /* css for table */
 thead{
     background-color:rgba(54, 54, 54, 1);

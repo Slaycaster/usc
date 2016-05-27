@@ -171,7 +171,7 @@ use App\StaffFunding;
         			<td style="vertical-align: top;text-align: left;">
         				{{ $accomplishment->staff_measure->StaffMeasureName }}
                         <br>
-                        @if($accomplishment->staff_measure->StaffMeasureID > 0)
+                        @if($accomplishment->staff_measure->ChiefMeasureID > 0)
                             <span class="labelc label-primary">Contributory to C, PNP</span>
                         @endif
                         <div style="font-size: 9px;font-style: italic;">Contributory/ies to this Measure</div>
