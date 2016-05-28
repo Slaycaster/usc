@@ -166,21 +166,25 @@ class APIStaffTargetsController extends Controller {
 
 
 		$staff_accomplishment = new StaffAccomplishment();
+		$staff_accomplishment->StaffMeasureID = $staff_target->StaffMeasureID;
 		$staff_accomplishment->StaffID = $staff_user->StaffID;
 		$staff_accomplishment->UserStaffID = $staff_user->UserStaffID;
 		$staff_accomplishment->save();
 
 		$staff_owner = new StaffOwner();
+		$staff_owner->StaffMeasureID = $staff_target->StaffMeasureID;
 		$staff_owner->StaffID = $staff_user->StaffID;
 		$staff_owner->UserStaffID = $staff_user->UserStaffID;
 		$staff_owner->save();
 
 		$staff_initiative = new StaffInitiative();
+		$staff_initiative->StaffMeasureID = $staff_target->StaffMeasureID;
 		$staff_initiative->StaffID = $staff_user->StaffID;
 		$staff_initiative->UserStaffID = $staff_user->UserStaffID;
 		$staff_initiative->save();
 
 		$staff_funding = new StaffFunding();
+		$staff_funding->StaffMeasureID = $staff_target->StaffMeasureID;
 		$staff_funding->StaffID = $staff_user->StaffID;
 		$staff_funding->UserStaffID = $staff_user->UserStaffID;
 		$staff_funding->save();
@@ -242,21 +246,25 @@ class APIStaffTargetsController extends Controller {
 		
 
 		$staff_accomplishment = new StaffAccomplishment();
+		$staff_accomplishment->StaffMeasureID = $staff_target->StaffMeasureID;
 		$staff_accomplishment->StaffID = $staff_user->StaffID;
 		$staff_accomplishment->UserStaffID = $staff_user->UserStaffID;
 		$staff_accomplishment->save();
 
 		$staff_owner = new StaffOwner();
+		$staff_owner->StaffMeasureID = $staff_target->StaffMeasureID;
 		$staff_owner->StaffID = $staff_user->StaffID;
 		$staff_owner->UserStaffID = $staff_user->UserStaffID;
 		$staff_owner->save();
 
 		$staff_initiative = new StaffInitiative();
+		$staff_initiative->StaffMeasureID = $staff_target->StaffMeasureID;
 		$staff_initiative->StaffID = $staff_user->StaffID;
 		$staff_initiative->UserStaffID = $staff_user->UserStaffID;
 		$staff_initiative->save();
 
 		$staff_funding = new StaffFunding();
+		$staff_funding->StaffMeasureID = $staff_target->StaffMeasureID;
 		$staff_funding->StaffID = $staff_user->StaffID;
 		$staff_funding->UserStaffID = $staff_user->UserStaffID;
 		$staff_funding->save(); 	
