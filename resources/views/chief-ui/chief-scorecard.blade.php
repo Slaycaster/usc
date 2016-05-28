@@ -127,14 +127,15 @@
                                             <input type="text"  class="scorecard-month" value="December" disabled/>
                                         </th>
                                         
-                                        <th>
-                                            <input type="text" class="scorecard-estimate" value="Estimate" disabled/>
+                                        <th> 
+                                            <input type="text" class="scorecard-estimate" value="Estimate" data-toggle="tooltip" data-placement="top" title="This is the estimate!" disabled/>
                                         </th>
                                         <th>
-                                            <input type="text" class="scorecard-actual"  value="Actual" disabled/>
+                                            <input type="text" class="scorecard-actual"  value="Actual" data-toggle="tooltip" data-placement="top" title="This is the actual!" disabled/>
                                         </th>
                                         <th>
-                                            <input type="text" class="scorecard-variance" value="Variance" disabled/>
+                                            <input type="text" class="scorecard-variance" value="Variance" 
+                                            data-toggle="tooltip" data-placement="top" title="This is the variance!"disabled/>
                                         </th>
                                     </tr>
                                         
