@@ -96,6 +96,7 @@ Route::get('chief/reports','ReportsController@chiefIndex');
 Route::get('chief/changepassword','ChiefLoginController@changepass');
 Route::get('chief/changechiefpicture', 'ChiefLoginController@changechiefpicture');
 Route::get('chief/changeuserpicture', 'ChiefLoginController@changeuserpicture');
+Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 
 
 

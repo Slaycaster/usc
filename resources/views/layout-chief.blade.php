@@ -199,7 +199,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ url('chief/analysis_reports') }}">
                                         Chief Scorecard Analysis Report
                                     </a>
                                 </li>
