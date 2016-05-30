@@ -155,23 +155,28 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td class="col-md-4 mod">
+                                        <label for="chief_measure" class="control">Contributory to Chief's Measure:</label>
+                                    </td>
+                                    <td class="col-md-8">
+                                        
+
+                                        <select id="id_chief_measure" name="chief_measure" data-ng-model="selectedChiefMeasure" class="form-control" data-ng-options="mes.ChiefMeasureName for mes in chiefmeasure" required ng-touched ng-change="getChiefMeasureID()">
+
+
+                                    </td>
+
+                                    
+                                </tr>
 
                                  <tr>
                                     <td class="col-md-4 mod">
                                         <label for="measure_formula" class="control">Measure Formula:</label>
                                     </td>
                                     <td class="col-md-8">
-                                        <select id="id_measure_formula" name="measure_formula" data-ng-model="staff_measure.StaffMeasureFormula" class="form-control" required ng-touched>
-                                                     <option value="">
-                                                        Select Formula
-                                                    </option>
-                                                    <option value="Summation">
-                                                        Summation
-                                                    </option>
-                                                    <option value="Average">
-                                                        Average
-                                                    </option>
-                                        </select>
+
+                                        <select id="id_measure_formula" name="measure_formula" data-ng-model="selectedMeasureFormula" class="form-control" data-ng-options="mes.StaffMeasureFormula for mes in measureformula" required ng-touched>
                                     </td>
                                 </tr>
 
@@ -180,35 +185,14 @@
                                         <label for="staff_objective" class="control">Staff Objective:</label>
                                     </td>
                                     <td class="col-md-8">
-                                        <select id="id_staff_objective" name="staff_objective" data-ng-model="staff_measure.StaffObjectiveID" class="form-control" required ng-touched>
-                                           
-                                            @foreach($staff_objectives as $staff_objective)
-                                                    <option value="<?=$staff_objective->StaffObjectiveID?>" >
-                                                        {{ $staff_objective->StaffObjectiveName }}
-                                                    </option>
-                                            @endforeach
-                                        </select>
+                                        
+
+                                         <select id="id_staff_objective" name="staff_objective" data-ng-model="selectedStaffObjective" class="form-control" data-ng-options="stfobj.StaffObjectiveName for stfobj in staffobjective" required ng-touched>
+
                                     </td>
                                 </tr>
 
 
-                                <tr>
-                                    <td class="col-md-4 mod">
-                                        <label for="chief_measure" class="control">Contributory to Chief's Measure:</label>
-                                    </td>
-                                    <td class="col-md-8">
-                                        <select id="id_chief_measure" name="chief_measure" data-ng-model="staff_measure.ChiefMeasureID" class="form-control" required ng-touched>
-                                                     <option value="0">
-                                                        Select Chief Measure
-                                                    </option>
-                                            @foreach($chief_measures as $chief_measure)
-                                                    <option value="<?=$chief_measure->ChiefMeasureID?>">
-                                                        {{ $chief_measure->ChiefMeasureName }}
-                                                    </option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                </tr>
 
 
                                 <tr>
@@ -241,5 +225,11 @@
             </div>
         </div>
 	</div>
+
+
+
+
+
+
 
 @endsection

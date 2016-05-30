@@ -156,7 +156,7 @@
                                             </th>
                                         </tr>
     								</thead>
-    								<tr dir-paginate='unit_target in unit_targets|filter:search|itemsPerPage:5'>
+    								<tr ng-repeat='unit_target in unit_targets|filter:search'>
                                         
                                         <td><% unit_target.unit_measure.unit_objective.UnitObjectiveName %></td>
 
