@@ -14,6 +14,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/staff_measures.js') }}"></script>
 
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
 
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIStaffMeasureController">
@@ -49,7 +50,7 @@
                             </div>
 							<!--./div class row-->
 
-                            <div class="table-responsive" ng-show="info">
+                            <div class="table-responsive" ng-show="info" id="tabledata" style="display:none;">
     							<table class="table table-bordered">
     								<thead>
     									<td class="staff_measure-name">

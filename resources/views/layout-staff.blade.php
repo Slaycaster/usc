@@ -69,7 +69,7 @@
 <body class="layout_staff-body">
     <div id="wrapper">
         <!-- Navigation -->
-        <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
+        <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation"> 
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -99,7 +99,7 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right layout-custom-navbrand">
+            <ul class="nav navbar-top-links navbar-right layout-custom-navbrand"> 
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
@@ -137,7 +137,7 @@
         </nav>   
 
         <nav class="layout-title-navbar navbar navbar-default side-nav" role="navigation">
-            <div class="navbar-default sidebar" role="navigation">
+            <div class="navbar-default sidebar" role="navigation" id="sidebarinfo" style="display:none;">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
@@ -241,7 +241,7 @@
     </div>
     <!-- /#wrapper -->
 
-    
+    <script src="{{ asset('js/sidebardata.js') }}"></script>
 
 </body>
 
