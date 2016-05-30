@@ -185,8 +185,32 @@
                                             -->
 
                                             <div>
-                                                + <span class="label label-default"><strong><% staff_january[$index] %></strong> </span>
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" href="#janModal[]"><% staff_january[$index] %></button>
                                             </div>
+
+                                              <div class="modal fade" id="janModal[]" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-circle-o-notch fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].JanuaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
                                         </td>
 
                                         <td><% staff_target.FebruaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_feb<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.FebruaryAccomplishment %>" ng-model="staff_target.staff_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
@@ -308,7 +332,7 @@
                                             -->
 
                                             <div>
-                                                + <span class="label label-default"><strong><% staff_september[$index] %></strong> </span>
+                                                + <span class="label label-default"><strong><% staff_october[$index] %></strong> </span>
                                             </div>
 
                                         </td>
@@ -373,4 +397,31 @@
         </div>
     </div>
 
+<script>
+// Get the modal
+var modal = document.getElementById('janModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("jan");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 @endsection
