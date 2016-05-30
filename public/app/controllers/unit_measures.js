@@ -17,6 +17,76 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 		});	
 	};
 
+    $http.get(local + public + 'api/staff/measures/staffmeasures').
+        success(function(data, status, headers, config)
+        {   
+           
+            $scope.staffmeasure = data;
+            
+            
+            $scope.none = {StaffMeasureID : 0, StaffMeasureName: "None/No Contributory"};
+          
+            $scope.staffmeasure.unshift($scope.none);
+            
+            $scope.selectedStaffMeasure = $scope.staffmeasure[0];
+
+
+        });
+
+     $scope.measureformula = [
+                                    {StaffMeasureFormula: "Summation"},
+                                    {StaffMeasureFormula: "Average"},
+                                ];
+            $scope.selectedMeasureFormula = $scope.measureformula[0];
+
+
+
+    $http.get(local + public + 'api/unit/measures/unitobjectives').
+        success(function(data, status, headers, config)
+        {   
+           
+            $scope.unitobjective = data;
+            
+            $scope.selectedUnitObjective = $scope.unitobjective[0];
+
+
+        });
+
+    $scope.getStaffMeasureID = function(mes) 
+    {
+                
+        
+        var measureID = $scope.selectedStaffMeasure.StaffMeasureID;
+
+        if(measureID != 0)
+        {
+             $http.get(local + public + 'unit/angularstaffmeasure/' + measureID).
+            success(function(data)
+            {   
+               
+                
+                 $scope.measureformula = [
+                                        {StaffMeasureFormula: data.StaffMeasureFormula},
+                                    ];
+                $scope.selectedMeasureFormula = $scope.measureformula[0]; 
+
+            });
+            
+        }
+        else
+        {
+             $scope.measureformula = [
+                                    {StaffMeasureFormula: "Summation"},
+                                    {StaffMeasureFormula: "Average"},
+                                ];
+            $scope.selectedMeasureFormula = $scope.measureformula[0]; 
+        }
+
+                 
+                
+    };
+
+
 	$scope.sort = function(keyname)
     {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -36,9 +106,9 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
             $http.put(url, {
                 UnitMeasureName: $scope.unit_measure.UnitMeasureName,
                 UnitMeasureType: $scope.unit_measure.UnitMeasureType,
-                UnitMeasureFormula: $scope.unit_measure.UnitMeasureFormula,
-                UnitObjectiveID: document.getElementById('id_unit_objective').value,
-                StaffMeasureID: document.getElementById('id_staff_measure').value,
+                UnitMeasureFormula: $scope.selectedMeasureFormula.StaffMeasureFormula,
+                UnitObjectiveID: $scope.selectedUnitObjective.UnitObjectiveID,
+                StaffMeasureID: $scope.selectedStaffMeasure.StaffMeasureID,
                 UnitID: document.getElementById('unit_id').value,
                 UserUnitID: document.getElementById('user_unit_id').value
 
@@ -55,9 +125,9 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
             $http.post(url, {
                 UnitMeasureName: $scope.unit_measure.UnitMeasureName,
                 UnitMeasureType: $scope.unit_measure.UnitMeasureType,
-                UnitMeasureFormula: $scope.unit_measure.UnitMeasureFormula,
-                UnitObjectiveID: document.getElementById('id_unit_objective').value,
-                StaffMeasureID: document.getElementById('id_staff_measure').value,
+                UnitMeasureFormula: $scope.selectedMeasureFormula.StaffMeasureFormula,
+                UnitObjectiveID: $scope.selectedUnitObjective.UnitObjectiveID,
+                StaffMeasureID: $scope.selectedStaffMeasure.StaffMeasureID,
                 UnitID: document.getElementById('unit_id').value,
                 UserUnitID: document.getElementById('user_unit_id').value
 
@@ -81,8 +151,7 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                 $scope.form_title = "ADD UNIT'S MEASURE";
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
-                document.getElementById('id_measure_formula').value = "";
-                document.getElementById('id_staff_measure').value = "0";
+            
                 break;
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S MEASURE DETAIL";
@@ -91,8 +160,21 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;
-                            $scope.unit_measure.UnitObjectiveID = response.UnitObjectiveID.toString();
-                            $scope.unit_measure.StaffMeasureID = response.StaffMeasureID.toString();
+                            $scope.selectedUnitObjective = $scope.unitobjective[response.UnitObjectiveID-1];
+                            $scope.selectedStaffMeasure = $scope.staffmeasure[response.StaffMeasureID];
+
+                            angular.forEach($scope.measureformula, function(item){
+                            
+
+                                    if(item.StaffMeasureFormula == response.UnitMeasureFormula)
+                                    {
+                                        $scope.selectedMeasureFormula = $scope.measureformula[1];
+                                    }
+                                    else
+                                    {
+                                        $scope.selectedMeasureFormula = $scope.measureformula[0];
+                                    }  
+                                })
                         });
                 break;
             default:

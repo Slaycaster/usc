@@ -10,7 +10,7 @@ use App\UserStaff;
 
 //Laravel Modules
 use App\Http\Controllers\Controller;
-use Request, Session, DB, Validator, Input, Redirect;
+use Request, Session, DB, Validator, Input, Redirect,Response;
 
 class APIStaffMeasuresController extends Controller {
 
@@ -58,6 +58,35 @@ class APIStaffMeasuresController extends Controller {
 			Session::flash('message', 'Please login first!');
 			return Redirect::to('/');
 		}
+	}
+
+
+	public function chief_measures()
+	{
+		return ChiefMeasure::all();
+	}
+
+	public function staff_objectives()
+	{
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)->first();
+		
+		return StaffObjective::where('StaffID','=',$staff_user->StaffID)->get();
+	}
+	public function angularchiefmeasure($measureID)
+	{
+		
+		
+		
+		$chiefmeasureformula = ChiefMeasure::where('ChiefMeasureID','=',$measureID)->first();
+
+
+					
+
+
+		
+			
+		return $chiefmeasureformula;
 	}
 
 
