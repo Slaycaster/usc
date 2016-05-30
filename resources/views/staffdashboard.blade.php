@@ -195,13 +195,12 @@
                                 </div>
                             </div>
 
-                            <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                        </div>
+                        </div> <!-- /.panel-heading -->
 
-                        </div>
+                        <div class="panel-body">
+                            <div id="morris-donut-chart"></div>
+                        </div> <!-- /.panel-body -->
                    
-                        <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
