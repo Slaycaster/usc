@@ -177,7 +177,6 @@
                                         <label for="measure_formula" class="control">Measure Formula:</label>
                                     </td>
                                     <td class="col-md-8">
-                                        
                                         <select id="id_measure_formula" name="measure_formula" data-ng-model="selectedMeasureFormula" class="form-control" data-ng-options="mes.StaffMeasureFormula for mes in measureformula" required ng-touched>
                                     </td>
                                 </tr>

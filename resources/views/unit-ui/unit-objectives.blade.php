@@ -63,9 +63,11 @@
     									<td class="unit_objective-perspective">
                                             Perspective
     									</td>
+                                    <!-- 
                                         <td class="unit_objective-contributory">
                                             Contributory to Staff's Objective
                                         </td>
+                                    -->
     									<td class="unit_objective-encoder">
                                             Last Encoded by
     									</td>
@@ -74,8 +76,10 @@
     								<tr dir-paginate='unit_objective in unit_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% unit_objective.UnitObjectiveName %></td>
     									<td><% unit_objective.perspective.PerspectiveName %></td>
+                                    <!--
                                         <td><% unit_objective.staffobjective.StaffObjectiveName %></td>
-    									<td>
+    								-->
+                                        <td>
 
                                             <div class="col-md-5">
                                                 <center>
@@ -147,7 +151,7 @@
                                         <span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
                                     </td>
                                 </tr>
-
+                                <!--
                                 <tr>
                                     <td class="col-md-4 mod">
                                         <label for="staffobjective_id" class="control">Contributory to Staff Scorecard:</label>
@@ -157,7 +161,7 @@
                                         <select id="id_staffobjective_id" name="staffobjective_id" data-ng-model="selectedStaffObjective" class="form-control" data-ng-options="obj.StaffObjectiveName for obj in staffobjective" required ng-touched>
                                     </td>
                                 </tr>
-
+                                -->
                                 <tr>
                                     <td class="col-md-4 mod">
                                         <label for="unit" class="control-label">Unit:</label>

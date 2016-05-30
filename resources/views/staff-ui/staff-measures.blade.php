@@ -186,15 +186,9 @@
                                     </td>
                                     <td class="col-md-8">
                                         
-
                                          <select id="id_staff_objective" name="staff_objective" data-ng-model="selectedStaffObjective" class="form-control" data-ng-options="stfobj.StaffObjectiveName for stfobj in staffobjective" required ng-touched>
-
                                     </td>
                                 </tr>
-
-
-
-
                                 <tr>
                                     <td class="col-md-4 mod">
                                         <label for="Chief">Staff Office:</label>

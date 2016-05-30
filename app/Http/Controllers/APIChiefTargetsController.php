@@ -152,21 +152,25 @@ class APIChiefTargetsController extends Controller {
 
 
 		$chief_accomplishment = new ChiefAccomplishment();
+		$chief_accomplishment->ChiefMeasureID = $chief_target->ChiefMeasureID;
 		$chief_accomplishment->ChiefID = $chief_user->ChiefID;
 		$chief_accomplishment->UserChiefID = $chief_user->UserChiefID;
 		$chief_accomplishment->save();
 
 		$chief_owner = new ChiefOwner();
+		$chief_owner->ChiefMeasureID = $chief_target->ChiefMeasureID;
 		$chief_owner->ChiefID = $chief_user->ChiefID;
 		$chief_owner->UserChiefID = $chief_user->UserChiefID;
 		$chief_owner->save();
 
 		$chief_initiative = new ChiefInitiative();
+		$chief_initiative->ChiefMeasureID = $chief_target->ChiefMeasureID;
 		$chief_initiative->ChiefID = $chief_user->ChiefID;
 		$chief_initiative->UserChiefID = $chief_user->UserChiefID;
 		$chief_initiative->save();
 
 		$chief_funding = new ChiefFunding();
+		$chief_funding->ChiefMeasureID = $chief_target->ChiefMeasureID;
 		$chief_funding->ChiefID = $chief_user->ChiefID;
 		$chief_funding->UserChiefID = $chief_user->UserChiefID;
 		$chief_funding->save();
@@ -227,21 +231,25 @@ class APIChiefTargetsController extends Controller {
 
 		
 		$chief_accomplishment = new ChiefAccomplishment();
+		$chief_accomplishment->ChiefMeasureID = $chief_target->ChiefMeasureID;
 		$chief_accomplishment->ChiefID = $chief_user->ChiefID;
 		$chief_accomplishment->UserChiefID = $chief_user->UserChiefID;
 		$chief_accomplishment->save();
 
 		$chief_owner = new ChiefOwner();
+		$chief_owner->ChiefMeasureID = $chief_target->ChiefMeasureID;
 		$chief_owner->ChiefID = $chief_user->ChiefID;
 		$chief_owner->UserChiefID = $chief_user->UserChiefID;
 		$chief_owner->save();
 
 		$chief_initiative = new ChiefInitiative();
+		$chief_initiative->ChiefMeasureID = $chief_target->ChiefMeasureID;
 		$chief_initiative->ChiefID = $chief_user->ChiefID;
 		$chief_initiative->UserChiefID = $chief_user->UserChiefID;
 		$chief_initiative->save();
 
 		$chief_funding = new ChiefFunding();
+		$chief_funding->ChiefMeasureID = $chief_target->ChiefMeasureID;
 		$chief_funding->ChiefID = $chief_user->ChiefID;
 		$chief_funding->UserChiefID = $chief_user->UserChiefID;
 		$chief_funding->save();

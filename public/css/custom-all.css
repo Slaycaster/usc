@@ -373,6 +373,14 @@ table {
 }
 /*  /.css for audit trails  */
 
+/*  change picture */
+@media (min-width: 768px){
+    .custom_picture-space{
+        margin-top: 10em;
+    }
+}
+/*  /.change picture */
+
 
 /*  css for modal */
 .close {

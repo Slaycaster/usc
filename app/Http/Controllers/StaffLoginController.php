@@ -40,7 +40,7 @@ class StaffLoginController extends Controller {
 			$staff_measures_count = StaffMeasure::where('StaffID', $staff_user->StaffID)
 				->count();
 			return view('staffdashboard')
-				->with('staff_id',$staff_id)
+				->with('staff_id',$staff_user->StaffID)
 				->with('staff_user', $staff_user)
 				->with('staff_objectives_count', $staff_objectives_count)
 				->with('staff_measures_count', $staff_measures_count)
@@ -422,7 +422,7 @@ class StaffLoginController extends Controller {
 			->join('unit_accomplishments', 'unit_measures.UnitMeasureID', '=', 'unit_accomplishments.UnitMeasureID')
 			->where('staff_measures.StaffID', '=', $staff_id)
 			->whereYear('TargetDate', '=', date($year))
-			->select('unit_accomplishments.JanuaryAccomplishment as JanuaryUnit', 'unit_accomplishments.FebruaryAccomplishment as FebruaryUnit', 'unit_accomplishments.MarchAccomplishment as MarchUnit', 'unit_accomplishments.AprilAccomplishment as AprilUnit', 'unit_accomplishments.MayAccomplishment as MayUnit', 'unit_accomplishments.JuneAccomplishment as JuneUnit', 'unit_accomplishments.JulyAccomplishment as JulyUnit', 'unit_accomplishments.AugustAccomplishment as AugustUnit', 'unit_accomplishments.SeptemberAccomplishment as SeptemberUnit', 'unit_accomplishments.OctoberAccomplishment as OctoberUnit', 'unit_accomplishments.NovemberAccomplishment as NovemberUnit', 'unit_accomplishments.DecemberAccomplishment as DecemberUnit', 'staff_measures.StaffMeasureID as staffmeasureid' , 'staff_accomplishments.JanuaryAccomplishment as JanuaryStaff' , 'staff_accomplishments.JanuaryAccomplishment as JanuaryStaff' , 'staff_accomplishments.FebruaryAccomplishment as FebruaryStaff' , 'staff_accomplishments.MarchAccomplishment as MarchStaff' , 'staff_accomplishments.AprilAccomplishment as AprilStaff' , 'staff_accomplishments.MayAccomplishment as MayStaff' , 'staff_accomplishments.JuneAccomplishment as JuneStaff' , 'staff_accomplishments.JulyAccomplishment as JulyStaff' , 'staff_accomplishments.AugustAccomplishment as AugustStaff' , 'staff_accomplishments.SeptemberAccomplishment as SeptemberStaff' , 'staff_accomplishments.OctoberAccomplishment as OctoberStaff' , 'staff_accomplishments.NovemberAccomplishment as NovemberStaff', 'staff_accomplishments.DecemberAccomplishment as DecemberStaff', 'staff_targets.JanuaryTarget as Januarytarget' , 'staff_targets.FebruaryTarget as Februarytarget' , 'staff_targets.MarchTarget as Marchtarget' , 'staff_targets.AprilTarget as Apriltarget' , 'staff_targets.MayTarget as Maytarget' , 'staff_targets.JuneTarget as Junetarget' , 'staff_targets.JulyTarget as Julytarget' , 'staff_targets.AugustTarget as Augusttarget' , 'staff_targets.SeptemberTarget as Septembertarget' , 'staff_targets.OctoberTarget as Octobertarget' , 'staff_targets.NovemberTarget as Novembertarget' , 'staff_targets.DecemberTarget as Decembertarget')
+			->select('unit_accomplishments.UnitAccomplishmentID as UnitAccomplishmentID','unit_accomplishments.JanuaryAccomplishment as JanuaryUnit', 'unit_accomplishments.FebruaryAccomplishment as FebruaryUnit', 'unit_accomplishments.MarchAccomplishment as MarchUnit', 'unit_accomplishments.AprilAccomplishment as AprilUnit', 'unit_accomplishments.MayAccomplishment as MayUnit', 'unit_accomplishments.JuneAccomplishment as JuneUnit', 'unit_accomplishments.JulyAccomplishment as JulyUnit', 'unit_accomplishments.AugustAccomplishment as AugustUnit', 'unit_accomplishments.SeptemberAccomplishment as SeptemberUnit', 'unit_accomplishments.OctoberAccomplishment as OctoberUnit', 'unit_accomplishments.NovemberAccomplishment as NovemberUnit', 'unit_accomplishments.DecemberAccomplishment as DecemberUnit', 'staff_measures.StaffMeasureID as staffmeasureid' , 'staff_accomplishments.JanuaryAccomplishment as JanuaryStaff' , 'staff_accomplishments.JanuaryAccomplishment as JanuaryStaff' , 'staff_accomplishments.FebruaryAccomplishment as FebruaryStaff' , 'staff_accomplishments.MarchAccomplishment as MarchStaff' , 'staff_accomplishments.AprilAccomplishment as AprilStaff' , 'staff_accomplishments.MayAccomplishment as MayStaff' , 'staff_accomplishments.JuneAccomplishment as JuneStaff' , 'staff_accomplishments.JulyAccomplishment as JulyStaff' , 'staff_accomplishments.AugustAccomplishment as AugustStaff' , 'staff_accomplishments.SeptemberAccomplishment as SeptemberStaff' , 'staff_accomplishments.OctoberAccomplishment as OctoberStaff' , 'staff_accomplishments.NovemberAccomplishment as NovemberStaff', 'staff_accomplishments.DecemberAccomplishment as DecemberStaff', 'staff_targets.JanuaryTarget as Januarytarget' , 'staff_targets.FebruaryTarget as Februarytarget' , 'staff_targets.MarchTarget as Marchtarget' , 'staff_targets.AprilTarget as Apriltarget' , 'staff_targets.MayTarget as Maytarget' , 'staff_targets.JuneTarget as Junetarget' , 'staff_targets.JulyTarget as Julytarget' , 'staff_targets.AugustTarget as Augusttarget' , 'staff_targets.SeptemberTarget as Septembertarget' , 'staff_targets.OctoberTarget as Octobertarget' , 'staff_targets.NovemberTarget as Novembertarget' , 'staff_targets.DecemberTarget as Decembertarget')
 			->get();
 
 
@@ -432,7 +432,12 @@ class StaffLoginController extends Controller {
 			->join('staff_accomplishments', 'staff_measures.StaffMeasureID', '=', 'staff_accomplishments.StaffMeasureID')
 			->where('staff_measures.StaffID', '=', $staff_id)
 			->whereYear('TargetDate', '=', date($year))
-			
+			->whereNotIn('staff_measures.StaffMeasureID', function($q2)
+						{
+
+							$q2->select('StaffMeasureID')->from('unit_measures')
+								->where('StaffMeasureID', '!=', 0);
+						})
 			->get();
 
 			$measurecount = DB::table('staff_measures')
@@ -440,6 +445,9 @@ class StaffLoginController extends Controller {
 			->count();
 
 			$i = 0;
+
+
+
 
 			foreach($staffs as $staff)
 			{
@@ -462,23 +470,28 @@ class StaffLoginController extends Controller {
 				$i = $i + 1;
 			}
 
+
 			foreach($units as $unit)
 			{
-				$january[$i] = ($unit->JanuaryStaff + $unit->JanuaryUnit / $unit->Januarytarget) * 100;
-				$february[$i] = ($unit->FebruaryStaff + $unit->FebruaryUnit / $unit->Februarytarget) * 100;
-				$march[$i] = ($unit->MarchStaff + $unit->MarchUnit / $unit->Marchtarget) * 100;
-				$april[$i] = ($unit->AprilStaff + $unit->AprilUnit / $unit->Apriltarget) * 100;
-				$may[$i] = ($unit->MayStaff + $unit->MayUnit / $unit->Maytarget) * 100;
-				$june[$i] = ($unit->JuneStaff + $unit->JuneUnit / $unit->Junetarget) * 100;
-				$july[$i] = ($unit->JulyStaff + $unit->JulyUnit / $unit->Julytarget) * 100;
-				$august[$i] = ($unit->AugustStaff + $unit->AugustUnit / $unit->Augusttarget) * 100;
-				$september[$i] = ($unit->SeptemberStaff + $unit->SeptemberUnit / $unit->Septembertarget) * 100;
-				$october[$i] = ($unit->OctoberStaff + $unit->OctoberUnit / $unit->Octobertarget) * 100;
-				$november[$i] = ($unit->NovemberStaff + $unit->NovemberUnit / $unit->Novembertarget) * 100;		
-				$december[$i] = ($unit->DecemberStaff + $unit->DecemberUnit / $unit->Decembertarget) * 100;
+				$january[$i] = (($unit->JanuaryStaff + $unit->JanuaryUnit) / $unit->Januarytarget) * 100;
+				$february[$i] = (($unit->FebruaryStaff + $unit->FebruaryUnit) / $unit->Februarytarget) * 100;
+				$march[$i] = (($unit->MarchStaff + $unit->MarchUnit) / $unit->Marchtarget) * 100;
+				$april[$i] = (($unit->AprilStaff + $unit->AprilUnit) / $unit->Apriltarget) * 100;
+				$may[$i] = (($unit->MayStaff + $unit->MayUnit) / $unit->Maytarget) * 100;
+				$june[$i] = (($unit->JuneStaff + $unit->JuneUnit) / $unit->Junetarget) * 100;
+				$july[$i] = (($unit->JulyStaff + $unit->JulyUnit) / $unit->Julytarget) * 100;
+				$august[$i] = (($unit->AugustStaff + $unit->AugustUnit) / $unit->Augusttarget) * 100;
+				$september[$i] = (($unit->SeptemberStaff + $unit->SeptemberUnit) / $unit->Septembertarget) * 100;
+				$october[$i] = (($unit->OctoberStaff + $unit->OctoberUnit) / $unit->Octobertarget) * 100;
+				$november[$i] = (($unit->NovemberStaff + $unit->NovemberUnit) / $unit->Novembertarget) * 100;		
+				$december[$i] = (($unit->DecemberStaff + $unit->DecemberUnit) / $unit->Decembertarget) * 100;
 
 				$i = $i + 1; 
 			}
+
+
+
+
 
 
 			$firstquarter = 0;
@@ -494,6 +507,7 @@ class StaffLoginController extends Controller {
 				$thirdquarter = $thirdquarter + (($july[$j] + $august[$j] + $september[$j]) / 3);
 				$fourthquarter = $fourthquarter + (($october[$j] + $november[$j] + $december[$j]) / 3 );
 			}
+
 
 
 			$firstquarter = $firstquarter / $measurecount;
