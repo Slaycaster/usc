@@ -59,10 +59,11 @@
                                         <td class="staff_objective-perspective">
                                             Perspective
                                         </td>
-                                        
+                                    <!--
                                         <td class="staff_objective-contributory">
                                             Contributory to Chief's Objective
                                         </td>
+                                    -->
     									<td class="staff_objective-encoder">
                                             Last Encoded by	
     									</td>
@@ -71,12 +72,14 @@
     								<tr dir-paginate='staff_objective in staff_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
     									<td><% staff_objective.StaffObjectiveName %></td>
     									<td><% staff_objective.perspective.PerspectiveName %></td>
+                                       <!--
                                         <td><% staff_objective.chief_objective.ChiefObjectiveName %></td>
-    									<td>
+    									-->
+                                        <td>
 
                                             <div class="col-md-5">
                                                 <center>
-                                                    <img ng-src="../uploads/userpictures/unit/cropped/<%staff_objective.user_staff.UserStaffPicturePath%>" height="30px;"" class="thumbnail">
+                                                    <img ng-src="../uploads/userpictures/unit/cropped/<%staff_objective.user_staff.UserStaffPicturePath%>" height="30px;" class="thumbnail">
                                                 </center>
                                             </div>
 
@@ -145,7 +148,7 @@
                                         <span ng-show="userForm.perspective_id.$invalid && !userForm.perspective_id.$pristine" class="help-inline">Perspective is required.</span>
                                     </td>
                                 </tr>
-
+                            <!--
                                 <tr>
                                     <td class="col-md-4 mod">
                                         <label for="staffobjective_id" class="control">Contributory to Chief Scorecard:</label>
@@ -159,7 +162,7 @@
 
                                     </td>
                                 </tr>
-
+                            -->
                                 <tr>
                                     <td class="col-md-4 mod">
                                         <label for="inputEmail3" class="control-label">Staff:</label>
