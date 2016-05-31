@@ -62,6 +62,37 @@ class APIUnitMeasuresController extends Controller {
 		}
 	}
 
+	public function staff_measures()
+	{
+		$id = Session::get('unit_user_id', 'default');
+			$user = UserUnit::where('UserUnitID', $id)
+				->first();
+
+			$unit = Unit::where('UnitID', '=', $user->UnitID)->with('staff')->first();
+		return StaffMeasure::where('StaffID','=',$unit->StaffID)->get();
+	}
+
+	public function unit_objectives()
+	{
+		$id = Session::get('unit_user_id', 'default');
+		$user = UserUnit::where('UserUnitID', '=', $id)->first();
+		
+		return UnitObjective::where('UnitID','=',$user->UnitID)->get();
+	}
+
+	public function angularstaffmeasure($measureID)
+	{
+		$staffmeasureformula = StaffMeasure::where('StaffMeasureID','=',$measureID)->first();
+
+
+					
+
+
+		
+			
+		return $staffmeasureformula;
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

@@ -85,6 +85,10 @@ Route::get('staff/changepassword','StaffLoginController@changepass');
 Route::get('staff/changestaffpicture', 'StaffLoginController@changestaffpicture');
 Route::get('staff/changeuserpicture', 'StaffLoginController@changeuserpicture');
 
+//Route::post('staff/ajaxchiefmeasure', 'APIStaffMeasuresController@ajaxchiefmeasure');
+Route::get('staff/angularchiefmeasure/{measureID}', 'APIStaffMeasuresController@angularchiefmeasure');
+Route::get('unit/angularstaffmeasure/{measureID}', 'APIUnitMeasuresController@angularstaffmeasure');
+
 /*CHIEF USER ROUTES*/
 Route::get('chief/scorecard', 'ChiefLoginController@scorecard');
 Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
@@ -113,6 +117,10 @@ Route::resource('api/chief_dashboard','APIChiefAuditTrailsDashController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
+Route::get('api/staff/measures/chiefmeasures', 'APIStaffMeasuresController@chief_measures');
+Route::get('api/staff/measures/staffobjectives', 'APIStaffMeasuresController@staff_objectives');
+Route::get('api/unit/measures/unitobjectives', 'APIUnitMeasuresController@unit_objectives');
+Route::get('api/staff/measures/staffmeasures', 'APIUnitMeasuresController@staff_measures');
 
 Route::get('api/unit_scorecard/lastupdatedby', 'APIUnitScorecardController@LastUpdatedBy');
 Route::get('api/staff_scorecard/lastupdatedby', 'APIStaffScorecardController@LastUpdatedBy');

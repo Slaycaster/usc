@@ -15,7 +15,80 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
         success(function(data, status, headers, config) {
             $scope.staff_measures = data;
                 $scope.loading = false;
-        }); 
+        });
+
+
+
+         $http.get(local + public + 'api/staff/measures/chiefmeasures').
+        success(function(data, status, headers, config)
+        {   
+           
+            $scope.chiefmeasure = data;
+            
+            
+            $scope.none = {ChiefMeasureID : 0, ChiefMeasureName: "None/No Contributory"};
+          
+            $scope.chiefmeasure.unshift($scope.none);
+            //$scope.chiefobjective.push(data);
+            $scope.selectedChiefMeasure = $scope.chiefmeasure[0];
+
+
+        });
+
+        $scope.measureformula = [
+                                    {StaffMeasureFormula: "Summation"},
+                                    {StaffMeasureFormula: "Average"},
+                                ];
+            $scope.selectedMeasureFormula = $scope.measureformula[0];
+        
+
+        $http.get(local + public + 'api/staff/measures/staffobjectives').
+        success(function(data, status, headers, config)
+        {   
+           
+            $scope.staffobjective = data;
+            
+            $scope.selectedStaffObjective = $scope.staffobjective[0];
+
+
+        });
+
+    };
+
+      
+
+    $scope.getChiefMeasureID = function(mes) 
+    {
+                
+        
+        var measureID = $scope.selectedChiefMeasure.ChiefMeasureID;
+
+        if(measureID != 0)
+        {
+             $http.get(local + public + 'staff/angularchiefmeasure/' + measureID).
+            success(function(data)
+            {   
+               
+                
+                 $scope.measureformula = [
+                                        {StaffMeasureFormula: data.ChiefMeasureFormula},
+                                    ];
+                $scope.selectedMeasureFormula = $scope.measureformula[0]; 
+
+            });
+            
+        }
+        else
+        {
+             $scope.measureformula = [
+                                    {StaffMeasureFormula: "Summation"},
+                                    {StaffMeasureFormula: "Average"},
+                                ];
+            $scope.selectedMeasureFormula = $scope.measureformula[0]; 
+        }
+
+                 
+                
     };
 
     $scope.sort = function(keyname)
@@ -23,6 +96,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
+
 
     $scope.save = function(modalstate, id) 
     {
@@ -37,9 +111,9 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
             $http.put(url, {
                 StaffMeasureName: $scope.staff_measure.StaffMeasureName,
                 StaffMeasureType: $scope.staff_measure.StaffMeasureType,
-                StaffMeasureFormula: $scope.staff_measure.StaffMeasureFormula,
-                StaffObjectiveID: document.getElementById('id_staff_objective').value,
-                ChiefMeasureID: document.getElementById('id_chief_measure').value,
+                StaffMeasureFormula: $scope.selectedMeasureFormula.StaffMeasureFormula,
+                StaffObjectiveID: $scope.selectedStaffObjective.StaffObjectiveID,
+                ChiefMeasureID: $scope.selectedChiefMeasure.ChiefMeasureID,
                 StaffID: document.getElementById('staff_id').value,
                 UserStaffID: document.getElementById('user_staff_id').value
 
@@ -56,9 +130,9 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
             $http.post(url, {
                 StaffMeasureName: $scope.staff_measure.StaffMeasureName,
                 StaffMeasureType: $scope.staff_measure.StaffMeasureType,
-                StaffMeasureFormula: $scope.staff_measure.StaffMeasureFormula,
-                StaffObjectiveID: document.getElementById('id_staff_objective').value,
-                ChiefMeasureID: document.getElementById('id_chief_measure').value,
+                StaffMeasureFormula: $scope.selectedMeasureFormula.StaffMeasureFormula,
+                StaffObjectiveID: $scope.selectedStaffObjective.StaffObjectiveID,
+                ChiefMeasureID: $scope.selectedChiefMeasure.ChiefMeasureID,
                 StaffID: document.getElementById('staff_id').value,
                 UserStaffID: document.getElementById('user_staff_id').value
 
@@ -82,18 +156,36 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 $scope.form_title = "ADD STAFF'S MEASURE";
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
-                document.getElementById('id_measure_formula').value = "";
-                document.getElementById('id_chief_measure').value = "0";
+                
+                
+                
                 break;
             case 'edit':
                 $scope.form_title = "EDIT STAFF'S MEASURE DETAIL";
                 $scope.id = id;
                 $http.get(local + public + 'api/staff_measures/' + id)
                         .success(function(response) {
-                            console.log(response);
+                            
                             $scope.staff_measure = response;
-                            $scope.staff_measure.StaffObjectiveID = response.StaffObjectiveID.toString();
-                            $scope.staff_measure.ChiefMeasureID = response.ChiefMeasureID.toString();
+                            $scope.selectedStaffObjective = $scope.staffobjective[response.StaffObjectiveID-1];
+                            $scope.selectedChiefMeasure = $scope.chiefmeasure[response.ChiefMeasureID];
+
+                            angular.forEach($scope.measureformula, function(item){
+                              console.log(item.StaffMeasureFormula);
+
+                                    if(item.StaffMeasureFormula == response.StaffMeasureFormula)
+                                    {
+                                        $scope.selectedMeasureFormula = $scope.measureformula[1];
+                                    }
+                                    else
+                                    {
+                                        $scope.selectedMeasureFormula = $scope.measureformula[0];
+                                    }  
+                                })
+
+
+
+                            
                         });
                 break;
             default:
