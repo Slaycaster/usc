@@ -181,8 +181,9 @@
      
                                         <td><% staff_target.JanuaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month"  id="id_jan<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JanuaryAccomplishment  %>" ng-model="staff_target.staff_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
+                                            <input type="hidden" ng-model="january" ng-init="s_january=staff_january[$index]">
                                             <!--Contributory Accomplishment-->
-                                            <div style="margin-top: 5%">
+                                            <div style="margin-top: 5%" ng-if="s_january != '0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#janModal<% $index %>"><% staff_january[$index] %></button>
@@ -216,8 +217,8 @@
                                             <!--Contributory Accomplishment-->
                                            
 
-
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="february" ng-init="s_february=staff_february[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_february!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#febModal<% $index %>"><% staff_february[$index] %></button>
@@ -250,8 +251,8 @@
 
                                              <!--Contributory Accomplishment-->
                                              
-
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="march" ng-init="s_march=staff_march[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_march!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#marModal<% $index %>"><% staff_march[$index] %></button>
@@ -284,8 +285,8 @@
 
                                              <!--Contributory Accomplishment-->
                                         
-
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="april" ng-init="s_april=staff_april[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_april!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#aprModal<% $index %>"><% staff_april[$index] %></button>
@@ -317,8 +318,8 @@
                                         <td><% staff_target.MayTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_may<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MayAccomplishment %>" ng-model="staff_target.staff_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                             
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="may" ng-init="s_may=staff_may[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_may!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#mayModal<% $index %>"><% staff_may[$index] %></button>
@@ -350,8 +351,8 @@
                                         <td><% staff_target.JuneTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jun<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JuneAccomplishment %>" ng-model="staff_target.staff_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="june" ng-init="s_june=staff_june[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_june!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#juneModal<% $index %>"><% staff_june[$index] %></button>
@@ -382,8 +383,8 @@
                                         <td><% staff_target.JulyTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jul<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JulyAccomplishment %>" ng-model="staff_target.staff_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                             
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="july" ng-init="s_july=staff_july[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_july!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#julyModal<% $index %>"><% staff_july[$index] %></button>
@@ -414,8 +415,8 @@
                                         <td><% staff_target.AugustTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_aug<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AugustAccomplishment %>" ng-model="staff_target.staff_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="august" ng-init="s_august=staff_august[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_august!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#augModal<% $index %>"><% staff_august[$index] %></button>
@@ -447,8 +448,8 @@
                                         <td><% staff_target.SeptemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_sep<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.SeptemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.SeptemberAccomplishment " autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                             
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="september" ng-init="s_september=staff_september[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_september!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#sepModal<% $index %>"><% staff_september[$index] %></button>
@@ -479,8 +480,8 @@
                                         <td><% staff_target.OctoberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_oct<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.OctoberAccomplishment %>" ng-model="staff_target.staff_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="october" ng-init="s_october=staff_october[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_october!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#octModal<% $index %>"><% staff_october[$index] %></button>
@@ -513,8 +514,8 @@
 
                                              <!--Contributory Accomplishment-->
                                              
-
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="november" ng-init="s_november=staff_november[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_september!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#novModal<% $index %>"><% staff_november[$index] %></button>
@@ -547,8 +548,8 @@
 
                                              <!--Contributory Accomplishment-->
                                            
-
-                                            <div style="margin-top: 5%">
+                                            <input type="hidden" ng-model="december" ng-init="s_december=staff_december[$index]">
+                                            <div style="margin-top: 5%" ng-if="s_december!='0'">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#decModal<% $index %>"><% staff_december[$index] %></button>
