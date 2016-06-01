@@ -16,15 +16,17 @@ use App\StaffAccomplishment;
 
 	$selectedYear = Session::get('year', 'default');	
 
-    $chief_id = Session::get('chief_id', 'default'); //get the UserChiefID stored in session.
+    $chief_id = Session::get('chief_user_id', 'default'); //get the UserChiefID stored in session.
+    $chief_user = UserChief::where('UserChiefID', '=', $chief_id)
+                            ->first();
 
     $chief = UserChief::where('UserChiefID', '=', $chief_id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the chief         
-    $chief = Chief::where('ChiefID', '=', $chief_id)->first();
-
+    $chief = Chief::where('ChiefID', '=', $chief_user->ChiefID)->first();
 
 	$logoPath = 'img/pnp_logo2.png';
 	$chieflogoPath = 'uploads/chiefpictures/cropped/'.$chief->PicturePath;
     $tempObjective = '';
+
 
 
     $sortByObjective = DB::table('chief_objectives')
@@ -47,7 +49,7 @@ use App\StaffAccomplishment;
                                         ->with('user_chief')
                                         ->with('user_chief.rank')
                                         ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                        ->where('ChiefID', '=', $chief_id)
+                                        ->where('ChiefID', '=', $chief_user->ChiefID)
                                         ->where('ChiefMeasureID', '=', $measure->ChiefMeasureID)
                                         ->get();
         if(count($accomplishments) != 0)
@@ -150,27 +152,27 @@ use App\StaffAccomplishment;
                 <tr>
                     <td width="11.5%" rowspan="2">OBJECTIVES</td>
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
-                    <td width="12.5%" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
+                    <td width="68" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
                     <td colspan="12" height="12">TARGET/ACCOMPLISHMENT</td>
-                    <td width="14%" rowspan="2" style="text-align: left;">INITIATIVES</td>
+                    <td width="68" rowspan="2" style="text-align: left;">INITIATIVES</td>
                     <td colspan="3">FUNDING</td>
                 </tr>
                 <tr>
                     <td width="80" style="text-align: left;padding-left: 3px;">Name</td>
                     <td width="15">LG</td>
                     <td width="15">LD</td>
-                    <td width="5%">Jan</td>
-                    <td width="5%">Feb</td>
-                    <td width="5%">Mar</td>
-                    <td width="5%">Apr</td>
-                    <td width="5%">May</td>
-                    <td width="5%">Jun</td>
-                    <td width="5%">Jul</td>
-                    <td width="5%">Aug</td>
-                    <td width="5%">Sep</td>
-                    <td width="5%">Oct</td>
-                    <td width="5%">Nov</td>
-                    <td width="5%">Dec</td>
+                    <td width="32">Jan</td>
+                    <td width="32">Feb</td>
+                    <td width="32">Mar</td>
+                    <td width="32">Apr</td>
+                    <td width="32">May</td>
+                    <td width="32">Jun</td>
+                    <td width="32">Jul</td>
+                    <td width="32">Aug</td>
+                    <td width="32">Sep</td>
+                    <td width="32">Oct</td>
+                    <td width="32">Nov</td>
+                    <td width="32">Dec</td>
                     <td width="32">Estimate</td>
                     <td width="28">Actual</td>
                     <td width="32">Variance</td>
@@ -191,7 +193,7 @@ use App\StaffAccomplishment;
                                                 ->with('user_chief')
                                                 ->with('user_chief.rank')
                                                 ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                                ->where('ChiefID', '=', $chief_id)
+                                                ->where('ChiefID', '=', $chief_user->ChiefID)
                                                 ->where('ChiefMeasureID', '=', $measure->ChiefMeasureID)
                                                 ->get();
                 foreach ($accomplishments as $accomplishment)
@@ -213,8 +215,8 @@ use App\StaffAccomplishment;
                             @else
                                 <td></td>
                             @endif
-                            <td style="vertical-align: top;text-align: left;">
-                                {{ $accomplishment->chief_measure->ChiefMeasureName }}
+                    		<td style="vertical-align: top;text-align: left;">
+                    			{{ $accomplishment->chief_measure->ChiefMeasureName }}
                                 <br>
                                 <div style="font-size: 9px;">Contributory/ies to this Measure</div> 
                                 @foreach($accomplishment->chief_measure->staff_measures as $contributor)
@@ -222,19 +224,19 @@ use App\StaffAccomplishment;
                                         <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
                                     @endforeach
                                 @endforeach
-                            </td>
+                    		</td>
                             @if($accomplishment->chief_measure->ChiefMeasureType == 'LG')
-                                <td style="background-color: #5cb85c;"></td>
+                        		<td style="background-color: #5cb85c;"></td>
                                 <td></td>
                             @else
                                 <td></td>
                                 <td style="background-color: #5cb85c;"></td>
                             @endif
-                            <td style="vertical-align: top;text-align: left;">
-                                {{ $accomplishment->chief_owner->ChiefOwnerContent }}
-                            </td>
-                            <td>
-                                {{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b><br>
+                    		<td style="vertical-align: top;text-align: left;">
+                    			{{ $accomplishment->chief_owner->ChiefOwnerContent }}
+                    		</td>
+                    		<td>
+                    			{{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b><br>
                                 <?php
                                     $totalJanuaryContribution = 0;
                                 ?>
@@ -261,31 +263,7 @@ use App\StaffAccomplishment;
                                 @if($totalJanuaryContribution != 0)
                                     <b>{{ $totalJanuaryContribution }}</b>
                                 @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitJanuaryContribution = 0;
-                                            $unitJanuaryCounter = $unitJanuaryCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitJanuaryContribution = $unitContributeAcc->JanuaryAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitJanuaryCounter == 1)(@endif{{ round(($contributory->JanuaryAccomplishment+$unitJanuaryContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalJanuaryContribution != 0)
-                                    )
-                                @endif
-                            </td>
+                    		</td>
                             <td>
                                 {{ round($accomplishment->FebruaryTarget, 2) }}<b>/ </b><br>
                                 <?php
@@ -313,30 +291,6 @@ use App\StaffAccomplishment;
                                 ?>
                                 @if($totalFebruaryContribution != 0)
                                     <b>{{ $totalFebruaryContribution }}</b>
-                                @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitFebruaryContribution = 0;
-                                            $unitFebruaryCounter = $unitFebruaryCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitFebruaryContribution = $unitContributeAcc->FebruaryAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitFebruaryCounter == 1)(@endif{{ round(($contributory->FebruaryAccomplishment+$unitFebruaryContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalFebruaryContribution != 0)
-                                    )
                                 @endif
                             </td>
                             <td>
@@ -367,30 +321,6 @@ use App\StaffAccomplishment;
                                 @if($totalMarchContribution != 0)
                                     <b>{{ $totalMarchContribution }}</b>
                                 @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitMarchContribution = 0;
-                                            $unitMarchCounter = $unitMarchCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitMarchContribution = $unitContributeAcc->MarchAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitMarchCounter == 1)(@endif{{ round(($contributory->MarchAccomplishment+$unitMarchContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalMarchContribution != 0)
-                                    )
-                                @endif
                             </td>
                             <td>
                                 {{ round($accomplishment->AprilTarget, 2) }}<b>/ </b><br>
@@ -419,30 +349,6 @@ use App\StaffAccomplishment;
                                 ?>
                                 @if($totalAprilContribution != 0)
                                     <b>{{ $totalAprilContribution }}</b>
-                                @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitAprilContribution = 0;
-                                            $unitAprilCounter = $unitAprilCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitAprilContribution = $unitContributeAcc->AprilAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitAprilCounter == 1)(@endif{{ round(($contributory->AprilAccomplishment+$unitAprilContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalAprilContribution != 0)
-                                    )
                                 @endif
                             </td>
                             <td>
@@ -473,30 +379,6 @@ use App\StaffAccomplishment;
                                 @if($totalMayContribution != 0)
                                     <b>{{ $totalMayContribution }}</b>
                                 @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitMayContribution = 0;
-                                            $unitMayCounter = $unitMayCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitMayContribution = $unitContributeAcc->MayAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitMayCounter == 1)(@endif{{ round(($contributory->MayAccomplishment+$unitMayContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalMayContribution != 0)
-                                    )
-                                @endif
                             </td>
                              <td>
                                 {{ round($accomplishment->JuneTarget, 2) }}<b>/ </b><br>
@@ -525,30 +407,6 @@ use App\StaffAccomplishment;
                                 ?>
                                 @if($totalJuneContribution != 0)
                                     <b>{{ $totalJuneContribution }}</b>
-                                @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitJuneContribution = 0;
-                                            $unitJuneCounter = $unitJuneCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitJuneContribution = $unitContributeAcc->JuneAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitJuneCounter == 1)(@endif{{ round(($contributory->JuneAccomplishment+$unitJuneContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalJuneContribution != 0)
-                                    )
                                 @endif
                             </td>
                              <td>
@@ -579,30 +437,6 @@ use App\StaffAccomplishment;
                                 @if($totalJulyContribution != 0)
                                     <b>{{ $totalJulyContribution }}</b>
                                 @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitJulyContribution = 0;
-                                            $unitJulyCounter = $unitJulyCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitJulyContribution = $unitContributeAcc->JulyAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitJulyCounter == 1)(@endif{{ round(($contributory->JulyAccomplishment+$unitJulyContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalJulyContribution != 0)
-                                    )
-                                @endif
                             </td>
                              <td>
                                 {{ round($accomplishment->AugustTarget, 2) }}<b>/ </b><br>
@@ -631,30 +465,6 @@ use App\StaffAccomplishment;
                                 ?>
                                 @if($totalAugustContribution != 0)
                                     <b>{{ $totalAugustContribution }}</b>
-                                @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitAugustContribution = 0;
-                                            $unitAugustCounter = $unitAugustCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitAugustContribution = $unitContributeAcc->AugustAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitAugustCounter == 1)(@endif{{ round(($contributory->AugustAccomplishment+$unitAugustContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalAugustContribution != 0)
-                                    )
                                 @endif
                             </td>
                              <td>
@@ -685,30 +495,6 @@ use App\StaffAccomplishment;
                                 @if($totalSeptemberContribution != 0)
                                     <b>{{ $totalSeptemberContribution }}</b>
                                 @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitSeptemberContribution = 0;
-                                            $unitSeptemberCounter = $unitSeptemberCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitSeptemberContribution = $unitContributeAcc->SeptemberAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitSeptemberCounter == 1)(@endif{{ round(($contributory->SeptemberAccomplishment+$unitSeptemberContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalSeptemberContribution != 0)
-                                    )
-                                @endif
                             </td>
                              <td>
                                 {{ round($accomplishment->OctoberTarget, 2) }}<b>/ </b><br>
@@ -737,30 +523,6 @@ use App\StaffAccomplishment;
                                 ?>
                                 @if($totalOctoberContribution != 0)
                                     <b>{{ $totalOctoberContribution }}</b>
-                                @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitOctoberContribution = 0;
-                                            $unitOctoberCounter = $unitOctoberCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitOctoberContribution = $unitContributeAcc->OctoberAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitOctoberCounter == 1)(@endif{{ round(($contributory->OctoberAccomplishment+$unitOctoberContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalOctoberContribution != 0)
-                                    )
                                 @endif
                             </td>
                              <td>
@@ -791,30 +553,6 @@ use App\StaffAccomplishment;
                                 @if($totalNovemberContribution != 0)
                                     <b>{{ $totalNovemberContribution }}</b>
                                 @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitNovemberContribution = 0;
-                                            $unitNovemberCounter = $unitNovemberCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitNovemberContribution = $unitContributeAcc->NovemberAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitNovemberCounter == 1)(@endif{{ round(($contributory->NovemberAccomplishment+$unitNovemberContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalNovemberContribution != 0)
-                                    )
-                                @endif
                             </td>
                              <td>
                                 {{ round($accomplishment->DecemberTarget, 2) }}<b>/ </b><br>
@@ -844,43 +582,19 @@ use App\StaffAccomplishment;
                                 @if($totalDecemberContribution != 0)
                                     <b>{{ $totalDecemberContribution }}</b>
                                 @endif
-                                @foreach($accomplishment->chief_measure->staff_measures as $contributor)
-                                    @foreach($contributor->staff_accomplishments as $contributory)
-                                        <?php
-                                            $unitDecemberContribution = 0;
-                                            $unitDecemberCounter = $unitDecemberCounter + 1;
-                                        ?>
-                                        @foreach($contributor->unit_measures as $unitContribute)
-                                            @foreach($unitContribute->unit_accomplishments as $unitContributeAcc)
-                                            <?php
-                                                $unitDecemberContribution = $unitContributeAcc->DecemberAccomplishment;
-                                            ?>
-                                            @endforeach
-                                        @endforeach 
-                                        <br>
-                                        <normal>
-                                            @if($unitDecemberCounter == 1)(@endif{{ round(($contributory->DecemberAccomplishment+$unitDecemberContribution), 2) }} 
-                                            <span class="label label-default">{{ $contributory->staff->StaffAbbreviation }}</span>
-                                        </normal>
-                                    @endforeach
-                                @endforeach
-                                <br>
-                                @if($totalDecemberContribution != 0)
-                                    )
-                                @endif
                             </td>
-                            <td  style="vertical-align: top;text-align: left;">
-                                {{ $accomplishment->chief_initiative->ChiefInitiativeContent }}
-                            </td>
-                            <td style="text-align: right;">
-                                {{ round($accomplishment->chief_funding->ChiefFundingEstimate, 2) }}
-                            </td>
-                            <td style="text-align: right;">
-                                {{ round($accomplishment->chief_funding->ChiefFundingActual, 2) }}
-                            </td>
-                            <td style="text-align: right;">
-                                {{ round(($accomplishment->chief_funding->ChiefFundingEstimate - $accomplishment->chief_funding->ChiefFundingActual), 2) }}
-                            </td>
+                    		<td  style="vertical-align: top;text-align: left;">
+                    			{{ $accomplishment->chief_initiative->ChiefInitiativeContent }}
+                    		</td>
+                    		<td style="text-align: right;">
+                    			{{ round($accomplishment->chief_funding->ChiefFundingEstimate, 2) }}
+                    		</td>
+                    		<td style="text-align: right;">
+                    			{{ round($accomplishment->chief_funding->ChiefFundingActual, 2) }}
+                    		</td>
+                    		<td style="text-align: right;">
+                    			{{ round(($accomplishment->chief_funding->ChiefFundingEstimate - $accomplishment->chief_funding->ChiefFundingActual), 2) }}
+                    		</td>
                     </tr>
                 @endforeach
             </tbody>

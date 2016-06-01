@@ -32,10 +32,12 @@
                                 <b>{{ $chief_user->chief->ChiefAbbreviation }} Scorecard for {{ date("Y") }}
                                 </b>
                                 <div class="col-md-3 pull-right">
-                                    <a href="{{ url('report/currentYearChiefScorecard') }}" target="_blank">
-                                        <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
-                                    </a> 
+                                    <form method="get" action="{{ url('report/currentYearChiefScorecard') }}" target="_blank">
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
+                                    </form>
                                 </div>
+
                             </h2>   
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                         </div><!--div panel-heading-->

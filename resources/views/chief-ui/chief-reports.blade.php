@@ -42,13 +42,21 @@
                                         <div>
                                             <label for="year" class="control">Yearly Scorecard Report:</label>
                                             <br>
-                                            <select id="year" name="year" class="form-control" style="text-align-last: center;font-size: 16px;">
-                                                @foreach($years as $year)
-                                                    <option value="{{ $year }}">{{ $year }}</option>
-                                                @endforeach
-                                            </select>
+                                            <div class="col-md-12">
+                                                <select id="year" name="year" class="form-control" style="text-align-last: center;font-size: 16px;">
+                                                    @foreach($years as $year)
+                                                        <option value="{{ $year }}">{{ $year }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <br>
-                                            <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save">Generate PDF</button>
+                                            <br>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-breakdown" name="breakdown" value="breakdown">Generate PDF (BreakDown)</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-total" name="total" value="total">Generate PDF (Total)</button>
+                                            </div>
                                             <br>
                                         </div>
                                     </form>

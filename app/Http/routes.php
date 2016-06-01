@@ -15,6 +15,7 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 /*REPORTS ROUTES*/
+#scorecard
 Route::get('report/currentYearUnitScorecard', 'ReportsController@currentYearUnitScorecard');
 Route::get('report/currentYearStaffScorecard', 'ReportsController@currentYearStaffScorecard');
 Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChiefScorecard');
@@ -24,6 +25,10 @@ Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecar
 Route::get('report/currentYearChiefUnitScorecard/{id}', 'ReportsController@currentYearChiefUnitScorecard');
 Route::get('report/currentYearChiefStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
 Route::get('report/currentYearStaffChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
+#analysis
+Route::get('report/quarterlyUnitAnalysis', 'ReportsAnalysisController@quarterlyUnitAnalysis');
+Route::get('report/quarterlyStaffAnalysis', 'ReportsAnalysisController@quarterlyStaffAnalysis');
+Route::get('report/quarterlyChiefAnalysis', 'ReportsAnalysisController@quarterlyChiefAnalysis');
 
 
 /*LOGIN ROUTE*/
@@ -70,6 +75,7 @@ Route::get('unit/reports','ReportsController@unitIndex');
 Route::get('unit/changepassword','UnitLoginController@changepass');
 Route::get('unit/changeunitpicture', 'UnitLoginController@changeunitpicture');
 Route::get('unit/changeuserpicture', 'UnitLoginController@changeuserpicture');
+Route::get('unit/analysis_reports','ReportsAnalysisController@unitIndex');
 
 
 /*STAFF USER ROUTES*/
@@ -84,6 +90,7 @@ Route::get('staff/reports','ReportsController@staffIndex');
 Route::get('staff/changepassword','StaffLoginController@changepass');
 Route::get('staff/changestaffpicture', 'StaffLoginController@changestaffpicture');
 Route::get('staff/changeuserpicture', 'StaffLoginController@changeuserpicture');
+Route::get('staff/analysis_reports','ReportsAnalysisController@staffIndex');
 
 //Route::post('staff/ajaxchiefmeasure', 'APIStaffMeasuresController@ajaxchiefmeasure');
 Route::get('staff/angularchiefmeasure/{measureID}', 'APIStaffMeasuresController@angularchiefmeasure');

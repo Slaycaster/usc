@@ -188,7 +188,7 @@
                                     <a href="{{ url('unit/reports') }}">Unit Scorecard Report</a>
                                 </li>
                                 <li>
-                                    <a href="#">Unit Scorecard Analysis Report</a>
+                                    <a href="{{ url('unit/analysis_reports') }}">Unit Scorecard Analysis Report</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

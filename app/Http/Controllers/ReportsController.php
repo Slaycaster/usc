@@ -137,12 +137,24 @@ class ReportsController extends Controller
 		$year = date("Y");
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('pdf-layouts.PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
-		$pdf->output();
-		$dom_pdf = $pdf->getDomPDF();
-		$canvas = $dom_pdf ->get_canvas();
-		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    return $pdf->stream();
+  	    if(Input::get('breakdown'))
+		{
+			$pdf = PDF::loadView('pdf-layouts.PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf->output();
+			$dom_pdf = $pdf->getDomPDF();
+			$canvas = $dom_pdf ->get_canvas();
+			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+	  	    return $pdf->stream();
+		}
+		elseif(Input::get('total'))
+		{
+			$pdf = PDF::loadView('pdf-layouts.PDFChiefYearlyTotal')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf->output();
+			$dom_pdf = $pdf->getDomPDF();
+			$canvas = $dom_pdf ->get_canvas();
+			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+	  	    return $pdf->stream();	
+		}
 	}
 
 	public function yearlyUnitScorecard()
@@ -175,13 +187,24 @@ class ReportsController extends Controller
 	{	
 		$year = Input::get('year');
 		Session::put('year', $year);
-
-		$pdf = PDF::loadView('pdf-layouts.PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
-		$pdf->output();
-		$dom_pdf = $pdf->getDomPDF();
-		$canvas = $dom_pdf ->get_canvas();
-		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    return $pdf->stream();
+		if(Input::get('breakdown'))
+		{
+			$pdf = PDF::loadView('pdf-layouts.PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf->output();
+			$dom_pdf = $pdf->getDomPDF();
+			$canvas = $dom_pdf ->get_canvas();
+			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+	  	    return $pdf->stream();
+		}
+		elseif(Input::get('total'))
+		{
+			$pdf = PDF::loadView('pdf-layouts.PDFChiefYearlyTotal')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf->output();
+			$dom_pdf = $pdf->getDomPDF();
+			$canvas = $dom_pdf ->get_canvas();
+			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+	  	    return $pdf->stream();	
+		}
 	}
 
 

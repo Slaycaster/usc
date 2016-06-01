@@ -1,4 +1,4 @@
-@extends('layout-chief')
+@extends('layout-unit')
 
 @section('content')
 
@@ -12,32 +12,34 @@
     <script src="{{ asset('app/app.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/chief_targets.js') }}"></script>
+    <script src="{{ asset('app/controllers/unit_targets.js') }}"></script>
 
-    <script src="{{ asset('bower_components/ng-decimal/ng-decimal.js') }}"></script>
-
-    <div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
+    <div ng-app="unitScorecardApp" ng-controller="APIUnitTargetController">
 	    <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
-					<div class="panel panel-warning  targets-custom-panel">
+					<div class="panel panel-warning targets-custom-panel">
 						<div class="panel-heading measures-custom-heading">
-                            <i class="fa fa-circle-o-notch fa-5x"></i> 
+						    <i class="fa fa-circle-o-notch fa-5x"></i> 
                             <h2>
-                                <b>{{ $chief->ChiefAbbreviation }} Scorecard KPI Report</b>
+                                <b>{{ $user->unit->UnitAbbreviation }} Scorecard KPI Report</b>
                             </h2>   
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
+							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info">
-                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard KPI Reports of {{ $chief_user->chief->ChiefName }}.
+                                <div ng-show="info" class="alert alert-info objective-info-name">
+                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard KPI Reports of {{ $user->unit->UnitName }}.
+                                </div>
+                                <div ng-show="info" class="alert alert-info objective-info-abb">
+                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard KPI Reports of {{ $user->unit->UnitAbbreviation }}.
                                 </div>
                             </div>
 							<!--./div class row-->
                             <div class="col-md-5">
                                 <div>
-                                    <form method="get" action="{{ url('report/quarterlyChiefAnalysis') }}" target="_blank">
+                                    <form method="get" action="{{ url('report/quarterlyUnitAnalysis') }}" target="_blank">
                                         <div>
                                             <label for="year" class="control">Quarterly Scorecard KPI Report:</label>
                                             <br>
@@ -68,9 +70,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>    
+            </div>      
         </div>
     </div>
-
-@endsection
+@endsection,
