@@ -39,12 +39,12 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     color:#fff;
 }
 
- .thumbnail:hover {
+/* .thumbnail:hover {
     position:relative;
     top:0em;
     height: 150px;
 }
-
+*/
 #tabledata,
 #tableinfo{
     display: none;
