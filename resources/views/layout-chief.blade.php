@@ -140,7 +140,7 @@
         </nav>
             
         <nav class="layout-title-navbar navbar navbar-default side-nav" role="navigation">
-            <div class="navbar-default sidebar" role="navigation">
+            <div class="navbar-default sidebar" role="navigation" id="sidebarinfo" style="display:none;">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
@@ -268,7 +268,7 @@
     </div>
     <!-- /#wrapper -->
 
-    
+    <script src="{{ asset('js/sidebardata.js') }}"></script>
 
 </body>
 
