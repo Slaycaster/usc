@@ -137,11 +137,19 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 UserStaffID: document.getElementById('user_staff_id').value
 
             }).success(function(data, status, headers, config, response) {
-                console.log(response);
-                $('#myModal').modal('hide');
-                $scope.staff_measures = '';
-                $scope.init();
-                $scope.loading = false;
+                
+                if(data == "true")
+                {
+                     $scope.istrue = "true";
+                }
+                else
+                {
+                    $('#myModal').modal('hide');
+                    $scope.staff_measures = '';
+                    $scope.init();
+                    $scope.loading = false;
+                    
+                }
             });
         }
         // 
@@ -156,7 +164,8 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 $scope.form_title = "ADD STAFF'S MEASURE";
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
-                
+                $scope.istrue = "false";
+            
                 
                 
                 break;
