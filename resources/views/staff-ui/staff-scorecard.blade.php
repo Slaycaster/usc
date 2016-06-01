@@ -479,18 +479,12 @@
                                         <td><% staff_target.OctoberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_oct<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.OctoberAccomplishment %>" ng-model="staff_target.staff_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            
 
-<<<<<<< HEAD
                                             <div style="margin-top: 5%">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#octModal<% $index %>"><% staff_october[$index] %></button>
-=======
-                                            <div>
-                                                + <span class="label label-default"><strong><% staff_october[$index] %></strong> </span>
->>>>>>> 745ee04df2341b6384ca110e6456e1d17c76fc00
-                                            </div>
+
 
                                               <div class="modal fade" id="octModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog ">
@@ -639,8 +633,7 @@ window.onclick = function(event) {
     }
 }
 </script>
-<<<<<<< HEAD
-=======
+
 <script src="{{ asset('js/showtabledata.js') }}"></script>
->>>>>>> 745ee04df2341b6384ca110e6456e1d17c76fc00
+
 @endsection
