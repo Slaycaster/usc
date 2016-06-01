@@ -43,7 +43,7 @@
                         </div><!--div panel-heading-->
 
                         <div class="panel-body">
-                            <div class="table-responsive tabledata" id="tabledata" style="display:none;">
+                            <div class="table-responsive tabledata" id="tabledata">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -146,7 +146,7 @@
                                         
                                         <td><% chief_target.chief_measure.chief_objective.ChiefObjectiveName %></td>
 
-                                        <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %><br /><i style="font-size:10px;">Contributory/ies to this Measure</i><!--Contributory Accomplishment--><p class="scorecard-minilabel" ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                        <td colspan="2"><% chief_target.chief_measure.ChiefMeasureName %><br /><i style="font-size:10px;">Contributory/ies to this Measure</i><!--Contributory Accomplishment--><br /><p style="display: inline" class="scorecard-minilabel" ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
                                             <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
                                             </p>
                                         </td>
@@ -169,8 +169,35 @@
                                         <td><% chief_target.JanuaryTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                /<strong><% staff_measure.staff_accomplishments[0].JanuaryAccomplishment | number: 2 %></strong><span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span></p>
+                                           <input type="hidden" ng-model="january" ng-init="c_january=chief_january[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_january != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#janModal<% $index %>"><% chief_january[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="janModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].JanuaryAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
                                         </td>
 
@@ -302,10 +329,5 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        
-   
-    </script>
 
 @endsection

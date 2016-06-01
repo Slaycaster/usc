@@ -12,6 +12,13 @@ class UserStaff extends Model {
 	protected $table = 'user_staffs';
 
 	/**
+	 * The attributes that must be hidden from query. //Slaycaster
+	 *
+	 * @var array
+	 */
+	protected $hidden = array('UserStaffBadgeNumber', 'UserStaffPassword');
+
+	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array

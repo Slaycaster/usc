@@ -37,6 +37,9 @@
 
      <!-- datetimepicker-->
     <link href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css">
+    
+     <!-- Morris Charts CSS -->
+    <link href="{{ asset('unit/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
 
     
 
@@ -140,7 +143,7 @@
         </nav>
             
         <nav class="layout-title-navbar navbar navbar-default side-nav" role="navigation">
-            <div class="navbar-default sidebar" role="navigation">
+            <div class="navbar-default sidebar" role="navigation" id="sidebarinfo" style="display:none;">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
@@ -268,7 +271,7 @@
     </div>
     <!-- /#wrapper -->
 
-    
+    <script src="{{ asset('js/sidebardata.js') }}"></script>
 
 </body>
 

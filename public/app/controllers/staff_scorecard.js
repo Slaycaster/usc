@@ -4,7 +4,18 @@ var public = '/usc/public/'; // replace this with '/' for production
 app.controller('APIStaffScorecardController', function($scope, $http, $interval) {
 
 	$scope.staff_targets = [];
-  
+    $scope.staff_january = [];
+    $scope.staff_february = [];
+    $scope.staff_march = [];
+    $scope.staff_april = [];
+    $scope.staff_may = [];
+    $scope.staff_june = [];
+    $scope.staff_july = [];
+    $scope.staff_august = [];
+    $scope.staff_september = [];
+    $scope.staff_october = [];
+    $scope.staff_november = [];
+    $scope.staff_december = [];
 	$scope.loading = true;
     $scope.info = false;
  
@@ -20,6 +31,209 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
            
 			$scope.staff_targets = data;
 
+            //For Unit Accomplishment January
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_january[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_january[i] = $scope.staff_january[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].JanuaryAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_january[i] = 0;   
+                    }
+                }
+            }
+            //For Unit Accomplishment February
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_february[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_february[i] = $scope.staff_february[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].FebruaryAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_february[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment March
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_march[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_march[i] = $scope.staff_march[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].MarchAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_march[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment April
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_april[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_april[i] = $scope.staff_april[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].AprilAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_april[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment May
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_may[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_may[i] = $scope.staff_may[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].MayAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_may[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment June
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_june[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_june[i] = $scope.staff_june[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].JuneAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_june[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment July
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_july[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_july[i] = $scope.staff_july[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].JulyAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_july[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment August
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_august[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_august[i] = $scope.staff_august[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].AugustAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_august[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment September
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_september[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_september[i] = $scope.staff_september[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].SeptemberAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_september[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment October
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_october[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_october[i] = $scope.staff_october[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].OctoberAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_october[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment November
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_november[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_november[i] = $scope.staff_november[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].NovemberAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_november[i] = 0;   
+                    }
+                }
+            }
+
+            //For Unit Accomplishment December
+            for(i = 0; i < $scope.staff_targets.length; i++)
+            {
+                $scope.staff_december[i] = 0;
+                for(j = 0; j < $scope.staff_targets[i].staff_measure.unit_measures.length; j++)
+                {
+                    if($scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0] != null)
+                    {
+                        $scope.staff_december[i] = $scope.staff_december[i] + $scope.staff_targets[i].staff_measure.unit_measures[j].unit_accomplishments[0].DecemberAccomplishment;
+                    }
+                    else
+                    {
+                        $scope.staff_december[i] = 0;   
+                    }
+                }
+            }
+
             for(i = 1; i < $scope.staff_targets.length; i++)
             {
                        if($scope.staff_targets[i - 1].staff_measure.StaffObjectiveID == $scope.staff_targets[i].staff_measure.StaffObjectiveID )    
@@ -28,7 +242,7 @@ app.controller('APIStaffScorecardController', function($scope, $http, $interval)
                        }
                 
             }
-
+                console.log($scope.staff_january);
 				$scope.loading = false;
 		});	
 

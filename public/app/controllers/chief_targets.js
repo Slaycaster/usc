@@ -14,7 +14,6 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
 				$scope.loading = false;
-
             $scope.date = new Date();
 
 		});	

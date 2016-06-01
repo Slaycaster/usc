@@ -42,7 +42,8 @@
                                 </div>
 
                             </h2>
-                            <div class="custom_scorecard-info">
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                            <div class="custom_scorecard-info" id="tableinfo">
                                 <i ng-show="info"><span class="fa fa-list fa-fw"></span> Accomplishment last updated by: <b><% updatedby.user_unit.rank.RankCode %> <% updatedby.user_unit.UserUnitLastName %>, <% updatedby.user_unit.UserUnitFirstName %> on 
                                     <% updatedby.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
                                 <i ng-show="info"><span class="fa fa-user fa-fw"></span> Owner last updated by: <b><% updatedby2.user_unit.rank.RankCode %> <% updatedby2.user_unit.UserUnitLastName %>, <% updatedby2.user_unit.UserUnitFirstName %> on 
@@ -59,7 +60,7 @@
 
 
 						<div class="panel-body">
-                            <div class="table-responsive tabledata" id="tabledata" style="display:none;">
+                            <div class="table-responsive tabledata" id="tabledata">
     							<table class="table table-bordered floatThead-table">
     								<thead>
                                         <tr>
