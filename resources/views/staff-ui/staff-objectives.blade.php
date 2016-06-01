@@ -51,7 +51,7 @@
                                 </div>
 							</div>
 							<!--./div class row-->
-                            <div class="table-responsive" ng-show="info" id="tabledata" style="display:none;"> 
+                            <div class="table-responsive" ng-show="info" id="tabledata"> 
     							<table class="table table-bordered">
     								<thead>
                                         <td class="staff_objective-name">

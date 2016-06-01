@@ -52,7 +52,7 @@
                             </div>
 							<!--./div class row-->
                             
-                            <div class="table-responsive" id="tabledata" style="display:none;">
+                            <div class="table-responsive" id="tabledata">
     							<table class="table table-bordered" ng-show="info" >
     								<thead>
     									<td class="chief_target-objective">

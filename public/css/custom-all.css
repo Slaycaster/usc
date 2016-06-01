@@ -45,6 +45,11 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     height: 150px;
 }
 
+#tabledata,
+#tableinfo{
+    display: none;
+}
+
 
 /* layout css */
 @media (min-width: 768px){
