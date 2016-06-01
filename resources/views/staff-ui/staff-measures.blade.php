@@ -131,6 +131,7 @@
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
+                                    <div class="alert alert-danger" ng-if="istrue =='true' "><span class="fa fa-warning fa-fw"></span> A Staff Measure was already assigned to the selected Chief Measure as contributory. Please pick another Chief Measure (if possible) or edit the said Staff Measure.</div>
                                     <td class="col-md-4 mod"><label for="measure_name" class="control">Measure Name:</label>
                                     </td>
                                     <td class="col-md-8"><input type='text' id="id_measure_name" name="measure_name" value="<% staff_measure.StaffMeasureName %>" ng-model="staff_measure.StaffMeasureName" autocomplete="off" class="form-control" required ng-touched />

@@ -110,25 +110,60 @@ class APIStaffMeasuresController extends Controller {
 
 		$staff_id = Session::get('staff_user_id', 'default');
 		$staff = Request::input('StaffID');
+
+
+		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)->first();
+
 		//$action = 'Added a measure: "' . Request::input('UnitMeasureName') . '"';
 
 		//DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+		$mes = Request::input('ChiefMeasureID');
+		$mescontribute = StaffMeasure::where('ChiefMeasureID','=',$mes)->where('StaffID','=',$staff_user->StaffID)->first();
 
-		$staff_measure = new StaffMeasure(Request::all());
-		$staff_measure->save();
 
-		//Get the max id after saving.
-		$staff_measureid = DB::table('staff_measures')->max('StaffMeasureID');
+		if($mescontribute == null )
+		{
 
-		//Use Eloquent instead! == Inserting into Staff Targets == You forgot target period
-		$staff_target = new StaffTarget;
-		$staff_target->TargetPeriod = "Not Set";
-		$staff_target->StaffMeasureID = $staff_measureid;
-		$staff_target->StaffID = $staff;
-		$staff_target->UserStaffID = $staff_id;
-		$staff_target->save();
+			$staff_measure = new StaffMeasure(Request::all());
+			$staff_measure->save();
 
-		return $staff_measure;
+			//Get the max id after saving.
+			$staff_measureid = DB::table('staff_measures')->max('StaffMeasureID');
+
+			//Use Eloquent instead! == Inserting into Staff Targets == You forgot target period
+			$staff_target = new StaffTarget;
+			$staff_target->TargetPeriod = "Not Set";
+			$staff_target->StaffMeasureID = $staff_measureid;
+			$staff_target->StaffID = $staff;
+			$staff_target->UserStaffID = $staff_id;
+			$staff_target->save();
+
+			return $staff_measure;
+		}
+		else if($mes == 0)
+		{
+			$staff_measure = new StaffMeasure(Request::all());
+			$staff_measure->save();
+
+			//Get the max id after saving.
+			$staff_measureid = DB::table('staff_measures')->max('StaffMeasureID');
+
+			//Use Eloquent instead! == Inserting into Staff Targets == You forgot target period
+			$staff_target = new StaffTarget;
+			$staff_target->TargetPeriod = "Not Set";
+			$staff_target->StaffMeasureID = $staff_measureid;
+			$staff_target->StaffID = $staff;
+			$staff_target->UserStaffID = $staff_id;
+			$staff_target->save();
+
+			return $staff_measure;
+		}
+		else
+		{
+			$true = "true";
+			return $true; 
+		}
+
 
 	}
 
