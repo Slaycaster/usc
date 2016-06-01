@@ -440,8 +440,9 @@ class StaffLoginController extends Controller {
 						})
 			->get();
 
-			$measurecount = DB::table('staff_measures')
+			$measurecount = DB::table('staff_targets')
 			->where('StaffID', '=', $staff_id)
+			->whereYear('TargetDate', '=', date($year))
 			->count();
 
 			$i = 0;
@@ -515,6 +516,11 @@ class StaffLoginController extends Controller {
 			$thirdquarter = $thirdquarter / $measurecount;
 			$fourthquarter = $firstquarter / $measurecount;
 			
+
+			$firstquarter = round($firstquarter, 2);
+			$secondquarter = round($secondquarter, 2);
+			$thirdquarter = round($thirdquarter, 2);
+			$fourthquarter = round($fourthquarter, 2);
 
 
 			$targetaccomp = array(

@@ -474,8 +474,9 @@ class ChiefLoginController extends Controller {
 
 
 
-			$measurecount = DB::table('chief_measures')
+			$measurecount = DB::table('chief_targets')
 			->where('ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
 			->count();
 
 			$i = 0;
@@ -548,8 +549,12 @@ class ChiefLoginController extends Controller {
 			$secondquarter = $secondquarter / $measurecount;
 			$thirdquarter = $thirdquarter / $measurecount;
 			$fourthquarter = $firstquarter / $measurecount;
-			
 
+			$firstquarter = round($firstquarter, 2);
+			$secondquarter = round($secondquarter, 2);
+			$thirdquarter = round($thirdquarter, 2);
+			$fourthquarter = round($fourthquarter, 2);
+			
 
 			$targetaccomp = array(
 				  array($firstquarter),

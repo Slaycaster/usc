@@ -37,6 +37,9 @@
 
      <!-- datetimepicker-->
     <link href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css">
+    
+     <!-- Morris Charts CSS -->
+    <link href="{{ asset('unit/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
 
     
 

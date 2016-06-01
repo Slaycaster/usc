@@ -467,6 +467,50 @@
 
 
 
+<!-- Morris donut chart on page load-->
+<script type="text/javascript">
+
+  $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+  $(document).ready(function()
+  {
+            
+        
+        $('#morris-donut-chart').empty();
+
+          var year = new Date().getFullYear()
+          var staff_id = "<?php echo $staff_id ?>";
+
+          $.ajax({
+              type: "POST",
+              url: "../donutgraphstaff",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'staff_id' : staff_id},
+              success: function(response){
+                var arr = response;
+                Morris.Donut({
+                  element: 'morris-donut-chart',
+                  data: [
+                    {label: "1st Quarter", value: arr[0]},
+                    {label: "2nd Quarter", value: arr[1]},
+                    {label: "3rd Quarter", value: arr[2]},
+                    {label: "4th Quarter", value: arr[3]}
+                  ]
+                });     
+
+              }
+
+          })
+
+
+ });
+
+
+
+</script>
+
+
+
 
 
 

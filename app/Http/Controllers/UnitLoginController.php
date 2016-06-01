@@ -300,8 +300,9 @@ class UnitLoginController extends Controller {
 			->whereYear('TargetDate', '=', date($year))
 			->get();
 
-			$measurecount = DB::table('unit_measures')
+			$measurecount = DB::table('unit_targets')
 			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
 			->count();
 
 			$i = 0;
@@ -345,6 +346,11 @@ class UnitLoginController extends Controller {
 			$thirdquarter = $thirdquarter / $measurecount;
 			$fourthquarter = $firstquarter / $measurecount;
 			
+
+			$firstquarter = round($firstquarter, 2);
+			$secondquarter = round($secondquarter, 2);
+			$thirdquarter = round($thirdquarter, 2);
+			$fourthquarter = round($fourthquarter, 2);
 
 
 			$targetaccomp = array(
