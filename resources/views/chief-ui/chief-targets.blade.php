@@ -80,7 +80,7 @@
     									</td>
     									
     								</thead>
-    								<tr dir-paginate='chief_target in chief_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+    								<tr dir-paginate='chief_target in chief_targets|filter:search|itemsPerPage:5'>
     									<td><% chief_target.chief_measure.chief_objective.ChiefObjectiveName %></td>
     									<td><% chief_target.chief_measure.ChiefMeasureName %></td>
                                         <td><% chief_target.chief_measure.ChiefMeasureFormula %></td>
