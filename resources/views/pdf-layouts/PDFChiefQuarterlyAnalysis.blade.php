@@ -148,6 +148,7 @@ use App\StaffAccomplishment;
     </p>
     <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $chief->ChiefAbbreviation }} KPI for Q{{ $selectedQuarter }} {{ $selectedYear }}</p>
     <table border="1">
+        @if(count($accomplishments) != 0)
             <thead style="font-weight: bold;font-family: arial,helvetica">
                 <tr>
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
@@ -194,6 +195,7 @@ use App\StaffAccomplishment;
                     <td width="65px">%</td>
                 </tr>	
             </thead>
+        @endif
             @foreach($sortByObjective as $measure)
             <?php
                 $accomplishments = ChiefTarget::with('chief_measure')
@@ -780,4 +782,7 @@ use App\StaffAccomplishment;
             </tbody>
         @endforeach
     </table>
+    @if(count($accomplishments) == 0)
+        <p>No Accomplisments found for the year {{ $selectedYear }}</p>
+    @endif
 </body>
