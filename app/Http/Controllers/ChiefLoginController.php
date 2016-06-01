@@ -438,6 +438,133 @@ class ChiefLoginController extends Controller {
 
 
 
+		public function donutgraph()
+		{
+
+			
+			$year = $_REQUEST['year'];
+			$chief_id = $_REQUEST['chief_id'];
+
+			//staff targets & accomplishments
+
+			$staffs = DB::table('chief_measures')
+			->join('chief_targets', 'chief_measures.ChiefMeasureID', '=', 'chief_targets.ChiefMeasureID')
+			->join('staff_measures', 'chief_measures.ChiefMeasureID', '=', 'staff_measures.ChiefMeasureID')
+			->join('staff_accomplishments', 'staff_measures.StaffMeasureID', '=', 'staff_accomplishments.StaffMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->whereNotIn('staff_measures.StaffMeasureID', function($q2)
+						{
+
+							$q2->select('StaffMeasureID')->from('unit_measures')
+								->where('StaffMeasureID', '!=', 0);
+						})
+			->get();
+
+			$units = DB::table('chief_measures')
+			->join('chief_targets', 'chief_measures.ChiefMeasureID', '=', 'chief_targets.ChiefMeasureID')
+			->join('staff_measures', 'chief_measures.ChiefMeasureID', '=', 'staff_measures.ChiefMeasureID')
+			->join('staff_accomplishments', 'staff_measures.StaffMeasureID', '=', 'staff_accomplishments.StaffMeasureID')
+			->join('unit_measures', 'staff_measures.StaffMeasureID', '=', 'unit_measures.StaffMeasureID')
+			->join('unit_accomplishments', 'unit_measures.UnitMeasureID', '=', 'unit_accomplishments.UnitMeasureID')
+			->where('chief_measures.ChiefID', '=', $chief_id)
+			->whereYear('TargetDate', '=', date($year))
+			->select('unit_accomplishments.UnitAccomplishmentID as UnitAccomplishmentID','unit_accomplishments.JanuaryAccomplishment as JanuaryUnit', 'unit_accomplishments.FebruaryAccomplishment as FebruaryUnit', 'unit_accomplishments.MarchAccomplishment as MarchUnit', 'unit_accomplishments.AprilAccomplishment as AprilUnit', 'unit_accomplishments.MayAccomplishment as MayUnit', 'unit_accomplishments.JuneAccomplishment as JuneUnit', 'unit_accomplishments.JulyAccomplishment as JulyUnit', 'unit_accomplishments.AugustAccomplishment as AugustUnit', 'unit_accomplishments.SeptemberAccomplishment as SeptemberUnit', 'unit_accomplishments.OctoberAccomplishment as OctoberUnit', 'unit_accomplishments.NovemberAccomplishment as NovemberUnit', 'unit_accomplishments.DecemberAccomplishment as DecemberUnit', 'staff_measures.StaffMeasureID as staffmeasureid' , 'staff_accomplishments.JanuaryAccomplishment as JanuaryStaff' , 'staff_accomplishments.JanuaryAccomplishment as JanuaryStaff' , 'staff_accomplishments.FebruaryAccomplishment as FebruaryStaff' , 'staff_accomplishments.MarchAccomplishment as MarchStaff' , 'staff_accomplishments.AprilAccomplishment as AprilStaff' , 'staff_accomplishments.MayAccomplishment as MayStaff' , 'staff_accomplishments.JuneAccomplishment as JuneStaff' , 'staff_accomplishments.JulyAccomplishment as JulyStaff' , 'staff_accomplishments.AugustAccomplishment as AugustStaff' , 'staff_accomplishments.SeptemberAccomplishment as SeptemberStaff' , 'staff_accomplishments.OctoberAccomplishment as OctoberStaff' , 'staff_accomplishments.NovemberAccomplishment as NovemberStaff', 'staff_accomplishments.DecemberAccomplishment as DecemberStaff', 'chief_targets.JanuaryTarget as Januarytarget' , 'chief_targets.FebruaryTarget as Februarytarget' , 'chief_targets.MarchTarget as Marchtarget' , 'chief_targets.AprilTarget as Apriltarget' , 'chief_targets.MayTarget as Maytarget' , 'chief_targets.JuneTarget as Junetarget' , 'chief_targets.JulyTarget as Julytarget' , 'chief_targets.AugustTarget as Augusttarget' , 'chief_targets.SeptemberTarget as Septembertarget' , 'chief_targets.OctoberTarget as Octobertarget' , 'chief_targets.NovemberTarget as Novembertarget' , 'chief_targets.DecemberTarget as Decembertarget')
+			->get();
+
+
+
+			$measurecount = DB::table('chief_measures')
+			->where('ChiefID', '=', $chief_id)
+			->count();
+
+			$i = 0;
+
+
+
+
+			foreach($staffs as $staff)
+			{
+
+		
+				$january[$i] = ($staff->JanuaryAccomplishment / $staff->JanuaryTarget) * 100;
+				$february[$i] = ($staff->FebruaryAccomplishment / $staff->FebruaryTarget) * 100;
+				$march[$i] = ($staff->MarchAccomplishment / $staff->MarchTarget) * 100;
+				$april[$i] = ($staff->AprilAccomplishment / $staff->AprilTarget) * 100;
+				$may[$i] = ($staff->MayAccomplishment / $staff->MayTarget) * 100;
+				$june[$i] = ($staff->JuneAccomplishment / $staff->JuneTarget) * 100;
+				$july[$i] = ($staff->JulyAccomplishment / $staff->JulyTarget) * 100;
+				$august[$i] = ($staff->AugustAccomplishment / $staff->AugustTarget) * 100;
+				$september[$i] = ($staff->SeptemberAccomplishment / $staff->SeptemberTarget) * 100;
+				$october[$i] = ($staff->OctoberAccomplishment / $staff->OctoberTarget) * 100;
+				$november[$i] = ($staff->NovemberAccomplishment / $staff->NovemberTarget) * 100;		
+				$december[$i] = ($staff->DecemberAccomplishment / $staff->DecemberTarget) * 100;
+
+
+				$i = $i + 1;
+			}
+
+
+			foreach($units as $unit)
+			{
+				$january[$i] = (($unit->JanuaryStaff + $unit->JanuaryUnit) / $unit->Januarytarget) * 100;
+				$february[$i] = (($unit->FebruaryStaff + $unit->FebruaryUnit) / $unit->Februarytarget) * 100;
+				$march[$i] = (($unit->MarchStaff + $unit->MarchUnit) / $unit->Marchtarget) * 100;
+				$april[$i] = (($unit->AprilStaff + $unit->AprilUnit) / $unit->Apriltarget) * 100;
+				$may[$i] = (($unit->MayStaff + $unit->MayUnit) / $unit->Maytarget) * 100;
+				$june[$i] = (($unit->JuneStaff + $unit->JuneUnit) / $unit->Junetarget) * 100;
+				$july[$i] = (($unit->JulyStaff + $unit->JulyUnit) / $unit->Julytarget) * 100;
+				$august[$i] = (($unit->AugustStaff + $unit->AugustUnit) / $unit->Augusttarget) * 100;
+				$september[$i] = (($unit->SeptemberStaff + $unit->SeptemberUnit) / $unit->Septembertarget) * 100;
+				$october[$i] = (($unit->OctoberStaff + $unit->OctoberUnit) / $unit->Octobertarget) * 100;
+				$november[$i] = (($unit->NovemberStaff + $unit->NovemberUnit) / $unit->Novembertarget) * 100;		
+				$december[$i] = (($unit->DecemberStaff + $unit->DecemberUnit) / $unit->Decembertarget) * 100;
+
+				$i = $i + 1; 
+			}
+
+
+
+
+
+
+			$firstquarter = 0;
+			$secondquarter = 0;
+			$thirdquarter = 0;
+			$fourthquarter = 0;
+
+
+			for($j = 0 ; $j < $i ; $j++)
+			{
+				$firstquarter = $firstquarter + (($january[$j] + $february[$j] + $march[$j]) / 3);
+				$secondquarter = $secondquarter + (($april[$j] + $may[$j] + $june[$j]) / 3);
+				$thirdquarter = $thirdquarter + (($july[$j] + $august[$j] + $september[$j]) / 3);
+				$fourthquarter = $fourthquarter + (($october[$j] + $november[$j] + $december[$j]) / 3 );
+			}
+
+
+
+			$firstquarter = $firstquarter / $measurecount;
+			$secondquarter = $secondquarter / $measurecount;
+			$thirdquarter = $thirdquarter / $measurecount;
+			$fourthquarter = $firstquarter / $measurecount;
+			
+
+
+			$targetaccomp = array(
+				  array($firstquarter),
+				  array($secondquarter),
+				  array($thirdquarter),
+				  array($fourthquarter)
+				  );
+				
+			
+
+			return Response::json($targetaccomp);
+		}
+
+
+
 	public function searchunit()
 	{
 		$search = $_REQUEST['search'];
