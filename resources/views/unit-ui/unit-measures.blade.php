@@ -46,6 +46,10 @@
                                 <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitName }}.</div>
                                  <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitAbbreviation }}.</div>
                             </div>
+                       
+                                   
+                                 
+
 							<!--./div class row-->
 
                             <div class="table-responsive" ng-show="info">
@@ -133,6 +137,8 @@
                         <form name="frmEditMeasure" class="form-horizontal" novalidate="">
                             <table class="table table-responsive">
                                 <tr>
+                                    <div class="alert alert-danger" ng-if="istrue =='true' "><span class="fa fa-warning fa-fw"></span> A Unit Measure was already assigned to the selected Staff Measure as contributory. Please pick another Staff Measure (if possible) or edit the said Unit Measure.</div>
+
                                     <td class="col-md-4 mod">
                                         <label for="measure_name" class="control">Measure Name:</label>
                                     </td>

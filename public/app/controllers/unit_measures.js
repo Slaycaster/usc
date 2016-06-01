@@ -6,7 +6,9 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 	$scope.unit_measures = [];
 	$scope.loading = true;
     $scope.info = false;
- 
+
+
+    
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
@@ -82,6 +84,9 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
             $scope.selectedMeasureFormula = $scope.measureformula[0]; 
         }
 
+
+
+
                  
                 
     };
@@ -132,11 +137,19 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                 UserUnitID: document.getElementById('user_unit_id').value
 
             }).success(function(data, status, headers, config, response) {
-                console.log(response);
+                console.log(data);
+                if(data == "true")
+                {
+                    $scope.istrue = "true";
+                }
+                else
+                {
+
                 $('#myModal').modal('hide');
                 $scope.unit_measures = '';
                 $scope.init();
                 $scope.loading = false;
+                }
             });
         }
         // 
@@ -151,6 +164,7 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                 $scope.form_title = "ADD UNIT'S MEASURE";
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
+                $scope.istrue = "false";
             
                 break;
             case 'edit':
@@ -179,6 +193,7 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                 break;
             default:
                 break;
+                
         }
         console.log(id);
         $('#myModal').modal('show');
@@ -188,4 +203,6 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 
 	//$interval( function(){ $scope.init(); }, 1000);
 });
+
+
 
