@@ -19,8 +19,6 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/staff_scorecard.js') }}"></script>
 
-    <script src="{{ asset('js/showtabledata.js') }}"></script>
-
     <div ng-app="unitScorecardApp" ng-controller="APIStaffScorecardController">
         <div id="wrap">
             <div class="row">
@@ -36,7 +34,8 @@
                                     </a> 
                                 </div>
                             </h2>  
-                            <div class="custom_scorecard-info">
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                            <div class="custom_scorecard-info" id="tableinfo">
                                 <i><span class="fa fa-list fa-fw"></span> Accomplishment last updated by: <b><% updatedby.user_staff.rank.RankCode %> <% updatedby.user_staff.UserStaffLastName %>, <% updatedby.user_staff.UserStaffFirstName %> on 
                                     <% updatedby.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
                                 <i><span class="fa fa-user fa-fw"></span> Owner last updated by: <b><% updatedby2.user_staff.rank.RankCode %> <% updatedby2.user_staff.UserStaffLastName %>, <% updatedby2.user_staff.UserStaffFirstName %> on 
@@ -50,8 +49,12 @@
                         </div><!--div panel-heading-->
 
                         <div class="panel-body">
+<<<<<<< HEAD
                             <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
                             <div class="table-responsive tabledata" id="tabledata" style="display:none;">
+=======
+                            <div class="table-responsive tabledata" id="tabledata">
+>>>>>>> 745ee04df2341b6384ca110e6456e1d17c76fc00
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -181,6 +184,7 @@
                                             <!--Contributory Accomplishment-->
                                             
 
+<<<<<<< HEAD
                                             <div style="margin-top: 5%">
                                                 + 
                                                 
@@ -188,18 +192,36 @@
                                             </div>
 
                                               <div class="modal fade" id="janModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+=======
+                                            <div>
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" href="#janModal[]"><% staff_january[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="janModal[]" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+>>>>>>> 745ee04df2341b6384ca110e6456e1d17c76fc00
                                                 <div class="modal-dialog ">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+<<<<<<< HEAD
                                                                 <i class="fa fa-group fa-4x"></i>
                                                                 <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+=======
+                                                                <i class="fa fa-circle-o-notch fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
+>>>>>>> 745ee04df2341b6384ca110e6456e1d17c76fc00
                                                             </div>
                                                             
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+<<<<<<< HEAD
                                                                             + <strong ><% unit_measure.unit_accomplishments[0].JanuaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+=======
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].JanuaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+>>>>>>> 745ee04df2341b6384ca110e6456e1d17c76fc00
                                                                         </div>
                                                                 </form>
 
@@ -480,10 +502,15 @@
                                              <!--Contributory Accomplishment-->
                                             
 
+<<<<<<< HEAD
                                             <div style="margin-top: 5%">
                                                 + 
                                                 
                                                 <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#octModal<% $index %>"><% staff_october[$index] %></button>
+=======
+                                            <div>
+                                                + <span class="label label-default"><strong><% staff_october[$index] %></strong> </span>
+>>>>>>> 745ee04df2341b6384ca110e6456e1d17c76fc00
                                             </div>
 
                                               <div class="modal fade" id="octModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -633,4 +660,8 @@ window.onclick = function(event) {
     }
 }
 </script>
+<<<<<<< HEAD
+=======
+<script src="{{ asset('js/showtabledata.js') }}"></script>
+>>>>>>> 745ee04df2341b6384ca110e6456e1d17c76fc00
 @endsection

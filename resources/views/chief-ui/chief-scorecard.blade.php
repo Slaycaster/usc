@@ -41,7 +41,7 @@
                         </div><!--div panel-heading-->
 
                         <div class="panel-body">
-                            <div class="table-responsive tabledata" id="tabledata" style="display:none;">
+                            <div class="table-responsive tabledata" id="tabledata">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -300,10 +300,5 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        
-   
-    </script>
 
 @endsection
