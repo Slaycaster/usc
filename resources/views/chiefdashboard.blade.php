@@ -470,6 +470,54 @@
 
 
 
+<!-- Morris donut chart on page load-->
+<script type="text/javascript">
+
+  $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+  $(document).ready(function()
+  {
+            
+        
+        $('#morris-donut-chart').empty();
+
+          var year = new Date().getFullYear()
+          var chief_id = "<?php echo $chief_id ?>";
+
+          $.ajax({
+              type: "POST",
+              url: "../donutgraphchief",
+              headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
+              data: {'year' : year, 'chief_id' : chief_id},
+              success: function(response){
+                var arr = response;
+                Morris.Donut({
+                  element: 'morris-donut-chart',
+                  data: [
+                    {label: "1st Quarter", value: arr[0]},
+                    {label: "2nd Quarter", value: arr[1]},
+                    {label: "3rd Quarter", value: arr[2]},
+                    {label: "4th Quarter", value: arr[3]}
+                  ]
+                });     
+
+              }
+
+          })
+
+
+   
+
+
+ });
+
+
+
+</script>
+
+
+
+
 <script type="text/javascript">
     $(function () {
        $('#datetimepicker1').datetimepicker({
