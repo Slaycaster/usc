@@ -49,6 +49,9 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 #tableinfo{
     display: none;
 }
+.target_size{
+    width: 10em;
+}
 
 
 /* layout css */
