@@ -14,6 +14,8 @@
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
+
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
 	    <div class="wrap">
@@ -52,7 +54,7 @@
 
 							<!--./div class row-->
 
-                            <div class="table-responsive" ng-show="info">
+                            <div class="table-responsive" ng-show="info" id="tabledata">
     							<table class="table table-bordered">
     								<thead>
                                         <tr>

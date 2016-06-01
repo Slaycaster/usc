@@ -19,8 +19,6 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/staff_scorecard.js') }}"></script>
 
-    <script src="{{ asset('js/showtabledata.js') }}"></script>
-
     <div ng-app="unitScorecardApp" ng-controller="APIStaffScorecardController">
         <div id="wrap">
             <div class="row">
@@ -36,7 +34,8 @@
                                     </a> 
                                 </div>
                             </h2>  
-                            <div class="custom_scorecard-info">
+                            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+                            <div class="custom_scorecard-info" id="tableinfo">
                                 <i><span class="fa fa-list fa-fw"></span> Accomplishment last updated by: <b><% updatedby.user_staff.rank.RankCode %> <% updatedby.user_staff.UserStaffLastName %>, <% updatedby.user_staff.UserStaffFirstName %> on 
                                     <% updatedby.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
                                 <i><span class="fa fa-user fa-fw"></span> Owner last updated by: <b><% updatedby2.user_staff.rank.RankCode %> <% updatedby2.user_staff.UserStaffLastName %>, <% updatedby2.user_staff.UserStaffFirstName %> on 
@@ -50,7 +49,12 @@
                         </div><!--div panel-heading-->
 
                         <div class="panel-body">
-                            <div class="table-responsive tabledata" id="tabledata" style="display:none;">
+
+                            <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
+                           
+
+                            <div class="table-responsive tabledata" id="tabledata">
+
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -158,7 +162,7 @@
 
                                         <td colspan="2"><% staff_target.staff_measure.StaffMeasureName %>
                                             <span class="label label-primary" ng-if="c_measure=staff_target.staff_measure.ChiefMeasureID">Contributory to C, PNP</span><br /><i style="font-size:10px;">Contributory/ies to this Measure</i>
-                                            <!--Contributory Accomplishment--><br /><p ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'><span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            <!--Contributory Accomplishment--><br /><p style="display: inline" ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'><span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
                                             </p>
                                             
                                         </td>
@@ -178,109 +182,398 @@
                                         <td><% staff_target.JanuaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month"  id="id_jan<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JanuaryAccomplishment  %>" ng-model="staff_target.staff_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                             <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].JanuaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#janModal<% $index %>"><% staff_january[$index] %></button>
                                             </div>
 
+                                              <div class="modal fade" id="janModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].JanuaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
                                         </td>
 
                                         <td><% staff_target.FebruaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_feb<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.FebruaryAccomplishment %>" ng-model="staff_target.staff_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                             <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].FebruaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                           
+
+
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#febModal<% $index %>"><% staff_february[$index] %></button>
                                             </div>
+
+                                              <div class="modal fade" id="febModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].FebruaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% staff_target.MarchTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_mar<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MarchAccomplishment %>" ng-model="staff_target.staff_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].MarchAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                             
+
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#marModal<% $index %>"><% staff_march[$index] %></button>
                                             </div>
+
+                                              <div class="modal fade" id="marModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].MarchAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% staff_target.AprilTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_apr<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AprilAccomplishment %>" ng-model="staff_target.staff_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].AprilAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                        
+
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#aprModal<% $index %>"><% staff_april[$index] %></button>
                                             </div>
+
+                                              <div class="modal fade" id="aprModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].AprilAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% staff_target.MayTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_may<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.MayAccomplishment %>" ng-model="staff_target.staff_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].MayAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                             
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#mayModal<% $index %>"><% staff_may[$index] %></button>
                                             </div>
+
+                                              <div class="modal fade" id="mayModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].MayAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% staff_target.JuneTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jun<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JuneAccomplishment %>" ng-model="staff_target.staff_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].JuneAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#juneModal<% $index %>"><% staff_june[$index] %></button>
                                             </div>
 
+                                              <div class="modal fade" id="juneModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].JuneAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </td>
 
                                         <td><% staff_target.JulyTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jul<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.JulyAccomplishment %>" ng-model="staff_target.staff_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].JulyAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                             
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#julyModal<% $index %>"><% staff_july[$index] %></button>
                                             </div>
 
+                                              <div class="modal fade" id="julyModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].JulyAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </td>
 
                                         <td><% staff_target.AugustTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_aug<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.AugustAccomplishment %>" ng-model="staff_target.staff_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].AugustAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                            
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#augModal<% $index %>"><% staff_august[$index] %></button>
                                             </div>
+
+                                              <div class="modal fade" id="augModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].AugustAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% staff_target.SeptemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_sep<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.SeptemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.SeptemberAccomplishment " autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].SeptemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                             
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#sepModal<% $index %>"><% staff_september[$index] %></button>
                                             </div>
 
+                                              <div class="modal fade" id="sepModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].SeptemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </td>
 
                                         <td><% staff_target.OctoberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_oct<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.OctoberAccomplishment %>" ng-model="staff_target.staff_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].OctoberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
-                                            </div>
+
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#octModal<% $index %>"><% staff_october[$index] %></button>
+
+
+                                              <div class="modal fade" id="octModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].OctoberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% staff_target.NovemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_nov<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.NovemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].NovemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                             
+
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#novModal<% $index %>"><% staff_november[$index] %></button>
                                             </div>
+
+                                              <div class="modal fade" id="novModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].NovemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% staff_target.DecemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_dec<%staff_target.staff_measure.StaffMeasureID%>" name="monthlyform" valid-number value="<% staff_target.staff_accomplishment.DecemberAccomplishment %>" ng-model="staff_target.staff_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
-                                            <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                + <strong><% unit_measure.unit_accomplishments[0].DecemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                           
+
+                                            <div style="margin-top: 5%">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#decModal<% $index %>"><% staff_december[$index] %></button>
                                             </div>
 
+                                              <div class="modal fade" id="decModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
+                                                                            + <strong><% unit_measure.unit_accomplishments[0].DecemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
@@ -312,5 +605,35 @@
             </div>
         </div>
     </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('janModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("jan");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+<script src="{{ asset('js/showtabledata.js') }}"></script>
 
 @endsection

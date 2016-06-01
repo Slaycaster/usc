@@ -14,6 +14,8 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/chief_measures.js') }}"></script>
 
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
+
     <br>
     <div ng-app="unitScorecardApp" ng-controller="APIChiefMeasureController">
 	    <div class="wrap">
@@ -49,7 +51,7 @@
 							<!--./div class row-->
 
                             <div class="table-responsive" ng-show="info">
-    							<table class="table table-bordered">
+    							<table class="table table-bordered" id="tabledata">
     								<thead>
     									<td class="chief_measure-name">
                                             Measure Name

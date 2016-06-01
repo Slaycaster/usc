@@ -48,7 +48,7 @@
                             </div>
 							<!--./div class row-->
 
-                            <div class="table-responsive" id="tabledata" style="display:none;">
+                            <div class="table-responsive" id="tabledata">
     							<table class="table table-bordered">
     								<thead>
     									<td class="chief_target-objective">
