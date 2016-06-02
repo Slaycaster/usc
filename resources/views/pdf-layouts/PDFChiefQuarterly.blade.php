@@ -14,17 +14,20 @@ use App\ChiefFunding;
 use App\StaffAccomplishment;
 
 
-	$selectedYear = Session::get('year', 'default');	
+	$selectedYear = Session::get('year', 'default');
+    $selectedQuarter = Session::get('quarter', 'default');	
 
-    $chief_id = Session::get('chief_id', 'default'); //get the UserChiefID stored in session.
+    $chief_id = Session::get('chief_user_id', 'default'); //get the UserChiefID stored in session.
+    $chief_user = UserChief::where('UserChiefID', '=', $chief_id)
+                            ->first();
 
     $chief = UserChief::where('UserChiefID', '=', $chief_id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the chief         
-    $chief = Chief::where('ChiefID', '=', $chief_id)->first();
-
+    $chief = Chief::where('ChiefID', '=', $chief_user->ChiefID)->first();
 
 	$logoPath = 'img/pnp_logo2.png';
 	$chieflogoPath = 'uploads/chiefpictures/cropped/'.$chief->PicturePath;
     $tempObjective = '';
+
 
 
     $sortByObjective = DB::table('chief_objectives')
@@ -47,7 +50,7 @@ use App\StaffAccomplishment;
                                         ->with('user_chief')
                                         ->with('user_chief.rank')
                                         ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                        ->where('ChiefID', '=', $chief_id)
+                                        ->where('ChiefID', '=', $chief_user->ChiefID)
                                         ->where('ChiefMeasureID', '=', $measure->ChiefMeasureID)
                                         ->get();
         if(count($accomplishments) != 0)
@@ -143,7 +146,7 @@ use App\StaffAccomplishment;
         <br>
         <normal style="font-size: 10px">usc.pulis.net</normal>
     </p>
-    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $chief->ChiefAbbreviation }} Scorecard for {{ $selectedYear }}</p>
+    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $chief->ChiefAbbreviation }} KPI for Q{{ $selectedQuarter }} {{ $selectedYear }}</p>
     <table border="1">
         @if(count($accomplishments) != 0)
             <thead style="font-weight: bold;font-family: arial,helvetica">
@@ -151,33 +154,46 @@ use App\StaffAccomplishment;
                     <td width="11.5%" rowspan="2">OBJECTIVES</td>
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
                     <td width="12.5%" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
-                    <td colspan="12" height="12">TARGET/ACCOMPLISHMENT</td>
+                    <td colspan="3" height="12">TARGET/ACCOMPLISHMENT</td>
                     <td width="14%" rowspan="2" style="text-align: left;">INITIATIVES</td>
                     <td colspan="3">FUNDING</td>
+
                 </tr>
+                
+                
                 <tr>
                     <td width="80" style="text-align: left;padding-left: 3px;">Name</td>
                     <td width="15">LG</td>
                     <td width="15">LD</td>
-                    <td width="5%">Jan</td>
-                    <td width="5%">Feb</td>
-                    <td width="5%">Mar</td>
-                    <td width="5%">Apr</td>
-                    <td width="5%">May</td>
-                    <td width="5%">Jun</td>
-                    <td width="5%">Jul</td>
-                    <td width="5%">Aug</td>
-                    <td width="5%">Sep</td>
-                    <td width="5%">Oct</td>
-                    <td width="5%">Nov</td>
-                    <td width="5%">Dec</td>
+                    @if($selectedQuarter == '1')
+                        <td height="12">January</td>
+                        <td height="12">February</td>
+                        <td height="12">March</td>
+                    @endif
+                    @if($selectedQuarter == '2')
+                        <td height="12">April</td>
+                        <td height="12">May</td>
+                        <td height="12">June</td>
+                    @endif
+                    @if($selectedQuarter == '3')
+                        <td height="12">July</td>
+                        <td height="12">August</td>
+                        <td height="12">September</td>
+                    @endif
+                    @if($selectedQuarter == '4')
+                        <td height="12">October</td>
+                        <td height="12">November</td>
+                        <td height="12">December</td>
+                    @endif
                     <td width="32">Estimate</td>
                     <td width="28">Actual</td>
                     <td width="32">Variance</td>
+
                 </tr>   
+            
             </thead>
         @endif
-        @foreach($sortByObjective as $measure)
+            @foreach($sortByObjective as $measure)
             <?php
                 $accomplishments = ChiefTarget::with('chief_measure')
                                                 ->with('chief_measure.chief_objective')
@@ -191,7 +207,7 @@ use App\StaffAccomplishment;
                                                 ->with('user_chief')
                                                 ->with('user_chief.rank')
                                                 ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                                ->where('ChiefID', '=', $chief_id)
+                                                ->where('ChiefID', '=', $chief_user->ChiefID)
                                                 ->where('ChiefMeasureID', '=', $measure->ChiefMeasureID)
                                                 ->get();
                 foreach ($accomplishments as $accomplishment)
@@ -199,6 +215,8 @@ use App\StaffAccomplishment;
                     //dd($accomplishment);
                 }
                 //dd($accomplishments);
+                $overallAccomplishment = 0;
+                $overallTarget = 0;
             ?>
             <tbody>
                 @foreach($accomplishments as $accomplishment)
@@ -233,8 +251,10 @@ use App\StaffAccomplishment;
                             <td style="vertical-align: top;text-align: left;">
                                 {{ $accomplishment->chief_owner->ChiefOwnerContent }}
                             </td>
+                            @if($selectedQuarter == '1')
+                            {{-- JANUARY --}}
                             <td>
-                                {{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b><br>
+                            {{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b><br>
                                 <?php
                                     $totalJanuaryContribution = 0;
                                 ?>
@@ -390,8 +410,11 @@ use App\StaffAccomplishment;
                                 <br>
                                 @if($totalMarchContribution != 0)
                                     )
-                                @endif
+                                @endif 
                             </td>
+                        @endif
+                        @if($selectedQuarter == '2')
+                            {{-- APRIL --}}
                             <td>
                                 {{ round($accomplishment->AprilTarget, 2) }}<b>/ </b><br>
                                 <?php
@@ -550,8 +573,11 @@ use App\StaffAccomplishment;
                                 @if($totalJuneContribution != 0)
                                     )
                                 @endif
-                            </td>
-                             <td>
+                            </td>   
+                        @endif
+                        @if($selectedQuarter == '3')
+                            {{-- JULY --}}
+                            <td>
                                 {{ round($accomplishment->JulyTarget, 2) }}<b>/ </b><br>
                                 <?php
                                     $totalJulyContribution = 0;
@@ -709,8 +735,11 @@ use App\StaffAccomplishment;
                                 @if($totalSeptemberContribution != 0)
                                     )
                                 @endif
-                            </td>
-                             <td>
+                            </td>   
+                        @endif
+                        @if($selectedQuarter == '4')
+                            {{-- OCTOBER --}}
+                            <td>
                                 {{ round($accomplishment->OctoberTarget, 2) }}<b>/ </b><br>
                                 <?php
                                     $totalOctoberContribution = 0;
@@ -868,8 +897,9 @@ use App\StaffAccomplishment;
                                 @if($totalDecemberContribution != 0)
                                     )
                                 @endif
-                            </td>
-                            <td  style="vertical-align: top;text-align: left;">
+                            </td>   
+                        @endif
+                        <td  style="vertical-align: top;text-align: left;">
                                 {{ $accomplishment->chief_initiative->ChiefInitiativeContent }}
                             </td>
                             <td style="text-align: right;">
@@ -881,8 +911,8 @@ use App\StaffAccomplishment;
                             <td style="text-align: right;">
                                 {{ round(($accomplishment->chief_funding->ChiefFundingEstimate - $accomplishment->chief_funding->ChiefFundingActual), 2) }}
                             </td>
-                    </tr>
-                @endforeach
+                      </tr>
+                    @endforeach      
             </tbody>
         @endforeach
     </table>

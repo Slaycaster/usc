@@ -187,7 +187,7 @@
                                     <a href="{{ url('staff/reports') }}">Staff Scorecard Report</a>
                                 </li>
                                 <li>
-                                    <a href="#">Staff Scorecard Analysis Report</a>
+                                    <a href="{{ url('staff/analysis_reports') }}">Staff Scorecard Analysis Report</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
