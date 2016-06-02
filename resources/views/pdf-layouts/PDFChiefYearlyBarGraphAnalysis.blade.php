@@ -154,7 +154,13 @@ use Illuminate\Http\Request;
                 xkey: 'month',
                 ykeys: ['target', 'accomp'],
                 labels: ['Target', 'Accomplishment']
-            });              }
+                var p = document.createElement('p');
+                for(y=0; y<12;y++)
+                {
+                    p.appendChild(document.createTextNode(arr[y][0] , arr[y][1].toFixed(2) , arr[y][2].toFixed(2)));
+                }     
+            });     
+}
           })
       });
 
