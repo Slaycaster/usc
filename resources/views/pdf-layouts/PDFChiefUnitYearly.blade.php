@@ -292,10 +292,18 @@ use App\UnitFunding;
     @endif
     <?php
 
-        $maxid = UnitAccomplishment::where('UnitID','=',$unit->UnitID)->max('updated_at');
-            $maxid2 = UnitOwner::where('UnitID','=',$unit->UnitID)->max('updated_at');
-            $maxid3 = UnitInitiative::where('UnitID','=',$unit->UnitID)->max('updated_at');
-            $maxid4 = UnitFunding::where('UnitID','=',$unit->UnitID)->max('updated_at');
+            $maxid = UnitAccomplishment::where('UnitID','=',$unit->UnitID)
+                                        ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                        ->max('updated_at');
+            $maxid2 = UnitOwner::where('UnitID','=',$unit->UnitID)
+                                ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                ->max('updated_at');
+            $maxid3 = UnitInitiative::where('UnitID','=',$unit->UnitID)
+                                    ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                    ->max('updated_at');
+            $maxid4 = UnitFunding::where('UnitID','=',$unit->UnitID)
+                                ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                ->max('updated_at');
 
 
             $updatedby = UnitAccomplishment::where('updated_at','=',$maxid)
@@ -321,26 +329,28 @@ use App\UnitFunding;
         //dd($updatedby);
     ?>
     <br>
-    <div>
-        <i>
-            Accomplishment last updated by: 
-            <b>{{ $updatedby->user_unit->rank->RankCode }} {{ $updatedby->user_unit->UserUnitLastName }}, {{ $updatedby->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby->updated_at)) }}</b>
-        </i>
-        <br>
-        <i>
-            Owner last updated by:  
-            <b>{{ $updatedby2->user_unit->rank->RankCode }} {{ $updatedby2->user_unit->UserUnitLastName }}, {{ $updatedby2->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby2->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby2->updated_at)) }}</b>
-        </i>
-        <br>
-        <i>
-            Initiative last updated by:  
-            <b>{{ $updatedby3->user_unit->rank->RankCode }} {{ $updatedby3->user_unit->UserUnitLastName }}, {{ $updatedby3->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby3->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby3->updated_at)) }}</b>
-        </i>
-        <br>
-        <i>
-            Funding last updated by:  
-            <b>{{ $updatedby4->user_unit->rank->RankCode }} {{ $updatedby4->user_unit->UserUnitLastName }}, {{ $updatedby4->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby4->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby4->updated_at)) }}</b>
-        </i>
+    @if(count($accomplishments) != 0)
+        <div>
+            <i>
+                Accomplishment last updated by: 
+                <b>{{ $updatedby->user_unit->rank->RankCode }} {{ $updatedby->user_unit->UserUnitLastName }}, {{ $updatedby->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby->updated_at)) }}</b>
+            </i>
+            <br>
+            <i>
+                Owner last updated by:  
+                <b>{{ $updatedby2->user_unit->rank->RankCode }} {{ $updatedby2->user_unit->UserUnitLastName }}, {{ $updatedby2->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby2->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby2->updated_at)) }}</b>
+            </i>
+            <br>
+            <i>
+                Initiative last updated by:  
+                <b>{{ $updatedby3->user_unit->rank->RankCode }} {{ $updatedby3->user_unit->UserUnitLastName }}, {{ $updatedby3->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby3->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby3->updated_at)) }}</b>
+            </i>
+            <br>
+            <i>
+                Funding last updated by:  
+                <b>{{ $updatedby4->user_unit->rank->RankCode }} {{ $updatedby4->user_unit->UserUnitLastName }}, {{ $updatedby4->user_unit->UserUnitFirstName }} {{ date('F d, Y', strtotime($updatedby4->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby4->updated_at)) }}</b>
+            </i>
 
-    </div>
+        </div>
+    @endif
 </body>
