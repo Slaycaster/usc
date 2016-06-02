@@ -310,7 +310,9 @@ table {
     }
 }
 
-
+.target-month{
+    width:8em; 
+}
 .chief_target-objective{
     width: 25%;
 }
