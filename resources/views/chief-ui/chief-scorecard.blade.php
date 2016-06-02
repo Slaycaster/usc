@@ -204,99 +204,374 @@
                                         <td><% chief_target.FebruaryTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                /<strong><% staff_measure.staff_accomplishments[0].FebruaryAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="february" ng-init="c_february=chief_february[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_february != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#febModal<% $index %>"><% chief_february[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="febModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].FebruaryAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.MarchTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                /<strong><% staff_measure.staff_accomplishments[0].MarchAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="march" ng-init="c_march=chief_march[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_march != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#marModal<% $index %>"><% chief_march[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="marModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].MarchAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.AprilTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].AprilAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="april" ng-init="c_april=chief_april[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_april != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#aprModal<% $index %>"><% chief_april[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="aprModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].AprilAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.MayTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].MayAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="may" ng-init="c_may=chief_may[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_may != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#mayModal<% $index %>"><% chief_may[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="mayModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].MayAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.JuneTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].JuneAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="june" ng-init="c_june=chief_june[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_june != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#junModal<% $index %>"><% chief_june[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="junModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].JuneAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.JulyTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].JulyAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="july" ng-init="c_july=chief_july[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_july != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#julModal<% $index %>"><% chief_july[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="julModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].JulyAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.AugustTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].AugustAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="august" ng-init="c_august=chief_august[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_august != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#augModal<% $index %>"><% chief_august[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="augModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].AugustAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.SeptemberTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].SeptemberAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="september" ng-init="c_september=chief_september[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_september != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#sepModal<% $index %>"><% chief_september[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="sepModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].SeptemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.OctoberTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].OctoberAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="october" ng-init="c_october=chief_october[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_october != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#octModal<% $index %>"><% chief_october[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="octModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].OctoberAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.NovemberTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].NovemberAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="november" ng-init="c_november=chief_november[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_november != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#novModal<% $index %>"><% chief_november[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="novModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].NovemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
                                         <td><% chief_target.DecemberTarget | number: 2 %>
 
                                             <!--Contributory Accomplishment-->
-                                            <p ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
-                                                / <strong><% staff_measure.staff_accomplishments[0].DecemberAccomplishment | number: 2 %></strong> <span class="label label-info"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
-                                            </p>
+                                            <input type="hidden" ng-model="december" ng-init="c_december=chief_december[$index] | number: 2">
+                                            <!--Contributory Accomplishment-->
+                                            <div style="margin-top: 5%" ng-if="c_december != '0'">
+                                                + 
+                                                
+                                                <button id="jan" data-toggle="modal" class="btn btn-xs" style="background-color: rgba(36,36,36,.5); color: white; " href="#decModal<% $index %>"><% chief_december[$index] %></button>
+                                            </div>
+
+                                              <div class="modal fade" id="decModal<% $index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                                <i class="fa fa-group fa-4x"></i>
+                                                                <h4 class="modal-title" id="myModalLabel"><b>THE CONTRIBUTORY</b></h4>
+                                                            </div>
+                                                            
+                                                            <div class="modal-body">
+                                                                <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                                                                        <div ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                                                            + <strong><% staff_measure.staff_accomplishments[0].DecemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% staff_measure.staff_accomplishments[0].staff.StaffAbbreviation %></span>
+                                                                        </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
 
