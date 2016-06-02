@@ -377,7 +377,7 @@
      $(document).ready(function()
       {
         $('#morris-area-chart').empty();
-          var year = new Date().getFullYear()
+          var year = new Date().getFullYear();
           var chief_id = "<?php echo $chief_id ?>";
 
           $.ajax({
