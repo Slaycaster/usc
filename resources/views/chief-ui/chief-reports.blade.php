@@ -36,7 +36,7 @@
                                 </div>
                             </div>
 							<!--./div class row-->
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                                 <div>
                                     <form method="get" action="{{ url('report/yearlyChiefScorecard') }}" target="_blank">
                                         <div>
@@ -52,10 +52,17 @@
                                             <br>
                                             <br>
                                             <div class="col-md-6">
-                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-breakdown" name="breakdown" value="breakdown">Generate PDF (BreakDown)</button>
+                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-breakdown" name="breakdown" value="breakdown">Generate PDF (Breakdown)</button>
                                             </div>
                                             <div class="col-md-6">
                                                 <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-total" name="total" value="total">Generate PDF (Total)</button>
+                                            </div>
+                                            <br><br>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-yearlybreakdown" name="yearlybreakdown" value="yearlybreakdown">Generate PDF Quarterly (Breakdown)</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-yearlytotal" name="yearlytotal" value="yearlytotal">Generate PDF Quarterly (Total)</button>
                                             </div>
                                             <br>
                                         </div>
@@ -87,7 +94,7 @@
                                             <br>
                                             <br>
                                             <div class="col-md-6">
-                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-breakdown" name="breakdown" value="breakdown">Generate PDF (BreakDown)</button>
+                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-breakdown" name="breakdown" value="breakdown">Generate PDF (Breakdown)</button>
                                             </div>
                                             <div class="col-md-6">
                                                 <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-total" name="total" value="total">Generate PDF (Total)</button>

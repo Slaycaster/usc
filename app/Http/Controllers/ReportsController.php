@@ -161,6 +161,7 @@ class ReportsController extends Controller
 			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
 	  	    return $pdf->stream();
 	  	}
+	  	
 	}
 
 	public function currentYearUnitScorecard()
@@ -262,6 +263,24 @@ class ReportsController extends Controller
 			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
 	  	    return $pdf->stream();	
 		}
+		elseif(Input::get('yearlybreakdown'))
+		{
+			$pdf = PDF::loadView('pdf-layouts.PDFChiefYearlybyQuarter')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf->output();
+			$dom_pdf = $pdf->getDomPDF();
+			$canvas = $dom_pdf ->get_canvas();
+			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+	  	    return $pdf->stream();
+	  	}
+	  	elseif(Input::get('yearlytotal'))
+		{
+			$pdf = PDF::loadView('pdf-layouts.PDFChiefYearlybyQuarterTotal')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf->output();
+			$dom_pdf = $pdf->getDomPDF();
+			$canvas = $dom_pdf ->get_canvas();
+			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+	  	    return $pdf->stream();
+	  	}
 	}
 
 
