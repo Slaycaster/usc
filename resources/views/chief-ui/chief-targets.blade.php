@@ -155,7 +155,7 @@
                             <div class="table-responsive" id="monthlyform" style='display:none;'>
                                 <br />
                                 <table class="table">
-                            <!-- Modal (Pop up when detail button clicked) FOR MONTHLY -->
+                                <!-- Modal (Pop up when detail button clicked) FOR MONTHLY -->
                                     <tr>
                                         <td class="col-md-1">
                                             <label for="monthlyform" class="control-label">January:</label>
@@ -165,8 +165,7 @@
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for January is required.</span>
                                         </td>
                                       
-                                
-                                
+                            
                                         <td class="col-md-1">
                                             <label for="monthlyform" class="control-label">April:</label>
                                         </td>   
@@ -327,59 +326,55 @@
 
 
                             <br />
-                    <!-- Modal (Pop up when detail button clicked) FOR QUARTERTLY -->
-                            <div id="quarterlyform" style='display:none;'>
-                             <table class="table table-striped">
-                            <td>
-                                <label for="quarterlyform" class="control-label">First Quarter:</label>
-                            </td>
-                            <td>
-                                <input type='text' id="id_firstquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control" required ng-touched />
-                            <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for First Quarter is required.</span>
-                            </td>
+                            <!-- Modal (Pop up when detail button clicked) FOR QUARTERTLY -->
+                            <div id="quarterlyform" class="table-responsive" style='display:none;'>
+                                <table class="table table-striped">
+                                    <td>
+                                        <label for="quarterlyform" class="control-label">First Quarter:</label>
+                                    </td>
+                                    <td>
+                                        <input type='text' id="id_firstquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
+                                        <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for First Quarter is required.</span>
+                                    </td>
 
-                            <td>
-                                <label for="quarterlyform" class="control-label">Second Quarter:</label>
-                            </td>
-                            <td>
-                                <input type='text' id="id_secondquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control" required ng-touched />
-                            <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Second Quarter is required.</span>
-                            </td>
+                                    <td>
+                                        <label for="quarterlyform" class="control-label">Second Quarter:</label>
+                                    </td>
+                                    <td>
+                                        <input type='text' id="id_secondquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
+                                        <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Second Quarter is required.</span>
+                                    </td>
 
-                            <td>
-                                <label for="quarterlyform" class="control-label">Third Quarter:</label>
-                            </td>
-                            <td>
-                                <input type='text' id="id_thirdquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control" required ng-touched />
-                            <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Third Quarter is required.</span>
-                            </td>
+                                    <td>
+                                        <label for="quarterlyform" class="control-label">Third Quarter:</label>
+                                    </td>
+                                    <td>
+                                        <input type='text' id="id_thirdquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
+                                        <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Third Quarter is required.</span>
+                                    </td>
 
-                            <td>
-                                <label for="quarterlyform" class="control-label">Fourth Quarter:</label>
-                            </td>
-                            <td>
+                                    <td>
+                                        <label for="quarterlyform" class="control-label">Fourth Quarter:</label>
+                                    </td>
+                                    <td>
 
-                                <input type='text' id="id_fourthquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control" required ng-touched />
-                            <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Fourth Quarter is required.</span>
-                            </td>
+                                        <input type='text' id="id_fourthquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
+                                        <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Fourth Quarter is required.</span>
+                                    </td>
+                                    <tr>
+                                        <td colspan="8">
+                                            <div ng-show="info" class="alert alert-danger"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
+                                        </td>
+                                    </tr>
                             </table>
-                             <div ng-show="info" class="alert alert-danger"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
-                                         
-                                   <!--  <label for="monthlyform" class="control-label">Enter your credentials to continue:</label><br>
-
-                                         <input type='text' id="id_badge_text" name="monthlyform" value="" ng-model="" placeholder="Badge text" autocomplete="off" class="form-control" required ng-touched />
-                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Badge text is required.</span><br>
-                                         <input type='text' id="id_password" name="monthlyform" value="" ng-model="" placeholder="Password" autocomplete="off" class="form-control" required ng-touched />
-                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Password is required.</span>
-                                    -->
-
-                                    <div class="modal-footer">
-                                        <div class="col-md-3 pull-right">
-                                            <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmEditTarget.$invalid">Submit</button>
-                                        </div>
-                                    </div>
+                                
+                                                      
+                            <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
                             </div>
-                                 
+                               
+                            </div>
+                                 <!-- ng-click="save(modalstate, id)" -->
                         </form>
 
                     </div>
@@ -397,11 +392,13 @@
                         <i class="fa fa-circle-o-notch fa-4x"></i>
                         <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
                     </div>
+
+                    <p class="alert alert-info">Monthly Targets for the Measure: <% chief_measurename %></p>
                     
-                    <div class="modal-body">
+                    <div class="modal-body table-responsive">
                         <form name="frmEditTarget" class="form-horizontal" novalidate="">
-                            <p class="alert alert-info">Monthly Targets for the Measure: <% chief_measurename %></p>
-                            <table class="table table-responsive table-striped">
+                            
+                            <table class="table table-striped">
                                 <tr ir-paginate='chief_target in chief_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                                     <tr>
                                        
@@ -514,11 +511,12 @@
                         <i class="fa fa-circle-o-notch fa-4x"></i>
                         <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
                     </div>
+                    <p class="control-label alert alert-info">Quarterly Targets for the Measure: <% chief_measurename %> </p>
                     
-                    <div class="modal-body">
+                    <div class="modal-body table-responsive">
                         <form name="frmEditTarget" novalidate="">
-                            <p class="control-label alert alert-info">Quarterly Targets for the Measure: <% chief_measurename %> </p>
-                            <table class="table table-responsive">
+                            
+                            <table class="table table-striped">
                                 <tr>
                                     <td>
                                     <center>
