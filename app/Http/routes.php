@@ -167,6 +167,7 @@ Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');
 Route::resource('api/staff_targets','APIStaffTargetsController');
 Route::resource('api/unit_targets','APIUnitTargetsController');
+Route::resource('api/secondary_targets','APISecondaryTargetsController');
 	
 Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
 Route::post('api/chief_targets/updatequarter/{id}','APIChiefTargetsController@updatequarter');
