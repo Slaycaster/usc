@@ -39,9 +39,9 @@ return array(
 	    	'output' => "<img src='/usc/public/uploads/secondaryunitpictures/cropped/(:value)' height='100' />"
 	    ),
 	    'UnitID' => array(
-	    	'title' => 'Staff',
-	    	'relationship' => 'staff',
-	    	'select' => "CONCAT((:table).StaffAbbreviation, ' - ', (:table).StaffName)"
+	    	'title' => 'Unit Office',
+	    	'relationship' => 'unit',
+	    	'select' => "CONCAT((:table).UnitAbbreviation, ' - ', (:table).UnitName)"
 	    )
 	),
 
@@ -69,7 +69,7 @@ return array(
 	    		array(300, 300, 'crop', public_path() . '/uploads/secondaryunitpictures/cropped/', 100)
 	    	)
 	    ),
-	    'Unit' => array(
+	    'unit' => array(
 	    	'title' => 'Unit Name',
 	    	'type' => 'relationship',
 	    	'name_field' => 'UnitName'
@@ -86,9 +86,9 @@ return array(
 	        'title' => 'By Unit'
 	    ),
 	    'unit' => array(
-	    	'title' => 'By Staff',
+	    	'title' => 'By Unit',
 	    	'type' => 'relationship',
-	    	'name_field' => 'StaffName'
+	    	'name_field' => 'UnitName'
 	    )
 	),
 

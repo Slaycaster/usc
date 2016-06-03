@@ -22,7 +22,7 @@ class SecondaryUnit extends Model {
 
 	public function unit()
 	{
-		return $this->belongsTo('App\Staff', 'UnitID', 'UnitID');
+		return $this->belongsTo('App\Unit', 'UnitID', 'UnitID');
 	}
 
 	public function user_secondary_units()
