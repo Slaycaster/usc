@@ -43,6 +43,14 @@ class LoginController extends Controller {
 			->whereRaw("BINARY `UserUnitPassword`= ?",array($pass))
 			->first();
 
+			$secondary = UserSecondary::whereRaw("BINARY `UserSecondaryBadgeNumber`= ?",array($user))
+			->whereRaw("BINARY `UserSecondaryPassword`= ?",array($pass))
+			->first();
+
+			$tertiary = UserTertiary::whereRaw("BINARY `UserTertiaryBadgeNumber`= ?",array($user))
+			->whereRaw("BINARY `UserTertiaryPassword`= ?",array($pass))
+			->first();
+
 			if($chief != null)
 			{
 				
@@ -127,6 +135,66 @@ class LoginController extends Controller {
 					
 
 						return Redirect::to('unit/dashboard');
+					}
+					else
+					{
+						Session::flash('message', 'Sorry! Incorrect username/password. Please try again.');
+						return Redirect::to('/');
+					}
+			}
+			elseif($secondary != null)
+			{
+				
+
+					$credentials = UserSecondary::where('UserSecondaryIsActive', 1)
+						->where('UserSecondaryBadgeNumber', '=', $user)
+						->where('UserSecondaryPassword', '=', $pass)
+						->first();
+					
+					if (count($credentials) > 0) {
+						Session::put('secondary_user_id', $credentials->UserSecondaryID);
+
+						$id = Session::get('secondary_user_id', 'default');
+						$time = date('Y-m-d H:i:s');
+
+						
+						$ip = $_SERVER['REMOTE_ADDR'];
+					
+						//DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
+
+					
+
+						return Redirect::to('secondary/dashboard');
+					}
+					else
+					{
+						Session::flash('message', 'Sorry! Incorrect username/password. Please try again.');
+						return Redirect::to('/');
+					}
+			}
+			elseif($tertiary != null)
+			{
+				
+
+					$credentials = UserTertiary::where('UserTertiaryIsActive', 1)
+						->where('UserTertiaryBadgeNumber', '=', $user)
+						->where('UserTertiaryPassword', '=', $pass)
+						->first();
+					
+					if (count($credentials) > 0) {
+						Session::put('tertiary_user_id', $credentials->UserTertiaryID);
+
+						$id = Session::get('tertiary_user_id', 'default');
+						$time = date('Y-m-d H:i:s');
+
+						
+						$ip = $_SERVER['REMOTE_ADDR'];
+					
+						//DB::insert('insert into user_logs (UnitUserID, LogDateTime, LogType, IPAddress) values (?,?,?,?)', array($id, $time, 'Login', $ip ));
+
+					
+
+						return Redirect::to('tertiary/dashboard');
 					}
 					else
 					{
