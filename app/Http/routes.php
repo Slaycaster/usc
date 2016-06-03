@@ -54,6 +54,7 @@ Route::get('staff/dashboard', 'StaffLoginController@dashboard');
 Route::get('staff/staffdashboard', 'APIStaffAuditTrailsDashController@showIndex');
 Route::get('chief/dashboard', 'ChiefLoginController@dashboard');
 Route::get('chief/chiefdashboard', 'APIChiefAuditTrailsDashController@showIndex');
+Route::get('secondary/dashboard', 'SecondaryLoginController@dashboard');
 
 /*BARGRAPH*/
 Route::post('bargraphunit', 'UnitLoginController@bargraph');
@@ -115,6 +116,10 @@ Route::get('chief/changepassword','ChiefLoginController@changepass');
 Route::get('chief/changechiefpicture', 'ChiefLoginController@changechiefpicture');
 Route::get('chief/changeuserpicture', 'ChiefLoginController@changeuserpicture');
 Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
+
+
+/* SECONDARY USER */
+
 
 
 

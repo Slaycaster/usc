@@ -4,6 +4,8 @@
 use App\UserUnit;
 use App\UserChief;
 use App\UserStaff;
+use App\UserSecondaryUnit;
+use App\UserTertiaryUnit;
 //LARAVEL MODULES
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -43,12 +45,12 @@ class LoginController extends Controller {
 			->whereRaw("BINARY `UserUnitPassword`= ?",array($pass))
 			->first();
 
-			$secondary = UserSecondary::whereRaw("BINARY `UserSecondaryBadgeNumber`= ?",array($user))
-			->whereRaw("BINARY `UserSecondaryPassword`= ?",array($pass))
+			$secondary = UserSecondaryUnit::whereRaw("BINARY `UserSecondaryUnitBadgeNumber`= ?",array($user))
+			->whereRaw("BINARY `UserSecondaryUnitPassword`= ?",array($pass))
 			->first();
 
-			$tertiary = UserTertiary::whereRaw("BINARY `UserTertiaryBadgeNumber`= ?",array($user))
-			->whereRaw("BINARY `UserTertiaryPassword`= ?",array($pass))
+			$tertiary = UserTertiaryUnit::whereRaw("BINARY `UserTertiaryUnitBadgeNumber`= ?",array($user))
+			->whereRaw("BINARY `UserTertiaryUnitPassword`= ?",array($pass))
 			->first();
 
 			if($chief != null)
@@ -146,13 +148,13 @@ class LoginController extends Controller {
 			{
 				
 
-					$credentials = UserSecondary::where('UserSecondaryIsActive', 1)
-						->where('UserSecondaryBadgeNumber', '=', $user)
-						->where('UserSecondaryPassword', '=', $pass)
+					$credentials = UserSecondaryUnit::where('UserSecondaryUnitIsActive', 1)
+						->where('UserSecondaryUnitBadgeNumber', '=', $user)
+						->where('UserSecondaryUnitPassword', '=', $pass)
 						->first();
 					
 					if (count($credentials) > 0) {
-						Session::put('secondary_user_id', $credentials->UserSecondaryID);
+						Session::put('secondary_user_id', $credentials->UserSecondaryUnitID);
 
 						$id = Session::get('secondary_user_id', 'default');
 						$time = date('Y-m-d H:i:s');
@@ -176,13 +178,13 @@ class LoginController extends Controller {
 			{
 				
 
-					$credentials = UserTertiary::where('UserTertiaryIsActive', 1)
-						->where('UserTertiaryBadgeNumber', '=', $user)
-						->where('UserTertiaryPassword', '=', $pass)
+					$credentials = UserTertiaryUnit::where('UserTertiaryUnitIsActive', 1)
+						->where('UserTertiaryUnitBadgeNumber', '=', $user)
+						->where('UserTertiaryUnitPassword', '=', $pass)
 						->first();
 					
 					if (count($credentials) > 0) {
-						Session::put('tertiary_user_id', $credentials->UserTertiaryID);
+						Session::put('tertiary_user_id', $credentials->UserTertiaryUnitID);
 
 						$id = Session::get('tertiary_user_id', 'default');
 						$time = date('Y-m-d H:i:s');
