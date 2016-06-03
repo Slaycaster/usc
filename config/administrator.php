@@ -78,7 +78,8 @@ return array(
 					'Users' => array(
 						'user_units',
 						'user_staffs',
-						'user_chiefs'
+						'user_chiefs',
+						'user_secondary'
 					)
 		),
 

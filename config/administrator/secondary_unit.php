@@ -93,7 +93,7 @@ return array(
 	),
 
 	'rules' => array(
-    	'SecondaryUnitName' => 'required|unique:units,UnitName',
+    	'SecondaryUnitName' => 'required|unique:units, SecondaryUnitName',
     	'SecondaryUnitAbbreviation' => 'required|unique:units,UnitAbbreviation',
     	'UnitID' => 'required'
 	),
