@@ -130,6 +130,7 @@ Route::get('secondaryunit/objectives', 'APISecondaryUnitObjectivesController@sho
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
+Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
 
 
 

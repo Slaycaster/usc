@@ -96,13 +96,13 @@
             <div class="layout-custom-username">
                 <span>    
                             <img class="img-responsive dashboard-custom-pictureabb" 
-                            src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
+                            src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$tertiary_user->UserTertiaryUnitPicturePath.'') }}"
                             style="width:20px; height:20px; margin-top:-5px; margin-bottom:-2px;">
                     </span>&nbsp;
                     Welcome 
-                    {{ $user->rank->RankCode }} 
-                    {{ $user->UserTertiaryUnitFirstName }} 
-                    {{ $user->UserTertiaryUnitLastName }}!
+                    {{ $tertiary_user->rank->RankCode }} 
+                    {{ $tertiary_user->UserTertiaryUnitFirstName }} 
+                    {{ $tertiary_user->UserTertiaryUnitLastName }}!
             </div>
             <!-- /.navbar-header -->
 
@@ -111,13 +111,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
                         <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                            src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
+                            src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$tertiary_user->UserTertiaryUnitPicturePath.'') }}"
                             style="width:30px; height:30px; margin-top:-5px;">
                         </span>&nbsp;
                             Welcome 
-                            {{ $user->rank->RankCode }} 
-                            {{ $user->UserTertiaryUnitFirstName }} 
-                            {{ $user->UserTertiaryUnitLastName }}! &nbsp; 
+                            {{ $tertiary_user->rank->RankCode }} 
+                            {{ $tertiary_user->UserTertiaryUnitFirstName }} 
+                            {{ $tertiary_user->UserTertiaryUnitLastName }}! &nbsp; 
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -163,8 +163,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('unit/scorecard') }}"><i class="fa fa-table fa-fw"></i> 
-                                {{ $user->tertiary_unit->TertiaryUnitAbbreviation }} Scorecard
+                            <a href="{{ url('tertiary_unit/scorecard') }}"><i class="fa fa-table fa-fw"></i> 
+                                {{ $tertiary_user->tertiary_unit->TertiaryUnitAbbreviation }} Scorecard
                             </a>
                         </li>
                         <li>
@@ -173,12 +173,12 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('unit/objectives') }}">
+                                    <a href="{{ url('tertiary_unit/objectives') }}">
                                         Set Tertiary Unit Objectives
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('unit/measures') }}">
+                                    <a href="{{ url('tertiary_unit/measures') }}">
                                         Set Tertiary Unit Measures
                                     </a>
                                 </li>
@@ -187,7 +187,7 @@
                         </li>
                         <li>
 
-                            <a href="{{ url('unit/targets') }}"><i class="fa fa-table fa-fw"></i> 
+                            <a href="{{ url('tertiary_unit/targets') }}"><i class="fa fa-table fa-fw"></i> 
                                 Set Measure Targets
                             </a>
 
@@ -198,12 +198,12 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('unit/reports') }}">
+                                    <a href="{{ url('tertiary_unit/reports') }}">
                                         Tertiary Unit Scorecard Report
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('unit/analysis_reports') }}">
+                                    <a href="{{ url('tertiary_unit/analysis_reports') }}">
                                         Tertiary Unit Scorecard Analysis Report
                                     </a>
                                 </li>
@@ -214,7 +214,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('unit/changechiefpicture') }}">Change Tertiary Unit Picture</a>
+                                    <a href="{{ url('tertiary_unit/changechiefpicture') }}">Change Tertiary Unit Picture</a>
                                 </li>
                                 
                             </ul>
@@ -223,18 +223,18 @@
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
+                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$tertiary_user->UserTertiaryUnitPicturePath.'') }}"
                                     style="width:15px; height:15px; margin-top:-5px; margin-bottom:-3px;">
-                                </span>&nbsp;  {{ $user->rank->RankCode }} {{ $user->UserTertiaryUnitName }} {{ $user->UserTertiaryUnitLastName }} <span class="fa arrow"></span>
+                                </span>&nbsp;  {{ $tertiary_user->rank->RankCode }} {{ $tertiary_user->UserTertiaryUnitName }} {{ $tertiary_user->UserTertiaryUnitLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                                    <a href="{{ url('tertiary_unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                         Change Profile Picture</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('unit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                                    <a href="{{ url('tertiary_unit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
                                         Change User Password</a>
                                 </li>
                                 <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
