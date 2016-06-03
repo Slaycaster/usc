@@ -31,7 +31,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-3">
+								<div class="col-lg-4">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Secondary Unit's Objective</button>
 								</div>
 
