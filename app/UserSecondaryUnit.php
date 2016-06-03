@@ -27,4 +27,19 @@ class UserSecondaryUnit extends Model {
 	 */
 	protected $primaryKey = 'UserSecondaryUnitID';
 
+
+	//FOREIGN KEYS
+
+	public function rank()
+	{
+		return $this->belongsTo('App\Rank', 'RankID', 'RankID'); //(model, foreign_key, parent_primary_key)
+	}
+
+	public function secondary_unit()
+	{
+		return $this->belongsTo('App\SecondaryUnit', 'SecondaryUnitID', 'SecondaryUnitID');
+	}
+
+
+
 }

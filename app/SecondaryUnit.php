@@ -20,4 +20,15 @@ class SecondaryUnit extends Model {
 	 */
 	protected $primaryKey = 'SecondaryUnitID';
 
+	public function unit()
+	{
+		return $this->belongsTo('App\Staff', 'UnitID', 'UnitID');
+	}
+
+	public function user_secondary_units()
+	{
+		return $this->hasMany('App\UserSecondaryUnit', 'SecondaryUnitID', 'SecondaryUnitID');
+	}
+	
+
 }
