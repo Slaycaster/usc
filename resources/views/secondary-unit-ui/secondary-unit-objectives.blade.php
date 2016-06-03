@@ -31,7 +31,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-3">
+								<div class="col-lg-4">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Secondary Unit's Objective</button>
 								</div>
 
@@ -59,18 +59,18 @@
                             <div class="table-responsive" ng-show="info" id="tabledata">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="unit_objective-name">  
+    									<td class="secondary_objective-name">  
                                             Objective Name
     									</td>
-    									<td class="unit_objective-perspective">
+    									<td class="secondary_objective-perspective">
                                             Perspective
     									</td>
-                                    <!-- 
-                                        <td class="unit_objective-contributory">
+                                    
+                                        <!-- <td class="secondary_objective-contributory">
                                             Contributory to Staff's Objective
-                                        </td>
-                                    -->
-    									<td class="unit_objective-encoder">
+                                        </td> -->
+                                   
+    									<td class="secondary_objective-encoder">
                                             Last Encoded by
     									</td>
     									<td class="unit_objective-edit"></td>
