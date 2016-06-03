@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
 
     <!-- Yujin Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/unit.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/secondary.css') }}">
 
     <!-- Morris Charts CSS -->
     <link href="{{ asset('unit/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
@@ -67,7 +67,7 @@
     <![endif]-->
 </head>
 
-<body class="layout_unit-body">
+<body class="layout_secondary-body">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
@@ -205,11 +205,15 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <!-- <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
+                                <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->UserSecondaryUnitPicturePath.'') }}"
                                     style="width:15px; height:15px; margin-top:-5px; margin-bottom:-3px;">
-                                </span>&nbsp; -->
-                            <!-- {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <span class="fa arrow"></span> -->
+                                </span>&nbsp;
+                                {{ $user->rank->RankCode }}
+                                {{ $user->UserSecondaryUnitFirstName }} 
+                                {{ $user->UserSecondaryUnitLastName }}!
+                            
+                            <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>

@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class AuditTrail extends Model {
+class TertiaryAuditTrail extends Model {
 
+	
 	//
 	/**
 	 * The database table used by the model.
@@ -16,16 +17,16 @@ class AuditTrail extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['Action', 'TertiaryUserUnitID', 'TertiaryUnitID'];
+	protected $fillable = ['Action', 'UserTertiaryUnitID', 'TertiaryUnitID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
 	 * @var array
 	 */
-	protected $primaryKey = 'TertiaryAuditTrailID';
+	protected $primaryKey = 'TertiaryUnitAuditTrailID';
 
 
-	public function user_unit()
+	public function user_tertiary()
 	{
 		return $this->belongsTo('App\UserTertiaryUnit', 'UserTertiaryUnitID', 'UserTertiaryUnitID');
 	}

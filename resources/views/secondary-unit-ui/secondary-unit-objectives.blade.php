@@ -59,18 +59,18 @@
                             <div class="table-responsive" ng-show="info" id="tabledata">
     							<table class="table table-bordered">
     								<thead>
-    									<td class="unit_objective-name">  
+    									<td class="secondary_objective-name">  
                                             Objective Name
     									</td>
-    									<td class="unit_objective-perspective">
+    									<td class="secondary_objective-perspective">
                                             Perspective
     									</td>
-                                    <!-- 
-                                        <td class="unit_objective-contributory">
+                                    
+                                        <!-- <td class="secondary_objective-contributory">
                                             Contributory to Staff's Objective
-                                        </td>
-                                    -->
-    									<td class="unit_objective-encoder">
+                                        </td> -->
+                                   
+    									<td class="secondary_objective-encoder">
                                             Last Encoded by
     									</td>
     									<td class="unit_objective-edit"></td>

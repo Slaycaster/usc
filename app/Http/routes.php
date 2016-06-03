@@ -131,6 +131,7 @@ Route::get('secondaryunit/measures', 'APISecondaryUnitMeasuresController@showInd
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
+Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
 
 
 
