@@ -29,8 +29,9 @@ Route::get('report/currentYearStaffChiefScorecard/{id}', 'ReportsController@curr
 Route::get('report/quarterlyUnitAnalysis', 'ReportsAnalysisController@quarterlyUnitAnalysis');
 Route::get('report/quarterlyStaffAnalysis', 'ReportsAnalysisController@quarterlyStaffAnalysis');
 Route::get('report/quarterlyChiefAnalysis', 'ReportsAnalysisController@quarterlyChiefAnalysis');
-Route::get('report/quarterlyChiefAnalysisBarGraph', 'ReportsAnalysisController@quarterlyChiefAnalysisBarGraph');
-Route::get('report/quarterlyChiefAnalysisDonutGraph', 'ReportsAnalysisController@quarterlyChiefAnalysisDonutGraph');
+Route::get('report/yearlyUnitAnalysisBarGraph', 'ReportsAnalysisController@yearlyUnitAnalysisBarGraph');
+Route::get('report/yearlyStaffAnalysisBarGraph', 'ReportsAnalysisController@yearlyStaffAnalysisBarGraph');
+Route::get('report/yearlyChiefAnalysisBarGraph', 'ReportsAnalysisController@yearlyChiefAnalysisBarGraph');
 
 
 /*LOGIN ROUTE*/
