@@ -91,12 +91,18 @@ a.active{
     }
 }
 .secondary_objective-name{
-    width: 70%;
+    width: 40%;
 }
 .secondary_objective-perspective{
-     width: 25%;
+    width: 25%;
 }
-.unit_objective-edit{
+.secondary_objective-contributory{
+    width: 30%;
+}
+.secondary_objective-encoder{
+    width: 30%;
+}
+.secondary_objective-edit{
     width: 5%;
 }
 /* ./css for secondary objectives */
