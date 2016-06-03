@@ -157,12 +157,13 @@ class ReportsAnalysisController extends Controller
 		$year = Input::get('year');
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('pdf-layouts.PDFChiefQuarterlyAnalysis')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf = PDF::loadView('pdf-layouts.PDFChiefYearlyBarGraphAnalysis')->setPaper('Folio')->setOrientation('Landscape');
 		$pdf->output();
 		$dom_pdf = $pdf->getDomPDF();
 		$canvas = $dom_pdf ->get_canvas();
 		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    return $pdf->stream();
+  	    //return $pdf->stream();
+  	    return view('pdf-layouts.PDFChiefYearlyBarGraphAnalysis');
 	}
 
 	public function quarterlyChiefAnalysisDonutGraph()

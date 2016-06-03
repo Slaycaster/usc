@@ -31,9 +31,9 @@ use App\StaffFunding;
 
     $sortByObjective = DB::table('staff_objectives')
                         ->join('staff_measures', 'staff_objectives.StaffObjectiveID', '=', 'staff_measures.StaffObjectiveID')
-                        ->where('staff_objectives.StaffID', '=', $staff_id)
+                        ->where('staff_objectives.StaffID', '=', $staff->StaffID)
                         ->orderBy('staff_objectives.StaffObjectiveName', 'asc')
-                        ->get();//dd($sortByObjective);
+                        ->get();//dd($staff->StaffID);
     $checkAccomplishment = 0;
     foreach($sortByObjective as $measure)
     {
