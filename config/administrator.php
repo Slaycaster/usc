@@ -74,6 +74,7 @@ return array(
 					'Chiefs',
 					'ranks',
 					'secondary_unit',
+					'tertiary_unit',
 					'Users' => array(
 						'user_units',
 						'user_staffs',
