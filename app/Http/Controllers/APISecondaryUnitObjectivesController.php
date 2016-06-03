@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\SecondaryUnitObjective;
+use App\Perspective;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use Request, Session, DB, Validator, Input, Redirect;
 
 class APISecondaryUnitObjectivesController extends Controller {
 
@@ -14,7 +15,16 @@ class APISecondaryUnitObjectivesController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$secondary_user_id = Session::get('secondary_user_id', 'default');
+		$secondaryunit = UserSecondaryUnit::where('UserSecondaryUnitID', '=', $secondary_user_id)->select('SecondaryUnitID')->lists('SecondaryUnitID'); //Get the Unit of the user
+        
+		return SecondaryUnitObjective::where('SecondaryUnitID', '=', $secondaryunit)
+			->with('perspective')
+			->with('secondary_unit')
+			->with('unitobjective')
+			->with('user_secondary_unit')
+			->with('user_secondary_unit.rank')
+			->get();
 	}
 
 	/**

@@ -20,4 +20,29 @@ class SecondaryUnitObjective extends Model {
 	 */
 	protected $primaryKey = 'SecondaryUnitObjectiveID';
 
+	public function perspective()
+	{
+		return $this->belongsTo('App\Perspective', 'PerspectiveID', 'PerspectiveID'); //(model, foreign_key, parent_primary_key)
+	}
+
+	public function secondary_unit()
+	{
+		return $this->belongsTo('App\SecondaryUnit', 'SecondaryUnitID', 'SecondaryUnitID');
+	}
+
+	public function user_secondary_unit()
+	{
+		return $this->belongsTo('App\UserSecondaryUnit', 'UserSecondaryUnitID', 'UserSecondaryUnitID');
+	}
+
+	public function unitobjective()
+	{
+		return $this->belongsTo('App\UnitObjective', 'UnitObjectiveID', 'UnitObjectiveID');
+	}
+
+	public function secondary_unit_measures()
+	{
+		return $this->hasMany('App\SecondaryUnitMeasure','SecondaryUnitMeasureID','SecondaryUnitMeasureID');
+	}
+
 }
