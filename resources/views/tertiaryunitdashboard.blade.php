@@ -28,7 +28,7 @@
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashname">
-            <p><b>{{ $tertiaryunit_user->tertiary_unit->TertiaryUnitName }} Dashboard</b></p>
+            <p><b>{{ $user->tertiary_unit->TertiaryUnitName }} Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
     </div>
@@ -36,9 +36,9 @@
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
             <img class="img-responsive dashboard-custom-pictureabb" 
-                src="{{ asset('uploads/chiefpictures/cropped/'.''.$tertiaryunit_user->tertiary_unit->PicturePath.'') }}">
+                src="{{ asset('uploads/tertiarypictures/cropped/'.''.$user->tertiary_unit->PicturePath.'') }}">
             <p>
-                <b>{{ $tertiaryunit_user->tertiary_unit->TertiaryUnitAbbreviation }} Dashboard</b>
+                <b>{{ $user->tertiary_unit->TertiaryUnitAbbreviation }} Dashboard</b>
             </p>
         </div>
         <div class="col-md-12"><br /></div>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/tertiarypictures/cropped/'.''.$tertiaryunit_user->tertiary_unit->PicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/tertiarypictures/cropped/'.''.$user->tertiary_unit->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -65,7 +65,7 @@
                                         <i class="fa fa-circle-o-notch fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">{{ $tertiaryunit_objectives_count }}</div>
+                                        <div class="huge">{{ $tertiary_objectives_count }}</div>
                                         <div>Objectives</div>
                                     </div>
                                 </div>
@@ -333,7 +333,7 @@
 
           var year = $("#datetimepicker1").find("input").val();
           console.log(year);
-          var chief_id = "<?php echo $chief_id ?>";
+          var chief_id = "<?php echo $tertiaryunit_id ?>";
 
           $.ajax({
               type: "POST",
@@ -433,7 +433,7 @@
         $('#morris-donut-chart').empty();
 
           var year = $("#datetimepicker1").find("input").val();
-          var chief_id = "<?php echo $chief_id ?>";
+          var chief_id = "<?php echo $tertiaryunit_id ?>";
 
           $.ajax({
               type: "POST",

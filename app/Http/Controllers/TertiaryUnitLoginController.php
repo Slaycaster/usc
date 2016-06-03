@@ -33,13 +33,13 @@ class TertiaryUnitLoginController extends Controller {
 		if (Session::has('tertiary_user_id'))
 		{
 			$id = Session::get('tertiary_user_id', 'default');
-			$user = UserUnit::where('UserTertiaryUnitID', $id)
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
 				->with('tertiary_unit')
 				->first();
 			
-			$tertiary_objectives_count = UnitObjective::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
+			$tertiary_objectives_count = TertiaryUnitObjective::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
 				->count();
-			$tertiary_measures_count = UnitMeasure::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
+			$tertiary_measures_count = TertiaryUnitMeasure::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
 				->count();
 			return view('tertiaryunitdashboard')
 				->with('tertiaryunit_id', $user->TertiaryUnitID)
