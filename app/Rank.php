@@ -30,4 +30,9 @@ class Rank extends Model {
 		return $this->hasMany('App\UserUnit', 'UserUnitID', 'UserUnitID'); //(model, foreign key, parent key)
 	}
 
+	public function user_secondary_units()
+	{
+		return $this->hasMany('App\UserSecondaryUnit', 'UserSecondaryUnitID', 'UserSecondaryUnitID');
+	}
+
 }
