@@ -12,7 +12,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'single' => 'Unit user',
+	'single' => 'UnitUser',
 
 	/**
 	 * The class name of the Eloquent model that this config represents
