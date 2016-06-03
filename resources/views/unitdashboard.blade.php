@@ -610,7 +610,7 @@ function up()
                             var picture = unit[i].PicturePath;
                             var picture_path = "{{ asset('uploads/unitpictures/cropped') }}"+"/"+picture;
 
-                            a.setAttribute("href", "{{ url('report/currentYearChiefUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("href", "{{ url('report/currentUnitScorecard') }}"+'/'+id);
                             a.setAttribute("class", "list-group-item clearfix");
                             a.target = "_blank";
 
@@ -651,7 +651,7 @@ function up()
                             var picture = staff[i].PicturePath;
                             var picture_path = "{{ asset('uploads/staffpictures/cropped') }}"+"/"+picture;
 
-                            a.setAttribute("href", "{{ url('report/currentYearChiefStaffScorecard') }}"+'/'+id);
+                            a.setAttribute("href", "{{ url('report/currentStaffScorecard') }}"+'/'+id);
                             a.setAttribute("class", "list-group-item clearfix");
                             a.target = "_blank";
 
@@ -693,7 +693,7 @@ function up()
                             var picture = chief[i].PicturePath;
                             var picture_path = "{{ asset('uploads/chiefpictures/cropped') }}"+"/"+picture;
 
-                            a.setAttribute("href", "{{ url('report/currentYearStaffChiefScorecard') }}"+'/'+id);
+                            a.setAttribute("href", "{{ url('report/currentChiefScorecard') }}"+'/'+id);
                             a.setAttribute("class", "list-group-item clearfix");
                             a.target = "_blank";
 
