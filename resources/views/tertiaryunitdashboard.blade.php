@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ url('tertiaryunit/objectives')}}">
+                            <a href="{{ url('tertiary_unit/objectives')}}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Go to Objectives</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ url('tertiaryunit/measures') }}">
+                            <a href="{{ url('tertiary_unit/measures') }}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Go to Measures</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -235,7 +235,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- /.list-group -->
-                    <a href="{{ url('tertiaryunit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('tertiary_unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>
