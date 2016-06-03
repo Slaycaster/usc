@@ -40,6 +40,11 @@ class UserSecondaryUnit extends Model {
 		return $this->belongsTo('App\SecondaryUnit', 'SecondaryUnitID', 'SecondaryUnitID');
 	}
 
+	public function secondary_unit_measures()
+	{
+		return $this->hasMany('App\SecondaryUnitMeasure', 'SecondaryUnitMeasureID','SecondaryUnitMeasureID');
+	}
+
 
 
 }

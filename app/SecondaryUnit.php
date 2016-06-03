@@ -29,6 +29,11 @@ class SecondaryUnit extends Model {
 	{
 		return $this->hasMany('App\UserSecondaryUnit', 'SecondaryUnitID', 'SecondaryUnitID');
 	}
+
+	public function secondary_unit_measures()
+	{
+		return $this->hasMany('App\SecondaryUnitMeasure', 'SecondaryUnitID', 'SecondaryUnitID');
+	}
 	
 
 }
