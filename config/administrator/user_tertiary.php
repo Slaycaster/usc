@@ -12,7 +12,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'single' => 'TertiaryUnitUser',
+	'single' => 'Tertiary Unit User',
 
 	/**
 	 * The class name of the Eloquent model that this config represents
@@ -110,7 +110,7 @@ return array(
 	    	'title' => 'Password',
 	    	'type' => 'password'
 	    ),
-	    'secondary_unit' => array(
+	    'tertiary_unit' => array(	
 	    	'title' => 'Tertiary Unit',
 	    	'type' => 'relationship',
 	    	'name_field' => 'TertiaryUnitName'
@@ -123,12 +123,12 @@ return array(
 	),
 
 	'rules' => array(
-    	'UserTertiaryUnitBadgeNumber' => 'required|unique:user_units,UserSecondaryUnitBadgeNumber',
+    	'UserTertiaryUnitBadgeNumber' => 'required|unique:user_tertiary_units,UserTertiaryUnitBadgeNumber',
     	'UserTertiaryUnitFirstName' => 'required',
     	'UserTertiaryUnitLastName' => 'required',
     	'UserTertiaryUnitPassword' => 'required|min:7|max:16',
     	'RankID' => 'required',
-    	'UnitID' => 'required'
+    	'TertiaryUnitID' => 'required'
 	),
 
 	'messages' => array(
