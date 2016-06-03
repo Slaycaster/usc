@@ -159,7 +159,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ url('tertiaryunit/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i>    Dashboard
+                            <a href="{{ url('tertiary/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i>    Dashboard
                             </a>
                         </li>
                         <li>
