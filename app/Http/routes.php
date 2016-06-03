@@ -110,7 +110,7 @@ Route::get('staff/analysis_reports','ReportsAnalysisController@staffIndex');
 //Route::post('staff/ajaxchiefmeasure', 'APIStaffMeasuresController@ajaxchiefmeasure');
 Route::get('staff/angularchiefmeasure/{measureID}', 'APIStaffMeasuresController@angularchiefmeasure');
 Route::get('unit/angularstaffmeasure/{measureID}', 'APIUnitMeasuresController@angularstaffmeasure');
-
+Route::get('secondaryunit/angularunitmeasure/{measureID}', 'APISecondaryUnitMeasuresController@angularunitmeasure');
 /*CHIEF USER ROUTES*/
 Route::get('chief/scorecard', 'ChiefLoginController@scorecard');
 Route::get('chief/objectives', 'APIChiefObjectivesController@showIndex');
@@ -127,6 +127,7 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 
 /* SECONDARY USER */
 Route::get('secondaryunit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
+Route::get('secondaryunit/measures', 'APISecondaryUnitMeasuresController@showIndex');
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
@@ -146,10 +147,15 @@ Route::resource('api/staff_audit_trails','APIStaffAuditTrailsController');
 Route::resource('api/chief_audit_trails','APIChiefAuditTrailsController');
 Route::resource('api/chief_dashboard','APIChiefAuditTrailsDashController');
 Route::resource('api/secondary_unit_objectives', 'APISecondaryUnitObjectivesController');
+Route::resource('api/secondary_unit_measures', 'APISecondaryUnitMeasuresController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
+
 Route::get('api/secondary_unit_objectives/unitobjectives', 'APISecondaryUnitObjectivesController@unit_objectives');
+Route::get('api/secondaryunit/measures/secondaryunitobjectives' , 'APISecondaryUnitMeasuresController@secondaryunitobjectives');
+Route::get('api/secondaryunit/measures/unitmeasures', 'APISecondaryUnitMeasuresController@unit_measures');
+
 Route::get('api/staff/measures/chiefmeasures', 'APIStaffMeasuresController@chief_measures');
 Route::get('api/staff/measures/staffobjectives', 'APIStaffMeasuresController@staff_objectives');
 Route::get('api/unit/measures/unitobjectives', 'APIUnitMeasuresController@unit_objectives');

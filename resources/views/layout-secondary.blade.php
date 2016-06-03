@@ -174,7 +174,7 @@
                                     <a href="{{ url('secondaryunit/objectives') }}">Set Secondary Unit Objectives</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('secondary/measures') }}">Set Unit Measures</a>
+                                    <a href="{{ url('secondaryunit/measures') }}">Set Secondary Unit Measures</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
