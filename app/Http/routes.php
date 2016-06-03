@@ -54,7 +54,7 @@ Route::get('staff/dashboard', 'StaffLoginController@dashboard');
 Route::get('staff/staffdashboard', 'APIStaffAuditTrailsDashController@showIndex');
 Route::get('chief/dashboard', 'ChiefLoginController@dashboard');
 Route::get('chief/chiefdashboard', 'APIChiefAuditTrailsDashController@showIndex');
-Route::get('unit/dashboard', 'UnitLoginController@dashboard');
+Route::get('secondary/dashboard', 'SecondaryUnitLoginController@dashboard');
 
 
 /*BARGRAPH*/
@@ -120,7 +120,7 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 
 
 /* SECONDARY USER */
-
+Route::get('secondaryunit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
 
 
 
@@ -135,9 +135,11 @@ Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
 Route::resource('api/staff_audit_trails','APIStaffAuditTrailsController');
 Route::resource('api/chief_audit_trails','APIChiefAuditTrailsController');
 Route::resource('api/chief_dashboard','APIChiefAuditTrailsDashController');
+Route::resource('api/secondary_unit_objectives', 'APISecondaryUnitObjectivesController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
+Route::get('api/secondary_unit_objectives/unitobjectives', 'APISecondaryUnitObjectivesController@unit_objectives');
 Route::get('api/staff/measures/chiefmeasures', 'APIStaffMeasuresController@chief_measures');
 Route::get('api/staff/measures/staffobjectives', 'APIStaffMeasuresController@staff_objectives');
 Route::get('api/unit/measures/unitobjectives', 'APIUnitMeasuresController@unit_objectives');
