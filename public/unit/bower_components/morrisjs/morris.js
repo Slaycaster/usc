@@ -4,6 +4,7 @@ Copyright 2014 Olly Smith All rights reserved.
 Licensed under the BSD-2-Clause License.
 */
 
+/*Commented Line 670-671 line 179 hideHover: true(false), @pabs*/
 
 (function() {
   var $, Morris, minutesSpecHelper, secondsSpecHelper,
@@ -112,8 +113,8 @@ Licensed under the BSD-2-Clause License.
             x: left,
             width: width
           });
-        } else {
-          return _this.fire('hovermove', x, evt.pageY - offset.top);
+      } else {
+          return _this.fire('hovermove', x, evt.pageY - offset.top);  
         }
       });
       this.el.bind('mouseleave', function(evt) {
@@ -175,7 +176,7 @@ Licensed under the BSD-2-Clause License.
       gridTextSize: 12,
       gridTextFamily: 'sans-serif',
       gridTextWeight: 'normal',
-      hideHover: false,
+      hideHover: true,
       yLabelFormat: null,
       xLabelAngle: 0,
       numLines: 5,
@@ -666,8 +667,8 @@ Licensed under the BSD-2-Clause License.
       if (!html) {
         return this.hide();
       } else {
-        this.html(html);
-        this.show();
+        //this.html(html);
+        //this.show();
         return this.moveTo(x, y);
       }
     };

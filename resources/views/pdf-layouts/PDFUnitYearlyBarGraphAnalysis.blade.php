@@ -1,33 +1,29 @@
 <?php
-	
+    
 //Models
-use App\ChiefTarget;
-use App\ChiefMeasure;
-use App\ChiefObjective;
-use App\Chief;
-use App\UserChief;
-use App\ChiefAccomplishment;
-use App\ChiefOwner;
-use App\ChiefInitiative;
-use App\ChiefFunding;
+use App\UnitTarget;
+use App\UnitMeasure;
+use App\UnitObjective;
+use App\Unit;
+use App\UserUnit;
+use App\UnitAccomplishment;
+use App\UnitOwner;
+use App\UnitInitiative;
+use App\UnitFunding;
 
-//LARAVEL MODULES
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+    $selectedYear = Session::get('year', 'default');    
 
-
-
-	$selectedYear = Session::get('year', 'default');	
-
-    $chief_id = Session::get('chief_user_id', 'default'); //get the UserChiefID stored in session.
-    $chief_user = UserChief::where('UserChiefID', '=', $chief_id)
+    $unit_id = Session::get('unit_user_id', 'default');
+    $unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
                             ->first();
+    $unit = UserUnit::where('UserUnitID', '=', $unit_id)->select('UnitID')->first(); //Get the Unit of the unit     
+    $unit = Unit::where('UnitID', '=', $unit_user->UnitID)->first();
 
-    $chief = UserChief::where('UserChiefID', '=', $chief_id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the chief         
-    $chief = Chief::where('ChiefID', '=', $chief_user->ChiefID)->first();
-
-	$logoPath = 'img/pnp_logo2.png';
-	$chieflogoPath = 'uploads/chiefpictures/cropped/'.$chief->PicturePath;
+    $user = UserUnit::where('UserUnitID', $unit_id)
+                    ->first();
+    
+    $logoPath = 'img/pnp_logo2.png';
+    $unitlogoPath = 'uploads/unitpictures/cropped/'.$unit->PicturePath;
 ?>
 
 <!DOCTYPE html>
@@ -35,43 +31,42 @@ use Illuminate\Http\Request;
 <head>
     <title>Report | PNP</title>
     <style type="text/css">
-    table
-    {
-        font-size: 10;
-        text-align: center;
-        border-collapse: collapse;
-        page-break-inside: auto;
-    }
-    p, strong
-    {
-    	font-family: helvetica;
-    }
-    img 
-    {
-    	position: absolute;
-    	left: 70px;
-    	top: 5px;
-	}
-	.unitlogo
-    {
-        position: absolute;
-        left: 85%;
-        top: 16px;
-    }
-    #tar,#tar1,#tar2,#tar3,#tar4,#tar5,#tar6,#tar7,#tar8,#tar9,#tar10,#tar11,#tar12
-    {
-         color: #0B62A4;
-         font-size: 14px;
-         font-weight: bold;
-    }
-    #acc,#acc1,#acc2,#acc3,#acc4,#acc5,#acc6,#acc7,#acc8,#acc9,#acc10,#acc11,#acc12
-    {
-        color: #7a92a3;
-        font-size: 14px;
-        font-weight: bold;
-    }
+        table
+        {
+            font-size: 14;
+            text-align: center;
+            border-collapse: collapse;
+            page-break-inside: auto;
+        }
+        p, strong
+        {
+            font-family: helvetica;
+        }
+        img 
+        {
+            position: absolute;
+            left: 70px;
+            top: 5px;
+        }
+        .unitlogo
+        {
+            position: absolute;
+            left: 85%;
+            top: 16px;
+        }
+        #tar,#tar1,#tar2,#tar3,#tar4,#tar5,#tar6,#tar7,#tar8,#tar9,#tar10,#tar11,#tar12
+        {
+             color: #0B62A4;
+             font-size: 14px;
+             font-weight: bold;
+        }
+        #acc,#acc1,#acc2,#acc3,#acc4,#acc5,#acc6,#acc7,#acc8,#acc9,#acc10,#acc11,#acc12
+        {
+            color: #7a92a3;
+            font-size: 14px;
+            font-weight: bold;
+        }
     </style>
-    
     <!-- jQuery -->
     <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
@@ -85,23 +80,18 @@ use Illuminate\Http\Request;
 </head>
 
 <body>
-    {{-- <div class="footer">
-        <span class="pagenum"></span>
-    </div> --}}
-    <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 122px;">
-    @if($chief->ChiefAbbreviation != "C, PNP")
-        <img class="unitlogo" src="{{URL::asset($chieflogoPath)}}" style="height: 120px;width: 120px;">
-    @endif
+    <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
+    <img class="unitlogo" src="{{URL::asset($unitlogoPath)}}" style="height: 120px;width: 120px;">
     <p style="text-align: center;">
         <normal style="font-size: 15px">Republic of the Philippines</normal>
         <br>
         <strong>NATIONAL POLICE COMMISSION<br>PHILIPPINE NATIONAL POLICE</strong>
         <br>
-        <normal style="font-size: 15px">{{ $chief->ChiefName }}</normal>
+        <normal style="font-size: 15px">{{ $unit->UnitName }}</normal>
         <br>
         <normal style="font-size: 10px">usc.pulis.net</normal>
     </p>
-    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $chief->ChiefAbbreviation }} Scorecard for {{ $selectedYear }}</p>
+    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $unit->UnitAbbreviation }} Scorecard for {{ $selectedYear }}</p>
 
 
     <div id="morris-area-chart"></div>
@@ -235,37 +225,35 @@ use Illuminate\Http\Request;
       {
         $('#morris-area-chart').empty();
           var year = "<?php echo $selectedYear ?>";
-          var chief_id = "<?php echo $chief_user->ChiefID ?>";
+          var unit_id = "<?php echo $unit_user->UnitID ?>";
 
           $.ajax({
               type: "POST",
-              url: "../bargraphchief",
+              url: "../bargraphunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'chief_id' : chief_id},
-              success: function(response)
-              {
+              data: {'year' : year, 'unit_id' : unit_id},
+              success: function(response){
                 var arr = response;
-                Morris.Bar
-                ({
-                    element: 'morris-area-chart',
-                    data: [
-                        {month: arr[0][0] , target: arr[0][1].toFixed(2) , accomp: arr[0][2].toFixed(2)},
-                        {month: arr[1][0] , target: arr[1][1].toFixed(2) , accomp: arr[1][2].toFixed(2)},
-                        {month: arr[2][0] , target: arr[2][1].toFixed(2) , accomp: arr[2][2].toFixed(2)},
-                        {month: arr[3][0] , target: arr[3][1].toFixed(2) , accomp: arr[3][2].toFixed(2)},
-                        {month: arr[4][0] , target: arr[4][1].toFixed(2) , accomp: arr[4][2].toFixed(2)},
-                        {month: arr[5][0] , target: arr[5][1].toFixed(2) , accomp: arr[5][2].toFixed(2)},
-                        {month: arr[6][0] , target: arr[6][1].toFixed(2) , accomp: arr[6][2].toFixed(2)},
-                        {month: arr[7][0] , target: arr[7][1].toFixed(2) , accomp: arr[7][2].toFixed(2)},
-                        {month: arr[8][0] , target: arr[8][1].toFixed(2) , accomp: arr[8][2].toFixed(2)},
-                        {month: arr[9][0] , target: arr[9][1].toFixed(2) , accomp: arr[9][2].toFixed(2)},
-                        {month: arr[10][0] , target: arr[10][1].toFixed(2) , accomp: arr[10][2].toFixed(2)},
-                        {month: arr[11][0] , target: arr[11][1].toFixed(2) , accomp: arr[11][2].toFixed(2)}
-                    ],
-                    xkey: 'month',
-                    ykeys: ['target', 'accomp'],
-                    labels: ['Target', 'Accomplishment']
-                });
+                Morris.Bar({
+                element: 'morris-area-chart',
+                data: [
+                    {month: arr[0][0] , target: arr[0][1] , accomp: arr[0][2]},
+                    {month: arr[1][0] , target: arr[1][1] , accomp: arr[1][2]},
+                    {month: arr[2][0] , target: arr[2][1] , accomp: arr[2][2]},
+                    {month: arr[3][0] , target: arr[3][1] , accomp: arr[3][2]},
+                    {month: arr[4][0] , target: arr[4][1] , accomp: arr[4][2]},
+                    {month: arr[5][0] , target: arr[5][1] , accomp: arr[5][2]},
+                    {month: arr[6][0] , target: arr[6][1] , accomp: arr[6][2]},
+                    {month: arr[7][0] , target: arr[7][1] , accomp: arr[7][2]},
+                    {month: arr[8][0] , target: arr[8][1] , accomp: arr[8][2]},
+                    {month: arr[9][0] , target: arr[9][1] , accomp: arr[9][2]},
+                    {month: arr[10][0] , target: arr[10][1] , accomp: arr[10][2]},
+                    {month: arr[11][0] , target: arr[11][1] , accomp: arr[11][2]}
+                ],
+                xkey: 'month',
+                ykeys: ['target', 'accomp'],
+                
+                labels: ['target', 'accomplishments']                });
                 var tar1 = document.getElementById("tar1");
                 var tar2 = document.getElementById("tar2");
                 var tar3 = document.getElementById("tar3");
