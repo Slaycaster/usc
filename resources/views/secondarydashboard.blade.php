@@ -28,17 +28,17 @@
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashname">
-            <!-- <p><b>{{ $user->unit->UnitName }} Unit Dashboard</b></p> -->
+            <p><b>{{ $user->secondary_unit->SecondaryUnitName }} Secondary Unit Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
     </div>
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
-            <!-- <img class="img-responsive dashboard-custom-pictureabb" 
-                src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}"> -->
+            <img class="img-responsive dashboard-custom-pictureabb" 
+                src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
             <p>
-                <!-- <b>{{ $user->unit->UnitAbbreviation }} Unit Dashboard</b> -->
+                <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Secondary Unit Dashboard</b>
             </p>
         </div>
         <div class="col-md-12"><br /></div>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <!-- <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/unitpictures/cropped/'.''.$user->unit->PicturePath.'') }}"> -->
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -65,7 +65,7 @@
                                         <i class="fa fa-circle-o-notch fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <!-- <div class="huge">{{ $unit_objectives_count }}</div> -->
+                                        <div class="huge">2</div>
                                         <div>Objectives</div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                         <i class="fa fa-bar-chart fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <!-- <div class="huge">{{ $unit_measures_count }}</div> -->
+                                        <div class="huge">6</div>
                                         <div>Measures</div>
                                     </div>
                                 </div>
@@ -349,7 +349,7 @@
         $('#morris-area-chart').empty();
 
           var year = $("#datetimepicker1").find("input").val();
-          var unit_id = "<?php echo $unit_id ?>";
+          var unit_id = "<?php echo $secondary_unit_id ?>";
 
           console.log(unit_id);
           $.ajax({
@@ -406,7 +406,7 @@
             $('#morris-area-chart').empty();
 
           var year = new Date().getFullYear()
-          var unit_id = "<?php echo $unit_id ?>";
+          var unit_id = "<?php echo $secondary_unit_id ?>";
 
           $.ajax({
               type: "POST",
@@ -463,7 +463,7 @@
         $('#morris-donut-chart').empty();
 
           var year = $("#datetimepicker1").find("input").val();
-          var unit_id = "<?php echo $unit_id ?>";
+          var unit_id = "<?php echo $secondary_unit_id ?>";
 
           console.log(unit_id);
           $.ajax({
@@ -512,7 +512,7 @@
         $('#morris-donut-chart').empty();
 
         var year = new Date().getFullYear()
-          var unit_id = "<?php echo $unit_id ?>";
+          var unit_id = "<?php echo $secondary_unit_id ?>";
 
           console.log(unit_id);
           $.ajax({
