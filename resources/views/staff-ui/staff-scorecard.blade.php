@@ -201,7 +201,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].JanuaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="january=unit_measure.unit_accomplishments[0].JanuaryAccomplishment">
+                                                                            <div ng-if="january!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].JanuaryAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -236,7 +239,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].FebruaryAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="february=unit_measure.unit_accomplishments[0].FebruaryAccomplishment">
+                                                                            <div ng-if="february!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].FebruaryAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -270,7 +276,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].MarchAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="march=unit_measure.unit_accomplishments[0].MarchAccomplishment">
+                                                                            <div ng-if="march!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].MarchAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -304,7 +313,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].AprilAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="april=unit_measure.unit_accomplishments[0].AprilAccomplishment">
+                                                                            <div ng-if="april!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].AprilAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -337,7 +349,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].MayAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="may=unit_measure.unit_accomplishments[0].MayAccomplishment">
+                                                                            <div ng-if="may!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].MayAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -370,7 +385,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].JuneAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="june=unit_measure.unit_accomplishments[0].JuneAccomplishment">
+                                                                            <div ng-if="june!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].JuneAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -402,7 +420,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].JulyAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="july=unit_measure.unit_accomplishments[0].JulyAccomplishment">
+                                                                            <div ng-if="july!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].JulyAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -434,7 +455,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].AugustAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="august=unit_measure.unit_accomplishments[0].AugustAccomplishment">
+                                                                            <div ng-if="august!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].AugustAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -467,7 +491,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].SeptemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="september=unit_measure.unit_accomplishments[0].SeptemberAccomplishment">
+                                                                            <div ng-if="september!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].SeptemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -499,7 +526,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].OctoberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="october=unit_measure.unit_accomplishments[0].OctoberAccomplishment">
+                                                                            <div ng-if="october!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].OctoberAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -533,7 +563,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].NovemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="november=unit_measure.unit_accomplishments[0].NovemberAccomplishment">
+                                                                            <div ng-if="november!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].NovemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
@@ -567,7 +600,10 @@
                                                             <div class="modal-body">
                                                                 <form name="frmEditTarget" class="form-horizontal" novalidate="">
                                                                         <div ng-repeat='unit_measure in staff_target.staff_measure.unit_measures'>
-                                                                            + <strong><% unit_measure.unit_accomplishments[0].DecemberAccomplishment %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            <input type="hidden" ng-init="december=unit_measure.unit_accomplishments[0].DecemberAccomplishment">
+                                                                            <div ng-if="december!='0'">
+                                                                                + <strong><% unit_measure.unit_accomplishments[0].DecemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% unit_measure.unit_accomplishments[0].unit.UnitAbbreviation %></span>
+                                                                            </div>
                                                                         </div>
                                                                 </form>
 
