@@ -4,6 +4,8 @@
 use App\UserUnit;
 use App\UserChief;
 use App\UserStaff;
+use App\UserSecondaryUnit;
+use App\UserTertiaryUnit;
 //LARAVEL MODULES
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
