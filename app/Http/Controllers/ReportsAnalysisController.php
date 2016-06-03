@@ -152,30 +152,24 @@ class ReportsAnalysisController extends Controller
   	    return $pdf->stream();
 	}
 
-	public function quarterlyChiefAnalysisBarGraph()
+	public function yearlyUnitAnalysisBarGraph()
 	{	
 		$year = Input::get('year');
 		Session::put('year', $year);
-
-		$pdf = PDF::loadView('pdf-layouts.PDFChiefYearlyBarGraphAnalysis')->setPaper('Folio')->setOrientation('Landscape');
-		$pdf->output();
-		$dom_pdf = $pdf->getDomPDF();
-		$canvas = $dom_pdf ->get_canvas();
-		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    //return $pdf->stream();
-  	    return view('pdf-layouts.PDFChiefYearlyBarGraphAnalysis');
+  	    return view('pdf-layouts.PDFUnitYearlyBarGraphAnalysis');
 	}
 
-	public function quarterlyChiefAnalysisDonutGraph()
+	public function yearlyStaffAnalysisBarGraph()
 	{	
 		$year = Input::get('year');
 		Session::put('year', $year);
+  	    return view('pdf-layouts.PDFStaffYearlyBarGraphAnalysis');
+	}
 
-		$pdf = PDF::loadView('pdf-layouts.PDFChiefQuarterlyAnalysis')->setPaper('Folio')->setOrientation('Landscape');
-		$pdf->output();
-		$dom_pdf = $pdf->getDomPDF();
-		$canvas = $dom_pdf ->get_canvas();
-		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    return $pdf->stream();
+	public function yearlyChiefAnalysisBarGraph()
+	{	
+		$year = Input::get('year');
+		Session::put('year', $year);
+  	    return view('pdf-layouts.PDFChiefYearlyBarGraphAnalysis');
 	}
 }

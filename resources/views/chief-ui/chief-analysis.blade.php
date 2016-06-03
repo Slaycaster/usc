@@ -66,34 +66,11 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-lg-4 col-xs-6">
+                            <div class="col-md-4 col-lg-4">
                                 <div>
-                                    <form method="get" action="{{ url('report/quarterlyChiefAnalysisBarGraph') }}" target="_blank">
+                                    <form method="get" action="{{ url('report/yearlyChiefAnalysisBarGraph') }}" target="_blank">
                                         <div>
                                             <label for="year" class="control">Yearly Scorecard Analysis Report in Bar Graph:</label>
-                                            <br>
-                                            <div class="col-md-12 col-xs-12">
-                                                <select id="year" name="year" class="form-control" style="text-align-last: center;font-size: 16px;">
-                                                    @foreach($years as $year)
-                                                        <option value="{{ $year }}">{{ $year }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <br>
-                                            <br>
-                                            <div class="col-md-12 col-xs-12">
-                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save">Generate PDF</button>
-                                            </div>
-                                            <br>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-lg-4 col-xs-6">
-                                 <div>
-                                    <form method="get" action="{{ url('report/quarterlyChiefAnalysisDonutGraph') }}" target="_blank">
-                                        <div>
-                                            <label for="year" class="control">Yearly Scorecard Analysis Report in Donut Graph:</label>
                                             <br>
                                             <div class="col-md-12 col-xs-12">
                                                 <select id="year" name="year" class="form-control" style="text-align-last: center;font-size: 16px;">

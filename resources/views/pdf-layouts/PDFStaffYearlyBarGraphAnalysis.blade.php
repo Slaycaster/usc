@@ -1,33 +1,32 @@
 <?php
-	
+    
 //Models
-use App\ChiefTarget;
-use App\ChiefMeasure;
-use App\ChiefObjective;
-use App\Chief;
-use App\UserChief;
-use App\ChiefAccomplishment;
-use App\ChiefOwner;
-use App\ChiefInitiative;
-use App\ChiefFunding;
+use App\StaffTarget;
+use App\StaffMeasure;
+use App\StaffObjective;
+use App\Staff;
+use App\UserStaff;
+use App\StaffAccomplishment;
+use App\StaffOwner;
+use App\StaffInitiative;
+use App\StaffFunding;
 
-//LARAVEL MODULES
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+    $selectedYear = Session::get('year', 'default');    
 
-
-
-	$selectedYear = Session::get('year', 'default');	
-
-    $chief_id = Session::get('chief_user_id', 'default'); //get the UserChiefID stored in session.
-    $chief_user = UserChief::where('UserChiefID', '=', $chief_id)
+    $staff_id = Session::get('staff_user_id', 'default');
+    $staff_user = UserStaff::where('UserStaffID', '=', $staff_id)
                             ->first();
 
-    $chief = UserChief::where('UserChiefID', '=', $chief_id)->select('ChiefID')->lists('ChiefID'); //Get the Unit of the chief         
-    $chief = Chief::where('ChiefID', '=', $chief_user->ChiefID)->first();
-
-	$logoPath = 'img/pnp_logo2.png';
-	$chieflogoPath = 'uploads/chiefpictures/cropped/'.$chief->PicturePath;
+    $staff_id = Session::get('staff_user_id', 'default'); //get the UserstaffID stored in session.
+    $staff = UserStaff::where('UserStaffID', '=', $staff_id)->select('StaffID')->first(); //Get the Unit of the chief
+      
+    $staff = Staff::where('StaffID', '=', $staff_user->StaffID)->first();
+    $staff_objectives = StaffObjective::all();
+    $staff_measures = StaffMeasure::with('staff')->where('StaffID', '=', $staff_user->StaffID)->get();
+    
+    
+    $logoPath = 'img/pnp_logo2.png';
+    $stafflogoPath = 'uploads/staffpictures/cropped/'.$staff->PicturePath;
 ?>
 
 <!DOCTYPE html>
@@ -37,22 +36,22 @@ use Illuminate\Http\Request;
     <style type="text/css">
     table
     {
-        font-size: 10;
+        font-size: 14;
         text-align: center;
         border-collapse: collapse;
         page-break-inside: auto;
     }
     p, strong
     {
-    	font-family: helvetica;
+        font-family: helvetica;
     }
     img 
     {
-    	position: absolute;
-    	left: 70px;
-    	top: 5px;
-	}
-	.unitlogo
+        position: absolute;
+        left: 70px;
+        top: 5px;
+    }
+    .unitlogo
     {
         position: absolute;
         left: 85%;
@@ -71,7 +70,6 @@ use Illuminate\Http\Request;
         font-weight: bold;
     }
     </style>
-    
     <!-- jQuery -->
     <script src="{{ asset('unit/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
@@ -85,23 +83,18 @@ use Illuminate\Http\Request;
 </head>
 
 <body>
-    {{-- <div class="footer">
-        <span class="pagenum"></span>
-    </div> --}}
     <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 122px;">
-    @if($chief->ChiefAbbreviation != "C, PNP")
-        <img class="unitlogo" src="{{URL::asset($chieflogoPath)}}" style="height: 120px;width: 120px;">
-    @endif
+    <img class="unitlogo" src="{{URL::asset($stafflogoPath)}}" style="height: 120px;width: 120px;">
     <p style="text-align: center;">
         <normal style="font-size: 15px">Republic of the Philippines</normal>
         <br>
         <strong>NATIONAL POLICE COMMISSION<br>PHILIPPINE NATIONAL POLICE</strong>
         <br>
-        <normal style="font-size: 15px">{{ $chief->ChiefName }}</normal>
+        <normal style="font-size: 15px">{{ $staff->StaffName }}</normal>
         <br>
         <normal style="font-size: 10px">usc.pulis.net</normal>
     </p>
-    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $chief->ChiefAbbreviation }} Scorecard for {{ $selectedYear }}</p>
+    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $staff->StaffAbbreviation }} Scorecard for {{ $selectedYear }}</p>
 
 
     <div id="morris-area-chart"></div>
@@ -235,36 +228,35 @@ use Illuminate\Http\Request;
       {
         $('#morris-area-chart').empty();
           var year = "<?php echo $selectedYear ?>";
-          var chief_id = "<?php echo $chief_user->ChiefID ?>";
+          var staff_id = "<?php echo $staff_user->StaffID ?>";
 
           $.ajax({
               type: "POST",
-              url: "../bargraphchief",
+              url: "../bargraph",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'chief_id' : chief_id},
-              success: function(response)
-              {
+              data: {'year' : year, 'staff_id' : staff_id},
+              success: function(response){
                 var arr = response;
-                Morris.Bar
-                ({
-                    element: 'morris-area-chart',
-                    data: [
-                        {month: arr[0][0] , target: arr[0][1].toFixed(2) , accomp: arr[0][2].toFixed(2)},
-                        {month: arr[1][0] , target: arr[1][1].toFixed(2) , accomp: arr[1][2].toFixed(2)},
-                        {month: arr[2][0] , target: arr[2][1].toFixed(2) , accomp: arr[2][2].toFixed(2)},
-                        {month: arr[3][0] , target: arr[3][1].toFixed(2) , accomp: arr[3][2].toFixed(2)},
-                        {month: arr[4][0] , target: arr[4][1].toFixed(2) , accomp: arr[4][2].toFixed(2)},
-                        {month: arr[5][0] , target: arr[5][1].toFixed(2) , accomp: arr[5][2].toFixed(2)},
-                        {month: arr[6][0] , target: arr[6][1].toFixed(2) , accomp: arr[6][2].toFixed(2)},
-                        {month: arr[7][0] , target: arr[7][1].toFixed(2) , accomp: arr[7][2].toFixed(2)},
-                        {month: arr[8][0] , target: arr[8][1].toFixed(2) , accomp: arr[8][2].toFixed(2)},
-                        {month: arr[9][0] , target: arr[9][1].toFixed(2) , accomp: arr[9][2].toFixed(2)},
-                        {month: arr[10][0] , target: arr[10][1].toFixed(2) , accomp: arr[10][2].toFixed(2)},
-                        {month: arr[11][0] , target: arr[11][1].toFixed(2) , accomp: arr[11][2].toFixed(2)}
-                    ],
-                    xkey: 'month',
-                    ykeys: ['target', 'accomp'],
-                    labels: ['Target', 'Accomplishment']
+                Morris.Bar({
+                element: 'morris-area-chart',
+                data: [
+                    {month: arr[0][0] , target: arr[0][1].toFixed(2) , accomp: arr[0][2].toFixed(2)},
+                    {month: arr[1][0] , target: arr[1][1].toFixed(2) , accomp: arr[1][2].toFixed(2)},
+                    {month: arr[2][0] , target: arr[2][1].toFixed(2) , accomp: arr[2][2].toFixed(2)},
+                    {month: arr[3][0] , target: arr[3][1].toFixed(2) , accomp: arr[3][2].toFixed(2)},
+                    {month: arr[4][0] , target: arr[4][1].toFixed(2) , accomp: arr[4][2].toFixed(2)},
+                    {month: arr[5][0] , target: arr[5][1].toFixed(2) , accomp: arr[5][2].toFixed(2)},
+                    {month: arr[6][0] , target: arr[6][1].toFixed(2) , accomp: arr[6][2].toFixed(2)},
+                    {month: arr[7][0] , target: arr[7][1].toFixed(2) , accomp: arr[7][2].toFixed(2)},
+                    {month: arr[8][0] , target: arr[8][1].toFixed(2) , accomp: arr[8][2].toFixed(2)},
+                    {month: arr[9][0] , target: arr[9][1].toFixed(2) , accomp: arr[9][2].toFixed(2)},
+                    {month: arr[10][0] , target: arr[10][1].toFixed(2) , accomp: arr[10][2].toFixed(2)},
+                    {month: arr[11][0] , target: arr[11][1].toFixed(2) , accomp: arr[11][2].toFixed(2)}
+                ],
+                xkey: 'month',
+                ykeys: ['target', 'accomp'],
+                
+                labels: ['Target', 'Accomplishment']
                 });
                 var tar1 = document.getElementById("tar1");
                 var tar2 = document.getElementById("tar2");
