@@ -9,7 +9,7 @@ class TertiaryUnit extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'tertiaries';
+	protected $table = 'tertiary_units';
 
 	/**
 	 * The attributes that are mass assignable.
