@@ -1,8 +1,8 @@
 /* CHIEF CSS */
 
-.chief-page-wrapper{
-    background-color:rgba(119, 221, 119, .5) !important;
-    border-color: rgba(119, 221, 119, .5) !important;
+.tertiary-page-wrapper{
+    background-color: rgba(65,146,75, 1) !important;
+    border-color: rgba(65,146,75,1) !important;
     /*  color of the background  */
 }
 
@@ -31,8 +31,8 @@
 .sidebar-search{
     background-color:#77DD77 !important;
 }
-.layout_chief-body{
-    background-color:rgba(54, 54, 54, 1);
+.layout_tertiary_unit-body{
+    background-color: rgba(65,146,75,1);
 }
 .dropdown-menu>li>a{
     color:#2A363B !important;
