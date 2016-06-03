@@ -79,7 +79,8 @@ return array(
 						'user_units',
 						'user_staffs',
 						'user_chiefs',
-						'user_secondary'
+						'user_secondary',
+						'user_tertiary'
 					)
 		),
 

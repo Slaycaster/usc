@@ -12,7 +12,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'single' => 'SecondaryUnitUser',
+	'single' => 'Secondary Unit User',
 
 	/**
 	 * The class name of the Eloquent model that this config represents
@@ -123,12 +123,12 @@ return array(
 	),
 
 	'rules' => array(
-    	'UserSecondaryUnitBadgeNumber' => 'required|unique:user_units,UserSecondaryUnitBadgeNumber',
+    	'UserSecondaryUnitBadgeNumber' => 'required|unique:user_secondary_units,UserSecondaryUnitBadgeNumber',
     	'UserSecondaryUnitFirstName' => 'required',
     	'UserSecondaryUnitLastName' => 'required',
     	'UserSecondaryUnitPassword' => 'required|min:7|max:16',
     	'RankID' => 'required',
-    	'UnitID' => 'required'
+    	'SecondaryUnitID' => 'required'
 	),
 
 	'messages' => array(

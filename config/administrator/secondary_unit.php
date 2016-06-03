@@ -13,7 +13,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'single' => 'SecondaryUnit',
+	'single' => 'Secondary Unit',
 
 	/**
 	 * The class name of the Eloquent model that this config represents
@@ -93,8 +93,8 @@ return array(
 	),
 
 	'rules' => array(
-    	'SecondaryUnitName' => 'required|unique:units, SecondaryUnitName',
-    	'SecondaryUnitAbbreviation' => 'required|unique:units,UnitAbbreviation',
+    	'SecondaryUnitName' => 'required|unique:secondary_units,SecondaryUnitName',
+    	'SecondaryUnitAbbreviation' => 'required|unique:secondary_units,SecondaryUnitAbbreviation',
     	'UnitID' => 'required'
 	),
 
