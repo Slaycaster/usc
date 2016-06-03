@@ -29,11 +29,12 @@
     <!-- SB Admin Custom CSS -->
     <link href="{{ asset('unit/dist/css/sb-admin-2.css') }}" rel="stylesheet">
 
-    <!-- Slaycaster Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
+    <!-- Slaycaster Custom CSS 
 
-    <!-- Yujin Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/chief.css') }}">
+    -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tertiary.css') }}">
 
      <!-- datetimepicker-->
     <link href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css">
@@ -95,13 +96,13 @@
             <div class="layout-custom-username">
                 <span>    
                             <img class="img-responsive dashboard-custom-pictureabb" 
-                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$tertiaryunit_user->UserTertiaryUnitPicturePath.'') }}"
+                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
                             style="width:20px; height:20px; margin-top:-5px; margin-bottom:-2px;">
                     </span>&nbsp;
                     Welcome 
-                    {{ $tertiaryunit_user->rank->RankCode }} 
-                    {{ $tertiaryunit_user->UserTertiaryUnitFirstName }} 
-                    {{ $tertiaryunit_user->UserTertiaryUnitLastName }}!
+                    {{ $user->rank->RankCode }} 
+                    {{ $user->UserTertiaryUnitFirstName }} 
+                    {{ $user->UserTertiaryUnitLastName }}!
             </div>
             <!-- /.navbar-header -->
 
@@ -110,13 +111,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
                         <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$tertiaryunit_user->UserTertiaryUnitPicturePath.'') }}"
+                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
                             style="width:30px; height:30px; margin-top:-5px;">
                         </span>&nbsp;
                             Welcome 
-                            {{ $tertiaryunit_user->rank->RankCode }} 
-                            {{ $tertiaryunit_user->UserTertiaryUnitFirstName }} 
-                            {{ $tertiaryunit_user->UserTertiaryUnitLastName }}! &nbsp; 
+                            {{ $user->rank->RankCode }} 
+                            {{ $user->UserTertiaryUnitFirstName }} 
+                            {{ $user->UserTertiaryUnitLastName }}! &nbsp; 
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -163,7 +164,7 @@
                         </li>
                         <li>
                             <a href="{{ url('tertiaryunit/scorecard') }}"><i class="fa fa-table fa-fw"></i> 
-                                {{ $tertiaryunit_user->tertiary_unit->TertiaryUnitAbbreviation }} Scorecard
+                                {{ $user->tertiary_unit->TertiaryUnitAbbreviation }} Scorecard
                             </a>
                         </li>
                         <li>
@@ -222,9 +223,9 @@
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$tertiaryunit_user->UserTertiaryUnitPicturePath.'') }}"
+                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
                                     style="width:15px; height:15px; margin-top:-5px; margin-bottom:-3px;">
-                                </span>&nbsp;  {{ $tertiaryunit_user->rank->RankCode }} {{ $tertiaryunit_user->UserTertiaryUnitName }} {{ $tertiaryunit_user->UserTertiaryUnitLastName }} <span class="fa arrow"></span>
+                                </span>&nbsp;  {{ $user->rank->RankCode }} {{ $user->UserTertiaryUnitName }} {{ $user->UserTertiaryUnitLastName }} <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
