@@ -18,7 +18,7 @@ class CreateTertiaryUnitsTable extends Migration {
 			$table->string('TertiaryUnitName')->unique();
 			$table->string('TertiaryUnitAbbreviation')->unique();
 			$table->string('PicturePath');
-			$table->integer('TertiaryUnitID');
+			$table->integer('SecondaryUnitID');
 			$table->timestamps();
 		});
 	}
