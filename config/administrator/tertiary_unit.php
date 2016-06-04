@@ -13,7 +13,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'single' => 'TertiaryUnit',
+	'single' => 'Tertiary Unit',
 
 	/**
 	 * The class name of the Eloquent model that this config represents
