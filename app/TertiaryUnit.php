@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tertiary extends Model {
+class TertiaryUnit extends Model {
 
 	/**
 	 * The database table used by the model.
@@ -16,64 +16,64 @@ class Tertiary extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['TertiaryName', 'TertiaryAbbreviation', 'PicturePath', 'SecondaryID'];
+	protected $fillable = ['TertiaryUnitName', 'TertiaryUnitAbbreviation', 'PicturePath', 'SecondaryID'];
 
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
 	 * @var array
 	 */
-	protected $primaryKey = 'TertiaryID';
+	protected $primaryKey = 'TertiaryUnitID';
 
 
-	public function secondary()
+	public function secondary_unit()
 	{
-		return $this->belongsTo('App\Secondary', 'SecondaryID', 'SecondaryID');
+		return $this->belongsTo('App\SecondaryUnit', 'SecondaryUnitID', 'SecondaryUnitID');
 	}
 
-	public function user_tertiaries()
+	public function user_tertiary_units()
 	{
-		return $this->hasMany('App\UserTertiary', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\UserTertiaryUnit', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
-	public function tertiary_objectives()
+	public function tertiary_unit_objectives()
 	{
-		return $this->hasMany('App\TertiaryObjective', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\TertiaryUnitObjective', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
-	public function tertiary_measures()
+	public function tertiary_unit_measures()
 	{
-		return $this->hasMany('App\TertiaryMeasure', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\TertiaryUnitMeasure', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
-	public function tertiary_audit_trails()
+	public function tertiary_unit_audit_trails()
 	{
-		return $this->hasMany('App\AuditTrails', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\AuditTrails', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
-	public function tertiary_targets()
+	public function tertiary_unit_targets()
 	{
-		return $this->hasMany('App\TertiaryTarget', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\TertiaryUnitTarget', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 	
-	public function tertiary_accomplishments()
+	public function tertiary_unit_accomplishments()
 	{
-		return $this->hasMany('App\TertiaryAccomplishment', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\TertiaryUnitAccomplishment', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
-	public function tertiary_owners()
+	public function tertiary_unit_owners()
 	{
-		return $this->hasMany('App\TertiaryOwner', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\TertiaryUnitOwner', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
-	public function tertiary_initiatives()
+	public function tertiary_unit_initiatives()
 	{
-		return $this->hasMany('App\TertiaryInitiative', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\TertiaryUnitInitiative', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
-	public function tertiary_fundings()
+	public function tertiary_unit_fundings()
 	{
-		return $this->hasMany('App\TertiaryFunding', 'TertiaryID', 'TertiaryID');
+		return $this->hasMany('App\TertiaryUnitFunding', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
 }

@@ -12,19 +12,19 @@ class CreateUserTertiariesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_tertiaries', function(Blueprint $table)
+		Schema::create('user_tertiary_units', function(Blueprint $table)
 		{
-			$table->increments('UserTertiaryID');
-			$table->string('UserTertiaryBadgeNumber')->unique();
-			$table->string('UserTertiaryFirstName');
-			$table->string('UserTertiaryMiddleName');
-			$table->string('UserTertiaryLastName');
-			$table->string('UserTertiaryQualifier');
-			$table->string('UserTertiaryPicturePath');
-			$table->string('UserTertiaryPassword');
+			$table->increments('UserTertiaryUnitID');
+			$table->string('UserTertiaryUnitBadgeNumber')->unique();
+			$table->string('UserTertiaryUnitFirstName');
+			$table->string('UserTertiaryUnitMiddleName');
+			$table->string('UserTertiaryUnitLastName');
+			$table->string('UserTertiaryUnitQualifier');
+			$table->string('UserTertiaryUnitPicturePath');
+			$table->string('UserTertiaryUnitPassword');
 			$table->integer('RankID');
-			$table->integer('TertiaryID');
-			$table->boolean('UserTertiaryIsActive');
+			$table->integer('TertiaryUnitID');
+			$table->boolean('UserTertiaryUnitIsActive');
 			$table->timestamps();
 		});
 	}
@@ -36,7 +36,7 @@ class CreateUserTertiariesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_tertiaries');
+		Schema::drop('user_tertiary_units');
 	}
 
 }

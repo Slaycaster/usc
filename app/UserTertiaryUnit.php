@@ -16,21 +16,21 @@ class UserTertiaryUnit extends Model {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('UserTertiaryBadgeNumber', 'UserTertiaryPassword');
+	protected $hidden = array('UserTertiaryUnitBadgeNumber', 'UserTertiaryUnitPassword');
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['UserTertiaryBadgeNumber', 'UserTertiaryFirstName', 'UserTertiaryMiddleName', 'UserTertiaryLastName', 'UserTertiaryQualifier', 'UserTertiaryPicturePath', 'UserTertiaryPassword', 'RankID', 'TertiaryID', 'TertiaryUserIsActive'];
+	protected $fillable = ['UserTertiaryUnitBadgeNumber', 'UserTertiaryUnitFirstName', 'UserTertiaryUnitMiddleName', 'UserTertiaryUnitLastName', 'UserTertiaryUnitQualifier', 'UserTertiaryUnitPicturePath', 'UserTertiaryUnitPassword', 'RankID', 'TertiaryID', 'TertiaryUserIsActive'];
 
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
 	 * @var array
 	 */
-	protected $primaryKey = 'UserTertiaryID';
+	protected $primaryKey = 'UserTertiaryUnitID';
 
 
 	//FOREIGN KEYS
@@ -39,55 +39,55 @@ class UserTertiaryUnit extends Model {
 		return $this->belongsTo('App\Rank', 'RankID', 'RankID'); //(model, foreign_key, parent_primary_key)
 	}
 
-	public function tertiary()
+	public function tertiary_unit()
 	{
-		return $this->belongsTo('App\Tertiary', 'TertiaryID', 'TertiaryID');
+		return $this->belongsTo('App\TertiaryUnit', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
 	//FOREIGN ITO NG KABILANG TABLE
-	public function tertiary_objectives()
+	public function tertiary_unit_objectives()
 	{
-		return $this->hasMany('App\TertiaryObjective', 'TertiaryObjectiveID', 'TertiaryObjectiveID');
+		return $this->hasMany('App\TertiaryUnitObjective', 'TertiaryUnitObjectiveID', 'TertiaryUnitObjectiveID');
 	}
 
-	public function tertiary_measures()
+	public function tertiary_unit_measures()
 	{
-		return $this->hasMany('App\TertiaryMeasure', 'TertiaryMeasureID', 'TertiaryMeasureID');
+		return $this->hasMany('App\TertiaryUnitMeasure', 'TertiaryUnitMeasureID', 'TertiaryUnitMeasureID');
 	}
 
 	public function user_logs()
 	{
-		return $this->hasMany('App\UserLog', 'UserTertiaryID', 'UserTertiaryID');
+		return $this->hasMany('App\UserLog', 'UserTertiaryUnitID', 'UserTertiaryUnitID');
 	}
 
 	public function audit_trails()
 	{
-		return $this->hasMany('App\AuditTrail', 'UserTertiaryID', 'UserTertiaryID');
+		return $this->hasMany('App\AuditTrail', 'UserTertiaryUnitID', 'UserTertiaryUnitID');
 	}
 
-	public function tertiary_targets()
+	public function tertiary_unit_targets()
 	{
-		return $this->hasMany('App\TertiaryTarget', 'TertiaryTargetID', 'TertiaryTargetID');
+		return $this->hasMany('App\TertiaryUnitTarget', 'TertiaryUnitTargetID', 'TertiaryUnitTargetID');
 	}
 
-	public function tertiary_accomplishments()
+	public function tertiary_unit_accomplishments()
 	{
-		return $this->hasMany('App\TertiaryAccomplishment', 'TertiaryAccomplishmentID', 'TertiaryAccomplishmentID');
+		return $this->hasMany('App\TertiaryUnitAccomplishment', 'TertiaryUnitAccomplishmentID', 'TertiaryUnitAccomplishmentID');
 	}
 
-	public function tertiary_owners()
+	public function tertiary_unit_owners()
 	{
-		return $this->hasMany('App\TertiaryOwner', 'TertiaryOwnerID', 'TertiaryOwnerID');
+		return $this->hasMany('App\TertiaryUnitOwner', 'TertiaryUnitOwnerID', 'TertiaryUnitOwnerID');
 	}
 
-	public function tertiary_initiatives()
+	public function tertiary_unit_initiatives()
 	{
-		return $this->hasMany('App\TertiaryInitiative', 'TertiaryInitiativeID', 'TertiaryInitiativeID');
+		return $this->hasMany('App\TertiaryUnitInitiative', 'TertiaryUnitInitiativeID', 'TertiaryUnitInitiativeID');
 	}
 
-	public function tertiary_fundings()
+	public function tertiary_unit_fundings()
 	{
-		return $this->hasMany('App\TertiaryFunding', 'TertiaryFundingID', 'TertiaryFundingID');
+		return $this->hasMany('App\TertiaryUnitFunding', 'TertiaryUnitFundingID', 'TertiaryUnitFundingID');
 	}
 
 }
