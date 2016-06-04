@@ -2,7 +2,7 @@ var local = 'http://' + location.host;
 var public = '/usc/public/'; // replace this with '/' for production
 
 
-app.controller('APIUnitAuditTrailsDashController', function($scope, $http, $interval) {
+app.controller('APITertiaryUnitAuditTrailsDashController', function($scope, $http, $interval) {
     $scope.unit_audit_trails_dash = [];
     $scope.loading = true;
 
