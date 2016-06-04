@@ -35,4 +35,9 @@ class AuditTrail extends Model {
 		return $this->belongsTo('App\TertiaryUnit', 'TertiaryUnitID', 'TertiaryUnitID');
 	}
 
+	public function secondary_unit()
+	{
+		return $this->belongsTo('App\SecondaryUnit', 'SecondaryUnitID', 'SecondaryUnit');
+	}
+
 }
