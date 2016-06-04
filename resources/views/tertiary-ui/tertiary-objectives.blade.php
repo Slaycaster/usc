@@ -32,7 +32,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Unit's Objective</button>
+                                    <button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Tertiary Unit's Objective</button>
                                 </div>
 
                                 <div class="col-lg-5 pull-right">

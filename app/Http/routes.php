@@ -123,11 +123,19 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
-
+Route::get('tertiary_unit/measures','APITertiaryUnitMeasuresController@showIndex');
 
 
 /*API ROUTES*/
+
+/*API ROUTES FOR TERTIARY*/
+
+Route::get('api/secondary_unit/measures/secondary_unit_measures', 'APITertiaryUnitMeasuresController@secondary_unit_measures');
+Route::get('api/tertiary_unit/measures/tertiary_unit_objectives', 'APITertiaryUnitMeasuresController@tertiary_unit_objectives');
+Route::resource('api/tertiary_unit_measures','APITertiaryUnitMeasuresController');
 Route::resource('api/tertiary_unit_objectives','APITertiaryUnitObjectivesController');
+
+
 Route::resource('api/unit_objectives','APIUnitObjectivesController');
 Route::resource('api/unit_measures','APIUnitMeasuresController');
 Route::resource('api/unit_audit_trails','APIUnitAuditTrailsController');
