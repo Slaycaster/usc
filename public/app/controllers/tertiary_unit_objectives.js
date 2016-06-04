@@ -1,5 +1,4 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
+var public = 'http://' + location.host + '/usc/public/';
  
 app.controller('APITertiaryUnitObjectiveController', function($scope, $http, $interval) {
  
@@ -10,18 +9,18 @@ app.controller('APITertiaryUnitObjectiveController', function($scope, $http, $in
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + public + 'api/tertiary_unit_objectives').
+        $http.get(public + 'api/tertiary_unit_objectives').
         success(function(data, status, headers, config) {
         $scope.tertiary_unit_objectives = data;
         $scope.loading = false;
-        $http.get(local + public + 'api/perspectives').
+        $http.get(public + 'api/perspectives').
             success(function(data, status, headers, config)
             {   
                 $scope.perspective = data;
                 $scope.selectedUserProfile = $scope.perspective[0];
             });
 
-            $http.get(local + public + 'api/tertiary_unit/tertiary_unit_objectives/secondary_unit_objectives').
+            $http.get(public + 'api/tertiary_unit/tertiary_unit_objectives/secondary_unit_objectives').
                 success(function(data, status, headers, config)
                 {   
                        
@@ -47,7 +46,7 @@ app.controller('APITertiaryUnitObjectiveController', function($scope, $http, $in
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/tertiary_unit_objectives';
+        var url = public + 'api/tertiary_unit_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -99,7 +98,7 @@ app.controller('APITertiaryUnitObjectiveController', function($scope, $http, $in
             case 'edit':
                 $scope.form_title = "EDIT TERTIARY UNIT'S OBJECTIVE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/tertiary_unit_objectives/' + id)
+                $http.get(public + 'api/tertiary_unit_objectives/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.tertiary_unit_objective = response;

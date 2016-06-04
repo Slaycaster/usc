@@ -1,5 +1,4 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
+var public = 'http://' + location.host + '/usc/public/';
 
 app.controller('APISecondaryUnitTargetController', function($scope, $http, $interval) {
 
@@ -10,7 +9,7 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(local + public + 'api/secondary_targets').
+		$http.get(public + 'api/secondary_targets').
 		success(function(data, status, headers, config) {
 			$scope.secondary_targets = data;
 				$scope.loading = false;
@@ -30,7 +29,7 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/secondary_targets';
+        var url = public + 'api/secondary_targets';
 
         //append Unit Objective ID to the URL if the form is in edit mode
 
@@ -104,7 +103,7 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
                 $scope.this_title = "ADD TARGETS";
                 
                 $scope.id = id;
-                $http.get(local + public + 'api/unit_targets/' + id)
+                $http.get(public + 'api/unit_targets/' + id)
                 .success(function(response) {            
                     $scope.unit_target = response;
                     console.log("SHOW" + $scope.unit_target.TargetPeriod);
@@ -137,7 +136,7 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
                 $scope.form_title = "VIEW TARGET";
                 $scope.id = id;
 
-                $http.get(local + public + 'api/unit_targets/' + id)
+                $http.get(public + 'api/unit_targets/' + id)
 
                 .success(function(response) {
                     $scope.unit_target = response;

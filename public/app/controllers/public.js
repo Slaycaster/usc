@@ -1,0 +1,1 @@
+var public = 'http://' + location.host + '/usc/public/';

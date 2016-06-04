@@ -1,5 +1,4 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
+var public = 'http://' + location.host + '/usc/public/';on
 
 app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 
@@ -12,14 +11,14 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(local + public + 'api/unit_measures').
+		$http.get(public + 'api/unit_measures').
 		success(function(data, status, headers, config) {
 			$scope.unit_measures = data;
 				$scope.loading = false;
 		});	
 	};
 
-    $http.get(local + public + 'api/staff/measures/staffmeasures').
+    $http.get(public + 'api/staff/measures/staffmeasures').
         success(function(data, status, headers, config)
         {   
            
@@ -43,7 +42,7 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 
 
 
-    $http.get(local + public + 'api/unit/measures/unitobjectives').
+    $http.get(public + 'api/unit/measures/unitobjectives').
         success(function(data, status, headers, config)
         {   
            
@@ -62,7 +61,7 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 
         if(measureID != 0)
         {
-             $http.get(local + public + 'unit/angularstaffmeasure/' + measureID).
+             $http.get(public + 'unit/angularstaffmeasure/' + measureID).
             success(function(data)
             {   
                
@@ -101,7 +100,7 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/unit_measures';
+        var url = public + 'api/unit_measures';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -170,7 +169,7 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S MEASURE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/unit_measures/' + id)
+                $http.get(public + 'api/unit_measures/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;

@@ -1,5 +1,4 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
+var public = 'http://' + location.host + '/usc/public/';
 
 app.controller('APISecondaryUnitMeasureController', function($scope, $http, $interval) {
 
@@ -12,14 +11,14 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(local + public + 'api/secondary_unit_measures').
+		$http.get(public + 'api/secondary_unit_measures').
 		success(function(data, status, headers, config) {
 			$scope.secondary_unit_measures = data;
 				$scope.loading = false;
 		});	
 	};
 
-    $http.get(local + public + 'api/secondaryunit/measures/unitmeasures').
+    $http.get(public + 'api/secondaryunit/measures/unitmeasures').
         success(function(data, status, headers, config)
         {   
            
@@ -43,7 +42,7 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
 
 
 
-    $http.get(local + public + 'api/secondaryunit/measures/secondaryunitobjectives').
+    $http.get(public + 'api/secondaryunit/measures/secondaryunitobjectives').
         success(function(data, status, headers, config)
         {   
            
@@ -62,7 +61,7 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
 
         if(measureID != 0)
         {
-             $http.get(local + public + 'secondaryunit/angularunitmeasure/' + measureID).
+             $http.get(public + 'secondaryunit/angularunitmeasure/' + measureID).
             success(function(data)
             {   
                
@@ -101,7 +100,7 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/secondary_unit_measures';
+        var url = public + 'api/secondary_unit_measures';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -170,7 +169,7 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S MEASURE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/secondary_unit_measures/' + id)
+                $http.get(public + 'api/secondary_unit_measures/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;

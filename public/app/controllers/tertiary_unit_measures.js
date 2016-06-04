@@ -1,5 +1,4 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
+var public = 'http://' + location.host + '/usc/public/';
 
 app.controller('APITertiaryUnitMeasureController', function($scope, $http, $interval) {
 
@@ -12,14 +11,14 @@ app.controller('APITertiaryUnitMeasureController', function($scope, $http, $inte
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(local + public + 'api/tertiary_unit_measures').
+		$http.get(public + 'api/tertiary_unit_measures').
 		success(function(data, status, headers, config) {
 			$scope.tertiary_unit_measures = data;
 				$scope.loading = false;
 		});	
 	};
 
-    $http.get(local + public + 'api/secondary_unit/measures/secondary_unit_measures').
+    $http.get(public + 'api/secondary_unit/measures/secondary_unit_measures').
         success(function(data, status, headers, config)
         {   
            
@@ -43,7 +42,7 @@ app.controller('APITertiaryUnitMeasureController', function($scope, $http, $inte
 
 
 
-    $http.get(local + public + 'api/tertiary_unit/measures/tertiary_unit_objectives').
+    $http.get(public + 'api/tertiary_unit/measures/tertiary_unit_objectives').
         success(function(data, status, headers, config)
         {   
            
@@ -62,7 +61,7 @@ app.controller('APITertiaryUnitMeasureController', function($scope, $http, $inte
 
         if(measureID != 0)
         {
-             $http.get(local + public + 'tertiary_unit/angularsecondarymeasure/' + measureID).
+             $http.get(public + 'tertiary_unit/angularsecondarymeasure/' + measureID).
             success(function(data)
             {   
                
@@ -101,7 +100,7 @@ app.controller('APITertiaryUnitMeasureController', function($scope, $http, $inte
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/tertiary_unit_measures';
+        var url = public + 'api/tertiary_unit_measures';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -170,7 +169,7 @@ app.controller('APITertiaryUnitMeasureController', function($scope, $http, $inte
             case 'edit':
                 $scope.form_title = "EDIT TERTIARY UNIT'S MEASURE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/tertiary_unit_measures/' + id)
+                $http.get(public + 'api/tertiary_unit_measures/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.tertiary_unit_measure = response;
