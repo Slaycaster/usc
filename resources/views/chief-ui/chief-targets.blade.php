@@ -20,7 +20,8 @@
 
 
     <div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
-	    <div class="wrap">
+	   
+        <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
 					<div class="panel panel-warning  targets-custom-panel">
@@ -117,6 +118,7 @@
 				</div>
 			</div>
 	    </div>
+        <!-- End div for data table output -->
 
 		<!-- Modal (Pop up when detail button clicked) -->
         <div class="modal fade" id="targetModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -133,23 +135,24 @@
                             <h4 class="alert alert-success">
                                 <b><% chief_measurename %></b>
                             </h4>
-                            
-                            <tr>
-                                <td>
-                                    <label for="target_name" class="control-label">Set Target Period:</label>
-                                </td>
-                                <td>
-                                    <select id="id_target_period" name="measure_formula" data-ng-model="chief_target.TargetPeriod" class="form-control"  required ng-touched> 
-                                               
-                                                <option value="Monthly">
-                                                    Monthly
-                                                </option>
-                                                <option value="Quarterly">
-                                                    Quarterly
-                                                </option>
-                                    </select>
-                                </td>
-                            </tr>        
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="target_name" class="control-label">Set Target Period:</label>
+                                    </td>
+                                    <td>
+                                        <select id="id_target_period" name="measure_formula" data-ng-model="chief_target.TargetPeriod" class="form-control"  required ng-touched> 
+                                                   
+                                                    <option value="Monthly">
+                                                        Monthly
+                                                    </option>
+                                                    <option value="Quarterly">
+                                                        Quarterly
+                                                    </option>
+                                        </select>
+                                    </td>
+                                </tr>        
+                            </table>
 
                                 
                             <div class="table-responsive" id="monthlyform" style='display:none;'>
@@ -274,8 +277,6 @@
                                     <button type="button" class="btn btn-success btn-sm btn-block pull-right" id=" btn-save" data-toggle="modal" data-target="#confirmSubmit">Add Target</button> 
                                 </div> 
                             </div>
-
-
 
                             <div id="confirmSubmit" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
