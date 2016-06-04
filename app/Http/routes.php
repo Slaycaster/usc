@@ -128,6 +128,7 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 /* SECONDARY USER */
 Route::get('secondaryunit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
 Route::get('secondaryunit/measures', 'APISecondaryUnitMeasuresController@showIndex');
+Route::get('secondaryunit/targets', 'APISecondaryUnitTargetsController@showIndex');
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
@@ -185,7 +186,7 @@ Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');
 Route::resource('api/staff_targets','APIStaffTargetsController');
 Route::resource('api/unit_targets','APIUnitTargetsController');
-Route::resource('api/secondary_targets','APISecondaryTargetsController');
+Route::resource('api/secondary_targets','APISecondaryUnitTargetsController');
 	
 Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
 Route::post('api/chief_targets/updatequarter/{id}','APIChiefTargetsController@updatequarter');
