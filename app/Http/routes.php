@@ -123,6 +123,7 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 
 
 /*API ROUTES*/
+Route::resource('api/tertiary_unit_objectives','APITertiaryUnitObjectivesController');
 Route::resource('api/unit_objectives','APIUnitObjectivesController');
 Route::resource('api/unit_measures','APIUnitMeasuresController');
 Route::resource('api/unit_audit_trails','APIUnitAuditTrailsController');
