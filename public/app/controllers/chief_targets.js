@@ -32,7 +32,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
         
         
 
-        url = local + public + 'api/chief_confirm_password';
+        url = public + 'api/chief_confirm_password';
         $http.post(url, {    
             
             getPassword: document.getElementById('getPassword').value
