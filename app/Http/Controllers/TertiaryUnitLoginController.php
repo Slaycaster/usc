@@ -33,17 +33,18 @@ class TertiaryUnitLoginController extends Controller {
 		if (Session::has('tertiary_user_id'))
 		{
 			$id = Session::get('tertiary_user_id', 'default');
-			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+			$tertiary_user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
 				->with('tertiary_unit')
 				->first();
 			
-			$tertiary_objectives_count = TertiaryUnitObjective::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
+			
+			$tertiary_objectives_count = TertiaryUnitObjective::where('TertiaryUnitID', '=', $tertiary_user->TertiaryUnitID)
 				->count();
-			$tertiary_measures_count = TertiaryUnitMeasure::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
+			$tertiary_measures_count = TertiaryUnitMeasure::where('TertiaryUnitID', '=', $tertiary_user->TertiaryUnitID)
 				->count();
 			return view('tertiaryunitdashboard')
-				->with('tertiaryunit_id', $user->TertiaryUnitID)
-				->with('user', $user)
+				->with('tertiary_unit_id', $tertiary_user->TertiaryUnitID)
+				->with('tertiary_user', $tertiary_user)
 				->with('tertiary_objectives_count', $tertiary_objectives_count)
 				->with('tertiary_measures_count', $tertiary_measures_count)
 				->withEncryptedCsrfToken(Crypt::encrypt(csrf_token()));;

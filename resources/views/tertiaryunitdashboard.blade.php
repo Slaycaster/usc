@@ -28,7 +28,7 @@
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashname">
-            <p><b>{{ $user->tertiary_unit->TertiaryUnitName }} Dashboard</b></p>
+            <p><b>{{ $tertiary_user->tertiary_unit->TertiaryUnitName }} Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
     </div>
@@ -36,9 +36,9 @@
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
             <img class="img-responsive dashboard-custom-pictureabb" 
-                src="{{ asset('uploads/tertiarypictures/cropped/'.''.$user->tertiary_unit->PicturePath.'') }}">
+                src="{{ asset('uploads/tertiaryunitpictures/cropped/'.''.$tertiary_user->tertiary_unit->PicturePath.'') }}">
             <p>
-                <b>{{ $user->tertiary_unit->TertiaryUnitAbbreviation }} Dashboard</b>
+                <b>{{ $tertiary_user->tertiary_unit->TertiaryUnitAbbreviation }} Dashboard</b>
             </p>
         </div>
         <div class="col-md-12"><br /></div>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/tertiarypictures/cropped/'.''.$user->tertiary_unit->PicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/tertiaryunitpictures/cropped/'.''.$tertiary_user->tertiary_unit->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ url('tertiaryunit/objectives')}}">
+                            <a href="{{ url('tertiary_unit/objectives')}}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Go to Objectives</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ url('tertiaryunit/measures') }}">
+                            <a href="{{ url('tertiary_unit/measures') }}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Go to Measures</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -235,7 +235,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- /.list-group -->
-                    <a href="{{ url('tertiaryunit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('tertiary_unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -333,13 +333,13 @@
 
           var year = $("#datetimepicker1").find("input").val();
           console.log(year);
-          var chief_id = "<?php echo $tertiaryunit_id ?>";
+          var chief_id = "<?php echo $tertiary_unit_id ?>";
 
           $.ajax({
               type: "POST",
               url: "../bargraphtertiaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'tertiaryunit_id' : tertiaryunit_id},
+              data: {'year' : year, 'tertiary_unit_id' : tertiary_unit_id},
               success: function(response){
                 var arr = response;
                 Morris.Bar({
@@ -378,13 +378,13 @@
       {
         $('#morris-area-chart').empty();
           var year = new Date().getFullYear();
-          var chief_id = "<?php echo $tertiaryunit_id ?>";
+          var chief_id = "<?php echo $tertiary_unit_id ?>";
 
           $.ajax({
               type: "POST",
               url: "../bargraphtertiaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'tertiaryunit_id' : tertiaryunit_id},
+              data: {'year' : year, 'tertiary_unit_id' : tertiary_unit_id},
               success: function(response){
                 var arr = response;
                 Morris.Bar({
@@ -433,13 +433,13 @@
         $('#morris-donut-chart').empty();
 
           var year = $("#datetimepicker1").find("input").val();
-          var chief_id = "<?php echo $tertiaryunit_id ?>";
+          var chief_id = "<?php echo $tertiary_unit_id ?>";
 
           $.ajax({
               type: "POST",
               url: "../donutgraphtertiaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'tertiaryunit_id' : tertiaryunit_id},
+              data: {'year' : year, 'tertiary_unit_id' : tertiary_unit_id},
               success: function(response){
                 var arr = response;
                 Morris.Donut({
@@ -482,13 +482,13 @@
         $('#morris-donut-chart').empty();
 
           var year = new Date().getFullYear()
-          var chief_id = "<?php echo $tertiaryunit_id ?>";
+          var chief_id = "<?php echo $tertiary_unit_id ?>";
 
           $.ajax({
               type: "POST",
               url: "../donutgraphtertiaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'tertiaryunit_id' : tertiaryunit_id},
+              data: {'year' : year, 'tertiary_unit_id' : tertiary_unit_id},
               success: function(response){
                 var arr = response;
                 Morris.Donut({

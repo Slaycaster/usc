@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
 
     <!-- Yujin Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/unit.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/secondary.css') }}">
 
     <!-- Morris Charts CSS -->
     <link href="{{ asset('unit/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
@@ -67,7 +67,7 @@
     <![endif]-->
 </head>
 
-<body class="layout_unit-body">
+<body class="layout_secondary-body">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
@@ -88,15 +88,15 @@
             </div>
             <div class="layout-custom-username">
                     <span>    
-                           <!--  <img class="img-responsive dashboard-custom-pictureabb" 
-                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
-                            style="width:20px; height:20px; margin-top:-5px; margin-bottom:-2px;"> -->
+                            <img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->UserSecondaryUnitPicturePath.'') }}"
+                            style="width:20px; height:20px; margin-top:-5px; margin-bottom:-2px;">
                     </span>&nbsp;
 
-                    <!-- Welcome  
+                    Welcome  
                     {{ $user->rank->RankCode }}
-                    {{ $user->UserUnitFirstName }} 
-                    {{ $user->UserUnitLastName }}! -->
+                    {{ $user->UserSecondaryUnitFirstName }} 
+                    {{ $user->UserSecondaryUnitLastName }}!
             </div>
             <!-- /.navbar-header -->
 
@@ -104,14 +104,14 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
-                       <!-- <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
+                       <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->UserSecondaryUnitPicturePath.'') }}"
                             style="width:30px; height:30px; margin-top:-5px;">
-                        </span>&nbsp; -->
-                            <!-- Welcome 
+                        </span>&nbsp;
+                            Welcome 
                             {{ $user->rank->RankCode }} 
-                            {{ $user->UserUnitFirstName }} 
-                            {{ $user->UserUnitLastName }}! &nbsp;  -->
+                            {{ $user->UserSecondaryUnitFirstName }} 
+                            {{ $user->UserSecondaryUnitLastName }}! &nbsp; 
                         <i class="fa fa-caret-down pull-right"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -161,7 +161,7 @@
                         <li>
                             <a href="{{ url('secondary/scorecard') }}">
                                 <i class="fa fa-table fa-fw"></i> 
-                                <!-- {{ $user->unit->UnitAbbreviation }} Scorecard -->
+                                {{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard
                                 Scorecard
                             </a>
                         </li>
@@ -171,7 +171,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondary/objectives') }}">Set Unit Objectives</a>
+                                    <a href="{{ url('secondaryunit/objectives') }}">Set Secondary Unit Objectives</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('secondary/measures') }}">Set Unit Measures</a>
@@ -205,11 +205,15 @@
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <!-- <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
+                                <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->UserSecondaryUnitPicturePath.'') }}"
                                     style="width:15px; height:15px; margin-top:-5px; margin-bottom:-3px;">
-                                </span>&nbsp; -->
-                            <!-- {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <span class="fa arrow"></span> -->
+                                </span>&nbsp;
+                                {{ $user->rank->RankCode }}
+                                {{ $user->UserSecondaryUnitFirstName }} 
+                                {{ $user->UserSecondaryUnitLastName }}!
+                            
+                            <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>

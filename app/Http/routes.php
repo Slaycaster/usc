@@ -22,9 +22,11 @@ Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChi
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
 Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecard');
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
-Route::get('report/currentYearChiefUnitScorecard/{id}', 'ReportsController@currentYearChiefUnitScorecard');
-Route::get('report/currentYearChiefStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
-Route::get('report/currentYearStaffChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
+
+Route::get('report/currentUnitScorecard/{id}', 'ReportsController@currentYearChiefUnitScorecard');
+Route::get('report/currentStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
+Route::get('report/currentChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
+
 Route::get('report/quarterlyUnit', 'ReportsController@quarterlyUnit');
 Route::get('report/quarterlyStaff', 'ReportsController@quarterlyStaff');
 Route::get('report/quarterlyChief', 'ReportsController@quarterlyChief');
@@ -54,7 +56,12 @@ Route::get('staff/dashboard', 'StaffLoginController@dashboard');
 Route::get('staff/staffdashboard', 'APIStaffAuditTrailsDashController@showIndex');
 Route::get('chief/dashboard', 'ChiefLoginController@dashboard');
 Route::get('chief/chiefdashboard', 'APIChiefAuditTrailsDashController@showIndex');
+
+Route::get('secondary/dashboard', 'SecondaryUnitLoginController@dashboard');
+
+
 Route::get('tertiary/dashboard', 'TertiaryUnitLoginController@dashboard');
+
 
 /*BARGRAPH*/
 Route::post('bargraphunit', 'UnitLoginController@bargraph');
@@ -119,11 +126,15 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 
 
 /* SECONDARY USER */
-
+Route::get('secondaryunit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
+
 Route::get('tertiary_unit/measures','APITertiaryUnitMeasuresController@showIndex');
+
+Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
+
 
 
 /*API ROUTES*/
@@ -146,9 +157,11 @@ Route::resource('api/chief_objectives', 'APIChiefObjectivesController');
 Route::resource('api/staff_audit_trails','APIStaffAuditTrailsController');
 Route::resource('api/chief_audit_trails','APIChiefAuditTrailsController');
 Route::resource('api/chief_dashboard','APIChiefAuditTrailsDashController');
+Route::resource('api/secondary_unit_objectives', 'APISecondaryUnitObjectivesController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
+Route::get('api/secondary_unit_objectives/unitobjectives', 'APISecondaryUnitObjectivesController@unit_objectives');
 Route::get('api/staff/measures/chiefmeasures', 'APIStaffMeasuresController@chief_measures');
 Route::get('api/staff/measures/staffobjectives', 'APIStaffMeasuresController@staff_objectives');
 Route::get('api/unit/measures/unitobjectives', 'APIUnitMeasuresController@unit_objectives');
