@@ -57,7 +57,6 @@ app.controller('APITertiaryUnitObjectiveController', function($scope, $http, $in
             $http.put(url, {
                 TertiaryUnitObjectiveName: $scope.tertiary_unit_objective.TertiaryUnitObjectiveName,
                 PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
-                SecondaryUnitObjectiveID: $scope.selectedSecondaryUnitObjective.SecondaryUnitObjectiveID,
                 TertiaryUnitID: document.getElementById('tertiary_unit_id').value,
                 UserTertiaryUnitID: document.getElementById('user_tertiary_id').value
 
@@ -74,7 +73,6 @@ app.controller('APITertiaryUnitObjectiveController', function($scope, $http, $in
             $http.post(url, {
                 TertiaryUnitObjectiveName: $scope.tertiary_unit_objective.TertiaryUnitObjectiveName,
                 PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
-                SecondaryUnitObjectiveID: $scope.selectedSecondaryUnitObjective.SecondaryUnitObjectiveID,
                 TertiaryUnitID: document.getElementById('tertiary_unit_id').value,
                 UserTertiaryUnitID: document.getElementById('user_tertiary_id').value
 

@@ -121,6 +121,9 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 /* SECONDARY USER */
 
 
+/* TERTIARY USER */
+Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
+
 
 
 /*API ROUTES*/
