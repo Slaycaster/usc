@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#21B6A8 ">
-    <meta name="msapplication-navbutton-color" content="#21B6A8 ">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#21B6A8">
+    <meta name="theme-color" content="#287254 ">
+    <meta name="msapplication-navbutton-color" content="#287254 ">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#287254">
     <meta name="description" content="Philippine National Police Unit Scorecard">
     <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
     <meta name="author" content="Fare Matrix">
 
-    <title>Unit Dashboard - Philippine National Police Unit Scorecard</title>
+    <title>Secondary Unit Dashboard - Philippine National Police Unit Scorecard</title>
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
@@ -67,7 +67,7 @@
     <![endif]-->
 </head>
 
-<body class="layout_secondary-body">
+<body class="body">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
@@ -238,8 +238,8 @@
         </nav>
  
         <div class="the-blur"></div>
-
-        <div id="page-wrapper" class="secondary-page-wrapper">
+  
+        <div id="page-wrapper" class="secondary-wrapper">
             @yield('content')
         </div>
         <!-- /#page-wrapper -->
