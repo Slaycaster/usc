@@ -1,11 +1,8 @@
 /* secondary CSS */
-body{
-    background-color: rgba(40, 114, 84, 1);
-}
 
-.secondary-wrapper{
+.secondary-page-wrapper{
     background-color: rgba(240,248,255,1) !important;
-    border-color: rgba(240,248,255,.1) !important;
+    border-color: rgba(240,248,255,1) !important;
 }
 
 /* css for layout */
@@ -137,7 +134,7 @@ thead>tr>td{
     vertical-align: middle !important;
 }
 tr:hover{
-    background-color:rgba(54, 54, 54, .1);
+    background-color:rgba(40, 114, 84, 0.1);
     
 }
 /* /.css for table */
