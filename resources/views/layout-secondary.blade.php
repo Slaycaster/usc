@@ -67,7 +67,7 @@
     <![endif]-->
 </head>
 
-<body class="body">
+<body class="layout_secondary-body">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
@@ -239,7 +239,7 @@
  
         <div class="the-blur"></div>
   
-        <div id="page-wrapper" class="secondary-wrapper">
+        <div id="page-wrapper" class="secondary-page-wrapper">
             @yield('content')
         </div>
         <!-- /#page-wrapper -->
