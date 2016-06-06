@@ -115,7 +115,7 @@
                         <i class="fa fa-caret-down pull-right"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li
+                        <li>
                             <a href="{{ url('secondary_unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                 Change Profile Picture</a>
                         </li>
