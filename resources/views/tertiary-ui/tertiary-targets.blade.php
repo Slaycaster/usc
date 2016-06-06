@@ -44,7 +44,7 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Scorecard Target of {{ $tertiary_user->tertiary_unit->TertiaryUnitName }}.</div>
+                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Scorecard Target of {{ $user->tertiary_unit->TertiaryUnitName }}.</div>
                             </div>
 							<!--./div class row-->
 

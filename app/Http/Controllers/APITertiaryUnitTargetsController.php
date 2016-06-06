@@ -67,18 +67,18 @@ class APITertiaryUnitTargetsController extends Controller {
 		{	
 			$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
 
-			$tertiary_user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
 				->with('tertiary_unit')
 				->first();
 			
-			$tertiaryunit = TertiaryUnit::where('TertiaryUnitID', '=', $tertiary_user->TertiaryUnitID)->first();
+			$tertiaryunit = TertiaryUnit::where('TertiaryUnitID', '=', $user->TertiaryUnitID)->first();
 			$tertiary_unit_objectives = TertiaryUnitObjective::all();
-			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $tertiary_user->TertiaryUnitID)->get();
+			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
 			
 			return view('tertiary-ui.tertiary-targets')
 				->with('tertiary_unit_objectives', $tertiary_unit_objectives)
 				->with('tertiaryunit', $tertiaryunit)
-				->with('tertiary_user', $tertiary_user)
+				->with('user', $user)
 				->with('tertiary_unit_measures', $tertiary_unit_measures);
 		}
 		else
