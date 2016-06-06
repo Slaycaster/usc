@@ -10,7 +10,7 @@ class SecondaryUnitFunding extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['SecondaryUnitFundingEstimate', 'SecondaryUnitFundingActual', 'SecondaryUnitFundingDate', 'SecondaryUnitMeasureID', 'SecondaryUnitID','UserSecondaryUnitID',];
+	protected $fillable = ['SecondaryUnitFundingEstimate', 'SecondaryUnitFundingActual', 'SecondaryUnitFundingDate', 'SecondaryUnitMeasureID', 'SecondaryUnitID','UserSecondaryUnitID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -25,7 +25,7 @@ class SecondaryUnitFunding extends Model {
 
 	public function user_secondary_unit()
 	{
-		return $this->belongsTo('App\SecondaryUserUnit','UserSecondaryUnitID','UserSecondaryUnitID'); //(model, foreign_key, parent_primary_key)
+		return $this->belongsTo('App\UserSecondaryUnit','UserSecondaryUnitID','UserSecondaryUnitID'); //(model, foreign_key, parent_primary_key)
 	}
 
 	public function secondary_unit_measure()

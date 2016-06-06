@@ -31,6 +31,10 @@ class CreateSecondaryUnitTargetsTable extends Migration {
 			$table->string('TargetPeriod');
 			$table->string('Termination');
 			$table->integer('SecondaryUnitMeasureID');
+			$table->integer('SecondaryUnitAccomplishmentID');
+			$table->integer('SecondaryUnitOwnerID');
+			$table->integer('SecondaryUnitInitiativeID');
+			$table->integer('SecondaryUnitFundingID');
 			$table->integer('SecondaryUnitID');
 			$table->integer('UserSecondaryUnitID');
 			$table->timestamps();

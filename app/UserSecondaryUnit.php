@@ -45,6 +45,46 @@ class UserSecondaryUnit extends Model {
 		return $this->hasMany('App\SecondaryUnitMeasure', 'SecondaryUnitMeasureID','SecondaryUnitMeasureID');
 	}
 
+	public function secondary_unit_objectives()
+	{
+		return $this->hasMany('App\SecondaryUnitObjective', 'SecondaryUnitObjectiveID', 'SecondaryUnitObjectiveID');
+	}
+
+	public function user_logs()
+	{
+		return $this->hasMany('App\UserLog', 'UserSecondaryUnitID', 'UserSecondaryUnitID');
+	}
+
+	public function audit_trails()
+	{
+		return $this->hasMany('App\AuditTrail', 'UserSecondaryUnitID', 'UserSecondaryUnitID');
+	}
+
+	public function secondary_unit_targets()
+	{
+		return $this->hasMany('App\SecondaryUnitTarget', 'SecondaryUnitTargetID', 'SecondaryUnitTargetID');
+	}
+
+	public function secondary_unit_accomplishments()
+	{
+		return $this->hasMany('App\SecondaryUnitAccomplishment', 'SecondaryUnitAccomplishmentID', 'SecondaryUnitAccomplishmentID');
+	}
+
+	public function secondary_unit_owners()
+	{
+		return $this->hasMany('App\SecondaryUnitOwner', 'SecondaryUnitOwnerID', 'SecondaryUnitOwnerID');
+	}
+
+	public function secondary_unit_initiatives()
+	{
+		return $this->hasMany('App\SecondaryUnitInitiative', 'SecondaryUnitInitiativeID', 'SecondaryUnitInitiativeID');
+	}
+
+	public function secondary_unit_fundings()
+	{
+		return $this->hasMany('App\SecondaryUnitFunding', 'SecondaryUnitFundingID', 'SecondaryUnitFundingID');
+	}
+
 
 
 }
