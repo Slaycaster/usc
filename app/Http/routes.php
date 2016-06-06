@@ -51,6 +51,7 @@ Route::get('logout', 'LoginController@doLogout');
 Route::post('change_password', 'ChangePasswordController@ChangePassword');
 Route::post('change_picture', 'ChangePictureController@changePicture');
 Route::post('api/chief_confirm_password', 'ChiefConfirmPasswordController@confirmPassword');
+Route::post('api/secondary_unit_confirm_password', 'ChiefConfirmPasswordController@secondaryUnitConfirmPassword');
 
 
 /*DASHBOARD*/
@@ -145,17 +146,21 @@ Route::get('secondary_unit/changeuserpicture', 'SecondaryUnitLoginController@cha
 
 
 /* TERTIARY USER */
+Route::get('tertiary_unit/scorecard', 'TertiaryUnitLoginController@scorecard');
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
-
 Route::get('tertiary_unit/measures','APITertiaryUnitMeasuresController@showIndex');
-
 Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
+Route::get('tertiary_unit/changepassword','TertiaryUnitLoginController@changepass');
 
 
 
 /*API ROUTES*/
 
 /*API ROUTES FOR TERTIARY*/
+
+Route::post('api/tertiary_unit_targets/update/{id}','APITertiaryUnitTargetsController@updatetertiaryunitarget');
+Route::post('api/tertiary_unit_targets/updatequarter/{id}','APITertiaryUnitTargetsController@updatetertiaryunitquarter');
+Route::resource('api/tertiary_unit_targets','APITertiaryUnitTargetsController');
 
 Route::get('api/secondary_unit/measures/secondary_unit_measures', 'APITertiaryUnitMeasuresController@secondary_unit_measures');
 Route::get('api/tertiary_unit/measures/tertiary_unit_objectives', 'APITertiaryUnitMeasuresController@tertiary_unit_objectives');
@@ -201,6 +206,9 @@ Route::resource('api/chief_targets','APIChiefTargetsController');
 Route::resource('api/staff_targets','APIStaffTargetsController');
 Route::resource('api/unit_targets','APIUnitTargetsController');
 Route::resource('api/secondary_targets','APISecondaryUnitTargetsController');
+
+Route::post('api/secondary_targets/update/{id}','APISecondaryUnitTargetsController@updatetarget');
+Route::post('api/secondary_targets/updatequarter/{id}','APISecondaryUnitTargetsController@updatequarter');
 	
 Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
 Route::post('api/chief_targets/updatequarter/{id}','APIChiefTargetsController@updatequarter');

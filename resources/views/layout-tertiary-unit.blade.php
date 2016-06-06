@@ -122,12 +122,12 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{ url('tertiaryunit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                            <a href="{{ url('tertiary_unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                 Change Profile Picture</a>
                         </li>
 
                         <li>
-                            <a href="{{ url('tertiaryunit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                            <a href="{{ url('tertiary_unit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
                                 Change User Password</a>
                         </li>
                         <li class="divider"></li>
@@ -223,7 +223,7 @@
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
+                                    src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
                                     style="width:15px; height:15px; margin-top:-5px; margin-bottom:-3px;">
                                 </span>&nbsp;  {{ $user->rank->RankCode }} {{ $user->UserTertiaryUnitName }} {{ $user->UserTertiaryUnitLastName }} <span class="fa arrow"></span>
                             </a>

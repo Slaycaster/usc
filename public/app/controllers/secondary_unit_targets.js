@@ -23,6 +23,30 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
 
+    $scope.getpassword = function() 
+    {
+                
+        url = public + 'api/secondary_unit_confirm_password';
+        $http.post(url, {    
+            
+            getPassword: document.getElementById('getPassword').value
+
+        }).success(function(data, status, headers, config, response) {
+
+            console.log(data);
+            if(data == "Password Correct")
+            {
+                $scope.istrue = "true";
+
+            }
+            else
+            {
+                $scope.istrue = "false";
+            }
+
+        });
+    }
+
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
@@ -30,7 +54,7 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
 
         //append Unit Objective ID to the URL if the form is in edit mode
 
-        if (modalstate === 'show')
+        if (modalstate === 'set')
         {
             
             if(document.getElementById('id_target_period').value === "Monthly")
@@ -38,18 +62,18 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
                     url += "/update/" + id;
                     console.log("URL ID: " +id);
                     $http.post(url, {    
-                        JanuaryTarget: $scope.unit_target.JanuaryTarget,
-                        FebruaryTarget: $scope.unit_target.FebruaryTarget,
-                        MarchTarget: $scope.unit_target.MarchTarget,
-                        AprilTarget: $scope.unit_target.AprilTarget,
-                        MayTarget: $scope.unit_target.MayTarget,
-                        JuneTarget: $scope.unit_target.JuneTarget,
-                        JulyTarget: $scope.unit_target.JulyTarget,
-                        AugustTarget: $scope.unit_target.AugustTarget,
-                        SeptemberTarget: $scope.unit_target.SeptemberTarget,
-                        OctoberTarget: $scope.unit_target.OctoberTarget,
-                        NovemberTarget: $scope.unit_target.NovemberTarget,
-                        DecemberTarget: $scope.unit_target.DecemberTarget,
+                        JanuaryTarget: $scope.secondary_targets.JanuaryTarget,
+                        FebruaryTarget: $scope.secondary_targets.FebruaryTarget,
+                        MarchTarget: $scope.secondary_targets.MarchTarget,
+                        AprilTarget: $scope.secondary_targets.AprilTarget,
+                        MayTarget: $scope.secondary_targets.MayTarget,
+                        JuneTarget: $scope.secondary_targets.JuneTarget,
+                        JulyTarget: $scope.secondary_targets.JulyTarget,
+                        AugustTarget: $scope.secondary_targets.AugustTarget,
+                        SeptemberTarget: $scope.secondary_targets.SeptemberTarget,
+                        OctoberTarget: $scope.secondary_targets.OctoberTarget,
+                        NovemberTarget: $scope.secondary_targets.NovemberTarget,
+                        DecemberTarget: $scope.secondary_targets.DecemberTarget,
                         TargetDate:document.getElementById('target_date').value,
                         TargetPeriod: document.getElementById('id_target_period').value
                         
@@ -133,28 +157,32 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
         
             case 'view':
                 $scope.form_title = "VIEW TARGET";
+                
                 $scope.id = id;
+                console.log("SecondaryUnitTargetID: " + $scope.id);  
 
-                $http.get(public + 'api/unit_targets/' + id)
+                $http.get(public + 'api/secondary_targets/' + id)
 
                 .success(function(response) {
-                    $scope.unit_target = response;
-                    $scope.unit_measurename = name;
-                    $scope.firstquarter = $scope.unit_target.JanuaryTarget;
-                    $scope.secondquarter = $scope.unit_target.AprilTarget;
-                    $scope.thirdquarter = $scope.unit_target.JulyTarget;
-                    $scope.fourthquarter = $scope.unit_target.OctoberTarget;
-                    $scope.firstquarter = parseFloat($scope.unit_target.JanuaryTarget + $scope.unit_target.FebruaryTarget + $scope.unit_target.MarchTarget).toFixed(2);
-                    $scope.secondquarter = parseFloat($scope.unit_target.AprilTarget + $scope.unit_target.MayTarget + $scope.unit_target.JuneTarget).toFixed(2);
-                    $scope.thirdquarter = parseFloat($scope.unit_target.JulyTarget + $scope.unit_target.AugustTarget + $scope.unit_target.SeptemberTarget).toFixed(2);
-                    $scope.fourthquarter = parseFloat($scope.unit_target.OctoberTarget + $scope.unit_target.NovemberTarget + $scope.unit_target.DecemberTarget).toFixed(2);
+                    $scope.secondary_target = response;
+                    console.log("Target Period: " + $scope.secondary_target.TargetPeriod);
+                    
+                    $scope.secondary_unit_measurename = name;
+                    $scope.firstquarter = $scope.secondary_target.JanuaryTarget;
+                    $scope.secondquarter = $scope.secondary_target.AprilTarget;
+                    $scope.thirdquarter = $scope.secondary_target.JulyTarget;
+                    $scope.fourthquarter = $scope.secondary_target.OctoberTarget;
+                    $scope.firstquarter = parseFloat($scope.secondary_target.JanuaryTarget + $scope.secondary_target.FebruaryTarget + $scope.secondary_target.MarchTarget).toFixed(2);
+                    $scope.secondquarter = parseFloat($scope.secondary_target.AprilTarget + $scope.secondary_target.MayTarget + $scope.secondary_target.JuneTarget).toFixed(2);
+                    $scope.thirdquarter = parseFloat($scope.secondary_target.JulyTarget + $scope.secondary_target.AugustTarget + $scope.secondary_target.SeptemberTarget).toFixed(2);
+                    $scope.fourthquarter = parseFloat($scope.secondary_target.OctoberTarget + $scope.secondary_target.NovemberTarget + $scope.secondary_target.DecemberTarget).toFixed(2);
                     //Quarter = Month Target * 3 || Di niyo pa rin gets no?
-                    if ($scope.unit_target.TargetPeriod === 'Monthly')
+                    if ($scope.secondary_target.TargetPeriod === 'Monthly')
                     {
                         $('#monthModal').modal('show');
                         $scope.init();               
                     }
-                    else if ($scope.unit_target.TargetPeriod === 'Quarterly')
+                    else if ($scope.secondary_target.TargetPeriod === 'Quarterly')
                     {
                         $('#quarterModal').modal('show');
                         $scope.init();
