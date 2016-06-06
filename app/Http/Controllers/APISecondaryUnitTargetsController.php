@@ -49,6 +49,7 @@ class APISecondaryUnitTargetsController extends Controller {
 			}
 		}	
 			
+
 		$SecondaryUnitTarget = SecondaryUnitTarget::with('secondary_unit_measure')
 			->with('secondary_unit_measure.secondary_unit_objective')
 			->with('user_secondary_unit')
@@ -126,7 +127,8 @@ class APISecondaryUnitTargetsController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$secondary_target= SecondaryUnitTarget::find($id);
+ 		return $secondary_target;
 	}
 
 	/**
