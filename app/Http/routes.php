@@ -137,7 +137,8 @@ Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@show
 Route::get('tertiary_unit/measures','APITertiaryUnitMeasuresController@showIndex');
 Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
 Route::get('tertiary_unit/changepassword','TertiaryUnitLoginController@changepass');
-
+Route::get('tertiary_unit/changetertiarypicture', 'TertiaryUnitLoginController@changetertiarypicture');
+Route::get('tertiary_unit/changeuserpicture', 'TertiaryUnitLoginController@changeuserpicture');
 
 
 /*API ROUTES*/

@@ -106,5 +106,44 @@ class TertiaryUnitLoginController extends Controller {
 		}
 	}
 
+	public function changetertiarypicture()
+	{
+		if (Session::has('tertiary_user_id'))
+		{
+			$id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->with('tertiary_unit')
+				->first();
+
+			return view('tertiary-ui.tertiary-changetertiarypicture')
+				->with('user', $user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+	public function changeuserpicture()
+	{
+		if (Session::has('tertiary_user_id'))
+		{
+			$id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->with('tertiary_unit')
+				->first();
+		
+
+			return view('tertiary-ui.tertiary-changeuserpicture')
+				->with('user', $user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 }
