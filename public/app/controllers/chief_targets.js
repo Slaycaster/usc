@@ -25,15 +25,9 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 
     $scope.getpassword = function() 
     {
-                
-        
-        
-
-        url = public + 'api/chief_confirm_password';
+        var url = public + 'api/chief_confirm_password';
         $http.post(url, {    
-            
             getPassword: document.getElementById('getPassword').value
-
         }).success(function(data, status, headers, config, response) {
 
             console.log(data);
