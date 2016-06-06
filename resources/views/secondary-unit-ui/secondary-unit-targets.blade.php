@@ -82,12 +82,17 @@
                                         <td><% secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureFormula %></td>
                                         <td><% secondary_unit_target.TargetPeriod %></td>
     									<td>
-    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', unit_target.UnitTargetID, unit_target.unit_measure.UnitMeasureName )">View Target</button>
-    										<br>
-    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', unit_target.UnitTargetID, unit_target.unit_measure.UnitMeasureName)">Set Target</button>
+                                            <input type="hidden" ng-model="targetperiod" ng-init="set_target=secondary_unit_target.TargetPeriod">
+
+
+                                            <button ng-if="set_target!='Not Set'" id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', secondary_unit_target.SecondaryUnitTargetID, secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureName )">View Target</button>
+                                            
+                                            <button ng-if="set_target=='Not Set'" id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('set', secondary_unit_target.SecondaryUnitTargetID, secondary_unit_target.TargetPeriod)">Set Target</button>
+
 
     									</td>
-                                        <input type="hidden" ng-model="targetdate" ng-init="target_date=secondary_unit_target.TargetDate" />
+                                         <input type="hidden" ng-model="targetdate" ng-init="target_date=secondary_unit_target.TargetDate" />
+                                        
     									<td  ng-if="target_date!='0000-00-00'"><% secondary_unit_target.TargetDate | date:"MMM d, y" %></td>
                                         <td  ng-if="target_date=='0000-00-00'">Not set</td>
     									
@@ -114,14 +119,38 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">×</span></button>
                         <i class="fa fa-circle-o-notch fa-4x"></i>
                         <h4 class="modal-title" id="myModalLabel"><b><% this_title %></b></h4>
                     </div>
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
-                            <table class="table table-responsive">
+                            <h4 class="alert alert-success">
+                                <b><% secondary_unit_measurename %></b>
+                            </h4>
+                        
+                            <table>
+                                <tr style="background-color:transparent;">
+                                    <td>
+                                        <h4>Set Target Period:</h4>
+                                    </td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td >
+                                        <select id="id_target_period" name="measure_formula" data-ng-model="unit_target.TargetPeriod" class="form-control" style="width:25em;"  required ng-touched> 
+                                                   
+                                                <option value="Monthly">
+                                                    Monthly
+                                                </option>
+                                                <option value="Quarterly">
+                                                    Quarterly
+                                                </option>
+                                        </select>
+                                    </td>
+                                </tr>    
+                            </table>
+
+                            <!-- <table class="table table-responsive">
                                 <tr>
                                     <td><h4><b><% unit_measurename %></b></h4></td>
                                 </tr>
@@ -142,7 +171,7 @@
                                         </select>
                                     </td>
 
-                                </tr>        
+                                </tr>     -->    
 
                                 
                                     <div class="table-responsive" id="monthlyform" style='display:none;'>
