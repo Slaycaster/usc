@@ -164,7 +164,7 @@
                                         <input type="hidden" value="<% tertiary_unit_target.tertiary_unit_measure.SecondaryUnitMeasureID %>" ng-model="contributory" ng-init="c_measure=false" />
 
                                         <td colspan="2"><% tertiary_unit_target.tertiary_unit_measure.TertiaryUnitMeasureName %>
-                                            <span class="label label-danger" ng-if="c_measure=tertiary_unit_target.tertiary_unit_measure.SecondaryUnitMeasureID">Contributory to {{ $user->tertiary_unit->secondary_unit->SecodaryUnitAbbreviation }}</span>
+                                           <br/> <span class="label label-danger" ng-if="c_measure=tertiary_unit_target.tertiary_unit_measure.SecondaryUnitMeasureID">Contributory to {{ $user->tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}</span>
                                         </td>
 
                                         <input type="hidden" ng-model="unittype" ng-init="c_type=tertiary_unit_target.tertiary_unit_measure.TertiaryUnitMeasureType" />

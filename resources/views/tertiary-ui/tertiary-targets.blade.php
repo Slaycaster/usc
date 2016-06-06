@@ -82,9 +82,12 @@
                                         <td><% tertiary_unit_target.tertiary_unit_measure.TertiaryUnitMeasureFormula %></td>
                                         <td><% tertiary_unit_target.TargetPeriod %></td>
     									<td>
-    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', tertiary_unit_target.TertiaryUnitTargetID, tertiary_unit_target.tertiary_measure.TertiaryMeasureName )">View Target</button>
-    										<br>
-    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', tertiary_unit_target.TertiaryUnitTargetID, tertiary_unit_target.tertiary_measure.TertiaryMeasureName)">Set Target</button>
+    										<input type="hidden" ng-model="targetperiod" ng-init="set_target=tertiary_unit_target.TargetPeriod">
+
+
+                                            <button ng-if="set_target!='Not Set'" id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', tertiary_unit_target.TertiaryUnitTargetID, tertiary_unit_target.tertiary_unit_measure.TertiaryUnitMeasureName )">View Target</button>
+                                            
+                                            <button ng-if="set_target=='Not Set'" id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('set', tertiary_unit_target.TertiaryUnitTargetID, tertiary_unit_target.tertiary_unit_measure.TertiaryUnitMeasureName)">Set Target</button>
 
     									</td>
                                         <input type="hidden" ng-model="targetdate" ng-init="target_date=tertiary_unit_target.TargetDate" />

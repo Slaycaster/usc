@@ -82,9 +82,12 @@
                                         <td><% unit_target.unit_measure.UnitMeasureFormula %></td>
                                         <td><% unit_target.TargetPeriod %></td>
     									<td>
-    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', unit_target.UnitTargetID, unit_target.unit_measure.UnitMeasureName )">View Target</button>
-    										<br>
-    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', unit_target.UnitTargetID, unit_target.unit_measure.UnitMeasureName)">Set Target</button>
+    										<input type="hidden" ng-model="targetperiod" ng-init="set_target=unit_target.TargetPeriod">
+
+                                            <button ng-if="set_target!='Not Set'" id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', unit_target.UnitTargetID, unit_target.unit_measure.UnitMeasureName )">View Target</button>
+                                            
+                                            <button ng-if="set_target=='Not Set'" id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', unit_target.UnitTargetID, unit_target.unit_measure.UnitMeasureName)">Set Target</button>
+
 
     									</td>
                                         <input type="hidden" ng-model="targetdate" ng-init="target_date=unit_target.TargetDate" />

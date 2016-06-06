@@ -82,9 +82,11 @@
                                         <td><% staff_target.staff_measure.StaffMeasureFormula %></td>
                                         <td><% staff_target.TargetPeriod %></td>
     									<td>
-    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName )">View Target</button>
-    										<br>
-    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName)">Set Target</button>
+    										<input type="hidden" ng-model="targetperiod" ng-init="set_target=staff_target.TargetPeriod">
+
+                                            <button ng-if="set_target!='Not Set'" id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName )">View Target</button>
+                                            
+                                            <button ng-if="set_target=='Not Set'" id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName)">Set Target</button>
 
     									</td>
     									<input type="hidden" ng-model="targetdate" ng-init="target_date=staff_target.TargetDate" />
@@ -336,7 +338,7 @@
             </div>
         </div>
 
-                <div class="modal fade" id="alreadysetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="alreadysetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">

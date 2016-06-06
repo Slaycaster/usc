@@ -80,6 +80,8 @@ Route::post('donutgraphunit', 'UnitLoginController@donutgraph');
 Route::post('donutgraphsecondaryunit', 'SecondaryUnitLoginController@donutgraph');
 Route::post('donutgraphstaff', 'StaffLoginController@donutgraph');
 Route::post('donutgraphchief', 'ChiefLoginController@donutgraph');
+Route::post('donutgraphtertiaryunit', 'TertiaryUnitLoginController@donutgraph');
+
 
 
 /*SEARCHUNIT*/

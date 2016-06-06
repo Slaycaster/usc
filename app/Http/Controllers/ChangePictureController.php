@@ -443,6 +443,13 @@ class ChangePictureController extends Controller {
 
 	 public function changeUserTertiaryUnitPicture()
 	 {
+	 			// $rand = str_random(20);
+
+				// if($user->tertiary_unit->PicturePath == null)
+				// {
+				// 	DB::table('tertiary_units')    
+		  //           ->update(['PicturePath' => $rand]);
+				// }
 	 	if(Input::file('picturepath')!= null)
 	 	{
 			 	if($_FILES['picturepath']['size'] > 1048576){
