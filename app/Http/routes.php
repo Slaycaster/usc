@@ -210,13 +210,13 @@ Route::resource('api/chief_targets','APIChiefTargetsController');
 Route::resource('api/staff_targets','APIStaffTargetsController');
 Route::resource('api/unit_targets','APIUnitTargetsController');
 Route::resource('api/secondary_targets','APISecondaryUnitTargetsController');
-<<<<<<< HEAD
+
 Route::resource('api/tertiary_unit_audit_trails','APITertiaryUnitAuditTrailsController');
-=======
+
 
 Route::post('api/secondary_targets/update/{id}','APISecondaryUnitTargetsController@updatetarget');
 Route::post('api/secondary_targets/updatequarter/{id}','APISecondaryUnitTargetsController@updatequarter');
->>>>>>> afa53eca5f6017e0f3d6782b34bf5840df53610a
+
 	
 Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
 Route::post('api/chief_targets/updatequarter/{id}','APIChiefTargetsController@updatequarter');
