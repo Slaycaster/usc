@@ -47,6 +47,7 @@ Route::get('logout', 'LoginController@doLogout');
 Route::post('change_password', 'ChangePasswordController@ChangePassword');
 Route::post('change_picture', 'ChangePictureController@changePicture');
 Route::post('api/chief_confirm_password', 'ChiefConfirmPasswordController@confirmPassword');
+Route::post('api/secondary_unit_confirm_password', 'ChiefConfirmPasswordController@secondaryUnitConfirmPassword');
 
 
 /*DASHBOARD*/
@@ -188,6 +189,9 @@ Route::resource('api/chief_targets','APIChiefTargetsController');
 Route::resource('api/staff_targets','APIStaffTargetsController');
 Route::resource('api/unit_targets','APIUnitTargetsController');
 Route::resource('api/secondary_targets','APISecondaryUnitTargetsController');
+
+Route::post('api/secondary_targets/update/{id}','APISecondaryUnitTargetsController@updatetarget');
+Route::post('api/secondary_targets/updatequarter/{id}','APISecondaryUnitTargetsController@updatequarter');
 	
 Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
 Route::post('api/chief_targets/updatequarter/{id}','APIChiefTargetsController@updatequarter');
