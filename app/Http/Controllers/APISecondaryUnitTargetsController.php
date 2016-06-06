@@ -26,7 +26,7 @@ class APISecondaryUnitTargetsController extends Controller {
 	{
 		$secondary_user_id = Session::get('secondary_user_id', 'default');
 
-		$secondary_unit = SecondaryUnit::where('SecondaryUnitID', '=', $secondary_user_id)->select('UnitID')->lists('UnitID'); //Get the Unit of the unit
+		$secondary_unit = SecondaryUnit::where('SecondaryUnitID', '=', $secondary_user_id)->select('SecondaryUnitID')->lists('SecondaryUnitID'); //Get the Unit of the unit
 
 		$currentYear = date("Y");
 		
