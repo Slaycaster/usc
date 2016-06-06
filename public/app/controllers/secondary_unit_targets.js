@@ -1,19 +1,16 @@
-var public = 'http://' + location.host + '/usc/public/';
-
 app.controller('APISecondaryUnitTargetController', function($scope, $http, $interval) {
-
-	$scope.secondary_unit_targets = [];
+	$scope.secondary_targets = [];
 	$scope.loading = true;
     $scope.info = false;
  
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
+        $scope.istrue="false";
 		$http.get(public + 'api/secondary_targets').
 		success(function(data, status, headers, config) {
 			$scope.secondary_targets = data;
-				$scope.loading = false;
-
+			$scope.loading = false;
             $scope.date = new Date();
 
 		});	
@@ -57,9 +54,6 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
                         TargetPeriod: document.getElementById('id_target_period').value
                         
 
-
-            
-
                     }).success(function(data, status, headers, config, response) {
         
                         $('#targetModal').modal('hide');
@@ -94,30 +88,35 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
         // 
     };
 
+
     $scope.toggle = function(modalstate, id, name) 
     {
         $scope.modalstate = modalstate;
+        console.log("Modal State: " + $scope.modalstate);
 
         switch (modalstate) {
-            case 'show':
-                $scope.this_title = "ADD TARGETS";
+            case 'set':
+                $scope.this_title = "SET TARGET";
                 
                 $scope.id = id;
-                $http.get(public + 'api/unit_targets/' + id)
-                .success(function(response) {            
-                    $scope.unit_target = response;
-                    console.log("SHOW" + $scope.unit_target.TargetPeriod);
-                    if($scope.unit_target.TargetPeriod === 'Monthly' || $scope.unit_target.TargetPeriod === 'Quarterly')
-                    {
-                        $('#alreadysetModal').modal('show');
-                    }
-                    else
-                    {
-                        $('#targetModal').modal('show');
-                    }
+                console.log("SecondaryUnitTargetID: " + $scope.id);  
+
+                $http.get(public + 'api/secondary_targets/' + id).
+                success(function(response) {  
+                    $scope.secondary_target = response;
+                    console.log("Target Period: " + $scope.secondary_target.TargetPeriod);
+                    
+                        if($scope.secondary_target.TargetPeriod === 'Monthly' || $scope.secondary_target.TargetPeriod === 'Quarterly')
+                        {
+                            $('#alreadysetModal').modal('show');
+                        }
+                        else
+                        {
+                            $('#targetModal').modal('show');
+                        }
                 });       
 
-                $scope.unit_measurename = name;       
+                $scope.secondary_unit_measurename = name;       
                 document.getElementById('id_january_target').value = "";
                 document.getElementById('id_february_target').value = "";
                 document.getElementById('id_march_target').value = "";

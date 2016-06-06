@@ -1,17 +1,17 @@
-app.controller('APIUnitTargetController', function($scope, $http, $interval) {
+app.controller('APITertiaryUnitTargetController', function($scope, $http, $interval) {
 
-	$scope.unit_targets = [];
+	$scope.tertiary_unit_targets = [];
 	$scope.loading = true;
     $scope.info = false;
  
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(public + 'api/unit_targets').
+		$http.get(public + 'api/tertiary_unit_targets').
 		success(function(data, status, headers, config) {
-			$scope.unit_targets = data;
+			$scope.tertiary_unit_targets = data;
 				$scope.loading = false;
-
+            console.log($scope.tertiary_unit_targets);
             $scope.date = new Date();
 
 		});	
@@ -26,7 +26,7 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = public + 'api/unit_targets';
+        var url = public + 'api/tertiary_unit_targets';
 
         //append Unit Objective ID to the URL if the form is in edit mode
 
@@ -38,18 +38,18 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
                     url += "/update/" + id;
                     console.log("URL ID: " +id);
                     $http.post(url, {    
-                        JanuaryTarget: $scope.unit_target.JanuaryTarget,
-                        FebruaryTarget: $scope.unit_target.FebruaryTarget,
-                        MarchTarget: $scope.unit_target.MarchTarget,
-                        AprilTarget: $scope.unit_target.AprilTarget,
-                        MayTarget: $scope.unit_target.MayTarget,
-                        JuneTarget: $scope.unit_target.JuneTarget,
-                        JulyTarget: $scope.unit_target.JulyTarget,
-                        AugustTarget: $scope.unit_target.AugustTarget,
-                        SeptemberTarget: $scope.unit_target.SeptemberTarget,
-                        OctoberTarget: $scope.unit_target.OctoberTarget,
-                        NovemberTarget: $scope.unit_target.NovemberTarget,
-                        DecemberTarget: $scope.unit_target.DecemberTarget,
+                        JanuaryTarget: $scope.tertiary_unit_target.JanuaryTarget,
+                        FebruaryTarget: $scope.tertiary_unit_target.FebruaryTarget,
+                        MarchTarget: $scope.tertiary_unit_target.MarchTarget,
+                        AprilTarget: $scope.tertiary_unit_target.AprilTarget,
+                        MayTarget: $scope.tertiary_unit_target.MayTarget,
+                        JuneTarget: $scope.tertiary_unit_target.JuneTarget,
+                        JulyTarget: $scope.tertiary_unit_target.JulyTarget,
+                        AugustTarget: $scope.tertiary_unit_target.AugustTarget,
+                        SeptemberTarget: $scope.tertiary_unit_target.SeptemberTarget,
+                        OctoberTarget: $scope.tertiary_unit_target.OctoberTarget,
+                        NovemberTarget: $scope.tertiary_unit_target.NovemberTarget,
+                        DecemberTarget: $scope.tertiary_unit_target.DecemberTarget,
                         TargetDate:document.getElementById('target_date').value,
                         TargetPeriod: document.getElementById('id_target_period').value
                         
@@ -60,7 +60,7 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
                     }).success(function(data, status, headers, config, response) {
         
                         $('#targetModal').modal('hide');
-                        $scope.unit_targets = '';
+                        $scope.tertiary_unit_targets = '';
                         $scope.init();
                         $scope.loading = false;
                     });
@@ -81,7 +81,7 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
                     }).success(function(data, status, headers, config, response) {
         
                         $('#targetModal').modal('hide');
-                        $scope.unit_targets = '';
+                        $scope.tertiary_unit_targets = '';
                         $scope.init();
                         $scope.loading = false;
                     });
@@ -100,11 +100,11 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
                 $scope.this_title = "ADD TARGETS";
                 
                 $scope.id = id;
-                $http.get(public + 'api/unit_targets/' + id)
+                $http.get(public + 'api/tertiary_unit_targets/' + id)
                 .success(function(response) {            
-                    $scope.unit_target = response;
-                    console.log("SHOW" + $scope.unit_target.TargetPeriod);
-                    if($scope.unit_target.TargetPeriod === 'Monthly' || $scope.unit_target.TargetPeriod === 'Quarterly')
+                    $scope.tertiary_unit_target = response;
+                    console.log("SHOW" + $scope.tertiary_unit_target.TargetPeriod);
+                    if($scope.tertiary_unit_target.TargetPeriod === 'Monthly' || $scope.tertiary_unit_target.TargetPeriod === 'Quarterly')
                     {
                         $('#alreadysetModal').modal('show');
                     }
@@ -114,7 +114,7 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
                     }
                 });       
 
-                $scope.unit_measurename = name;       
+                $scope.tertiary_unit_measurename = name;       
                 document.getElementById('id_january_target').value = "";
                 document.getElementById('id_february_target').value = "";
                 document.getElementById('id_march_target').value = "";
@@ -133,26 +133,26 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
                 $scope.form_title = "VIEW TARGET";
                 $scope.id = id;
 
-                $http.get(public + 'api/unit_targets/' + id)
+                $http.get(public + 'api/tertiary_unit_targets/' + id)
 
                 .success(function(response) {
-                    $scope.unit_target = response;
-                    $scope.unit_measurename = name;
-                    $scope.firstquarter = $scope.unit_target.JanuaryTarget;
-                    $scope.secondquarter = $scope.unit_target.AprilTarget;
-                    $scope.thirdquarter = $scope.unit_target.JulyTarget;
-                    $scope.fourthquarter = $scope.unit_target.OctoberTarget;
-                    $scope.firstquarter = parseFloat($scope.unit_target.JanuaryTarget + $scope.unit_target.FebruaryTarget + $scope.unit_target.MarchTarget).toFixed(2);
-                    $scope.secondquarter = parseFloat($scope.unit_target.AprilTarget + $scope.unit_target.MayTarget + $scope.unit_target.JuneTarget).toFixed(2);
-                    $scope.thirdquarter = parseFloat($scope.unit_target.JulyTarget + $scope.unit_target.AugustTarget + $scope.unit_target.SeptemberTarget).toFixed(2);
-                    $scope.fourthquarter = parseFloat($scope.unit_target.OctoberTarget + $scope.unit_target.NovemberTarget + $scope.unit_target.DecemberTarget).toFixed(2);
+                    $scope.tertiary_unit_target = response;
+                    $scope.tertiary_unit_measurename = name;
+                    $scope.firstquarter = $scope.tertiary_unit_target.JanuaryTarget;
+                    $scope.secondquarter = $scope.tertiary_unit_target.AprilTarget;
+                    $scope.thirdquarter = $scope.tertiary_unit_target.JulyTarget;
+                    $scope.fourthquarter = $scope.tertiary_unit_target.OctoberTarget;
+                    $scope.firstquarter = parseFloat($scope.tertiary_unit_target.JanuaryTarget + $scope.tertiary_unit_target.FebruaryTarget + $scope.tertiary_unit_target.MarchTarget).toFixed(2);
+                    $scope.secondquarter = parseFloat($scope.tertiary_unit_target.AprilTarget + $scope.tertiary_unit_target.MayTarget + $scope.tertiary_unit_target.JuneTarget).toFixed(2);
+                    $scope.thirdquarter = parseFloat($scope.tertiary_unit_target.JulyTarget + $scope.tertiary_unit_target.AugustTarget + $scope.tertiary_unit_target.SeptemberTarget).toFixed(2);
+                    $scope.fourthquarter = parseFloat($scope.tertiary_unit_target.OctoberTarget + $scope.tertiary_unit_target.NovemberTarget + $scope.tertiary_unit_target.DecemberTarget).toFixed(2);
                     //Quarter = Month Target * 3 || Di niyo pa rin gets no?
-                    if ($scope.unit_target.TargetPeriod === 'Monthly')
+                    if ($scope.tertiary_unit_target.TargetPeriod === 'Monthly')
                     {
                         $('#monthModal').modal('show');
                         $scope.init();               
                     }
-                    else if ($scope.unit_target.TargetPeriod === 'Quarterly')
+                    else if ($scope.tertiary_unit_target.TargetPeriod === 'Quarterly')
                     {
                         $('#quarterModal').modal('show');
                         $scope.init();

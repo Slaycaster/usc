@@ -1,8 +1,10 @@
-app.controller('APIUnitScorecardController', function($scope, $http, $interval) {
+var public = 'http://' + location.host + '/usc/public/';
+
+app.controller('APITertiaryUnitScorecardController', function($scope, $http, $interval) {
     
-	$scope.unit_targets = [];
+    $scope.tertiary_unit_targets = [];
     $scope.info = false;
-	$scope.loading = true;
+    $scope.loading = true;
     
  
     $scope.init = function() {
@@ -12,23 +14,23 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
         $scope.accompchanged = false;
         $scope.initchanged = false;
         $scope.fundingchanged = false;
-		$http.get(public + 'api/unit_scorecard').
-		success(function(data, status, headers, config) {
-			$scope.unit_targets = data;
-            for(i = 1; i < $scope.unit_targets.length; i++)
+        $http.get(public + 'api/tertiary_unit_scorecard').
+        success(function(data, status, headers, config) {
+            $scope.unit_targets = data;
+            for(i = 1; i < $scope.tertiary_unit_targets.length; i++)
             {
-               if($scope.unit_targets[i - 1].unit_measure.UnitObjectiveID == $scope.unit_targets[i].unit_measure.UnitObjectiveID )    
+               if($scope.tertiary_unit_targets[i - 1].tertiary_unit_measure.UnitObjectiveID == $scope.tertiary_unit_targets[i].tertiary_unit_measure.TertiaryUnitObjectiveID )    
                {
-                      $scope.unit_targets[i].unit_measure.unit_objective.UnitObjectiveName = " ";
+                      $scope.tertiary_unit_targets[i].tertiary_unit_measure.tertiary_unit_objective.TertiaryUnitObjectiveName = " ";
                }
                 
             }
-			console.log(data);
-			$scope.loading = false;
+            console.log(data);
+            $scope.loading = false;
             $scope.info = true;
-		});
+        });
 
-        $http.get(public + 'api/unit_scorecard/lastupdatedby').
+        $http.get(public + 'api/tertiary_unit_scorecard/lastupdatedby').
         success(function(response){
             console.log(response);
             
@@ -45,8 +47,8 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
 
             $scope.loading = false;
 
-        });	
-	};
+        }); 
+    };
 
     $scope.ownerchange = function() 
     {
@@ -74,7 +76,7 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
         $scope.fundingchanged = true;
     }
 
-	$scope.sort = function(keyname)
+    $scope.sort = function(keyname)
     {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
@@ -84,7 +86,7 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = public + 'api/unit_scorecard';
+        var url = public + 'api/tertiary_unit_scorecard';
 
             url += "/" + id;
             console.log(document.getElementById('id_owner'+id));
@@ -103,12 +105,12 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
                 OctoberAccomplishment: document.getElementById('id_oct'+id).value,
                 NovemberAccomplishment: document.getElementById('id_nov'+id).value,
                 DecemberAccomplishment: document.getElementById('id_dec'+id).value,
-                UnitInitiativeContent: document.getElementById('id_initiative'+id).value,
-                UnitFundingEstimate: document.getElementById('id_estimate'+id).value,
-                UnitFundingActual: document.getElementById('id_actual'+id).value,
-                UnitMeasureID: document.getElementById('unitmeasure_id'+id).value,
-                UnitID: document.getElementById('unit_id'+id).value,
-                UserUnitID: document.getElementById('user_unit_id'+id).value,
+                TertiaryUnitInitiativeContent: document.getElementById('id_initiative'+id).value,
+                TertiaryUnitFundingEstimate: document.getElementById('id_estimate'+id).value,
+                TertiaryUnitFundingActual: document.getElementById('id_actual'+id).value,
+                TertiaryUnitMeasureID: document.getElementById('unitmeasure_id'+id).value,
+                TertiaryUnitID: document.getElementById('tertiary_unit_id'+id).value,
+                UserTertiaryUnitID: document.getElementById('user_tertiary_unit_id'+id).value,
                 Ownerpressed: $scope.changed,
                 Accomplishmentpressed: $scope.accompchanged,
                 Initiativepressed: $scope.initchanged,
@@ -116,7 +118,7 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
 
             }).success(function(data, status, headers, config, response) {
                 //console.log(response);
-                $scope.unit_targets = '';
+                $scope.tertiary_unit_targets = '';
                 $scope.init();
                 $scope.loading = false;
             });

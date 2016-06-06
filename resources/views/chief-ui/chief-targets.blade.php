@@ -20,7 +20,6 @@
 
 
     <div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
-	   
         <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
@@ -119,6 +118,7 @@
 			</div>
 	    </div>
         <!-- End div for data table output -->
+
 
 		<!-- Modal (Pop up when detail button clicked) -->
         <div class="modal fade" id="targetModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

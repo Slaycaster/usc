@@ -28,7 +28,7 @@
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashname">
-            <p><b>{{ $tertiary_user->tertiary_unit->TertiaryUnitName }} Dashboard</b></p>
+            <p><b>{{ $user->tertiary_unit->TertiaryUnitName }} Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
     </div>
@@ -36,9 +36,9 @@
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
             <img class="img-responsive dashboard-custom-pictureabb" 
-                src="{{ asset('uploads/tertiaryunitpictures/cropped/'.''.$tertiary_user->tertiary_unit->PicturePath.'') }}">
+                src="{{ asset('uploads/tertiaryunitpictures/cropped/'.''.$user->tertiary_unit->PicturePath.'') }}">
             <p>
-                <b>{{ $tertiary_user->tertiary_unit->TertiaryUnitAbbreviation }} Dashboard</b>
+                <b>{{ $user->tertiary_unit->TertiaryUnitAbbreviation }} Dashboard</b>
             </p>
         </div>
         <div class="col-md-12"><br /></div>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/tertiaryunitpictures/cropped/'.''.$tertiary_user->tertiary_unit->PicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/tertiaryunitpictures/cropped/'.''.$user->tertiary_unit->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
