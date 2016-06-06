@@ -133,17 +133,21 @@ Route::get('secondary_unit/targets', 'APISecondaryUnitTargetsController@showInde
 Route::get('secondary_unit/targets/{id}','APISecondaryUnitTargetsController@edit');
 
 /* TERTIARY USER */
+Route::get('tertiary_unit/scorecard', 'TertiaryUnitLoginController@scorecard');
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
-
 Route::get('tertiary_unit/measures','APITertiaryUnitMeasuresController@showIndex');
-
 Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
+Route::get('tertiary_unit/changepassword','TertiaryUnitLoginController@changepass');
 
 
 
 /*API ROUTES*/
 
 /*API ROUTES FOR TERTIARY*/
+
+Route::post('api/tertiary_unit_targets/update/{id}','APITertiaryUnitTargetsController@updatetertiaryunitarget');
+Route::post('api/tertiary_unit_targets/updatequarter/{id}','APITertiaryUnitTargetsController@updatetertiaryunitquarter');
+Route::resource('api/tertiary_unit_targets','APITertiaryUnitTargetsController');
 
 Route::get('api/secondary_unit/measures/secondary_unit_measures', 'APITertiaryUnitMeasuresController@secondary_unit_measures');
 Route::get('api/tertiary_unit/measures/tertiary_unit_objectives', 'APITertiaryUnitMeasuresController@tertiary_unit_objectives');
