@@ -333,7 +333,7 @@
 
           var year = $("#datetimepicker1").find("input").val();
           console.log(year);
-          var chief_id = "<?php echo $tertiary_unit_id ?>";
+          var tertiary_unit_id = "<?php echo $tertiary_unit_id ?>";
 
           $.ajax({
               type: "POST",
@@ -378,7 +378,7 @@
       {
         $('#morris-area-chart').empty();
           var year = new Date().getFullYear();
-          var chief_id = "<?php echo $tertiary_unit_id ?>";
+          var tertiary_unit_id = "<?php echo $tertiary_unit_id ?>";
 
           $.ajax({
               type: "POST",
@@ -433,7 +433,7 @@
         $('#morris-donut-chart').empty();
 
           var year = $("#datetimepicker1").find("input").val();
-          var chief_id = "<?php echo $tertiary_unit_id ?>";
+          var tertiary_unit_id = "<?php echo $tertiary_unit_id ?>";
 
           $.ajax({
               type: "POST",
@@ -482,7 +482,7 @@
         $('#morris-donut-chart').empty();
 
           var year = new Date().getFullYear()
-          var chief_id = "<?php echo $tertiary_unit_id ?>";
+          var tertiary_unit_id = "<?php echo $tertiary_unit_id ?>";
 
           $.ajax({
               type: "POST",
@@ -527,6 +527,7 @@
         });
     });
 </script>
+
 
 <script type="text/javascript">
 
