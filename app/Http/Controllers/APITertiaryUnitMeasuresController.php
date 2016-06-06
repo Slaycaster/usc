@@ -211,61 +211,66 @@ class APITertiaryUnitMeasuresController extends Controller {
 	 */
 	public function update($id)
 	{
-		/*
 
-		$unitmeasure = UnitMeasure::find($id)->with('unit_objective')->with('staff_measure')->with('staff_measure.staff_objective')->with('staff_measure.staff_objective.staff')->first();
+
+		
+
+		$unitmeasure = TertiaryUnitMeasure::find($id)->with('tertiary_unit_objective')->with('secondary_unit_measure')->with('secondary_unit_measure.secondary_unit_objective')->with('secondary_unit_measure.secondary_unit_objective.secondary_unit')->first();
  
-		$unitid = Session::get('unit_user_id', 'default');
-		$unit = Request::input('UnitID');
+		$unitid = Session::get('tertiary_user_id', 'default');
+		$unit = Request::input('TertiaryUnitID');
 		
 
-		$new_measurename = Request::input('UnitMeasureName');
-		$new_measuretype = Request::input('UnitMeasureType');
-		$new_measureformula = Request::input('UnitMeasureFormula');
+		$new_measurename = Request::input('TertiaryUnitMeasureName');
+		$new_measuretype = Request::input('TertiaryUnitMeasureType');
+		$new_measureformula = Request::input('TertiaryUnitMeasureFormula');
 
 		
 
-		$action = 'Made an Update to the Measure: "' . $unitmeasure->UnitMeasureName . '" under "' . $unitmeasure->unit_objective->UnitObjectiveName;
+		$action = 'Made an Update to the Measure: "' . $unitmeasure->TertiaryUnitMeasureName . '" under "' . $unitmeasure->tertiary_unit_objective->TertiaryUnitObjectiveName;
 
-		if($unitmeasure->StaffMeasureID > 0)
+		if($unitmeasure->SecondaryUnitMeasureID > 0)
 		{
-			$action .= ' and is contributory to Staff\'s Measure: '.$unitmeasure->staff_measure->StaffMeasureName.' ';
+			$action .= ' and is contributory to Staff\'s Measure: '.$unitmeasure->secondary_unit_measure->SecondaryUnitMeasureName.' ';
 		}
 
 
 		$action .= ' with the following: ';
 
-		if($new_measurename != $unitmeasure->UnitMeasureName)
+		if($new_measurename != $unitmeasure->TertiaryUnitMeasureName)
 		{
-			$action .= 'Measure name "'.$unitmeasure->UnitMeasureName.'" to "'.$new_measurename.'", ';
+			$action .= 'Measure name "'.$unitmeasure->TertiaryUnitMeasureName.'" to "'.$new_measurename.'", ';
 		}
 
 
-		if($new_measuretype != $unitmeasure->UnitMeasureType)
+		if($new_measuretype != $unitmeasure->TertiaryUnitMeasureType)
 		{
-			$action .= 'Measure type "'.$unitmeasure->UnitMeasureType.'" to "'.$new_measuretype.'", ';
+			$action .= 'Measure type "'.$unitmeasure->TertiaryUnitMeasureType.'" to "'.$new_measuretype.'", ';
 		}
 
-		if($new_measureformula != $unitmeasure->UnitMeasureFormula)
+		if($new_measureformula != $unitmeasure->TertiaryUnitMeasureFormula)
 		{
-			$action .= 'Measure Formula "'.$unitmeasure->UnitMeasureFormula.'" to "'.$new_measureformula.'", ';
+			$action .= 'Measure Formula "'.$unitmeasure->TertiaryUnitMeasureFormula.'" to "'.$new_measureformula.'", ';
 		}
 
-		if(Request::input('StaffMeasureID') > 0 && Request::input('StaffMeasureID') != $unitmeasure->StaffMeasureID)
+		if(Request::input('SecondaryUnitMeasureID') > 0 && Request::input('SecondaryUnitMeasureID') != $unitmeasure->SecondaryUnitMeasureID)
 		{
-			$new_staffmeasure = StaffMeasure::where('StaffMeasureID', '=', Request::input('StaffMeasureID'))->first();
-			$action .= 'Staff Measure Name to "'.$new_staffmeasure->StaffMeasureName.'", ';
+			$new_staffmeasure = SecondaryUnitMeasure::where('SecondaryUnitMeasureID', '=', Request::input('SecondaryUnitMeasureID'))->first();
+			$action .= 'Staff Measure Name to "'.$new_staffmeasure->SecondaryUnitMeasureName.'", ';
 		}
 
-		if(Request::input('UnitObjectiveID') != $unitmeasure->UnitObjectiveID)
+		if(Request::input('TertiaryUnitObjectiveID') != $unitmeasure->TertiaryUnitObjectiveID)
 		{
-			$new_objective = UnitObjective::where('UnitObjectiveID', '=', Request::input('UnitObjectiveID'))->first();
-			$action .= 'Unit\'s Objective "'.$unitmeasure->unit_objective->UnitObjectiveName.'" to "'.$new_objective->UnitObjectiveName.'"';
+			$new_objective = TertiaryUnitObjective::where('TertiaryUnitObjectiveID', '=', Request::input('TertiaryUnitObjectiveID'))->first();
+			$action .= 'Unit\'s Objective "'.$unitmeasure->tertiary_unit_objective->TertiaryUnitObjectiveName.'" to "'.$new_objective->TertiaryUnitObjectiveName.'"';
 		}
 
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $unitid, $unit));
-		*/
+		DB::insert('insert into tertiary_audit_trails (Action, UserTertiaryUnitID, TertiaryUnitID) values (?,?,?)', array($action, $unitid, $unit));
+		
+
+
+
 
 		$tertiary_unit_measure = TertiaryUnitMeasure::find($id);
 		$tertiary_unit_measure->update(Request::all());
