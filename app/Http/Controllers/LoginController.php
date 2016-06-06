@@ -166,7 +166,7 @@ class LoginController extends Controller {
 
 					
 
-						return Redirect::to('secondary/dashboard');
+						return Redirect::to('secondary_unit/dashboard');
 					}
 					else
 					{
