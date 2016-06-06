@@ -41,7 +41,7 @@ class SecondaryUnitLoginController extends Controller {
 				->count();
 			$secondary_unit_measures_count = SecondaryUnitMeasure::where('SecondaryUnitID', '=', $user->SeconadryUnitID)
 				->count();
-			return view('secondarydashboard')
+			return view('secondaryunitdashboard')
 				->with('secondary_unit_id', $user->SecondaryUnitID)
 				->with('user', $user)
 				->with('secondary_unit_objectives_count', $secondary_unit_objectives_count)

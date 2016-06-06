@@ -1,5 +1,3 @@
-var public = 'http://' + location.host + '/usc/public/';
-
 app.controller('APIStaffTargetController', function($scope, $http, $interval) {
 
 	$scope.staff_targets = [];

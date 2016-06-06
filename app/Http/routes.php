@@ -129,6 +129,7 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 Route::get('secondary_unit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
 Route::get('secondary_unit/measures', 'APISecondaryUnitMeasuresController@showIndex');
 Route::get('secondary_unit/targets', 'APISecondaryUnitTargetsController@showIndex');
+Route::get('secondary_unit/targets/{id}','APISecondaryUnitTargetsController@edit');
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');

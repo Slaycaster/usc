@@ -1,7 +1,4 @@
-var public = 'http://' + location.host + '/usc/public/';
-
 app.controller('APIChiefTargetController', function($scope, $http, $interval) {
-
 	$scope.chief_targets = [];
 	$scope.loading = true;
     $scope.info = false;
@@ -13,7 +10,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 		$http.get(public + 'api/chief_targets').
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
-				$scope.loading = false;
+			$scope.loading = false;
             $scope.date = new Date();
 
 		});	
@@ -134,7 +131,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 $http.get(public + 'api/chief_targets/' + id)
                 .success(function(response) {            
                     $scope.chief_target = response;
-                    console.log("SHOW" + $scope.chief_target.TargetPeriod);
+                    console.log("Target Period: " + $scope.chief_target.TargetPeriod);
                     if($scope.chief_target.TargetPeriod === 'Monthly' || $scope.chief_target.TargetPeriod === 'Quarterly')
                     {
                         $('#alreadysetModal').modal('show');
@@ -195,7 +192,8 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                         $('#notsetModal').modal('show');
                         $scope.init();
                     }
-                });
+            });
+
                 break;
                 default:
                 break;

@@ -191,7 +191,7 @@
 
                                  <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="unit_objective" class="control">Unit Objective:</label>
+                                        <label for="unit_objective" class="control">Tertiary Unit Objective:</label>
                                     </td>
                                     <td class="col-md-8">
                                         
@@ -209,7 +209,7 @@
 
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="Unit">Unit:</label>
+                                        <label for="Unit">Tertiary Unit:</label>
                                     </td>
                                     <td class="col-md-8 mod">
                                         <p>{{ $user->tertiary_unit->TertiaryUnitName }}</p>
