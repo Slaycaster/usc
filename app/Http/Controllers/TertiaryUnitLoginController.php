@@ -57,7 +57,7 @@ class TertiaryUnitLoginController extends Controller {
 		
 	}
 
-<<<<<<< HEAD
+
 
 
 
@@ -213,7 +213,8 @@ class TertiaryUnitLoginController extends Controller {
 
 			return Response::json($targetaccomp);
 		}
-=======
+
+
 	public function scorecard()
 	{
 		if (Session::has('tertiary_user_id'))
@@ -262,7 +263,6 @@ class TertiaryUnitLoginController extends Controller {
 			return Redirect::to('/');
 		}
 	}
->>>>>>> afa53eca5f6017e0f3d6782b34bf5840df53610a
 
 	
 }
