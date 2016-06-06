@@ -1,5 +1,3 @@
-var public = 'http://' + location.host + '/usc/public/';
-
 app.controller('APIUnitScorecardController', function($scope, $http, $interval) {
     
 	$scope.unit_targets = [];

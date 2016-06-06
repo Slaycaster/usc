@@ -1,5 +1,3 @@
-var public = 'http://' + location.host + '/usc/public/';on
-
 app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 
 	$scope.unit_measures = [];

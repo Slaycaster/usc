@@ -1,5 +1,3 @@
-var public = 'http://' + location.host + '/usc/public/';
- 
 app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $interval) {
  
     $scope.secondary_unit_objectives = [];

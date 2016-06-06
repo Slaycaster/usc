@@ -1,5 +1,3 @@
-var public = 'http://' + location.host + '/usc/public/';
-
 app.controller('APIStaffAuditTrailsController', function($scope, $http, $interval) {
     $scope.staff_audit_trails = [];
     $scope.loading = true;

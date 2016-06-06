@@ -1,5 +1,3 @@
-var public = 'http://' + location.host + '/usc/public/';n
-
 app.controller('APITertiaryUnitAuditTrailsDashController', function($scope, $http, $interval) {
     $scope.unit_audit_trails_dash = [];
     $scope.loading = true;
