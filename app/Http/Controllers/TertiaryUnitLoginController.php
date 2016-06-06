@@ -57,6 +57,7 @@ class TertiaryUnitLoginController extends Controller {
 		
 	}
 
+
 	public function scorecard()
 	{
 		if (Session::has('tertiary_user_id'))
@@ -77,6 +78,66 @@ class TertiaryUnitLoginController extends Controller {
 				->with('tertiary_objectives_count', $tertiary_objectives_count)
 				->with('tertiary_measures_count', $tertiary_measures_count)
 				->withEncryptedCsrfToken(Crypt::encrypt(csrf_token()));;
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+	public function changepass()
+	{
+		if (Session::has('tertiary_user_id'))
+		{
+			$id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->with('tertiary_unit')
+				->first();
+			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
+
+			return view('tertiary-ui.tertiary-changepassword')
+				->with('user', $user)
+				->with('tertiary_unit_measures',$tertiary_unit_measures);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+	public function changetertiarypicture()
+	{
+		if (Session::has('tertiary_user_id'))
+		{
+			$id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->with('tertiary_unit')
+				->first();
+
+			return view('tertiary-ui.tertiary-changetertiarypicture')
+				->with('user', $user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+	public function changeuserpicture()
+	{
+		if (Session::has('tertiary_user_id'))
+		{
+			$id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->with('tertiary_unit')
+				->first();
+		
+
+			return view('tertiary-ui.tertiary-changeuserpicture')
+				->with('user', $user);
 		}
 		else
 		{

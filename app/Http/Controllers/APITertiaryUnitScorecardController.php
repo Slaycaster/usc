@@ -28,7 +28,7 @@ class APITertiaryUnitScorecardController extends Controller {
 		if (Session::has('tertiary_user_id'))
 		{
 			$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
-			$tertiary_unit_user = UserUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
+			$tertiary_unit_user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
 				->first();
 
 
@@ -38,7 +38,7 @@ class APITertiaryUnitScorecardController extends Controller {
 
 		$currentYear = date("Y");		
 		
-		$tertiary_unit = Unit::where('TertiaryUnitID', '=', $tertiary_unit_user->TertiaryUnitID)->first();
+		$tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $tertiary_unit_user->TertiaryUnitID)->first();
 			$tertiary_unit_objectives = TertiaryUnitObjective::all();
 			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $tertiary_unit_user->TertiaryUnitID)->get();
 	
@@ -65,9 +65,9 @@ class APITertiaryUnitScorecardController extends Controller {
 	public function LastUpdatedBy()
 	{
 
-			$tertiary_unit_id = Session::get('tertiary_user_id', 'default'); //get the UserunitID stored in session.
+		$tertiary_unit_id = Session::get('tertiary_user_id', 'default'); //get the UserunitID stored in session.
 
-			$tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)->select('TertiaryUnitID')->first();
+		$tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)->select('TertiaryUnitID')->first();
 
 			$maxid = TertiaryUnitAccomplishment::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)->max('updated_at');
 			$maxid2 = TertiaryUnitOwner::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)->max('updated_at');
@@ -165,7 +165,7 @@ class APITertiaryUnitScorecardController extends Controller {
 		$tertiary_unit_target = TertiaryUnitTarget::find($id);
 		
 		$tertiary_unit_accomplishmentID = $tertiary_unit_target->TertiaryUnitAccomplishmentID;
-		$tertiary_unit_ownerID = $tertiary_unit_target->Tertiary_UnitOwnerID;
+		$tertiary_unit_ownerID = $tertiary_unit_target->TertiaryUnitOwnerID;
 		$tertiary_unit_initiativeID = $tertiary_unit_target->TertiaryUnitInitiativeID;
 		$tertiary_unit_fundingID = $tertiary_unit_target->TertiaryUnitFundingID;
 
@@ -240,7 +240,7 @@ class APITertiaryUnitScorecardController extends Controller {
 			{
 				$tertiary_unit_accomplishment->UserTertiaryUnitID = $tertiary_unit_id;	
 			}
-			//$unit_accomplishment->UserUnitID = $unit_id;
+			//$tertiary_unit_accomplishment->UserUnitID = $unit_id;
 			$tertiary_unit_accomplishment->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
 			$tertiary_unit_accomplishment->save();
 		}
