@@ -117,7 +117,7 @@ class APITertiaryUnitMeasuresController extends Controller {
 		$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
 				->first();
 		$tertiary_unit = Request::input('TertiaryUnitID');
-		$action = 'Added a measure: "' . Request::input('UnitMeasureName') . '"';
+		$action = 'Added a measure: "' . Request::input('TertiaryUnitMeasureName') . '"';
 
 
 		$mes = Request::input('SecondaryUnitMeasureID');
@@ -126,7 +126,7 @@ class APITertiaryUnitMeasuresController extends Controller {
 
 		if($mescontribute == null )
 		{
-			//DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+			DB::insert('insert into tertiary_audit_trails (Action, UserTertiaryUnitID, TertiaryUnitID) values (?,?,?)', array($action, $id, $tertiary_unit));
 			$tertiary_unit_measure = new TertiaryUnitMeasure(Request::all());
 			$tertiary_unit_measure->save();
 
@@ -146,7 +146,7 @@ class APITertiaryUnitMeasuresController extends Controller {
 		}
 		else if($mes == 0)
 		{
-			//DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+			DB::insert('insert into tertiary_audit_trails (Action, UserTertiaryUnitID, TertiaryUnitID) values (?,?,?)', array($action, $id, $tertiary_unit));
 			$tertiary_unit_measure = new TertiaryUnitMeasure(Request::all());
 			$tertiary_unit_measure->save();
 
