@@ -136,6 +136,7 @@ Route::get('tertiary_unit/scorecard', 'TertiaryUnitLoginController@scorecard');
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
 Route::get('tertiary_unit/measures','APITertiaryUnitMeasuresController@showIndex');
 Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
+Route::get('tertiary_unit/changepassword','TertiaryUnitLoginController@changepass');
 
 
 

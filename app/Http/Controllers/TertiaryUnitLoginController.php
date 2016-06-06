@@ -85,5 +85,26 @@ class TertiaryUnitLoginController extends Controller {
 		}
 	}
 
+	public function changepass()
+	{
+		if (Session::has('tertiary_user_id'))
+		{
+			$id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->with('tertiary_unit')
+				->first();
+			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
+
+			return view('tertiary-ui.tertiary-changepassword')
+				->with('user', $user)
+				->with('tertiary_unit_measures',$tertiary_unit_measures);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 }
