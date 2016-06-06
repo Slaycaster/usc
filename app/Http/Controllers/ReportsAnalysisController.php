@@ -11,6 +11,9 @@ use App\UserStaff;
 use App\Chief;
 use App\UserChief;
 
+use App\SecondaryUnit;
+use App\UserSecondaryUnit;
+
 
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -42,6 +45,34 @@ class ReportsAnalysisController extends Controller
 					->with('unit', $unit)
 					->with('user', $user)
 					->with('years', $year);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+	public function secondaryIndex()
+	{
+		if (Session::has('secondary_user_id'))
+		{
+			$id = Session::get('secondary_user_id', 'default');
+			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $id)
+				->with('secondary_unit')
+				->first();
+
+			$secondary_unit = secondaryunit::where('SecondaryUnitID', '=', $user->SecondaryUnitID)->first();
+			$year = array();
+
+			for($y = date("Y"); $y >= 2011; $y--)
+			{
+				array_push($year, $y);
+			}
+			return view('secondary-unit-ui.secondary-unit-analysis')
+				->with('secondary_unit', $secondary_unit)
+				->with('user', $user)
+				->with('years', $year);
 		}
 		else
 		{

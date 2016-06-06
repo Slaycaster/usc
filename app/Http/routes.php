@@ -17,9 +17,11 @@ Route::get('home', 'HomeController@index');
 /*REPORTS ROUTES*/
 #scorecard
 Route::get('report/currentYearUnitScorecard', 'ReportsController@currentYearUnitScorecard');
+Route::get('report/currentYearSecondaryUnitScorecard', 'ReportsController@currentYearSecondaryUnitScorecard');
 Route::get('report/currentYearStaffScorecard', 'ReportsController@currentYearStaffScorecard');
 Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChiefScorecard');
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
+Route::get('report/yearlySecondaryUnitScorecard', 'ReportsController@yearlySecondaryUnitScorecard');
 Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecard');
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
 
@@ -126,7 +128,13 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 
 
 /* SECONDARY USER */
+Route::get('secondaryunit/scorecard', 'SecondaryUnitLoginController@scorecard');
 Route::get('secondaryunit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
+Route::get('secondaryunit/reports','ReportsController@secondaryIndex');
+Route::get('secondaryunit/analysis_reports','ReportsAnalysisController@secondaryIndex');
+Route::get('secondaryunit/changesecondaryunitpicture', 'SecondaryUnitLoginController@changesecondaryunitpicture');
+Route::get('secondaryunit/changeuserpicture', 'SecondaryUnitLoginController@changeuserpicture');
+
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');

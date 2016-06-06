@@ -56,6 +56,74 @@ class SecondaryUnitLoginController extends Controller {
 		
 	}
 
+	public function scorecard()
+	{
+		if (Session::has('secondary_user_id'))
+		{
+			$secondary_unit_id = Session::get('secondary_user_id', 'default');
+			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_unit_id)
+				->with('secondary_unit')
+				->first();//dd($user);
+			$secondary_unit_measures = SecondaryUnitMeasure::with('secondary_unit')->where('SecondaryUnitID', '=', $user->SecondaryUnitID)->get();
+			$maxid = SecondaryUnitAccomplishment::max('updated_at');
+		
+			$updatedby = SecondaryUnitAccomplishment::where('updated_at','=',$maxid)
+				->with('user_unit')
+				->first();
+			//dd($updatedby);
+			return view('secondary-unit-ui.secondary-unit-scorecard')
+				->with('user', $user)
+				->with('secondary_unit_measures',$secondary_unit_measures)
+				->with('updatedby',$updatedby);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+
+	public function changesecondaryunitpicture()
+	{
+		if (Session::has('secondary_user_id'))
+		{
+			$secondary_unit_id = Session::get('secondary_user_id', 'default');
+			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_unit_id)
+				->with('secondary_unit')
+				->with('secondary_unit.unit')
+				->first();//dd($user);
+			
+			return view('secondary-unit-ui.secondary-unit-changeunitpicture')
+				->with('user', $user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+	public function changeuserpicture()
+	{
+		if (Session::has('secondary_user_id'))
+		{
+			$secondary_unit_id = Session::get('secondary_user_id', 'default');
+			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_unit_id)
+				->with('secondary_unit')
+				->with('secondary_unit.unit')
+				->first();
+			
+			return view('secondary-unit-ui.secondary-unit-changeuserpicture')
+				->with('user', $user);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
 	
 	
 }

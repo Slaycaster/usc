@@ -116,12 +116,12 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{ url('secondary/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                            <a href="{{ url('secondaryunit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                 Change Profile Picture</a>
                         </li>
 
                         <li>
-                            <a href="{{ url('secondary/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                            <a href="{{ url('secondaryunit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
                                 Change User Password</a>
                         </li>
                         <li class="divider"></li>
@@ -159,7 +159,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('secondary/scorecard') }}">
+                            <a href="{{ url('secondaryunit/scorecard') }}">
                                 <i class="fa fa-table fa-fw"></i> 
                                 {{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard
                                 Scorecard
@@ -186,10 +186,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondary/reports') }}">Unit Scorecard Report</a>
+                                    <a href="{{ url('secondaryunit/reports') }}">Secondary Unit Scorecard Report</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('secondary/analysis_reports') }}">Unit Scorecard Analysis Report</a>
+                                    <a href="{{ url('secondaryunit/analysis_reports') }}">Secondary Unit Scorecard Analysis Report</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -198,7 +198,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondary/changeunitpicture') }}">Change Unit Picture</a>
+                                    <a href="{{ url('secondaryunit/changesecondaryunitpicture') }}">Change Secondary Unit Picture</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -213,12 +213,12 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondary/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                                    <a href="{{ url('secondaryunit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                         Change Profile Picture</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('secondary/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                                    <a href="{{ url('secondaryunit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
                                         Change User Password</a>
                                 </li>
                                 <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
