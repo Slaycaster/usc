@@ -378,7 +378,7 @@
                         </div>
                         
                         <div class="pull-right">
-                            <button type="button" class="btn btn-default btn-md" data-dismiss="modal" ng-disabled="istrue == 'false'" ng-click="save(modalstate, id)" "><i class="fa fa-paper-plane-o  fa-fw"></i> Submit</button>
+                            <button type="button" class="btn btn-default btn-md" data-dismiss="modal" ng-disabled="istrue == 'false'" ng-click="save(modalstate, id)"><i class="fa fa-paper-plane-o  fa-fw"></i> Submit</button>
 
                          </div>
                         
