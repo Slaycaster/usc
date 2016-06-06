@@ -2,23 +2,14 @@
 
 
 use App\UserChief;
-	
+use App\UserSecondaryUnit;
 
 
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 
-class ChiefConfirmPasswordController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
+class ChiefConfirmPasswordController extends Controller {
 
 	public function confirmPassword()
 	{
@@ -47,68 +38,32 @@ class ChiefConfirmPasswordController extends Controller {
 		return "FALSE";
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function secondaryUnitConfirmPassword()
 	{
-		//
-	}
+		$secondary_user_id = Session::get('secondary_user_id', 'default');
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		$secondary_unit_password = Request::input('getPassword');
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+		$secondary = UserSecondaryUnit::where('UserSecondaryUnitID','=',$secondary_user_id)
+			->whereRaw("BINARY `UserSecondaryUnitPassword`= ?",array($secondary_unit_password))
+			->first();
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		if($secondary != null)
+		{	
+			$credentials = UserSecondaryUnit::where('UserSecondaryUnitIsActive', 1)
+				->where('UserSecondaryUnitID', '=', $secondary_user_id)
+				->where('UserSecondaryUnitPassword', '=', $secondary_unit_password)
+				->first();
+			
+			 if (count($credentials) > 0) 
+			 {
+			 	return "Password Correct";
+			 }
+
+		}
+		return "Password Incorrect";
 	}
 
 }

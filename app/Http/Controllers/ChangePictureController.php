@@ -4,9 +4,11 @@
 //Our Freelance Models
 
 use App\UserUnit;
+use App\UserSecondaryUnit;
 use App\UserStaff;
 use App\UserChief;
 use App\Unit;
+use App\SecondaryUnit;
 use App\Staff;
 use App\Chief;
 //LARAVEL MODULES
@@ -37,6 +39,7 @@ class ChangePictureController extends Controller {
 		$chief_user = Session::get('chief_user_id');
 		$staff_user = Session::get('staff_user_id');
 		$unit_user = Session::get('unit_user_id');
+		$secondary_user = Session::get('secondary_user_id');
 
 		if($unit_user != null)
 		{
@@ -46,6 +49,15 @@ class ChangePictureController extends Controller {
 			}
 
 			return $this->changeUnitPicture();
+		}
+		if($secondary_user != null)
+		{
+			if(Input::get('userpicture') == '1')
+			{
+				return $this->changeUserSecondaryUnitPicture();
+			}
+
+			return $this->changeSecondaryUnitPicture();
 		}
 		if($staff_user != null)
 		{
@@ -143,6 +155,80 @@ class ChangePictureController extends Controller {
 		 else{
 	 		Session::flash('upload-error', 'Please select a photo');
 	 		return Redirect::to('unit/changeuserpicture');
+	 	}
+	 }
+
+	 public function changeSecondaryUnitPicture()
+	 {
+	 	if(Input::file('picturepath')!= null)
+	 	{
+		 	if($_FILES['picturepath']['size'] > 1048576){
+	  			//You can not upload this file
+	  			Session::flash('upload-error', 'File exceeded 1mb file upload limit. Try compressing the image and try again');
+	  			return Redirect::to('secondaryunit/changesecondaryunitpicture');
+
+			}
+		 	$secondaryunitid = Input::get('secondaryunitid');
+
+		 	$file = Input::file('picturepath')->getClientOriginalName();
+		 	
+		 	$secondaryunit = SecondaryUnit::find($secondaryunitid);
+
+		 	$file = $secondaryunit->PicturePath;
+
+		 	$destinationPath = 'uploads/secondaryunitpictures/cropped';
+		 	Input::file('picturepath')->move($destinationPath, $file);
+
+		 	$secondaryunit->PicturePath = $file;
+		 	$secondaryunit->save();
+
+		 	Session::flash('upload-success', 'Secondary Unit Picture successfully updated!');
+
+			$secondary_unit_id = Session::get('secondary_user_id', 'default');
+			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_unit_id)
+				->with('secondary_unit')
+				->with('secondary_unit.unit')
+				->first();//dd($user);
+			
+			return view('secondary-unit-ui.secondary-unit-changeunitpicture')
+				->with('user', $user);
+		 }
+		 else{
+	 		Session::flash('upload-error', 'Please select a photo');
+	 		return Redirect::to('secondary_unit/changesecondaryunitpicture');
+	 	}
+	 }
+
+	 public function changeUserSecondaryUnitPicture()
+	 {
+	 	if(Input::file('picturepath')!= null)
+	 	{
+		 	if($_FILES['picturepath']['size'] > 1048576){
+	  			//You can not upload this file
+	  			Session::flash('upload-error', 'File exceeded 1mb file upload limit. Try compressing the image and try again');
+	  			return Redirect::to('secondaryunit/changeuserpicture');
+
+			}
+		 	$secondaryunitid = Input::get('secondaryunitid');
+
+		 	$file = Input::file('picturepath')->getClientOriginalName();
+		 	
+		 	$usersecondaryunit = UserSecondaryUnit::find($secondaryunitid);
+
+		 	$file = $usersecondaryunit->UserSecondaryUnitPicturePath;
+
+		 	$destinationPath = 'uploads/userpictures/secondary/cropped';
+		 	Input::file('picturepath')->move($destinationPath, $file);
+		 	
+		 	$usersecondaryunit->UserSecondaryUnitPicturePath = $file;
+		 	$usersecondaryunit->save();
+
+		 	Session::flash('upload-success', 'Your Picture successfully updated!');
+		 	return Redirect::to('secondaryunit/changeuserpicture');
+		 }
+		 else{
+	 		Session::flash('upload-error', 'Please select a photo');
+	 		return Redirect::to('secondary_unit/changeuserpicture');
 	 	}
 	 }
 

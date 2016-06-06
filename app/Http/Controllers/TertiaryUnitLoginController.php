@@ -57,6 +57,7 @@ class TertiaryUnitLoginController extends Controller {
 		
 	}
 
+<<<<<<< HEAD
 
 
 
@@ -212,6 +213,56 @@ class TertiaryUnitLoginController extends Controller {
 
 			return Response::json($targetaccomp);
 		}
+=======
+	public function scorecard()
+	{
+		if (Session::has('tertiary_user_id'))
+		{
+			$id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->with('tertiary_unit')
+				->first();
+			
+			
+			$tertiary_objectives_count = TertiaryUnitObjective::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
+				->count();
+			$tertiary_measures_count = TertiaryUnitMeasure::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
+				->count();
+			return view('tertiary-ui.tertiary-scorecard')
+				->with('tertiary_unit_id', $user->TertiaryUnitID)
+				->with('user', $user)
+				->with('tertiary_objectives_count', $tertiary_objectives_count)
+				->with('tertiary_measures_count', $tertiary_measures_count)
+				->withEncryptedCsrfToken(Crypt::encrypt(csrf_token()));;
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+	public function changepass()
+	{
+		if (Session::has('tertiary_user_id'))
+		{
+			$id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->with('tertiary_unit')
+				->first();
+			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
+
+			return view('tertiary-ui.tertiary-changepassword')
+				->with('user', $user)
+				->with('tertiary_unit_measures',$tertiary_unit_measures);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+>>>>>>> afa53eca5f6017e0f3d6782b34bf5840df53610a
 
 	
 }
