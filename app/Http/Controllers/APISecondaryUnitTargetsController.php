@@ -153,6 +153,133 @@ class APISecondaryUnitTargetsController extends Controller {
 		//
 	}
 
+	public function updatetarget($id)
+	{
+
+		$secondary_user_id = Session::get('secondary_user_id', 'default');
+		$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_user_id)
+				->first();
+
+		$secondary_unit_target = SecondaryUnitTarget::find($id);
+		$secondary_unit_target->update(Request::all());
+		$secondary_unit_target->save();
+
+
+		$secondary_unit_accomplishment = new SecondaryUnitAccomplishment();
+		$secondary_unit_accomplishment->SecondaryUnitMeasureID = $secondary_unit_target->SecondaryUnitMeasureID;
+		$secondary_unit_accomplishment->SecondaryUnitID = $user->SecondaryUnitID;
+		$secondary_unit_accomplishment->UserSecondaryUnitID = $user->UserSecondaryUnitID;
+		$secondary_unit_accomplishment->save();
+
+		$chief_owner = new SecondaryUnitOwner();
+		$chief_owner->SecondaryUnitMeasureID = $secondary_unit_target->SecondaryUnitMeasureID;
+		$chief_owner->SecondaryUnitID = $user->SecondaryUnitID;
+		$chief_owner->UserSecondaryUnitID = $user->UserSecondaryUnitID;
+		$chief_owner->save();
+
+		$chief_initiative = new SecondaryUnitInitiative();
+		$chief_initiative->SecondaryUnitMeasureID = $secondary_unit_target->SecondaryUnitMeasureID;
+		$chief_initiative->SecondaryUnitID = $user->SecondaryUnitID;
+		$chief_initiative->UserSecondaryUnitID = $user->UserSecondaryUnitID;
+		$chief_initiative->save();
+
+		$chief_funding = new SecondaryUnitFunding();
+		$chief_funding->SecondaryUnitMeasureID = $secondary_unit_target->SecondaryUnitMeasureID;
+		$chief_funding->SecondaryUnitID = $user->SecondaryUnitID;
+		$chief_funding->UserSecondaryUnitID = $user->UserSecondaryUnitID;
+		$chief_funding->save();
+
+
+		$secondary_unit_target = SecondaryUnitTarget::find($id);
+ 		$secondary_unit_target->TargetDate = date('Y-m-d');
+ 		$secondary_unit_target->SecondaryUnitAccomplishmentID = DB::table('secondary_unit_accomplishments')->max('SecondaryUnitAccomplishmentID');
+ 		$secondary_unit_target->SecondaryUnitOwnerID = DB::table('secondary_unit_owners')->max('SecondaryUnitOwnerID');
+ 		$secondary_unit_target->SecondaryUnitInitiativeID = DB::table('secondary_unit_initiatives')->max('SecondaryUnitInitiativeID');
+ 		$secondary_unit_target->SecondaryUnitFundingID = DB::table('secondary_unit_fundings')->max('SecondaryUnitFundingID');
+		$secondary_unit_target->save();
+ 	
+
+		return $secondary_unit_target;
+	}
+
+	public function updatequarter($id)
+	{
+
+		$secondary_user_id = Session::get('secondary_user_id', 'default');
+		$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_user_id)
+				->first();
+
+		$secondary_unit_target = SecondaryUnitTarget::find($id);
+		$targetperiod = Request::input('TargetPeriod');
+		$targetdate =  date('Y-m-d');
+
+		$quarter1 = Request::input('Quarter1');
+		$quarter1 = $quarter1 / 3;
+		$secondary_unit_target->JanuaryTarget = $quarter1;
+		$secondary_unit_target->FebruaryTarget = $quarter1;
+		$secondary_unit_target->MarchTarget = $quarter1;
+		
+		$quarter2 = Request::input('Quarter2');
+		$quarter2 = $quarter2 / 3;
+		$secondary_unit_target->AprilTarget = $quarter2;
+		$secondary_unit_target->MayTarget = $quarter2;
+		$secondary_unit_target->JuneTarget = $quarter2;
+
+		$quarter3 = Request::input('Quarter3');
+		$quarter3 = $quarter3 / 3;
+		$secondary_unit_target->JulyTarget = $quarter3;
+		$secondary_unit_target->AugustTarget = $quarter3;
+		$secondary_unit_target->SeptemberTarget = $quarter3;
+
+		$quarter4 = Request::input('Quarter4');
+		$quarter4 = $quarter4 / 3;
+		$secondary_unit_target->OctoberTarget = $quarter4;
+		$secondary_unit_target->NovemberTarget = $quarter4;
+		$secondary_unit_target->DecemberTarget = $quarter4;
+
+
+		$secondary_unit_target->TargetPeriod = $targetperiod;
+		$secondary_unit_target->TargetDate = $targetdate;
+		$secondary_unit_target->save();
+
+		$secondary_unit_accomplishment = new SecondaryUnitAccomplishment();
+		$secondary_unit_accomplishment->SecondaryUnitMeasureID = $secondary_unit_target->SecondaryUnitMeasureID;
+		$secondary_unit_accomplishment->SecondaryUnitID = $user->SecondaryUnitID;
+		$secondary_unit_accomplishment->UserSecondaryUnitID = $user->UserSecondaryUnitID;
+		$secondary_unit_accomplishment->save();
+
+		
+		$chief_owner = new SecondaryUnitOwner();
+		$chief_owner->SecondaryUnitMeasureID = $secondary_unit_target->SecondaryUnitMeasureID;
+		$chief_owner->SecondaryUnitID = $user->SecondaryUnitID;
+		$chief_owner->UserSecondaryUnitID = $user->UserSecondaryUnitID;
+		$chief_owner->save();
+
+		$chief_initiative = new SecondaryUnitInitiative();
+		$chief_initiative->SecondaryUnitMeasureID = $secondary_unit_target->SecondaryUnitMeasureID;
+		$chief_initiative->SecondaryUnitID = $user->SecondaryUnitID;
+		$chief_initiative->UserSecondaryUnitID = $user->UserSecondaryUnitID;
+		$chief_initiative->save();
+
+		$chief_funding = new SecondaryUnitFunding();
+		$chief_funding->SecondaryUnitMeasureID = $secondary_unit_target->SecondaryUnitMeasureID;
+		$chief_funding->SecondaryUnitID = $user->SecondaryUnitID;
+		$chief_funding->UserSecondaryUnitID = $user->UserSecondaryUnitID;
+		$chief_funding->save();
+
+		$secondary_unit_target = SecondaryUnitTarget::find($id);
+ 		$secondary_unit_target->TargetDate = date('Y-m-d');
+ 		$secondary_unit_target->SecondaryUnitAccomplishmentID = DB::table('secondary_unit_accomplishments')->max('SecondaryUnitAccomplishmentID');
+ 		$secondary_unit_target->SecondaryUnitOwnerID = DB::table('secondary_unit_owners')->max('SecondaryUnitOwnerID');
+ 		$secondary_unit_target->SecondaryUnitInitiativeID = DB::table('secondary_unit_initiatives')->max('SecondaryUnitInitiativeID');
+ 		$secondary_unit_target->SecondaryUnitFundingID = DB::table('secondary_unit_fundings')->max('SecondaryUnitFundingID');
+		$secondary_unit_target->save();
+
+ 	
+
+		return $secondary_unit_target;
+	}
+
 	/**
 	 * Remove the specified resource from storage.
 	 *

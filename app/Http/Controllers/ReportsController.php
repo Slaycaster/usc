@@ -11,6 +11,9 @@ use App\UserStaff;
 use App\Chief;
 use App\UserChief;
 
+use App\SecondaryUnit;
+use App\UserSecondaryUnit;
+
 
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -42,6 +45,35 @@ class ReportsController extends Controller
 					->with('unit', $unit)
 					->with('user', $user)
 					->with('years', $year);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
+
+	public function secondaryIndex()
+	{
+		if (Session::has('secondary_user_id'))
+		{
+			$id = Session::get('secondary_user_id', 'default');
+			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $id)
+				->with('secondary_unit')
+				->first();
+
+			$secondary_unit = secondaryunit::where('SecondaryUnitID', '=', $user->SecondaryUnitID)->first();
+			$year = array();
+
+			for($y = date("Y"); $y >= 2011; $y--)
+			{
+				array_push($year, $y);
+			}
+			
+			return view('secondary-unit-ui.secondary-unit-reports')
+				->with('secondary_unit', $secondary_unit)
+				->with('user', $user)
+				->with('years', $year);
 		}
 		else
 		{
@@ -177,6 +209,19 @@ class ReportsController extends Controller
   	    return $pdf->stream();
 	}
 
+	public function currentYearSecondaryUnitScorecard()
+	{	
+		$year = date("Y");
+		Session::put('year', $year);
+
+		$pdf = PDF::loadView('pdf-layouts.PDFSecondaryUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(788, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+  	    return $pdf->stream();
+	}
+
 	public function currentYearStaffScorecard()
 	{	
 		$year = date("Y");
@@ -225,6 +270,19 @@ class ReportsController extends Controller
 		$dom_pdf = $pdf->getDomPDF();
 		$canvas = $dom_pdf ->get_canvas();
 		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+  	    return $pdf->stream();
+	}
+
+	public function yearlySecondaryUnitScorecard()
+	{	
+		$year = Input::get('year');
+		Session::put('year', $year);
+
+		$pdf = PDF::loadView('pdf-layouts.PDFSecondaryUnitYearly')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(788, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
   	    return $pdf->stream();
 	}
 

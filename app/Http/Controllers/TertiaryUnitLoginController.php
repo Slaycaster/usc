@@ -57,6 +57,7 @@ class TertiaryUnitLoginController extends Controller {
 		
 	}
 
+
 	public function scorecard()
 	{
 		if (Session::has('tertiary_user_id'))

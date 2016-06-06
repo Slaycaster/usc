@@ -4,7 +4,7 @@ app.controller('APITertiaryUnitAuditTrailsDashController', function($scope, $htt
 
     $scope.init = function() {
         $scope.loading = false;
-        $http.get(public + 'api/unit_dashboard').
+        $http.get(public + 'api/tertiary_unit_dashboard').
         success(function(data, status, headers, config) {
             nowTime = (new Date()).getTime();
             // timeDifference = nowTime - data.audit_trail_dash.updated_at;

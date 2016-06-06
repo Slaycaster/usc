@@ -349,14 +349,14 @@
         $('#morris-area-chart').empty();
 
           var year = $("#datetimepicker1").find("input").val();
-          var unit_id = "<?php echo $secondary_unit_id ?>";
+          var secondary_unit_id = "<?php echo $secondary_unit_id ?>";
 
           console.log(unit_id);
           $.ajax({
               type: "POST",
-              url: "../bargraphunit",
+              url: "../bargraphsecondaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'unit_id' : unit_id},
+              data: {'year' : year, 'secondary_unit_id' : secondary_unit_id},
               success: function(response){
                 var arr = response;
                 Morris.Bar({
@@ -377,9 +377,9 @@
                 ],
                 xkey: 'month',
                 ykeys: ['target', 'accomp'],
-                
                 labels: ['target', 'accomplishments']
-            });              }
+            });              
+            }
 
           })
    });
@@ -406,13 +406,13 @@
             $('#morris-area-chart').empty();
 
           var year = new Date().getFullYear()
-          var unit_id = "<?php echo $secondary_unit_id ?>";
+          var secondary_unit_id = "<?php echo $secondary_unit_id ?>";
 
           $.ajax({
               type: "POST",
-              url: "../bargraphunit",
+              url: "../bargraphsecondaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'unit_id' : unit_id},
+              data: {'year' : year, 'secondary_unit_id' : secondary_unit_id},
               success: function(response){
                 var arr = response;
                 Morris.Bar({
@@ -433,9 +433,9 @@
                 ],
                 xkey: 'month',
                 ykeys: ['target', 'accomp'],
-                
                 labels: ['target', 'accomplishments']
-            });              }
+            });              
+            }
 
           })
 
@@ -463,14 +463,13 @@
         $('#morris-donut-chart').empty();
 
           var year = $("#datetimepicker1").find("input").val();
-          var unit_id = "<?php echo $secondary_unit_id ?>";
+          var secondary_unit_id = "<?php echo $secondary_unit_id ?>";
 
-          console.log(unit_id);
           $.ajax({
               type: "POST",
-              url: "../donutgraphunit",
+              url: "../donutgraphsecondaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'unit_id' : unit_id},
+              data: {'year' : year, 'secondary_unit_id' : secondary_unit_id},
               success: function(response){
                 var arr = response;
                 Morris.Donut({
@@ -512,14 +511,13 @@
         $('#morris-donut-chart').empty();
 
         var year = new Date().getFullYear()
-          var unit_id = "<?php echo $secondary_unit_id ?>";
+        var secondary_unit_id = "<?php echo $secondary_unit_id ?>";
 
-          console.log(unit_id);
-          $.ajax({
+        $.ajax({
               type: "POST",
-              url: "../donutgraphunit",
+              url: "../donutgraphsecondaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
-              data: {'year' : year, 'unit_id' : unit_id},
+              data: {'year' : year, 'secondary_unit_id' : secondary_unit_id},
               success: function(response){
                 var arr = response;
                 Morris.Donut({

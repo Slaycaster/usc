@@ -17,9 +17,11 @@ Route::get('home', 'HomeController@index');
 /*REPORTS ROUTES*/
 #scorecard
 Route::get('report/currentYearUnitScorecard', 'ReportsController@currentYearUnitScorecard');
+Route::get('report/currentYearSecondaryUnitScorecard', 'ReportsController@currentYearSecondaryUnitScorecard');
 Route::get('report/currentYearStaffScorecard', 'ReportsController@currentYearStaffScorecard');
 Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChiefScorecard');
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
+Route::get('report/yearlySecondaryUnitScorecard', 'ReportsController@yearlySecondaryUnitScorecard');
 Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecard');
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
 
@@ -34,7 +36,9 @@ Route::get('report/quarterlyChief', 'ReportsController@quarterlyChief');
 Route::get('report/quarterlyUnitAnalysis', 'ReportsAnalysisController@quarterlyUnitAnalysis');
 Route::get('report/quarterlyStaffAnalysis', 'ReportsAnalysisController@quarterlyStaffAnalysis');
 Route::get('report/quarterlyChiefAnalysis', 'ReportsAnalysisController@quarterlyChiefAnalysis');
+
 Route::get('report/yearlyUnitAnalysisBarGraph', 'ReportsAnalysisController@yearlyUnitAnalysisBarGraph');
+Route::get('report/yearlySecondaryUnitAnalysisBarGraph', 'ReportsAnalysisController@yearlySecondaryUnitAnalysisBarGraph');
 Route::get('report/yearlyStaffAnalysisBarGraph', 'ReportsAnalysisController@yearlyStaffAnalysisBarGraph');
 Route::get('report/yearlyChiefAnalysisBarGraph', 'ReportsAnalysisController@yearlyChiefAnalysisBarGraph');
 
@@ -47,6 +51,7 @@ Route::get('logout', 'LoginController@doLogout');
 Route::post('change_password', 'ChangePasswordController@ChangePassword');
 Route::post('change_picture', 'ChangePictureController@changePicture');
 Route::post('api/chief_confirm_password', 'ChiefConfirmPasswordController@confirmPassword');
+Route::post('api/secondary_unit_confirm_password', 'ChiefConfirmPasswordController@secondaryUnitConfirmPassword');
 
 
 /*DASHBOARD*/
@@ -65,11 +70,14 @@ Route::get('tertiary/dashboard', 'TertiaryUnitLoginController@dashboard');
 
 /*BARGRAPH*/
 Route::post('bargraphunit', 'UnitLoginController@bargraph');
+Route::post('bargraphsecondaryunit', 'SecondaryUnitLoginController@bargraph');
 Route::post('bargraph', 'StaffLoginController@bargraph');
 Route::post('bargraphchief', 'ChiefLoginController@bargraph');
+Route::post('bargraphtertiaryunit', 'TertiaryUnitLoginController@bargraph');
 
 /*DONUTGRAPH*/
 Route::post('donutgraphunit', 'UnitLoginController@donutgraph');
+Route::post('donutgraphsecondaryunit', 'SecondaryUnitLoginController@donutgraph');
 Route::post('donutgraphstaff', 'StaffLoginController@donutgraph');
 Route::post('donutgraphchief', 'ChiefLoginController@donutgraph');
 
@@ -130,6 +138,14 @@ Route::get('secondary_unit/objectives', 'APISecondaryUnitObjectivesController@sh
 Route::get('secondary_unit/measures', 'APISecondaryUnitMeasuresController@showIndex');
 Route::get('secondary_unit/targets', 'APISecondaryUnitTargetsController@showIndex');
 Route::get('secondary_unit/targets/{id}','APISecondaryUnitTargetsController@edit');
+Route::get('secondary_unit/scorecard', 'SecondaryUnitLoginController@scorecard');
+Route::get('secondary_unit/reports','ReportsController@secondaryIndex');
+Route::get('secondary_unit/analysis_reports','ReportsAnalysisController@secondaryIndex');
+Route::get('secondary_unit/changesecondaryunitpicture', 'SecondaryUnitLoginController@changesecondaryunitpicture');
+Route::get('secondary_unit/changeuserpicture', 'SecondaryUnitLoginController@changeuserpicture');
+Route::get('secondary_unit/changepassword','SecondaryUnitLoginController@changepass');
+
+
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/scorecard', 'TertiaryUnitLoginController@scorecard');
@@ -139,11 +155,15 @@ Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex'
 Route::get('tertiary_unit/changepassword','TertiaryUnitLoginController@changepass');
 Route::get('tertiary_unit/changetertiarypicture', 'TertiaryUnitLoginController@changetertiarypicture');
 Route::get('tertiary_unit/changeuserpicture', 'TertiaryUnitLoginController@changeuserpicture');
+Route::get('tertiary_unit/audit_trails', 'APITertiaryUnitAuditTrailsController@showIndex');
+
 
 
 /*API ROUTES*/
 
 /*API ROUTES FOR TERTIARY*/
+Route::get('api/tertiary_unit_scorecard/lastupdatedby', 'APITertiaryUnitScorecardController@LastUpdatedBy');
+Route::resource('api/tertiary_unit_scorecard', 'APITertiaryUnitScorecardController');
 
 Route::post('api/tertiary_unit_targets/update/{id}','APITertiaryUnitTargetsController@updatetertiaryunitarget');
 Route::post('api/tertiary_unit_targets/updatequarter/{id}','APITertiaryUnitTargetsController@updatetertiaryunitquarter');
@@ -167,6 +187,7 @@ Route::resource('api/chief_audit_trails','APIChiefAuditTrailsController');
 Route::resource('api/chief_dashboard','APIChiefAuditTrailsDashController');
 Route::resource('api/secondary_unit_objectives', 'APISecondaryUnitObjectivesController');
 Route::resource('api/secondary_unit_measures', 'APISecondaryUnitMeasuresController');
+Route::resource('api/tertiary_unit_dashboard','APITertiaryUnitAuditTrailsDashController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
@@ -193,6 +214,13 @@ Route::resource('api/chief_targets','APIChiefTargetsController');
 Route::resource('api/staff_targets','APIStaffTargetsController');
 Route::resource('api/unit_targets','APIUnitTargetsController');
 Route::resource('api/secondary_targets','APISecondaryUnitTargetsController');
+
+Route::resource('api/tertiary_unit_audit_trails','APITertiaryUnitAuditTrailsController');
+
+
+Route::post('api/secondary_targets/update/{id}','APISecondaryUnitTargetsController@updatetarget');
+Route::post('api/secondary_targets/updatequarter/{id}','APISecondaryUnitTargetsController@updatequarter');
+
 	
 Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
 Route::post('api/chief_targets/updatequarter/{id}','APIChiefTargetsController@updatequarter');
