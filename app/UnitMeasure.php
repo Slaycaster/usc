@@ -70,5 +70,10 @@ class UnitMeasure extends Model {
 		return $this->hasMany('App\UnitFunding', 'UnitMeasureID', 'UnitMeasureID');
 	}
 
+	public function secondary_unit_measures()
+	{
+		return $this->hasMany('App\SecondaryUnitMeasure', 'UnitMeasureID', 'UnitMeasureID');
+	}
+
 
 }

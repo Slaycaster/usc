@@ -49,7 +49,7 @@ class APIChiefTargetsController extends Controller {
 			}
 		}		
 
-		return ChiefTarget::with('chief_measure')
+		$ChiefTarget = ChiefTarget::with('chief_measure')
 			->with('chief_measure.chief_objective')
 			->with('user_chief')
 			->with('user_chief.rank')
@@ -57,6 +57,9 @@ class APIChiefTargetsController extends Controller {
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->orWhere('TargetDate', '=', '0000-00-00')
 			->get();
+
+
+		return json_encode($ChiefTarget, JSON_PRETTY_PRINT);
 		
 	}
 

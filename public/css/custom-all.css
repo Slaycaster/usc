@@ -13,7 +13,6 @@
 body, h1, h3, h4, h5, h6, table
 {
     font-family: 'ubuntu';
-    /* use ubuntu for the ff tags   */
 }
 
 thead{
@@ -29,6 +28,15 @@ body.modal-open .wrap{
     /* blur modal on show */
 }
 
+.navbar-default .navbar-toggle:focus, 
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:hover{
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    color: transparent !important;
+}
 
 a.navbar-brand.layout-custom-pnpname:link,
 a.navbar-brand.layout-custom-pnpabb:link,

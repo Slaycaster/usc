@@ -1,6 +1,3 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
-
 app.controller('APIUnitScorecardController', function($scope, $http, $interval) {
     
 	$scope.unit_targets = [];
@@ -15,7 +12,7 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
         $scope.accompchanged = false;
         $scope.initchanged = false;
         $scope.fundingchanged = false;
-		$http.get(local + public + 'api/unit_scorecard').
+		$http.get(public + 'api/unit_scorecard').
 		success(function(data, status, headers, config) {
 			$scope.unit_targets = data;
             for(i = 1; i < $scope.unit_targets.length; i++)
@@ -31,7 +28,7 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
             $scope.info = true;
 		});
 
-        $http.get(local + public + 'api/unit_scorecard/lastupdatedby').
+        $http.get(public + 'api/unit_scorecard/lastupdatedby').
         success(function(response){
             console.log(response);
             
@@ -87,7 +84,7 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/unit_scorecard';
+        var url = public + 'api/unit_scorecard';
 
             url += "/" + id;
             console.log(document.getElementById('id_owner'+id));

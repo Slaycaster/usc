@@ -1,11 +1,10 @@
-/* CHIEF CSS */
+/* tertiary CSS */
 
-.chief-page-wrapper{
-    background-color:rgba(119, 221, 119, .5) !important;
-    border-color: rgba(119, 221, 119, .5) !important;
-    /*  color of the background  */
+.tertiary-page-wrapper{
+
+    background-color: rgba(47,79,79, .1) !important;
+    border-color: rgba(47,79,79, .1) !important;
 }
-
 
 /* css for layout */
 @media(max-width:768px){
@@ -25,45 +24,45 @@
 }
 .layout-title-navbar{
     margin-bottom: -3em; 
-    background-color:#77DD77;
-    border-bottom-color:#77DD77;
+    background-color:rgba(47,79,79, 1);
+    border-bottom-color:rgba(47,79,79, 1);
 }
 .sidebar-search{
-    background-color:#77DD77 !important;
+    background-color:rgba(47,79,79, 1) !important;
 }
-.layout_chief-body{
-    background-color:rgba(54, 54, 54, 1);
+.layout_tertiary-body{
+    background-color: rgba(47,79,79, 1);
 }
 .dropdown-menu>li>a{
     color:#2A363B !important;
 }
 .dropdown-menu>li>a:hover{
     color:#fff !important;
-    background-color:#77DD77 !important;
+    background-color:rgba(47,79,79, 1) !important;
 }
 a.layout-custom-navbaruser{
-    background-color:#77DD77;
+    background-color:rgba(47,79,79, 1);
     color:#fff;
-    border-color:#77DD77;
+    border-color:rgba(47,79,79, 1);
 }
 a.layout-custom-navbaruser:hover{
-    color:#77DD77;
+    color:rgba(47,79,79, 1);
     background-color:#fff !important;
 }
 .sidebar ul li a.active{
-    color: #77DD77 !important;
+    color: rgba(47,79,79, 1) !important;
 }
 a.active{
-    background-color:rgba(226, 226, 226, 1) !important;
-    color:#77DD77 !important;
+    background-color: rgba(47,79,79, .1) !important;
+    color:rgba(47,79,79, 1) !important;
 }
 .nav>li>a{
-    background-color:#77DD77;
+    background-color:rgba(47,79,79, 1);
     color:#fff !important;
 }
 .nav>li>a:focus, 
 .nav>li>a:hover{
-    color:#77DD77 !important;
+    color:rgba(47,79,79, 1) !important;
     background-color: #fff;
 }
 .sidebar ul li{
@@ -76,7 +75,7 @@ a.active{
 /* /.css for layout */
 
 
-/* css for chief objectives */
+/* css for tertiary objectives */
 @media screen and (max-width: 767px){
     .table-responsive>.table>tbody>tr>td{
         white-space: inherit !important;
@@ -90,32 +89,38 @@ a.active{
         display: none;
     }
 }
-.chief_objective-name{
-    width: 70%;
+.tertiary_objective-name{
+    width: 40%;
 }
-.chief_objective-perspective{
-     width: 25%;
+.tertiary_objective-perspective{
+    width: 25%;
 }
-.unit_objective-edit{
-    width: 5%;
-}
-/* ./css for chief objectives */
-
-
-/* css for chief measures */
-.chief_measure-name{
-    width: 50%;
-}
-.chief_measure-type{
-    width: 5%;
-}
-.chief_measure-formula{
-    width: 10%;
-}
-.chief_measure-objective{
+.tertiary_objective-contributory{
     width: 30%;
 }
-.chief_measure-edit{
+.tertiary_objective-encoder{
+    width: 30%;
+}
+.tertiary_objective-edit{
+    width: 5%;
+}
+/* ./css for tertiary objectives */
+
+
+/* css for tertiary measures */
+.tertiary_measure-name{
+    width: 50%;
+}
+.tertiary_measure-type{
+    width: 5%;
+}
+.tertiary_measure-formula{
+    width: 10%;
+}
+.tertiary_measure-objective{
+    width: 30%;
+}
+.tertiary_measure-edit{
     width: 5%;
 }
 /* /.css for cheif measures */
@@ -123,14 +128,14 @@ a.active{
 
 /* css for table */
 thead{
-    background-color:#77DD77;
+    background-color:rgba(47,79,79, 1);
     color: #fff;
 }
 thead>tr>td{
     vertical-align: middle !important;
 }
 tr:hover{
-    background-color:rgba(54, 54, 54, .1);
+    background-color:rgba(47,79,79, 0.1);
     
 }
 /* /.css for table */

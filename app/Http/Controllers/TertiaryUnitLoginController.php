@@ -37,12 +37,13 @@ class TertiaryUnitLoginController extends Controller {
 				->with('tertiary_unit')
 				->first();
 			
+			
 			$tertiary_objectives_count = TertiaryUnitObjective::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
 				->count();
 			$tertiary_measures_count = TertiaryUnitMeasure::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
 				->count();
 			return view('tertiaryunitdashboard')
-				->with('tertiaryunit_id', $user->TertiaryUnitID)
+				->with('tertiary_unit_id', $user->TertiaryUnitID)
 				->with('user', $user)
 				->with('tertiary_objectives_count', $tertiary_objectives_count)
 				->with('tertiary_measures_count', $tertiary_measures_count)

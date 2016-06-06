@@ -1,14 +1,10 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
-
-
 app.controller('APITertiaryUnitAuditTrailsDashController', function($scope, $http, $interval) {
     $scope.unit_audit_trails_dash = [];
     $scope.loading = true;
 
     $scope.init = function() {
         $scope.loading = false;
-        $http.get(local + public + 'api/unit_dashboard').
+        $http.get(public + 'api/unit_dashboard').
         success(function(data, status, headers, config) {
             nowTime = (new Date()).getTime();
             // timeDifference = nowTime - data.audit_trail_dash.updated_at;

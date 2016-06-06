@@ -195,7 +195,7 @@ class ChangePictureController extends Controller {
 		 }
 		 else{
 	 		Session::flash('upload-error', 'Please select a photo');
-	 		return Redirect::to('secondaryunit/changesecondaryunitpicture');
+	 		return Redirect::to('secondary_unit/changesecondaryunitpicture');
 	 	}
 	 }
 
@@ -228,7 +228,7 @@ class ChangePictureController extends Controller {
 		 }
 		 else{
 	 		Session::flash('upload-error', 'Please select a photo');
-	 		return Redirect::to('secondaryunit/changeuserpicture');
+	 		return Redirect::to('secondary_unit/changeuserpicture');
 	 	}
 	 }
 

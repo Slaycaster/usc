@@ -73,7 +73,7 @@
     <![endif]-->
 </head>
 
-<body class="layout_tertiary_unit-body">
+<body class="layout_tertiary-body">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
@@ -85,7 +85,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand layout-custom-pnpname" href="{{ url('/') }}">
-                    Philippine National Police Unit Scorecard
+                    Philippine National Police Unit Scorecard 
                 </a>
                 <a class="navbar-brand layout-custom-pnpabb" href="{{ url('/') }}">
                     PNP Unit Scorecard
@@ -96,7 +96,7 @@
             <div class="layout-custom-username">
                 <span>    
                             <img class="img-responsive dashboard-custom-pictureabb" 
-                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
+                            src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
                             style="width:20px; height:20px; margin-top:-5px; margin-bottom:-2px;">
                     </span>&nbsp;
                     Welcome 
@@ -111,7 +111,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle layout-custom-navbaruser" data-toggle="dropdown">
                         <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                            src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
+                            src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}"
                             style="width:30px; height:30px; margin-top:-5px;">
                         </span>&nbsp;
                             Welcome 
@@ -159,11 +159,11 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ url('tertiaryunit/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i>    Dashboard
+                            <a href="{{ url('tertiary/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i>    Dashboard
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('tertiaryunit/scorecard') }}"><i class="fa fa-table fa-fw"></i> 
+                            <a href="{{ url('tertiary_unit/scorecard') }}"><i class="fa fa-table fa-fw"></i> 
                                 {{ $user->tertiary_unit->TertiaryUnitAbbreviation }} Scorecard
                             </a>
                         </li>
@@ -173,12 +173,12 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('tertiaryunit/objectives') }}">
+                                    <a href="{{ url('tertiary_unit/objectives') }}">
                                         Set Tertiary Unit Objectives
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('tertiaryunit/measures') }}">
+                                    <a href="{{ url('tertiary_unit/measures') }}">
                                         Set Tertiary Unit Measures
                                     </a>
                                 </li>
@@ -187,7 +187,7 @@
                         </li>
                         <li>
 
-                            <a href="{{ url('tertiaryunit/targets') }}"><i class="fa fa-table fa-fw"></i> 
+                            <a href="{{ url('tertiary_unit/targets') }}"><i class="fa fa-table fa-fw"></i> 
                                 Set Measure Targets
                             </a>
 
@@ -198,12 +198,12 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('tertiaryunit/reports') }}">
+                                    <a href="{{ url('tertiary_unit/reports') }}">
                                         Tertiary Unit Scorecard Report
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('tertiaryunit/analysis_reports') }}">
+                                    <a href="{{ url('tertiary_unit/analysis_reports') }}">
                                         Tertiary Unit Scorecard Analysis Report
                                     </a>
                                 </li>
@@ -214,7 +214,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('tertiaryunit/changechiefpicture') }}">Change Tertiary Unit Picture</a>
+                                    <a href="{{ url('tertiary_unit/changechiefpicture') }}">Change Tertiary Unit Picture</a>
                                 </li>
                                 
                             </ul>
@@ -229,12 +229,12 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('tertiaryunit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                                    <a href="{{ url('tertiary_unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                         Change Profile Picture</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('tertiaryunit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                                    <a href="{{ url('tertiary_unit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
                                         Change User Password</a>
                                 </li>
                                 <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -264,7 +264,7 @@
         </nav>
         <div class="the-blur"></div>
 
-        <div id="page-wrapper" class="chief-page-wrapper">
+        <div id="page-wrapper" class="tertiary-wrapper">
             @yield('content')
         </div>
         <!-- /#page-wrapper -->

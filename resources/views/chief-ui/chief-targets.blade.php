@@ -20,7 +20,6 @@
 
 
     <div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
-	   
         <div class="wrap">
 		    <div class="row">			
 				<div class="col-lg-12">
@@ -120,12 +119,13 @@
 	    </div>
         <!-- End div for data table output -->
 
+
 		<!-- Modal (Pop up when detail button clicked) -->
         <div class="modal fade" id="targetModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">×</span></button>
                         <i class="fa fa-circle-o-notch fa-4x"></i>
                         <h4 class="modal-title" id="myModalLabel"><b><% this_title %></b></h4>
                     </div>
@@ -135,36 +135,38 @@
                             <h4 class="alert alert-success">
                                 <b><% chief_measurename %></b>
                             </h4>
+                        
                             <table>
-                                <tr>
+                                <tr style="background-color:transparent;">
                                     <td>
-                                        <label for="target_name" class="control-label">Set Target Period:</label>
+                                        <h4>Set Target Period:</h4>
                                     </td>
-                                    <td>
-                                        <select id="id_target_period" name="measure_formula" data-ng-model="chief_target.TargetPeriod" class="form-control"  required ng-touched> 
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td >
+                                        <select id="id_target_period" name="measure_formula" data-ng-model="chief_target.TargetPeriod" class="form-control" style="width:25em;"  required ng-touched> 
                                                    
-                                                    <option value="Monthly">
-                                                        Monthly
-                                                    </option>
-                                                    <option value="Quarterly">
-                                                        Quarterly
-                                                    </option>
+                                                <option value="Monthly">
+                                                    Monthly
+                                                </option>
+                                                <option value="Quarterly">
+                                                    Quarterly
+                                                </option>
                                         </select>
                                     </td>
-                                </tr>        
+                                </tr>    
                             </table>
 
-                                
-                            <div class="table-responsive" id="monthlyform" style='display:none;'>
-                                <br />
+
+                            <br />
+                            <!-- Modal (Pop up when detail button clicked) FOR MONTHLY -->  
+                            <div  class="table-responsive" id="monthlyform" style='display:none;'>
                                 <table class="table">
-                                <!-- Modal (Pop up when detail button clicked) FOR MONTHLY -->
                                     <tr>
                                         <td class="col-md-1">
                                             <label for="monthlyform" class="control-label">January:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_january_target" valid-number name="monthlyform" value="<% chief_target.JanuaryTarget  %>" ng-model="chief_target.JanuaryTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text' id="id_january_target" valid-number name="monthlyform" value="<% chief_target.JanuaryTarget  %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for January is required.</span>
                                         </td>
                                       
@@ -173,7 +175,7 @@
                                             <label for="monthlyform" class="control-label">April:</label>
                                         </td>   
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_april_target" valid-number name="monthlyform" value="<% chief_target.AprilTarget %>" ng-model="chief_target.AprilTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_april_target" valid-number name="monthlyform" value="<% chief_target.AprilTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for April is required.</span>
                                         </td> 
 
@@ -181,7 +183,7 @@
                                             <label for="monthlyform" class="control-label">July:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_july_target" valid-number name="monthlyform" value="<% chief_target.JulyTarget %>" ng-model="chief_target.JulyTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_july_target" valid-number name="monthlyform" value="<% chief_target.JulyTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for July is required.</span>
                                         </td>
 
@@ -189,7 +191,7 @@
                                             <label for="monthlyform" class="control-label">October:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_october_target" valid-number name="monthlyform" value="<% chief_target.OctoberTarget %>" ng-model="chief_target.OctoberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_october_target" valid-number name="monthlyform" value="<% chief_target.OctoberTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for October is required.</span>
                                         </td>                                  
                                     </tr>
@@ -200,7 +202,7 @@
                                             <label for="monthlyform" class="control-label">February:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_february_target" valid-number name="monthlyform" value="<% chief_target.FebruaryTarget %>" ng-model="chief_target.FebruaryTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_february_target" valid-number name="monthlyform" value="<% chief_target.FebruaryTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for February is required.</span>
                                         </td>
 
@@ -208,7 +210,7 @@
                                             <label for="monthlyform" class="control-label">May:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_may_target" valid-number name="monthlyform" value="<% chief_target.MayTarget %>" ng-model="chief_target.MayTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_may_target" valid-number name="monthlyform" value="<% chief_target.MayTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for May is required.</span>
                                         </td>
                             
@@ -216,7 +218,7 @@
                                             <label for="monthlyform" class="control-label">August:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_august_target" valid-number name="monthlyform" value="<% chief_target.AugustTarget %>" ng-model="chief_target.AugustTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_august_target" valid-number name="monthlyform" value="<% chief_target.AugustTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for August is required.</span>
                                         </td>
 
@@ -224,7 +226,7 @@
                                             <label for="monthlyform" class="control-label">November:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_november_target" valid-number name="monthlyform" value="<% chief_target.NovemberTarget %>" ng-model="chief_target.NovemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_november_target" valid-number name="monthlyform" value="<% chief_target.NovemberTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for November is required.</span>
                                         </td>
                            
@@ -235,7 +237,7 @@
                                             <label for="monthlyform" class="control-label">March:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_march_target" valid-number name="monthlyform" value="<% chief_target.MarchTarget %>" ng-model="chief_target.MarchTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_march_target" valid-number name="monthlyform" value="<% chief_target.MarchTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for March is required.</span>
                                         </td>
 
@@ -243,7 +245,7 @@
                                             <label for="monthlyform" class="control-label">June:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_june_target" valid-number name="monthlyform" value="<% chief_target.JuneTarget %>" ng-model="chief_target.JuneTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_june_target" valid-number name="monthlyform" value="<% chief_target.JuneTarget %>"autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for June is required.</span>
                                         </td>
 
@@ -251,7 +253,7 @@
                                             <label for="monthlyform" class="control-label">September:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_september_target" valid-number name="monthlyform" value="<% chief_target.SeptemberTarget %>" ng-model="chief_target.SeptemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_september_target" valid-number name="monthlyform" value="<% chief_target.SeptemberTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for September is required.</span>
                                         </td>
                            
@@ -259,11 +261,11 @@
                                             <label for="monthlyform" class="control-label">December:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_december_target" valid-number name="monthlyform" value="<% chief_target.DecemberTarget %>" ng-model="chief_target.DecemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_december_target" valid-number name="monthlyform" value="<% chief_target.DecemberTarget %>" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for December is required.</span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="background-color:transparent;">
                                         <td colspan="24">
                                             <div ng-show="info" class="alert alert-danger container-fluid"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you Add Target, it can no longer be updated until next year.</div>
                                         </td>
@@ -274,62 +276,16 @@
                                 </table>   
 
                                 <div class="col-md-3 pull-right" style="margin-bottom:1em;">
-                                    <button type="button" class="btn btn-success btn-sm btn-block pull-right" id=" btn-save" data-toggle="modal" data-target="#confirmSubmit">Add Target</button> 
+                                    <button class="btn btn-success btn-sm btn-block pull-right"
+                                     data-toggle="modal" data-target="#confirmSubmit">Add Target</button> 
                                 </div> 
                             </div>
 
-                            <div id="confirmSubmit" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                                            <center>
-                                                <br />
-                                                <h4 class="modal-title">
-                                                Are you sure about this?</h4>
-                                            </center>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container-fluid">
-                                                <!-- <div class="alert alert-success"  "><span class="fa fa-success fa-fw"></span> Password matched.</div> -->
+                            
 
-                    
-                                                <div ng-if="istrue =='true'" class="alert alert-success">
-                                                <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i> Password confirmed! <br />
-                                                <i class="fa fa-paper-plane-o  fa-fw"></i> Click submit to continue. <br />
-
-                                                <i class="fa fa-info-circle fa-fw"></i> 
-                                                Once submitted you can no longer update it until next year.</div>
-
-                                                <div ng-if="istrue =='false'" class="alert alert-info">
-                                                <i class="fa fa-lock  fa-fw"></i>
-                                                Please type your password to confirm submission.
-                                                </div>
-
-
-                                                <input type="password" style="text-align:center; height: 2em; font-size:1.5em;" class="form-control" name="password" id="getPassword" placeholder="Password" ng-model="confirmPassword" ng-change="getpassword()"/>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <span class="col-md-9 pull-left alert alert-warning" style="text-align:left;">
-                                                <i class="fa fa-info-circle fa-fw"></i> 
-                                                To edit your target, click &times; on the right.
-                                            </span>
-                                            
-                                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="istrue == 'false'" ng-click="save(modalstate, id)" style="margin:.5em;"><i class="fa fa-paper-plane-o  fa-fw"></i> Submit</button>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <br />
                             <!-- Modal (Pop up when detail button clicked) FOR QUARTERTLY -->
-                            <div id="quarterlyform" class="table-responsive" style='display:none;'>
-                                <table class="table table-striped">
+                            <div  class="table-responsive" id="quarterlyform" style='display:none;'>
+                                <table class="table">
                                     <td>
                                         <label for="quarterlyform" class="control-label">First Quarter:</label>
                                     </td>
@@ -362,18 +318,17 @@
                                         <input type='text' id="id_fourthquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Fourth Quarter is required.</span>
                                     </td>
-                                    <tr>
+                                    <tr style="background-color:transparent;">
                                         <td colspan="8">
                                             <div ng-show="info" class="alert alert-danger"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
                                         </td>
                                     </tr>
-                            </table>
-                                
-                                                      
-                            <div class="col-md-3 pull-right" style="margin-bottom:1em;">
-                                <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
-                            </div>
-                               
+                                </table>
+                                    
+                                                          
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                    <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
+                                </div>
                             </div>
                                  <!-- ng-click="save(modalstate, id)" -->
                         </form>
@@ -383,6 +338,56 @@
             </div>
         </div>
 
+        <div class="modal fade" id="confirmSubmit" aria-hidden='true' aria-labelledby="myModalLabel" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <center>
+                            <br />
+                            <h4 class="modal-title">
+                            Are you sure about this?</h4>
+                        </center>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                          
+                            <div ng-if="istrue =='true'" class="alert alert-success">
+                            <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i> Password confirmed! <br />
+                            <i class="fa fa-paper-plane-o  fa-fw"></i> Click submit to continue. <br />
+
+                            <i class="fa fa-info-circle fa-fw"></i> 
+                            Once submitted you can no longer update it until next year.</div>
+
+                            <div ng-if="istrue =='false'" class="alert alert-info">
+                            <i class="fa fa-lock  fa-fw"></i>
+                            Please type your password to confirm submission.
+                            </div>
+
+
+                            <input type="password" style="text-align:center; height: 2em; font-size:1.7em;" class="form-control" name="password" id="getPassword" placeholder="Password" ng-model="confirmPassword" ng-change="getpassword()"/> 
+                        </div>
+                    </div>
+                
+
+                    <div class="modal-footer">
+                        <div class="col-md-12 alert alert-warning" style="text-align:left;">
+                            <i class="fa fa-info-circle fa-fw"></i> 
+                                To edit your target, click &times; on the right.
+                        </div>
+                        
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default btn-md" data-dismiss="modal" ng-disabled="istrue == 'false'" ng-click="save(modalstate, id)" "><i class="fa fa-paper-plane-o  fa-fw"></i> Submit</button>
+
+                         </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <div class="modal fade" id="monthModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -565,6 +570,8 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#id_target_period').on('change', function() {
+            var target = document.getElementById('id_target_period').value;
+            console.log(target);
           if ( this.value == 'Monthly')
           {
             $("#monthlyform").show();

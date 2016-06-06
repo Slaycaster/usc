@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#21B6A8 ">
-    <meta name="msapplication-navbutton-color" content="#21B6A8 ">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#21B6A8">
+    <meta name="theme-color" content="#287254 ">
+    <meta name="msapplication-navbutton-color" content="#287254 ">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#287254">
     <meta name="description" content="Philippine National Police Unit Scorecard">
     <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
     <meta name="author" content="Fare Matrix">
 
-    <title>Unit Dashboard - Philippine National Police Unit Scorecard</title>
+    <title>Secondary Unit Dashboard - Philippine National Police Unit Scorecard</title>
 
     <!-- Favicon.ico -->
     <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-all.css') }}">
 
     <!-- Yujin Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/unit.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/secondary.css') }}">
 
     <!-- Morris Charts CSS -->
     <link href="{{ asset('unit/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
@@ -67,7 +67,7 @@
     <![endif]-->
 </head>
 
-<body class="layout_unit-body">
+<body class="layout_secondary-body">
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="layout-title-navbar navbar navbar-default navbar-fixed-top" role="navigation">
@@ -115,13 +115,13 @@
                         <i class="fa fa-caret-down pull-right"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="{{ url('secondaryunit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                        <li
+                            <a href="{{ url('secondary_unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                 Change Profile Picture</a>
                         </li>
 
                         <li>
-                            <a href="{{ url('secondaryunit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                            <a href="{{ url('secondary_unit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
                                 Change User Password</a>
                         </li>
                         <li class="divider"></li>
@@ -153,13 +153,13 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ url('secondary/dashboard') }}">
+                            <a href="{{ url('secondary_unit/dashboard') }}">
                                 <i class="fa fa-dashboard fa-fw"></i>         
                                 Dashboard
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('secondaryunit/scorecard') }}">
+                            <a href="{{ url('secondary_unit/scorecard') }}">
                                 <i class="fa fa-table fa-fw"></i> 
                                 {{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard
                                 Scorecard
@@ -171,25 +171,25 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondaryunit/objectives') }}">Set Secondary Unit Objectives</a>
+                                    <a href="{{ url('secondary_unit/objectives') }}">Set Secondary Unit Objectives</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('secondary/measures') }}">Set Unit Measures</a>
+                                    <a href="{{ url('secondary_unit/measures') }}">Set Secondary Unit Measures</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ url('secondary/targets') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
+                            <a href="{{ url('secondary_unit/targets') }}"><i class="fa fa-table fa-fw"></i> Set Measure Targets</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondaryunit/reports') }}">Secondary Unit Scorecard Report</a>
+                                    <a href="{{ url('secondary_unit/reports') }}">Secondary Unit Scorecard Report</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('secondaryunit/analysis_reports') }}">Secondary Unit Scorecard Analysis Report</a>
+                                    <a href="{{ url('secondary_unit/analysis_reports') }}">Secondary Unit Scorecard Analysis Report</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -198,27 +198,31 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondaryunit/changesecondaryunitpicture') }}">Change Secondary Unit Picture</a>
+                                    <a href="{{ url('secondary_unit/changeunitpicture') }}">Change Secondary Unit Picture</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li class="layout-custom-usernavoptions">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <!-- <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
-                                    src="{{ asset('uploads/userpictures/unit/cropped/'.''.$user->UserUnitPicturePath.'') }}"
+                                <span class="pull-left"><img class="img-responsive dashboard-custom-pictureabb" 
+                            src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->UserSecondaryUnitPicturePath.'') }}"
                                     style="width:15px; height:15px; margin-top:-5px; margin-bottom:-3px;">
-                                </span>&nbsp; -->
-                            <!-- {{ $user->rank->RankCode }} {{ $user->UserUnitFirstName }} {{ $user->UserUnitLastName }} <span class="fa arrow"></span> -->
+                                </span>&nbsp;
+                                {{ $user->rank->RankCode }}
+                                {{ $user->UserSecondaryUnitFirstName }} 
+                                {{ $user->UserSecondaryUnitLastName }}!
+                            
+                            <span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondaryunit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
+                                    <a href="{{ url('secondary_unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                         Change Profile Picture</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('secondaryunit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
+                                    <a href="{{ url('secondary_unit/changepassword') }}"><span class="fa fa-lock fa-fw"></span>&nbsp;
                                         Change User Password</a>
                                 </li>
                                 <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -234,7 +238,7 @@
         </nav>
  
         <div class="the-blur"></div>
-
+  
         <div id="page-wrapper" class="secondary-page-wrapper">
             @yield('content')
         </div>

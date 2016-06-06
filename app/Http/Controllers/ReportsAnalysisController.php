@@ -189,6 +189,12 @@ class ReportsAnalysisController extends Controller
 		Session::put('year', $year);
   	    return view('pdf-layouts.PDFUnitYearlyBarGraphAnalysis');
 	}
+	public function yearlySecondaryUnitAnalysisBarGraph()
+	{	
+		$year = Input::get('year');
+		Session::put('year', $year);
+  	    return view('pdf-layouts.PDFSecondaryUnitYearlyBarGraphAnalysis');
+	}
 
 	public function yearlyStaffAnalysisBarGraph()
 	{	

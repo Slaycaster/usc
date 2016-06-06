@@ -1,6 +1,3 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
- 
 app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $interval) {
  
     $scope.secondary_unit_objectives = [];
@@ -10,12 +7,12 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + public + 'api/secondary_unit_objectives').
+        $http.get(public + 'api/secondary_unit_objectives').
         success(function(data, status, headers, config) {
         console.log(data);
         $scope.secondary_unit_objectives = data;
         $scope.loading = false;
-        $http.get(local + public + 'api/perspectives').
+        $http.get(public + 'api/perspectives').
             success(function(data, status, headers, config)
             {   
                 $scope.perspective = data;
@@ -34,7 +31,7 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/secondary_unit_objectives';
+        var url = public + 'api/secondary_unit_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -42,10 +39,10 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
             url += "/" + id; /*console.log(id);*/
             console.log(document.getElementById('unit_id').value);
             $http.put(url, {
-                UnitObjectiveName: $scope.unit_objective.UnitObjectiveName,
+                SecondaryUnitObjectiveName: $scope.unit_objective.SecondaryUnitObjectiveName,
                 PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
-                UnitID: document.getElementById('unit_id').value,
-                UserUnitID: document.getElementById('user_unit_id').value
+                SecondaryUnitID: document.getElementById('unit_id').value,
+                UserSecondaryUnitID: document.getElementById('user_unit_id').value
 
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
@@ -86,7 +83,7 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S OBJECTIVE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/unit_objectives/' + id)
+                $http.get(public + 'api/secondary_unit_objectives/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_objective = response;

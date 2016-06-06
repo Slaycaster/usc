@@ -1,13 +1,10 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
-
 app.controller('APIChiefAuditTrailsDashController', function($scope, $http, $interval) {
     $scope.chief_audit_trails_dash = [];
     $scope.loading = true;
 
     $scope.init = function() {
         $scope.loading = false;
-        $http.get(local + public + 'api/chief_dashboard').
+        $http.get(public + 'api/chief_dashboard').
         success(function(data, status, headers, config) {
             nowTime = (new Date()).getTime();
             $scope.chief_audit_trails_dash = data;

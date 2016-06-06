@@ -1,8 +1,4 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
-
 app.controller('APIChiefTargetController', function($scope, $http, $interval) {
-
 	$scope.chief_targets = [];
 	$scope.loading = true;
     $scope.info = false;
@@ -11,10 +7,10 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
         $scope.loading = false;
         $scope.info = true;
         $scope.istrue="false";
-		$http.get(local +  public + 'api/chief_targets').
+		$http.get(public + 'api/chief_targets').
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
-				$scope.loading = false;
+			$scope.loading = false;
             $scope.date = new Date();
 
 		});	
@@ -33,7 +29,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
         
         
 
-        url = local + public + 'api/chief_confirm_password';
+        url = public + 'api/chief_confirm_password';
         $http.post(url, {    
             
             getPassword: document.getElementById('getPassword').value
@@ -58,7 +54,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local +  public + 'api/chief_targets';
+        var url = public + 'api/chief_targets';
 
         //append Unit Objective ID to the URL if the form is in edit mode
 
@@ -132,10 +128,10 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 $scope.this_title = "ADD TARGETS";
                 
                 $scope.id = id;
-                $http.get(local +  public + 'api/chief_targets/' + id)
+                $http.get(public + 'api/chief_targets/' + id)
                 .success(function(response) {            
                     $scope.chief_target = response;
-                    console.log("SHOW" + $scope.chief_target.TargetPeriod);
+                    console.log("Target Period: " + $scope.chief_target.TargetPeriod);
                     if($scope.chief_target.TargetPeriod === 'Monthly' || $scope.chief_target.TargetPeriod === 'Quarterly')
                     {
                         $('#alreadysetModal').modal('show');
@@ -167,7 +163,7 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 $scope.form_title = "VIEW TARGET";
                 $scope.id = id;
 
-                $http.get(local +  public + 'api/chief_targets/' + id)
+                $http.get(public + 'api/chief_targets/' + id)
 
                 .success(function(response) {
                     $scope.chief_target = response;
@@ -196,7 +192,8 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                         $('#notsetModal').modal('show');
                         $scope.init();
                     }
-                });
+            });
+
                 break;
                 default:
                 break;

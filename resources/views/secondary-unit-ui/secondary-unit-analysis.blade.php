@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-md-4 col-lg-4">
                                 <div>
-                                    <form method="get" action="{{ url('report/yearlyUnitAnalysisBarGraph') }}" target="_blank">
+                                    <form method="get" action="{{ url('report/yearlySecondaryUnitAnalysisBarGraph') }}" target="_blank">
                                         <div>
                                             <label for="year" class="control">Yearly Scorecard Analysis Report in Bar Graph:</label>
                                             <br>

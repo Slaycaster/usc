@@ -1,6 +1,3 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
-
 app.controller('APIChiefScorecardController', function($scope, $http, $interval) {
 
     $scope.chief_targets = null;
@@ -22,7 +19,7 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + public + 'api/chief_scorecard').
+        $http.get(public + 'api/chief_scorecard').
         success(function(data, status, headers, config) {
             $scope.chief_targets = data;
 
@@ -281,7 +278,7 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/chief_scorecard';
+        var url = public + 'api/chief_scorecard';
         
         //append Unit Objective ID to the URL if the form is in edit mode
 

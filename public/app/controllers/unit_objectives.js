@@ -1,6 +1,3 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
- 
 app.controller('APIUnitObjectiveController', function($scope, $http, $interval) {
  
     $scope.unit_objectives = [];
@@ -10,18 +7,18 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + public + 'api/unit_objectives').
+        $http.get(public + 'api/unit_objectives').
         success(function(data, status, headers, config) {
         $scope.unit_objectives = data;
         $scope.loading = false;
-        $http.get(local + public + 'api/perspectives').
+        $http.get(public + 'api/perspectives').
             success(function(data, status, headers, config)
             {   
                 $scope.perspective = data;
                 $scope.selectedUserProfile = $scope.perspective[0];
             });
 
-            $http.get(local + public + 'api/unit/objectives/staffobjectives').
+            $http.get(public + 'api/unit/objectives/staffobjectives').
                 success(function(data, status, headers, config)
                 {   
                        
@@ -47,7 +44,7 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/unit_objectives';
+        var url = public + 'api/unit_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -101,7 +98,7 @@ app.controller('APIUnitObjectiveController', function($scope, $http, $interval) 
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S OBJECTIVE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/unit_objectives/' + id)
+                $http.get(public + 'api/unit_objectives/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_objective = response;

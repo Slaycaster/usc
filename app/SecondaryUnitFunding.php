@@ -18,4 +18,24 @@ class SecondaryUnitFunding extends Model {
 	 */
 	protected $primaryKey = 'SecondaryUnitFundingID';
 
+	public function secondary_unit()
+	{
+		return $this->belongsTo('App\SecondaryUnit', 'SecondaryUnitID', 'SecondaryUnitID');
+	}
+
+	public function user_secondary_unit()
+	{
+		return $this->belongsTo('App\SecondaryUserUnit','UserSecondaryUnitID','UserSecondaryUnitID'); //(model, foreign_key, parent_primary_key)
+	}
+
+	public function secondary_unit_measure()
+	{
+		return $this->belongsTo('App\SecondaryUnitMeasure', 'SecondaryUnitMeasureID', 'SecondaryUnitMeasureID');
+	}
+
+	public function secondary_unit_target()
+	{
+		return $this->hasOne('App\SecondaryUnitTarget', 'SecondaryUnitTargetID', 'SecondaryUnitTargetID'); //(model, foreign_key, parent_primary_key)
+	}
+
 }

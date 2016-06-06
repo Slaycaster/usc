@@ -1,7 +1,3 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
-
- 
 app.controller('APIStaffObjectiveController', function($scope, $http, $interval) {
  
     $scope.staff_objectives = [];
@@ -11,21 +7,21 @@ app.controller('APIStaffObjectiveController', function($scope, $http, $interval)
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + public + 'api/staff_objectives').
+        $http.get(public + 'api/staff_objectives').
         success(function(data, status, headers, config) {
             $scope.staff_objectives = data;
                 $scope.loading = false;
 
 
 
-        $http.get(local + public + 'api/perspectives').
+        $http.get(public + 'api/perspectives').
         success(function(data, status, headers, config)
         {   
             $scope.perspective = data;
             $scope.selectedUserProfile = $scope.perspective[0];
         });
 
-        $http.get(local + public + 'api/staff/objectives/chiefobjectives').
+        $http.get(public + 'api/staff/objectives/chiefobjectives').
         success(function(data, status, headers, config)
         {   
            
@@ -56,7 +52,7 @@ app.controller('APIStaffObjectiveController', function($scope, $http, $interval)
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/staff_objectives';
+        var url = public + 'api/staff_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -109,7 +105,7 @@ app.controller('APIStaffObjectiveController', function($scope, $http, $interval)
             case 'edit':
                 $scope.form_title = "EDIT STAFF'S OBJECTIVE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/staff_objectives/' + id)
+                $http.get(public + 'api/staff_objectives/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.staff_objective = response;
