@@ -185,6 +185,7 @@ Route::get('api/staff/measures/staffmeasures', 'APIUnitMeasuresController@staff_
 Route::get('api/unit_scorecard/lastupdatedby', 'APIUnitScorecardController@LastUpdatedBy');
 Route::get('api/staff_scorecard/lastupdatedby', 'APIStaffScorecardController@LastUpdatedBy');
 Route::get('api/chief_scorecard/lastupdatedby', 'APIChiefScorecardController@LastUpdatedBy');
+Route::get('api/secondary_unit/lastupdatedby', 'APISecondaryUnitScorecardController@LastUpdatedBy');
 
 Route::resource('api/chief_scorecard', 'APIChiefScorecardController');
 Route::resource('api/staff_scorecard', 'APIStaffScorecardController');
