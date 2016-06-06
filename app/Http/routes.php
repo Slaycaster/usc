@@ -129,6 +129,7 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 Route::get('secondary_unit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
 Route::get('secondary_unit/measures', 'APISecondaryUnitMeasuresController@showIndex');
 Route::get('secondary_unit/targets', 'APISecondaryUnitTargetsController@showIndex');
+Route::get('secondary_unit/scorecard', 'SecondaryUnitLoginController@scorecard');
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
@@ -181,6 +182,7 @@ Route::get('api/chief_scorecard/lastupdatedby', 'APIChiefScorecardController@Las
 Route::resource('api/chief_scorecard', 'APIChiefScorecardController');
 Route::resource('api/staff_scorecard', 'APIStaffScorecardController');
 Route::resource('api/unit_scorecard', 'APIUnitScorecardController');
+Route::resource('api/secondary_unit_scorecard', 'APISecondaryUnitScorecardController');
 Route::resource('api/chief_measures','APIChiefMeasuresController');
 Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');
