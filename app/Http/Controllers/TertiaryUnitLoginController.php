@@ -274,6 +274,7 @@ class TertiaryUnitLoginController extends Controller {
 		public function donutgraph()
 		{
 
+
 			
 			$year = $_REQUEST['year'];
 			$tertiary_id = $_REQUEST['tertiary_unit_id'];
@@ -332,6 +333,31 @@ class TertiaryUnitLoginController extends Controller {
 			$thirdquarter = $thirdquarter / $measurecount;
 			$fourthquarter = $firstquarter / $measurecount;
 			
+
+			$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $tertiary_unit_id)
+				->with('tertiary_unit')
+				->with('tertiary_unit.secondary_unit')
+				->first();
+			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
+			$maxid = TertiaryUnitAccomplishment::max('updated_at');
+		
+			$updatedby = TertiaryUnitAccomplishment::where('updated_at','=',$maxid)
+				->with('user_tertiary_unit')
+				->first();
+			//dd($updatedby);
+			return view('tertiary-ui.tertiary-scorecard')
+				->with('user', $user)
+				->with('tertiary_unit_measures',$tertiary_unit_measures)
+				->with('updatedby',$updatedby);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	
+	}
 
 			$firstquarter = round($firstquarter, 2);
 			$secondquarter = round($secondquarter, 2);

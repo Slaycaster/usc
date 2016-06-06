@@ -161,6 +161,8 @@ Route::get('tertiary_unit/audit_trails', 'APITertiaryUnitAuditTrailsController@s
 /*API ROUTES*/
 
 /*API ROUTES FOR TERTIARY*/
+Route::get('api/tertiary_unit_scorecard/lastupdatedby', 'APITertiaryUnitScorecardController@LastUpdatedBy');
+Route::resource('api/tertiary_unit_scorecard', 'APITertiaryUnitScorecardController');
 
 Route::post('api/tertiary_unit_targets/update/{id}','APITertiaryUnitTargetsController@updatetertiaryunitarget');
 Route::post('api/tertiary_unit_targets/updatequarter/{id}','APITertiaryUnitTargetsController@updatetertiaryunitquarter');
