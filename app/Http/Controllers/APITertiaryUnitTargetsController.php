@@ -16,7 +16,7 @@ use App\TertiaryUnitFunding;
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 
-class APIUnitTargetsController extends Controller {
+class APITertiaryUnitTargetsController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -25,36 +25,36 @@ class APIUnitTargetsController extends Controller {
 	 */
 	public function index()
 	{
-		$unit_id = Session::get('unit_user_id', 'default');
+		$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
 
-		$unit = UserUnit::where('UserUnitID', '=', $unit_id)->select('UnitID')->lists('UnitID'); //Get the Unit of the unit
+		$tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)->select('TertiaryUnitID')->lists('TertiaryUnitID'); //Get the Unit of the unit
 
 		$currentYear = date("Y");
 		
-		$unit_targets = UnitTarget::where( DB::raw('YEAR(TargetDate)'), '<', $currentYear )
+		$tertiary_unit_targets = TertiaryUnitTarget::where( DB::raw('YEAR(TargetDate)'), '<', $currentYear )
 		->where('TargetDate','!=','0000-00-00')
 		->where('Termination', '=', null)
 		->get();
 
-		if($unit_targets != null ){
-			foreach ($unit_targets as $unit_target) {
-				UnitTarget::where('UnitTargetID', $unit_target->UnitTargetID)
+		if($tertiary_unit_targets != null ){
+			foreach ($tertiary_unit_targets as $tertiary_unit_target) {
+				TertiaryUnitTarget::where('TertiaryUnitTargetID', $tertiary_unit_target->TertiaryUnitTargetID)
 		          ->update(['Termination' => 'Terminated']);
 
-				$unittarget = new UnitTarget;
-				$unittarget->TargetPeriod = "Not Set";
-				$unittarget->UnitMeasureID = $unit_target->UnitMeasureID;
-				$unittarget->UnitID = $unit_target->UnitID;
-				$unittarget->UserUnitID = $unit_target->UserUnitID;
-				$unittarget->save();
+				$tertiaryunittarget = new TertiaryUnitTarget;
+				$tertiaryunittarget->TargetPeriod = "Not Set";
+				$tertiaryunittarget->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+				$tertiaryunittarget->TertiaryUnitID = $tertiary_unit_target->TertiaryUnitID;
+				$tertiaryunittarget->UserTertiaryUnitID = $tertiary_unit_target->UserTertiaryUnitID;
+				$tertiaryunittarget->save();
 			}
 		}	
 			
-		return UnitTarget::with('unit_measure')
-			->with('unit_measure.unit_objective')
-			->with('user_unit')
-			->with('user_unit.rank')
-			->where('UnitID', '=', $unit)
+		return TertiaryUnitTarget::with('tertiary_unit_measure')
+			->with('tertiary_unit_measure.tertiary_unit_objective')
+			->with('user_tertiary_unit')
+			->with('user_tertiary_unit.rank')
+			->where('TertiaryUnitID', '=', $tertiary_unit)
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->orWhere('TargetDate', '=', '0000-00-00')
 			->get();
@@ -63,22 +63,22 @@ class APIUnitTargetsController extends Controller {
 
 	public function showIndex()
 	{
-		if (Session::has('unit_user_id'))
+		if (Session::has('tertiary_user_id'))
 		{	
-			$unit_id = Session::get('unit_user_id', 'default');
-			$user = UserUnit::where('UserUnitID', '=', $unit_id)
-				->with('unit')
+			$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
+				->with('tertiary_unit')
 				->first();
 
-			$unit = unit::where('UnitID', '=', $user->UnitID)->first();
-			$unit_objectives = UnitObjective::all();
-			$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $user->UnitID)->get();
+			$tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $user->TertiaryUnitID)->first();
+			$tertiary_unit_objectives = TertiaryUnitObjective::all();
+			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
 			
-			return view('unit-ui.unit-targets')
-				->with('unit_objectives', $unit_objectives)
-				->with('unit', $unit)
+			return view('tertiary-ui.tertiary-targets')
+				->with('tertiary_unit_objectives', $tertiary_unit_objectives)
+				->with('tertiary_unit', $tertiary_unit)
 				->with('user', $user)
-				->with('unit_measures', $unit_measures);
+				->with('tertiary_unit_measures', $tertiary_unit_measures);
 		}
 		else
 		{
@@ -104,26 +104,26 @@ class APIUnitTargetsController extends Controller {
 	 */
 	public function store()
 	{
-		$unit_id = Session::get('unit_user_id', 'default');
-		$unit = Request::input('UnitID');
-		$action = 'Added a measure: "' . Request::input('UnitMeasureName') . '"';
+		$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
+		$tertiary_unit = Request::input('TertiaryUnitID');
+		$action = 'Added a measure: "' . Request::input('TertiaryUnitMeasureName') . '"';
 
 		//DB::insert('insert into chief_audit_trails (Action, UserChiefID, ChiefID) values (?,?,?)', array($action, $chief_id, $chief));
 		
-		$unit_target = new UnitTarget(Request::all());
-		$unit_target->save();
+		$tertiary_unit_target = new TertiaryUnitTarget(Request::all());
+		$tertiary_unit_target->save();
 
-		$unit_measureid = DB::table('unit_measures')->max('UnitMeasureID');
+		$tertiary_unit_measureid = DB::table('tertiary_unit_measures')->max('TertiaryUnitMeasureID');
 
 		//Use Eloquent instead! == Inserting into unit Targets == You forgot target period
-		$unit_target = new UnitTarget;
-		$unit_target->TargetPeriod = "Not Set";
-		$unit_target->UnitMeasureID = $unit_measureid;
-		$unit_target->UnitID = $unit;
-		$unit_target->UserUnitID = $unit_id;
-		$unit_target->save();
+		$tertiary_unit_target = new TertiaryUnitTarget;
+		$tertiary_unit_target->TargetPeriod = "Not Set";
+		$tertiary_unit_target->TertiaryUnitMeasureID = $tertiary_unit_measureid;
+		$tertiary_unit_target->TertiaryUnitID = $tertiary_unit;
+		$tertiary_unit_target->UserTertiaryUnitID = $tertiary_unit_id;
+		$tertiary_unit_target->save();
 		
-		return $unit_target;
+		return $tertiary_unit_target;
 	}
 
 	/**
@@ -134,8 +134,8 @@ class APIUnitTargetsController extends Controller {
 	 */
 	public function show($id)
 	{
-		$unit_target= UnitTarget::find($id);
- 		return $unit_target;
+		$tertiary_unit_target= TertiaryUnitTarget::find($id);
+ 		return $tertiary_unit_target;
 	}
 
 	/**
@@ -155,132 +155,130 @@ class APIUnitTargetsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function updateunitarget($id)
+	public function updatetertiaryunitarget($id)
 	{
-		$unit_id = Session::get('unit_user_id', 'default');
-		$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
-				->with('unit')
+		$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
+		$tertiary_unit_user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
+				->with('tertiary_unit')
 				->first();
 
-		$unit_target = UnitTarget::find($id);
-		$unit_target->update(Request::all());
+		$tertiary_unit_target = TertiaryUnitTarget::find($id);
+		$tertiary_unit_target->update(Request::all());
 
-		$unit_target->save();
+		$tertiary_unit_target->save();
 
 
 		/*Saving to Accomplishments etc...*/
 
-		$unit_accomplishment = new UnitAccomplishment();
-		$unit_accomplishment->UnitMeasureID = $unit_target->UnitMeasureID;
-		$unit_accomplishment->UnitID = $unit_user->UnitID;
-		$unit_accomplishment->UserUnitID = $unit_user->UserUnitID;
-		$unit_accomplishment->save();
+		$tertiary_unit_accomplishment = new TertiaryUnitAccomplishment();
+		$tertiary_unit_accomplishment->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+		$tertiary_unit_accomplishment->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+		$tertiary_unit_accomplishment->UserTertiaryUnitID = $tertiary_unit_user->UserTertiaryUnitID;
+		$tertiary_unit_accomplishment->save();
 
-		$unit_owner = new UnitOwner();
-		$unit_owner->UnitMeasureID = $unit_target->UnitMeasureID;
-		$unit_owner->UnitID = $unit_user->UnitID;
-		$unit_owner->UserUnitID = $unit_user->UserUnitID;
-		$unit_owner->save();
+		$tertiary_unit_owner = new TertiaryUnitOwner();
+		$tertiary_unit_owner->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+		$tertiary_unit_owner->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+		$tertiary_unit_owner->UserTertiaryUnitID = $tertiary_unit_user->UserTertiaryUnitID;
+		$tertiary_unit_owner->save();
 
-		$unit_initiative = new UnitInitiative();
-		$unit_initiative->UnitMeasureID = $unit_target->UnitMeasureID;
-		$unit_initiative->UnitID = $unit_user->UnitID;
-		$unit_initiative->UserUnitID = $unit_user->UserUnitID;
-		$unit_initiative->save();
+		$tertiary_unit_initiative = new TertiaryUnitInitiative();
+		$tertiary_unit_initiative->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+		$tertiary_unit_initiative->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+		$tertiary_unit_initiative->UserTertiaryUnitID = $tertiary_unit_user->UserTertiaryUnitID;
+		$tertiary_unit_initiative->save();
 
-		$unit_funding = new UnitFunding();
-		$unit_funding->UnitMeasureID = $unit_target->UnitMeasureID;
-		$unit_funding->UnitID = $unit_user->UnitID;
-		$unit_funding->UserUnitID = $unit_user->UserUnitID;
-		$unit_funding->save();
+		$tertiary_unit_funding = new TertiaryUnitFunding();
+		$tertiary_unit_funding->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+		$tertiary_unit_funding->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+		$tertiary_unit_funding->UserTertiaryUnitID = $tertiary_unit_user->UserTertiaryUnitID;
+		$tertiary_unit_funding->save();
 
- 		$unit_target = UnitTarget::find($id);
- 		$unit_target->TargetDate = date('Y-m-d');
- 		$unit_target->UnitAccomplishmentID = DB::table('unit_accomplishments')->max('UnitAccomplishmentID');
- 		$unit_target->UnitOwnerID = DB::table('unit_owners')->max('UnitOwnerID');
- 		$unit_target->UnitInitiativeID = DB::table('unit_initiatives')->max('UnitInitiativeID');
- 		$unit_target->UnitFundingID = DB::table('unit_fundings')->max('UnitFundingID');
-		$unit_target->save();
+ 		$tertiary_unit_target = TertiaryUnitTarget::find($id);
+ 		$tertiary_unit_target->TargetDate = date('Y-m-d');
+ 		$tertiary_unit_target->TertiaryUnitAccomplishmentID = DB::table('tertiary_unit_accomplishments')->max('TertiaryUnitAccomplishmentID');
+ 		$tertiary_unit_target->TertiaryUnitOwnerID = DB::table('tertiary_unit_owners')->max('TertiaryUnitOwnerID');
+ 		$tertiary_unit_target->TertiaryUnitInitiativeID = DB::table('tertiary_unit_initiatives')->max('TertiaryUnitInitiativeID');
+ 		$tertiary_unit_target->TertiaryUnitFundingID = DB::table('tertiary_unit_fundings')->max('TertiaryUnitFundingID');
+		$tertiary_unit_target->save();
 
-		return $unit_target;
+		return $tertiary_unit_target;
 	}
 
-	public function updateunitquarter($id)
+	public function updatetertiaryunitquarter($id)
 	{
-		$unit_id = Session::get('unit_user_id', 'default');
-		$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
-				->with('unit')
+		$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
+		$tertiary_unit_user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
+				->with('tertiary_unit')
 				->first();
 		
-		$unit_target = UnitTarget::find($id);
+		$tertiary_unit_target = TertiaryUnitTarget::find($id);
 		$targetperiod = Request::input('TargetPeriod');
 		$targetdate = date('Y-m-d');
 		$quarter1 = Request::input('Quarter1');
 		$quarter1 = $quarter1 / 3;
-		$unit_target->JanuaryTarget = $quarter1;
-		$unit_target->FebruaryTarget = $quarter1;
-		$unit_target->MarchTarget = $quarter1;
+		$tertiary_unit_target->JanuaryTarget = $quarter1;
+		$tertiary_unit_target->FebruaryTarget = $quarter1;
+		$tertiary_unit_target->MarchTarget = $quarter1;
 		
 		$quarter2 = Request::input('Quarter2');
 		$quarter2 = $quarter2 / 3;
-		$unit_target->AprilTarget = $quarter2;
-		$unit_target->MayTarget = $quarter2;
-		$unit_target->JuneTarget = $quarter2;
+		$tertiary_unit_target->AprilTarget = $quarter2;
+		$tertiary_unit_target->MayTarget = $quarter2;
+		$tertiary_unit_target->JuneTarget = $quarter2;
 
 		$quarter3 = Request::input('Quarter3');
 		$quarter3 = $quarter3 / 3;
-		$unit_target->JulyTarget = $quarter3;
-		$unit_target->AugustTarget = $quarter3;
-		$unit_target->SeptemberTarget = $quarter3;
+		$tertiary_unit_target->JulyTarget = $quarter3;
+		$tertiary_unit_target->AugustTarget = $quarter3;
+		$tertiary_unit_target->SeptemberTarget = $quarter3;
 
 		$quarter4 = Request::input('Quarter4');
 		$quarter4 = $quarter4 / 3;
-		$unit_target->OctoberTarget = $quarter4;
-		$unit_target->NovemberTarget = $quarter4;
-		$unit_target->DecemberTarget = $quarter4;
+		$tertiary_unit_target->OctoberTarget = $quarter4;
+		$tertiary_unit_target->NovemberTarget = $quarter4;
+		$tertiary_unit_target->DecemberTarget = $quarter4;
 
 
-		$unit_target->TargetPeriod = $targetperiod;
-		$unit_target->TargetDate = $targetdate;
-		$unit_target->save();
+		$tertiary_unit_target->TargetPeriod = $targetperiod;
+		$tertiary_unit_target->TargetDate = $targetdate;
+		$tertiary_unit_target->save();
 
 		/*Saving to Accomplishments etc...*/
 
-		$unit_accomplishment = new UnitAccomplishment();
-		$unit_accomplishment->UnitMeasureID = $unit_target->UnitMeasureID;
-		$unit_accomplishment->UnitID = $unit_user->UnitID;
-		$unit_accomplishment->UserUnitID = $unit_user->UserUnitID;
-		$unit_accomplishment->save();
+		$tertiary_unit_accomplishment = new TertiaryUnitAccomplishment();
+		$tertiary_unit_accomplishment->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+		$tertiary_unit_accomplishment->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+		$tertiary_unit_accomplishment->UserTertiaryUnitID = $tertiary_unit_user->UserTertiaryUnitID;
+		$tertiary_unit_accomplishment->save();
 
-		$unit_owner = new UnitOwner();
-		$unit_owner->UnitMeasureID = $unit_target->UnitMeasureID;
-		$unit_owner->UnitID = $unit_user->UnitID;
-		$unit_owner->UserUnitID = $unit_user->UserUnitID;
-		$unit_owner->save();
+		$tertiary_unit_owner = new TertiaryUnitOwner();
+		$tertiary_unit_owner->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+		$tertiary_unit_owner->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+		$tertiary_unit_owner->UserTertiaryUnitID = $tertiary_unit_user->UserTertiaryUnitID;
+		$tertiary_unit_owner->save();
 
-		$unit_initiative = new UnitInitiative();
-		$unit_initiative->UnitMeasureID = $unit_target->UnitMeasureID;
-		$unit_initiative->UnitID = $unit_user->UnitID;
-		$unit_initiative->UserUnitID = $unit_user->UserUnitID;
-		$unit_initiative->save();
+		$tertiary_unit_initiative = new TertiaryUnitInitiative();
+		$tertiary_unit_initiative->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+		$tertiary_unit_initiative->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+		$tertiary_unit_initiative->UserTertiaryUnitID = $tertiary_unit_user->UserTertiaryUnitID;
+		$tertiary_unit_initiative->save();
 
-		$unit_funding = new UnitFunding();
-		$unit_funding->UnitMeasureID = $unit_target->UnitMeasureID;
-		$unit_funding->UnitID = $unit_user->UnitID;
-		$unit_funding->UserUnitID = $unit_user->UserUnitID;
-		$unit_funding->save();
+		$tertiary_unit_funding = new TertiaryUnitFunding();
+		$tertiary_unit_funding->TertiaryUnitMeasureID = $tertiary_unit_target->TertiaryUnitMeasureID;
+		$tertiary_unit_funding->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+		$tertiary_unit_funding->UserTertiaryUnitID = $tertiary_unit_user->UserTertiaryUnitID;
+		$tertiary_unit_funding->save();
 
- 		$unit_target = UnitTarget::find($id);
- 		$unit_target->TargetDate = date('Y-m-d');
- 		$unit_target->UnitAccomplishmentID = DB::table('unit_accomplishments')->max('UnitAccomplishmentID');
- 		$unit_target->UnitOwnerID = DB::table('unit_owners')->max('UnitOwnerID');
- 		$unit_target->UnitInitiativeID = DB::table('unit_initiatives')->max('UnitInitiativeID');
- 		$unit_target->UnitFundingID = DB::table('unit_fundings')->max('UnitFundingID');
-		$unit_target->save();
+ 		$tertiary_unit_target = TertiaryUnitTarget::find($id);
+ 		$tertiary_unit_target->TargetDate = date('Y-m-d');
+ 		$tertiary_unit_target->TertiaryUnitAccomplishmentID = DB::table('tertiary_unit_accomplishments')->max('TertiaryUnitAccomplishmentID');
+ 		$tertiary_unit_target->TertiaryUnitOwnerID = DB::table('tertiary_unit_owners')->max('TertiaryUnitOwnerID');
+ 		$tertiary_unit_target->TertiaryUnitInitiativeID = DB::table('tertiary_unit_initiatives')->max('TertiaryUnitInitiativeID');
+ 		$tertiary_unit_target->TertiaryUnitFundingID = DB::table('tertiary_unit_fundings')->max('TertiaryUnitFundingID');
+		$tertiary_unit_target->save();
 
- 	
-
-		return $unit_target;
+		return $tertiary_unit_target;
 	}
 
 	/**

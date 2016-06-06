@@ -144,6 +144,10 @@ Route::get('tertiary_unit/changepassword','TertiaryUnitLoginController@changepas
 
 /*API ROUTES FOR TERTIARY*/
 
+Route::post('api/tertiary_unit_targets/update/{id}','APITertiaryUnitTargetsController@updatetertiaryunitarget');
+Route::post('api/tertiary_unit_targets/updatequarter/{id}','APITertiaryUnitTargetsController@updatetertiaryunitquarter');
+Route::resource('api/tertiary_unit_targets','APITertiaryUnitTargetsController');
+
 Route::get('api/secondary_unit/measures/secondary_unit_measures', 'APITertiaryUnitMeasuresController@secondary_unit_measures');
 Route::get('api/tertiary_unit/measures/tertiary_unit_objectives', 'APITertiaryUnitMeasuresController@tertiary_unit_objectives');
 Route::resource('api/tertiary_unit_measures','APITertiaryUnitMeasuresController');

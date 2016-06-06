@@ -12,7 +12,7 @@
     <script src="{{ asset('app/app.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/tertiary_targets.js') }}"></script>
+    <script src="{{ asset('app/controllers/tertiary_unit_targets.js') }}"></script>
 
     <script src="{{ asset('js/showtabledata.js') }}"></script>
 
@@ -22,7 +22,7 @@
 				<div class="col-lg-12">
 					<div class="panel panel-warning targets-custom-panel">
 						<div class="panel-heading measures-custom-heading">
-						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $tertiaryunit->unitAbbreviation }} Targets for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+						  <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $tertiary_unit->TertiaryUnitAbbreviation }} Targets for {{ date("Y") }}</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -77,14 +77,14 @@
     									
     								</thead>
     								<tr dir-paginate='tertiary_unit_target in tertiary_unit_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
-    									<td><% tertiary_unit_target.tertiary_measure.tertiary_objective.TertiaryObjectiveName %></td>
-    									<td><% tertiary_unit_target.tertiary_measure.TertiaryMeasureName %></td>
-                                        <td><% tertiary_unit_target.tertiary_measure.TertiaryMeasureFormula %></td>
+    									<td><% tertiary_unit_target.tertiary_unit_measure.tertiary_unit_objective.TertiaryUnitObjectiveName %></td>
+    									<td><% tertiary_unit_target.tertiary_unit_measure.TertiaryUnitMeasureName %></td>
+                                        <td><% tertiary_unit_target.tertiary_unit_measure.TertiaryUnitMeasureFormula %></td>
                                         <td><% tertiary_unit_target.TargetPeriod %></td>
     									<td>
-    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', tertiary_unit_target.TertiaryUnitTargetID, tertiary_unit_target.tertiary_measure.tertiaryMeasureName )">View Target</button>
+    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', tertiary_unit_target.TertiaryUnitTargetID, tertiary_unit_target.tertiary_measure.TertiaryMeasureName )">View Target</button>
     										<br>
-    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', tertiary_unit_target.tertiaryTargetID, tertiary_unit_target.tertiary_measure.tertiaryMeasureName)">Set Target</button>
+    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', tertiary_unit_target.TertiaryUnitTargetID, tertiary_unit_target.tertiary_measure.TertiaryMeasureName)">Set Target</button>
 
     									</td>
                                         <input type="hidden" ng-model="targetdate" ng-init="target_date=tertiary_unit_target.TargetDate" />
@@ -347,7 +347,7 @@
                     
                     <div class="modal-body">
                         <form name="frmEditTarget" class="form-horizontal" novalidate="">
-                                        <label for="measure_name" class="control-label">The Monthly Targets for the Measure: <% unit_measurename %></label><br><br>
+                                        <label for="measure_name" class="control-label">The Monthly Targets for the Measure: <% tertiary_unit_measurename %></label><br><br>
                             <table class="table table-responsive">
                                 
                                  <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Targets have been already set. You just have to do this once.</div>
@@ -373,7 +373,7 @@
                     
                     <div class="modal-body">
                         <form name="frmEditTarget" class="form-horizontal" novalidate="">
-                                        <label for="measure_name" class="control-label">The Monthly Targets for the Measure: <% unit_measurename %></label><br><br>
+                                        <label for="measure_name" class="control-label">The Monthly Targets for the Measure: <% tertiary_unit_measurename %></label><br><br>
                             <table class="table table-responsive">
                                 
                                 <tr ir-paginate='tertiary_unit_target in tertiary_unit_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
@@ -419,7 +419,7 @@
                     
                     <div class="modal-body">
                         <form name="frmEditTarget" class="form-horizontal" novalidate="">
-                                        <label for="measure_name" class="control-label">The Quarterly Targets for the Measure: <% unit_measurename %> </label><br><br>
+                                        <label for="measure_name" class="control-label">The Quarterly Targets for the Measure: <% tertiary_unit_measurename %> </label><br><br>
                             <table class="table table-responsive">
                                 
                                 <tr ir-paginate='tertiary_unit_target in tertiary_unit_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
