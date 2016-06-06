@@ -139,6 +139,9 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 Route::get('secondary_unit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
 Route::get('secondary_unit/measures', 'APISecondaryUnitMeasuresController@showIndex');
 Route::get('secondary_unit/targets', 'APISecondaryUnitTargetsController@showIndex');
+
+Route::get('secondary_unit/scorecard', 'SecondaryUnitLoginController@scorecard');
+
 Route::get('secondary_unit/targets/{id}','APISecondaryUnitTargetsController@edit');
 Route::get('secondary_unit/scorecard', 'SecondaryUnitLoginController@scorecard');
 Route::get('secondary_unit/reports','ReportsController@secondaryIndex');
@@ -149,13 +152,15 @@ Route::get('secondary_unit/changepassword','SecondaryUnitLoginController@changep
 
 
 
+
 /* TERTIARY USER */
 Route::get('tertiary_unit/scorecard', 'TertiaryUnitLoginController@scorecard');
 Route::get('tertiary_unit/objectives', 'APITertiaryUnitObjectivesController@showIndex');
 Route::get('tertiary_unit/measures','APITertiaryUnitMeasuresController@showIndex');
 Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
 Route::get('tertiary_unit/changepassword','TertiaryUnitLoginController@changepass');
-
+Route::get('tertiary_unit/changetertiarypicture', 'TertiaryUnitLoginController@changetertiarypicture');
+Route::get('tertiary_unit/changeuserpicture', 'TertiaryUnitLoginController@changeuserpicture');
 Route::get('tertiary_unit/audit_trails', 'APITertiaryUnitAuditTrailsController@showIndex');
 
 
@@ -205,10 +210,12 @@ Route::get('api/staff/measures/staffmeasures', 'APIUnitMeasuresController@staff_
 Route::get('api/unit_scorecard/lastupdatedby', 'APIUnitScorecardController@LastUpdatedBy');
 Route::get('api/staff_scorecard/lastupdatedby', 'APIStaffScorecardController@LastUpdatedBy');
 Route::get('api/chief_scorecard/lastupdatedby', 'APIChiefScorecardController@LastUpdatedBy');
+Route::get('api/secondary_unit/lastupdatedby', 'APISecondaryUnitScorecardController@LastUpdatedBy');
 
 Route::resource('api/chief_scorecard', 'APIChiefScorecardController');
 Route::resource('api/staff_scorecard', 'APIStaffScorecardController');
 Route::resource('api/unit_scorecard', 'APIUnitScorecardController');
+Route::resource('api/secondary_unit_scorecard', 'APISecondaryUnitScorecardController');
 Route::resource('api/chief_measures','APIChiefMeasuresController');
 Route::resource('api/staff_measures','APIStaffMeasuresController');
 Route::resource('api/chief_targets','APIChiefTargetsController');

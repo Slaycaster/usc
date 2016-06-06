@@ -1,5 +1,3 @@
-
-
 app.controller('APITertiaryUnitScorecardController', function($scope, $http, $interval) {
     
 	$scope.tertiary_unit_targets = [];
