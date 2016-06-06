@@ -142,6 +142,7 @@ Route::get('secondary_unit/reports','ReportsController@secondaryIndex');
 Route::get('secondary_unit/analysis_reports','ReportsAnalysisController@secondaryIndex');
 Route::get('secondary_unit/changesecondaryunitpicture', 'SecondaryUnitLoginController@changesecondaryunitpicture');
 Route::get('secondary_unit/changeuserpicture', 'SecondaryUnitLoginController@changeuserpicture');
+Route::get('secondary_unit/changepassword','SecondaryUnitLoginController@changepass');
 
 
 

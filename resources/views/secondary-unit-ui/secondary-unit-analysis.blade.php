@@ -8,9 +8,6 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
-    <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/secondary_unit_objectives.js') }}"></script>
-
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
@@ -25,7 +22,7 @@
                         <div class="panel-heading objectives-custom-heading">
                             <i class="fa fa-circle-o-notch fa-5x"></i> 
                             <h2>
-                                <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Objectives</b>
+                                <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard Analysis Report</b>
                             </h2>
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                         </div>
@@ -33,7 +30,10 @@
                             <!--/.div class row-->
                             <div class="row">
                                 <div ng-show="info" class="alert alert-info">
-                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Reports of {{ $user->secondary_unit->SecondaryUnitName }}.
+                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Analysis Reports of {{ $user->secondary_unit->SecondaryUnitName }}.
+                                </div>
+                                <div ng-show="info" class="alert alert-info objective-info-abb">
+                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Analysis Reports of {{ $user->secondary_unit->SecondaryUnitAbbreviation }}.
                                 </div>
                             </div>
                             <!--./div class row-->

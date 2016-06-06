@@ -83,6 +83,27 @@ class SecondaryUnitLoginController extends Controller {
 		}
 	}
 
+	public function changepass()
+	{
+		if (Session::has('secondary_user_id'))
+		{
+			$secondary_unit_id = Session::get('secondary_user_id', 'default');
+			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_unit_id)
+						->with('secondary_unit')
+						->with('secondary_unit.unit')
+						->first();
+			$secondary_unit_measures = SecondaryUnitMeasure::with('secondary_unit')->where('SecondaryUnitID', '=', $user->SecondaryUnitID)->get();
+
+			return view('secondary-unit-ui.secondary-unit-changepassword')
+				->with('user', $user)
+				->with('secondary_unit_measures',$secondary_unit_measures);
+		}
+		else
+		{
+			Session::flash('message', 'Please login first!');
+			return Redirect::to('/');
+		}
+	}
 
 	public function changesecondaryunitpicture()
 	{

@@ -22,7 +22,7 @@
 						<div class="panel-heading measures-custom-heading">
 						    <i class="fa fa-circle-o-notch fa-5x"></i> 
                             <h2>
-                                <b>{{ $user->unit->UnitAbbreviation }} Scorecard KPI Report</b>
+                                <b>{{ $user->unit->UnitAbbreviation }} Scorecard Analysis Report</b>
                             </h2>   
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
 						</div>
@@ -30,10 +30,10 @@
 							<!--/.div class row-->
 							<div class="row">
                                 <div ng-show="info" class="alert alert-info objective-info-name">
-                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard KPI Reports of {{ $user->unit->UnitName }}.
+                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Analysis Reports of {{ $user->unit->UnitName }}.
                                 </div>
                                 <div ng-show="info" class="alert alert-info objective-info-abb">
-                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard KPI Reports of {{ $user->unit->UnitAbbreviation }}.
+                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Analysis Reports of {{ $user->unit->UnitAbbreviation }}.
                                 </div>
                             </div>
 							<!--./div class row-->
