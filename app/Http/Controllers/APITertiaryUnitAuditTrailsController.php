@@ -1,15 +1,13 @@
 <?php namespace App\Http\Controllers;
 
 use App\Perspective;
-use App\ChiefObjective;
-use App\Staff;
-use App\Chief;
-use App\UserChief;
-use App\ChiefAuditTrail;
+use App\UserTertiaryUnit;
+use App\TertiaryAuditTrail;
+use App\TertiaryUnit;
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect;
 
-class APIChiefAuditTrailsDashController extends Controller {
+class APITertiaryUnitAuditTrailsController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -18,33 +16,35 @@ class APIChiefAuditTrailsDashController extends Controller {
 	 */
 	public function index()
 	{
-		$chief_id = Session::get('chief_user_id', 'default');
-		$chief = UserChief::where('UserChiefID', '=', $chief_id)
-			->select('ChiefID')
-			->lists('ChiefID'); //Get the Unit of the user
+		$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
+		$tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
+			->select('TertiaryUnitID')
+			->lists('TertiaryUnitID'); //Get the Unit of the user
         
-        $data = ChiefAuditTrail::where('ChiefID', '=', $chief)
-            ->with('user_chief')
-            ->with('user_chief.rank')
+        $data = TertiaryAuditTrail::where('TertiaryUnitID', '=', $tertiary_unit)
+            ->with('user_tertiary')
+            ->with('user_tertiary.rank')
             ->get();
 
        	return json_encode($data, JSON_PRETTY_PRINT);
 	}
 
+
+
 	public function showIndex()
 	{
-		if (Session::has('chief_user_id'))
+		if (Session::has('tertiary_user_id'))
         {
-			$id = Session::get('chief_user_id', 'default');
-	        $chief_user = UserChief::where('UserChiefID', $id)
+			$id = Session::get('tertiary_user_id', 'default');
+	        $user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+	        	->with('tertiary_unit')
 	            ->first();
-	        $chief = Chief::where('UserChiefID', '=', $chief_user)->get();
-	        $chief_audit_trails = ChiefAuditTrail::where('UserChiefID', '=', $chief_user->ChiefID)->get();
+
+	        //$audit_trails = TertiaryAuditTrail::where('UserTertiaryUnitID', '=', $user->TertiaryUnitID)->get();
 	        
-	        return view('chiefdashboard')
-	            ->with('chief_user', $chief_user)
-	            ->with('chief', $chief)
-	            ->with('chief_audit_trails', $chief_audit_trails);
+	        return view('tertiary-ui.tertiary_unit-audit_trails')
+	            ->with('user', $user);
+	            //->with('chief_audit_trails', $chief_audit_trails);
 	    }
         else
         {

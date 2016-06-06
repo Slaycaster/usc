@@ -138,6 +138,8 @@ Route::get('tertiary_unit/measures','APITertiaryUnitMeasuresController@showIndex
 
 Route::get('tertiary_unit/targets', 'APITertiaryUnitTargetsController@showIndex');
 
+Route::get('tertiary_unit/audit_trails', 'APITertiaryUnitAuditTrailsController@showIndex');
+
 
 
 /*API ROUTES*/
@@ -162,6 +164,7 @@ Route::resource('api/chief_audit_trails','APIChiefAuditTrailsController');
 Route::resource('api/chief_dashboard','APIChiefAuditTrailsDashController');
 Route::resource('api/secondary_unit_objectives', 'APISecondaryUnitObjectivesController');
 Route::resource('api/secondary_unit_measures', 'APISecondaryUnitMeasuresController');
+Route::resource('api/tertiary_unit_dashboard','APITertiaryUnitAuditTrailsDashController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
 Route::get('api/unit/objectives/staffobjectives', 'APIUnitObjectivesController@staff_objectives');
@@ -188,6 +191,7 @@ Route::resource('api/chief_targets','APIChiefTargetsController');
 Route::resource('api/staff_targets','APIStaffTargetsController');
 Route::resource('api/unit_targets','APIUnitTargetsController');
 Route::resource('api/secondary_targets','APISecondaryUnitTargetsController');
+Route::resource('api/tertiary_unit_audit_trails','APITertiaryUnitAuditTrailsController');
 	
 Route::post('api/chief_targets/update/{id}','APIChiefTargetsController@updatetarget');
 Route::post('api/chief_targets/updatequarter/{id}','APIChiefTargetsController@updatequarter');

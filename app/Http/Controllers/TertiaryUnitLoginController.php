@@ -57,5 +57,161 @@ class TertiaryUnitLoginController extends Controller {
 		
 	}
 
+
+
+
+	public function bargraph()
+		{
+
+			
+			$year = $_REQUEST['year'];
+			$tertiary_id = $_REQUEST['tertiary_id'];
+
+
+			//TARGETS
+			$january = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('JanuaryTarget');
+
+			$february = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('FebruaryTarget');
+
+			$march = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('MarchTarget');
+
+			$april = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('AprilTarget');
+
+			$may = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('MayTarget');
+
+			$june = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('JuneTarget');
+
+			$july = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('JulyTarget');
+
+			$august = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('AugustTarget');
+
+			$september = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('SeptemberTarget');
+
+			$october = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('OctoberTarget');
+
+			$november = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('NovemberTarget');
+
+			$december = DB::table('tertiary_unit_targets')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('TargetDate', '=', date($year))
+			->sum('DecemberTarget');
+
+
+			//ACCOMPLISHMENTS
+			$januaryaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JanuaryAccomplishment');
+
+			$februaryaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('FebruaryAccomplishment');
+
+			$marchaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MarchAccomplishment');
+
+			$aprilaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AprilAccomplishment');
+
+			$mayaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MayAccomplishment');
+
+			$juneaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JuneAccomplishment');
+
+			$julyaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JulyAccomplishment');
+
+			$augustaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AugustAccomplishment');
+
+			$septemberaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('SeptemberAccomplishment');
+
+			$octoberaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('OctoberAccomplishment');
+
+			$novemberaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('NovemberAccomplishment');
+
+			$decemberaccomp = DB::table('tertiary_unit_accomplishments')
+			->where('UnitID', '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('DecemberAccomplishment');
+
+
+
+
+			$targetaccomp = array(
+				  array("January", $january, $januaryaccomp),
+				  array("February",$february, $februaryaccomp),
+				  array("March", $march, $marchaccomp),
+				  array("April", $april, $aprilaccomp),
+				  array("May", $may, $mayaccomp),
+				  array("June", $june, $juneaccomp),
+				  array("July", $july, $julyaccomp),
+				  array("August", $august, $augustaccomp),
+				  array("September", $september, $septemberaccomp),
+				  array("October", $october, $octoberaccomp),
+				  array("November", $november, $novemberaccomp),
+				  array("December", $december, $decemberaccomp)
+				  );
+			
+
+			return Response::json($targetaccomp);
+		}
+
 	
 }
