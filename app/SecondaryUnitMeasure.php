@@ -35,9 +35,34 @@ class SecondaryUnitMeasure extends Model {
 		return $this->belongsTo('App\SecondaryUnitObjective', 'SecondaryUnitObjectiveID', 'SecondaryUnitObjectiveID');
 	}
 
+	public function secondary_unit_targets()
+	{
+		return $this->hasMany('App\SecondaryUnitTarget', 'SecondaryUnitMeasureID', 'SecondaryUnitMeasureID');
+	}
+
 	public function unit_measure()
 	{
 		return $this->belongsTo('App\UnitMeasure', 'UnitMeasureID', 'UnitMeasureID');
+	}
+
+	public function secondary_unit_accomplishments()
+	{
+		return $this->hasMany('App\SecondaryUnitAccomplishment', 'SecondaryUnitMeasureID', 'SecondaryUnitMeasureID');
+	}
+
+	public function secondary_unit_owners()
+	{
+		return $this->hasMany('App\SecondaryUnitOwner', 'SecondaryUnitMeasureID', 'SecondaryUnitMeasureID');
+	}
+
+	public function secondary_unit_initiatives()
+	{
+		return $this->hasMany('App\SecondaryUnitInitiative', 'SecondaryUnitMeasureID', 'SecondaryUnitMeasureID');
+	}
+
+	public function secondary_unit_fundings()
+	{
+		return $this->hasMany('App\SecondaryUnitFunding','SecondaryUnitMeasureID', 'SecondaryUnitMeasureID');
 	}
 
 	

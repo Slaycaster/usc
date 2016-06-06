@@ -20,4 +20,24 @@ class SecondaryUnitAccomplishment extends Model {
 	 */
 	protected $primaryKey = 'SecondaryUnitAccomplishmentID';
 
+	public function secondary_unit()
+	{
+		return $this->belongsTo('App\SecondaryUnit', 'SecondaryUnitID', 'SecondaryUnitID');
+	}
+
+	public function user_secondary_unit()
+	{
+		return $this->belongsTo('App\UserSecondaryUnit','UserSecondaryUnitID','UserSecondaryUnitID'); //(model, foreign_key, parent_primary_key)
+	}
+
+	public function secondary_unit_measure()
+	{
+		return $this->belongsTo('App\UnitSecondaryMeasure', 'UnitSecondaryMeasureID', 'UnitSecondaryMeasureID');
+	}
+
+	public function secondary_unit_target()
+	{
+		return $this->hasOne('App\UnitSecondaryTarget', 'SecondaryUnitAccomplishmentID', 'SecondaryUnitAccomplishmentID'); //(model, foreign_key, parent_primary_key)
+	}
+
 }
