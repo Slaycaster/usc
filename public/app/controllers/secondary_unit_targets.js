@@ -1,23 +1,24 @@
 var public = 'http://' + location.host + '/usc/public/';
 
-app.controller('APIUnitTargetController', function($scope, $http, $interval) {
+app.controller('APISecondaryUnitTargetController', function($scope, $http, $interval) {
 
-	$scope.unit_targets = [];
+	$scope.secondary_unit_targets = [];
 	$scope.loading = true;
     $scope.info = false;
  
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(public + 'api/unit_targets').
+		$http.get(public + 'api/secondary_targets').
 		success(function(data, status, headers, config) {
-			$scope.unit_targets = data;
+			$scope.secondary_targets = data;
 				$scope.loading = false;
 
             $scope.date = new Date();
 
 		});	
 	};
+
 
 	$scope.sort = function(keyname)
     {
@@ -28,7 +29,7 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = public + 'api/unit_targets';
+        var url = public + 'api/secondary_targets';
 
         //append Unit Objective ID to the URL if the form is in edit mode
 

@@ -1,5 +1,4 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
+var public = 'http://' + location.host + '/usc/public/';
  
 app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $interval) {
  
@@ -10,12 +9,12 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-        $http.get(local + public + 'api/secondary_unit_objectives').
+        $http.get(public + 'api/secondary_unit_objectives').
         success(function(data, status, headers, config) {
         console.log(data);
         $scope.secondary_unit_objectives = data;
         $scope.loading = false;
-        $http.get(local + public + 'api/perspectives').
+        $http.get(public + 'api/perspectives').
             success(function(data, status, headers, config)
             {   
                 $scope.perspective = data;
@@ -34,7 +33,7 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/secondary_unit_objectives';
+        var url = public + 'api/secondary_unit_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -86,7 +85,7 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
             case 'edit':
                 $scope.form_title = "EDIT UNIT'S OBJECTIVE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/secondary_unit_objectives/' + id)
+                $http.get(public + 'api/secondary_unit_objectives/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_objective = response;

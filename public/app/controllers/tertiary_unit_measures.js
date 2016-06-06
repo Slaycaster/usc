@@ -1,8 +1,8 @@
 var public = 'http://' + location.host + '/usc/public/';
 
-app.controller('APISecondaryUnitMeasureController', function($scope, $http, $interval) {
+app.controller('APITertiaryUnitMeasureController', function($scope, $http, $interval) {
 
-	$scope.secondary_unit_measures = [];
+	$scope.tertiary_unit_measures = [];
 	$scope.loading = true;
     $scope.info = false;
 
@@ -11,63 +11,63 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(public + 'api/secondary_unit_measures').
+		$http.get(public + 'api/tertiary_unit_measures').
 		success(function(data, status, headers, config) {
-			$scope.secondary_unit_measures = data;
+			$scope.tertiary_unit_measures = data;
 				$scope.loading = false;
 		});	
 	};
 
-    $http.get(public + 'api/secondaryunit/measures/unitmeasures').
+    $http.get(public + 'api/secondary_unit/measures/secondary_unit_measures').
         success(function(data, status, headers, config)
         {   
            
-            $scope.staffmeasure = data;
+            $scope.secondary_unit_measure = data;
             
             
-            $scope.none = {UnitMeasureID : 0, UnitMeasureName: "None/No Contributory"};
+            $scope.none = {SecondaryUnitMeasureID : 0, SecondaryUnitMeasureName: "None/No Contributory"};
           
-            $scope.staffmeasure.unshift($scope.none);
+            $scope.secondary_unit_measure.unshift($scope.none);
             
-            $scope.selectedStaffMeasure = $scope.staffmeasure[0];
+            $scope.selectedSecondaryUnitMeasure = $scope.secondary_unit_measure[0];
 
 
         });
 
      $scope.measureformula = [
-                                    {UnitMeasureFormula: "Summation"},
-                                    {UnitMeasureFormula: "Average"},
+                                    {SecondaryUnitMeasureFormula: "Summation"},
+                                    {SecondaryUnitMeasureFormula: "Average"},
                                 ];
             $scope.selectedMeasureFormula = $scope.measureformula[0];
 
 
 
-    $http.get(public + 'api/secondaryunit/measures/secondaryunitobjectives').
+    $http.get(public + 'api/tertiary_unit/measures/tertiary_unit_objectives').
         success(function(data, status, headers, config)
         {   
            
-            $scope.unitobjective = data;
+            $scope.tertiary_unit_objective = data;
             
-            $scope.selectedUnitObjective = $scope.unitobjective[0];
+            $scope.selectedTertiaryUnitObjective = $scope.tertiary_unit_objective[0];
 
 
         });
 
-    $scope.getStaffMeasureID = function(mes) 
+    $scope.getSecondaryUnitMeasureID = function(mes) 
     {
                 
         
-        var measureID = $scope.selectedStaffMeasure.UnitMeasureID;
+        var measureID = $scope.selectedSecondaryUnitMeasure.SecondaryUnitMeasureID;
 
         if(measureID != 0)
         {
-             $http.get(public + 'secondaryunit/angularunitmeasure/' + measureID).
+             $http.get(public + 'tertiary_unit/angularsecondarymeasure/' + measureID).
             success(function(data)
             {   
                
                 
                  $scope.measureformula = [
-                                        {UnitMeasureFormula: data.UnitMeasureFormula},
+                                        {SecondaryUnitMeasureFormula: data.SecondaryUnitMeasureFormula},
                                     ];
                 $scope.selectedMeasureFormula = $scope.measureformula[0]; 
 
@@ -77,8 +77,8 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
         else
         {
              $scope.measureformula = [
-                                    {UnitMeasureFormula: "Summation"},
-                                    {UnitMeasureFormula: "Average"},
+                                    {SecondaryUnitMeasureFormula: "Summation"},
+                                    {SecondaryUnitMeasureFormula: "Average"},
                                 ];
             $scope.selectedMeasureFormula = $scope.measureformula[0]; 
         }
@@ -100,26 +100,26 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = public + 'api/secondary_unit_measures';
+        var url = public + 'api/tertiary_unit_measures';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
         {
             url += "/" + id;
-            console.log(document.getElementById('unit_id').value);
+            console.log(document.getElementById('tertiary_unit_id').value);
             $http.put(url, {
-                SecondaryUnitMeasureName: $scope.unit_measure.SecondaryUnitMeasureName,
-                SecondaryUnitMeasureType: $scope.unit_measure.SecondaryUnitMeasureType,
-                SecondaryUnitMeasureFormula: $scope.selectedMeasureFormula.UnitMeasureFormula,
-                SecondaryUnitObjectiveID: $scope.selectedUnitObjective.SecondaryUnitObjectiveID,
-                UnitMeasureID: $scope.selectedStaffMeasure.UnitMeasureID,
-                SecondaryUnitID: document.getElementById('unit_id').value,
-                UserSecondaryUnitID: document.getElementById('user_unit_id').value
+                TertiaryUnitMeasureName: $scope.tertiary_unit_measure.TertiaryUnitMeasureName,
+                TertiaryUnitMeasureType: $scope.tertiary_unit_measure.TertiaryUnitMeasureType,
+                TertiaryUnitMeasureFormula: $scope.selectedMeasureFormula.SecondaryUnitMeasureFormula,
+                TertiaryUnitObjectiveID: $scope.selectedTertiaryUnitObjective.TertiaryUnitObjectiveID,
+                SecondaryUnitMeasureID: $scope.selectedSecondaryUnitMeasure.SecondaryUnitMeasureID,
+                TertiaryUnitID: document.getElementById('tertiary_unit_id').value,
+                UserTertiaryUnitID: document.getElementById('user_tertiary_id').value
 
             }).success(function(data, status, headers, config, response) {
                 console.log(response);
                 $('#myModal').modal('hide');
-                $scope.unit_measures = '';
+                $scope.tertiary_unit_measures = '';
                 $scope.init();
                 $scope.loading = false;
             });
@@ -127,13 +127,13 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
         else if (modalstate === 'add')
         {
             $http.post(url, {
-                SecondaryUnitMeasureName: $scope.unit_measure.SecondaryUnitMeasureName,
-                SecondaryUnitMeasureType: $scope.unit_measure.SecondaryUnitMeasureType,
-                SecondaryUnitMeasureFormula: $scope.selectedMeasureFormula.UnitMeasureFormula,
-                SecondaryUnitObjectiveID: $scope.selectedUnitObjective.SecondaryUnitObjectiveID,
-                UnitMeasureID: $scope.selectedStaffMeasure.UnitMeasureID,
-                SecondaryUnitID: document.getElementById('unit_id').value,
-                UserSecondaryUnitID: document.getElementById('user_unit_id').value
+                TertiaryUnitMeasureName: $scope.tertiary_unit_measure.TertiaryUnitMeasureName,
+                TertiaryUnitMeasureType: $scope.tertiary_unit_measure.TertiaryUnitMeasureType,
+                TertiaryUnitMeasureFormula: $scope.selectedMeasureFormula.SecondaryUnitMeasureFormula,
+                TertiaryUnitObjectiveID: $scope.selectedTertiaryUnitObjective.TertiaryUnitObjectiveID,
+                SecondaryUnitMeasureID: $scope.selectedSecondaryUnitMeasure.SecondaryUnitMeasureID,
+                TertiaryUnitID: document.getElementById('tertiary_unit_id').value,
+                UserTertiaryUnitID: document.getElementById('user_tertiary_id').value
 
             }).success(function(data, status, headers, config, response) {
                 console.log(data);
@@ -145,7 +145,7 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
                 {
 
                 $('#myModal').modal('hide');
-                $scope.unit_measures = '';
+                $scope.tertiary_unit_measures = '';
                 $scope.init();
                 $scope.loading = false;
                 }
@@ -160,26 +160,26 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
 
         switch (modalstate) {
             case 'add':
-                $scope.form_title = "ADD UNIT'S MEASURE";
+                $scope.form_title = "ADD TERTIARY UNIT'S MEASURE";
                 document.getElementById('id_measure_name').value = "";
                 document.getElementById('id_measure_type').checked = false;
                 $scope.istrue = "false";
             
                 break;
             case 'edit':
-                $scope.form_title = "EDIT UNIT'S MEASURE DETAIL";
+                $scope.form_title = "EDIT TERTIARY UNIT'S MEASURE DETAIL";
                 $scope.id = id;
-                $http.get(public + 'api/secondary_unit_measures/' + id)
+                $http.get(public + 'api/tertiary_unit_measures/' + id)
                         .success(function(response) {
                             console.log(response);
-                            $scope.unit_measure = response;
-                            $scope.selectedUnitObjective = $scope.unitobjective[response.SecondaryUnitObjectiveID-1];
-                            $scope.selectedStaffMeasure = $scope.staffmeasure[response.UnitMeasureID];
+                            $scope.tertiary_unit_measure = response;
+                            $scope.selectedTertiaryUnitObjective = $scope.tertiary_unit_objective[response.TertiaryUnitObjectiveID-1];
+                            $scope.selectedSecondaryUnitMeasure = $scope.SecondaryUnitmeasure[response.SecondaryUnitMeasureID];
 
                             angular.forEach($scope.measureformula, function(item){
                             
 
-                                    if(item.UnitMeasureFormula == response.SecondaryUnitMeasureFormula)
+                                    if(item.SecondaryUnitMeasureFormula == response.TertiaryUnitMeasureFormula)
                                     {
                                         $scope.selectedMeasureFormula = $scope.measureformula[1];
                                     }

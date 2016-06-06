@@ -1,5 +1,4 @@
-var local = 'http://' + location.host;
-var public = '/usc/public/'; // replace this with '/' for production
+var public = 'http://' + location.host + '/usc/public/';
 
 app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
 
@@ -10,7 +9,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
-		$http.get(local + public + 'api/chief_measures').
+		$http.get(public + 'api/chief_measures').
 		success(function(data, status, headers, config) {
 			$scope.chief_measures = data;
 				$scope.loading = false;
@@ -26,7 +25,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
     $scope.save = function(modalstate, id) 
     {
         $scope.loading = true;
-        var url = local + public + 'api/chief_measures';
+        var url = public + 'api/chief_measures';
 
         //append Unit Objective ID to the URL if the form is in edit mode
         if (modalstate === 'edit')
@@ -85,7 +84,7 @@ app.controller('APIChiefMeasureController', function($scope, $http, $interval) {
             case 'edit':
                 $scope.form_title = "EDIT CHIEF'S MEASURE DETAIL";
                 $scope.id = id;
-                $http.get(local + public + 'api/chief_measures/' + id)
+                $http.get(public + 'api/chief_measures/' + id)
                         .success(function(response) {
                             console.log(response);
                             $scope.chief_measure = response;
