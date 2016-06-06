@@ -17,9 +17,11 @@ Route::get('home', 'HomeController@index');
 /*REPORTS ROUTES*/
 #scorecard
 Route::get('report/currentYearUnitScorecard', 'ReportsController@currentYearUnitScorecard');
+Route::get('report/currentYearSecondaryUnitScorecard', 'ReportsController@currentYearSecondaryUnitScorecard');
 Route::get('report/currentYearStaffScorecard', 'ReportsController@currentYearStaffScorecard');
 Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChiefScorecard');
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
+Route::get('report/yearlySecondaryUnitScorecard', 'ReportsController@yearlySecondaryUnitScorecard');
 Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecard');
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
 
@@ -34,7 +36,9 @@ Route::get('report/quarterlyChief', 'ReportsController@quarterlyChief');
 Route::get('report/quarterlyUnitAnalysis', 'ReportsAnalysisController@quarterlyUnitAnalysis');
 Route::get('report/quarterlyStaffAnalysis', 'ReportsAnalysisController@quarterlyStaffAnalysis');
 Route::get('report/quarterlyChiefAnalysis', 'ReportsAnalysisController@quarterlyChiefAnalysis');
+
 Route::get('report/yearlyUnitAnalysisBarGraph', 'ReportsAnalysisController@yearlyUnitAnalysisBarGraph');
+Route::get('report/yearlySecondaryUnitAnalysisBarGraph', 'ReportsAnalysisController@yearlySecondaryUnitAnalysisBarGraph');
 Route::get('report/yearlyStaffAnalysisBarGraph', 'ReportsAnalysisController@yearlyStaffAnalysisBarGraph');
 Route::get('report/yearlyChiefAnalysisBarGraph', 'ReportsAnalysisController@yearlyChiefAnalysisBarGraph');
 
@@ -66,11 +70,13 @@ Route::get('tertiary/dashboard', 'TertiaryUnitLoginController@dashboard');
 
 /*BARGRAPH*/
 Route::post('bargraphunit', 'UnitLoginController@bargraph');
+Route::post('bargraphsecondaryunit', 'SecondaryUnitLoginController@bargraph');
 Route::post('bargraph', 'StaffLoginController@bargraph');
 Route::post('bargraphchief', 'ChiefLoginController@bargraph');
 
 /*DONUTGRAPH*/
 Route::post('donutgraphunit', 'UnitLoginController@donutgraph');
+Route::post('donutgraphsecondaryunit', 'SecondaryUnitLoginController@donutgraph');
 Route::post('donutgraphstaff', 'StaffLoginController@donutgraph');
 Route::post('donutgraphchief', 'ChiefLoginController@donutgraph');
 
@@ -131,6 +137,13 @@ Route::get('secondary_unit/objectives', 'APISecondaryUnitObjectivesController@sh
 Route::get('secondary_unit/measures', 'APISecondaryUnitMeasuresController@showIndex');
 Route::get('secondary_unit/targets', 'APISecondaryUnitTargetsController@showIndex');
 Route::get('secondary_unit/targets/{id}','APISecondaryUnitTargetsController@edit');
+Route::get('secondary_unit/scorecard', 'SecondaryUnitLoginController@scorecard');
+Route::get('secondary_unit/reports','ReportsController@secondaryIndex');
+Route::get('secondary_unit/analysis_reports','ReportsAnalysisController@secondaryIndex');
+Route::get('secondary_unit/changesecondaryunitpicture', 'SecondaryUnitLoginController@changesecondaryunitpicture');
+Route::get('secondary_unit/changeuserpicture', 'SecondaryUnitLoginController@changeuserpicture');
+
+
 
 /* TERTIARY USER */
 Route::get('tertiary_unit/scorecard', 'TertiaryUnitLoginController@scorecard');

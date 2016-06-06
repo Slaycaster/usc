@@ -115,7 +115,7 @@
                         <i class="fa fa-caret-down pull-right"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
+                        <li
                             <a href="{{ url('secondary_unit/changeuserpicture') }}"><span class="fa fa-file-picture-o fa-fw"></span>&nbsp;
                                 Change Profile Picture</a>
                         </li>
@@ -186,10 +186,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Queries/Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondary_unit/reports') }}">Unit Scorecard Report</a>
+                                    <a href="{{ url('secondary_unit/reports') }}">Secondary Unit Scorecard Report</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('secondary_unit/analysis_reports') }}">Unit Scorecard Analysis Report</a>
+                                    <a href="{{ url('secondary_unit/analysis_reports') }}">Secondary Unit Scorecard Analysis Report</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -198,7 +198,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondary_unit/changeunitpicture') }}">Change Unit Picture</a>
+                                    <a href="{{ url('secondary_unit/changeunitpicture') }}">Change Secondary Unit Picture</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
