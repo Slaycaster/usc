@@ -60,6 +60,17 @@ class SecondaryUnitLoginController extends Controller {
 	{
 		if (Session::has('secondary_user_id'))
 		{
+
+			$secondary_user_id = Session::get('secondary_user_id', 'default');
+			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_user_id)
+				->with('secondary_unit')
+				->first();
+			$secondary_measures = SecondaryUnitMeasure::with('secondary_unit')->where('SecondaryUnitID', '=', $user->SecondaryUnitID)->get();
+
+			return view('secondary-unit-ui.secondary-unit-scorecard')
+				->with('user', $user)
+				->with('secondary_measures',$secondary_measures);
+
 			$secondary_unit_id = Session::get('secondary_user_id', 'default');
 			$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_unit_id)
 				->with('secondary_unit')
@@ -97,6 +108,7 @@ class SecondaryUnitLoginController extends Controller {
 			return view('secondary-unit-ui.secondary-unit-changepassword')
 				->with('user', $user)
 				->with('secondary_unit_measures',$secondary_unit_measures);
+
 		}
 		else
 		{
@@ -104,6 +116,7 @@ class SecondaryUnitLoginController extends Controller {
 			return Redirect::to('/');
 		}
 	}
+
 
 	public function changesecondaryunitpicture()
 	{

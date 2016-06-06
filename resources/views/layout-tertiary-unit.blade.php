@@ -214,7 +214,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('tertiary_unit/changechiefpicture') }}">Change Tertiary Unit Picture</a>
+                                    <a href="{{ url('tertiary_unit/changetertiarypicture') }}">Change Tertiary Unit Picture</a>
                                 </li>
                                 
                             </ul>
