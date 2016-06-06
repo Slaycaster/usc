@@ -1,8 +1,8 @@
 /* CHIEF CSS */
 
 .tertiary-page-wrapper{
-    background-color: rgba(65,146,75, 1) !important;
-    border-color: rgba(65,146,75,1) !important;
+    background-color: rgba(226, 226, 226, 1) !important;
+    border-color: rgba(226, 226, 226, 1) !important;
     /*  color of the background  */
 }
 
@@ -25,45 +25,45 @@
 }
 .layout-title-navbar{
     margin-bottom: -3em; 
-    background-color:#77DD77;
-    border-bottom-color:#77DD77;
+    background-color:rgba(20.4, 54.5, 18.4, 1);
+    border-bottom-color:rgba(20.4, 54.5, 18.4, 1);
 }
 .sidebar-search{
-    background-color:#77DD77 !important;
+    background-color:rgba(20.4, 54.5, 18.4, 1) !important;
 }
 .layout_tertiary_unit-body{
-    background-color: rgba(65,146,75,1);
+    background-color: rgba(20.4, 54.5, 18.4, 1);
 }
 .dropdown-menu>li>a{
     color:#2A363B !important;
 }
 .dropdown-menu>li>a:hover{
     color:#fff !important;
-    background-color:#77DD77 !important;
+    background-color: rgba(20.4, 54.5, 18.4, 1) !important;
 }
 a.layout-custom-navbaruser{
-    background-color:#77DD77;
+    background-color: rgba(20.4, 54.5, 18.4, 1);
     color:#fff;
-    border-color:#77DD77;
+    border-color: rgba(20.4, 54.5, 18.4, 1);
 }
 a.layout-custom-navbaruser:hover{
-    color:#77DD77;
+    color: rgba(20.4, 54.5, 18.4, 1);
     background-color:#fff !important;
 }
 .sidebar ul li a.active{
-    color: #77DD77 !important;
+    color:  rgba(20.4, 54.5, 18.4, 1) !important;
 }
 a.active{
     background-color:rgba(226, 226, 226, 1) !important;
-    color:#77DD77 !important;
+    color: rgba(20.4, 54.5, 18.4, 1) !important;
 }
 .nav>li>a{
-    background-color:#77DD77;
+    background-color: rgba(20.4, 54.5, 18.4, 1);
     color:#fff !important;
 }
 .nav>li>a:focus, 
 .nav>li>a:hover{
-    color:#77DD77 !important;
+    color: rgba(20.4, 54.5, 18.4, 1) !important;
     background-color: #fff;
 }
 .sidebar ul li{
@@ -123,7 +123,7 @@ a.active{
 
 /* css for table */
 thead{
-    background-color:#77DD77;
+    background-color: rgba(20.4, 54.5, 18.4, 1);
     color: #fff;
 }
 thead>tr>td{
