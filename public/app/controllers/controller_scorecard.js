@@ -1,5 +1,3 @@
-var public = 'http://' + location.host + '/usc/public/';
-
 app.controller('scorecardController', function($scope, $http) {
  
 	$scope.unit_objectives = [];

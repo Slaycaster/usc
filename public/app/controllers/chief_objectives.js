@@ -1,5 +1,3 @@
-var public = 'http://' + location.host + '/usc/public/';
-
 app.controller('APIChiefObjectiveController', function($scope, $http, $interval) {
     
     $scope.chief_objectives = [];
