@@ -682,7 +682,7 @@ use App\StaffFunding;
                                 else{}
                             ?>
                             <td>
-                                <b>{{ round($overallAccomplishment-$overallTarget-$overallTarget, 2) }}</b>
+                                <b>{{ round($overallAccomplishment-$overallTarget, 2) }}</b>
                             </td>
                             <td>
                                 <font color="{{$Color}}"><b>{{ round(($overallAccomplishment/$overallTarget) * 100, 2) }}%</b></font>

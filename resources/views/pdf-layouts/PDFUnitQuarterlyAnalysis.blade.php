@@ -29,8 +29,6 @@ use App\UnitFunding;
     
     $logoPath = 'img/pnp_logo2.png';
     $unitlogoPath = 'uploads/unitpictures/cropped/'.$unit->PicturePath;
-    $tempObjective = '';
-
 
     $sortByObjective = DB::table('unit_objectives')
                         ->join('unit_measures', 'unit_objectives.UnitObjectiveID', '=', 'unit_measures.UnitObjectiveID')
@@ -469,7 +467,7 @@ use App\UnitFunding;
                                 else{}
                             ?>
                             <td>
-                                <b>{{ round($overallAccomplishment-$overallTarget-$overallTarget, 2) }}</b>
+                                <b>{{ round($overallAccomplishment-$overallTarget, 2) }}</b>
                             </td>
                             <td>
                                 <font color="{{$Color}}"><b>{{ round(($overallAccomplishment/$overallTarget) * 100, 2) }}%</b></font>

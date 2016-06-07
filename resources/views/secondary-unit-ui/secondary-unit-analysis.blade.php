@@ -39,7 +39,7 @@
                             <!--./div class row-->
                             <div class="col-md-4 col-lg-4">
                                 <div>
-                                    <form method="get" action="{{ url('report/quarterlyUnitAnalysis') }}" target="_blank">
+                                    <form method="get" action="{{ url('report/quarterlySecondaryUnitAnalysis') }}" target="_blank">
                                         <div>
                                             <label for="year" class="control">Quarterly Scorecard KPI Report:</label>
                                             <br>

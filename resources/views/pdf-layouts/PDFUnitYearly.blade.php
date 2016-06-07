@@ -53,7 +53,7 @@ use App\UnitFunding;
                                     ->get();
         foreach ($accomplishments as $accomplishment)
         {
-            //dd($accomplishment);
+            dd($accomplishment);
         }
         //dd($accomplishments);
         if(count($accomplishments) != 0)
