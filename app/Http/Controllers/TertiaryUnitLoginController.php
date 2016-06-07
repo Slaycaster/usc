@@ -61,28 +61,29 @@ class TertiaryUnitLoginController extends Controller {
 	{
 		if (Session::has('tertiary_user_id'))
 		{
-			$id = Session::get('tertiary_user_id', 'default');
-			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+			$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
+			$user = UserTertiaryUnit::where('UserTertiaryUnitID', $tertiary_unit_id)
 				->with('tertiary_unit')
+				->with('tertiary_unit.secondary_unit')
 				->first();
-			
-			
-			$tertiary_objectives_count = TertiaryUnitObjective::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
-				->count();
-			$tertiary_measures_count = TertiaryUnitMeasure::where('TertiaryUnitID', '=', $user->TertiaryUnitID)
-				->count();
+			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
+			$maxid = TertiaryUnitAccomplishment::max('updated_at');
+		
+			$updatedby = TertiaryUnitAccomplishment::where('updated_at','=',$maxid)
+				->with('user_tertiary_unit')
+				->first();
+			//dd($updatedby);
 			return view('tertiary-ui.tertiary-scorecard')
-				->with('tertiary_unit_id', $user->TertiaryUnitID)
 				->with('user', $user)
-				->with('tertiary_objectives_count', $tertiary_objectives_count)
-				->with('tertiary_measures_count', $tertiary_measures_count)
-				->withEncryptedCsrfToken(Crypt::encrypt(csrf_token()));;
+				->with('tertiary_unit_measures',$tertiary_unit_measures)
+				->with('updatedby',$updatedby);
 		}
 		else
 		{
 			Session::flash('message', 'Please login first!');
 			return Redirect::to('/');
 		}
+	
 	}
 
 	

@@ -1,10 +1,10 @@
-var public = 'http://' + location.host + '/usc/public/';
+
 
 app.controller('APITertiaryUnitScorecardController', function($scope, $http, $interval) {
     
-    $scope.tertiary_unit_targets = [];
+	$scope.tertiary_unit_targets = [];
     $scope.info = false;
-    $scope.loading = true;
+	$scope.loading = true;
     
  
     $scope.init = function() {
@@ -14,25 +14,27 @@ app.controller('APITertiaryUnitScorecardController', function($scope, $http, $in
         $scope.accompchanged = false;
         $scope.initchanged = false;
         $scope.fundingchanged = false;
-        $http.get(public + 'api/tertiary_unit_scorecard').
-        success(function(data, status, headers, config) {
-            $scope.unit_targets = data;
+		$http.get(public + 'api/tertiary_unit_scorecard').
+		success(function(data, status, headers, config) {
+			$scope.tertiary_unit_targets = data;
+
             for(i = 1; i < $scope.tertiary_unit_targets.length; i++)
             {
-               if($scope.tertiary_unit_targets[i - 1].tertiary_unit_measure.UnitObjectiveID == $scope.tertiary_unit_targets[i].tertiary_unit_measure.TertiaryUnitObjectiveID )    
+               if($scope.tertiary_unit_targets[i - 1].tertiary_unit_measure.TertiaryUnitObjectiveID == $scope.tertiary_unit_targets[i].tertiary_unit_measure.TertiaryUnitObjectiveID )    
                {
                       $scope.tertiary_unit_targets[i].tertiary_unit_measure.tertiary_unit_objective.TertiaryUnitObjectiveName = " ";
                }
                 
             }
+			
             console.log(data);
-            $scope.loading = false;
+			$scope.loading = false;
             $scope.info = true;
-        });
+		});
 
         $http.get(public + 'api/tertiary_unit_scorecard/lastupdatedby').
         success(function(response){
-            console.log(response);
+            console.log(response.updated1);
             
                 $scope.updatedby = response.updated1;
                 $scope.updatedby2 = response.updated2;
@@ -47,8 +49,8 @@ app.controller('APITertiaryUnitScorecardController', function($scope, $http, $in
 
             $scope.loading = false;
 
-        }); 
-    };
+        });	
+	};
 
     $scope.ownerchange = function() 
     {
@@ -76,7 +78,7 @@ app.controller('APITertiaryUnitScorecardController', function($scope, $http, $in
         $scope.fundingchanged = true;
     }
 
-    $scope.sort = function(keyname)
+	$scope.sort = function(keyname)
     {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
@@ -92,7 +94,7 @@ app.controller('APITertiaryUnitScorecardController', function($scope, $http, $in
             console.log(document.getElementById('id_owner'+id));
 
             $http.put(url, {
-                UnitOwnerContent: document.getElementById('id_owner'+id).value,
+                TertiaryUnitOwnerContent: document.getElementById('id_owner'+id).value,
                 JanuaryAccomplishment: document.getElementById('id_jan'+id).value,
                 FebruaryAccomplishment: document.getElementById('id_feb'+id).value,
                 MarchAccomplishment: document.getElementById('id_mar'+id).value,
@@ -109,8 +111,8 @@ app.controller('APITertiaryUnitScorecardController', function($scope, $http, $in
                 TertiaryUnitFundingEstimate: document.getElementById('id_estimate'+id).value,
                 TertiaryUnitFundingActual: document.getElementById('id_actual'+id).value,
                 TertiaryUnitMeasureID: document.getElementById('unitmeasure_id'+id).value,
-                TertiaryUnitID: document.getElementById('tertiary_unit_id'+id).value,
-                UserTertiaryUnitID: document.getElementById('user_tertiary_unit_id'+id).value,
+                TertiaryUnitID: document.getElementById('unit_id'+id).value,
+                UserTertiaryUnitID: document.getElementById('user_unit_id'+id).value,
                 Ownerpressed: $scope.changed,
                 Accomplishmentpressed: $scope.accompchanged,
                 Initiativepressed: $scope.initchanged,
