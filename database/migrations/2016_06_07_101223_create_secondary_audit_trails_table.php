@@ -14,12 +14,10 @@ class CreateSecondaryAuditTrailsTable extends Migration {
 	{
 		Schema::create('secondary_audit_trails', function(Blueprint $table)
 		{
-			$table->increments('SecondaryUnitInitiativeID');
-			$table->string('SecondaryUnitInitiativeContent');
-			$table->date('SecondaryUnitInitiativeDate');
-			$table->integer('SecondaryUnitMeasureID');
-			$table->integer('SecondaryUnitID');
+			$table->increments('SecondaryUnitAuditTrailID');
+			$table->string('Action');
 			$table->integer('UserSecondaryUnitID');
+			$table->integer('SecondaryUnitID');
 			$table->timestamps();
 		});
 	}
