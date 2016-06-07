@@ -28,7 +28,7 @@ app.controller('APISecondaryUnitScorecardController', function($scope, $http, $i
         $scope.fundingchanged = false;
         $http.get(public + 'api/secondary_unit_scorecard').
         success(function(data, status, headers, config) {
-            console.log(data);
+            // console.log(data);
             $scope.secondary_unit_targets = data;
 
             //For Unit Accomplishment January
@@ -243,12 +243,13 @@ app.controller('APISecondaryUnitScorecardController', function($scope, $http, $i
                 
             }
                 
+            
                 $scope.loading = false;
         }); 
 
          $http.get(public + 'api/secondary_unit/lastupdatedby').
          success(function(response){
-             console.log(response);
+             // console.log(response);
             
                  $scope.updatedby = response.updated1;
                  $scope.updatedby2 = response.updated2;
@@ -307,10 +308,9 @@ app.controller('APISecondaryUnitScorecardController', function($scope, $http, $i
     {
         $scope.loading = true;
         var url = public + 'api/secondary_unit_scorecard';
-        
+            console.log(id);
+                   
             url += "/" + id;
-            console.log(document.getElementById('id_owner'+id));
-            
             $http.put(url, {
                 SecondaryUnitOwnerContent: document.getElementById('id_owner'+id).value,
                 JanuaryAccomplishment: document.getElementById('id_jan'+id).value,

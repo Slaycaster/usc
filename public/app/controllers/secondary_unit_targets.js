@@ -54,7 +54,7 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
 
         //append Unit Objective ID to the URL if the form is in edit mode
 
-        if (modalstate === 'set')
+        if (modalstate === 'show')
         {
             
             if(document.getElementById('id_target_period').value === "Monthly")
@@ -62,18 +62,18 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
                     url += "/update/" + id;
                     console.log("URL ID: " +id);
                     $http.post(url, {    
-                        JanuaryTarget: $scope.secondary_targets.JanuaryTarget,
-                        FebruaryTarget: $scope.secondary_targets.FebruaryTarget,
-                        MarchTarget: $scope.secondary_targets.MarchTarget,
-                        AprilTarget: $scope.secondary_targets.AprilTarget,
-                        MayTarget: $scope.secondary_targets.MayTarget,
-                        JuneTarget: $scope.secondary_targets.JuneTarget,
-                        JulyTarget: $scope.secondary_targets.JulyTarget,
-                        AugustTarget: $scope.secondary_targets.AugustTarget,
-                        SeptemberTarget: $scope.secondary_targets.SeptemberTarget,
-                        OctoberTarget: $scope.secondary_targets.OctoberTarget,
-                        NovemberTarget: $scope.secondary_targets.NovemberTarget,
-                        DecemberTarget: $scope.secondary_targets.DecemberTarget,
+                        JanuaryTarget: $scope.secondary_target.JanuaryTarget,
+                        FebruaryTarget: $scope.secondary_target.FebruaryTarget,
+                        MarchTarget: $scope.secondary_target.MarchTarget,
+                        AprilTarget: $scope.secondary_target.AprilTarget,
+                        MayTarget: $scope.secondary_target.MayTarget,
+                        JuneTarget: $scope.secondary_target.JuneTarget,
+                        JulyTarget: $scope.secondary_target.JulyTarget,
+                        AugustTarget: $scope.secondary_target.AugustTarget,
+                        SeptemberTarget: $scope.secondary_target.SeptemberTarget,
+                        OctoberTarget: $scope.secondary_target.OctoberTarget,
+                        NovemberTarget: $scope.secondary_target.NovemberTarget,
+                        DecemberTarget: $scope.secondary_target.DecemberTarget,
                         TargetDate:document.getElementById('target_date').value,
                         TargetPeriod: document.getElementById('id_target_period').value
                         
@@ -119,7 +119,7 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
         console.log("Modal State: " + $scope.modalstate);
 
         switch (modalstate) {
-            case 'set':
+            case 'show':
                 $scope.this_title = "SET TARGET";
                 
                 $scope.id = id;

@@ -44,7 +44,7 @@ class APISecondaryUnitScorecardController extends Controller {
 			$secondary_measures = SecondaryUnitMeasure::with('secondary_unit')->where('SecondaryUnitID', '=', $secondary_user->SecondaryUnitID)->get();
 
 
-		return SecondaryUnitTarget::with('secondary_unit_measure')
+		$SecondaryUnitTarget =  SecondaryUnitTarget::with('secondary_unit_measure')
 			->with('secondary_unit_measure.secondary_unit_objective')
 			->with('secondary_unit_measure.tertiary_unit_measures.tertiary_unit_accomplishments')
 			->with('secondary_unit_measure.tertiary_unit_measures.tertiary_unit_accomplishments.tertiary_unit')
@@ -57,6 +57,8 @@ class APISecondaryUnitScorecardController extends Controller {
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->where('SecondaryUnitID', '=', $secondary_user->SecondaryUnitID)
 			->get();
+
+		return json_encode($SecondaryUnitTarget, JSON_PRETTY_PRINT);
 		}
 		else
 		{
@@ -120,12 +122,10 @@ class APISecondaryUnitScorecardController extends Controller {
 				->first();
 
 		$secondary_user_target = SecondaryUnitTarget::find($id);
-		
 		$secondary_unit_accomplishmentID = $secondary_user_target->SecondaryUnitAccomplishmentID;
 		$secondary_unit_ownerID = $secondary_user_target->SecondaryUnitOwnerID;
 		$secondary_unit_initiativeID = $secondary_user_target->SecondaryUnitInitiativeID;
 		$secondary_unit_fundingID = $secondary_user_target->SecondaryUnitFundingID;
-
 
 
 		if(Request::input('Accomplishmentpressed') == true)

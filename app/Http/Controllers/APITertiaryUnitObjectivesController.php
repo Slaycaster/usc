@@ -108,13 +108,11 @@ class APITertiaryUnitObjectivesController extends Controller {
 	public function update($id)
 	{
 
-
 		$tertiary_unit_obj = TertiaryUnitObjective::find($id)->with('perspective')->with('secondary_unit_objective')->with('secondary_unit_objective.secondary_unit')->first();
  
 
 		$tertiary_unitid = Session::get('tertiary_user_id', 'default');
 		$tertiary_unit = Request::input('TertiaryUnitID');
-
 
 
 

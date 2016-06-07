@@ -82,9 +82,11 @@
                                         <td><% staff_target.staff_measure.StaffMeasureFormula %></td>
                                         <td><% staff_target.TargetPeriod %></td>
     									<td>
-    										<button id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName )">View Target</button>
-    										<br>
-    										<button id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName)">Set Target</button>
+    										<input type="hidden" ng-model="targetperiod" ng-init="set_target=staff_target.TargetPeriod">
+
+                                            <button ng-if="set_target!='Not Set'" id="btn-add" class="btn btn-info btn-block btn-md" ng-click="toggle('view', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName )">View Target</button>
+                                            
+                                            <button ng-if="set_target=='Not Set'" id="btn-add" class="btn btn-warning btn-block btn-md" ng-click="toggle('show', staff_target.StaffTargetID, staff_target.staff_measure.StaffMeasureName)">Set Target</button>
 
     									</td>
     									<input type="hidden" ng-model="targetdate" ng-init="target_date=staff_target.TargetDate" />
@@ -109,8 +111,457 @@
 			</div>
 	    </div>
 
-		<!-- Modal (Pop up when detail button clicked) -->
+
+
         <div class="modal fade" id="targetModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">×</span></button>
+                        <i class="fa fa-circle-o-notch fa-4x"></i>
+                        <h4 class="modal-title" id="myModalLabel"><b><% this_title %></b></h4>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <form name="frmShowTarget" class="form-horizontal" novalidate="">
+                            <h4 class="alert alert-success">
+                                <b><% staff_measurename %></b>
+                            </h4>
+                        
+                            <table>
+                                <tr style="background-color:transparent;">
+                                    <td>
+                                        <h4>Set Target Period:</h4>
+                                    </td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td >
+                                        <select id="id_target_period" name="measure_formula" data-ng-model="staff_target.TargetPeriod" class="form-control" style="width:25em;"  required ng-touched> 
+                                                   
+                                                <option value="Monthly">
+                                                    Monthly
+                                                </option>
+                                                <option value="Quarterly">
+                                                    Quarterly
+                                                </option>
+                                        </select>
+                                    </td>
+                                </tr>    
+                            </table>
+
+
+                            <br />
+                            <!-- Modal (Pop up when detail button clicked) FOR MONTHLY -->  
+                            <div  class="table-responsive" id="monthlyform" style='display:none;'>
+                                <table class="table">
+                                    <tr>
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">January:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_january_target" valid-number name="monthlyform" value="<% staff_target.JanuaryTarget %>" ng-model="staff_target.JanuaryTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for January is required.</span>
+                                        </td>
+                                      
+                                
+                                
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">April:</label>
+                                        </td>   
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_april_target" valid-number name="monthlyform" value="<% staff_target.AprilTarget %>" ng-model="staff_target.AprilTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for April is required.</span>
+                                        </td> 
+
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">July:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_july_target" valid-number name="monthlyform" value="<% staff_target.JulyTarget %>" ng-model="staff_target.JulyTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for July is required.</span>
+                                        </td>
+
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">October:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_october_target" valid-number name="monthlyform" value="<% staff_target.OctoberTarget %>" ng-model="staff_target.OctoberTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for October is required.</span>
+                                        </td>                                  
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">February:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_february_target" valid-number name="monthlyform" value="<% staff_target.FebruaryTarget %>" ng-model="staff_target.FebruaryTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for February is required.</span>
+                                        </td>
+
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">May:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_may_target" valid-number name="monthlyform" value="<% staff_target.MayTarget %>" ng-model="staff_target.MayTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for May is required.</span>
+                                        </td>
+                            
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">August:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_august_target" valid-number name="monthlyform" value="<% staff_target.AugustTarget %>" ng-model="staff_target.AugustTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for August is required.</span>
+                                        </td>
+
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">November:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_november_target" valid-number name="monthlyform" value="<% staff_target.NovemberTarget %>" ng-model="staff_target.NovemberTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for November is required.</span>
+                                        </td>
+                           
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">March:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_march_target" valid-number name="monthlyform" value="<% staff_target.MarchTarget %>" ng-model="staff_target.MarchTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for March is required.</span>
+                                        </td>
+
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">June:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_june_target" valid-number name="monthlyform" value="<% staff_target.JuneTarget %>" ng-model="staff_target.JuneTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for June is required.</span>
+                                        </td>
+
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">September:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_september_target" valid-number name="monthlyform" value="<% staff_target.SeptemberTarget %>" ng-model="staff_target.SeptemberTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for September is required.</span>
+                                        </td>
+                           
+                                        <td class="col-md-1">
+                                            <label for="monthlyform" class="control-label">December:</label>
+                                        </td>
+                                        <td class="col-md-2">
+                                            <input type='text' id="id_december_target" valid-number name="monthlyform" value="<% staff_target.DecemberTarget %>" ng-model="staff_target.DecemberTarget" autocomplete="off" class="form-control" required ng-touched />
+                                            <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for December is required.</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color:transparent;">
+                                        <td colspan="24">
+                                            <div ng-show="info" class="alert alert-danger container-fluid"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you Add Target, it can no longer be updated until next year.</div>
+                                        </td>
+                                        <td>
+                                            <input type="hidden" id="target_date" name="date" value="<% date | date : 'yyyy-MM-dd' %>" />
+                                        </td>
+                                    </tr>
+                                </table>   
+
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                    <button class="btn btn-success btn-sm btn-block pull-right"
+                                     data-toggle="modal" data-target="#confirmSubmit">Add Target</button> 
+                                </div> 
+                            </div>
+
+                            
+
+                            <!-- Modal (Pop up when detail button clicked) FOR QUARTERTLY -->
+                            <div  class="table-responsive" id="quarterlyform" style='display:none;'>
+                                <table class="table">
+                                    <td>
+                                        <label for="quarterlyform" class="control-label">First Quarter:</label>
+                                    </td>
+                                    <td>
+                                        <input type='text' id="id_firstquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
+                                        <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for First Quarter is required.</span>
+                                    </td>
+
+                                    <td>
+                                        <label for="quarterlyform" class="control-label">Second Quarter:</label>
+                                    </td>
+                                    <td>
+                                        <input type='text' id="id_secondquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
+                                        <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Second Quarter is required.</span>
+                                    </td>
+
+                                    <td>
+                                        <label for="quarterlyform" class="control-label">Third Quarter:</label>
+                                    </td>
+                                    <td>
+                                        <input type='text' id="id_thirdquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
+                                        <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Third Quarter is required.</span>
+                                    </td>
+
+                                    <td>
+                                        <label for="quarterlyform" class="control-label">Fourth Quarter:</label>
+                                    </td>
+                                    <td>
+
+                                        <input type='text' id="id_fourthquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched />
+                                        <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Fourth Quarter is required.</span>
+                                    </td>
+                                    <tr style="background-color:transparent;">
+                                        <td colspan="8">
+                                            <div ng-show="info" class="alert alert-danger"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                    
+                                                          
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                    <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
+                                </div>
+                            </div>
+                                 <!-- ng-click="save(modalstate, id)" -->
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmSubmit" aria-hidden='true' aria-labelledby="myModalLabel" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <center>
+                            <br />
+                            <h4 class="modal-title">
+                            Are you sure about this?</h4>
+                        </center>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                          
+                            <div ng-if="istrue =='true'" class="alert alert-success">
+                            <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i> Password confirmed! <br />
+                            <i class="fa fa-paper-plane-o  fa-fw"></i> Click submit to continue. <br />
+
+                            <i class="fa fa-info-circle fa-fw"></i> 
+                            Once submitted you can no longer update it until next year.</div>
+
+                            <div ng-if="istrue =='false'" class="alert alert-info">
+                            <i class="fa fa-lock  fa-fw"></i>
+                            Please type your password to confirm submission.
+                            </div>
+
+
+                            <input type="password" style="text-align:center; height: 2em; font-size:1.7em;" class="form-control" name="password" id="getPassword" placeholder="Password" ng-model="confirmPassword" ng-change="getpassword()"/> 
+                        </div>
+                    </div>
+                
+
+                    <div class="modal-footer">
+                        <div class="col-md-12 alert alert-warning" style="text-align:left;">
+                            <i class="fa fa-info-circle fa-fw"></i> 
+                                To edit your target, click &times; on the right.
+                        </div>
+                        
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default btn-md" data-dismiss="modal" ng-disabled="istrue == 'false'" ng-click="save(modalstate, id)"><i class="fa fa-paper-plane-o  fa-fw"></i> Submit</button>
+
+                         </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="monthModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <i class="fa fa-circle-o-notch fa-4x"></i>
+                        <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
+                    </div>
+
+                    <p class="alert alert-info">Monthly Targets for the Measure: <% staff_measurename %></p>
+                    
+                    <div class="modal-body table-responsive">
+                        <form name="frmEditTarget" class="form-horizontal" novalidate="">
+                            
+                            <table class="table table-striped">
+                                <tr ir-paginate='staff_target in staff_targets|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                                    <tr>
+                                       
+                                         <td><center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>January: </b> <% staff_target.JanuaryTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+
+                                        <td>     <center>
+                                            <button class="btn btn-info target_size">
+                                                    <b>April: </b> <% staff_target.AprilTarget %>   
+                                                </button>                                         
+                                            
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>July:</b> <% staff_target.JulyTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>October:</b> <% staff_target.OctoberTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                       
+                                         <td><center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>February:</b> <% staff_target.FebruaryTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>May:</b> <% staff_target.MayTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+
+    
+                                        <td><center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>August:</b> <% staff_target.AugustTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>November:</b> <% staff_target.NovemberTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                       
+                                         <td><center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>March:</b> <% staff_target.MarchTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>June:</b> <% staff_target.JuneTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>September:</b> <% staff_target.SeptemberTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <button class="btn btn-info target_size">
+                                                    <b>December:</b> <% staff_target.DecemberTarget %>
+                                                </button>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    
+                                </tr>
+                                 
+                            </table>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="modal fade" id="quarterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <i class="fa fa-circle-o-notch fa-4x"></i>
+                        <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
+                    </div>
+                    <p class="control-label alert alert-info">Quarterly Targets for the Measure: <% chief_measurename %> </p>
+                    
+                    <div class="modal-body table-responsive">
+                        <form name="frmEditTarget" novalidate="">
+                            
+                            <table class="table table-striped">
+                                <tr>
+                                    <td>
+                                    <center>
+                                        <button class="btn btn-info target_size">
+                                            <b>1st Quarter:</b> <% firstquarter %>
+                                        </button>
+                                    </center>
+                                    </td>
+                                
+                                    <td>
+                                    <center>
+                                        <button class="btn btn-info target_size">
+                                            <b>2nd Quarter:</b> <% secondquarter %>
+                                        </button>
+                                    </center>
+                                    </td>
+                                
+                                    <td>
+                                    <center>
+                                        <button class="btn btn-info target_size">
+                                            <b>3rd Quarter:</b> <% thirdquarter %>
+                                        </button>
+                                    </center>
+                                    </td>
+                                
+                                    <td>
+                                    <center>
+                                        <button class="btn btn-info target_size">
+                                            <b>4th Quarter:</b> <% fourthquarter %>
+                                        </button>
+                                    </center>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+		<!-- Modal (Pop up when detail button clicked) -->
+       <!--  <div class="modal fade" id="targetModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -147,7 +598,7 @@
                                 
                                     <div class="table-responsive" id="monthlyform" style='display:none;'>
                                         <table class="table">
-                                    <!-- Modal (Pop up when detail button clicked) FOR MONTHLY -->
+                                    
                                             <tr>
                                                 <td class="col-md-1">
                                                     <label for="monthlyform" class="control-label">January:</label>
@@ -257,13 +708,7 @@
                                             
                                                 <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Make sure you're entering necessary values, once saved you can't update it till next year.</div>
                                                  
-                                            <!-- <label for="monthlyform" class="control-label">Enter your credentials to continue:</label><br>
-
-                                                 <input type='text' id="id_badge_text" name="monthlyform" value="" ng-model="" placeholder="Badge text" autocomplete="off" class="form-control" required ng-touched />
-                                                    <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Badge text is required.</span><br>
-                                                 <input type='text' id="id_password" name="monthlyform" value="" ng-model="" placeholder="Password" autocomplete="off" class="form-control" required ng-touched />
-                                                    <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Password is required.</span> -->
-                                          
+                                         
                                          
 
                                            <input type="hidden" id="target_date" name="date" value="<% date | date : 'yyyy-MM-dd' %>">
@@ -278,7 +723,7 @@
 
 
 
-                            <!-- Modal (Pop up when detail button clicked) FOR QUARTERTLY -->
+                          
                                     <div id="quarterlyform" style='display:none;'>
                                      <table class="table table-responsive">
                                     <td>
@@ -316,14 +761,7 @@
                                     </table>
                                      <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Make sure you're entering necessary values, once saved you can't update it till next year.</div>
                                                  
-                                            <!-- <label for="monthlyform" class="control-label">Enter your credentials to continue:</label><br>
-
-                                                 <input type='text' id="id_badge_text" name="monthlyform" value="" ng-model="" placeholder="Badge text" autocomplete="off" class="form-control" required ng-touched />
-                                                    <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Badge text is required.</span><br>
-                                                 <input type='text' id="id_password" name="monthlyform" value="" ng-model="" placeholder="Password" autocomplete="off" class="form-control" required ng-touched />
-                                                    <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Password is required.</span> -->
-                                           
-
+                                          
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmEditTarget.$invalid">Submit</button>
                                             </div>
@@ -334,9 +772,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-                <div class="modal fade" id="alreadysetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <!--  <div class="modal fade" id="alreadysetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -359,10 +797,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
          
 
-        <div class="modal fade" id="monthModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <!--  <div class="modal fade" id="monthModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -405,9 +843,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-       
+      <!--  
         <div class="modal fade" id="quarterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
@@ -438,9 +876,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        
+       <!--  
         <div class="modal fade" id="notsetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
@@ -458,7 +896,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         
 
