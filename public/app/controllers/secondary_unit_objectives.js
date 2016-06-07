@@ -9,7 +9,6 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
         $scope.info = true;
         $http.get(public + 'api/secondary_unit_objectives').
         success(function(data, status, headers, config) {
-        console.log(data);
         $scope.secondary_unit_objectives = data;
         $scope.loading = false;
         $http.get(public + 'api/perspectives').
@@ -88,11 +87,8 @@ app.controller('APISecondaryUnitObjectiveController', function($scope, $http, $i
                             console.log(response);
                             $scope.unit_objective = response;
 
-                             $scope.selectedUserProfile = $scope.perspective[response.PerspectiveID-1];
-                            console.log(response.ChiefObjectiveID);
-
-                            
-                                $scope.selectedStaffObjective = $scope.staffobjective[response.StaffObjectiveID];
+                            $scope.selectedUserProfile = $scope.perspective[response.PerspectiveID-1];
+                            // $scope.selectedStaffObjective = $scope.staffobjective[response.StaffObjectiveID];
                         });
                 break;
             default:

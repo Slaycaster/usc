@@ -5,7 +5,6 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
     $scope.info = false;
 
 
-    
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
@@ -18,43 +17,31 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
 
     $http.get(public + 'api/secondaryunit/measures/unitmeasures').
         success(function(data, status, headers, config)
-        {   
-           
+        {              
             $scope.staffmeasure = data;
-            
-            
             $scope.none = {UnitMeasureID : 0, UnitMeasureName: "None/No Contributory"};
-          
             $scope.staffmeasure.unshift($scope.none);
-            
             $scope.selectedStaffMeasure = $scope.staffmeasure[0];
-
-
         });
 
-     $scope.measureformula = [
-                                    {UnitMeasureFormula: "Summation"},
-                                    {UnitMeasureFormula: "Average"},
-                                ];
-            $scope.selectedMeasureFormula = $scope.measureformula[0];
-
+    $scope.measureformula = [
+        {UnitMeasureFormula: "Summation"},
+        {UnitMeasureFormula: "Average"},
+    ];
+    
+    $scope.selectedMeasureFormula = $scope.measureformula[0];
 
 
     $http.get(public + 'api/secondaryunit/measures/secondaryunitobjectives').
-        success(function(data, status, headers, config)
-        {   
-           
-            $scope.unitobjective = data;
-            
-            $scope.selectedUnitObjective = $scope.unitobjective[0];
+    success(function(data, status, headers, config){   
+        $scope.unitobjective = data;        
+        $scope.selectedUnitObjective = $scope.unitobjective[0];
 
-
-        });
+    });
 
     $scope.getStaffMeasureID = function(mes) 
     {
                 
-        
         var measureID = $scope.selectedStaffMeasure.UnitMeasureID;
 
         if(measureID != 0)
@@ -63,10 +50,9 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
             success(function(data)
             {   
                
-                
-                 $scope.measureformula = [
-                                        {UnitMeasureFormula: data.UnitMeasureFormula},
-                                    ];
+                $scope.measureformula = [
+                    {UnitMeasureFormula: data.UnitMeasureFormula},
+                ];
                 $scope.selectedMeasureFormula = $scope.measureformula[0]; 
 
             });
@@ -74,10 +60,10 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
         }
         else
         {
-             $scope.measureformula = [
-                                    {UnitMeasureFormula: "Summation"},
-                                    {UnitMeasureFormula: "Average"},
-                                ];
+            $scope.measureformula = [
+                {UnitMeasureFormula: "Summation"},
+                {UnitMeasureFormula: "Average"},
+            ];
             $scope.selectedMeasureFormula = $scope.measureformula[0]; 
         }
 
@@ -176,15 +162,14 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
 
                             angular.forEach($scope.measureformula, function(item){
                             
-
-                                    if(item.UnitMeasureFormula == response.SecondaryUnitMeasureFormula)
-                                    {
-                                        $scope.selectedMeasureFormula = $scope.measureformula[1];
-                                    }
-                                    else
-                                    {
-                                        $scope.selectedMeasureFormula = $scope.measureformula[0];
-                                    }  
+                                if(item.UnitMeasureFormula == response.SecondaryUnitMeasureFormula)
+                                {
+                                    $scope.selectedMeasureFormula = $scope.measureformula[1];
+                                }
+                                else
+                                {
+                                    $scope.selectedMeasureFormula = $scope.measureformula[0];
+                                }  
                                 })
                         });
                 break;
