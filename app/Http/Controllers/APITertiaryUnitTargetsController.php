@@ -54,9 +54,9 @@ class APITertiaryUnitTargetsController extends Controller {
 			->with('tertiary_unit_measure.tertiary_unit_objective')
 			->with('user_tertiary_unit')
 			->with('user_tertiary_unit.rank')
-			->where('TertiaryUnitID', '=', $tertiary_unit)
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->orWhere('TargetDate', '=', '0000-00-00')
+			->where('TertiaryUnitID', '=', $tertiary_unit)
 			->get();
 		
 	}

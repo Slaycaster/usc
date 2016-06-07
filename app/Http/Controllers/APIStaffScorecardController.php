@@ -71,6 +71,7 @@ class APIStaffScorecardController extends Controller {
 
 			$staff = UserStaff::where('UserStaffID', '=', $staff_id)->select('StaffID')->first();
 			
+			//dd($staff);
 
 			$maxid = StaffAccomplishment::where('StaffID','=',$staff->StaffID)->max('updated_at');
 			$maxid2 = StaffOwner::where('StaffID','=',$staff->StaffID)->max('updated_at');

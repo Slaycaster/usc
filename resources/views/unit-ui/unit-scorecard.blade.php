@@ -162,7 +162,7 @@
                                         
 
                                         <td><center>
-                                            <textarea rows="5" cols="27" id="id_owner<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform"  value="<% unit_target.unit_owner.UnitOwnerContent %>" ng-model="unit_target.unit_owner.UnitOwnerContent" autocomplete="off"  required ng-touched></textarea>
+                                            <textarea rows="5" cols="27" id="id_owner<%unit_target.UnitTargetID%>" name="monthlyform"  value="<% unit_target.unit_owner.UnitOwnerContent %>" ng-model="unit_target.unit_owner.UnitOwnerContent" autocomplete="off"  required ng-touched></textarea>
                                             </center>
                                         </td>
 
@@ -611,7 +611,7 @@
 
                                         </td>
 
-                                        <td><center><textarea rows="5" cols="27" id="id_initiative<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" value="<% unit_target.unit_initiative.UnitInitiativeContent %>" ng-model="unit_target.unit_initiative.UnitInitiativeContent" autocomplete="off"  required ng-touched ></textarea></center></td>
+                                        <td><center><textarea rows="5" cols="27" id="id_initiative<%unit_target.UnitTargetID%>" name="monthlyform" value="<% unit_target.unit_initiative.UnitInitiativeContent %>" ng-model="unit_target.unit_initiative.UnitInitiativeContent" autocomplete="off"  required ng-touched ></textarea></center></td>
 
                                         <td><input type='text' id="id_estimate<%unit_target.unit_measure.UnitMeasureID%>" name="monthlyform" valid-number value="<% unit_target.unit_funding.UnitFundingEstimate %>" ng-model="unit_target.unit_funding.UnitFundingEstimate" autocomplete="off" class="form-control" required ng-touched /></td>
 
