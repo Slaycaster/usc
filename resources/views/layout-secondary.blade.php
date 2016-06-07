@@ -162,7 +162,7 @@
                             <a href="{{ url('secondary_unit/scorecard') }}">
                                 <i class="fa fa-table fa-fw"></i> 
                                 {{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard
-                                Scorecard
+                            
                             </a>
                         </li>
                         <li>

@@ -165,10 +165,10 @@
                                         <td><% secondary_unit_target.secondary_unit_measure.secondary_unit_objective.SecondaryUnitObjectiveName %>
                                         </td>
 
-                                        <input type="hidden" value="<% secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
+                                        <input type="hidden" value="<% secondary_unit_target.secondary_unit_measure.UnitMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
 
                                         <td colspan="2"><% secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureName %>
-                                            <span class="label label-primary" ng-if="c_measure=secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID">Contributory to Unit, PNP</span><br /><i style="font-size:10px;">Contributory/ies to this Measure</i>
+                                            <span class="label label-primary" ng-if="c_measure=secondary_unit_target.secondary_unit_measure.UnitMeasureID">Contributory to {{$user->secondary_unit->unit->UnitAbbreviation}} </span><br /><i style="font-size:10px;">Contributory/ies to this Measure</i>
                                             <!--Contributory Accomplishment--><br /><p style="display: inline" ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'><span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
                                             </p>
                                             
