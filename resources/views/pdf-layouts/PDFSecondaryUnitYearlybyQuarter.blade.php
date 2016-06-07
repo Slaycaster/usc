@@ -97,7 +97,6 @@ use App\SecondaryUnitInitiative;
     .label 
     {
         display: inline;
-        padding: .2em .6em .3em;
         font-size: 60%;
         font-family: helvetica;
         font-weight: bold;

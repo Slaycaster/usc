@@ -97,7 +97,6 @@ use App\SecondaryUnitInitiative;
     .label 
     {
         display: inline;
-        padding: .2em .6em .3em;
         font-size: 60%;
         font-family: helvetica;
         font-weight: bold;
@@ -106,8 +105,7 @@ use App\SecondaryUnitInitiative;
         text-align: center;
         white-space: nowrap;
         vertical-align: baseline;
-        border-radius: .25em;
-    }
+        border-radius: .25em;    }
     .label-default 
     {
         background-color: #777;
