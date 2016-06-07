@@ -146,7 +146,7 @@
                                         
                                         <td><% unit_target.unit_measure.unit_objective.UnitObjectiveName %></td>
 
-                                        <td colspan="2"><% unit_target.unit_measure.UnitMeasureName %><br /><i style="font-size:10px;">Contributory/ies to this Measure</i><!--Contributory Accomplishment--><br /><p style="display: inline" class="scorecard-minilabel" ng-repeat='staff_measure in chief_target.chief_measure.staff_measures'>
+                                        <td colspan="2"><% unit_target.unit_measure.UnitMeasureName %><br /><i style="font-size:10px;">Contributory/ies to this Measure</i><!--Contributory Accomplishment--><br /><p style="display: inline" class="scorecard-minilabel" ng-repeat='secondary_unit_measure in unit_target.unit_measure.secondary_unit_measures'>
                                             <span class="label label-info"><% secondary_unit_measure.secondary_unit_accomplishments[0].secondary_unit.SecondaryUnitAbbreviation %></span>
                                             </p>
                                         </td>

@@ -243,6 +243,7 @@ app.controller('APISecondaryUnitScorecardController', function($scope, $http, $i
                 
             }
                 
+            
                 $scope.loading = false;
         }); 
 
@@ -310,8 +311,6 @@ app.controller('APISecondaryUnitScorecardController', function($scope, $http, $i
             console.log(id);
                    
             url += "/" + id;
-            console.log(document.getElementById('id_owner '+id));
-            
             $http.put(url, {
                 SecondaryUnitOwnerContent: document.getElementById('id_owner'+id).value,
                 JanuaryAccomplishment: document.getElementById('id_jan'+id).value,

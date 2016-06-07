@@ -27,6 +27,7 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
 		$http.get(public + 'api/unit_scorecard').
 		success(function(data, status, headers, config) {
 			$scope.unit_targets = data;
+            console.log(data);
             for(i = 1; i < $scope.unit_targets.length; i++)
             {
                if($scope.unit_targets[i - 1].unit_measure.UnitObjectiveID == $scope.unit_targets[i].unit_measure.UnitObjectiveID )    
@@ -38,7 +39,8 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
 
             // Accumulating values from unit offices under secondary_unit and assigning it to secondary_unitAccomplishment in order to have one summation of all.
             // All this, all contributory must have the same formula within!!!
-            for (var i = 0, len = data.length; i < len; i++)
+        
+           for (var i = 0, len = data.length; i < len; i++)
             {
                 for (var j = 0, len2 = data[i].unit_measure.secondary_unit_measures.length; j < len2; j++)
                 {
@@ -266,7 +268,7 @@ app.controller('APIUnitScorecardController', function($scope, $http, $interval) 
             }
 
 
-			console.log(data);
+			console.log($scope.unit_january);
 			$scope.loading = false;
             $scope.info = true;
 		});

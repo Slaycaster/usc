@@ -183,7 +183,7 @@
                                         <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LD'"></td>
 
 
-                                        <td><center><textarea rows="5" cols="27" id="id_owner<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" value="<% secondary_unit_target.secondary_unit_owner.SecondaryUnitOwnerContent %>" ng-model="secondary_unit_target.secondary_unit_owner.SecondaryUnitOwnerContent" autocomplete="off" ng-touched ng-change="ownerchange()"/></textarea></center></td>
+                                        <td><center><textarea rows="5" cols="27" id="id_owner<% secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID %>" name="monthlyform" value="<% secondary_unit_target.secondary_unit_owner.SecondaryUnitOwnerContent %>" ng-model="secondary_unit_target.secondary_unit_owner.SecondaryUnitOwnerContent" autocomplete="off" ng-touched ng-change="ownerchange()"/></textarea></center></td>
 
      
                                         <td><% secondary_unit_target.JanuaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month"  id="id_jan<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.JanuaryAccomplishment  %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
