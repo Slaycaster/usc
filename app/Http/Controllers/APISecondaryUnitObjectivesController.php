@@ -83,9 +83,9 @@ class APISecondaryUnitObjectivesController extends Controller {
 	{
 		$secondary_user_id = Session::get('secondary_user_id', 'default');
 		$unit = Request::input('SecondaryUnitID');
-		$action = 'Added an objective: "' . Request::input('UnitObjectiveName') . '"';
+		$action = 'Added an objective: "' . Request::input('SecondaryUnitObjectiveName') . '"';
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
+		DB::insert('insert into secondary_audit_trails (Action, UserSecondaryUnitID, SecondaryUnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
 
 
 		$secondary_unit_objective = new SecondaryUnitObjective(Request::all());
@@ -125,32 +125,36 @@ class APISecondaryUnitObjectivesController extends Controller {
 	 */
 	public function update($id)
 	{
-		$unit_obj = SecondaryUnitObjective::find($id)->with('perspective')->with('unitobjective')->with('unitobjective.unit')->first();
+
+		$secondary_unit_objective = SecondaryUnitObjective::find($id)->with('perspective')->with('unitobjective')->with('unitobjective.unit')->first();
  
 
-		$unitid = Session::get('secondary_unit_user_id', 'default');
-		$unit = Request::input('SecondaryUnitID');
+		$secondary_unit_id = Session::get('secondary_user_id', 'default');
+		$secondary_unit = Request::input('SecondaryUnitID');
 
-		$new_objectivename = Request::input('SecondaryUnitObjectiveName');
+
+		
 		$new_perspective = Perspective::find(Request::input('PerspectiveID'))->first();
 
-		$action = 'Updated the Objective: "' . $unit_obj->SecondaryUnitObjectiveName . '" under "' . $unit_obj->perspective->PerspectiveName;
+		$action = 'Updated the Objective: "' . $secondary_unit_objective->SecondaryUnitObjectiveName . '" under "' . $secondary_unit_objective->perspective->PerspectiveName;
 
-		//if($unit_obj->StaffObjectiveID > 0)
-		//{
-	//		$action .= ' and is contributory to Staff\'s: "'.$unit_obj->unitobjective->UnitObjectiveName.'" ';
-	//	}
-
-	//	$action .= 'to: "'.Request::input('SecondaryUnitObjectiveName').'" under "'. $new_perspective->PerspectiveName . '"';
+		if($secondary_unit_objective->UnitObjectiveID > 0)
+		{
+			$action .= ' and is contributory to Unit\'s: "'.$secondary_unit_objective->unitobjective->UnitObjectiveName.'" ';
+		}
 
 
-		//if(Request::input('UnitObjectiveID') > 0)
-		//{
-	//		$new_contributory = StaffObjective::find(Request::input('StaffObjectiveID'))->first();
-	//		$action .= 'and is contributory to Staff\'s: "'.$new_contributory->StaffObjectiveName.'" ';
-	//	}
+		$action .= ' to: "'.Request::input('SecondaryUnitObjectiveName').'" under "'. $new_perspective->PerspectiveName . '"';
 
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $unitid, $unit));
+		if(Request::input('UnitObjectiveID') > 0)
+		{
+			$new_contributory = UnitObjective::find(Request::input('UnitObjectiveID'))->first();
+			$action .= 'and is contributory to Unit\'s: "'.$new_contributory->UnitObjectiveName.'" ';
+		}
+
+		DB::insert('insert into secondary_audit_trails (Action, UserSecondaryUnitID, SecondaryUnitID) values (?,?,?)', array($action, $secondary_unit_id, $secondary_unit));
+	
+
 
 
 		$secondary_unit_objective = SecondaryUnitObjective::find($id);
