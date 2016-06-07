@@ -214,15 +214,15 @@
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <div class="list-group" dir-paginate='audit_trail_dash in tertiary_unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
+                <div class="list-group" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
                     <!-- <a href="{{ url('staff/audit_trails') }}" class="list-group-item"> -->
                     <a href="{{ url('tertiary/audit_trails') }}" class="list-group-item" style="font-size:12px;">
-                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_tertiary_unit.UserTertiaryUnitPicturePath%>" height="30px;">
+                    <span class="pull-right"><img ng-src="../uploads/userpictures/tertiary/cropped/<%audit_trail_dash.user_tertiary.UserTertiaryUnitPicturePath%>" height="30px;">
                     </span>  
 
                             <b><% audit_trail_dash.user_tertiary_unit.rank.RankCode%> 
-                                <% audit_trail_dash.user_tertiary_unit.UserTertiaryUnitFirstName %>
-                                <% audit_trail_dash.user_tertiary_unit.UserTertiaryUnitLastName %>
+                                <% audit_trail_dash.user_tertiary.UserTertiaryUnitFirstName %>
+                                <% audit_trail_dash.user_tertiary.UserTertiaryUnitLastName %>
                             </b> 
                             <br />
                             <% audit_trail_dash.Action | cut:true:75:' ...' %>

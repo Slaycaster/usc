@@ -4,6 +4,7 @@
 //Our Freelance Models
 use App\UserChief;
 use App\UserStaff;
+use App\UserSecondaryUnit;
 use App\UserUnit;
 
 //LARAVEL MODULES
@@ -34,7 +35,9 @@ class ChangePasswordController extends Controller {
 	{
 		    $chief_user = Session::get('chief_user_id');
 			$staff_user = Session::get('staff_user_id');
+			$secondary_user = Session::get('secondary_user_id');
 			$unit_user = Session::get('unit_user_id');
+			$tertiary_user = Session::get('tertiary_user_id');
 		
 		    $validator = Validator::make(Input::all(),
 
@@ -50,8 +53,92 @@ class ChangePasswordController extends Controller {
 
 			);
 
+			if($tertiary_user != null)
+		    {
+							
+					if($validator->fails()) 
+					{
+						return Redirect::to('tertiary_unit/changepassword')
+						->withErrors($validator);
+					} 
+
+					$id = Session::get('tertiary_user_id', 'default');
+
+					$old_password = DB::table('user_tertiary_units')->select('UserTertiaryUnitPassword as old_password')->where('UserTertiaryUnitID', '=', $id)->get();		
+
+					$tertiaries = DB::table('user_tertiary_units')->where('UserTertiaryUnitID' ,'=', $id)->get();
+
+					foreach ($old_password as $value) {
+
+						if (Input::get('old_password') == $value->old_password) 
+						{
+
+							DB::table('user_tertiary_units')->where('UserTertiaryUnitID', '=', $id)->update(array('UserTertiaryUnitPassword' => Input::get('new_password')));
+							
+							$usertertiary = DB::table('user_tertiary_units')->where('UserTertiaryUnitID' ,'=', $id)->first();
+
+							Session::flash('message2', 'Change password success! Your new password is:  '.$usertertiary->UserTertiaryUnitPassword);
+
+							return Redirect::to('tertiary_unit/changepassword');	
+
+						}
+
+						else
+						{
+
+							Session::flash('message', 'Invalid old password!');
+
+							return Redirect::to('tertiary_unit/changepassword');
+
+						}
+
+					}
+
+			}
+
 			
-		    if($unit_user != null)
+		    if($secondary_user != null)
+		    {
+				    if($validator->fails()) 
+					{
+						return Redirect::to('unit/changepassword')
+						->withErrors($validator);
+					} 
+			
+					$id = Session::get('secondary_user_id', 'default');
+
+					$old_password = DB::table('user_secondary_units')->select('UserSecondaryUnitPassword as old_password')->where('UserSecondaryUnitID', '=', $id)->get();		
+
+					$units = DB::table('user_secondary_units')->where('UserSecondaryUnitID' ,'=', $id)->get();
+
+					foreach ($old_password as $value) {
+
+						if (Input::get('old_password') == $value->old_password) 
+						{
+
+							DB::table('user_secondary_units')->where('UserSecondaryUnitID', '=', $id)->update(array('UserSecondaryUnitPassword' => Input::get('new_password')));
+
+							$usersecondaryunit = DB::table('user_secondary_units')->where('UserSecondaryUnitID' ,'=', $id)->first();
+
+							Session::flash('message2', 'Change password success! Your new password is:  '.$usersecondaryunit->UserSecondaryUnitPassword);
+
+							return Redirect::to('secondary_unit/changepassword');	
+
+						}
+
+						else
+						{
+
+							Session::flash('message', 'Invalid old password!');
+
+							return Redirect::to('secondary_unit/changepassword');
+
+						}
+					}
+			}
+
+
+			if($unit_user != null)
 		    {
 				    if($validator->fails()) 
 					{
@@ -90,6 +177,8 @@ class ChangePasswordController extends Controller {
 						}
 					}
 			}
+
+
 
 
 
