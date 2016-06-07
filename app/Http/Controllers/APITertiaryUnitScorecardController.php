@@ -16,7 +16,7 @@ use App\Rank;
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect,Response;
 
-class APIUnitScorecardController extends Controller {
+class APITertiaryUnitScorecardController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -25,33 +25,33 @@ class APIUnitScorecardController extends Controller {
 	 */
 	public function index()
 	{
-		if (Session::has('tertiary_unit_user_id'))
+		if (Session::has('tertiary_user_id'))
 		{
-			$tertiary_unit_id = Session::get('tertiary_unit_user_id', 'default');
+			$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
 			$tertiary_unit_user = UserUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
 				->first();
 
 
-		$tertiary_unit_id = Session::get('tertiary_unit_user_id', 'default'); //get the UserunitID stored in session.
+		$tertiary_unit_id = Session::get('tertiary_user_id', 'default'); //get the UserunitID stored in session.
 
 		$tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)->select('TertiaryUnitID')->first(); //Get the Unit of the unit
 
 		$currentYear = date("Y");		
 		
-		$tertiary_unit = Unit::where('TertiaryUnitID', '=', $unit_user->UnitID)->first();
-			$unit_objectives = UnitObjective::all();
-			$unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $unit_user->UnitID)->get();
+		$tertiary_unit = Unit::where('TertiaryUnitID', '=', $tertiary_unit_user->TertiaryUnitID)->first();
+			$tertiary_unit_objectives = TertiaryUnitObjective::all();
+			$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $tertiary_unit_user->TertiaryUnitID)->get();
 	
-		return UnitTarget::with('unit_measure')
-			->with('unit_measure.unit_objective')
-			->with('unit_owner')
-			->with('unit_funding')
-			->with('unit_initiative')
-			->with('unit_accomplishment')
-			->with('user_unit')
-			->with('user_unit.rank')
+		return TertiaryUnitTarget::with('tertiary_unit_measure')
+			->with('tertiary_unit_measure.tertiary_unit_objective')
+			->with('tertiary_unit_owner')
+			->with('tertiary_unit_funding')
+			->with('tertiary_unit_initiative')
+			->with('tertiary_unit_accomplishment')
+			->with('user_tertiary_unit')
+			->with('user_tertiary_unit.rank')
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
-			->where('UnitID', '=', $unit->UnitID)
+			->where('TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)
 			->get();
 		}
 		else
@@ -65,34 +65,34 @@ class APIUnitScorecardController extends Controller {
 	public function LastUpdatedBy()
 	{
 
-			$unit_id = Session::get('unit_user_id', 'default'); //get the UserunitID stored in session.
+			$tertiary_unit_id = Session::get('tertiary_user_id', 'default'); //get the UserunitID stored in session.
 
-		$unit = UserUnit::where('UserUnitID', '=', $unit_id)->select('UnitID')->first();
+			$tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)->select('TertiaryUnitID')->first();
 
-			$maxid = UnitAccomplishment::where('UnitID','=',$unit->UnitID)->max('updated_at');
-			$maxid2 = UnitOwner::where('UnitID','=',$unit->UnitID)->max('updated_at');
-			$maxid3 = UnitInitiative::where('UnitID','=',$unit->UnitID)->max('updated_at');
-			$maxid4 = UnitFunding::where('UnitID','=',$unit->UnitID)->max('updated_at');
+			$maxid = TertiaryUnitAccomplishment::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)->max('updated_at');
+			$maxid2 = TertiaryUnitOwner::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)->max('updated_at');
+			$maxid3 = TertiaryUnitInitiative::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)->max('updated_at');
+			$maxid4 = TertiaryUnitFunding::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)->max('updated_at');
 
 
-			$updatedby = UnitAccomplishment::where('updated_at','=',$maxid)
-				->with('user_unit')
-				->with('user_unit.rank')
+			$updatedby = TertiaryUnitAccomplishment::where('updated_at','=',$maxid)
+				->with('user_tertiary_unit')
+				->with('user_tertiary_unit.rank')
 				->first();
 
-			$updatedby2 = UnitOwner::where('updated_at','=',$maxid2)
-				->with('user_unit')
-				->with('user_unit.rank')
+			$updatedby2 = TertiaryUnitOwner::where('updated_at','=',$maxid2)
+				->with('user_tertiary_unit')
+				->with('user_tertiary_unit.rank')
 				->first(); 
 
-			$updatedby3 = UnitInitiative::where('updated_at','=',$maxid3)
-				->with('user_unit')
-				->with('user_unit.rank')
+			$updatedby3 = TertiaryUnitInitiative::where('updated_at','=',$maxid3)
+				->with('user_tertiary_unit')
+				->with('user_tertiary_unit.rank')
 				->first();
 
-			$updatedby4 = UnitFunding::where('updated_at','=',$maxid4)
-				->with('user_unit')
-				->with('user_unit.rank')
+			$updatedby4 = TertiaryUnitFunding::where('updated_at','=',$maxid4)
+				->with('user_tertiary_unit')
+				->with('user_tertiary_unit.rank')
 				->first(); 
 
 				$lastupdate = array(
@@ -158,135 +158,135 @@ class APIUnitScorecardController extends Controller {
 	 */
 	public function update($id)
 	{
-		$unit_id = Session::get('unit_user_id', 'default');
-		$unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
+		$tertiary_unit_id = Session::get('tertiary_user_id', 'default');
+		$tertiary_unit_user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_unit_id)
 			->first();
 
-		$unit_target = UnitTarget::find($id);
+		$tertiary_unit_target = TertiaryUnitTarget::find($id);
 		
-		$unit_accomplishmentID = $unit_target->UnitAccomplishmentID;
-		$unit_ownerID = $unit_target->UnitOwnerID;
-		$unit_initiativeID = $unit_target->UnitInitiativeID;
-		$unit_fundingID = $unit_target->UnitFundingID;
+		$tertiary_unit_accomplishmentID = $tertiary_unit_target->TertiaryUnitAccomplishmentID;
+		$tertiary_unit_ownerID = $tertiary_unit_target->Tertiary_UnitOwnerID;
+		$tertiary_unit_initiativeID = $tertiary_unit_target->TertiaryUnitInitiativeID;
+		$tertiary_unit_fundingID = $tertiary_unit_target->TertiaryUnitFundingID;
 
 		
 
 		if(Request::input('Accomplishmentpressed') == true)
 		{
-			$unit_accomplishment = UnitAccomplishment::find($unit_accomplishmentID);
+			$tertiary_unit_accomplishment = TertiaryUnitAccomplishment::find($tertiary_unit_accomplishmentID);
 			if (Request::input('JanuaryAccomplishment'))
-				$unit_accomplishment->JanuaryAccomplishment = Request::input('JanuaryAccomplishment');
+				$tertiary_unit_accomplishment->JanuaryAccomplishment = Request::input('JanuaryAccomplishment');
 			else
-				$unit_accomplishment->JanuaryAccomplishment = 0;	
+				$tertiary_unit_accomplishment->JanuaryAccomplishment = 0;	
 
 			if(Request::input('FebruaryAccomplishment'))
-				$unit_accomplishment->FebruaryAccomplishment = Request::input('FebruaryAccomplishment');
+				$tertiary_unit_accomplishment->FebruaryAccomplishment = Request::input('FebruaryAccomplishment');
 			else
-				$unit_accomplishment->FebruaryAccomplishment = 0;
+				$tertiary_unit_accomplishment->FebruaryAccomplishment = 0;
 
 			if(Request::input('MarchAccomplishment'))
-				$unit_accomplishment->MarchAccomplishment = Request::input('MarchAccomplishment');
+				$tertiary_unit_accomplishment->MarchAccomplishment = Request::input('MarchAccomplishment');
 			else
-				$unit_accomplishment->MarchAccomplishment = 0;
+				$tertiary_unit_accomplishment->MarchAccomplishment = 0;
 
 			if(Request::input('AprilAccomplishment'))
-				$unit_accomplishment->AprilAccomplishment = Request::input('AprilAccomplishment');
+				$tertiary_unit_accomplishment->AprilAccomplishment = Request::input('AprilAccomplishment');
 			else
-				$unit_accomplishment->AprilAccomplishment = 0;
+				$tertiary_unit_accomplishment->AprilAccomplishment = 0;
 
 			if(Request::input('MayAccomplishment'))
-				$unit_accomplishment->MayAccomplishment = Request::input('MayAccomplishment');
+				$tertiary_unit_accomplishment->MayAccomplishment = Request::input('MayAccomplishment');
 			else
-				$unit_accomplishment->MayAccomplishment = 0;
+				$tertiary_unit_accomplishment->MayAccomplishment = 0;
 
 			if(Request::input('JuneAccomplishment'))
-				$unit_accomplishment->JuneAccomplishment = Request::input('JuneAccomplishment');
+				$tertiary_unit_accomplishment->JuneAccomplishment = Request::input('JuneAccomplishment');
 			else
-				$unit_accomplishment->JuneAccomplishment = 0;
+				$tertiary_unit_accomplishment->JuneAccomplishment = 0;
 
 			if(Request::input('JulyAccomplishment'))
-				$unit_accomplishment->JulyAccomplishment = Request::input('JulyAccomplishment');
+				$tertiary_unit_accomplishment->JulyAccomplishment = Request::input('JulyAccomplishment');
 			else
-				$unit_accomplishment->JulyAccomplishment = 0;
+				$tertiary_unit_accomplishment->JulyAccomplishment = 0;
 
 			if(Request::input('AugustAccomplishment'))
-				$unit_accomplishment->AugustAccomplishment = Request::input('AugustAccomplishment');
+				$tertiary_unit_accomplishment->AugustAccomplishment = Request::input('AugustAccomplishment');
 			else
-				$unit_accomplishment->AugustAccomplishment = 0;
+				$tertiary_unit_accomplishment->AugustAccomplishment = 0;
 
 			if(Request::input('SeptemberAccomplishment'))
-				$unit_accomplishment->SeptemberAccomplishment = Request::input('SeptemberAccomplishment');
+				$tertiary_unit_accomplishment->SeptemberAccomplishment = Request::input('SeptemberAccomplishment');
 			else
-				$unit_accomplishment->SeptemberAccomplishment = 0;
+				$tertiary_unit_accomplishment->SeptemberAccomplishment = 0;
 			
 			if(Request::input('OctoberAccomplishment'))
-				$unit_accomplishment->OctoberAccomplishment = Request::input('OctoberAccomplishment');
+				$tertiary_unit_accomplishment->OctoberAccomplishment = Request::input('OctoberAccomplishment');
 			else
-				$unit_accomplishment->OctoberAccomplishment = 0;
+				$tertiary_unit_accomplishment->OctoberAccomplishment = 0;
 
 			if(Request::input('NovemberAccomplishment'))
-				$unit_accomplishment->NovemberAccomplishment = Request::input('NovemberAccomplishment');
+				$tertiary_unit_accomplishment->NovemberAccomplishment = Request::input('NovemberAccomplishment');
 			else
-				$unit_accomplishment->NovemberAccomplishment = 0;
+				$tertiary_unit_accomplishment->NovemberAccomplishment = 0;
 
 			if(Request::input('DecemberAccomplishment'))
-				$unit_accomplishment->DecemberAccomplishment = Request::input('DecemberAccomplishment');
+				$tertiary_unit_accomplishment->DecemberAccomplishment = Request::input('DecemberAccomplishment');
 			else
-				$unit_accomplishment->DecemberAccomplishment = 0;
+				$tertiary_unit_accomplishment->DecemberAccomplishment = 0;
 
-			$unit_accomplishment->AccomplishmentDate = date('Y-m-d');
-			$unit_accomplishment->UnitMeasureID = Request::input('UnitMeasureID');
-			if($unit_accomplishment->UserUnitID != $unit_id)
+			$tertiary_unit_accomplishment->AccomplishmentDate = date('Y-m-d');
+			$tertiary_unit_accomplishment->TertiaryUnitMeasureID = Request::input('TertiaryUnitMeasureID');
+			if($tertiary_unit_accomplishment->UserTertiaryUnitID != $tertiary_unit_id)
 			{
-				$unit_accomplishment->UserUnitID = $unit_id;	
+				$tertiary_unit_accomplishment->UserTertiaryUnitID = $tertiary_unit_id;	
 			}
 			//$unit_accomplishment->UserUnitID = $unit_id;
-			$unit_accomplishment->UnitID = $unit_user->UnitID;
-			$unit_accomplishment->save();
+			$tertiary_unit_accomplishment->TertiaryUnitID = $tertiary_unit_user->TertiaryUnitID;
+			$tertiary_unit_accomplishment->save();
 		}
 		if(Request::input('Ownerpressed') == true)
 		{
 			
-			$unit_owner = UnitOwner::find($unit_ownerID);
-			$unit_owner->UnitOwnerContent = Request::input('UnitOwnerContent');
-			$unit_owner->UnitOwnerDate = date('Y-m-d');
-			$unit_owner->UnitMeasureID = Request::input('UnitMeasureID');
-			if($unit_owner->UserUnitID != $unit_id)
+			$tertiary_unit_owner = TertiaryUnitOwner::find($tertiary_unit_ownerID);
+			$tertiary_unit_owner->TertiaryUnitOwnerContent = Request::input('TertiaryUnitOwnerContent');
+			$tertiary_unit_owner->TertiaryUnitOwnerDate = date('Y-m-d');
+			$tertiary_unit_owner->TertiaryUnitMeasureID = Request::input('TertiaryUnitMeasureID');
+			if($tertiary_unit_owner->UserTertiaryUnitID != $tertiary_unit_id)
 			{
-				$unit_owner->UserUnitID = $unit_id;	
+				$tertiary_unit_owner->UserTertiaryUnitID = $tertiary_unit_id;	
 			}
-			$unit_owner->save();
+			$tertiary_unit_owner->save();
 		}
 		if(Request::input('Initiativepressed') == true)
 		{
 
-			$unit_initiative = UnitInitiative::find($unit_initiativeID);
-			$unit_initiative->UnitInitiativeContent = Request::input('UnitInitiativeContent');
-			$unit_initiative->UnitInitiativeDate = date('Y-m-d');
-			$unit_initiative->UnitMeasureID = Request::input('UnitMeasureID');
-			if($unit_initiative->UserUnitID != $unit_id)
+			$tertiary_unit_initiative = TertiaryUnitInitiative::find($tertiary_unit_initiativeID);
+			$tertiary_unit_initiative->TertiaryUnitInitiativeContent = Request::input('TertiaryUnitInitiativeContent');
+			$tertiary_unit_initiative->TertiaryUnitInitiativeDate = date('Y-m-d');
+			$tertiary_unit_initiative->TertiaryUnitMeasureID = Request::input('TertiaryUnitMeasureID');
+			if($tertiary_unit_initiative->UserTertiaryUnitID != $tertiary_unit_id)
 			{
-				$unit_initiative->UserUnitID = $unit_id;	
+				$tertiary_unit_initiative->UserTertiaryUnitID = $tertiary_unit_id;	
 			}
-			$unit_initiative->save();
+			$tertiary_unit_initiative->save();
 		}
 
 		if(Request::input('Fundingpressed') == true)
 		{
 
-			$unit_funding = UnitFunding::find($unit_fundingID);
-			$unit_funding->UnitFundingEstimate = Request::input('UnitFundingEstimate');
-			$unit_funding->UnitFundingActual = Request::input('UnitFundingActual');
-			$unit_funding->UnitFundingDate = date('Y-m-d');
-			$unit_funding->UnitMeasureID = Request::input('UnitMeasureID');
-			if($unit_funding->UserUnitID != $unit_id)
+			$tertiary_unit_funding = TertiaryUnitFunding::find($tertiary_unit_fundingID);
+			$tertiary_unit_funding->TertiaryUnitFundingEstimate = Request::input('TertiaryUnitFundingEstimate');
+			$tertiary_unit_funding->TertiaryUnitFundingActual = Request::input('TertiaryUnitFundingActual');
+			$tertiary_unit_funding->TertiaryUnitFundingDate = date('Y-m-d');
+			$tertiary_unit_funding->TertiaryUnitMeasureID = Request::input('TertiaryUnitMeasureID');
+			if($tertiary_unit_funding->UserTertiaryUnitID != $tertiary_unit_id)
 			{
-				$unit_funding->UserUnitID = $unit_id;	
+				$tertiary_unit_funding->UserTertiaryUnitID = $tertiary_unit_id;	
 			}
 			
-			$unit_funding->save();
+			$tertiary_unit_funding->save();
 		}
-		return $unit_target;
+		return $tertiary_unit_target;
 	}
 
 	/**
