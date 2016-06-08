@@ -12,6 +12,8 @@ use App\UnitInitiative;
 use App\UnitFunding;
 use App\Rank;
 
+use App\SecondaryUnitAccomplishment;
+
 //Laravel Modules
 use App\Http\Controllers\Controller;
 use Request, Session, DB, Validator, Input, Redirect,Response;
@@ -44,6 +46,9 @@ class APIUnitScorecardController extends Controller {
 	
 		return UnitTarget::with('unit_measure')
 			->with('unit_measure.unit_objective')
+			->with('unit_measure.secondary_unit_measures.secondary_unit_accomplishments')
+			->with('unit_measure.secondary_unit_measures.secondary_unit_accomplishments.secondary_unit')
+			->with('unit_measure.secondary_unit_measures.tertiary_unit_measures.tertiary_unit_accomplishments')
 			->with('unit_owner')
 			->with('unit_funding')
 			->with('unit_initiative')
