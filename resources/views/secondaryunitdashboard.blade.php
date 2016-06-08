@@ -224,7 +224,7 @@
 
                 <div class="list-group" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                 
-                    <a href="{{ url('secondary/audit_trails') }}" class="list-group-item" style="font-size:12px;">
+                    <a href="{{ url('secondary_unit/audit_trails') }}" class="list-group-item" style="font-size:12px;">
                     <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserUnitPicturePath%>" height="30px;">
                     </span>  
                             <b><% audit_trail_dash.user_unit.rank.RankCode%> 
@@ -242,7 +242,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- /.list-group -->
-                    <a href="{{ url('secondary/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('secondary_unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>
