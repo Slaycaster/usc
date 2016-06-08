@@ -69,7 +69,11 @@ class APIUnitMeasuresController extends Controller {
 				->first();
 
 			$unit = Unit::where('UnitID', '=', $user->UnitID)->with('staff')->first();
-		return StaffMeasure::where('StaffID','=',$unit->StaffID)->get();
+
+			$hascontributory = UnitMeasure::where('UnitID', '=', $user->UnitID)->select('StaffMeasureID')->lists('StaffMeasureID');
+
+		return StaffMeasure::where('StaffID','=',$unit->StaffID)->whereNotIn('StaffMeasureID',$hascontributory)->get();
+		
 	}
 
 	public function unit_objectives()
@@ -120,12 +124,12 @@ class APIUnitMeasuresController extends Controller {
 		$action = 'Added a measure: "' . Request::input('UnitMeasureName') . '"';
 
 
-		$mes = Request::input('StaffMeasureID');
-		$mescontribute = UnitMeasure::where('StaffMeasureID','=',$mes)->where('UnitID','=',$user->UnitID)->first();
+		//$mes = Request::input('StaffMeasureID');
+		//$mescontribute = UnitMeasure::where('StaffMeasureID','=',$mes)->where('UnitID','=',$user->UnitID)->first();
 
 
-		if($mescontribute == null )
-		{
+		// if($mescontribute == null )
+		// {
 			DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
 			$unit_measure = new UnitMeasure(Request::all());
 			$unit_measure->save();
@@ -143,31 +147,31 @@ class APIUnitMeasuresController extends Controller {
 
 			return $unit_measure;
 
-		}
-		else if($mes == 0)
-		{
-			DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
-			$unit_measure = new UnitMeasure(Request::all());
-			$unit_measure->save();
+		// }
+		// else if($mes == 0)
+		// {
+		// 	DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
+		// 	$unit_measure = new UnitMeasure(Request::all());
+		// 	$unit_measure->save();
 
-			//Get the max id after saving.
-			$unit_measureid = DB::table('unit_measures')->max('UnitMeasureID');
+		// 	//Get the max id after saving.
+		// 	$unit_measureid = DB::table('unit_measures')->max('UnitMeasureID');
 
-			//Use Eloquent instead! == Inserting into Unit Targets == You forgot target period
-			$unit_target = new UnitTarget;
-			$unit_target->TargetPeriod = "Not Set";
-			$unit_target->UnitMeasureID = $unit_measureid;
-			$unit_target->UnitID = $unit;
-			$unit_target->UserUnitID = $id;
-			$unit_target->save();
+		// 	//Use Eloquent instead! == Inserting into Unit Targets == You forgot target period
+		// 	$unit_target = new UnitTarget;
+		// 	$unit_target->TargetPeriod = "Not Set";
+		// 	$unit_target->UnitMeasureID = $unit_measureid;
+		// 	$unit_target->UnitID = $unit;
+		// 	$unit_target->UserUnitID = $id;
+		// 	$unit_target->save();
 
-			return $unit_measure;
-		}
-		else
-		{
-			$true = "true";
-			return $true; 
-		}
+		// 	return $unit_measure;
+		// }
+		// else
+		// {
+		// 	$true = "true";
+		// 	return $true; 
+		// }
 
 
 
