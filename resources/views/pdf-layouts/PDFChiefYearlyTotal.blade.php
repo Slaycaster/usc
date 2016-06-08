@@ -147,7 +147,7 @@ use App\StaffAccomplishment;
     </p>
     <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $chief->ChiefAbbreviation }} Scorecard for {{ $selectedYear }}</p>
     <table border="1">
-        @if(count($accomplishments) != 0)
+        @if(count($checkAccomplishment) != 0)
             <thead style="font-weight: bold;font-family: arial,helvetica">
                 <tr>
                     <td width="11.5%" rowspan="2">OBJECTIVES</td>
@@ -600,7 +600,7 @@ use App\StaffAccomplishment;
             </tbody>
         @endforeach
     </table>
-    @if(count($accomplishments) == 0)
+    @if(count($checkAccomplishment) == 0)
         <p>No Accomplisments found for the year {{ $selectedYear }}</p>
     @endif
 </body>

@@ -34,6 +34,7 @@ Route::get('report/quarterlyStaff', 'ReportsController@quarterlyStaff');
 Route::get('report/quarterlyChief', 'ReportsController@quarterlyChief');
 #analysis
 Route::get('report/quarterlyUnitAnalysis', 'ReportsAnalysisController@quarterlyUnitAnalysis');
+Route::get('report/quarterlySecondaryUnitAnalysis', 'ReportsAnalysisController@quarterlySecondaryUnitAnalysis');
 Route::get('report/quarterlyStaffAnalysis', 'ReportsAnalysisController@quarterlyStaffAnalysis');
 Route::get('report/quarterlyChiefAnalysis', 'ReportsAnalysisController@quarterlyChiefAnalysis');
 

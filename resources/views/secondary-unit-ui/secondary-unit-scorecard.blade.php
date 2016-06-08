@@ -18,11 +18,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stickyheader.css') }}">
     
     <!-- AngularJS Application Scripts -->
-
     <script src="{{ asset('app/controllers/secondary_unit_scorecard.js') }}"></script>
 
     <div ng-app="unitScorecardApp" ng-controller="APISecondaryUnitScorecardController">
-
 
     <script src="{{ asset('js/showtabledata.js') }}"></script>
 
@@ -30,15 +28,15 @@
             <div class="row">
                 <div class="panel panel-info scorecard-custom-panel">
                         <div class="panel-heading scorecard-custom-heading">
-
                           <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
                           
                             <h2 class="heading scorecard-custom-heading">
                                 <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard for {{ date("Y") }}</b>
-                                <div class="col-md-3 pull-right">
-                                    <a href="{{ url('report/currentYearStaffScorecard') }}" target="_blank">
-                                        <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
-                                    </a> 
+                                <div class="col-md-5 pull-right">
+                                    <form method="get" action="{{ url('report/currentYearSecondaryUnitScorecard') }}" target="_blank">
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
+                                    </form>
                                 </div>
                             </h2>  
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
@@ -643,12 +641,11 @@
                             <!--./table table striped-->
                             <br>
                                 
-                           
                         <!-- div panel-body-->
-
-
-                          
-                          
+                </div><!--div panel panel-info-->
+            </div>
+        </div>
+    </div>
 <script>
 // Get the modal
 var modal = document.getElementById('janModal');
@@ -678,6 +675,5 @@ window.onclick = function(event) {
 </script>
 
 <script src="{{ asset('js/showtabledata.js') }}"></script>
-
 
 @endsection

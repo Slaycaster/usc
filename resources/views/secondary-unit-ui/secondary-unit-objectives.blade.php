@@ -31,8 +31,8 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-lg-4">
-									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Secondary Unit's Objective</button>
+								<div class="col-lg-2">
+									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Objective</button>
 								</div>
 
 								<div class="col-lg-5 pull-right">
@@ -50,9 +50,9 @@
 							</div>
 							<!--/.div class row-->
 							<div class="row">
-								<div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw" id="tableinfo"></i> Unit Objectives of {{ $user->secondary_unit->SecondaryUnitName }}.
+								<div ng-show="info" id="tableinfo" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i> Unit Objectives of {{ $user->secondary_unit->SecondaryUnitName }}.
                                 </div>
-                                <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw" id="tableinfo"></i> Unit Objectives of {{ $user->secondary_unit->SecondaryUnitAbbreviation }}.
+                                <div ng-show="info"  id="tableinfo" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i> Unit Objectives of {{ $user->secondary_unit->SecondaryUnitAbbreviation }}.
                                 </div>
 							</div>
 							<!--./div class row-->

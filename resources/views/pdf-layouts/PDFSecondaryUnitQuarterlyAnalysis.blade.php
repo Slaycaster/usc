@@ -1,57 +1,59 @@
 <?php
-    
-//Models
-use App\StaffTarget;
-use App\StaffMeasure;
-use App\StaffObjective;
-use App\Staff;
-use App\UserStaff;
-use App\StaffAccomplishment;
-use App\StaffOwner;
-use App\StaffInitiative;
-use App\StaffFunding;
+	
+//Freelance Models
+use App\UserSecondaryUnit;
+use App\SecondaryUnit;
+use App\SecondaryUnitObjective;
+use App\SecondaryUnitMeasure;
+use App\SecondaryUnitTarget;
+use App\TertiaryUnitAccomplishment;
+use App\TertiaryUnit;
+use App\SecondaryUnitOwner;
+use App\SecondaryUnitAccomplishment;
+use App\SecondaryUnitFunding;
 
-    $selectedYear = Session::get('year', 'default');
-    $selectedQuarter = Session::get('quarter', 'default');      
+use App\SecondaryUnitInitiative;
 
-    $staff_id = Session::get('staff_user_id', 'default');
-    $staff_user = UserStaff::where('UserStaffID', '=', $staff_id)
-                            ->first();
+	$selectedYear = Session::get('year', 'default');
+    $selectedQuarter = Session::get('quarter', 'default');  	
 
-    $staff_id = Session::get('staff_user_id', 'default'); //get the UserstaffID stored in session.
-    $staff = UserStaff::where('UserStaffID', '=', $staff_id)->select('StaffID')->first(); //Get the Unit of the chief
-      
-    $staff = Staff::where('StaffID', '=', $staff_user->StaffID)->first();
-    $staff_objectives = StaffObjective::all();
-    $staff_measures = StaffMeasure::with('staff')->where('StaffID', '=', $staff_user->StaffID)->get();
-    
-    
-    $logoPath = 'img/pnp_logo2.png';
-    $stafflogoPath = 'uploads/staffpictures/cropped/'.$staff->PicturePath;
-    $tempObjective = '';
+ 	$secondary_unit_id = Session::get('secondary_user_id', 'default');
+    $user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_unit_id)
+                ->with('secondary_unit')
+                ->first();//dd($user);
+    $secondary_unit = SecondaryUnit::where('SecondaryUnitID', '=', $user->SecondaryUnitID)->first();
 
-    $sortByObjective = DB::table('staff_objectives')
-                        ->join('staff_measures', 'staff_objectives.StaffObjectiveID', '=', 'staff_measures.StaffObjectiveID')
-                        ->where('staff_objectives.StaffID', '=', $staff->StaffID)
-                        ->orderBy('staff_objectives.StaffObjectiveName', 'asc')
+	$logoPath = 'img/pnp_logo2.png';
+	$secondaryunitlogoPath = 'uploads/secondaryunitpictures/cropped/'.$secondary_unit->PicturePath;
+
+    $sortByObjective = DB::table('secondary_unit_objectives')
+                        ->join('secondary_unit_measures', 'secondary_unit_objectives.SecondaryUnitObjectiveID', '=', 'secondary_unit_measures.SecondaryUnitObjectiveID')
+                        ->where('secondary_unit_objectives.SecondaryUnitID', '=', $secondary_unit->SecondaryUnitID)
+                        ->orderBy('secondary_unit_objectives.SecondaryUnitObjectiveName', 'asc')
                         ->get();//dd($sortByObjective);
     $checkAccomplishment = 0;
     foreach($sortByObjective as $measure)
     {
-        $accomplishments = StaffTarget::with('staff_measure')
-                                        ->with('staff_measure.staff_objective')
-                                        ->with('staff_measure.unit_measures.unit_accomplishments')
-                                        ->with('staff_measure.unit_measures.unit_accomplishments.unit')
-                                        ->with('staff_owner')
-                                        ->with('staff_funding')
-                                        ->with('staff_initiative')
-                                        ->with('staff_accomplishment')
-                                        ->with('user_staff')
-                                        ->with('user_staff.rank')
-                                        ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                        ->where('StaffID', '=', $staff->StaffID)
-                                        ->where('StaffMeasureID', '=', $measure->StaffMeasureID)
-                                        ->get();
+        $accomplishments = SecondaryUnitTarget::with('secondary_unit_measure')
+                                ->with('secondary_unit_measure.secondary_unit_objective')
+                                ->with('secondary_unit_measure.tertiary_unit_measures.tertiary_unit_accomplishments')
+                                ->with('secondary_unit_measure.tertiary_unit_measures.tertiary_unit_accomplishments.tertiary_unit')
+                                ->with('secondary_unit_accomplishment')
+                                ->with('secondary_unit_owner')
+                                ->with('secondary_unit_initiative')
+                                ->with('secondary_unit_funding')
+                                ->with('user_secondary_unit')
+                                ->with('user_secondary_unit.rank')
+                                ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                ->where('SecondaryUnitID', '=', $secondary_unit->SecondaryUnitID)
+                                ->where('SecondaryUnitMeasureID', '=', $measure->SecondaryUnitMeasureID)
+                                ->get();
+
+        foreach ($accomplishments as $accomplishment)
+        {
+            //dd($accomplishment);
+        }
+        //dd($accomplishments);
         if(count($accomplishments) != 0)
         {
             $checkAccomplishment = $checkAccomplishment + 1;
@@ -59,32 +61,34 @@ use App\StaffFunding;
     }
 ?>
 
+<!DOCTYPE html>
+
 <head>
     <title>Report | PNP</title>
     <style type="text/css">
     table
     {
-        font-size: 10;
-        text-align: center;
-        width: 875;
-        border-collapse: collapse;
-        page-break-inside: auto;
+    	font-size: 10;
+    	text-align: center;
+    	width: 875;
+    	border-collapse: collapse;
+    	page-break-inside: auto;
     }
     tr
     { 
-        page-break-inside: avoid;
-        page-break-after: auto; 
+    	page-break-inside: avoid;
+    	page-break-after: auto; 
     }
     p, strong
     {
-        font-family: helvetica;
+    	font-family: helvetica;
     }
     img 
     {
-        position: absolute;
-        left: 70px;
-        top: 5px;
-    }
+    	position: absolute;
+    	left: 70px;
+    	top: 5px;
+	}
     .label 
     {
         display: inline;
@@ -103,47 +107,34 @@ use App\StaffFunding;
     {
         background-color: #777;
     }
-    .labelc
-    {
-        display: inline;
-        font-size: 60%;
-        font-family: helvetica;
-        font-weight: bold;
-        line-height: 1;
-        color: #fff;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: baseline;
-        border-radius: .25em;
-    }
     .label-primary 
     {
         background-color: #337ab7;
     }
-    .unitlogo
-    {
-        position: absolute;
-        left: 960px;
-        top: 16px;
-    }
+	.unitlogo
+	{
+    	position: absolute;
+    	left: 960px;
+    	top: 16px;
+	}
     </style>
 </head>
 
 <body>
-    <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 122px;">
-    <img class="unitlogo" src="{{URL::asset($stafflogoPath)}}" style="height: 120px;width: 120px;">
-    <p style="text-align: center;">
-        <normal style="font-size: 15px">Republic of the Philippines</normal>
-        <br>
-        <strong>NATIONAL POLICE COMMISSION<br>PHILIPPINE NATIONAL POLICE</strong>
-        <br>
-        <normal style="font-size: 15px">{{ $staff->StaffName }}</normal>
-        <br>
-        <normal style="font-size: 10px">usc.pulis.net</normal>
-    </p>
-    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $staff->StaffAbbreviation }} KPI for Q{{ $selectedQuarter }} {{ $selectedYear }}</p>
+	<img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
+	<img class="unitlogo" src="{{URL::asset($secondaryunitlogoPath)}}" style="height: 120px;width: 120px;">
+	<p style="text-align: center;">
+		<normal style="font-size: 15px">Republic of the Philippines</normal>
+		<br>
+		<strong>NATIONAL POLICE COMMISSION<br>PHILIPPINE NATIONAL POLICE</strong>
+		<br>
+		<normal style="font-size: 15px">{{ $secondary_unit->SecondaryUnitName }}</normal>
+		<br>
+		<normal style="font-size: 10px">usc.pulis.net</normal>
+	</p>
+	<p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $secondary_unit->SecondaryUnitAbbreviation }} KPI for Q{{ $selectedQuarter }} {{ $selectedYear }}</p>
     <table border="1">
-        @if(count($accomplishments) != 0)
+        @if(count($checkAccomplishment) != 0)
             <thead style="font-weight: bold;font-family: arial,helvetica">
                 <tr>
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
@@ -188,25 +179,25 @@ use App\StaffFunding;
                     <td width="55px">%</td>
                     <td width="65px">V</td>
                     <td width="65px">%</td>
-                </tr>	
+                </tr>   
             </thead>
         @endif
-            @foreach($sortByObjective as $measure)
+        @foreach($sortByObjective as $measure)
             <?php
-                $accomplishments = StaffTarget::with('staff_measure')
-                                        ->with('staff_measure.staff_objective')
-                                        ->with('staff_measure.unit_measures.unit_accomplishments')
-                                        ->with('staff_measure.unit_measures.unit_accomplishments.unit')
-                                        ->with('staff_owner')
-                                        ->with('staff_funding')
-                                        ->with('staff_initiative')
-                                        ->with('staff_accomplishment')
-                                        ->with('user_staff')
-                                        ->with('user_staff.rank')
-                                        ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                        ->where('StaffID', '=', $staff->StaffID)
-                                        ->where('StaffMeasureID', '=', $measure->StaffMeasureID)
-                                        ->get();
+                $accomplishments = SecondaryUnitTarget::with('secondary_unit_measure')
+                                ->with('secondary_unit_measure.secondary_unit_objective')
+                                ->with('secondary_unit_measure.tertiary_unit_measures.tertiary_unit_accomplishments')
+                                ->with('secondary_unit_measure.tertiary_unit_measures.tertiary_unit_accomplishments.tertiary_unit')
+                                ->with('secondary_unit_accomplishment')
+                                ->with('secondary_unit_owner')
+                                ->with('secondary_unit_initiative')
+                                ->with('secondary_unit_funding')
+                                ->with('user_secondary_unit')
+                                ->with('user_secondary_unit.rank')
+                                ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                ->where('SecondaryUnitID', '=', $secondary_unit->SecondaryUnitID)
+                                ->where('SecondaryUnitMeasureID', '=', $measure->SecondaryUnitMeasureID)
+                                ->get();
                 foreach ($accomplishments as $accomplishment)
                 {
                     //dd($accomplishment);
@@ -217,23 +208,22 @@ use App\StaffFunding;
             ?>
             <tbody>
                 @foreach($accomplishments as $accomplishment)
-                    <tr style="font-family: arial;">
+                    <tr>
                         <td style="vertical-align: top;text-align: left;">
-                            {{ $accomplishment->staff_measure->StaffMeasureName }}
-                            <br>
-                            @if($accomplishment->staff_measure->ChiefMeasureID > 0)
-                                <span class="labelc label-primary">Contributory to C, PNP</span>
-                            @endif
-                            <div style="font-size: 9px;font-style: italic;">Contributory/ies to this Measure</div>
-                            @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                @foreach($contributor->unit_accomplishments as $contributory)
-                                    <div style="font-size: 9px;">
-                                        <span class="label label-default">{{ $contributory->unit->UnitAbbreviation }}</span>
-                                    </div>
+                                {{ $accomplishment->secondary_unit_measure->SecondaryUnitMeasureName }}
+                                @if($accomplishment->secondary_unit_measure->UnitMeasureID > 0)
+                                    <span class="label label-primary">Contributory to Unit, PNP</span>
+                                @endif
+                                <div style="font-size: 9px;font-style: italic;">Contributory/ies to this Measure</div>
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
+                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                                        <div style="font-size: 9px;">
+                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
+                                        </div>
+                                    @endforeach
                                 @endforeach
-                            @endforeach
                         </td>
-                        @if($accomplishment->staff_measure->StaffMeasureType == 'LG')
+                        @if($accomplishment->secondary_unit_measure->SecondaryUnitMeasureType == 'LG')
                             <td style="background-color: #5cb85c;"></td>
                             <td></td>
                         @else
@@ -241,19 +231,19 @@ use App\StaffFunding;
                             <td style="background-color: #5cb85c;"></td>
                         @endif
                         <td style="vertical-align: top;text-align: left;">
-                            {{ $accomplishment->staff_measure->StaffMeasureFormula }}
+                            {{ $accomplishment->secondary_unit_measure->SecondaryUnitMeasureFormula }}
                         </td>
                         @if($selectedQuarter == '1')
                             {{-- JANUARY --}}
                             <td>
                                 {{ round($accomplishment->JanuaryTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalJanuaryContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalJanuaryContribution = $totalJanuaryContribution + $contributory->JanuaryAccomplishment;
@@ -262,19 +252,24 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalJanuaryAccomplishment = $accomplishment->staff_accomplishment->JanuaryAccomplishment + $totalJanuaryContribution;
+                                    $totalJanuaryAccomplishment = $accomplishment->secondary_unit_accomplishment->JanuaryAccomplishment + $totalJanuaryContribution;
                                 ?>
+
                                 {{ round($totalJanuaryAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->JanuaryTarget-$totalJanuaryAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalJanuaryAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->JanuaryTarget;
                                     $JanuaryTarget = $accomplishment->JanuaryTarget;
-                                    $JanuaryPerformance = round(($totalJanuaryAccomplishment / $JanuaryTarget) * 100, 2);
+                                    if($JanuaryTarget == 0)
+                                        $JanuaryPerformance = 0;
+                                    else
+                                        $JanuaryPerformance = round(($totalJanuaryAccomplishment / $JanuaryTarget) * 100, 2);
                                 ?>
                                 {{ round($JanuaryPerformance, 2) }}%
                             </td>
@@ -282,12 +277,12 @@ use App\StaffFunding;
                             <td>
                                 {{ round($accomplishment->FebruaryTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalFebruaryContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalFebruaryContribution = $totalFebruaryContribution + $contributory->FebruaryAccomplishment;
@@ -296,19 +291,24 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalFebruaryAccomplishment = $accomplishment->staff_accomplishment->FebruaryAccomplishment + $totalFebruaryContribution;
+                                    $totalFebruaryAccomplishment = $accomplishment->secondary_unit_accomplishment->FebruaryAccomplishment + $totalFebruaryContribution;
                                 ?>
+
                                 {{ round($totalFebruaryAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->FebruaryTarget-$totalFebruaryAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalFebruaryAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->FebruaryTarget;
                                     $FebruaryTarget = $accomplishment->FebruaryTarget;
-                                    $FebruaryPerformance = round(($totalFebruaryAccomplishment / $FebruaryTarget) * 100, 2);
+                                    if($FebruaryTarget == 0)
+                                        $FebruaryPerformance = 0;
+                                    else
+                                        $FebruaryPerformance = round(($totalFebruaryAccomplishment / $FebruaryTarget) * 100, 2);
                                 ?>
                                 {{ round($FebruaryPerformance, 2) }}%
                             </td>
@@ -316,12 +316,12 @@ use App\StaffFunding;
                             <td>
                                 {{ round($accomplishment->MarchTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalMarchContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalMarchContribution = $totalMarchContribution + $contributory->MarchAccomplishment;
@@ -330,34 +330,39 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalMarchAccomplishment = $accomplishment->staff_accomplishment->MarchAccomplishment + $totalMarchContribution;
+                                    $totalMarchAccomplishment = $accomplishment->secondary_unit_accomplishment->MarchAccomplishment + $totalMarchContribution;
                                 ?>
+
                                 {{ round($totalMarchAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->MarchTarget-$totalMarchAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalMarchAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->MarchTarget;
                                     $MarchTarget = $accomplishment->MarchTarget;
-                                    $MarchPerformance = round(($totalMarchAccomplishment / $MarchTarget) * 100, 2);
+                                    if($MarchTarget == 0)
+                                        $MarchPerformance = 0;
+                                    else
+                                        $MarchPerformance = round(($totalMarchAccomplishment / $MarchTarget) * 100, 2);
                                 ?>
                                 {{ round($MarchPerformance, 2) }}%
                             </td>
-                        @endif
-                        @if($selectedQuarter == '2')
+                         @endif
+                         @if($selectedQuarter == '2')
                             {{-- APRIL --}}
                             <td>
                                 {{ round($accomplishment->AprilTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalAprilContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalAprilContribution = $totalAprilContribution + $contributory->AprilAccomplishment;
@@ -366,19 +371,24 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalAprilAccomplishment = $accomplishment->staff_accomplishment->AprilAccomplishment + $totalAprilContribution;
+                                    $totalAprilAccomplishment = $accomplishment->secondary_unit_accomplishment->AprilAccomplishment + $totalAprilContribution;
                                 ?>
+
                                 {{ round($totalAprilAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->AprilTarget-$totalAprilAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalAprilAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->AprilTarget;
                                     $AprilTarget = $accomplishment->AprilTarget;
-                                    $AprilPerformance = round(($totalAprilAccomplishment / $AprilTarget) * 100, 2);
+                                    if($AprilTarget == 0)
+                                        $AprilPerformance = 0;
+                                    else
+                                        $AprilPerformance = round(($totalAprilAccomplishment / $AprilTarget) * 100, 2);
                                 ?>
                                 {{ round($AprilPerformance, 2) }}%
                             </td>
@@ -386,12 +396,12 @@ use App\StaffFunding;
                             <td>
                                 {{ round($accomplishment->MayTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalMayContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalMayContribution = $totalMayContribution + $contributory->MayAccomplishment;
@@ -400,32 +410,37 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalMayAccomplishment = $accomplishment->staff_accomplishment->MayAccomplishment + $totalMayContribution;
+                                    $totalMayAccomplishment = $accomplishment->secondary_unit_accomplishment->MayAccomplishment + $totalMayContribution;
                                 ?>
+
                                 {{ round($totalMayAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->MayTarget-$totalMayAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalMayAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->MayTarget;
                                     $MayTarget = $accomplishment->MayTarget;
-                                    $MayPerformance = round(($totalMayAccomplishment / $MayTarget) * 100, 2);
+                                    if($MayTarget == 0)
+                                        $MayPerformance = 0;
+                                    else
+                                        $MayPerformance = round(($totalMayAccomplishment / $MayTarget) * 100, 2);
                                 ?>
                                 {{ round($MayPerformance, 2) }}%
                             </td>
-                            {{-- JUNE --}}
+                            {{-- MARCH --}}
                             <td>
                                 {{ round($accomplishment->JuneTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalJuneContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalJuneContribution = $totalJuneContribution + $contributory->JuneAccomplishment;
@@ -434,34 +449,39 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalJuneAccomplishment = $accomplishment->staff_accomplishment->JuneAccomplishment + $totalJuneContribution;
+                                    $totalJuneAccomplishment = $accomplishment->secondary_unit_accomplishment->JuneAccomplishment + $totalJuneContribution;
                                 ?>
+
                                 {{ round($totalJuneAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->JuneTarget-$totalJuneAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalJuneAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->JuneTarget;
                                     $JuneTarget = $accomplishment->JuneTarget;
-                                    $JunePerformance = round(($totalJuneAccomplishment / $JuneTarget) * 100, 2);
+                                    if($JuneTarget == 0)
+                                        $JunePerformance = 0;
+                                    else
+                                        $JunePerformance = round(($totalJuneAccomplishment / $JuneTarget) * 100, 2);
                                 ?>
                                 {{ round($JunePerformance, 2) }}%
                             </td>
-                        @endif
-                        @if($selectedQuarter == '3')
+                         @endif
+                         @if($selectedQuarter == '3')
                             {{-- JULY --}}
                             <td>
                                 {{ round($accomplishment->JulyTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalJulyContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalJulyContribution = $totalJulyContribution + $contributory->JulyAccomplishment;
@@ -470,19 +490,24 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalJulyAccomplishment = $accomplishment->staff_accomplishment->JulyAccomplishment + $totalJulyContribution;
+                                    $totalJulyAccomplishment = $accomplishment->secondary_unit_accomplishment->JulyAccomplishment + $totalJulyContribution;
                                 ?>
+
                                 {{ round($totalJulyAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->JulyTarget-$totalJulyAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalJulyAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->JulyTarget;
                                     $JulyTarget = $accomplishment->JulyTarget;
-                                    $JulyPerformance = round(($totalJulyAccomplishment / $JulyTarget) * 100, 2);
+                                    if($JulyTarget == 0)
+                                        $JulyPerformance = 0;
+                                    else
+                                        $JulyPerformance = round(($totalJulyAccomplishment / $JulyTarget) * 100, 2);
                                 ?>
                                 {{ round($JulyPerformance, 2) }}%
                             </td>
@@ -490,12 +515,12 @@ use App\StaffFunding;
                             <td>
                                 {{ round($accomplishment->AugustTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalAugustContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalAugustContribution = $totalAugustContribution + $contributory->AugustAccomplishment;
@@ -504,19 +529,24 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalAugustAccomplishment = $accomplishment->staff_accomplishment->AugustAccomplishment + $totalAugustContribution;
+                                    $totalAugustAccomplishment = $accomplishment->secondary_unit_accomplishment->AugustAccomplishment + $totalAugustContribution;
                                 ?>
+
                                 {{ round($totalAugustAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->AugustTarget-$totalAugustAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalAugustAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->AugustTarget;
                                     $AugustTarget = $accomplishment->AugustTarget;
-                                    $AugustPerformance = round(($totalAugustAccomplishment / $AugustTarget) * 100, 2);
+                                    if($AugustTarget == 0)
+                                        $AugustPerformance = 0;
+                                    else
+                                        $AugustPerformance = round(($totalAugustAccomplishment / $AugustTarget) * 100, 2);
                                 ?>
                                 {{ round($AugustPerformance, 2) }}%
                             </td>
@@ -524,12 +554,12 @@ use App\StaffFunding;
                             <td>
                                 {{ round($accomplishment->SeptemberTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalSeptemberContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalSeptemberContribution = $totalSeptemberContribution + $contributory->SeptemberAccomplishment;
@@ -538,34 +568,39 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalSeptemberAccomplishment = $accomplishment->staff_accomplishment->SeptemberAccomplishment + $totalSeptemberContribution;
+                                    $totalSeptemberAccomplishment = $accomplishment->secondary_unit_accomplishment->SeptemberAccomplishment + $totalSeptemberContribution;
                                 ?>
+
                                 {{ round($totalSeptemberAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->SeptemberTarget-$totalSeptemberAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalSeptemberAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->SeptemberTarget;
                                     $SeptemberTarget = $accomplishment->SeptemberTarget;
-                                    $SeptemberPerformance = round(($totalSeptemberAccomplishment / $SeptemberTarget) * 100, 2);
+                                    if($SeptemberTarget == 0)
+                                        $SeptemberPerformance = 0;
+                                    else
+                                        $SeptemberPerformance = round(($totalSeptemberAccomplishment / $SeptemberTarget) * 100, 2);
                                 ?>
                                 {{ round($SeptemberPerformance, 2) }}%
                             </td>
-                        @endif
-                        @if($selectedQuarter == '4')
+                         @endif
+                         @if($selectedQuarter == '4')
                             {{-- OCTOBER --}}
                             <td>
                                 {{ round($accomplishment->OctoberTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalOctoberContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalOctoberContribution = $totalOctoberContribution + $contributory->OctoberAccomplishment;
@@ -574,19 +609,24 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalOctoberAccomplishment = $accomplishment->staff_accomplishment->OctoberAccomplishment + $totalOctoberContribution;
+                                    $totalOctoberAccomplishment = $accomplishment->secondary_unit_accomplishment->OctoberAccomplishment + $totalOctoberContribution;
                                 ?>
+
                                 {{ round($totalOctoberAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->OctoberTarget-$totalOctoberAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalOctoberAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->OctoberTarget;
                                     $OctoberTarget = $accomplishment->OctoberTarget;
-                                    $OctoberPerformance = round(($totalOctoberAccomplishment / $OctoberTarget) * 100, 2);
+                                    if($OctoberTarget == 0)
+                                        $OctoberPerformance = 0;
+                                    else
+                                        $OctoberPerformance = round(($totalOctoberAccomplishment / $OctoberTarget) * 100, 2);
                                 ?>
                                 {{ round($OctoberPerformance, 2) }}%
                             </td>
@@ -594,12 +634,12 @@ use App\StaffFunding;
                             <td>
                                 {{ round($accomplishment->NovemberTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalNovemberContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalNovemberContribution = $totalNovemberContribution + $contributory->NovemberAccomplishment;
@@ -608,19 +648,24 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalNovemberAccomplishment = $accomplishment->staff_accomplishment->NovemberAccomplishment + $totalNovemberContribution;
+                                    $totalNovemberAccomplishment = $accomplishment->secondary_unit_accomplishment->NovemberAccomplishment + $totalNovemberContribution;
                                 ?>
+
                                 {{ round($totalNovemberAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->NovemberTarget-$totalNovemberAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalNovemberAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->NovemberTarget;
                                     $NovemberTarget = $accomplishment->NovemberTarget;
-                                    $NovemberPerformance = round(($totalNovemberAccomplishment / $NovemberTarget) * 100, 2);
+                                    if($NovemberTarget == 0)
+                                        $NovemberPerformance = 0;
+                                    else
+                                        $NovemberPerformance = round(($totalNovemberAccomplishment / $NovemberTarget) * 100, 2);
                                 ?>
                                 {{ round($NovemberPerformance, 2) }}%
                             </td>
@@ -628,12 +673,12 @@ use App\StaffFunding;
                             <td>
                                 {{ round($accomplishment->DecemberTarget, 2) }}
                             </td>
-                            <td>
+                             <td>
                                 <?php
                                     $totalDecemberContribution = 0;
                                 ?>
-                                @foreach($accomplishment->staff_measure->unit_measures as $contributor)
-                                    @foreach($contributor->unit_accomplishments as $contributory)
+                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $contributor)
+                                    @foreach($contributor->tertiary_unit_accomplishments as $contributory)
                                         <div>
                                             <?php
                                                 $totalDecemberContribution = $totalDecemberContribution + $contributory->DecemberAccomplishment;
@@ -642,26 +687,36 @@ use App\StaffFunding;
                                     @endforeach
                                 @endforeach
                                 <?php
-                                    $totalDecemberAccomplishment = $accomplishment->staff_accomplishment->DecemberAccomplishment + $totalDecemberContribution;
+                                    $totalDecemberAccomplishment = $accomplishment->secondary_unit_accomplishment->DecemberAccomplishment + $totalDecemberContribution;
                                 ?>
+
                                 {{ round($totalDecemberAccomplishment, 2) }}
                             </td>
                             <td>
                                 {{ round($accomplishment->DecemberTarget-$totalDecemberAccomplishment, 2) }}
                             </td>
+                            
                             <td>
                                 <?php
                                     $overallAccomplishment = $overallAccomplishment + $totalDecemberAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->DecemberTarget;
                                     $DecemberTarget = $accomplishment->DecemberTarget;
-                                    $DecemberPerformance = round(($totalDecemberAccomplishment / $DecemberTarget) * 100, 2);
+                                    if($DecemberTarget == 0)
+                                        $DecemberPerformance = 0;
+                                    else
+                                        $DecemberPerformance = round(($totalDecemberAccomplishment / $DecemberTarget) * 100, 2);
                                 ?>
                                 {{ round($DecemberPerformance, 2) }}%
                             </td>
-                        @endif
-                        @if($accomplishment->staff_measure->StaffMeasureFormula == 'Summation')
+                         @endif
+                         
+                         @if($accomplishment->secondary_unit_measure->SecondaryUnitMeasureFormula == 'Summation')
                             <?php
-                                $performance = round(($overallAccomplishment/$overallTarget)* 100, 2);
+                                if($overallTarget == 0)
+                                    $performance = 0;
+                                else
+                                    $performance = round(($overallAccomplishment/$overallTarget)* 100, 2);
+
                                 $Color = ""; 
                                 if($performance >= 101)
                                     {
@@ -685,11 +740,15 @@ use App\StaffFunding;
                                 <b>{{ round($overallAccomplishment-$overallTarget, 2) }}</b>
                             </td>
                             <td>
-                                <font color="{{$Color}}"><b>{{ round(($overallAccomplishment/$overallTarget) * 100, 2) }}%</b></font>
+                                <font color="{{$Color}}"><b>{{ $performance }}%</b></font>
                             </td>   
                         @else
                             <?php
-                                $performance = round((($overallAccomplishment/3)/$overallTarget)* 100, 2);
+                                if($overallTarget == 0)
+                                    $performance = 0;
+                                else
+                                    $performance = round((($overallAccomplishment/3)/$overallTarget)* 100, 2);
+
                                 $Color = ""; 
                                 if($performance >= 101)
                                     {
@@ -713,7 +772,7 @@ use App\StaffFunding;
                                 <b>{{ round((($overallAccomplishment/3)-$overallTarget), 2) }}</b>
                             </td>
                             <td>
-                                <font color="{{$Color}}"><b>{{ round((($overallAccomplishment/3)/$overallTarget)* 100, 2) }}%</b></font>
+                                <font color="{{$Color}}"><b>{{ $performance }}%</b></font>
                             </td>
                         @endif 
                     </tr>
@@ -721,7 +780,4 @@ use App\StaffFunding;
             </tbody>
         @endforeach
     </table>
-    @if(count($accomplishments) == 0)
-        <p>No Accomplisments found for the year {{ $selectedYear }}</p>
-    @endif
 </body>
