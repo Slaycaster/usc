@@ -1,8 +1,8 @@
-@extends('layout-unit')
+@extends('layout-secondary')
 
 @section('content')
     
-    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+   <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
     <!-- Angular Utils Pagination -->
@@ -16,26 +16,25 @@
 
     <script src="{{ asset('js/showtabledata.js') }}"></script>
     
-    <!-- Audit Trails Scripts -->
-    <script src="{{ asset('app/controllers/unit_audit_trails.js') }}"></script>
+    <!-- Audit Trail Scripts -->
+    <script src="{{ asset('app/controllers/secondary_unit_audit_trails.js') }}"></script>
 
     <br />
-    <div ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsController">
+    <div ng-app="unitScorecardApp" ng-controller="APISecondaryUnitAuditTrailsController">
         <div class="wrap">
             <div class="row">           
                 <div class="panel panel-warning audit-custom-panel">
                     <div class="col-lg-12 dashboard-custom-activitylogname">
                         <div  class="col-lg-8 col-md-offset-2">
-                            <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitName }} Activity Log</b></h2>
+                            <i class="fa fa-bell fa-2x"></i> <h2><b> {{ $user->secondary_unit->SecondaryUnitName }} Activity Log</b></h2>
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                         </div>
                     </div>
 
                      <div class="col-lg-12 dashboard-custom-activitylogabb">
-                        <i class="fa fa-bell fa-2x"></i></i> <h2><b>{{ $user->unit->UnitAbbreviation  }} Activity Log</b></h2>
+                        <i class="fa fa-bell fa-2x"></i> <h2><b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Activity Log</b></h2>
                         <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                     </div>
-                       
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-5 pull-right">
@@ -56,38 +55,36 @@
                         <!--/.div class row-->
                         <div class="row" id="tableinfo">
                             <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i> 
-                            Recent activities from {{ $user->unit->UnitName }}</div>
+                            Recent activities from {{ $user->secondary_unit->SecondaryUnitName }} </div>
                             <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i> 
-                            Recent activities from {{ $user->unit->UnitAbbreviation }}</div>
+                            Recent activities from {{ $user->secondary_unit->SecondaryUnitAbbreviation }} </div>
                         </div>
                         <!--./div class row-->
 
-                        <div class="table-responsive" ng-show="info" id="tabledata">
+                        <div class="table-responsive" ng-show="info" id="tabledata"> 
                             <table class="table table-bordered">
                                 <thead>
                                     <td colspan="3">
                                         Activity
                                     </td>
                                 </thead>
-                                <tr dir-paginate='audit_trail in unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                                <tr dir-paginate='audit_trail in secondary_unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                                     <td class="audit-encoder">
-                                        <div class="col-md-5">
+                                     <div class="col-md-5">
                                             <center>
-                                               <img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail.user_unit.UserUnitPicturePath%>" height="30px;" class="thumbnail">
+                                                <img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail.user_secondary.UserSecondaryUnitPicturePath%>" height="30px;" class="thumbnail">
                                             </center>
                                         </div>
 
-                                        
                                         <div style="font-size:12px;">
-                                            <% audit_trail.user_unit.rank.RankCode%> 
-                                            <% audit_trail.user_unit.UserUnitFirstName %>
-                                            <% audit_trail.user_unit.UserUnitLastName %>
+                                            <% audit_trail.user_secondary.rank.RankCode %> 
+                                            <% audit_trail.user_secondary.UserSecondaryUnitFirstName %>
+                                            <% audit_trail.user_secondary.UserSecondaryUnitLastName %>
                                         </div>
                                     </td>
                                     <td class="audit-action">
                                         <% audit_trail.Action %>
                                     </td>
-                                    
                                     <td class="audit-time">
                                         <% audit_trail.created_at | timeago %>
                                     </td>
@@ -108,5 +105,6 @@
                 </div>
             </div>
         </div>
+    </div>
      
 @endsection

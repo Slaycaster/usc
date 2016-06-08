@@ -24,7 +24,7 @@
     <script src="{{ asset('app/cut.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
+    <script src="{{ asset('app/controllers/secondary_unit_audit_trails.js') }}"></script>
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashname">
@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
             <img class="img-responsive dashboard-custom-pictureabb" 
-                src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
+                src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             <p>
                 <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Secondary Unit Dashboard</b>
             </p>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -215,21 +215,22 @@
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
             
-            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsDashController" >
+            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APISecondaryUnitAuditTrailsController" >
                 <div class="panel-heading">
                     <i class="fa fa-bell fa-4x pull-right"></i>
                     <h3><b>ACTIVITY LOG</b></h3>
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <div class="list-group" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                <div class="list-group" dir-paginate='audit_trail_dash in secondary_unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                 
-                    <a href="{{ url('secondary/audit_trails') }}" class="list-group-item" style="font-size:12px;">
-                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserUnitPicturePath%>" height="30px;">
+                    <a href="{{ url('secondary_unit/audit_trails') }}" class="list-group-item" style="font-size:12px;">
+                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserSecondaryUnitPicturePath%>" height="30px;">
                     </span>  
-                            <b><% audit_trail_dash.user_unit.rank.RankCode%> 
-                                <% audit_trail_dash.user_unit.UserUnitFirstName %>
-                                <% audit_trail_dash.user_unit.UserUnitLastName %>
+                            <b>
+                                <% audit_trail_dash.user_secondary.rank.RankCode %> 
+                                <% audit_trail_dash.user_secondary.UserSecondaryUnitFirstName %>
+                                <% audit_trail_dash.user_secondary.UserSecondaryUnitLastName %>
                             </b> 
                             <br />
                             <% audit_trail_dash.Action | cut:true:75:' ...' %>
@@ -242,7 +243,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- /.list-group -->
-                    <a href="{{ url('secondary/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('secondary_unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>

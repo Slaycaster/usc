@@ -76,7 +76,8 @@ class APISecondaryUnitMeasuresController extends Controller {
 				->first();
 
 			$unit = SecondaryUnit::where('SecondaryUnitID', '=', $user->SecondaryUnitID)->with('unit')->first();
-		return UnitMeasure::where('UnitID','=',$unit->UnitID)->get();
+			$hascontributory = SecondaryUnitMeasure::where('SecondaryUnitID', '=', $user->SecondaryUnitID)->select('UnitMeasureID')->lists('UnitMeasureID');
+		return UnitMeasure::where('UnitID','=',$unit->UnitID)->whereNotIn('UnitMeasureID',$hascontributory)->get();
 	}
 
 	public function angularunitmeasure($measureID)
@@ -103,25 +104,20 @@ class APISecondaryUnitMeasuresController extends Controller {
 	 */
 	public function store()
 	{
-		
-
 		$secondary_user_id = Session::get('secondary_user_id', 'default');
 		$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_user_id)
 				->first();
-
-
-
 		$unit = Request::input('SecondaryUnitID');
 		$action = 'Added a measure: "' . Request::input('SecondaryUnitMeasureName') . '"';
 
 
-		$mes = Request::input('UnitMeasureID');
-		$mescontribute = SecondaryUnitMeasure::where('UnitMeasureID','=',$mes)->where('SecondaryUnitID','=',$user->SecondaryUnitID)->first();
+		// $mes = Request::input('UnitMeasureID');
+		// $mescontribute = SecondaryUnitMeasure::where('UnitMeasureID','=',$mes)->where('SecondaryUnitID','=',$user->SecondaryUnitID)->first();
 
 
-		if($mescontribute == null )
-		{
-			DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
+		// if($mescontribute == null )
+		// {
+			DB::insert('insert into secondary_audit_trails (Action, UserSecondaryUnitID, SecondaryUnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
 			$secondary_unit_measure = new SecondaryUnitMeasure(Request::all());
 			$secondary_unit_measure->save();
 
@@ -138,31 +134,31 @@ class APISecondaryUnitMeasuresController extends Controller {
 
 			return $secondary_unit_measure;
 
-		}
-		else if($mes == 0)
-		{
-			DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
-			$secondary_unit_measure = new SecondaryUnitMeasure(Request::all());
-			$secondary_unit_measure->save();
+		// }
+		// else if($mes == 0)
+		// {
+		// 	DB::insert('insert into secondary_audit_trails (Action, UserSecondaryUnitID, SecondaryUnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
+		// 	$secondary_unit_measure = new SecondaryUnitMeasure(Request::all());
+		// 	$secondary_unit_measure->save();
 
-			//Get the max id after saving.
-			$unit_measureid = DB::table('secondary_unit_measures')->max('SecondaryUnitMeasureID');
+		// 	//Get the max id after saving.
+		// 	$unit_measureid = DB::table('secondary_unit_measures')->max('SecondaryUnitMeasureID');
 
-			//Use Eloquent instead! == Inserting into Unit Targets == You forgot target period
-			$unit_target = new SecondaryUnitTarget;
-			$unit_target->TargetPeriod = "Not Set";
-			$unit_target->SecondaryUnitMeasureID = $unit_measureid;
-			$unit_target->SecondaryUnitID = $unit;
-			$unit_target->UserSecondaryUnitID = $secondary_user_id;
-			$unit_target->save();
+		// 	//Use Eloquent instead! == Inserting into Unit Targets == You forgot target period
+		// 	$unit_target = new SecondaryUnitTarget;
+		// 	$unit_target->TargetPeriod = "Not Set";
+		// 	$unit_target->SecondaryUnitMeasureID = $unit_measureid;
+		// 	$unit_target->SecondaryUnitID = $unit;
+		// 	$unit_target->UserSecondaryUnitID = $secondary_user_id;
+		// 	$unit_target->save();
 
-			return $secondary_unit_measure;
-		}
-		else
-		{
-			$true = "true";
-			return $true; 
-		}
+		// 	return $secondary_unit_measure;
+		// }
+		// else
+		// {
+		// 	$true = "true";
+		// 	return $true; 
+		// }
 
 	}
 
@@ -248,7 +244,7 @@ class APISecondaryUnitMeasuresController extends Controller {
 		}
 
 	
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $unitid, $unit));
+		DB::insert('insert into secondary_audit_trails (Action, UserSecondaryUnitID, SecondaryUnitID) values (?,?,?)', array($action, $unitid, $unit));
 
 
 		$unit_measure = SecondaryUnitMeasure::find($id);
