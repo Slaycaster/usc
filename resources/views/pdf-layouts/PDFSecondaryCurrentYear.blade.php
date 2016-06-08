@@ -18,12 +18,12 @@ use App\SecondaryUnitInitiative;
     $selectedYear = Session::get('year', 'default');
     $reportType = Session::get('reportType', 'default');    
 
-    $secondary_unit_id = Session::get('secondary_user_id', 'default');
+    $secondary_unit_id = Session::get('secondary_unit_id', 'default');
 
     $secondary_unit = SecondaryUnit::where('SecondaryUnitID', '=', $secondary_unit_id)->first();
 
     $user = UserSecondaryUnit::where('SecondaryUnitID', $secondary_unit_id)
-                                ->first(); 
+                                ->first();
 
     $logoPath = 'img/pnp_logo2.png';
     $secondaryunitlogoPath = 'uploads/secondaryunitpictures/cropped/'.$secondary_unit->PicturePath;

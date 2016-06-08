@@ -412,7 +412,7 @@ class ReportsController extends Controller
 		Session::put('year', $year);
 
 			Session::put('reportType', 'breakdown');
-			$pdf = PDF::loadView('pdf-layouts.PDFSecondaryUnitCurrentYear')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf = PDF::loadView('pdf-layouts.PDFSecondaryCurrentYear')->setPaper('Folio')->setOrientation('Landscape');
 			$pdf->output();
 			$dom_pdf = $pdf->getDomPDF();
 			$canvas = $dom_pdf ->get_canvas();
