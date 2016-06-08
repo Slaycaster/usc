@@ -50,6 +50,7 @@ Route::get('logout', 'LoginController@doLogout');
 /*UTILITIES ROUTE*/
 Route::post('change_password', 'ChangePasswordController@ChangePassword');
 Route::post('change_picture', 'ChangePictureController@changePicture');
+Route::post('api/staff_confirm_password', 'ChiefConfirmPasswordController@staffConfirmPassword');
 Route::post('api/chief_confirm_password', 'ChiefConfirmPasswordController@confirmPassword');
 Route::post('api/secondary_unit_confirm_password', 'ChiefConfirmPasswordController@secondaryUnitConfirmPassword');
 
@@ -211,6 +212,8 @@ Route::get('api/unit_scorecard/lastupdatedby', 'APIUnitScorecardController@LastU
 Route::get('api/staff_scorecard/lastupdatedby', 'APIStaffScorecardController@LastUpdatedBy');
 Route::get('api/chief_scorecard/lastupdatedby', 'APIChiefScorecardController@LastUpdatedBy');
 Route::get('api/secondary_unit/lastupdatedby', 'APISecondaryUnitScorecardController@LastUpdatedBy');
+Route::resource('api/secondary_unit_scorecard', 'APITertiaryUnitScorecardController');
+
 
 Route::resource('api/chief_scorecard', 'APIChiefScorecardController');
 Route::resource('api/staff_scorecard', 'APIStaffScorecardController');

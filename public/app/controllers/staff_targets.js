@@ -1,5 +1,4 @@
 app.controller('APIStaffTargetController', function($scope, $http, $interval) {
-
 	$scope.staff_targets = [];
 	$scope.loading = true;
     $scope.info = false;
@@ -7,6 +6,7 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
+        $scope.istrue="false";
 		$http.get(public + 'api/staff_targets').
 		success(function(data, status, headers, config) {
 			$scope.staff_targets = data;
@@ -22,6 +22,26 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
+
+    $scope.getpassword = function() 
+    {
+        var url = public + 'api/staff_confirm_password';
+        $http.post(url, {    
+            getPassword: document.getElementById('getPassword').value
+        }).success(function(data, status, headers, config, response) {
+
+            console.log(data);
+            if(data == "TRUE")
+            {
+                $scope.istrue = "true";
+
+            }
+            else
+            {
+                $scope.istrue = "false";
+            }
+        });
+    }
 
     $scope.save = function(modalstate, id) 
     {
