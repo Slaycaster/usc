@@ -30,6 +30,7 @@ Route::get('report/currentUnitScorecard/{id}', 'ReportsController@currentYearChi
 Route::get('report/currentStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
 Route::get('report/currentChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
 Route::get('report/currentSecondaryUnitScorecard/{id}', 'ReportsController@currentYearSearchableSecondaryUnitScorecard');
+Route::get('report/currentTertriaryUnitScorecard/{id}', 'ReportsController@currentYearSearchableTertiaryUnitScorecard');
 
 Route::get('report/quarterlyUnit', 'ReportsController@quarterlyUnit');
 Route::get('report/quarterlyStaff', 'ReportsController@quarterlyStaff');
@@ -199,6 +200,7 @@ Route::resource('api/chief_audit_trails','APIChiefAuditTrailsController');
 Route::resource('api/chief_dashboard','APIChiefAuditTrailsDashController');
 Route::resource('api/secondary_unit_objectives', 'APISecondaryUnitObjectivesController');
 Route::resource('api/secondary_unit_measures', 'APISecondaryUnitMeasuresController');
+Route::resource('api/secondary_unit_dashboard','APISecondaryUnitAuditTrailsDashController');
 Route::resource('api/tertiary_unit_dashboard','APITertiaryUnitAuditTrailsDashController');
 Route::get('api/perspectives', 'PerspectiveController@allPerspectives');
 Route::get('api/staff/objectives/chiefobjectives', 'APIStaffObjectivesController@chief_objectives');
