@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
             <img class="img-responsive dashboard-custom-pictureabb" 
-                src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
+                src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             <p>
                 <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Secondary Unit Dashboard</b>
             </p>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
