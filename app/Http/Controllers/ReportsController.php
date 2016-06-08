@@ -481,6 +481,21 @@ class ReportsController extends Controller
 	  	    return $pdf->stream();
 	}
 
+	public function currentYearSearchableTertiaryUnitScorecard($id)
+	{	
+		$year = date("Y");
+		Session::put('tertiary_unit_id', $id);
+		Session::put('year', $year);
+
+			Session::put('reportType', 'breakdown');
+			$pdf = PDF::loadView('pdf-layouts.PDFTertiaryCurrentYear')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf->output();
+			$dom_pdf = $pdf->getDomPDF();
+			$canvas = $dom_pdf ->get_canvas();
+			$canvas->page_text(788, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+	  	    return $pdf->stream();
+	}
+
 	public function currentYearChiefStaffScorecard($id)
 	{	
 		$year = date("Y");
