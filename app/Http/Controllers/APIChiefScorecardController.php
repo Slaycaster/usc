@@ -49,6 +49,8 @@ class APIChiefScorecardController extends Controller {
 			->with('chief_measure.staff_measures.staff_accomplishments')
 			->with('chief_measure.staff_measures.staff_accomplishments.staff')
 			->with('chief_measure.staff_measures.unit_measures.unit_accomplishments')
+			->with('chief_measure.staff_measures.unit_measures.secondary_unit_measures.secondary_unit_accomplishments')
+			->with('chief_measure.staff_measures.unit_measures.secondary_unit_measures.tertiary_unit_measures.tertiary_unit_accomplishments')
 			->with('chief_accomplishment')
 			->with('chief_owner')
 			->with('chief_initiative')
