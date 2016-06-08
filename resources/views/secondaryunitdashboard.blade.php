@@ -227,9 +227,10 @@
                     <a href="{{ url('secondary_unit/audit_trails') }}" class="list-group-item" style="font-size:12px;">
                     <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserSecondaryUnitPicturePath%>" height="30px;">
                     </span>  
-                            <b><% audit_trail_dash.user_unit.rank.RankCode%> 
-                                <% audit_trail_dash.user_unit.UserSecondaryUnitFirstName %>
-                                <% audit_trail_dash.user_unit.UserSecondaryUnitLastName %>
+                            <b>
+                                <% audit_trail_dash.user_secondary.rank.RankCode %> 
+                                <% audit_trail_dash.user_secondary.UserSecondaryUnitFirstName %>
+                                <% audit_trail_dash.user_secondary.UserSecondaryUnitLastName %>
                             </b> 
                             <br />
                             <% audit_trail_dash.Action | cut:true:75:' ...' %>

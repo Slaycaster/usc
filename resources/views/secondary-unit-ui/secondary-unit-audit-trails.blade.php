@@ -78,8 +78,8 @@
 
                                         <div style="font-size:12px;">
                                             <% audit_trail.user_secondary.rank.RankCode %> 
-                                            <% audit_trail.user_secondary.UserTertiaryUnitFirstName %>
-                                            <% audit_trail.user_secondary.UserTertiaryUnitLastName %>
+                                            <% audit_trail.user_secondary.UserSecondaryUnitFirstName %>
+                                            <% audit_trail.user_secondary.UserSecondaryUnitLastName %>
                                         </div>
                                     </td>
                                     <td class="audit-action">
