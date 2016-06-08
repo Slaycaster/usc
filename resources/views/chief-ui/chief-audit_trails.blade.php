@@ -17,6 +17,8 @@
     <!-- Audit Trail Scripts -->
     <script src="{{ asset('app/controllers/chief_audit_trails.js') }}"></script>
 
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
+
     <br />
     <div ng-app="unitScorecardApp" ng-controller="APIChiefAuditTrailsController">
         <div class="wrap">
@@ -51,7 +53,7 @@
                             </div>
                         </div>
                         <!--/.div class row-->
-                        <div class="row">
+                        <div class="row" id="tableinfo">
                             <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i> 
                             Recent activities from {{ $chief_user->chief->ChiefName }} </div>
                             <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i> 
@@ -59,7 +61,7 @@
                         </div>
                         <!--./div class row-->
 
-                        <div class="table-responsive" ng-show="info">
+                        <div class="table-responsive" ng-show="info" id="tabledata">
                             <table class="table table-bordered">
                                 <thead>
                                     <td colspan="3">
@@ -103,5 +105,6 @@
                 </div>
             </div>
         </div>
+    </div>
      
 @endsection

@@ -13,6 +13,8 @@
 
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/timeago.js') }}"></script>
+
+    <script src="{{ asset('js/showtabledata.js') }}"></script>
     
     <!-- Audit Trail Scripts -->
     <script src="{{ asset('app/controllers/secondary_unit_audit_trails.js') }}"></script>
@@ -51,7 +53,7 @@
                             </div>
                         </div>
                         <!--/.div class row-->
-                        <div class="row">
+                        <div class="row" id="tableinfo">
                             <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i> 
                             Recent activities from {{ $user->secondary_unit->SecondaryUnitName }} </div>
                             <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i> 
@@ -59,7 +61,7 @@
                         </div>
                         <!--./div class row-->
 
-                        <div class="table-responsive" ng-show="info">
+                        <div class="table-responsive" ng-show="info" id="tabledata"> 
                             <table class="table table-bordered">
                                 <thead>
                                     <td colspan="3">
