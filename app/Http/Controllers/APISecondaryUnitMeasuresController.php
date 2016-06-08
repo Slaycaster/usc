@@ -103,14 +103,9 @@ class APISecondaryUnitMeasuresController extends Controller {
 	 */
 	public function store()
 	{
-		
-
 		$secondary_user_id = Session::get('secondary_user_id', 'default');
 		$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_user_id)
 				->first();
-
-
-
 		$unit = Request::input('SecondaryUnitID');
 		$action = 'Added a measure: "' . Request::input('SecondaryUnitMeasureName') . '"';
 
@@ -121,7 +116,7 @@ class APISecondaryUnitMeasuresController extends Controller {
 
 		if($mescontribute == null )
 		{
-			DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
+			DB::insert('insert into secondary_audit_trails (Action, UserSecondaryUnitID, SecondaryUnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
 			$secondary_unit_measure = new SecondaryUnitMeasure(Request::all());
 			$secondary_unit_measure->save();
 
@@ -141,7 +136,7 @@ class APISecondaryUnitMeasuresController extends Controller {
 		}
 		else if($mes == 0)
 		{
-			DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
+			DB::insert('insert into secondary_audit_trails (Action, UserSecondaryUnitID, SecondaryUnitID) values (?,?,?)', array($action, $secondary_user_id, $unit));
 			$secondary_unit_measure = new SecondaryUnitMeasure(Request::all());
 			$secondary_unit_measure->save();
 
@@ -248,7 +243,7 @@ class APISecondaryUnitMeasuresController extends Controller {
 		}
 
 	
-		DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $unitid, $unit));
+		DB::insert('insert into secondary_audit_trails (Action, UserSecondaryUnitID, SecondaryUnitID) values (?,?,?)', array($action, $unitid, $unit));
 
 
 		$unit_measure = SecondaryUnitMeasure::find($id);

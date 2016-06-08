@@ -111,8 +111,6 @@ class APITertiaryUnitMeasuresController extends Controller {
 	public function store()
 	{
 
-
-			
 		$id = Session::get('tertiary_user_id', 'default');
 		$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
 				->first();
@@ -211,10 +209,6 @@ class APITertiaryUnitMeasuresController extends Controller {
 	 */
 	public function update($id)
 	{
-
-
-		
-
 		$unitmeasure = TertiaryUnitMeasure::find($id)->with('tertiary_unit_objective')->with('secondary_unit_measure')->with('secondary_unit_measure.secondary_unit_objective')->with('secondary_unit_measure.secondary_unit_objective.secondary_unit')->first();
  
 		$unitid = Session::get('tertiary_user_id', 'default');
