@@ -10,13 +10,13 @@ class AuditTrail extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'tertiary_audit_trails';
+	protected $table = 'audit_trails';
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['Action', 'TertiaryUserUnitID', 'TertiaryUnitID'];
+	protected $fillable = ['Action', 'UserUnitID', 'UnitID'];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *
@@ -27,17 +27,12 @@ class AuditTrail extends Model {
 
 	public function user_unit()
 	{
-		return $this->belongsTo('App\UserTertiaryUnit', 'UserTertiaryUnitID', 'UserTertiaryUnitID');
+		return $this->belongsTo('App\UserUnit', 'UserUnitID', 'UserUnitID');
 	}
 
-	public function tertiary_unit()
+	public function unit()
 	{
-		return $this->belongsTo('App\TertiaryUnit', 'TertiaryUnitID', 'TertiaryUnitID');
-	}
-
-	public function secondary_unit()
-	{
-		return $this->belongsTo('App\SecondaryUnit', 'SecondaryUnitID', 'SecondaryUnit');
+		return $this->belongsTo('App\Unit', 'UnitID', 'UnitID');
 	}
 
 }

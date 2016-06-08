@@ -153,6 +153,21 @@ class ReportsAnalysisController extends Controller
   	    return $pdf->stream();
 	}
 
+	public function quarterlySecondaryUnitAnalysis()
+	{	
+		$year = Input::get('year');
+		$quarter = Input::get('quarter');
+		Session::put('year', $year);
+		Session::put('quarter', $quarter);
+
+		$pdf = PDF::loadView('pdf-layouts.PDFSecondaryUnitQuarterlyAnalysis')->setPaper('Folio')->setOrientation('Landscape');
+		$pdf->output();
+		$dom_pdf = $pdf->getDomPDF();
+		$canvas = $dom_pdf ->get_canvas();
+		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+  	    return $pdf->stream();
+	}
+
 	public function quarterlyStaffAnalysis()
 	{	
 		$year = Input::get('year');

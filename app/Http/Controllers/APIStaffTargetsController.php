@@ -49,13 +49,13 @@ class APIStaffTargetsController extends Controller {
 			}
 		}		
 
-		return staffTarget::with('staff_measure')
+		return StaffTarget::with('staff_measure')
 			->with('staff_measure.staff_objective')
 			->with('user_staff')
 			->with('user_staff.rank')
-			->where('StaffID', '=', $staff)
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->orWhere('TargetDate', '=', '0000-00-00')
+			->where('StaffID', '=', $staff)
 			->get();
 		
 	}

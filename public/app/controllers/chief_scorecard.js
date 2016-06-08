@@ -262,7 +262,7 @@ app.controller('APIChiefScorecardController', function($scope, $http, $interval)
                     }
                 }
             }
-            console.log($scope.chief_january);
+            //console.log($scope.chief_january);
             $scope.loading = false;
         }); 
     };

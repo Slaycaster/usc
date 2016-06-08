@@ -312,7 +312,6 @@ use App\StaffAccomplishment;
                                         </normal>
                                     @endforeach
                                 @endforeach
-                                <br>
                                 @if($totalJanuaryContribution != 0 && $totalFebruaryContribution != 0 && $totalMarchContribution != 0)
                                     )
                                 @endif
@@ -399,7 +398,6 @@ use App\StaffAccomplishment;
                                         </normal>
                                     @endforeach
                                 @endforeach
-                                <br>
                                 @if($totalAprilContribution != 0 && $totalMayContribution != 0 && $totalJuneContribution != 0)
                                     )
                                 @endif
@@ -486,7 +484,6 @@ use App\StaffAccomplishment;
                                         </normal>
                                     @endforeach
                                 @endforeach
-                                <br>
                                 @if($totalJulyContribution != 0 && $totalAugustContribution != 0 && $totalSeptemberContribution != 0)
                                     )
                                 @endif
@@ -573,7 +570,6 @@ use App\StaffAccomplishment;
                                         </normal>
                                     @endforeach
                                 @endforeach
-                                <br>
                                 @if($totalOctoberContribution != 0 && $totalNovemberContribution != 0 && $totalDecemberContribution != 0)
                                     )
                                 @endif

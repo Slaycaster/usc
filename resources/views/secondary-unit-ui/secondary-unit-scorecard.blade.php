@@ -18,11 +18,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stickyheader.css') }}">
     
     <!-- AngularJS Application Scripts -->
-
     <script src="{{ asset('app/controllers/secondary_unit_scorecard.js') }}"></script>
 
     <div ng-app="unitScorecardApp" ng-controller="APISecondaryUnitScorecardController">
-
 
     <script src="{{ asset('js/showtabledata.js') }}"></script>
 
@@ -30,15 +28,15 @@
             <div class="row">
                 <div class="panel panel-info scorecard-custom-panel">
                         <div class="panel-heading scorecard-custom-heading">
-
                           <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
                           
                             <h2 class="heading scorecard-custom-heading">
                                 <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard for {{ date("Y") }}</b>
-                                <div class="col-md-3 pull-right">
-                                    <a href="{{ url('report/currentYearStaffScorecard') }}" target="_blank">
-                                        <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
-                                    </a> 
+                                <div class="col-md-5 pull-right">
+                                    <form method="get" action="{{ url('report/currentYearSecondaryUnitScorecard') }}" target="_blank">
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
+                                    </form>
                                 </div>
                             </h2>  
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
@@ -165,10 +163,10 @@
                                         <td><% secondary_unit_target.secondary_unit_measure.secondary_unit_objective.SecondaryUnitObjectiveName %>
                                         </td>
 
-                                        <input type="hidden" value="<% secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
+                                        <input type="hidden" value="<% secondary_unit_target.secondary_unit_measure.UnitMeasureID %>" ng-model="contributory" ng-init="c_measure=false">
 
                                         <td colspan="2"><% secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureName %>
-                                            <span class="label label-primary" ng-if="c_measure=secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID">Contributory to Unit, PNP</span><br /><i style="font-size:10px;">Contributory/ies to this Measure</i>
+                                            <span class="label label-primary" ng-if="c_measure=secondary_unit_target.secondary_unit_measure.UnitMeasureID">Contributory to {{$user->secondary_unit->unit->UnitAbbreviation}} </span><br /><i style="font-size:10px;">Contributory/ies to this Measure</i>
                                             <!--Contributory Accomplishment--><br /><p style="display: inline" ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'><span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
                                             </p>
                                             
@@ -183,10 +181,10 @@
                                         <td style="text-align:center; background-color:#5cb85c" ng-if="c_type=='LD'"></td>
 
 
-                                        <td><center><textarea rows="5" cols="27" id="id_owner<% secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID %>" name="monthlyform" value="<% secondary_unit_target.secondary_unit_owner.SecondaryUnitOwnerContent %>" ng-model="secondary_unit_target.secondary_unit_owner.SecondaryUnitOwnerContent" autocomplete="off" ng-touched ng-change="ownerchange()"/></textarea></center></td>
+                                        <td><center><textarea rows="5" cols="27" id="id_owner<% secondary_unit_target.SecondaryUnitTargetID %>" name="monthlyform" value="<% secondary_unit_target.secondary_unit_owner.SecondaryUnitOwnerContent %>" ng-model="secondary_unit_target.secondary_unit_owner.SecondaryUnitOwnerContent" autocomplete="off" ng-touched ng-change="ownerchange()"/></textarea></center></td>
 
      
-                                        <td><% secondary_unit_target.JanuaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month"  id="id_jan<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.JanuaryAccomplishment  %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.JanuaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month"  id="id_jan<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.JanuaryAccomplishment  %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.JanuaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                             <input type="hidden" ng-model="january" ng-init="s_january=secondary_unit_january[$index]">
                                             <!--Contributory Accomplishment-->
@@ -222,7 +220,7 @@
                                             
                                         </td>
 
-                                        <td><% secondary_unit_target.FebruaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_feb<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.FebruaryAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.FebruaryTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_feb<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.FebruaryAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.FebruaryAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                             <!--Contributory Accomplishment-->
                                            
@@ -260,7 +258,7 @@
 
                                         </td>
 
-                                        <td><% secondary_unit_target.MarchTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_mar<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.MarchAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.MarchTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_mar<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.MarchAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.MarchAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                              
@@ -297,7 +295,7 @@
 
                                         </td>
 
-                                        <td><% secondary_unit_target.AprilTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_apr<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.AprilAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.AprilTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_apr<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.AprilAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.AprilAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                         
@@ -334,7 +332,7 @@
 
                                         </td>
 
-                                        <td><% secondary_unit_target.MayTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_may<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.MayAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.MayTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_may<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.MayAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.MayAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                             <input type="hidden" ng-model="may" ng-init="s_may=secondary_unit_may[$index]">
@@ -370,7 +368,7 @@
 
                                         </td>
 
-                                        <td><% secondary_unit_target.JuneTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jun<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.JuneAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.JuneTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jun<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.JuneAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.JuneAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                             <input type="hidden" ng-model="june" ng-init="s_june=secondary_unit_june[$index]">
@@ -405,7 +403,7 @@
                                                 </div>
                                         </td>
 
-                                        <td><% secondary_unit_target.JulyTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jul<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.JulyAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.JulyTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_jul<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.JulyAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.JulyAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                             <input type="hidden" ng-model="july" ng-init="s_july=secondary_unit_july[$index]">
@@ -440,7 +438,7 @@
                                                 </div>
                                         </td>
 
-                                        <td><% secondary_unit_target.AugustTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_aug<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.AugustAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.AugustTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_aug<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.AugustAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.AugustAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                             <input type="hidden" ng-model="august" ng-init="s_august=secondary_unit_august[$index]">
@@ -476,7 +474,7 @@
 
                                         </td>
 
-                                        <td><% secondary_unit_target.SeptemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_sep<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.SeptemberAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.SeptemberAccomplishment " autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.SeptemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_sep<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.SeptemberAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.SeptemberAccomplishment " autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                             <input type="hidden" ng-model="september" ng-init="s_september=secondary_unit_september[$index]">
@@ -511,7 +509,7 @@
                                                 </div>
                                         </td>
 
-                                        <td><% secondary_unit_target.OctoberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_oct<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.OctoberAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.OctoberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_oct<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.OctoberAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.OctoberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                             <input type="hidden" ng-model="october" ng-init="s_october=secondary_unit_october[$index]">
@@ -547,7 +545,7 @@
 
                                         </td>
 
-                                        <td><% secondary_unit_target.NovemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_nov<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.NovemberAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.NovemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_nov<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.NovemberAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.NovemberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                              
@@ -584,7 +582,7 @@
 
                                         </td>
 
-                                        <td><% secondary_unit_target.DecemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_dec<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.DecemberAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
+                                        <td><% secondary_unit_target.DecemberTarget | number: 2 %>/<input type='text' class="scorecard-input-month" id="id_dec<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_accomplishment.DecemberAccomplishment %>" ng-model="secondary_unit_target.secondary_unit_accomplishment.DecemberAccomplishment" autocomplete="off" class="form-control" ng-touched ng-change="accompchange()"/>
 
                                              <!--Contributory Accomplishment-->
                                            
@@ -621,16 +619,16 @@
 
                                         </td>
 
-                                        <td><center><textarea rows="5" cols="27" id="id_initiative<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" value="<% secondary_unit_target.secondary_unit_initiative.SecondaryUnitInitiativeContent %>" ng-model="secondary_unit_target.secondary_unit_initiative.SecondaryUnitInitiativeContent" autocomplete="off" ng-touched ng-change="initchange()"/></textarea></center></td>
+                                        <td><center><textarea rows="5" cols="27" id="id_initiative<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" value="<% secondary_unit_target.secondary_unit_initiative.SecondaryUnitInitiativeContent %>" ng-model="secondary_unit_target.secondary_unit_initiative.SecondaryUnitInitiativeContent" autocomplete="off" ng-touched ng-change="initchange()"/></textarea></center></td>
 
-                                        <td><input type='text' id="id_estimate<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingEstimate %>" ng-model="secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingEstimate" autocomplete="off" class="form-control" ng-touched ng-change="fundingchange()"/></td>
-                                        <td ><input type='text' id="id_actual<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingActual %>" ng-model="secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingActual" autocomplete="off" class="form-control" ng-touched ng-change="fundingchange()"/></td>
+                                        <td><input type='text' id="id_estimate<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingEstimate %>" ng-model="secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingEstimate" autocomplete="off" class="form-control" ng-touched ng-change="fundingchange()"/></td>
+                                        <td ><input type='text' id="id_actual<%secondary_unit_target.SecondaryUnitTargetID%>" name="monthlyform" valid-number value="<% secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingActual %>" ng-model="secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingActual" autocomplete="off" class="form-control" ng-touched ng-change="fundingchange()"/></td>
 
                                         <td><% secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingEstimate - secondary_unit_target.secondary_unit_funding.SecondaryUnitFundingActual | number: 2 %></td>
 
-                                         <input type="hidden" name="SecondaryUnitMeasureID" value="<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" id="staffmeasure_id<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>">
-                                         <input type="hidden" name="StaffID" value="<?=$user->secondary_unit->SecondaryUnitID?>" id="staff_id<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>">
-                                        <input type="hidden" name="UserSecondaryID" value="<?=$user->UserSecondaryUnitID?>" id="user_staff_id<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>">
+                                         <input type="hidden" name="SecondaryUnitMeasureID" value="<%secondary_unit_target.secondary_unit_measure.SecondaryUnitMeasureID%>" id="staffmeasure_id<%secondary_unit_target.SecondaryUnitTargetID%>">
+                                         <input type="hidden" name="StaffID" value="<?=$user->secondary_unit->SecondaryUnitID?>" id="staff_id<%secondary_unit_target.SecondaryUnitTargetID%>">
+                                        <input type="hidden" name="UserSecondaryID" value="<?=$user->UserSecondaryUnitID?>" id="user_staff_id<%secondary_unit_target.SecondaryUnitTargetID%>">
                                         <td>
                                                <button type="button"  class="btn btn-success btn-sm" id="btn-save" ng-click="save(modalstate, secondary_unit_target.SecondaryUnitTargetID)"><i class="fa fa-save fa-fw"></i> Save Changes</button>
                                          </td>
@@ -643,12 +641,11 @@
                             <!--./table table striped-->
                             <br>
                                 
-                           
                         <!-- div panel-body-->
-
-
-                          
-                          
+                </div><!--div panel panel-info-->
+            </div>
+        </div>
+    </div>
 <script>
 // Get the modal
 var modal = document.getElementById('janModal');
@@ -678,6 +675,5 @@ window.onclick = function(event) {
 </script>
 
 <script src="{{ asset('js/showtabledata.js') }}"></script>
-
 
 @endsection

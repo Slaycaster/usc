@@ -122,12 +122,10 @@ class APISecondaryUnitScorecardController extends Controller {
 				->first();
 
 		$secondary_user_target = SecondaryUnitTarget::find($id);
-		
 		$secondary_unit_accomplishmentID = $secondary_user_target->SecondaryUnitAccomplishmentID;
 		$secondary_unit_ownerID = $secondary_user_target->SecondaryUnitOwnerID;
 		$secondary_unit_initiativeID = $secondary_user_target->SecondaryUnitInitiativeID;
 		$secondary_unit_fundingID = $secondary_user_target->SecondaryUnitFundingID;
-
 
 
 		if(Request::input('Accomplishmentpressed') == true)

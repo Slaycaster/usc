@@ -54,9 +54,9 @@ class APIUnitTargetsController extends Controller {
 			->with('unit_measure.unit_objective')
 			->with('user_unit')
 			->with('user_unit.rank')
-			->where('UnitID', '=', $unit)
 			->whereBetween('TargetDate', array($currentYear.'-01-01', $currentYear.'-12-31'))
 			->orWhere('TargetDate', '=', '0000-00-00')
+			->where('UnitID', '=', $unit)
 			->get();
 		
 	}
