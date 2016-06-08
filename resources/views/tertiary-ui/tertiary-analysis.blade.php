@@ -1,45 +1,45 @@
-@extends('layout-secondary')
+@extends('layout-tertiary-unit')
 
 @section('content')
 
-    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+ <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
-
-    <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/app.js') }}"></script>
 
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
+  
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/app.js') }}"></script>
+    
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/controllers/tertiary_unit_targets.js') }}"></script>
 
-    <script src="{{ asset('js/showtabledata.js') }}"></script>
-
-    <br>
-    <div ng-app="unitScorecardApp" ng-controller="APISecondaryUnitObjectiveController">
-        <div class="wrap">
-            <div class="row">           
-                <div class="col-lg-12">
-                    <div class="panel panel-warning objectives-custom-panel">
-                        <div class="panel-heading objectives-custom-heading">
-                            <i class="fa fa-circle-o-notch fa-5x"></i> 
+    <div ng-app="unitScorecardApp" ng-controller="APITertiaryUnitTargetController">
+	    <div class="wrap">
+		    <div class="row">			
+				<div class="col-lg-12">
+					<div class="panel panel-warning targets-custom-panel">
+						<div class="panel-heading measures-custom-heading">
+						    <i class="fa fa-circle-o-notch fa-5x"></i> 
                             <h2>
-                                <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard Analysis Report</b>
-                            </h2>
+                                <b>{{ $user->tertiary_unit->TertiaryUnitAbbreviation }} Scorecard Analysis Report</b>
+                            </h2>   
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
-                        </div>
-                        <div class="panel-body">
-                            <!--/.div class row-->
-                            <div class="row">
-                                <div ng-show="info" class="alert alert-info">
-                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Analysis Reports of {{ $user->secondary_unit->SecondaryUnitName }}.
+						</div>
+						<div class="panel-body">
+							<!--/.div class row-->
+							<div class="row">
+                                <div ng-show="info" class="alert alert-info objective-info-name">
+                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Analysis Reports of {{ $user->tertiary_unit->TertiaryUnitName }}.
                                 </div>
                                 <div ng-show="info" class="alert alert-info objective-info-abb">
-                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Analysis Reports of {{ $user->secondary_unit->SecondaryUnitAbbreviation }}.
+                                    <i class="fa fa-info-circle fa-fw"></i>Scorecard Analysis Reports of {{ $user->tertiary_unit->TertiaryUnitAbbreviation }}.
                                 </div>
                             </div>
-                            <!--./div class row-->
+							<!--./div class row-->
                             <div class="col-md-4 col-lg-4">
                                 <div>
-                                    <form method="get" action="{{ url('report/quarterlySecondaryUnitAnalysis') }}" target="_blank">
+                                    <form method="get" action="{{ url('report/quarterlyTertiaryUnitAnalysis') }}" target="_blank">
                                         <div>
                                             <label for="year" class="control">Quarterly Scorecard KPI Report:</label>
                                             <br>
@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-md-4 col-lg-4">
                                 <div>
-                                    <form method="get" action="{{ url('report/yearlySecondaryUnitAnalysisBarGraph') }}" target="_blank">
+                                    <form method="get" action="{{ url('report/yearlyTertiaryUnitAnalysisBarGraph') }}" target="_blank">
                                         <div>
                                             <label for="year" class="control">Yearly Scorecard Analysis Report in Bar Graph:</label>
                                             <br>
@@ -93,10 +93,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>    
+            </div>      
         </div>
     </div>
-  
-
-@endsection
+@endsection,

@@ -65,7 +65,7 @@
                                         <i class="fa fa-circle-o-notch fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">2</div>
+                                        <div class="huge">{{ $secondary_unit_objectives_count }}</div>
                                         <div>Objectives</div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                         <i class="fa fa-bar-chart fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">6</div>
+                                        <div class="huge">{{ $secondary_unit_measures_count }}</div>
                                         <div>Measures</div>
                                     </div>
                                 </div>

@@ -1,54 +1,50 @@
 <?php
     
 //Models
-use App\UnitTarget;
-use App\UnitMeasure;
-use App\UnitObjective;
-use App\Unit;
-use App\UserUnit;
-use App\UnitAccomplishment;
-use App\UnitOwner;
-use App\UnitInitiative;
-use App\UnitFunding;
+use App\TertiaryUnitTarget;
+use App\TertiaryUnitMeasure;
+use App\TertiaryUnitObjective;
+use App\TertiaryUnit;
+use App\UserTertiaryUnit;
+use App\TertiaryUnitAccomplishment;
+use App\TertiaryUnitOwner;
+use App\TertiaryUnitInitiative;
+use App\TertiaryUnitFunding;
 
     $selectedYear = Session::get('year', 'default');
     $selectedQuarter = Session::get('quarter', 'default');    
 
-    $unit_id = Session::get('unit_user_id', 'default');
-    $unit_user = UserUnit::where('UserUnitID', '=', $unit_id)
+    $tertiary_id = Session::get('tertiary_user_id', 'default');
+    $user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_id)
                             ->first();
-    $unit = UserUnit::where('UserUnitID', '=', $unit_id)->select('UnitID')->first(); //Get the Unit of the unit     
+    $tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_id)->select('TertiaryUnitID')->first(); //Get the Unit of the unit     
     
-    $unit = Unit::where('UnitID', '=', $unit_user->UnitID)->first();
-    $unit_objectives = UnitObjective::all();
-    $unit_measures = UnitMeasure::with('unit')->where('UnitID', '=', $unit_user->UnitID)->get();
+    $tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $user->TertiaryUnitID)->first();
+    $tertiary_unit_objectives = TertiaryUnitObjective::all();
+    $tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
 
-    $user = UserUnit::where('UserUnitID', $unit_id)
-                    ->first();
-
-    
     $logoPath = 'img/pnp_logo2.png';
-    $unitlogoPath = 'uploads/unitpictures/cropped/'.$unit->PicturePath;
+    $tertiary_unitlogoPath = 'uploads/tertiaryunitpictures/cropped/'.$tertiary_unit->PicturePath;
 
-    $sortByObjective = DB::table('unit_objectives')
-                        ->join('unit_measures', 'unit_objectives.UnitObjectiveID', '=', 'unit_measures.UnitObjectiveID')
-                        ->where('unit_objectives.UnitID', '=', $unit->UnitID)
-                        ->orderBy('unit_objectives.UnitObjectiveName', 'asc')
+    $sortByObjective = DB::table('tertiary_unit_objectives')
+                        ->join('tertiary_unit_measures', 'tertiary_unit_objectives.TertiaryUnitObjectiveID', '=', 'tertiary_unit_measures.TertiaryUnitObjectiveID')
+                        ->where('tertiary_unit_objectives.TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)
+                        ->orderBy('tertiary_unit_objectives.TertiaryUnitObjectiveName', 'asc')
                         ->get();//dd($sortByObjective);
     $checkAccomplishment = 0;
     foreach($sortByObjective as $measure)
     {
-        $accomplishments = UnitTarget::with('unit_measure')
-                                    ->with('unit_measure.unit_objective')
-                                    ->with('unit_owner')
-                                    ->with('unit_funding')
-                                    ->with('unit_initiative')
-                                    ->with('unit_accomplishment')
-                                    ->with('user_unit')
-                                    ->with('user_unit.rank')
+        $accomplishments = TertiaryUnitTarget::with('tertiary_unit_measure')
+                                    ->with('tertiary_unit_measure.tertiary_unit_objective')
+                                    ->with('tertiary_unit_owner')
+                                    ->with('tertiary_unit_funding')
+                                    ->with('tertiary_unit_initiative')
+                                    ->with('tertiary_unit_accomplishment')
+                                    ->with('user_tertiary_unit')
+                                    ->with('user_tertiary_unit.rank')
                                     ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                    ->where('UnitID', '=', $unit->UnitID)
-                                    ->where('UnitMeasureID', '=', $measure->UnitMeasureID)
+                                    ->where('TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)
+                                    ->where('TertiaryUnitMeasureID', '=', $measure->TertiaryUnitMeasureID)
                                     ->get();
         foreach ($accomplishments as $accomplishment)
         {
@@ -118,17 +114,17 @@ use App\UnitFunding;
 
 <body>
     <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
-    <img class="unitlogo" src="{{URL::asset($unitlogoPath)}}" style="height: 120px;width: 120px;">
+    <img class="tertiary_unitlogo" src="{{URL::asset($tertiary_unitlogoPath)}}" style="height: 120px;width: 120px;">
     <p style="text-align: center;">
         <normal style="font-size: 15px">Republic of the Philippines</normal>
         <br>
         <strong>NATIONAL POLICE COMMISSION<br>PHILIPPINE NATIONAL POLICE</strong>
         <br>
-        <normal style="font-size: 15px">{{ $unit->UnitName }}</normal>
+        <normal style="font-size: 15px">{{ $tertiary_unit->TertiaryUnitName }}</normal>
         <br>
         <normal style="font-size: 10px">usc.pulis.net</normal>
     </p>
-    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $unit->UnitAbbreviation }} KPI for Q{{ $selectedQuarter }} {{ $selectedYear }}</p>
+    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $tertiary_unit->TertiaryUnitAbbreviation }} KPI for Q{{ $selectedQuarter }} {{ $selectedYear }}</p>
     <table border="1">
         @if(count($accomplishments) != 0)
             <thead style="font-weight: bold;font-family: arial,helvetica">
@@ -180,17 +176,17 @@ use App\UnitFunding;
         @endif
             @foreach($sortByObjective as $measure)
             <?php
-                $accomplishments = UnitTarget::with('unit_measure')
-                                                ->with('unit_measure.unit_objective')
-                                                ->with('unit_owner')
-                                                ->with('unit_funding')
-                                                ->with('unit_initiative')
-                                                ->with('unit_accomplishment')
-                                                ->with('user_unit')
-                                                ->with('user_unit.rank')
+                $accomplishments = TertiaryUnitTarget::with('tertiary_unit_measure')
+                                                ->with('tertiary_unit_measure.tertiary_unit_objective')
+                                                ->with('tertiary_unit_owner')
+                                                ->with('tertiary_unit_funding')
+                                                ->with('tertiary_unit_initiative')
+                                                ->with('tertiary_unit_accomplishment')
+                                                ->with('user_tertiary_unit')
+                                                ->with('user_tertiary_unit.rank')
                                                 ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                                ->where('UnitID', '=', $unit->UnitID)
-                                                ->where('UnitMeasureID', '=', $measure->UnitMeasureID)
+                                                ->where('TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)
+                                                ->where('TertiaryUnitMeasureID', '=', $measure->TertiaryUnitMeasureID)
                                                 ->get();
                 foreach ($accomplishments as $accomplishment)
                 {
@@ -204,13 +200,13 @@ use App\UnitFunding;
                 @foreach($accomplishments as $accomplishment)
                     <tr style="font-family: arial;">
                         <td style="vertical-align: top;text-align: left;">
-                            {{ $accomplishment->unit_measure->UnitMeasureName }}
-                            @if($accomplishment->unit_measure->StaffMeasureID > 0)
+                            {{ $accomplishment->tertiary_unit_measure->TertiaryUnitMeasureName }}
+                            @if($accomplishment->tertiary_unit_measure->StaffMeasureID > 0)
                                 <br>
-                                <span class="label label-primary">Contributory to {{ $user->unit->staff->StaffAbbreviation }}</span>
+                                <span class="label label-primary">Contributory to {{ $user->tertiary_unit->staff->StaffAbbreviation }}</span>
                             @endif
                         </td>
-                        @if($accomplishment->unit_measure->UnitMeasureType == 'LG')
+                        @if($accomplishment->tertiary_unit_measure->TertiaryUnitMeasureType == 'LG')
                             <td style="background-color: #5cb85c;"></td>
                             <td></td>
                         @else
@@ -218,7 +214,7 @@ use App\UnitFunding;
                             <td style="background-color: #5cb85c;"></td>
                         @endif
                         <td style="vertical-align: top;text-align: left;">
-                            {{ $accomplishment->unit_measure->UnitMeasureFormula }}
+                            {{ $accomplishment->tertiary_unit_measure->TertiaryUnitMeasureFormula }}
                         </td>
                         @if($selectedQuarter == '1')
                             {{-- JANUARY --}}
@@ -226,16 +222,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->JanuaryTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->JanuaryAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->JanuaryAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->JanuaryTarget-$accomplishment->unit_accomplishment->JanuaryAccomplishment, 2) }}
+                                {{ round($accomplishment->JanuaryTarget-$accomplishment->tertiary_unit_accomplishment->JanuaryAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->JanuaryAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->JanuaryAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->JanuaryTarget;
-                                    $JanuaryPerformance = round(($accomplishment->unit_accomplishment->JanuaryAccomplishment / $accomplishment->JanuaryTarget) * 100, 2);
+                                    $JanuaryPerformance = round(($accomplishment->tertiary_unit_accomplishment->JanuaryAccomplishment / $accomplishment->JanuaryTarget) * 100, 2);
                                 ?>
                                 {{ round($JanuaryPerformance, 2) }}%
                             </td>
@@ -244,16 +240,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->FebruaryTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->FebruaryAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->FebruaryAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->FebruaryTarget-$accomplishment->unit_accomplishment->FebruaryAccomplishment, 2) }}
+                                {{ round($accomplishment->FebruaryTarget-$accomplishment->tertiary_unit_accomplishment->FebruaryAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->FebruaryAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->FebruaryAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->FebruaryTarget;
-                                    $FebruaryPerformance = round(($accomplishment->unit_accomplishment->FebruaryAccomplishment / $accomplishment->FebruaryTarget) * 100, 2);
+                                    $FebruaryPerformance = round(($accomplishment->tertiary_unit_accomplishment->FebruaryAccomplishment / $accomplishment->FebruaryTarget) * 100, 2);
                                 ?>
                                 {{ round($FebruaryPerformance, 2) }}%
                             </td>
@@ -262,16 +258,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->MarchTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->MarchAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->MarchAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->MarchTarget-$accomplishment->unit_accomplishment->MarchAccomplishment, 2) }}
+                                {{ round($accomplishment->MarchTarget-$accomplishment->tertiary_unit_accomplishment->MarchAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->MarchAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->MarchAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->MarchTarget;
-                                    $MarchPerformance = round(($accomplishment->unit_accomplishment->MarchAccomplishment / $accomplishment->MarchTarget) * 100, 2);
+                                    $MarchPerformance = round(($accomplishment->tertiary_unit_accomplishment->MarchAccomplishment / $accomplishment->MarchTarget) * 100, 2);
                                 ?>
                                 {{ round($MarchPerformance, 2) }}%
                             </td>
@@ -282,16 +278,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->AprilTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->AprilAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->AprilAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->AprilTarget-$accomplishment->unit_accomplishment->AprilAccomplishment, 2) }}
+                                {{ round($accomplishment->AprilTarget-$accomplishment->tertiary_unit_accomplishment->AprilAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->AprilAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->AprilAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->AprilTarget;
-                                    $AprilPerformance = round(($accomplishment->unit_accomplishment->AprilAccomplishment / $accomplishment->AprilTarget) * 100, 2);
+                                    $AprilPerformance = round(($accomplishment->tertiary_unit_accomplishment->AprilAccomplishment / $accomplishment->AprilTarget) * 100, 2);
                                 ?>
                                 {{ round($AprilPerformance, 2) }}%
                             </td>
@@ -300,16 +296,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->MayTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->MayAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->MayAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->MayTarget-$accomplishment->unit_accomplishment->MayAccomplishment, 2) }}
+                                {{ round($accomplishment->MayTarget-$accomplishment->tertiary_unit_accomplishment->MayAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->MayAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->MayAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->MayTarget;
-                                    $MayPerformance = round(($accomplishment->unit_accomplishment->MayAccomplishment / $accomplishment->MayTarget) * 100, 2);
+                                    $MayPerformance = round(($accomplishment->tertiary_unit_accomplishment->MayAccomplishment / $accomplishment->MayTarget) * 100, 2);
                                 ?>
                                 {{ round($MayPerformance, 2) }}%
                             </td>
@@ -318,16 +314,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->JuneTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->JuneAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->JuneAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->JuneTarget-$accomplishment->unit_accomplishment->JuneAccomplishment, 2) }}
+                                {{ round($accomplishment->JuneTarget-$accomplishment->tertiary_unit_accomplishment->JuneAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->JuneAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->JuneAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->JuneTarget;
-                                    $JunePerformance = round(($accomplishment->unit_accomplishment->JuneAccomplishment / $accomplishment->JuneTarget) * 100, 2);
+                                    $JunePerformance = round(($accomplishment->tertiary_unit_accomplishment->JuneAccomplishment / $accomplishment->JuneTarget) * 100, 2);
                                 ?>
                                 {{ round($JunePerformance, 2) }}%
                             </td>
@@ -338,16 +334,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->JulyTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->JulyAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->JulyAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->JulyTarget-$accomplishment->unit_accomplishment->JulyAccomplishment, 2) }}
+                                {{ round($accomplishment->JulyTarget-$accomplishment->tertiary_unit_accomplishment->JulyAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->JulyAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->JulyAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->JulyTarget;
-                                    $JulyPerformance = round(($accomplishment->unit_accomplishment->JulyAccomplishment / $accomplishment->JulyTarget) * 100, 2);
+                                    $JulyPerformance = round(($accomplishment->tertiary_unit_accomplishment->JulyAccomplishment / $accomplishment->JulyTarget) * 100, 2);
                                 ?>
                                 {{ round($JulyPerformance, 2) }}%
                             </td>
@@ -356,16 +352,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->AugustTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->AugustAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->AugustAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->AugustTarget-$accomplishment->unit_accomplishment->AugustAccomplishment, 2) }}
+                                {{ round($accomplishment->AugustTarget-$accomplishment->tertiary_unit_accomplishment->AugustAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->AugustAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->AugustAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->AugustTarget;
-                                    $AugustPerformance = round(($accomplishment->unit_accomplishment->AugustAccomplishment / $accomplishment->AugustTarget) * 100, 2);
+                                    $AugustPerformance = round(($accomplishment->tertiary_unit_accomplishment->AugustAccomplishment / $accomplishment->AugustTarget) * 100, 2);
                                 ?>
                                 {{ round($AugustPerformance, 2) }}%
                             </td>
@@ -374,16 +370,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->SeptemberTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->SeptemberAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->SeptemberAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->SeptemberTarget-$accomplishment->unit_accomplishment->SeptemberAccomplishment, 2) }}
+                                {{ round($accomplishment->SeptemberTarget-$accomplishment->tertiary_unit_accomplishment->SeptemberAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->SeptemberAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->SeptemberAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->SeptemberTarget;
-                                    $SeptemberPerformance = round(($accomplishment->unit_accomplishment->SeptemberAccomplishment / $accomplishment->SeptemberTarget) * 100, 2);
+                                    $SeptemberPerformance = round(($accomplishment->tertiary_unit_accomplishment->SeptemberAccomplishment / $accomplishment->SeptemberTarget) * 100, 2);
                                 ?>
                                 {{ round($SeptemberPerformance, 2) }}%
                             </td>
@@ -394,16 +390,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->OctoberTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->OctoberAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->OctoberAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->OctoberTarget-$accomplishment->unit_accomplishment->OctoberAccomplishment, 2) }}
+                                {{ round($accomplishment->OctoberTarget-$accomplishment->tertiary_unit_accomplishment->OctoberAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->OctoberAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->OctoberAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->OctoberTarget;
-                                    $OctoberPerformance = round(($accomplishment->unit_accomplishment->OctoberAccomplishment / $accomplishment->OctoberTarget) * 100, 2);
+                                    $OctoberPerformance = round(($accomplishment->tertiary_unit_accomplishment->OctoberAccomplishment / $accomplishment->OctoberTarget) * 100, 2);
                                 ?>
                                 {{ round($OctoberPerformance, 2) }}%
                             </td>
@@ -412,16 +408,16 @@ use App\UnitFunding;
                                 {{ round($accomplishment->NovemberTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->NovemberAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->NovemberAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->NovemberTarget-$accomplishment->unit_accomplishment->NovemberAccomplishment, 2) }}
+                                {{ round($accomplishment->NovemberTarget-$accomplishment->tertiary_unit_accomplishment->NovemberAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->NovemberAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->NovemberAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->NovemberTarget;
-                                    $NovemberPerformance = round(($accomplishment->unit_accomplishment->NovemberAccomplishment / $accomplishment->NovemberTarget) * 100, 2);
+                                    $NovemberPerformance = round(($accomplishment->tertiary_unit_accomplishment->NovemberAccomplishment / $accomplishment->NovemberTarget) * 100, 2);
                                 ?>
                                 {{ round($NovemberPerformance, 2) }}%
                             </td>
@@ -430,21 +426,21 @@ use App\UnitFunding;
                                 {{ round($accomplishment->DecemberTarget, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->unit_accomplishment->DecemberAccomplishment, 2) }}
+                                {{ round($accomplishment->tertiary_unit_accomplishment->DecemberAccomplishment, 2) }}
                             </td>
                             <td>
-                                {{ round($accomplishment->DecemberTarget-$accomplishment->unit_accomplishment->DecemberAccomplishment, 2) }}
+                                {{ round($accomplishment->DecemberTarget-$accomplishment->tertiary_unit_accomplishment->DecemberAccomplishment, 2) }}
                             </td>
                             <td>
                                 <?php
-                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->unit_accomplishment->DecemberAccomplishment;
+                                    $overallAccomplishment = $overallAccomplishment + $accomplishment->tertiary_unit_accomplishment->DecemberAccomplishment;
                                     $overallTarget = $overallTarget + $accomplishment->DecemberTarget;
-                                    $DecemberPerformance = round(($accomplishment->unit_accomplishment->DecemberAccomplishment / $accomplishment->DecemberTarget) * 100, 2);
+                                    $DecemberPerformance = round(($accomplishment->tertiary_unit_accomplishment->DecemberAccomplishment / $accomplishment->DecemberTarget) * 100, 2);
                                 ?>
                                 {{ round($DecemberPerformance, 2) }}%
                             </td>
                         @endif
-                        @if($accomplishment->unit_measure->UnitMeasureFormula == 'Summation')
+                        @if($accomplishment->tertiary_unit_measure->TertiaryUnitMeasureFormula == 'Summation')
                             <?php
                                 $performance = round(($overallAccomplishment/$overallTarget)* 100, 2);
                                 $Color = ""; 
