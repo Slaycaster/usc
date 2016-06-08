@@ -405,7 +405,7 @@ class ReportsController extends Controller
   	    return $pdf->stream();
 	}
 
-	public function currentYearSecondaryUnitScorecard($id)
+	public function currentYearSearchableSecondaryUnitScorecard($id)
 	{	
 		$year = date("Y");
 		Session::put('secondary_unit_id', $id);
