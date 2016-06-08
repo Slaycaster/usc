@@ -63,7 +63,10 @@ class APIStaffMeasuresController extends Controller {
 
 	public function chief_measures()
 	{
-		return ChiefMeasure::all();
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)->first();
+		$hascontributory = StaffMeasure::where('StaffID', '=',$staff_user->StaffID)->select('ChiefMeasureID')->lists('ChiefMeasureID');
+		return ChiefMeasure::whereNotIn('ChiefMeasureID',$hascontributory)->get();
 	}
 
 	public function staff_objectives()
@@ -117,12 +120,12 @@ class APIStaffMeasuresController extends Controller {
 		//$action = 'Added a measure: "' . Request::input('UnitMeasureName') . '"';
 
 		//DB::insert('insert into audit_trails (Action, UserUnitID, UnitID) values (?,?,?)', array($action, $id, $unit));
-		$mes = Request::input('ChiefMeasureID');
-		$mescontribute = StaffMeasure::where('ChiefMeasureID','=',$mes)->where('StaffID','=',$staff_user->StaffID)->first();
+		// $mes = Request::input('ChiefMeasureID');
+		// $mescontribute = StaffMeasure::where('ChiefMeasureID','=',$mes)->where('StaffID','=',$staff_user->StaffID)->first();
 
 
-		if($mescontribute == null )
-		{
+		// if($mescontribute == null )
+		// {
 
 			$staff_measure = new StaffMeasure(Request::all());
 			$staff_measure->save();
@@ -139,30 +142,30 @@ class APIStaffMeasuresController extends Controller {
 			$staff_target->save();
 
 			return $staff_measure;
-		}
-		else if($mes == 0)
-		{
-			$staff_measure = new StaffMeasure(Request::all());
-			$staff_measure->save();
+		// }
+		// else if($mes == 0)
+		// {
+		// 	$staff_measure = new StaffMeasure(Request::all());
+		// 	$staff_measure->save();
 
-			//Get the max id after saving.
-			$staff_measureid = DB::table('staff_measures')->max('StaffMeasureID');
+		// 	//Get the max id after saving.
+		// 	$staff_measureid = DB::table('staff_measures')->max('StaffMeasureID');
 
-			//Use Eloquent instead! == Inserting into Staff Targets == You forgot target period
-			$staff_target = new StaffTarget;
-			$staff_target->TargetPeriod = "Not Set";
-			$staff_target->StaffMeasureID = $staff_measureid;
-			$staff_target->StaffID = $staff;
-			$staff_target->UserStaffID = $staff_id;
-			$staff_target->save();
+		// 	//Use Eloquent instead! == Inserting into Staff Targets == You forgot target period
+		// 	$staff_target = new StaffTarget;
+		// 	$staff_target->TargetPeriod = "Not Set";
+		// 	$staff_target->StaffMeasureID = $staff_measureid;
+		// 	$staff_target->StaffID = $staff;
+		// 	$staff_target->UserStaffID = $staff_id;
+		// 	$staff_target->save();
 
-			return $staff_measure;
-		}
-		else
-		{
-			$true = "true";
-			return $true; 
-		}
+		// 	return $staff_measure;
+		// // }
+		// // else
+		// // {
+		// // 	$true = "true";
+		// // 	return $true; 
+		// // }
 
 
 	}

@@ -17,6 +17,26 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
 		});	
 	};
 
+    $scope.zero = function()
+    {
+        if(document.getElementById("id_january_target").value == "0"  || document.getElementById("id_february_target").value == "0"
+            || document.getElementById("id_march_target").value == "0" || document.getElementById("id_april_target").value == "0"
+            || document.getElementById("id_may_target").value == "0" || document.getElementById("id_june_target").value == "0"
+            || document.getElementById("id_july_target").value == "0" || document.getElementById("id_august_target").value == "0"
+            || document.getElementById("id_september_target").value == "0" || document.getElementById("id_october_target").value == "0"
+            || document.getElementById("id_november_target").value == "0" || document.getElementById("id_december_target").value == "0"
+            || document.getElementById("id_firstquarter_target").value == "0" || document.getElementById("id_secondquarter_target").value == "0"
+            || document.getElementById("id_thirdquarter_target").value == "0" || document.getElementById("id_fourthquarter_target").value == "0")
+        {
+            $scope.istrue = "true";
+                
+        }
+        else
+        {
+            $scope.istrue = "false";
+        }
+    }
+
 	$scope.sort = function(keyname)
     {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -94,7 +114,7 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
     $scope.toggle = function(modalstate, id, name) 
     {
         $scope.modalstate = modalstate;
-
+        $scope.istrue = "false";
         switch (modalstate) {
             case 'show':
                 $scope.this_title = "ADD TARGETS";
