@@ -1,5 +1,5 @@
 <?php
-	
+    
 //Models
 use App\TertiaryUnitTarget;
 use App\TertiaryUnitMeasure;
@@ -11,22 +11,21 @@ use App\TertiaryUnitOwner;
 use App\TertiaryUnitInitiative;
 use App\TertiaryUnitFunding;
 
-	$selectedYear = Session::get('year', 'default');	
+    $selectedYear = Session::get('year', 'default');    
 
- 	$tertiary_id = Session::get('tertiary_user_id', 'default');
-	$user = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_id)
-							->first();
-	$tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_id)->select('TertiaryUnitID')->first(); //Get the Unit of the unit		
-	
-	$tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $user->TertiaryUnitID)->first();
-	$tertiary_unit_objectives = TertiaryUnitObjective::all();
-	$tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
+    $tertiary_id = Session::get('tertiary_unit_id', 'default');
+    
+    $tertiary_unit = UserTertiaryUnit::where('UserTertiaryUnitID', '=', $tertiary_id)->select('TertiaryUnitID')->first(); //Get the Unit of the unit        
+    
+    $tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $tertiary_id)->first();
+    $tertiary_unit_objectives = TertiaryUnitObjective::all();
+    $tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
 
-    $user = UserTertiaryUnit::where('UserTertiaryUnitID', $tertiary_id)
+    $user = TertiaryUnit::where('TertiaryUnitID', $tertiary_id)
                     ->first();
-	
-	$logoPath = 'img/pnp_logo2.png';
-	$tertiary_unitlogoPath = 'uploads/tertiaryunitpictures/cropped/'.$tertiary_unit->PicturePath;
+    
+    $logoPath = 'img/pnp_logo2.png';
+    $tertiary_unitlogoPath = 'uploads/tertiaryunitpictures/cropped/'.$tertiary_unit->PicturePath;
     $tempObjective = '';
 
 
@@ -69,27 +68,27 @@ use App\TertiaryUnitFunding;
     <style type="text/css">
     table
     {
-    	font-size: 10;
-    	text-align: center;
-    	width: 875;
-    	border-collapse: collapse;
-    	page-break-inside: auto;
+        font-size: 10;
+        text-align: center;
+        width: 875;
+        border-collapse: collapse;
+        page-break-inside: auto;
     }
     tr
     { 
-    	page-break-inside: avoid;
-    	page-break-after: auto; 
+        page-break-inside: avoid;
+        page-break-after: auto; 
     }
     p, strong
     {
-    	font-family: helvetica;
+        font-family: helvetica;
     }
     img 
     {
-    	position: absolute;
-    	left: 70px;
-    	top: 5px;
-	}
+        position: absolute;
+        left: 70px;
+        top: 5px;
+    }
     .label 
     {
         display: inline;
@@ -107,28 +106,28 @@ use App\TertiaryUnitFunding;
     {
         background-color: #d9534f;
     }
-	.unitlogo
-	{
-    	position: absolute;
-    	left: 960px;
-    	top: 16px;
-	}
+    .unitlogo
+    {
+        position: absolute;
+        left: 960px;
+        top: 16px;
+    }
     </style>
 </head>
 
 <body>
-	<img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
-	<img class="unitlogo" src="{{URL::asset($tertiary_unitlogoPath)}}" style="height: 120px;width: 120px;">
-	<p style="text-align: center;">
-		<normal style="font-size: 15px">Republic of the Philippines</normal>
-		<br>
-		<strong>NATIONAL POLICE COMMISSION<br>PHILIPPINE NATIONAL POLICE</strong>
-		<br>
-		<normal style="font-size: 15px">{{ $tertiary_unit->TertiaryUnitName }}</normal>
-		<br>
-		<normal style="font-size: 10px">usc.pulis.net</normal>
-	</p>
-	<p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $tertiary_unit->TertiaryUnitAbbreviation }} Scorecard for {{ $selectedYear }}</p>
+    <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
+    <img class="unitlogo" src="{{URL::asset($tertiary_unitlogoPath)}}" style="height: 120px;width: 120px;">
+    <p style="text-align: center;">
+        <normal style="font-size: 15px">Republic of the Philippines</normal>
+        <br>
+        <strong>NATIONAL POLICE COMMISSION<br>PHILIPPINE NATIONAL POLICE</strong>
+        <br>
+        <normal style="font-size: 15px">{{ $tertiary_unit->TertiaryUnitName }}</normal>
+        <br>
+        <normal style="font-size: 10px">usc.pulis.net</normal>
+    </p>
+    <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $tertiary_unit->TertiaryUnitAbbreviation }} Scorecard for {{ $selectedYear }}</p>
     <table border="1">
         @if($checkAccomplishment != 0)
             <thead style="font-weight: bold;font-family: arial,helvetica">
@@ -154,12 +153,12 @@ use App\TertiaryUnitFunding;
                     <td width="30">Aug</td>
                     <td width="30">Sep</td>
                     <td width="30">Oct</td>
-        			<td width="30">Nov</td>
-        			<td width="30">Dec</td>
+                    <td width="30">Nov</td>
+                    <td width="30">Dec</td>
                     <td width="32">Estimate</td>
                     <td width="28">Actual</td>
                     <td width="32">Variance</td>
-                </tr>	
+                </tr>   
             </thead>
         @endif
         @foreach($sortByObjective as $measure)
@@ -183,8 +182,8 @@ use App\TertiaryUnitFunding;
                 //dd($accomplishments);
             ?>
             <tbody>
-            	@foreach($accomplishments as $accomplishment)
-            	   <tr style="font-family: arial;">
+                @foreach($accomplishments as $accomplishment)
+                   <tr style="font-family: arial;">
                         @if($tempObjective != $accomplishment->tertiary_unit_measure->tertiary_unit_objective->TertiaryUnitObjectiveName)
                             <?php
                                 $tempObjective = $accomplishment->tertiary_unit_measure->tertiary_unit_objective->TertiaryUnitObjectiveName;
@@ -195,13 +194,13 @@ use App\TertiaryUnitFunding;
                         @else
                             <td></td>
                         @endif
-            			<td style="vertical-align: top;text-align: left;">
-            				{{ $accomplishment->tertiary_unit_measure->TertiaryUnitMeasureName }}
+                        <td style="vertical-align: top;text-align: left;">
+                            {{ $accomplishment->tertiary_unit_measure->TertiaryUnitMeasureName }}
                             @if($accomplishment->tertiary_unit_measure->SecondaryUnitMeasureID > 0)
                                 <br>
                                 <span class="label label-primary">Contributory to {{ $user->tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}</span>
                             @endif
-            			</td>
+                        </td>
                         @if($accomplishment->tertiary_unit_measure->TertiaryUnitMeasureType == 'LG')
                             <td style="background-color: #5cb85c;"></td>
                             <td></td>
@@ -209,83 +208,83 @@ use App\TertiaryUnitFunding;
                             <td></td>
                             <td style="background-color: #5cb85c;"></td>
                         @endif
-            			<td style="vertical-align: top;text-align: left;">
-            				{{ $accomplishment->tertiary_unit_owner->TertiaryUnitOwnerContent }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->JanuaryAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->FebruaryTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->FebruaryAccomplishment, 2) }}
-        				</td>
-            			<td>
-            				{{ round($accomplishment->MarchTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->MarchAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->AprilTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->AprilAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->MayTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->MayAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->JuneTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->JuneAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->JulyTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->JulyAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->AugustTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->AugustAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->SeptemberTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->SeptemberAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->OctoberTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->OctoberAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->NovemberTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->NovemberAccomplishment, 2) }}
-            			</td>
-            			<td>
-            				{{ round($accomplishment->DecemberTarget, 2) }}<b>/ </b>
-            				<br>
-            				{{ round($accomplishment->tertiary_unit_accomplishment->DecemberAccomplishment, 2) }}
-            			</td>
-            			<td style="vertical-align: top;text-align: left;">
-            				{{ $accomplishment->tertiary_unit_initiative->TertiaryUnitInitiativeContent }}
-            			</td>
-            			<td style="text-align: right;">
-            				{{ round($accomplishment->tertiary_unit_funding->TertiaryUnitFundingEstimate, 2) }}
-            			</td>
-            			<td style="text-align: right;">
-            				{{ round($accomplishment->tertiary_unit_funding->TertiaryUnitFundingActual, 2) }}
-            			</td>
-            			<td style="text-align: right;">
-            				{{ round(($accomplishment->tertiary_unit_funding->TertiaryUnitFundingEstimate - $accomplishment->tertiary_unit_funding->TertiaryUnitFundingActual), 2) }}
-            			</td>
-            		</tr>
-            	@endforeach
+                        <td style="vertical-align: top;text-align: left;">
+                            {{ $accomplishment->tertiary_unit_owner->TertiaryUnitOwnerContent }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->JanuaryAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->FebruaryTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->FebruaryAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->MarchTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->MarchAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->AprilTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->AprilAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->MayTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->MayAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->JuneTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->JuneAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->JulyTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->JulyAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->AugustTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->AugustAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->SeptemberTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->SeptemberAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->OctoberTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->OctoberAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->NovemberTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->NovemberAccomplishment, 2) }}
+                        </td>
+                        <td>
+                            {{ round($accomplishment->DecemberTarget, 2) }}<b>/ </b>
+                            <br>
+                            {{ round($accomplishment->tertiary_unit_accomplishment->DecemberAccomplishment, 2) }}
+                        </td>
+                        <td style="vertical-align: top;text-align: left;">
+                            {{ $accomplishment->tertiary_unit_initiative->TertiaryUnitInitiativeContent }}
+                        </td>
+                        <td style="text-align: right;">
+                            {{ round($accomplishment->tertiary_unit_funding->TertiaryUnitFundingEstimate, 2) }}
+                        </td>
+                        <td style="text-align: right;">
+                            {{ round($accomplishment->tertiary_unit_funding->TertiaryUnitFundingActual, 2) }}
+                        </td>
+                        <td style="text-align: right;">
+                            {{ round(($accomplishment->tertiary_unit_funding->TertiaryUnitFundingEstimate - $accomplishment->tertiary_unit_funding->TertiaryUnitFundingActual), 2) }}
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         @endforeach
     </table>

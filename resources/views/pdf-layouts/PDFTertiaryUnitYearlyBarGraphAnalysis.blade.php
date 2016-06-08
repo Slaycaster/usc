@@ -78,7 +78,7 @@ use App\TertiaryUnitFunding;
 
 <body>
     <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
-    <img class="tertiary_unitlogo" src="{{URL::asset($tertiary_unitlogoPath)}}" style="height: 120px;width: 120px;">
+    <img class="unitlogo" src="{{URL::asset($tertiary_unitlogoPath)}}" style="height: 120px;width: 120px;">
     <p style="text-align: center;">
         <normal style="font-size: 15px">Republic of the Philippines</normal>
         <br>
