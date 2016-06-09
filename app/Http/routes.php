@@ -146,7 +146,6 @@ Route::get('chief/analysis_reports','ReportsAnalysisController@chiefIndex');
 Route::get('secondary_unit/objectives', 'APISecondaryUnitObjectivesController@showIndex');
 Route::get('secondary_unit/measures', 'APISecondaryUnitMeasuresController@showIndex');
 Route::get('secondary_unit/targets', 'APISecondaryUnitTargetsController@showIndex');
-
 Route::get('secondary_unit/scorecard', 'SecondaryUnitLoginController@scorecard');
 
 Route::get('secondary_unit/targets/{id}','APISecondaryUnitTargetsController@edit');
@@ -156,7 +155,7 @@ Route::get('secondary_unit/analysis_reports','ReportsAnalysisController@secondar
 Route::get('secondary_unit/changesecondaryunitpicture', 'SecondaryUnitLoginController@changesecondaryunitpicture');
 Route::get('secondary_unit/changeuserpicture', 'SecondaryUnitLoginController@changeuserpicture');
 Route::get('secondary_unit/changepassword','SecondaryUnitLoginController@changepass');
-
+Route::get('secondary_unit/audit_trails', 'APISecondaryUnitAuditTrailsController@showIndex');
 
 
 
@@ -234,6 +233,7 @@ Route::resource('api/unit_targets','APIUnitTargetsController');
 Route::resource('api/secondary_targets','APISecondaryUnitTargetsController');
 
 Route::resource('api/tertiary_unit_audit_trails','APITertiaryUnitAuditTrailsController');
+Route::resource('api/secondary_unit_audit_trails','APISecondaryUnitAuditTrailsController');
 
 
 Route::post('api/secondary_targets/update/{id}','APISecondaryUnitTargetsController@updatetarget');

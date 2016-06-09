@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
             <img class="img-responsive dashboard-custom-pictureabb" 
-                src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
+                src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             <p>
                 <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Secondary Unit Dashboard</b>
             </p>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -224,7 +224,7 @@
 
                 <div class="list-group" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                 
-                    <a href="{{ url('secondary/audit_trails') }}" class="list-group-item" style="font-size:12px;">
+                    <a href="{{ url('secondary_unit/audit_trails') }}" class="list-group-item" style="font-size:12px;">
                     <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserUnitPicturePath%>" height="30px;">
                     </span>  
                             <b><% audit_trail_dash.user_unit.rank.RankCode%> 
@@ -242,7 +242,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- /.list-group -->
-                    <a href="{{ url('secondary/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('secondary_unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>

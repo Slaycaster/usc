@@ -1,8 +1,8 @@
-@extends('layout-tertiary-unit')
+@extends('layout-secondary')
 
 @section('content')
     
-    <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
+   <!-- Load Javascript Libraries (AngularJS, JQuery, Bootstrap) -->
     <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
 
     <!-- Angular Utils Pagination -->
@@ -15,22 +15,22 @@
     <script src="{{ asset('app/timeago.js') }}"></script>
     
     <!-- Audit Trail Scripts -->
-    <script src="{{ asset('app/controllers/tertiary_unit_audit_trails.js') }}"></script>
+    <script src="{{ asset('app/controllers/secondary_unit_audit_trails.js') }}"></script>
 
     <br />
-    <div ng-app="unitScorecardApp" ng-controller="APITertiaryUnitAuditTrailsController">
+    <div ng-app="unitScorecardApp" ng-controller="APISecondaryUnitAuditTrailsController">
         <div class="wrap">
             <div class="row">           
                 <div class="panel panel-warning audit-custom-panel">
                     <div class="col-lg-12 dashboard-custom-activitylogname">
                         <div  class="col-lg-8 col-md-offset-2">
-                            <i class="fa fa-bell fa-2x"></i> <h2><b> {{ $chief_user->tertiary_unit->TertiaryUnitName }} Activity Log</b></h2>
+                            <i class="fa fa-bell fa-2x"></i> <h2><b> {{ $user->secondary_unit->SecondaryUnitName }} Activity Log</b></h2>
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                         </div>
                     </div>
 
                      <div class="col-lg-12 dashboard-custom-activitylogabb">
-                        <i class="fa fa-bell fa-2x"></i> <h2><b>{{ $chief_user->tertiary_unit->TertiaryUnitAbbreviation }} Activity Log</b></h2>
+                        <i class="fa fa-bell fa-2x"></i> <h2><b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Activity Log</b></h2>
                         <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                     </div>
                     <div class="panel-body">
@@ -53,9 +53,9 @@
                         <!--/.div class row-->
                         <div class="row">
                             <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i> 
-                            Recent activities from {{ $chief_user->tertiary_unit->TertiaryUnitName }} </div>
+                            Recent activities from {{ $user->secondary_unit->SecondaryUnitName }} </div>
                             <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i> 
-                            Recent activities from {{ $chief_user->tertiary_unit->TertiaryUnitAbbreviation }} </div>
+                            Recent activities from {{ $user->secondary_unit->SecondaryUnitAbbreviation }} </div>
                         </div>
                         <!--./div class row-->
 
@@ -66,18 +66,18 @@
                                         Activity
                                     </td>
                                 </thead>
-                                <tr dir-paginate='audit_trail in tertiary_unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                                <tr dir-paginate='audit_trail in secondary_unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                                     <td class="audit-encoder">
                                      <div class="col-md-5">
                                             <center>
-                                                <img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail.user_tertiary.UserTertiaryUnitPicturePath%>" height="30px;" class="thumbnail">
+                                                <img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail.user_secondary.UserSecondaryUnitPicturePath%>" height="30px;" class="thumbnail">
                                             </center>
                                         </div>
 
                                         <div style="font-size:12px;">
-                                            <% audit_trail.user_tertiary.rank.RankCode %> 
-                                            <% audit_trail.user_tertiary.UserTertiaryUnitFirstName %>
-                                            <% audit_trail.user_tertiary.UserTertiaryUnitLastName %>
+                                            <% audit_trail.user_secondary.rank.RankCode %> 
+                                            <% audit_trail.user_secondary.UserTertiaryUnitFirstName %>
+                                            <% audit_trail.user_secondary.UserTertiaryUnitLastName %>
                                         </div>
                                     </td>
                                     <td class="audit-action">
