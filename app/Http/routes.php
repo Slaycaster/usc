@@ -60,6 +60,7 @@ Route::post('api/unit_confirm_password', 'ChiefConfirmPasswordController@unitCon
 Route::post('api/staff_confirm_password', 'ChiefConfirmPasswordController@staffConfirmPassword');
 Route::post('api/chief_confirm_password', 'ChiefConfirmPasswordController@confirmPassword');
 Route::post('api/secondary_unit_confirm_password', 'ChiefConfirmPasswordController@secondaryUnitConfirmPassword');
+Route::post('api/tertiary_unit_confirm_password', 'ChiefConfirmPasswordController@tertiaryUnitConfirmPassword');
 
 
 /*DASHBOARD*/

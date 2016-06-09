@@ -4,6 +4,7 @@ use App\UserUnit;
 use App\UserStaff;
 use App\UserChief;
 use App\UserSecondaryUnit;
+use App\UserTertiaryUnit;
 
 
 use App\Http\Controllers\Controller;
@@ -112,6 +113,34 @@ class ChiefConfirmPasswordController extends Controller {
 			$credentials = UserSecondaryUnit::where('UserSecondaryUnitIsActive', 1)
 				->where('UserSecondaryUnitID', '=', $secondary_user_id)
 				->where('UserSecondaryUnitPassword', '=', $secondary_unit_password)
+				->first();
+			
+			 if (count($credentials) > 0) 
+			 {
+			 	return "Password Correct";
+			 }
+
+		}
+		return "Password Incorrect";
+	}
+
+
+	public function tertiaryUnitConfirmPassword()
+	{
+		$tertiary_user_id = Session::get('tertiary_user_id', 'default');
+
+		$tertiary_unit_password = Request::input('getPassword');
+
+		$tertiary = UserTertiaryUnit::where('UserTertiaryUnitID','=',$tertiary_user_id)
+			->whereRaw("BINARY `UserTertiaryUnitPassword`= ?",array($tertiary_unit_password))
+			->first();
+
+
+		if($tertiary != null)
+		{	
+			$credentials = UserTertiaryUnit::where('UserTertiaryUnitIsActive', 1)
+				->where('UserTertiaryUnitID', '=', $tertiary_user_id)
+				->where('UserTertiaryUnitPassword', '=', $tertiary_unit_password)
 				->first();
 			
 			 if (count($credentials) > 0) 
