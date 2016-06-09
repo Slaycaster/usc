@@ -169,6 +169,9 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <div ng-if="hascontribute =='true'" class="alert alert-danger">
+                            <i class="fa fa-warning  fa-fw">&nbsp;&nbsp;</i>  A Tertiary Unit Measure was already assigned to the selected Secondary Unit Measure as contributory. Please pick another Secondary Unit Measure (if possible) or edit the said Tertiary Unit Measure.<br />
+                            </div>
                                     <td class="col-md-4 mod">
                                         <label for="secondary_unit_measure" class="control">Contributory to {{ $tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}'s Measure:</label>
                                     </td>

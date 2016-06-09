@@ -70,20 +70,38 @@ class APIUnitMeasuresController extends Controller {
 
 			$unit = Unit::where('UnitID', '=', $user->UnitID)->with('staff')->first();
 
-			$hascontributory = UnitMeasure::where('UnitID', '=', $user->UnitID)->select('StaffMeasureID')->lists('StaffMeasureID');
+			//$hascontributory = UnitMeasure::where('UnitID', '=', $user->UnitID)->select('StaffMeasureID')->lists('StaffMeasureID');
 
-		return StaffMeasure::where('StaffID','=',$unit->StaffID)->whereNotIn('StaffMeasureID',$hascontributory)->get();
+		//return StaffMeasure::where('StaffID','=',$unit->StaffID)->whereNotIn('StaffMeasureID',$hascontributory)->get();
+			return StaffMeasure::where('StaffID','=',$unit->StaffID)->get();
 		
 	}
 
 	public function unit_objectives()
 	{
-		$id = Session::get('unit_user_id', 'default');
-		$user = UserUnit::where('UserUnitID', '=', $id)->first();
 		
+		$id = Session::get('unit_user_id', 'default');
+			$user = UserUnit::where('UserUnitID', $id)
+				->first();
 		return UnitObjective::where('UnitID','=',$user->UnitID)->get();
 	}
 
+	public function ifhascontributory($measureID)
+	{
+			$id = Session::get('unit_user_id', 'default');
+		$user = UserUnit::where('UserUnitID', '=', $id)->first();
+		$mescontribute = UnitMeasure::where('StaffMeasureID','=',$measureID)->where('UnitID','=',$user->UnitID)->first();
+
+		if($mescontribute == null)
+		{
+			return "none";
+		}
+		else
+		{
+			return "true";
+		}
+
+	}
 	public function angularstaffmeasure($measureID)
 	{
 		$staffmeasureformula = StaffMeasure::where('StaffMeasureID','=',$measureID)->first();

@@ -63,10 +63,11 @@ class APIStaffMeasuresController extends Controller {
 
 	public function chief_measures()
 	{
-		$staff_id = Session::get('staff_user_id', 'default');
-		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)->first();
-		$hascontributory = StaffMeasure::where('StaffID', '=',$staff_user->StaffID)->select('ChiefMeasureID')->lists('ChiefMeasureID');
-		return ChiefMeasure::whereNotIn('ChiefMeasureID',$hascontributory)->get();
+		//$staff_id = Session::get('staff_user_id', 'default');
+		//$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)->first();
+		//$hascontributory = StaffMeasure::where('StaffID', '=',$staff_user->StaffID)->select('ChiefMeasureID')->lists('ChiefMeasureID');
+		//return ChiefMeasure::whereNotIn('ChiefMeasureID',$hascontributory)->get();
+		return ChiefMeasure::all();
 	}
 
 	public function staff_objectives()
@@ -77,19 +78,29 @@ class APIStaffMeasuresController extends Controller {
 		return StaffObjective::where('StaffID','=',$staff_user->StaffID)->get();
 	}
 	public function angularchiefmeasure($measureID)
-	{
-		
-		
-		
+	{		
 		$chiefmeasureformula = ChiefMeasure::where('ChiefMeasureID','=',$measureID)->first();
 
-
-					
-
-
-		
-			
 		return $chiefmeasureformula;
+	}
+
+	public function ifhascontributory($measureID)
+	{
+			$staff_id = Session::get('staff_user_id', 'default');
+
+
+		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)->first();
+		$mescontribute = StaffMeasure::where('ChiefMeasureID','=',$measureID)->where('StaffID','=',$staff_user->StaffID)->first();
+
+		if($mescontribute == null)
+		{
+			return "none";
+		}
+		else
+		{
+			return "true";
+		}
+
 	}
 
 
@@ -181,6 +192,17 @@ class APIStaffMeasuresController extends Controller {
 		//
 		$staff_measure= StaffMeasure::find($id);
  		return $staff_measure;
+	}
+
+	public function findmeasure($mesid)
+	{
+		
+
+		$staff_id = Session::get('staff_user_id', 'default');
+		$staff_user = UserStaff::where('UserStaffID', '=', $staff_id)->first();
+		$contributory =  StaffMeasure::where('StaffID', '=',$staff_user->StaffID)->where('ChiefMeasureID','=',$mesid)->select('ChiefMeasureID')->lists('ChiefMeasureID');
+		$mes = ChiefMeasure::where('ChiefMeasureID','=',$contributory)->first();
+		return $mes;
 	}
 
 	/**
