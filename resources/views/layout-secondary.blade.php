@@ -197,7 +197,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondary_unit/changeunitpicture') }}">Change Secondary Unit Picture</a>
+                                    <a href="{{ url('secondary_unit/changesecondaryunitpicture') }}">Change Secondary Unit Picture</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
