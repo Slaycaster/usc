@@ -8,9 +8,6 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
-    <!-- AngularJS Application Scripts -->
-    
-
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 

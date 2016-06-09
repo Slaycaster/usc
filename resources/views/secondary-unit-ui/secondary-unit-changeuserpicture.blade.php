@@ -15,7 +15,7 @@
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
     <br>
-    <div>
+    <div ng-app="unitScorecardApp">
         <form action="{{url('change_picture')}}" method="post" enctype="multipart/form-data">
             <div class="wrap">
                 <div class="row">           
