@@ -30,6 +30,7 @@ Route::get('report/currentUnitScorecard/{id}', 'ReportsController@currentYearChi
 Route::get('report/currentStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
 Route::get('report/currentChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
 Route::get('report/currentSecondaryUnitScorecard/{id}', 'ReportsController@currentYearSearchableSecondaryUnitScorecard');
+Route::get('report/currentTertriaryUnitScorecard/{id}', 'ReportsController@currentYearSearchableTertiaryUnitScorecard');
 
 Route::get('report/quarterlyUnit', 'ReportsController@quarterlyUnit');
 Route::get('report/quarterlyStaff', 'ReportsController@quarterlyStaff');

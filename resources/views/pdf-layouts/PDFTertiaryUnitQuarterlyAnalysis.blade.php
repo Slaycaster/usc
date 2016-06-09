@@ -114,7 +114,7 @@ use App\TertiaryUnitFunding;
 
 <body>
     <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 125px;">
-    <img class="tertiary_unitlogo" src="{{URL::asset($tertiary_unitlogoPath)}}" style="height: 120px;width: 120px;">
+    <img class="unitlogo" src="{{URL::asset($tertiary_unitlogoPath)}}" style="height: 120px;width: 120px;">
     <p style="text-align: center;">
         <normal style="font-size: 15px">Republic of the Philippines</normal>
         <br>
@@ -126,7 +126,7 @@ use App\TertiaryUnitFunding;
     </p>
     <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $tertiary_unit->TertiaryUnitAbbreviation }} KPI for Q{{ $selectedQuarter }} {{ $selectedYear }}</p>
     <table border="1">
-        @if(count($accomplishments) != 0)
+        @if($checkAccomplishment != 0)
             <thead style="font-weight: bold;font-family: arial,helvetica">
                 <tr>
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
@@ -201,9 +201,9 @@ use App\TertiaryUnitFunding;
                     <tr style="font-family: arial;">
                         <td style="vertical-align: top;text-align: left;">
                             {{ $accomplishment->tertiary_unit_measure->TertiaryUnitMeasureName }}
-                            @if($accomplishment->tertiary_unit_measure->StaffMeasureID > 0)
+                            @if($accomplishment->tertiary_unit_measure->SecondaryUnitMeasureID > 0)
                                 <br>
-                                <span class="label label-primary">Contributory to {{ $user->tertiary_unit->staff->StaffAbbreviation }}</span>
+                                <span class="label label-primary">Contributory to {{ $user->tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}</span>
                             @endif
                         </td>
                         @if($accomplishment->tertiary_unit_measure->TertiaryUnitMeasureType == 'LG')
@@ -502,7 +502,7 @@ use App\TertiaryUnitFunding;
             </tbody>
         @endforeach
     </table>
-    @if(count($accomplishments) == 0)
+    @if($checkAccomplishment == 0)
         <p>No Accomplisments found for the year {{ $selectedYear }}</p>
     @endif
 </body>
