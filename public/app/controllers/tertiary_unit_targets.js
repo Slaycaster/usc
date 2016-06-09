@@ -1,5 +1,4 @@
 app.controller('APITertiaryUnitTargetController', function($scope, $http, $interval) {
-
 	$scope.tertiary_unit_targets = [];
 	$scope.loading = true;
     $scope.info = false;
