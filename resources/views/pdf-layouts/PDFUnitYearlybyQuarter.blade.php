@@ -256,7 +256,7 @@ use App\SecondaryUnitAccomplishment;
                                     @foreach($contributor->tertiary_unit_measures as $tertiaryContributory)           
                                         @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
                                             <?php
-                                                $tertiaryFirstQuarterAccomplishment = $tertiaryFirstQuarterAccomplishment + $tertiaryunitContributeAcc->JanuaryAccomplishment;
+                                                $tertiaryFirstQuarterAccomplishment = $tertiaryFirstQuarterAccomplishment + $tertiaryunitContributeAcc->JanuaryAccomplishment + $tertiaryunitContributeAcc->FebruaryAccomplishment + $tertiaryunitContributeAcc->MarchAccomplishment;
                                             ?>
                                         @endforeach
                                     @endforeach
@@ -315,7 +315,7 @@ use App\SecondaryUnitAccomplishment;
                                     @foreach($contributor->tertiary_unit_measures as $tertiaryContributory)           
                                         @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
                                             <?php
-                                                $tertiarySecondQuarterAccomplishment = $tertiarySecondQuarterAccomplishment + $tertiaryunitContributeAcc->AprilAccomplishment;
+                                                $tertiarySecondQuarterAccomplishment = $tertiarySecondQuarterAccomplishment + $tertiaryunitContributeAcc->AprilAccomplishment + $tertiaryunitContributeAcc->MayAccomplishment + $tertiaryunitContributeAcc->JuneAccomplishment;
                                             ?>
                                         @endforeach
                                     @endforeach
@@ -374,7 +374,7 @@ use App\SecondaryUnitAccomplishment;
                                     @foreach($contributor->tertiary_unit_measures as $tertiaryContributory)           
                                         @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
                                             <?php
-                                                $tertiaryThirdQuarterAccomplishment = $tertiaryThirdQuarterAccomplishment + $tertiaryunitContributeAcc->JulyAccomplishment;
+                                                $tertiaryThirdQuarterAccomplishment = $tertiaryThirdQuarterAccomplishment + $tertiaryunitContributeAcc->JulyAccomplishment + $tertiaryunitContributeAcc->AugustAccomplishment + $tertiaryunitContributeAcc->SeptemberAccomplishment;
                                             ?>
                                         @endforeach
                                     @endforeach
@@ -433,7 +433,7 @@ use App\SecondaryUnitAccomplishment;
                                     @foreach($contributor->tertiary_unit_measures as $tertiaryContributory)           
                                         @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
                                             <?php
-                                                $tertiaryFourthQuarterAccomplishment = $tertiaryFourthQuarterAccomplishment + $tertiaryunitContributeAcc->OctoberAccomplishment;
+                                                $tertiaryFourthQuarterAccomplishment = $tertiaryFourthQuarterAccomplishment + $tertiaryunitContributeAcc->OctoberAccomplishment + $tertiaryunitContributeAcc->NovemberAccomplishment + $tertiaryunitContributeAcc->DecemberAccomplishment;
                                             ?>
                                         @endforeach
                                     @endforeach
