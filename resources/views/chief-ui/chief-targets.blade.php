@@ -18,7 +18,6 @@
 
     <script src="{{ asset('js/showtabledata.js') }}"></script>
 
-
     <div ng-app="unitScorecardApp" ng-controller="APIChiefTargetController">
         <div class="wrap">
 		    <div class="row">			
@@ -414,92 +413,92 @@
                                     <tr>
                                        
                                          <td><center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>January: </b> <% chief_target.JanuaryTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
 
                                         <td>     <center>
-                                            <button class="btn btn-info target_size">
+                                            <div class="alert alert-info target_size">
                                                     <b>April: </b> <% chief_target.AprilTarget %>   
-                                                </button>  
+                                                </div>  
                                             </center>                                       
                                             
                                         </td>
                                         <td>
                                             <center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>July:</b> <% chief_target.JulyTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>October:</b> <% chief_target.OctoberTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                     </tr>
                                     <tr>
                                        
                                          <td><center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>February:</b> <% chief_target.FebruaryTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>May:</b> <% chief_target.MayTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
 
     
                                         <td><center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>August:</b> <% chief_target.AugustTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>November:</b> <% chief_target.NovemberTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                     </tr>
                                     <tr>
                                        
                                          <td><center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>March:</b> <% chief_target.MarchTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>June:</b> <% chief_target.JuneTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>September:</b> <% chief_target.SeptemberTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
-                                                <button class="btn btn-info target_size">
+                                                <div class="alert alert-info target_size">
                                                     <b>December:</b> <% chief_target.DecemberTarget %>
-                                                </button>
+                                                </div>
                                             </center>
                                         </td>
                                     </tr>
@@ -531,33 +530,33 @@
                                 <tr>
                                     <td>
                                     <center>
-                                        <button class="btn btn-info target_size">
+                                        <div class="alert alert-info target_size">
                                             <b>1st Quarter:</b> <% firstquarter %>
-                                        </button>
+                                        </div>
                                     </center>
                                     </td>
                                 
                                     <td>
                                     <center>
-                                        <button class="btn btn-info target_size">
+                                        <div class="alert alert-info target_size">
                                             <b>2nd Quarter:</b> <% secondquarter %>
-                                        </button>
+                                        </div>
                                     </center>
                                     </td>
                                 
                                     <td>
                                     <center>
-                                        <button class="btn btn-info target_size">
+                                        <div class="alert alert-info target_size">
                                             <b>3rd Quarter:</b> <% thirdquarter %>
-                                        </button>
+                                        </div>
                                     </center>
                                     </td>
                                 
                                     <td>
                                     <center>
-                                        <button class="btn btn-info target_size">
+                                        <div class="alert alert-info target_size">
                                             <b>4th Quarter:</b> <% fourthquarter %>
-                                        </button>
+                                        </div>
                                     </center>
                                     </td>
                                 </tr>
