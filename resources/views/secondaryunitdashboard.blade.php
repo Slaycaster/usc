@@ -24,7 +24,7 @@
     <script src="{{ asset('app/cut.js') }}"></script>
     
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/unit_dashboard.js') }}"></script>
+    <script src="{{ asset('app/controllers/secondary_unit_audit_trails.js') }}"></script>
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashname">
@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashabb">
             <img class="img-responsive dashboard-custom-pictureabb" 
-                src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
+                src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             <p>
                 <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Secondary Unit Dashboard</b>
             </p>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-lg-3">
             <center>
-                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/userpictures/secondary/cropped/'.''.$user->secondary_unit->UserSecondaryUnitPicturePath.'') }}">
+                <img class="img-responsive dashboard-custom-picture" src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             </center>
         </div>
         <div class="col-lg-9">
@@ -65,7 +65,7 @@
                                         <i class="fa fa-circle-o-notch fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">2</div>
+                                        <div class="huge">{{ $secondary_unit_objectives_count }}</div>
                                         <div>Objectives</div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                         <i class="fa fa-bar-chart fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">6</div>
+                                        <div class="huge">{{ $secondary_unit_measures_count }}</div>
                                         <div>Measures</div>
                                     </div>
                                 </div>
@@ -215,21 +215,22 @@
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
             
-            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APIUnitAuditTrailsDashController" >
+            <div class="panel panel-warning" ng-app="unitScorecardApp" ng-controller="APISecondaryUnitAuditTrailsController" >
                 <div class="panel-heading">
                     <i class="fa fa-bell fa-4x pull-right"></i>
                     <h3><b>ACTIVITY LOG</b></h3>
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <div class="list-group" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
+                <div class="list-group" dir-paginate='audit_trail_dash in secondary_unit_audit_trails|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                 
-                    <a href="{{ url('secondary/audit_trails') }}" class="list-group-item" style="font-size:12px;">
-                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserUnitPicturePath%>" height="30px;">
+                    <a href="{{ url('secondary_unit/audit_trails') }}" class="list-group-item" style="font-size:12px;">
+                    <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_unit.UserSecondaryUnitPicturePath%>" height="30px;">
                     </span>  
-                            <b><% audit_trail_dash.user_unit.rank.RankCode%> 
-                                <% audit_trail_dash.user_unit.UserUnitFirstName %>
-                                <% audit_trail_dash.user_unit.UserUnitLastName %>
+                            <b>
+                                <% audit_trail_dash.user_secondary.rank.RankCode %> 
+                                <% audit_trail_dash.user_secondary.UserSecondaryUnitFirstName %>
+                                <% audit_trail_dash.user_secondary.UserSecondaryUnitLastName %>
                             </b> 
                             <br />
                             <% audit_trail_dash.Action | cut:true:75:' ...' %>
@@ -242,7 +243,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <!-- /.list-group -->
-                    <a href="{{ url('secondary/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
+                    <a href="{{ url('secondary_unit/audit_trails') }}" class="btn btn-default btn-block">View All Activity Logs</a>
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -572,7 +573,7 @@
 
 
 
- <script type="text/javascript">
+<script type="text/javascript">
 
 var timer;
 function up()
@@ -592,6 +593,8 @@ function up()
                     var unit = response.u ;
                     var staff = response.s ;
                     var chief = response.c ;
+                    var secondary = response.su ;
+                    var tertiary = response.tu ;
                     var i;
                     var div = document.getElementById("searchresults");
                     for(i = 0; i < unit.length; i++) 
@@ -608,7 +611,7 @@ function up()
                             var picture = unit[i].PicturePath;
                             var picture_path = "{{ asset('uploads/unitpictures/cropped') }}"+"/"+picture;
 
-                            a.setAttribute("href", "{{ url('report/currentYearChiefUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("href", "{{ url('report/currentUnitScorecard') }}"+'/'+id);
                             a.setAttribute("class", "list-group-item clearfix");
                             a.target = "_blank";
 
@@ -649,7 +652,7 @@ function up()
                             var picture = staff[i].PicturePath;
                             var picture_path = "{{ asset('uploads/staffpictures/cropped') }}"+"/"+picture;
 
-                            a.setAttribute("href", "{{ url('report/currentYearChiefStaffScorecard') }}"+'/'+id);
+                            a.setAttribute("href", "{{ url('report/currentStaffScorecard') }}"+'/'+id);
                             a.setAttribute("class", "list-group-item clearfix");
                             a.target = "_blank";
 
@@ -677,7 +680,7 @@ function up()
                     }
 
 
-                     for(i = 0; i < chief.length; i++) 
+                    for(i = 0; i < chief.length; i++) 
                     {
                         var a = document.createElement('a');
                         var img = document.createElement('img');
@@ -691,7 +694,7 @@ function up()
                             var picture = chief[i].PicturePath;
                             var picture_path = "{{ asset('uploads/chiefpictures/cropped') }}"+"/"+picture;
 
-                            a.setAttribute("href", "{{ url('report/currentYearStaffChiefScorecard') }}"+'/'+id);
+                            a.setAttribute("href", "{{ url('report/currentChiefScorecard') }}"+'/'+id);
                             a.setAttribute("class", "list-group-item clearfix");
                             a.target = "_blank";
 
@@ -717,8 +720,90 @@ function up()
                             div.appendChild(a);      
                         }
                     }
+                    for(i = 0; i < secondary.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
 
-                     div.setAttribute("style","height:300px; overflow-x:scroll; overflow-x:hidden")
+                        if(secondary[i].SecondaryUnitName != null)
+                        {   
+                            var id = secondary[i].SecondaryUnitID;
+                            var picture = secondary[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/secondaryunitpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentSecondaryUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(secondary[i].SecondaryUnitAbbreviation+' - '+secondary[i].SecondaryUnitName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+
+                    for(i = 0; i < tertiary.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(tertiary[i].TertiaryUnitName != null)
+                        {   
+                            var id = tertiary[i].TertiaryUnitID;
+                            var picture = tertiary[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/tertiaryunitpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentTertriaryUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(tertiary[i].TertiaryUnitAbbreviation+' - '+tertiary[i].TertiaryUnitName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+
+                        div.setAttribute("style","height:300px; overflow-x:scroll; overflow-x:hidden")
+                    
                 }
 
         }) 

@@ -208,7 +208,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="january=tertiary_unit_measure.tertiary_unit_accomplishments[0].JanuaryAccomplishment">
                                                                             <div ng-if="january!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].JanuaryAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].JanuaryAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -246,7 +248,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="february=tertiary_unit_measure.tertiary_unit_accomplishments[0].FebruaryAccomplishment">
                                                                             <div ng-if="february!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].FebruaryAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].FebruaryAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -283,7 +287,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="march=tertiary_unit_measure.tertiary_unit_accomplishments[0].MarchAccomplishment">
                                                                             <div ng-if="march!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].MarchAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].MarchAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -320,7 +326,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="april=tertiary_unit_measure.tertiary_unit_accomplishments[0].AprilAccomplishment">
                                                                             <div ng-if="april!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].AprilAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].AprilAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -356,7 +364,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="may=tertiary_unit_measure.tertiary_unit_accomplishments[0].MayAccomplishment">
                                                                             <div ng-if="may!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].MayAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.tertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].MayAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.tertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -392,7 +402,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="june=tertiary_unit_measure.tertiary_unit_accomplishments[0].JuneAccomplishment">
                                                                             <div ng-if="june!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].JuneAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].JuneAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -427,7 +439,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="july=tertiary_unit_measure.tertiary_unit_accomplishments[0].JulyAccomplishment">
                                                                             <div ng-if="july!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].JulyAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].JulyAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -462,7 +476,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="august=tertiary_unit_measure.tertiary_unit_accomplishments[0].AugustAccomplishment">
                                                                             <div ng-if="august!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].AugustAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].AugustAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -498,7 +514,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="september=tertiary_unit_measure.tertiary_unit_accomplishments[0].SeptemberAccomplishment">
                                                                             <div ng-if="september!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].SeptemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].SeptemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -533,7 +551,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="october=tertiary_unit_measure.tertiary_unit_accomplishments[0].OctoberAccomplishment">
                                                                             <div ng-if="october!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].OctoberAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].OctoberAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -570,7 +590,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="november=tertiary_unit_measure.tertiary_unit_accomplishments[0].NovemberAccomplishment">
                                                                             <div ng-if="november!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].NovemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].NovemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>
@@ -607,7 +629,9 @@
                                                                         <div ng-repeat='tertiary_unit_measure in secondary_unit_target.secondary_unit_measure.tertiary_unit_measures'>
                                                                             <input type="hidden" ng-init="december=tertiary_unit_measure.tertiary_unit_accomplishments[0].DecemberAccomplishment">
                                                                             <div ng-if="december!='0'">
-                                                                                + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].DecemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                <div ng-if="tertiary_unit_measure.tertiary_unit_accomplishments[0] != null">
+                                                                                    + <strong><% tertiary_unit_measure.tertiary_unit_accomplishments[0].DecemberAccomplishment | number: 2 %></strong> <span class="label label-default"><% tertiary_unit_measure.tertiary_unit_accomplishments[0].tertiary_unit.TertiaryUnitAbbreviation %></span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                 </form>

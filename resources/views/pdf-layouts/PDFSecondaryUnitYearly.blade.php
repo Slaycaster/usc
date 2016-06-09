@@ -150,7 +150,7 @@ use App\SecondaryUnitInitiative;
 	</p>
 	<p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $secondary_unit->SecondaryUnitAbbreviation }} Scorecard for {{ $selectedYear }}</p>
     <table border="1">
-        @if(count($checkAccomplishment) != 0)
+        @if($checkAccomplishment != 0)
             <thead style="font-weight: bold;font-family: arial,helvetica">
                 <tr>
                     <td width="11.5%" rowspan="2">OBJECTIVES</td>
@@ -726,7 +726,7 @@ use App\SecondaryUnitInitiative;
             </tbody>
         @endforeach
     </table>
-    @if(count($checkAccomplishment) == 0)
+    @if($checkAccomplishment == 0)
         <p>No Accomplisments found for the year {{ $selectedYear }}</p>
     @endif
     <?php
@@ -768,7 +768,7 @@ use App\SecondaryUnitInitiative;
         //dd($updatedby);
     ?>
     <br>
-    @if(count($checkAccomplishment) != 0)
+    @if($checkAccomplishment != 0)
         <div>
             <i>
                 Accomplishment last updated by: 

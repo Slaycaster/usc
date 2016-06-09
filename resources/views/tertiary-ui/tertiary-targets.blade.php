@@ -122,6 +122,9 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
+                        <div ng-if="istrue =='true'" class="alert alert-warning">
+                            <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i>Please don't input 0 value for targets!<br />
+                        </div>
                             <table class="table table-responsive">
                                 <tr>
                                     <td><h4><b><% tertiary_unit_measurename %></b></h4></td>
@@ -164,7 +167,7 @@
                                                     <label for="monthlyform" class="control-label">April:</label>
                                                 </td>   
                                                 <td class="col-md-2">
-                                                    <input type='text' id="id_april_target" valid-number name="monthlyform" value="<% tertiary_unit_target.AprilTarget %>" ng-model="tertiary_unit_target.AprilTarget" autocomplete="off" class="form-control" required ng-touched />
+                                                    <input type='text' id="id_april_target" valid-number name="monthlyform" value="<% tertiary_unit_target.AprilTarget %>" ng-model="tertiary_unit_target.AprilTarget" autocomplete="off" class="form-control" required ng-touched  />
                                                     <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for April is required.</span>
                                                 </td> 
 
@@ -172,7 +175,7 @@
                                                     <label for="monthlyform" class="control-label">July:</label>
                                                 </td>
                                                 <td class="col-md-2">
-                                                    <input type='text' id="id_july_target" valid-number name="monthlyform" value="<% tertiary_unit_target.JulyTarget %>" ng-model="tertiary_unit_target.JulyTarget" autocomplete="off" class="form-control" required ng-touched />
+                                                    <input type='text' id="id_july_target" valid-number name="monthlyform" value="<% tertiary_unit_target.JulyTarget %>" ng-model="tertiary_unit_target.JulyTarget" autocomplete="off" class="form-control" required ng-touched  />
                                                     <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for July is required.</span>
                                                 </td>
 
@@ -465,20 +468,4 @@
 
     </div>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $('#id_target_period').on('change', function() {
-      if ( this.value == 'Monthly')
-      {
-        $("#monthlyform").show();
-        $("#quarterlyform").hide();
-      }
-      else if ( this.value == 'Quarterly')
-      {
-        $("#quarterlyform").show();
-        $("#monthlyform").hide();
-      }
-    });
-});
-</script>
 @endsection

@@ -46,6 +46,8 @@ class APIStaffScorecardController extends Controller {
 			->with('staff_measure.staff_objective')
 			->with('staff_measure.unit_measures.unit_accomplishments')
 			->with('staff_measure.unit_measures.unit_accomplishments.unit')
+			->with('staff_measure.unit_measures.secondary_unit_measures.secondary_unit_accomplishments')
+			->with('staff_measure.unit_measures.secondary_unit_measures.tertiary_unit_measures.tertiary_unit_accomplishments')
 			->with('staff_owner')
 			->with('staff_funding')
 			->with('staff_initiative')

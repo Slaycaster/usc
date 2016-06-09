@@ -846,6 +846,16 @@ class StaffLoginController extends Controller {
 
 		if($search != '')
 		{
+			$tertiaryresults = DB::table('tertiary_units')
+			->where('TertiaryUnitName', 'like','%'.$search.'%')
+			->orWhere('TertiaryUnitAbbreviation', 'like','%'.$search.'%')
+			->get();
+
+			$secondaryresults = DB::table('secondary_units')
+			->where('SecondaryUnitName', 'like','%'.$search.'%')
+			->orWhere('SecondaryUnitAbbreviation', 'like','%'.$search.'%')
+			->get();
+
 			$unitresults = DB::table('units')
 			->where('UnitName', 'like','%'.$search.'%')
 			->orWhere('UnitAbbreviation', 'like','%'.$search.'%')
@@ -863,13 +873,15 @@ class StaffLoginController extends Controller {
 		}
 		else
 		{
+			$tertiaryresults = null;
+			$secondaryresults = null;
 			$unitresults = null;
 			$staffresults = null;
 			$chiefresults = null;	
 		}
 		
 
-		return Response::json(array("u" => $unitresults, "s" => $staffresults, "c" => $chiefresults,));
+		return Response::json(array("u" => $unitresults, "s" => $staffresults, "c" => $chiefresults,"su" => $secondaryresults, "tu"=> $tertiaryresults,));
 		
 	}
 	

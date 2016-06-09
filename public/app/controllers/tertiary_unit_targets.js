@@ -94,7 +94,7 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
     $scope.toggle = function(modalstate, id, name) 
     {
         $scope.modalstate = modalstate;
-
+        $scope.istrue = "false";
         switch (modalstate) {
             case 'show':
                 $scope.this_title = "ADD TARGETS";

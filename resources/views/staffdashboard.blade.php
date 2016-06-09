@@ -546,6 +546,8 @@ function up()
                     var unit = response.u ;
                     var staff = response.s ;
                     var chief = response.c ;
+                    var secondary = response.su ;
+                    var tertiary = response.tu ;
                     var i;
                     var div = document.getElementById("searchresults");
                     for(i = 0; i < unit.length; i++) 
@@ -631,7 +633,7 @@ function up()
                     }
 
 
-                     for(i = 0; i < chief.length; i++) 
+                    for(i = 0; i < chief.length; i++) 
                     {
                         var a = document.createElement('a');
                         var img = document.createElement('img');
@@ -670,9 +672,91 @@ function up()
 
                             div.appendChild(a);      
                         }
+                    }
+                    for(i = 0; i < secondary.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(secondary[i].SecondaryUnitName != null)
+                        {   
+                            var id = secondary[i].SecondaryUnitID;
+                            var picture = secondary[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/secondaryunitpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentSecondaryUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(secondary[i].SecondaryUnitAbbreviation+' - '+secondary[i].SecondaryUnitName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+
+                    for(i = 0; i < tertiary.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(tertiary[i].TertiaryUnitName != null)
+                        {   
+                            var id = tertiary[i].TertiaryUnitID;
+                            var picture = tertiary[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/tertiaryunitpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentTertriaryUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(tertiary[i].TertiaryUnitAbbreviation+' - '+tertiary[i].TertiaryUnitName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
 
                         div.setAttribute("style","height:300px; overflow-x:scroll; overflow-x:hidden")
-                    }
+                    
                 }
 
         }) 

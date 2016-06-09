@@ -126,6 +126,9 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
+                            <div ng-if="istrue =='true'" class="alert alert-warning">
+                            <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i>Please don't input 0 value for targets!<br />
+                            </div>
                             <h4 class="alert alert-success">
                                 <b><% secondary_unit_measurename %></b>
                             </h4>
@@ -563,30 +566,5 @@
 
     </div>
 
-<script type="text/javascript">
-$(document).ready(function(){
 
-    $('#id_target_period').on('change', function() {
-      if ( this.value == 'Monthly')
-      {
-        $("#monthlyform").show();
-        $("#quarterlyform").hide();
-      }
-      else if ( this.value == 'Quarterly')
-      {
-        $("#quarterlyform").show();
-        $("#monthlyform").hide();
-      }
-    });
-
-    $( '#targetModal' )
-        .on('hidden.bs.modal', function() {
-            console.log("Set Target Closed");
-            $("#monthlyform").hide();
-            $("#quarterlyform").hide();
-            document.getElementById('id_target_period').value = "";
-        }
-    );
-});
-</script>
 @endsection
