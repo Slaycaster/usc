@@ -124,9 +124,7 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
-                        <div ng-if="istrue =='true'" class="alert alert-warning">
-                            <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i>Please don't input 0 value for targets!<br />
-                        </div>
+                         
                             <h4 class="alert alert-success">
                                 <b><% staff_measurename %></b>
                             </h4>
@@ -273,7 +271,7 @@
 
                                 <div class="col-md-3 pull-right" style="margin-bottom:1em;">
                                     <button class="btn btn-success btn-sm btn-block pull-right"
-                                     data-toggle="modal" data-target="#confirmSubmit">Add Target</button> 
+                                     data-toggle="modal" ng-if="chief_target.JanuaryTarget != 0 && chief_target.FebruaryTarget != 0 && chief_target.MarchTarget != 0 && chief_target.AprilTarget != 0 && chief_target.MayTarget != 0 && chief_target.JuneTarget != 0 && chief_target.JulyTarget != 0 && chief_target.AugustTarget != 0 && chief_target.SeptemberTarget != 0 && chief_target.OctoberTarget != 0 && chief_target.NovemberTarget != 0 && chief_target.DecemberTarget != 0" data-target="#confirmSubmit">Add Target</button> 
                                 </div> 
                             </div>
 
@@ -323,7 +321,7 @@
                                     
                                                           
                                 <div class="col-md-3 pull-right" style="margin-bottom:1em;">
-                                    <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
+                                    <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" ng-if="istrue =='false'" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
                                 </div>
                             </div>
                                  <!-- ng-click="save(modalstate, id)" -->

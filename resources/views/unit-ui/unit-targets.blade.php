@@ -125,12 +125,21 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
+<<<<<<< HEAD
+                            <table class="table table-responsive">
+                                <tr>
+                                    <td><h4><b><% unit_measurename %></b></h4></td>
+                                </tr>
+                            </table>
+                                <tr>
+=======
                             <h4 class="alert alert-success">
                                 <b><% unit_measurename %></b>
                             </h4>
                         
                             <table>
                                 <tr style="background-color:transparent;">
+>>>>>>> ba9f20174c1b38c2a21a8c757ed7764eb3a45084
                                     <td>
                                         <h4>Set Target Period:</h4>
                                     </td>

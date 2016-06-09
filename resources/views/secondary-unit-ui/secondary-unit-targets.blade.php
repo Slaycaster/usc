@@ -126,6 +126,10 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
+<<<<<<< HEAD
+                            
+=======
+>>>>>>> ba9f20174c1b38c2a21a8c757ed7764eb3a45084
                             <h4 class="alert alert-success">
                                 <b><% secondary_unit_measurename %></b>
                             </h4>

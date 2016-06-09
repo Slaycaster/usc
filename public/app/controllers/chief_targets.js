@@ -10,11 +10,14 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 		$http.get(public + 'api/chief_targets').
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
-			$scope.loading = false;
+            $scope.loading = false;
             $scope.date = new Date();
+
 
 		});	
 	};
+
+    
 
 	$scope.sort = function(keyname)
     {
@@ -125,6 +128,14 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 $http.get(public + 'api/chief_targets/' + id)
                 .success(function(response) {            
                     $scope.chief_target = response;
+
+                    $scope.quarter1 = parseFloat($scope.chief_target.JanuaryTarget + $scope.chief_target.FebruaryTarget + $scope.chief_target.MarchTarget).toFixed(2);
+
+                    $scope.quarter2 = parseFloat($scope.chief_target.AprilTarget + $scope.chief_target.MayTarget + $scope.chief_target.JuneTarget).toFixed(2);
+                    $scope.quarter3 = parseFloat($scope.chief_target.JulyTarget + $scope.chief_target.AugustTarget + $scope.chief_target.SeptemberTarget).toFixed(2);
+                    $scope.quarter4 = parseFloat($scope.chief_target.OctoberTarget + $scope.chief_target.NovemberTarget + $scope.chief_target.DecemberTarget).toFixed(2);
+                    
+
                     console.log("Target Period: " + $scope.chief_target.TargetPeriod);
                     if($scope.chief_target.TargetPeriod === 'Monthly' || $scope.chief_target.TargetPeriod === 'Quarterly')
                     {
