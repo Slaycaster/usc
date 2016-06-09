@@ -11,7 +11,6 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
 		success(function(data, status, headers, config) {
 			$scope.tertiary_unit_targets = data;
 				$scope.loading = false;
-            console.log($scope.tertiary_unit_targets);
             $scope.date = new Date();
 
 		});	
@@ -27,7 +26,6 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
 
         }).success(function(data, status, headers, config, response) {
 
-            console.log(data);
             if(data == "Password Correct")
             {
                 $scope.istrue = "true";
