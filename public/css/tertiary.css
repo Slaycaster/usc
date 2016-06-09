@@ -89,17 +89,18 @@ a.active{
         display: none;
     }
 }
+}
 .tertiary_objective-name{
-    width: 40%;
+    width: 30%;
 }
 .tertiary_objective-perspective{
-    width: 25%;
+    width: 20%;
 }
 .tertiary_objective-contributory{
     width: 30%;
 }
 .tertiary_objective-encoder{
-    width: 30%;
+    width: 15%;
 }
 .tertiary_objective-edit{
     width: 5%;
@@ -109,16 +110,22 @@ a.active{
 
 /* css for tertiary measures */
 .tertiary_measure-name{
-    width: 50%;
+    width: 25%;
 }
 .tertiary_measure-type{
     width: 5%;
 }
 .tertiary_measure-formula{
-    width: 10%;
+    width: 5%;
 }
 .tertiary_measure-objective{
-    width: 30%;
+    width: 25%;
+}
+.tertiary_measure-contributory{
+    width: 20%;
+}
+.tertiary_measure-encoder{
+    width: 25%;
 }
 .tertiary_measure-edit{
     width: 5%;
