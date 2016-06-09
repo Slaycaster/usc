@@ -15,7 +15,7 @@ use App\SecondaryUnit;
 use App\UserSecondaryUnit;
 
 use App\TertiaryUnit;
-use App\UsertertiaryUnit;
+use App\UserTertiaryUnit;
 
 
 use Barryvdh\DomPDF\Facade as PDF;
