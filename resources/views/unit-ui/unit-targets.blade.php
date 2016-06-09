@@ -125,21 +125,14 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
-<<<<<<< HEAD
+
                             <table class="table table-responsive">
                                 <tr>
                                     <td><h4><b><% unit_measurename %></b></h4></td>
                                 </tr>
                             </table>
                                 <tr>
-=======
-                            <h4 class="alert alert-success">
-                                <b><% unit_measurename %></b>
-                            </h4>
-                        
-                            <table>
-                                <tr style="background-color:transparent;">
->>>>>>> ba9f20174c1b38c2a21a8c757ed7764eb3a45084
+
                                     <td>
                                         <h4>Set Target Period:</h4>
                                     </td>
@@ -280,7 +273,7 @@
 
                                 <div class="col-md-3 pull-right" style="margin-bottom:1em;">
                                     <button class="btn btn-success btn-sm btn-block pull-right"
-                                     data-toggle="modal" data-target="#confirmSubmit">Add Target</button> 
+                                     data-toggle="modal" ng-if="unit_target.JanuaryTarget != 0 && unit_target.FebruaryTarget != 0 && unit_target.MarchTarget != 0 && unit_target.AprilTarget != 0 && unit_target.MayTarget != 0 && unit_target.JuneTarget != 0 && unit_target.JulyTarget != 0 && unit_target.AugustTarget != 0 && unit_target.SeptemberTarget != 0 && unit_target.OctoberTarget != 0 && unit_target.NovemberTarget != 0 && unit_target.DecemberTarget != 0" data-target="#confirmSubmit">Add Target</button> 
                                 </div> 
                             </div>
 
@@ -293,7 +286,7 @@
                                         <label for="quarterlyform" class="control-label">First Quarter:</label>
                                     </td>
                                     <td>
-                                        <input type='text' id="id_firstquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched/>
+                                        <input type='text' id="id_firstquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" ng-model="quarter1" required ng-touched/>
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for First Quarter is required.</span>
                                     </td>
 
@@ -301,7 +294,7 @@
                                         <label for="quarterlyform" class="control-label">Second Quarter:</label>
                                     </td>
                                     <td>
-                                        <input type='text' id="id_secondquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched/>
+                                        <input type='text' id="id_secondquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" ng-model="quarter2" required ng-touched/>
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Second Quarter is required.</span>
                                     </td>
 
@@ -309,7 +302,7 @@
                                         <label for="quarterlyform" class="control-label">Third Quarter:</label>
                                     </td>
                                     <td>
-                                        <input type='text' id="id_thirdquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched/>
+                                        <input type='text' id="id_thirdquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" ng-model="quarter3" required ng-touched/>
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Third Quarter is required.</span>
                                     </td>
 
@@ -318,7 +311,7 @@
                                     </td>
                                     <td>
 
-                                        <input type='text' id="id_fourthquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched/>
+                                        <input type='text' id="id_fourthquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" ng-model="quarter4" required ng-touched/>
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Fourth Quarter is required.</span>
                                     </td>
                                     <tr style="background-color:transparent;">
@@ -330,7 +323,7 @@
                                     
                                                           
                                 <div class="col-md-3 pull-right" style="margin-bottom:1em;">
-                                    <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
+                                    <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0" ng-disabled="frmEditTarget.$invalid">Add Target</button>
                                 </div>
                             </div>
                                  <!-- ng-click="save(modalstate, id)" -->

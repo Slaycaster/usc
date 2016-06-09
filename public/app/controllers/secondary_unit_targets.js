@@ -122,12 +122,18 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
             case 'show':
                 $scope.this_title = "SET TARGET";
                 
+                    
+
                 $scope.id = id;
                 console.log("SecondaryUnitTargetID: " + $scope.id);  
 
                 $http.get(public + 'api/secondary_targets/' + id).
                 success(function(response) {  
                     $scope.secondary_target = response;
+                $scope.quarter1 = parseFloat($scope.secondary_target.JanuaryTarget + $scope.secondary_target.FebruaryTarget + $scope.secondary_target.MarchTarget).toFixed(2);
+                $scope.quarter2 = parseFloat($scope.secondary_target.AprilTarget + $scope.secondary_target.MayTarget + $scope.secondary_target.JuneTarget).toFixed(2);
+                $scope.quarter3 = parseFloat($scope.secondary_target.JulyTarget + $scope.secondary_target.AugustTarget + $scope.secondary_target.SeptemberTarget).toFixed(2);
+                $scope.quarter4 = parseFloat($scope.secondary_target.OctoberTarget + $scope.secondary_target.NovemberTarget + $scope.secondary_target.DecemberTarget).toFixed(2);
                     console.log("Target Period: " + $scope.secondary_target.TargetPeriod);
                     
                         if($scope.secondary_target.TargetPeriod === 'Monthly' || $scope.secondary_target.TargetPeriod === 'Quarterly')

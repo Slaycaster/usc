@@ -126,6 +126,11 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
                 $http.get(public + 'api/unit_targets/' + id)
                 .success(function(response) {            
                     $scope.unit_target = response;
+
+                    $scope.quarter1 = parseFloat($scope.unit_target.JanuaryTarget + $scope.unit_target.FebruaryTarget + $scope.unit_target.MarchTarget).toFixed(2);
+                    $scope.quarter2 = parseFloat($scope.unit_target.AprilTarget + $scope.unit_target.MayTarget + $scope.unit_target.JuneTarget).toFixed(2);
+                    $scope.quarter3 = parseFloat($scope.unit_target.JulyTarget + $scope.unit_target.AugustTarget + $scope.unit_target.SeptemberTarget).toFixed(2);
+                    $scope.quarter4 = parseFloat($scope.unit_target.OctoberTarget + $scope.unit_target.NovemberTarget + $scope.unit_target.DecemberTarget).toFixed(2);
                     console.log("SHOW" + $scope.unit_target.TargetPeriod);
                     if($scope.unit_target.TargetPeriod === 'Monthly' || $scope.unit_target.TargetPeriod === 'Quarterly')
                     {
