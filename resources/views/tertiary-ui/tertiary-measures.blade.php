@@ -58,29 +58,29 @@
     							<table class="table table-bordered">
     								<thead>
                                         <tr>
-        									<td class="unit_measure-name">
+        									<td class="tertiary_measure-name">
                                                 Measure Name
         									</td>
         							
-        									<td class="unit_measure-type">
+        									<td class="tertiary_measure-type">
                                                 Type
         									</td>
 
-                                             <td class="unit_measure-formula">
+                                             <td class="tertiary_measure-formula">
                                                 Formula
                                             </td>
 
-                                            <td class="unit_measure-objective">
+                                            <td class="tertiary_measure-objective">
                                                 Objective
                                             </td>
 
-                                            <td class="unit_measure-contributory">
+                                            <td class="tertiary_measure-contributory">
                                                 Contributory to {{ $tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}'s Measure
                                             </td>
-        									<td class="unit_measure-encoder">
+        									<td class="tertiary_measure-encoder">
                                                 Last Encoded by
         									</td>
-        									<td class="unit_measure-edit"></td>
+        									<td class="tertiary_measure-edit"></td>
                                         </tr>
     								</thead>
     								<tr dir-paginate='tertiary_unit_measure in tertiary_unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
