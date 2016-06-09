@@ -17,6 +17,30 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
 		});	
 	};
 
+    $scope.getpassword = function() 
+    {
+                
+        url = public + 'api/tertiary_unit_confirm_password';
+        $http.post(url, {    
+            
+            getPassword: document.getElementById('getPassword').value
+
+        }).success(function(data, status, headers, config, response) {
+
+            console.log(data);
+            if(data == "Password Correct")
+            {
+                $scope.istrue = "true";
+
+            }
+            else
+            {
+                $scope.istrue = "false";
+            }
+
+        });
+    }
+
 	$scope.sort = function(keyname)
     {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
