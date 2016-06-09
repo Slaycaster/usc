@@ -47,6 +47,14 @@ class WelcomeController extends Controller {
 		{
 			return Redirect::to('chief/dashboard');
 		}
+		if (Session::has('secondary_user_id'))
+		{
+			return Redirect::to('secondary_unit/dashboard');
+		}
+		if (Session::has('tertiary_user_id'))
+		{
+			return Redirect::to('tertiary/dashboard');
+		}
 		else
 		{
 			return view('welcome');
