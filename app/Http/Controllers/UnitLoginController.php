@@ -199,67 +199,294 @@ class UnitLoginController extends Controller {
 			->sum('DecemberTarget');
 
 
-			//ACCOMPLISHMENTS
-			$januaryaccomp = DB::table('unit_accomplishments')
+			//UNIT ACCOMPLISHMENTS
+			$januaryunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JanuaryAccomplishment');
 
-			$februaryaccomp = DB::table('unit_accomplishments')
+			$februaryunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('FebruaryAccomplishment');
 
-			$marchaccomp = DB::table('unit_accomplishments')
+			$marchunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('MarchAccomplishment');
 
-			$aprilaccomp = DB::table('unit_accomplishments')
+			$aprilunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('AprilAccomplishment');
 
-			$mayaccomp = DB::table('unit_accomplishments')
+			$mayunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('MayAccomplishment');
 
-			$juneaccomp = DB::table('unit_accomplishments')
+			$juneunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JuneAccomplishment');
 
-			$julyaccomp = DB::table('unit_accomplishments')
+			$julyunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('JulyAccomplishment');
 
-			$augustaccomp = DB::table('unit_accomplishments')
+			$augustunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('AugustAccomplishment');
 
-			$septemberaccomp = DB::table('unit_accomplishments')
+			$septemberunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('SeptemberAccomplishment');
 
-			$octoberaccomp = DB::table('unit_accomplishments')
+			$octoberunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('OctoberAccomplishment');
 
-			$novemberaccomp = DB::table('unit_accomplishments')
+			$novemberunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('NovemberAccomplishment');
 
-			$decemberaccomp = DB::table('unit_accomplishments')
+			$decemberunit = DB::table('unit_accomplishments')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('AccomplishmentDate', '=', date($year))
 			->sum('DecemberAccomplishment');
 
+
+						//Secondary Unit CONTRIBUTORIES
+			$januarysecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JanuaryAccomplishment');
+
+			$februarysecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('FebruaryAccomplishment');
+
+			$marchsecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MarchAccomplishment');
+
+			$aprilsecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AprilAccomplishment');
+
+			$maysecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MayAccomplishment');
+
+			$junesecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JuneAccomplishment');
+
+			$julysecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JulyAccomplishment');
+
+			$augustsecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AugustAccomplishment');
+
+			$septembersecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('SeptemberAccomplishment');
+
+			$octobersecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('OctoberAccomplishment');
+
+			$novembersecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('NovemberAccomplishment');
+
+			$decembersecondary = DB::table('secondary_unit_accomplishments')
+			->join('secondary_unit_measures', 'secondary_unit_accomplishments.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('DecemberAccomplishment');
+
+
+
+
+
+			//Tertiary Unit CONTRIBUTORIES
+			$januarytertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JanuaryAccomplishment');
+
+			$februarytertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('FebruaryAccomplishment');
+
+			$marchtertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MarchAccomplishment');
+
+			$apriltertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AprilAccomplishment');
+
+			$maytertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('MayAccomplishment');
+
+			$junetertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JuneAccomplishment');
+
+			$julytertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('JulyAccomplishment');
+
+			$augusttertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('AugustAccomplishment');
+
+			$septembertertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('SeptemberAccomplishment');
+
+			$octobertertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('OctoberAccomplishment');
+
+			$novembertertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('NovemberAccomplishment');
+
+			$decembertertiary = DB::table('tertiary_unit_accomplishments')
+			->join('tertiary_unit_measures', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID', '=', 'tertiary_unit_measures.TertiaryUnitMeasureID')
+			->join('secondary_unit_measures', 'tertiary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_measures.SecondaryUnitMeasureID')
+			->join('unit_measures', 'secondary_unit_measures.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
+			->join('staff_measures', 'unit_measures.StaffMeasureID', '=', 'staff_measures.StaffMeasureID')
+			->where('unit_measures.UnitID' , '=', $unit_id)
+			->whereYear('AccomplishmentDate', '=', date($year))
+			->sum('DecemberAccomplishment');
+
+
+
+			//STAFF ACCOMP PLUS CONTRIBUTORIES
+
+			$januaryaccomp =   $januaryunit + $januarysecondary + $januarytertiary;
+			$februaryaccomp =   $februaryunit + $februarysecondary + $februarytertiary;
+			$marchaccomp =   $marchunit + $marchsecondary + $marchtertiary;
+			$aprilaccomp =   $aprilunit + $aprilsecondary + $apriltertiary;
+			$mayaccomp =   $mayunit + $maysecondary + $maytertiary;
+			$juneaccomp =   $juneunit + $junesecondary + $junetertiary;
+			$julyaccomp =   $julyunit + $julysecondary + $julytertiary;
+			$augustaccomp =   $augustunit + $augustsecondary + $augusttertiary;
+			$septemberaccomp =   $septemberunit + $septembersecondary + $septembertertiary;
+			$octoberaccomp =   $octoberunit + $octobersecondary + $octobertertiary;
+			$novemberaccomp =   $novemberunit + $novembersecondary + $novembertertiary;
+			$decemberaccomp =   $decemberunit + $decembersecondary + $decembertertiary;
 
 
 
@@ -297,13 +524,58 @@ class UnitLoginController extends Controller {
 			->join('unit_targets', 'unit_accomplishments.UnitAccomplishmentID', '=', 'unit_targets.UnitAccomplishmentID')
 			->join('unit_measures' , 'unit_accomplishments.UnitMeasureID', '=', 'unit_measures.UnitMeasureID')
 			->where('unit_measures.UnitID', '=', $unit_id)
+			->whereNotIn('unit_measures.UnitMeasureID', function($q2)
+						{
+
+							$q2->select('UnitMeasureID')->from('secondary_unit_measures')
+								->where('UnitMeasureID', '!=', 0);
+						})
 			->whereYear('TargetDate', '=', date($year))
 			->get();
+
+
+
+
+			//secondary unit targets & accomplishments
+			$secondary_units = DB::table('unit_measures')
+			->join('unit_accomplishments', 'unit_measures.UnitMeasureID', '=', 'unit_accomplishments.UnitMeasureID')
+			->join('unit_targets', 'unit_measures.UnitMeasureID', '=', 'unit_targets.UnitMeasureID')
+			->join('secondary_unit_measures', 'unit_measures.UnitMeasureID', '=', 'secondary_unit_measures.UnitMeasureID')
+			->join('secondary_unit_accomplishments', 'secondary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_accomplishments.SecondaryUnitMeasureID')
+			->where('unit_measures.UnitID', '=', $unit_id)
+			->whereYear('unit_targets.TargetDate', '=', date($year))
+			->whereNotIn('secondary_unit_measures.SecondaryUnitMeasureID', function($q2)
+						{
+
+							$q2->select('SecondaryUnitMeasureID')->from('tertiary_unit_measures')
+								->where('SecondaryUnitMeasureID', '!=', 0);
+						})
+			->select('unit_accomplishments.UnitAccomplishmentID as UnitAccomplishmentID','unit_accomplishments.JanuaryAccomplishment as JanuaryUnit', 'unit_accomplishments.FebruaryAccomplishment as FebruaryUnit', 'unit_accomplishments.MarchAccomplishment as MarchUnit', 'unit_accomplishments.AprilAccomplishment as AprilUnit', 'unit_accomplishments.MayAccomplishment as MayUnit', 'unit_accomplishments.JuneAccomplishment as JuneUnit', 'unit_accomplishments.JulyAccomplishment as JulyUnit', 'unit_accomplishments.AugustAccomplishment as AugustUnit', 'unit_accomplishments.SeptemberAccomplishment as SeptemberUnit', 'unit_accomplishments.OctoberAccomplishment as OctoberUnit', 'unit_accomplishments.NovemberAccomplishment as NovemberUnit', 'unit_accomplishments.DecemberAccomplishment as DecemberUnit' ,'secondary_unit_accomplishments.JanuaryAccomplishment as JanuarySecondary', 'secondary_unit_accomplishments.FebruaryAccomplishment as FebruarySecondary', 'secondary_unit_accomplishments.MarchAccomplishment as MarchSecondary', 'secondary_unit_accomplishments.AprilAccomplishment as AprilSecondary', 'secondary_unit_accomplishments.MayAccomplishment as MaySecondary', 'secondary_unit_accomplishments.JuneAccomplishment as JuneSecondary', 'secondary_unit_accomplishments.JulyAccomplishment as JulySecondary', 'secondary_unit_accomplishments.AugustAccomplishment as AugustSecondary', 'secondary_unit_accomplishments.SeptemberAccomplishment as SeptemberSecondary', 'secondary_unit_accomplishments.OctoberAccomplishment as OctoberSecondary', 'secondary_unit_accomplishments.NovemberAccomplishment as NovemberSecondary', 'secondary_unit_accomplishments.DecemberAccomplishment as DecemberSecondary', 'unit_targets.JanuaryTarget as JanuaryTarget' , 'unit_targets.FebruaryTarget as FebruaryTarget' , 'unit_targets.MarchTarget as MarchTarget' , 'unit_targets.AprilTarget as AprilTarget' , 'unit_targets.MayTarget as MayTarget' , 'unit_targets.JuneTarget as JuneTarget' , 'unit_targets.JulyTarget as JulyTarget' , 'unit_targets.AugustTarget as AugustTarget' , 'unit_targets.SeptemberTarget as SeptemberTarget' , 'unit_targets.OctoberTarget as OctoberTarget' , 'unit_targets.NovemberTarget as NovemberTarget' , 'unit_targets.DecemberTarget as DecemberTarget')
+			->get();
+
+
+
+			//tertiary unit targets & accomplishments
+			$tertiary_units = DB::table('unit_measures')
+			->join('unit_accomplishments', 'unit_measures.UnitMeasureID', '=', 'unit_accomplishments.UnitMeasureID')
+			->join('unit_targets', 'unit_measures.UnitMeasureID', '=', 'unit_targets.UnitMeasureID')
+			->join('secondary_unit_measures', 'unit_measures.UnitMeasureID', '=', 'secondary_unit_measures.UnitMeasureID')
+			->join('secondary_unit_accomplishments', 'secondary_unit_measures.SecondaryUnitMeasureID', '=', 'secondary_unit_accomplishments.SecondaryUnitMeasureID')
+			->join('tertiary_unit_measures', 'secondary_unit_measures.SecondaryUnitMeasureID' , '=', 'tertiary_unit_measures.SecondaryUnitMeasureID')
+			->join('tertiary_unit_accomplishments', 'tertiary_unit_measures.TertiaryUnitMeasureID', '=', 'tertiary_unit_accomplishments.TertiaryUnitMeasureID')
+			->where('unit_measures.UnitID', '=', $unit_id)
+			->whereYear('unit_targets.TargetDate', '=', date($year))
+			->select('unit_accomplishments.UnitAccomplishmentID as UnitAccomplishmentID','unit_accomplishments.JanuaryAccomplishment as JanuaryUnit', 'unit_accomplishments.FebruaryAccomplishment as FebruaryUnit', 'unit_accomplishments.MarchAccomplishment as MarchUnit', 'unit_accomplishments.AprilAccomplishment as AprilUnit', 'unit_accomplishments.MayAccomplishment as MayUnit', 'unit_accomplishments.JuneAccomplishment as JuneUnit', 'unit_accomplishments.JulyAccomplishment as JulyUnit', 'unit_accomplishments.AugustAccomplishment as AugustUnit', 'unit_accomplishments.SeptemberAccomplishment as SeptemberUnit', 'unit_accomplishments.OctoberAccomplishment as OctoberUnit', 'unit_accomplishments.NovemberAccomplishment as NovemberUnit', 'unit_accomplishments.DecemberAccomplishment as DecemberUnit', 'secondary_unit_accomplishments.JanuaryAccomplishment as JanuarySecondary', 'secondary_unit_accomplishments.FebruaryAccomplishment as FebruarySecondary', 'secondary_unit_accomplishments.MarchAccomplishment as MarchSecondary', 'secondary_unit_accomplishments.AprilAccomplishment as AprilSecondary', 'secondary_unit_accomplishments.MayAccomplishment as MaySecondary', 'secondary_unit_accomplishments.JuneAccomplishment as JuneSecondary', 'secondary_unit_accomplishments.JulyAccomplishment as JulySecondary', 'secondary_unit_accomplishments.AugustAccomplishment as AugustSecondary', 'secondary_unit_accomplishments.SeptemberAccomplishment as SeptemberSecondary', 'secondary_unit_accomplishments.OctoberAccomplishment as OctoberSecondary', 'secondary_unit_accomplishments.NovemberAccomplishment as NovemberSecondary', 'secondary_unit_accomplishments.DecemberAccomplishment as DecemberSecondary' , 'tertiary_unit_accomplishments.JanuaryAccomplishment as JanuaryTertiary', 'tertiary_unit_accomplishments.FebruaryAccomplishment as FebruaryTertiary', 'tertiary_unit_accomplishments.MarchAccomplishment as MarchTertiary', 'tertiary_unit_accomplishments.AprilAccomplishment as AprilTertiary', 'tertiary_unit_accomplishments.MayAccomplishment as MayTertiary', 'tertiary_unit_accomplishments.JuneAccomplishment as JuneTertiary', 'tertiary_unit_accomplishments.JulyAccomplishment as JulyTertiary', 'tertiary_unit_accomplishments.AugustAccomplishment as AugustTertiary', 'tertiary_unit_accomplishments.SeptemberAccomplishment as SeptemberTertiary', 'tertiary_unit_accomplishments.OctoberAccomplishment as OctoberTertiary', 'tertiary_unit_accomplishments.NovemberAccomplishment as NovemberTertiary', 'tertiary_unit_accomplishments.DecemberAccomplishment as DecemberTertiary' , 'unit_targets.JanuaryTarget as JanuaryTarget' , 'unit_targets.FebruaryTarget as FebruaryTarget' , 'unit_targets.MarchTarget as MarchTarget' , 'unit_targets.AprilTarget as AprilTarget' , 'unit_targets.MayTarget as MayTarget' , 'unit_targets.JuneTarget as JuneTarget' , 'unit_targets.JulyTarget as JulyTarget' , 'unit_targets.AugustTarget as AugustTarget' , 'unit_targets.SeptemberTarget as SeptemberTarget' , 'unit_targets.OctoberTarget as OctoberTarget' , 'unit_targets.NovemberTarget as NovemberTarget' , 'unit_targets.DecemberTarget as DecemberTarget')
+			->get();
+
+
 
 			$measurecount = DB::table('unit_targets')
 			->where('UnitID', '=', $unit_id)
 			->whereYear('TargetDate', '=', date($year))
 			->count();
+
+			
 
 			$i = 0;
 
@@ -326,6 +598,50 @@ class UnitLoginController extends Controller {
 			}
 
 
+
+			foreach($secondary_units as $secondary_unit)
+			{
+				$january[$i] = (($secondary_unit->JanuaryUnit + $secondary_unit->JanuarySecondary) / $secondary_unit->JanuaryTarget) * 100;
+				$february[$i] = (($secondary_unit->FebruaryUnit + $secondary_unit->FebruarySecondary) / $secondary_unit->FebruaryTarget) * 100;
+				$march[$i] = (($secondary_unit->MarchUnit + $secondary_unit->MarchSecondary) / $secondary_unit->MarchTarget) * 100;
+				$april[$i] = (($secondary_unit->AprilUnit + $secondary_unit->AprilSecondary) / $secondary_unit->AprilTarget) * 100;
+				$may[$i] = (($secondary_unit->MayUnit + $secondary_unit->MaySecondary) / $secondary_unit->MayTarget) * 100;
+				$june[$i] = (($secondary_unit->JuneUnit + $secondary_unit->JuneSecondary) / $secondary_unit->JuneTarget) * 100;
+				$july[$i] = (($secondary_unit->JulyUnit + $secondary_unit->JulySecondary) / $secondary_unit->JulyTarget) * 100;
+				$august[$i] = (($secondary_unit->AugustUnit + $secondary_unit->AugustSecondary) / $secondary_unit->AugustTarget) * 100;
+				$september[$i] = (($secondary_unit->SeptemberUnit + $secondary_unit->SeptemberSecondary) / $secondary_unit->SeptemberTarget) * 100;
+				$october[$i] = (($secondary_unit->OctoberUnit + $secondary_unit->OctoberSecondary) / $secondary_unit->OctoberTarget) * 100;
+				$november[$i] = (($secondary_unit->NovemberUnit + $secondary_unit->NovemberSecondary) / $secondary_unit->NovemberTarget) * 100;		
+				$december[$i] = (($secondary_unit->DecemberUnit + $secondary_unit->DecemberSecondary) / $secondary_unit->DecemberTarget) * 100;
+
+				$i = $i + 1;
+			}
+
+
+
+
+
+
+			foreach($tertiary_units as $tertiary_unit)
+			{
+				$january[$i] = (($tertiary_unit->JanuaryUnit + $tertiary_unit->JanuarySecondary + $tertiary_unit->JanuaryTertiary) / $tertiary_unit->JanuaryTarget) * 100;
+				$february[$i] = (($tertiary_unit->FebruaryUnit + $tertiary_unit->FebruarySecondary + $tertiary_unit->FebruaryTertiary) / $tertiary_unit->FebruaryTarget) * 100;
+				$march[$i] = (($tertiary_unit->MarchUnit + $tertiary_unit->MarchSecondary + $tertiary_unit->MarchTertiary) / $tertiary_unit->MarchTarget) * 100;
+				$april[$i] = (($tertiary_unit->AprilUnit + $tertiary_unit->AprilSecondary + $tertiary_unit->AprilTertiary) / $tertiary_unit->AprilTarget) * 100;
+				$may[$i] = (($tertiary_unit->MayUnit + $tertiary_unit->MaySecondary + $tertiary_unit->MayTertiary) / $tertiary_unit->MayTarget) * 100;
+				$june[$i] = (($tertiary_unit->JuneUnit + $tertiary_unit->JuneSecondary + $tertiary_unit->JuneTertiary) / $tertiary_unit->JuneTarget) * 100;
+				$july[$i] = (($tertiary_unit->JulyUnit + $tertiary_unit->JulySecondary + $tertiary_unit->JulyTertiary) / $tertiary_unit->JulyTarget) * 100;
+				$august[$i] = (($tertiary_unit->AugustUnit + $tertiary_unit->AugustSecondary + $tertiary_unit->AugustTertiary) / $tertiary_unit->AugustTarget) * 100;
+				$september[$i] = (($tertiary_unit->SeptemberUnit + $tertiary_unit->SeptemberSecondary + $tertiary_unit->SeptemberTertiary) / $tertiary_unit->SeptemberTarget) * 100;
+				$october[$i] = (($tertiary_unit->OctoberUnit + $tertiary_unit->OctoberSecondary + $tertiary_unit->OctoberTertiary)/ $tertiary_unit->OctoberTarget) * 100;
+				$november[$i] = (($tertiary_unit->NovemberUnit + $tertiary_unit->NovemberSecondary + $tertiary_unit->NovemberTertiary) / $tertiary_unit->NovemberTarget) * 100;		
+				$december[$i] = (($tertiary_unit->DecemberUnit + $tertiary_unit->DecemberSecondary + $tertiary_unit->DecemberTertiary) / $tertiary_unit->DecemberTarget) * 100;
+
+				$i = $i + 1;
+			}
+
+
+			
 			$firstquarter = 0;
 			$secondquarter = 0;
 			$thirdquarter = 0;
@@ -341,10 +657,11 @@ class UnitLoginController extends Controller {
 			}
 
 
+
 			$firstquarter = $firstquarter / $measurecount;
 			$secondquarter = $secondquarter / $measurecount;
 			$thirdquarter = $thirdquarter / $measurecount;
-			$fourthquarter = $firstquarter / $measurecount;
+			$fourthquarter = $fourthquarter / $measurecount;
 			
 
 			$firstquarter = round($firstquarter, 2);

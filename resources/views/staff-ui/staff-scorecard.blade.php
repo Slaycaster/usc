@@ -28,10 +28,11 @@
                           
                             <h2 class="heading scorecard-custom-heading">
                                 <b>{{ $staff_user->staff->StaffAbbreviation }} Scorecard for {{ date("Y") }}</b>
-                                <div class="col-md-3 pull-right">
-                                    <a href="{{ url('report/currentYearStaffScorecard') }}" target="_blank">
-                                        <button type="button" class="btn btn-warning btn-sm pull-right" ><i class="fa fa-save fa-fw"></i>Generate Report</button>
-                                    </a> 
+                                <div class="col-md-5 pull-right">
+                                    <form method="get" action="{{ url('report/currentYearStaffScorecard') }}" target="_blank">
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
+                                    </form>
                                 </div>
                             </h2>  
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>

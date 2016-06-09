@@ -10,31 +10,14 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
 		$http.get(public + 'api/chief_targets').
 		success(function(data, status, headers, config) {
 			$scope.chief_targets = data;
-			$scope.loading = false;
+            $scope.loading = false;
             $scope.date = new Date();
+
 
 		});	
 	};
 
-    $scope.zero = function()
-    {
-        if(document.getElementById("id_january_target").value == "0"  || document.getElementById("id_february_target").value == "0"
-            || document.getElementById("id_march_target").value == "0" || document.getElementById("id_april_target").value == "0"
-            || document.getElementById("id_may_target").value == "0" || document.getElementById("id_june_target").value == "0"
-            || document.getElementById("id_july_target").value == "0" || document.getElementById("id_august_target").value == "0"
-            || document.getElementById("id_september_target").value == "0" || document.getElementById("id_october_target").value == "0"
-            || document.getElementById("id_november_target").value == "0" || document.getElementById("id_december_target").value == "0"
-            || document.getElementById("id_firstquarter_target").value == "0" || document.getElementById("id_secondquarter_target").value == "0"
-            || document.getElementById("id_thirdquarter_target").value == "0" || document.getElementById("id_fourthquarter_target").value == "0")
-        {
-            $scope.istrue = "true";
-                
-        }
-        else
-        {
-            $scope.istrue = "false";
-        }
-    }
+    
 
 	$scope.sort = function(keyname)
     {
@@ -145,6 +128,14 @@ app.controller('APIChiefTargetController', function($scope, $http, $interval) {
                 $http.get(public + 'api/chief_targets/' + id)
                 .success(function(response) {            
                     $scope.chief_target = response;
+
+                    $scope.quarter1 = parseFloat($scope.chief_target.JanuaryTarget + $scope.chief_target.FebruaryTarget + $scope.chief_target.MarchTarget).toFixed(2);
+
+                    $scope.quarter2 = parseFloat($scope.chief_target.AprilTarget + $scope.chief_target.MayTarget + $scope.chief_target.JuneTarget).toFixed(2);
+                    $scope.quarter3 = parseFloat($scope.chief_target.JulyTarget + $scope.chief_target.AugustTarget + $scope.chief_target.SeptemberTarget).toFixed(2);
+                    $scope.quarter4 = parseFloat($scope.chief_target.OctoberTarget + $scope.chief_target.NovemberTarget + $scope.chief_target.DecemberTarget).toFixed(2);
+                    
+
                     console.log("Target Period: " + $scope.chief_target.TargetPeriod);
                     if($scope.chief_target.TargetPeriod === 'Monthly' || $scope.chief_target.TargetPeriod === 'Quarterly')
                     {

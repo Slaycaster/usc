@@ -16,26 +16,6 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
 		});	
 	};
 
-    $scope.zero = function()
-    {
-        if(document.getElementById("id_january_target").value == "0"  || document.getElementById("id_february_target").value == "0"
-            || document.getElementById("id_march_target").value == "0" || document.getElementById("id_april_target").value == "0"
-            || document.getElementById("id_may_target").value == "0" || document.getElementById("id_june_target").value == "0"
-            || document.getElementById("id_july_target").value == "0" || document.getElementById("id_august_target").value == "0"
-            || document.getElementById("id_september_target").value == "0" || document.getElementById("id_october_target").value == "0"
-            || document.getElementById("id_november_target").value == "0" || document.getElementById("id_december_target").value == "0"
-            || document.getElementById("id_firstquarter_target").value == "0" || document.getElementById("id_secondquarter_target").value == "0"
-            || document.getElementById("id_thirdquarter_target").value == "0" || document.getElementById("id_fourthquarter_target").value == "0")
-        {
-            $scope.istrue = "true";
-                
-        }
-        else
-        {
-            $scope.istrue = "false";
-        }
-    }
-
 
 	$scope.sort = function(keyname)
     {
@@ -142,12 +122,18 @@ app.controller('APISecondaryUnitTargetController', function($scope, $http, $inte
             case 'show':
                 $scope.this_title = "SET TARGET";
                 
+                    
+
                 $scope.id = id;
                 console.log("SecondaryUnitTargetID: " + $scope.id);  
 
                 $http.get(public + 'api/secondary_targets/' + id).
                 success(function(response) {  
                     $scope.secondary_target = response;
+                $scope.quarter1 = parseFloat($scope.secondary_target.JanuaryTarget + $scope.secondary_target.FebruaryTarget + $scope.secondary_target.MarchTarget).toFixed(2);
+                $scope.quarter2 = parseFloat($scope.secondary_target.AprilTarget + $scope.secondary_target.MayTarget + $scope.secondary_target.JuneTarget).toFixed(2);
+                $scope.quarter3 = parseFloat($scope.secondary_target.JulyTarget + $scope.secondary_target.AugustTarget + $scope.secondary_target.SeptemberTarget).toFixed(2);
+                $scope.quarter4 = parseFloat($scope.secondary_target.OctoberTarget + $scope.secondary_target.NovemberTarget + $scope.secondary_target.DecemberTarget).toFixed(2);
                     console.log("Target Period: " + $scope.secondary_target.TargetPeriod);
                     
                         if($scope.secondary_target.TargetPeriod === 'Monthly' || $scope.secondary_target.TargetPeriod === 'Quarterly')

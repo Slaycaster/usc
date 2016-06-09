@@ -17,25 +17,28 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
 		});	
 	};
 
-    $scope.zero = function()
+    $scope.getpassword = function() 
     {
-        if(document.getElementById("id_january_target").value == "0"  || document.getElementById("id_february_target").value == "0"
-            || document.getElementById("id_march_target").value == "0" || document.getElementById("id_april_target").value == "0"
-            || document.getElementById("id_may_target").value == "0" || document.getElementById("id_june_target").value == "0"
-            || document.getElementById("id_july_target").value == "0" || document.getElementById("id_august_target").value == "0"
-            || document.getElementById("id_september_target").value == "0" || document.getElementById("id_october_target").value == "0"
-            || document.getElementById("id_november_target").value == "0" || document.getElementById("id_december_target").value == "0"
-            || document.getElementById("id_firstquarter_target").value == "0" || document.getElementById("id_secondquarter_target").value == "0"
-            || document.getElementById("id_thirdquarter_target").value == "0" || document.getElementById("id_fourthquarter_target").value == "0")
-        {
-            $scope.istrue = "true";
-                
-        }
-        else
-        {
-            $scope.istrue = "false";
-        }
+        var url = public + 'api/unit_confirm_password';
+        $http.post(url, {    
+            getPassword: document.getElementById('getPassword').value
+        }).success(function(data, status, headers, config, response) {
+
+            console.log(data);
+            if(data == "TRUE")
+            {
+                $scope.istrue = "true";
+
+            }
+            else
+            {
+                $scope.istrue = "false";
+            }
+
+        });
     }
+
+    
 
 	$scope.sort = function(keyname)
     {
@@ -123,6 +126,11 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
                 $http.get(public + 'api/unit_targets/' + id)
                 .success(function(response) {            
                     $scope.unit_target = response;
+
+                    $scope.quarter1 = parseFloat($scope.unit_target.JanuaryTarget + $scope.unit_target.FebruaryTarget + $scope.unit_target.MarchTarget).toFixed(2);
+                    $scope.quarter2 = parseFloat($scope.unit_target.AprilTarget + $scope.unit_target.MayTarget + $scope.unit_target.JuneTarget).toFixed(2);
+                    $scope.quarter3 = parseFloat($scope.unit_target.JulyTarget + $scope.unit_target.AugustTarget + $scope.unit_target.SeptemberTarget).toFixed(2);
+                    $scope.quarter4 = parseFloat($scope.unit_target.OctoberTarget + $scope.unit_target.NovemberTarget + $scope.unit_target.DecemberTarget).toFixed(2);
                     console.log("SHOW" + $scope.unit_target.TargetPeriod);
                     if($scope.unit_target.TargetPeriod === 'Monthly' || $scope.unit_target.TargetPeriod === 'Quarterly')
                     {

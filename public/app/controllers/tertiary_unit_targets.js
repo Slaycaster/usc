@@ -1,5 +1,4 @@
 app.controller('APITertiaryUnitTargetController', function($scope, $http, $interval) {
-
 	$scope.tertiary_unit_targets = [];
 	$scope.loading = true;
     $scope.info = false;
@@ -11,30 +10,32 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
 		success(function(data, status, headers, config) {
 			$scope.tertiary_unit_targets = data;
 				$scope.loading = false;
-            console.log($scope.tertiary_unit_targets);
             $scope.date = new Date();
 
 		});	
 	};
 
-    $scope.zero = function()
+    $scope.getpassword = function() 
     {
-        if(document.getElementById("id_january_target").value == "0"  || document.getElementById("id_february_target").value == "0"
-            || document.getElementById("id_march_target").value == "0" || document.getElementById("id_april_target").value == "0"
-            || document.getElementById("id_may_target").value == "0" || document.getElementById("id_june_target").value == "0"
-            || document.getElementById("id_july_target").value == "0" || document.getElementById("id_august_target").value == "0"
-            || document.getElementById("id_september_target").value == "0" || document.getElementById("id_october_target").value == "0"
-            || document.getElementById("id_november_target").value == "0" || document.getElementById("id_december_target").value == "0"
-            || document.getElementById("id_firstquarter_target").value == "0" || document.getElementById("id_secondquarter_target").value == "0"
-            || document.getElementById("id_thirdquarter_target").value == "0" || document.getElementById("id_fourthquarter_target").value == "0")
-        {
-            $scope.istrue = "true";
                 
-        }
-        else
-        {
-            $scope.istrue = "false";
-        }
+        url = public + 'api/tertiary_unit_confirm_password';
+        $http.post(url, {    
+            
+            getPassword: document.getElementById('getPassword').value
+
+        }).success(function(data, status, headers, config, response) {
+
+            if(data == "Password Correct")
+            {
+                $scope.istrue = "true";
+
+            }
+            else
+            {
+                $scope.istrue = "false";
+            }
+
+        });
     }
 
 	$scope.sort = function(keyname)
@@ -121,8 +122,13 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
                 
                 $scope.id = id;
                 $http.get(public + 'api/tertiary_unit_targets/' + id)
-                .success(function(response) {            
+                .success(function(response) { 
+
                     $scope.tertiary_unit_target = response;
+                    $scope.quarter1 = parseFloat($scope.tertiary_unit_target.JanuaryTarget + $scope.tertiary_unit_target.FebruaryTarget + $scope.tertiary_unit_target.MarchTarget).toFixed(2);
+                    $scope.quarter2 = parseFloat($scope.tertiary_unit_target.AprilTarget + $scope.tertiary_unit_target.MayTarget + $scope.tertiary_unit_target.JuneTarget).toFixed(2);
+                    $scope.quarter3 = parseFloat($scope.tertiary_unit_target.JulyTarget + $scope.tertiary_unit_target.AugustTarget + $scope.tertiary_unit_target.SeptemberTarget).toFixed(2);
+                    $scope.quarter4 = parseFloat($scope.tertiary_unit_target.OctoberTarget + $scope.tertiary_unit_target.NovemberTarget + $scope.tertiary_unit_target.DecemberTarget).toFixed(2);           
                     console.log("SHOW" + $scope.tertiary_unit_target.TargetPeriod);
                     if($scope.tertiary_unit_target.TargetPeriod === 'Monthly' || $scope.tertiary_unit_target.TargetPeriod === 'Quarterly')
                     {
