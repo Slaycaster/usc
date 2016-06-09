@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\UserUnit;
 use App\UserStaff;
 use App\UserChief;
 use App\UserSecondaryUnit;
@@ -11,7 +12,34 @@ use Request, Session, DB, Validator, Input, Redirect;
 
 class ChiefConfirmPasswordController extends Controller {
 
-	
+	public function unitConfirmPassword()
+	{
+		$unit_id = Session::get('unit_user_id', 'default');
+
+		$unit_password = Request::input('getPassword');
+
+		$unit = UserUnit::where('UserUnitID','=',$unit_id)
+			->whereRaw("BINARY `UserUnitPassword`= ?",array($unit_password))
+			->first();
+
+
+		if($unit != null)
+		{	
+			$credentials = UserUnit::where('UserUnitIsActive', 1)
+				->where('UserUnitID', '=', $unit_id)
+				->where('UserUnitPassword', '=', $unit_password)
+				->first();
+			
+			 if (count($credentials) > 0) 
+			 {
+			 	return "TRUE";
+			 }
+
+		}
+		return "FALSE";
+	}
+
+
 	public function staffConfirmPassword()
 	{
 		$staff_id = Session::get('staff_user_id', 'default');
