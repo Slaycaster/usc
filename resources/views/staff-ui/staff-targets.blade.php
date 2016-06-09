@@ -125,8 +125,6 @@
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
                         <div ng-if="istrue =='true'" class="alert alert-warning">
-                            <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i>Please don't input 0 value for targets!<br />
-                        </div>
                             <h4 class="alert alert-success">
                                 <b><% staff_measurename %></b>
                             </h4>
@@ -406,28 +404,28 @@
                                        
                                          <td><center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>January: </b> <% chief_target.JanuaryTarget %>
+                                                    <b>January: </b> <% staff_target.JanuaryTarget %>
                                                 </div>
                                             </center>
                                         </td>
 
                                         <td><center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>April: </b> <% chief_target.AprilTarget %>
+                                                    <b>April: </b> <% staff_target.AprilTarget %>
                                                 </div>                                         
                                             </center>
                                         </td>
                                         <td>
                                             <center>
                                                <div class="alert alert-info target_size">
-                                                    <b>July: </b> <% chief_target.JulyTarget %>
+                                                    <b>July: </b> <% staff_target.JulyTarget %>
                                                 </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>October: </b> <% chief_target.OctoberTarget %>
+                                                    <b>October: </b> <% staff_target.OctoberTarget %>
                                                 </div>
                                             </center>
                                         </td>
@@ -436,14 +434,14 @@
                                        
                                          <td><center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>February: </b> <% chief_target.FebruaryTarget %>
+                                                    <b>February: </b> <% staff_target.FebruaryTarget %>
                                                 </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>May: </b> <% chief_target.MayTarget %>
+                                                    <b>May: </b> <% staff_target.MayTarget %>
                                                 </div>
                                             </center>
                                         </td>
@@ -451,14 +449,14 @@
     
                                         <td><center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>August: </b> <% chief_target.AugustTarget %>
+                                                    <b>August: </b> <% staff_target.AugustTarget %>
                                                 </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>November: </b> <% chief_target.NovemberTarget %>
+                                                    <b>November: </b> <% staff_target.NovemberTarget %>
                                                 </div>
                                             </center>
                                         </td>
@@ -467,28 +465,28 @@
                                        
                                          <td><center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>March: </b> <% chief_target.MarchTarget %>
+                                                    <b>March: </b> <% staff_target.MarchTarget %>
                                                 </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>June: </b> <% chief_target.JuneTarget %>
+                                                    <b>June: </b> <% staff_target.JuneTarget %>
                                                 </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>September: </b> <% chief_target.SeptemberTarget %>
+                                                    <b>September: </b> <% staff_target.SeptemberTarget %>
                                                 </div>
                                             </center>
                                         </td>
                                         <td>
                                             <center>
                                                 <div class="alert alert-info target_size">
-                                                    <b>December: </b> <% chief_target.DecemberTarget %>
+                                                    <b>December: </b> <% staff_target.DecemberTarget %>
                                                 </div>
                                             </center>
                                         </td>
