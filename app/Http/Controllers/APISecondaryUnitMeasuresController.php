@@ -76,8 +76,9 @@ class APISecondaryUnitMeasuresController extends Controller {
 				->first();
 
 			$unit = SecondaryUnit::where('SecondaryUnitID', '=', $user->SecondaryUnitID)->with('unit')->first();
-			$hascontributory = SecondaryUnitMeasure::where('SecondaryUnitID', '=', $user->SecondaryUnitID)->select('UnitMeasureID')->lists('UnitMeasureID');
-		return UnitMeasure::where('UnitID','=',$unit->UnitID)->whereNotIn('UnitMeasureID',$hascontributory)->get();
+			//$hascontributory = SecondaryUnitMeasure::where('SecondaryUnitID', '=', $user->SecondaryUnitID)->select('UnitMeasureID')->lists('UnitMeasureID');
+		//return UnitMeasure::where('UnitID','=',$unit->UnitID)->whereNotIn('UnitMeasureID',$hascontributory)->get();
+		return UnitMeasure::where('UnitID','=',$unit->UnitID)->get();
 	}
 
 	public function angularunitmeasure($measureID)
@@ -85,6 +86,24 @@ class APISecondaryUnitMeasuresController extends Controller {
 		$unitmeasureformula = UnitMeasure::where('UnitMeasureID','=',$measureID)->first();
 		
 		return $unitmeasureformula;
+	}
+
+	public function ifhascontributory($measureID)
+	{
+			$secondary_user_id = Session::get('secondary_user_id', 'default');
+		$user = UserSecondaryUnit::where('UserSecondaryUnitID', $secondary_user_id)
+				->first();
+		
+		$mescontribute = SecondaryUnitMeasure::where('UnitMeasureID','=',$measureID)->where('SecondaryUnitID','=',$user->SecondaryUnitID)->first();
+		if($mescontribute == null)
+		{
+			return "none";
+		}
+		else
+		{
+			return "true";
+		}
+
 	}
 
 	/**

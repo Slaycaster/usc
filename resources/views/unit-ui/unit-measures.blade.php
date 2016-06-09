@@ -172,6 +172,9 @@
                                     <td class="col-md-4 mod">
                                         <label for="staff_measure" class="control">Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure:</label>
                                     </td>
+                                    <div ng-if="hascontribute =='true'" class="alert alert-danger">
+                            <i class="fa fa-warning  fa-fw">&nbsp;&nbsp;</i>  A Unit Measure was already assigned to the selected Staff Measure as contributory. Please pick another Staff Measure (if possible) or edit the said Unit Measure.<br />
+                            </div>
                                     <td class="col-md-8">
                                         
 

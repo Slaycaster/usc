@@ -56,10 +56,24 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
                 $scope.selectedMeasureFormula = $scope.measureformula[0]; 
 
             });
+
+            $http.post(public + 'secondaryunit/ifhascontributory/' + measureID).
+            success(function(data)
+            {
+                if(data == "true")
+                {
+                    $scope.hascontribute = "true";                    
+                }
+                if(data == "none")
+                {
+                    $scope.hascontribute = "false";
+                }
+            });
             
         }
         else
         {
+            $scope.hascontribute = "false";
             $scope.measureformula = [
                 {UnitMeasureFormula: "Summation"},
                 {UnitMeasureFormula: "Average"},

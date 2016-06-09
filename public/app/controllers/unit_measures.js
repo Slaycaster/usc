@@ -70,10 +70,27 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                 $scope.selectedMeasureFormula = $scope.measureformula[0]; 
 
             });
+
+
+             $http.post(public + 'unit/ifhascontributory/' + measureID).
+            success(function(data)
+            {
+                if(data == "true")
+                {
+                    $scope.hascontribute = "true";                    
+                }
+                if(data == "none")
+                {
+                    $scope.hascontribute = "false";
+                }
+            });
             
         }
         else
         {
+
+             $scope.hascontribute = "false";
+
              $scope.measureformula = [
                                     {StaffMeasureFormula: "Summation"},
                                     {StaffMeasureFormula: "Average"},
