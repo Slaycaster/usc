@@ -117,6 +117,7 @@
 				</div>
 			</div>
 	    </div>
+
         <!-- End div for data table output -->
 
 
@@ -341,6 +342,7 @@
             </div>
         </div>
 
+
         <div class="modal fade" id="confirmSubmit" aria-hidden='true' aria-labelledby="myModalLabel" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -421,7 +423,8 @@
                                         <td>     <center>
                                             <button class="btn btn-info target_size">
                                                     <b>April: </b> <% chief_target.AprilTarget %>   
-                                                </button>                                         
+                                                </button>  
+                                            </center>                                       
                                             
                                         </td>
                                         <td>
@@ -510,7 +513,6 @@
                 </div>
             </div>
         </div>
-
        
         <div class="modal fade" id="quarterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -567,8 +569,8 @@
             </div>
         </div>
        
-
     </div>
 
+    
 
 @endsection

@@ -17,6 +17,27 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
 		});	
 	};
 
+    $scope.getpassword = function() 
+    {
+        var url = public + 'api/unit_confirm_password';
+        $http.post(url, {    
+            getPassword: document.getElementById('getPassword').value
+        }).success(function(data, status, headers, config, response) {
+
+            console.log(data);
+            if(data == "TRUE")
+            {
+                $scope.istrue = "true";
+
+            }
+            else
+            {
+                $scope.istrue = "false";
+            }
+
+        });
+    }
+
     
 
 	$scope.sort = function(keyname)

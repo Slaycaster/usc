@@ -295,7 +295,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitJanuaryCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->JanuaryAccomplishment + $tertiaryJanuaryAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->JanuaryAccomplishment + $tertiaryJanuaryAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -354,7 +354,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitFebruaryCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->FebruaryAccomplishment + $tertiaryFebruaryAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->FebruaryAccomplishment + $tertiaryFebruaryAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -413,7 +413,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitMarchCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->MarchAccomplishment + $tertiaryMarchAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->MarchAccomplishment + $tertiaryMarchAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -472,7 +472,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitAprilCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->AprilAccomplishment + $tertiaryAprilAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->AprilAccomplishment + $tertiaryAprilAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -531,7 +531,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitMayCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->MayAccomplishment + $tertiaryMayAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->MayAccomplishment + $tertiaryMayAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -590,7 +590,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitJuneCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->JuneAccomplishment + $tertiaryJuneAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->JuneAccomplishment + $tertiaryJuneAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -649,7 +649,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitJulyCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->JulyAccomplishment + $tertiaryJulyAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->JulyAccomplishment + $tertiaryJulyAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -708,7 +708,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitAugustCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->AugustAccomplishment + $tertiaryAugustAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->AugustAccomplishment + $tertiaryAugustAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -767,7 +767,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitSeptemberCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->SeptemberAccomplishment + $tertiarySeptemberAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->SeptemberAccomplishment + $tertiarySeptemberAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -826,7 +826,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitOctoberCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->OctoberAccomplishment + $tertiaryOctoberAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->OctoberAccomplishment + $tertiaryOctoberAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -885,7 +885,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitNovemberCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->NovemberAccomplishment + $tertiaryNovemberAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->NovemberAccomplishment + $tertiaryNovemberAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
@@ -944,7 +944,7 @@ use App\SecondaryUnitAccomplishment;
                                                 @if($tertiaryUnitDecemberCounter == 1)
                                                     (
                                                 @endif
-                                                {{ round(($contributory->DecemberAccomplishment + $tertiaryDecemberAccomplishment), 2) }}</b><br><span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
+                                                {{ round(($contributory->DecemberAccomplishment + $tertiaryDecemberAccomplishment), 2) }}</b>-<span class="label label-default">{{ $contributory->secondary_unit->SecondaryUnitAbbreviation }}</span>@if($tertiaryUnitJanuaryCounter != count($contributor->secondary_unit_accomplishments)),@endif
                                             </normal>
                                         @endforeach
                                     @endforeach
