@@ -513,7 +513,7 @@
                         <i class="fa fa-circle-o-notch fa-4x"></i>
                         <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
                     </div>
-                    <p class="control-label alert alert-info">Quarterly Targets for the Measure: <% chief_measurename %> </p>
+                    <p class="control-label alert alert-info">Quarterly Targets for the Measure: <% staff_measurename %> </p>
                     
                     <div class="modal-body table-responsive">
                         <form name="frmEditTarget" novalidate="">

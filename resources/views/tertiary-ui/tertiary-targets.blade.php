@@ -133,7 +133,7 @@
                                     </td>
                                     <td>&nbsp;&nbsp;</td>
                                     <td >
-                                        <select id="id_target_period" name="measure_formula" data-ng-model="chief_target.TargetPeriod" class="form-control" style="width:25em;"  required ng-touched> 
+                                        <select id="id_target_period" name="measure_formula" data-ng-model="tertiary_target.TargetPeriod" class="form-control" style="width:25em;"  required ng-touched> 
                                                    
                                                 <option value="Monthly">
                                                     Monthly
@@ -156,7 +156,7 @@
                                             <label for="monthlyform" class="control-label">January:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text' id="id_january_target" valid-number name="monthlyform" value="<% tertiary_target.JanuaryTarget  %>" ng-model="secondary_target.JanuaryTarget"  autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text' id="id_january_target" valid-number name="monthlyform" value="<% tertiary_target.JanuaryTarget  %>" ng-model="tertiary_target.JanuaryTarget"  autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for January is required.</span>
                                         </td>
                                       
@@ -165,7 +165,7 @@
                                             <label for="monthlyform" class="control-label">April:</label>
                                         </td>   
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_april_target" valid-number name="monthlyform" value="<% tertiary_target.AprilTarget %>" ng-model="secondary_target.AprilTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_april_target" valid-number name="monthlyform" value="<% tertiary_target.AprilTarget %>" ng-model="tertiary_target.AprilTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for April is required.</span>
                                         </td> 
 
@@ -173,7 +173,7 @@
                                             <label for="monthlyform" class="control-label">July:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_july_target" valid-number name="monthlyform" value="<% tertiary_target.JulyTarget %>" ng-model="secondary_target.JulyTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_july_target" valid-number name="monthlyform" value="<% tertiary_target.JulyTarget %>" ng-model="tertiary_target.JulyTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for July is required.</span>
                                         </td>
 
@@ -181,7 +181,7 @@
                                             <label for="monthlyform" class="control-label">October:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_october_target" valid-number name="monthlyform" value="<% tertiary_target.OctoberTarget %>" ng-model="secondary_target.OctoberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_october_target" valid-number name="monthlyform" value="<% tertiary_target.OctoberTarget %>" ng-model="tertiary_target.OctoberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for October is required.</span>
                                         </td>                                  
                                     </tr>
@@ -192,7 +192,7 @@
                                             <label for="monthlyform" class="control-label">February:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_february_target" valid-number name="monthlyform" value="<% tertiary_target.FebruaryTarget %>" ng-model="secondary_target.FebruaryTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_february_target" valid-number name="monthlyform" value="<% tertiary_target.FebruaryTarget %>" ng-model="tertiary_target.FebruaryTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for February is required.</span>
                                         </td>
 
@@ -200,7 +200,7 @@
                                             <label for="monthlyform" class="control-label">May:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_may_target" valid-number name="monthlyform" value="<% tertiary_target.MayTarget %>" ng-model="secondary_target.MayTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_may_target" valid-number name="monthlyform" value="<% tertiary_target.MayTarget %>" ng-model="tertiary_target.MayTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for May is required.</span>
                                         </td>
                             
@@ -208,7 +208,7 @@
                                             <label for="monthlyform" class="control-label">August:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_august_target" valid-number name="monthlyform" value="<% tertiary_target.AugustTarget %>" ng-model="secondary_target.AugustTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_august_target" valid-number name="monthlyform" value="<% tertiary_target.AugustTarget %>" ng-model="tertiary_target.AugustTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for August is required.</span>
                                         </td>
 
@@ -216,7 +216,7 @@
                                             <label for="monthlyform" class="control-label">November:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_november_target" valid-number name="monthlyform" value="<% tertiary_target.NovemberTarget %>" ng-model="secondary_target.NovemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_november_target" valid-number name="monthlyform" value="<% tertiary_target.NovemberTarget %>" ng-model="tertiary_target.NovemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for November is required.</span>
                                         </td>
                            
@@ -227,7 +227,7 @@
                                             <label for="monthlyform" class="control-label">March:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_march_target" valid-number name="monthlyform" value="<% tertiary_target.MarchTarget %>" ng-model="secondary_target.MarchTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_march_target" valid-number name="monthlyform" value="<% tertiary_target.MarchTarget %>" ng-model="tertiary_target.MarchTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for March is required.</span>
                                         </td>
 
@@ -235,7 +235,7 @@
                                             <label for="monthlyform" class="control-label">June:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_june_target" valid-number name="monthlyform" value="<% tertiary_target.JuneTarget %>" ng-model="secondary_target.JuneTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_june_target" valid-number name="monthlyform" value="<% tertiary_target.JuneTarget %>" ng-model="tertiary_target.JuneTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for June is required.</span>
                                         </td>
 
@@ -243,7 +243,7 @@
                                             <label for="monthlyform" class="control-label">September:</label>
                                         </td>
                                         <td class="col-md-2"> 
-                                            <input type='text'  id="id_september_target" valid-number name="monthlyform" value="<% tertiary_target.SeptemberTarget %>" ng-model="secondary_target.SeptemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_september_target" valid-number name="monthlyform" value="<% tertiary_target.SeptemberTarget %>" ng-model="tertiary_target.SeptemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for September is required.</span>
                                         </td>
                            
@@ -251,7 +251,7 @@
                                             <label for="monthlyform" class="control-label">December:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text'  id="id_december_target" valid-number name="monthlyform" value="<% tertiary_target.DecemberTarget %>" ng-model="secondary_target.DecemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
+                                            <input type='text'  id="id_december_target" valid-number name="monthlyform" value="<% tertiary_target.DecemberTarget %>" ng-model="tertiary_target.DecemberTarget" autocomplete="off" class="form-control target-month" required ng-touched />
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for December is required.</span>
                                         </td>
                                     </tr>
