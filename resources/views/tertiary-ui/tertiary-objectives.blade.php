@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <!--/.div class row-->
-                            <div class="row">
+                            <div class="row" id="tableinfo">
                                 <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i> Tertiary Unit Objectives of {{ $user->tertiary_unit->TertiaryUnitName }}.
                                 </div>
                                 <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i> Tertiary Unit Objectives of {{ $user->tertiary_unit->TertiaryUnitAbbreviation }}.
