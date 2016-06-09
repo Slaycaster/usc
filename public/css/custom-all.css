@@ -57,9 +57,6 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 #tableinfo{
     display: none;
 }
-.target_size{
-    width: 10em;
-}
 
 
 /* layout css */
@@ -310,12 +307,23 @@ table {
     .targets-custom-panel{
         margin-top: 4.5em;
     }
+    .target_size{
+        width: 11em;
+        margin:0px !important;
+    }
+
 }
 @media (max-width: 768px){
     .targets-custom-panel{
         margin-top: 6.5em;
         text-align: center;
     }
+    .target_size{
+        width: 11em;
+        margin:0px !important;
+        text-align: center !important;
+    }
+
 }
 
 .target-month{
