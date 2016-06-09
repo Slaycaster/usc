@@ -261,7 +261,7 @@ use App\SecondaryUnitAccomplishment;
                                         @endforeach
                                     @endforeach
                                     <?php
-                                        $totalFirstQuarterContribution = $contributory->JanuaryAccomplishment + $tertiaryFirstQuarterAccomplishment;
+                                        $totalFirstQuarterContribution = $contributory->JanuaryAccomplishment + $contributory->FebruaryAccomplishment + $contributory->MarchAccomplishment + $tertiaryFirstQuarterAccomplishment;
                                         $secondary_unit_FirstQuarterchecker = $contributory->secondary_unit->SecondaryUnitAbbreviation;
                                     ?>
                                 @endforeach
@@ -320,7 +320,7 @@ use App\SecondaryUnitAccomplishment;
                                         @endforeach
                                     @endforeach
                                     <?php
-                                        $totalSecondQuarterContribution = $contributory->AprilAccomplishment + $tertiarySecondQuarterAccomplishment;
+                                        $totalSecondQuarterContribution = $contributory->AprilAccomplishment + $contributory->MayAccomplishment + $contributory->JuneAccomplishment + $tertiarySecondQuarterAccomplishment;
                                         $secondary_unit_SecondQuarterchecker = $contributory->secondary_unit->SecondaryUnitAbbreviation;
                                     ?>
                                 @endforeach
@@ -379,7 +379,7 @@ use App\SecondaryUnitAccomplishment;
                                         @endforeach
                                     @endforeach
                                     <?php
-                                        $totalThirdQuarterContribution = $contributory->JulyAccomplishment + $tertiaryThirdQuarterAccomplishment;
+                                        $totalThirdQuarterContribution = $contributory->JulyAccomplishment + $contributory->AugustAccomplishment + $contributory->SeptemberAccomplishment + $tertiaryThirdQuarterAccomplishment;
                                         $secondary_unit_ThirdQuarterchecker = $contributory->secondary_unit->SecondaryUnitAbbreviation;
                                     ?>
                                 @endforeach
@@ -438,7 +438,7 @@ use App\SecondaryUnitAccomplishment;
                                         @endforeach
                                     @endforeach
                                     <?php
-                                        $totalFourthQuarterContribution = $contributory->OctoberAccomplishment + $tertiaryFourthQuarterAccomplishment;
+                                        $totalFourthQuarterContribution = $contributory->OctoberAccomplishment + $contributory->NovemberAccomplishment + $contributory->DecemberAccomplishment + $tertiaryFourthQuarterAccomplishment;
                                         $secondary_unit_FourthQuarterchecker = $contributory->secondary_unit->SecondaryUnitAbbreviation;
                                     ?>
                                 @endforeach
