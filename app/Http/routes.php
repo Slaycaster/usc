@@ -56,6 +56,7 @@ Route::get('logout', 'LoginController@doLogout');
 /*UTILITIES ROUTE*/
 Route::post('change_password', 'ChangePasswordController@ChangePassword');
 Route::post('change_picture', 'ChangePictureController@changePicture');
+Route::post('api/unit_confirm_password', 'ChiefConfirmPasswordController@unitConfirmPassword');
 Route::post('api/staff_confirm_password', 'ChiefConfirmPasswordController@staffConfirmPassword');
 Route::post('api/chief_confirm_password', 'ChiefConfirmPasswordController@confirmPassword');
 Route::post('api/secondary_unit_confirm_password', 'ChiefConfirmPasswordController@secondaryUnitConfirmPassword');
