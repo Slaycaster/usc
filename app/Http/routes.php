@@ -21,6 +21,7 @@ Route::get('report/currentYearSecondaryUnitScorecard', 'ReportsController@curren
 Route::get('report/currentYearStaffScorecard', 'ReportsController@currentYearStaffScorecard');
 Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChiefScorecard');
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
+Route::get('report/yearlyTertiaryUnitScorecard', 'ReportsController@yearlyTertiaryUnitScorecard');
 Route::get('report/yearlySecondaryUnitScorecard', 'ReportsController@yearlySecondaryUnitScorecard');
 Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecard');
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
@@ -34,12 +35,14 @@ Route::get('report/quarterlyStaff', 'ReportsController@quarterlyStaff');
 Route::get('report/quarterlyChief', 'ReportsController@quarterlyChief');
 #analysis
 Route::get('report/quarterlyUnitAnalysis', 'ReportsAnalysisController@quarterlyUnitAnalysis');
+Route::get('report/quarterlyTertiaryUnitAnalysis', 'ReportsAnalysisController@quarterlyTertiaryUnitAnalysis');
 Route::get('report/quarterlySecondaryUnitAnalysis', 'ReportsAnalysisController@quarterlySecondaryUnitAnalysis');
 Route::get('report/quarterlyStaffAnalysis', 'ReportsAnalysisController@quarterlyStaffAnalysis');
 Route::get('report/quarterlyChiefAnalysis', 'ReportsAnalysisController@quarterlyChiefAnalysis');
 
 Route::get('report/yearlyUnitAnalysisBarGraph', 'ReportsAnalysisController@yearlyUnitAnalysisBarGraph');
 Route::get('report/yearlySecondaryUnitAnalysisBarGraph', 'ReportsAnalysisController@yearlySecondaryUnitAnalysisBarGraph');
+Route::get('report/yearlyTertiaryUnitAnalysisBarGraph', 'ReportsAnalysisController@yearlyTertiaryUnitAnalysisBarGraph');
 Route::get('report/yearlyStaffAnalysisBarGraph', 'ReportsAnalysisController@yearlyStaffAnalysisBarGraph');
 Route::get('report/yearlyChiefAnalysisBarGraph', 'ReportsAnalysisController@yearlyChiefAnalysisBarGraph');
 
@@ -164,7 +167,8 @@ Route::get('tertiary_unit/changepassword','TertiaryUnitLoginController@changepas
 Route::get('tertiary_unit/changetertiarypicture', 'TertiaryUnitLoginController@changetertiarypicture');
 Route::get('tertiary_unit/changeuserpicture', 'TertiaryUnitLoginController@changeuserpicture');
 Route::get('tertiary_unit/audit_trails', 'APITertiaryUnitAuditTrailsController@showIndex');
-
+Route::get('tertiary_unit/reports','ReportsController@tertiaryIndex');
+Route::get('tertiary_unit/analysis_reports','ReportsAnalysisController@tertiaryIndex');
 
 
 /*API ROUTES*/
