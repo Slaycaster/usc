@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\UserUnit;
 use App\UserStaff;
 use App\UserChief;
 use App\UserSecondaryUnit;
+use App\UserTertiaryUnit;
 
 
 use App\Http\Controllers\Controller;
@@ -11,7 +13,34 @@ use Request, Session, DB, Validator, Input, Redirect;
 
 class ChiefConfirmPasswordController extends Controller {
 
-	
+	public function unitConfirmPassword()
+	{
+		$unit_id = Session::get('unit_user_id', 'default');
+
+		$unit_password = Request::input('getPassword');
+
+		$unit = UserUnit::where('UserUnitID','=',$unit_id)
+			->whereRaw("BINARY `UserUnitPassword`= ?",array($unit_password))
+			->first();
+
+
+		if($unit != null)
+		{	
+			$credentials = UserUnit::where('UserUnitIsActive', 1)
+				->where('UserUnitID', '=', $unit_id)
+				->where('UserUnitPassword', '=', $unit_password)
+				->first();
+			
+			 if (count($credentials) > 0) 
+			 {
+			 	return "TRUE";
+			 }
+
+		}
+		return "FALSE";
+	}
+
+
 	public function staffConfirmPassword()
 	{
 		$staff_id = Session::get('staff_user_id', 'default');
@@ -84,6 +113,34 @@ class ChiefConfirmPasswordController extends Controller {
 			$credentials = UserSecondaryUnit::where('UserSecondaryUnitIsActive', 1)
 				->where('UserSecondaryUnitID', '=', $secondary_user_id)
 				->where('UserSecondaryUnitPassword', '=', $secondary_unit_password)
+				->first();
+			
+			 if (count($credentials) > 0) 
+			 {
+			 	return "Password Correct";
+			 }
+
+		}
+		return "Password Incorrect";
+	}
+
+
+	public function tertiaryUnitConfirmPassword()
+	{
+		$tertiary_user_id = Session::get('tertiary_user_id', 'default');
+
+		$tertiary_unit_password = Request::input('getPassword');
+
+		$tertiary = UserTertiaryUnit::where('UserTertiaryUnitID','=',$tertiary_user_id)
+			->whereRaw("BINARY `UserTertiaryUnitPassword`= ?",array($tertiary_unit_password))
+			->first();
+
+
+		if($tertiary != null)
+		{	
+			$credentials = UserTertiaryUnit::where('UserTertiaryUnitIsActive', 1)
+				->where('UserTertiaryUnitID', '=', $tertiary_user_id)
+				->where('UserTertiaryUnitPassword', '=', $tertiary_unit_password)
 				->first();
 			
 			 if (count($credentials) > 0) 

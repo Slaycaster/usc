@@ -117,6 +117,7 @@
 				</div>
 			</div>
 	    </div>
+
         <!-- End div for data table output -->
 
 
@@ -167,7 +168,9 @@
                                             <label for="monthlyform" class="control-label">January:</label>
                                         </td>
                                         <td class="col-md-2">
-                                            <input type='text' id="id_january_target" valid-number name="monthlyform" value="<% chief_target.JanuaryTarget  %>" ng-model="chief_target.JanuaryTarget"  autocomplete="off" class="form-control target-month" required ng-touched/>
+
+                                            <input type='text' id="id_january_target" valid-number name="monthlyform" value="<% chief_target.JanuaryTarget %>" ng-model="chief_target.JanuaryTarget"  autocomplete="off" class="form-control target-month" required ng-touched />
+
                                             <span class="help-inline" ng-show="userForm.monthlyform.$invalid && !userForm.monthlyform.$pristine">Target for January is required.</span>
                                         </td>
                                       
@@ -339,6 +342,7 @@
             </div>
         </div>
 
+
         <div class="modal fade" id="confirmSubmit" aria-hidden='true' aria-labelledby="myModalLabel" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -419,7 +423,8 @@
                                         <td>     <center>
                                             <button class="btn btn-info target_size">
                                                     <b>April: </b> <% chief_target.AprilTarget %>   
-                                                </button>                                         
+                                                </button>  
+                                            </center>                                       
                                             
                                         </td>
                                         <td>
@@ -508,7 +513,6 @@
                 </div>
             </div>
         </div>
-
        
         <div class="modal fade" id="quarterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -565,8 +569,8 @@
             </div>
         </div>
        
-
     </div>
+
 
 
 @endsection

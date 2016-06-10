@@ -11,11 +11,33 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
 		success(function(data, status, headers, config) {
 			$scope.tertiary_unit_targets = data;
 				$scope.loading = false;
-            console.log($scope.tertiary_unit_targets);
             $scope.date = new Date();
 
 		});	
 	};
+
+    $scope.getpassword = function() 
+    {
+                
+        url = public + 'api/tertiary_unit_confirm_password';
+        $http.post(url, {    
+            
+            getPassword: document.getElementById('getPassword').value
+
+        }).success(function(data, status, headers, config, response) {
+
+            if(data == "Password Correct")
+            {
+                $scope.istrue = "true";
+
+            }
+            else
+            {
+                $scope.istrue = "false";
+            }
+
+        });
+    }
 
 	$scope.sort = function(keyname)
     {

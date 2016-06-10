@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <!--/.div class row-->
-                            <div class="row">
+                            <div class="row" id="tableinfo">
                                 <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i> Tertiary Unit Objectives of {{ $user->tertiary_unit->TertiaryUnitName }}.
                                 </div>
                                 <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i> Tertiary Unit Objectives of {{ $user->tertiary_unit->TertiaryUnitAbbreviation }}.
@@ -59,10 +59,10 @@
                             <div class="table-responsive" ng-show="info" id="tabledata">
                                 <table class="table table-bordered">
                                     <thead>
-                                        <td class="unit_objective-name">  
+                                        <td class="tertiary_objective-name">  
                                             Objective Name
                                         </td>
-                                        <td class="unit_objective-perspective">
+                                        <td class="tertiary_objective-perspective">
                                             Perspective
                                         </td>
                                     <!-- 
@@ -70,10 +70,10 @@
                                             Contributory to Staff's Objective
                                         </td>
                                     -->
-                                        <td class="unit_objective-encoder">
+                                        <td class="tertiary_objective-encoder">
                                             Last Encoded by
                                         </td>
-                                        <td class="unit_objective-edit"></td>
+                                        <td class="tertiary_objective-edit"></td>
                                     </thead>
                                     <tr dir-paginate='tertiary_unit_objective in tertiary_unit_objectives|orderBy: "updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
                                         <td><% tertiary_unit_objective.TertiaryUnitObjectiveName %></td>
