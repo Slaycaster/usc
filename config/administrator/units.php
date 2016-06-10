@@ -42,6 +42,7 @@ return array(
 	    	'title' => 'Staff',
 	    	'relationship' => 'staff',
 	    	'select' => "CONCAT((:table).StaffAbbreviation, ' - ', (:table).StaffName)"
+
 	    )
 	),
 
@@ -94,14 +95,12 @@ return array(
 
 	'rules' => array(
     	'UnitName' => 'required|unique:units,UnitName',
-    	'UnitAbbreviation' => 'required|unique:units,UnitAbbreviation',
-    	'StaffID' => 'required'
+    	'UnitAbbreviation' => 'required|unique:units,UnitAbbreviation'
 	),
 
 	'messages' => array(
     	'UnitName.required' => 'Unit Name is required',
     	'UnitAbbreviation.required' => 'Unit Abbreviation is required',
-    	'StaffID.required' => 'Region is required',
     	'UnitName.unique' => 'Unit Name must be unique',
     	'UnitAbbreviation.unique' => 'Unit Abbreviation must be unique'
 	)

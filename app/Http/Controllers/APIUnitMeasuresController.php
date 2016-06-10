@@ -7,10 +7,11 @@ use App\StaffMeasure;
 use App\UserUnit;
 use App\Unit;
 use App\UnitTarget;
+use App\Staff;
 
 //Laravel Modules
 use App\Http\Controllers\Controller;
-use Request, Session, DB, Validator, Input, Redirect;
+use Request, Session, DB, Validator, Input, Redirect,Response;
 
 
 class APIUnitMeasuresController extends Controller {
@@ -64,16 +65,44 @@ class APIUnitMeasuresController extends Controller {
 
 	public function staff_measures()
 	{
-		$id = Session::get('unit_user_id', 'default');
+
+			$id = Session::get('unit_user_id', 'default');
 			$user = UserUnit::where('UserUnitID', $id)
 				->first();
 
 			$unit = Unit::where('UnitID', '=', $user->UnitID)->with('staff')->first();
 
+			if($unit->StaffID == null)
+			{
+				$staff = StaffMeasure::with('Staff')->get();
+				$istrue = "true";
+
+				$staffmeasure = array(
+					"array1" => $staff,
+					"array2" => $istrue
+				);
+
+				return Response::json($staffmeasure);
+				//return StaffMeasure::with('Staff')->get();
+
+			}
+			else
+			{
+				$staff = StaffMeasure::where('StaffID','=',$unit->StaffID)->get();
+				$istrue = "false";
+
+				$staffmeasure = array(
+					"array1" => $staff,
+					"array2" => $istrue
+				);
+				return Response::json($staffmeasure);
+				//return StaffMeasure::where('StaffID','=',$unit->StaffID)->get();
+				
+			}
 			//$hascontributory = UnitMeasure::where('UnitID', '=', $user->UnitID)->select('StaffMeasureID')->lists('StaffMeasureID');
 
 		//return StaffMeasure::where('StaffID','=',$unit->StaffID)->whereNotIn('StaffMeasureID',$hascontributory)->get();
-			return StaffMeasure::where('StaffID','=',$unit->StaffID)->get();
+
 		
 	}
 
