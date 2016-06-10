@@ -11,10 +11,11 @@
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
-    <script src="{{ asset('js/showtabledata.js') }}"></script>
+    <!-- AngularJS Application Scripts -->
+    <script src="{{ asset('app/controllers/secondary_unit_targets.js') }}"></script>
 
     <br>
-    <div ng-app="unitScorecardApp" ng-controller="APISecondaryUnitObjectiveController">
+    <div ng-app="unitScorecardApp" ng-controller="APISecondaryUnitTargetController">
         <div class="wrap">
             <div class="row">           
                 <div class="col-lg-12">
