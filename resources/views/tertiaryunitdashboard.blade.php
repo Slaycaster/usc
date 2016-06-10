@@ -108,31 +108,6 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-8">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <i class="fa fa-line-chart fa-4x pull-right"></i> 
-                    <h3><b>ACCOMPLISHMENT - MONTHLY ACCUMULATION SUMMARY</b></h3>
-                    <div class="pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                Actions
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="#"><i class="fa fa-list fa-fw"></i> Hide/Show</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="fa fa-calendar fa-fw"></i> Choose date...</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <!-- /.panel -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-success">
