@@ -97,6 +97,21 @@ a.navbar-brand.layout-custom-pnpabb:visited{
         margin-top: .5em;
     }
 }
+#pst{
+    color:white;
+    text-transform: capitalize;
+    text-align: center;
+}
+#clockbox{
+    color:white;
+    font-size: 2em;
+    text-align: center;
+}
+#datebox{
+    color:white;
+    font-size: 1.2em;
+    text-align: center;
+}
 /* /. layout css */
 
 
