@@ -149,7 +149,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-                            <div class="sidebar-search" >
+                            <div>
                                 <div id="pst"></div>
                                 <div id="clockbox"></div>
                                 <div id="datebox"></div>

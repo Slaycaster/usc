@@ -145,7 +145,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <!-- ntp.pagasa.dost.gov.ph -->
-                            <div class="sidebar-search" >
+                            <div>
                                 <div id="pst"></div>
                                 <div id="clockbox"></div>
                                 <div id="datebox"></div>
