@@ -17,11 +17,23 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 	};
 
     $http.get(public + 'api/staff/measures/staffmeasures').
-        success(function(data, status, headers, config)
+        success(function(response, status, headers, config)
         {   
            
-            $scope.staffmeasure = data;
-            
+            //$scope.staffmeasure = data;
+            console.log(response);
+            $scope.staffmeasure = response.array1;
+            if(response.array2 == "true")
+            {
+                
+             angular.forEach($scope.staffmeasure, function(item){
+                            
+                                item.StaffMeasureName = item.StaffMeasureName + ' | ' +item.staff.StaffAbbreviation;                                    
+                                  
+                                })
+            }
+
+
             
             $scope.none = {StaffMeasureID : 0, StaffMeasureName: "None/No Contributory"};
           
@@ -30,7 +42,10 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
             $scope.selectedStaffMeasure = $scope.staffmeasure[0];
 
 
+
+
         });
+
 
      $scope.measureformula = [
                                     {StaffMeasureFormula: "Summation"},
