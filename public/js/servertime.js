@@ -36,3 +36,12 @@ document.getElementById('datebox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+"
 setTimeout("GetClock()", 1000);
 }
 window.onload=GetClock;
+
+// $.ajax({
+//         type: "POST",
+//         data:"",
+//         url: "ajax-get-server-time.php",
+//         success: function(result){
+//                 $("#time_div").html(result);
+//             }
+//         });
