@@ -63,6 +63,8 @@
     <!-- Datetimepicker-->
     <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
      <script src="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+     <script src="{{ asset('js/servertime.js') }}"></script>
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -148,15 +150,12 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                            <div>
+                                <div id="pst"></div>
+                                <div id="clockbox"></div>
+                                <div id="datebox"></div>
+                                <div style="margin-top:1em;""></div>
                             </div>
-                            <!-- /input-group -->
                         </li>
                         <li>
                             <a href="{{ url('tertiary/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i>    Dashboard

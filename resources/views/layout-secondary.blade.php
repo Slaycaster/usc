@@ -144,9 +144,12 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-                            <div id="pst"></div>
-                            <div id="clockbox"></div>
-                            <div id="datebox"></div>
+                            <div >
+                                <div id="pst"></div>
+                                <div id="clockbox"></div>
+                                <div id="datebox"></div>
+                                
+                            </div>
                         </li>
                         <li>
                             <a href="{{ url('secondary_unit/dashboard') }}">
