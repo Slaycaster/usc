@@ -19,7 +19,7 @@ use App\TertiaryUnitFunding;
     
     $tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $tertiary_id)->first();
     $tertiary_unit_objectives = TertiaryUnitObjective::all();
-    $tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $user->TertiaryUnitID)->get();
+    $tertiary_unit_measures = TertiaryUnitMeasure::with('tertiary_unit')->where('TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)->get();
 
     $user = TertiaryUnit::where('TertiaryUnitID', $tertiary_id)
                     ->first();
@@ -198,7 +198,7 @@ use App\TertiaryUnitFunding;
                             {{ $accomplishment->tertiary_unit_measure->TertiaryUnitMeasureName }}
                             @if($accomplishment->tertiary_unit_measure->SecondaryUnitMeasureID > 0)
                                 <br>
-                                <span class="label label-primary">Contributory to {{ $user->tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}</span>
+                                <span class="label label-primary">Contributory to {{ $tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}</span>
                             @endif
                         </td>
                         @if($accomplishment->tertiary_unit_measure->TertiaryUnitMeasureType == 'LG')
