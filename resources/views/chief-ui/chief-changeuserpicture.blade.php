@@ -25,26 +25,32 @@
                                 <i class="fa fa-circle-o-notch fa-5x"></i> <h2><b>{{ $chief_user->chief->ChiefAbbreviation }} Change Picture</b></h2>   <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                             </div>
                             <div class="panel-body">
-                                 <label> Your Current Picture:</label>
+                                
                                   @if (Session::has('upload-error'))
                                    <div class="alert alert-danger"><span class="fa fa-warning fa-fw"></span> {{ Session::get('upload-error') }}</div>
                                     @endif
                                     @if (Session::has('upload-success'))
                                    <div class="alert alert-success"><span class="fa fa-file-picture-o fa-fw"></span> {{ Session::get('upload-success') }}</div>
                                     @endif
-                                 <img class="img-responsive dashboard-custom-pictureabb" 
-                                src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}">
+                            
+                                 <div class="col-md-6">
+                                    <center>
+                                        <h4> Current Unit Picture:</h4>
+                                        <br />
+                                          <img class="img-responsive" height="300px;" width="300px;"  src="{{ asset('uploads/userpictures/unit/cropped/'.''.$chief_user->UserChiefPicturePath.'') }}">
+                                    </center>
+                                </div>
                                 <hr>
-
-                                    <label style="color:orange">*Choose a file: (max 1mb)</label>
-                                    <input type="file" name="picturepath" >
-
-                                    <input type="hidden" name="chiefid" value="{{$chief_user->ChiefID}}">
-                                    <input type="hidden" name="userpicture" value="1">
-
-                                   
-
-                                <br><br><button type="submit" class="btn btn-success btn-sm ">Save Changes</button>
+                                <div class="custom_picture-space"></div>
+                                    <div class="col-md-3">
+                                        <label style="color:orange">*Choose a file: (max 1mb)</label>
+                                        <input type="file" class="form-control" name="picturepath" >
+                                        <input type="hidden" name="chiefid" value="{{$chief_user->ChiefID}}">
+                                        <input type="hidden" name="userpicture" value="1">
+                                    </div>
+                                <div class="col-md-3 pull-left" style="margin-top:2em;">
+                                    <button type="submit" class="btn btn-success btn-sm ">Save Changes</button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -36,8 +36,7 @@
                                         <center>
                                             <h4> Your Current Picture:</h4>
                                             <br />
-                                            <img class="img-responsive dashboard-custom-pictureabb" 
-                                            src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}">
+                                            <img class="img-responsive" height="300px;" width="300px;" src="{{ asset('uploads/userpictures/tertiary/cropped/'.''.$user->UserTertiaryUnitPicturePath.'') }}">
                                             <hr>
                                         </center>
                                     </div>
@@ -47,8 +46,7 @@
 
                                 <div class="col-md-3">
                                     <label style="color:orange">*Choose a file: (max 1mb)</label>
-                                    <input type="file" name="picturepath" >
-
+                                    <input type="file" class="form-control" name="picturepath" >
                                     <input type="hidden" name="tertiaryid" value="{{$user->TertiaryUnitID}}">
                                     <input type="hidden" name="userpicture" value="1">
                                 </div>
