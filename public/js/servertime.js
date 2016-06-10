@@ -31,7 +31,7 @@ if(nsec <= 9) {nsec = "0" +nsec;}
 
 document.getElementById('pst').innerHTML="Philippine Standard Time";
 document.getElementById('clockbox').innerHTML=""+nhour+":"+nmin+":"+nsec+ap+"";
-document.getElementById('datebox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+"";
+document.getElementById('datebox').innerHTML=""+tmonth[nmonth]+" "+ndate+", "+nyear+" - "+tday[nday];
 
 setTimeout("GetClock()", 1000);
 }

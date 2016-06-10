@@ -157,6 +157,10 @@
                                 <div style="margin-top:1em;""></div>
                             </div>
                         </li>
+                        <!-- <li class="standard" style="border:1px green solid;">
+                            <iframe id="blockrandom" name="Philippine Standard Time" src="http://oras.pagasa.dost.gov.ph/widget.shtml" width="100%" height="95" scrolling="no" frameborder="0" class="wrapper">
+                            No Iframes</iframe>
+                        </li> -->
                         <li>
                             <a href="{{ url('tertiary/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i>    Dashboard
                             </a>
