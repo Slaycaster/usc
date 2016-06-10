@@ -188,8 +188,8 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;
-                            $scope.selectedUnitObjective = $scope.unitobjective[response.UnitObjectiveID-1];
-                            $scope.selectedStaffMeasure = $scope.staffmeasure[response.StaffMeasureID];
+                            //$scope.selectedUnitObjective = $scope.unitobjective[response.UnitObjectiveID-1];
+                            //$scope.selectedStaffMeasure = $scope.staffmeasure[response.StaffMeasureID];
 
                             angular.forEach($scope.measureformula, function(item){
                             
@@ -203,6 +203,28 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                                         $scope.selectedMeasureFormula = $scope.measureformula[0];
                                     }  
                                 })
+
+                             var x=0;
+                            angular.forEach($scope.unitobjective, function(item){
+                                    
+                                    if(item.UnitObjectiveID == response.UnitObjectiveID)
+                                    {
+                                        $scope.selectedUnitObjective = $scope.unitobjective[x];
+                                    }
+                                    x++;
+                            })
+
+                             var y=0;
+
+                            angular.forEach($scope.staffmeasure, function(item){
+                                     
+                                    if(item.StaffMeasureID == response.StaffMeasureID)
+                                    {
+                                        $scope.selectedStaffMeasure = $scope.staffmeasure[y];
+                                    }
+                                    y++;
+                            })
+
                         });
                 break;
             default:

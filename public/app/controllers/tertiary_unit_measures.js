@@ -185,8 +185,8 @@ app.controller('APITertiaryUnitMeasureController', function($scope, $http, $inte
                         .success(function(response) {
                             console.log(response);
                             $scope.tertiary_unit_measure = response;
-                            $scope.selectedTertiaryUnitObjective = $scope.tertiary_unit_objective[response.TertiaryUnitObjectiveID-1];
-                            $scope.selectedSecondaryUnitMeasure = $scope.SecondaryUnitmeasure[response.SecondaryUnitMeasureID];
+                            //$scope.selectedTertiaryUnitObjective = $scope.tertiary_unit_objective[response.TertiaryUnitObjectiveID-1];
+                            //$scope.selectedSecondaryUnitMeasure = $scope.SecondaryUnitmeasure[response.SecondaryUnitMeasureID];
 
                             angular.forEach($scope.measureformula, function(item){
                             
@@ -200,6 +200,29 @@ app.controller('APITertiaryUnitMeasureController', function($scope, $http, $inte
                                         $scope.selectedMeasureFormula = $scope.measureformula[0];
                                     }  
                                 })
+
+                             var x=0;
+                            angular.forEach($scope.tertiary_unit_objective, function(item){
+                                    
+                                    if(item.TertiaryUnitObjectiveID == response.TertiaryUnitObjectiveID)
+                                    {
+                                        $scope.selectedTertiaryUnitObjective = $scope.tertiary_unit_objective[x];
+                                    }
+                                    x++;
+                            })
+
+                            var y=0;
+
+                            angular.forEach($scope.secondary_unit_measure, function(item){
+                                     
+                                    if(item.SecondaryUnitMeasureID == response.SecondaryUnitMeasureID)
+                                    {
+                                        $scope.selectedSecondaryUnitMeasure = $scope.secondary_unit_measure[y];
+                                    }
+                                    y++;
+                            })
+
+
                         });
                 break;
             default:

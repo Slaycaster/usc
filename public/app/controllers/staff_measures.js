@@ -198,8 +198,8 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             
                             $scope.staff_measure = response;
-                            $scope.selectedStaffObjective = $scope.staffobjective[response.StaffObjectiveID];
-                            $scope.selectedChiefMeasure = $scope.chiefmeasure[response.ChiefMeasureID];
+                            //$scope.selectedStaffObjective = $scope.staffobjective[response.StaffObjectiveID];
+                            //$scope.selectedChiefMeasure = $scope.chiefmeasure[response.ChiefMeasureID];
 
                             angular.forEach($scope.measureformula, function(item){
                               
@@ -213,6 +213,27 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                                         $scope.selectedMeasureFormula = $scope.measureformula[0];
                                     }  
                                 })
+                            var x=0;
+                            angular.forEach($scope.staffobjective, function(item){
+                                    
+                                    if(item.StaffObjectiveID == response.StaffObjectiveID)
+                                    {
+                                        $scope.selectedStaffObjective = $scope.staffobjective[x];
+                                    }
+                                    x++;
+                            })
+
+                             var y=0;
+
+                            angular.forEach($scope.chiefmeasure, function(item){
+                                     
+                                    if(item.ChiefMeasureID == response.ChiefMeasureID)
+                                    {
+                                        $scope.selectedChiefMeasure = $scope.chiefmeasure[y];
+                                    }
+                                    y++;
+                            })
+                            
                             // var mesid = response.ChiefMeasureID;
                             // $http.get(public + 'api/staff_measures/find/' + mesid)
                             //     .success(function(data){
