@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#77DD77">
-    <meta name="msapplication-navbutton-color" content="#77DD77">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#77DD77">
+    <meta name="theme-color" content="#2F4F4F">
+    <meta name="msapplication-navbutton-color" content="#2F4F4F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2F4F4F">
     <meta name="description" content="Philippine National Police Unit Scorecard">
     <meta name="keywords" content="PNP, unit scorecard, usc, pnp usc">
     <meta name="author" content="Fare Matrix">
@@ -154,8 +154,8 @@
                                 <div id="pst"></div>
                                 <div id="clockbox"></div>
                                 <div id="datebox"></div>
-                                <div style="margin-top:1em;""></div>
                             </div>
+                            <div><hr width="100%" color="white"></div>
                         </li>
                         <!-- <li class="standard" style="border:1px green solid;">
                             <iframe id="blockrandom" name="Philippine Standard Time" src="http://oras.pagasa.dost.gov.ph/widget.shtml" width="100%" height="95" scrolling="no" frameborder="0" class="wrapper">
