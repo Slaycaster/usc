@@ -126,9 +126,7 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
-                            <div ng-if="istrue =='true'" class="alert alert-warning">
-                            <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i>Please don't input 0 value for targets!<br />
-                            </div>
+                            
                             <h4 class="alert alert-success">
                                 <b><% secondary_unit_measurename %></b>
                             </h4>

@@ -17,8 +17,6 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
 		});	
 	};
 
-    
-
 	$scope.sort = function(keyname)
     {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
