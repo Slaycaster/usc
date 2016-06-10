@@ -144,9 +144,13 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-                            <div id="pst"></div>
-                            <div id="clockbox"></div>
-                            <div id="datebox"></div>
+                            <!-- ntp.pagasa.dost.gov.ph -->
+                            <div class="sidebar-search" >
+                                <div id="pst"></div>
+                                <div id="clockbox"></div>
+                                <div id="datebox"></div>
+                                <div style="margin-top:1em;""></div>
+                            </div>
                         </li>
                         <li>
                             <a href="{{ url('unit/dashboard') }}">
