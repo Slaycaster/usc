@@ -270,7 +270,8 @@
                                     </tr>
                                     <tr style="background-color:transparent;">
                                         <td colspan="24">
-                                            <div ng-show="info" class="alert alert-danger container-fluid"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you Add Target, it can no longer be updated until next year.</div>
+                                            <br />
+                                            <div ng-show="info" class="alert alert-warning container-fluid" ng-if="chief_target.JanuaryTarget != 0 && chief_target.FebruaryTarget != 0 && chief_target.MarchTarget != 0 && chief_target.AprilTarget != 0 && chief_target.MayTarget != 0 && chief_target.JuneTarget != 0 && chief_target.JulyTarget != 0 && chief_target.AugustTarget != 0 && chief_target.SeptemberTarget != 0 && chief_target.OctoberTarget != 0 && chief_target.NovemberTarget != 0 && chief_target.DecemberTarget != 0"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you "Add Target", you can no longer update it until next year.</div>
                                         </td>
                                         <td>
                                             <input type="hidden" id="target_date" name="date" value="<% date | date : 'yyyy-MM-dd' %>" />
@@ -278,7 +279,7 @@
                                     </tr>
                                 </table>   
 
-                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em; margin-top:-1em;">
                                     <button class="btn btn-success btn-sm btn-block pull-right"
                                      data-toggle="modal" ng-if="chief_target.JanuaryTarget != 0 && chief_target.FebruaryTarget != 0 && chief_target.MarchTarget != 0 && chief_target.AprilTarget != 0 && chief_target.MayTarget != 0 && chief_target.JuneTarget != 0 && chief_target.JulyTarget != 0 && chief_target.AugustTarget != 0 && chief_target.SeptemberTarget != 0 && chief_target.OctoberTarget != 0 && chief_target.NovemberTarget != 0 && chief_target.DecemberTarget != 0" data-target="#confirmSubmit">Add Target</button> 
                                 </div> 
@@ -323,13 +324,14 @@
                                     </td>
                                     <tr style="background-color:transparent;">
                                         <td colspan="8">
-                                            <div ng-show="info" class="alert alert-danger"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
+                                            <br />
+                                            <div ng-show="info" class="alert alert-warning" ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you "Add Target", you can no longer update it until next year.</div>
                                         </td>
                                     </tr>
                                 </table>
                                     
                                                           
-                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em; margin-top:-1em;">
                                     <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
                                 </div>
                             </div>
@@ -348,8 +350,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <i class="fa fa-question fa-3x"></i>
                         <center>
-                            <br />
                             <h4 class="modal-title">
                             Are you sure about this?</h4>
                         </center>

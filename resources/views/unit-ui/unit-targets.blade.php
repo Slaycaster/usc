@@ -313,7 +313,8 @@
                                     </td>
                                     <tr style="background-color:transparent;">
                                         <td colspan="8">
-                                            <div ng-show="info" class="alert alert-warning" ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
+                                            <br />
+                                            <div ng-show="info" class="alert alert-warning" ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you "Add Target", you can no longer update it until next year.</div>
                                         </td>
                                     </tr>
                                 </table>
@@ -337,10 +338,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        
                         <i class="fa fa-question fa-3x"></i>
                         <center>
-                            
                             <h4 class="modal-title">
                             Are you sure about this?
                             </h4>
