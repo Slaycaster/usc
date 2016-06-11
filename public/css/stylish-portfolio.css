@@ -34,6 +34,25 @@ body {
     }
 }
 
+
+@media (min-width: 992px){
+    .image_big{
+        display: block;
+    }
+    .image_small{
+        display: none;
+    }
+}
+@media (max-width: 991px){
+    .image_big{
+        display: none;
+    }
+    .image_small{
+        display: block;
+    }
+}
+
+
 .header {
     display: table;
     position: relative;
