@@ -1,5 +1,4 @@
 app.controller('APIUnitTargetController', function($scope, $http, $interval) {
-
 	$scope.unit_targets = [];
 	$scope.loading = true;
     $scope.info = false;
@@ -7,13 +6,12 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
     $scope.init = function() {
         $scope.loading = false;
         $scope.info = true;
+        $scope.istrue="false";
 		$http.get(public + 'api/unit_targets').
 		success(function(data, status, headers, config) {
 			$scope.unit_targets = data;
-				$scope.loading = false;
-
+			$scope.loading = false;
             $scope.date = new Date();
-
 		});	
 	};
 
@@ -23,19 +21,18 @@ app.controller('APIUnitTargetController', function($scope, $http, $interval) {
         $http.post(url, {    
             getPassword: document.getElementById('getPassword').value
         }).success(function(data, status, headers, config, response) {
-
             console.log(data);
             if(data == "TRUE")
             {
                 $scope.istrue = "true";
-
             }
             else
             {
                 $scope.istrue = "false";
+             
             }
+        }); 
 
-        });
     }
 
     
