@@ -191,7 +191,7 @@
 
                 <div class="list-group" dir-paginate='audit_trail_dash in unit_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
                     <!-- <a href="{{ url('staff/audit_trails') }}" class="list-group-item"> -->
-                    <a href="{{ url('tertiary/audit_trails') }}" class="list-group-item" style="font-size:12px;">
+                    <a href="{{ url('tertiary_unit/audit_trails') }}" class="list-group-item" style="font-size:12px;">
                     <span class="pull-right"><img ng-src="../uploads/userpictures/tertiary/cropped/<%audit_trail_dash.user_tertiary.UserTertiaryUnitPicturePath%>" height="30px;">
                     </span>  
 
