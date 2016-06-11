@@ -114,7 +114,7 @@
 
 
 
-      <div class="modal fade" id="targetModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="targetModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -125,31 +125,27 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
+                            
+                            <h4 class="alert alert-success">
+                                <b><% unit_measurename %></b>
+                            </h4>
 
-                            <table class="table table-responsive">
-                                <tr>
-                                    <td><h4><b><% unit_measurename %></b></h4></td>
-                                </tr>
-                            </table>
-                                <tr>
-
-                                    <td>
-                                        <h4>Set Target Period:</h4>
-                                    </td>
-                                    <td>&nbsp;&nbsp;</td>
-                                    <td >
-                                        <select id="id_target_period" name="measure_formula" data-ng-model="unit_target.TargetPeriod" class="form-control" style="width:25em;"  required ng-touched> 
-                                                   
-                                                <option value="Monthly">
-                                                    Monthly
-                                                </option>
-                                                <option value="Quarterly">
-                                                    Quarterly
-                                                </option>
-                                        </select>
-                                    </td>
-                                </tr>    
-                            </table>
+                            <div class="container-fluid">
+                                <div class="col-md-3">
+                                    <h4>Set Target Period:</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <select id="id_target_period" name="measure_formula" data-ng-model="unit_target.TargetPeriod" class="form-control"  required ng-touched> 
+                                               
+                                            <option value="Monthly">
+                                                Monthly
+                                            </option>
+                                            <option value="Quarterly">
+                                                Quarterly
+                                            </option>
+                                    </select>
+                                </div>
+                            </div>
 
 
                             <br />
@@ -263,7 +259,8 @@
                                     </tr>
                                     <tr style="background-color:transparent;">
                                         <td colspan="24">
-                                            <div ng-show="info" class="alert alert-danger container-fluid"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you Add Target, it can no longer be updated until next year.</div>
+                                            <br />
+                                            <div ng-show="info" class="alert alert-warning container-fluid" ng-if="unit_target.JanuaryTarget != 0 && unit_target.FebruaryTarget != 0 && unit_target.MarchTarget != 0 && unit_target.AprilTarget != 0 && unit_target.MayTarget != 0 && unit_target.JuneTarget != 0 && unit_target.JulyTarget != 0 && unit_target.AugustTarget != 0 && unit_target.SeptemberTarget != 0 && unit_target.OctoberTarget != 0 && unit_target.NovemberTarget != 0 && unit_target.DecemberTarget != 0"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you "Add Target", you can no longer update it until next year.</div>
                                         </td>
                                         <td>
                                             <input type="hidden" id="target_date" name="date" value="<% date | date : 'yyyy-MM-dd' %>" />
@@ -271,7 +268,7 @@
                                     </tr>
                                 </table>   
 
-                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em; margin-top:-1em;">
                                     <button class="btn btn-success btn-sm btn-block pull-right"
                                      data-toggle="modal" ng-if="unit_target.JanuaryTarget != 0 && unit_target.FebruaryTarget != 0 && unit_target.MarchTarget != 0 && unit_target.AprilTarget != 0 && unit_target.MayTarget != 0 && unit_target.JuneTarget != 0 && unit_target.JulyTarget != 0 && unit_target.AugustTarget != 0 && unit_target.SeptemberTarget != 0 && unit_target.OctoberTarget != 0 && unit_target.NovemberTarget != 0 && unit_target.DecemberTarget != 0" data-target="#confirmSubmit">Add Target</button> 
                                 </div> 
@@ -316,13 +313,13 @@
                                     </td>
                                     <tr style="background-color:transparent;">
                                         <td colspan="8">
-                                            <div ng-show="info" class="alert alert-danger"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
+                                            <div ng-show="info" class="alert alert-warning" ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
                                         </td>
                                     </tr>
                                 </table>
                                     
                                                           
-                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em; margin-top:-1em;">
                                     <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0" ng-disabled="frmEditTarget.$invalid">Add Target</button>
                                 </div>
                             </div>
@@ -340,10 +337,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        
+                        <i class="fa fa-question fa-3x"></i>
                         <center>
-                            <br />
+                            
                             <h4 class="modal-title">
-                            Are you sure about this?</h4>
+                            Are you sure about this?
+                            </h4>
                         </center>
                     </div>
                     <div class="modal-body">
