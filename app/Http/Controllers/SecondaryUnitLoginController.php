@@ -447,10 +447,13 @@ class SecondaryUnitLoginController extends Controller {
 			->whereNotIn('secondary_unit_measures.SecondaryUnitMeasureID', function($q2)
 						{
 
-							$q2->select('SecondaryUnitMeasureID')->from('unit_measures')
+							$q2->select('SecondaryUnitMeasureID')->from('tertiary_unit_measures')
 								->where('SecondaryUnitMeasureID', '!=', 0);
 						})
 			->get();
+
+
+
 
 			$measurecount = DB::table('secondary_unit_targets')
 			->where('SecondaryUnitID', '=', $secondary_unit_id)
@@ -526,7 +529,7 @@ class SecondaryUnitLoginController extends Controller {
 			$firstquarter = $firstquarter / $measurecount;
 			$secondquarter = $secondquarter / $measurecount;
 			$thirdquarter = $thirdquarter / $measurecount;
-			$fourthquarter = $firstquarter / $measurecount;
+			$fourthquarter = $fourthquarter / $measurecount;
 			
 
 			$firstquarter = round($firstquarter, 2);
