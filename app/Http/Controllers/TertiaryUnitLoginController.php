@@ -330,116 +330,20 @@ class TertiaryUnitLoginController extends Controller {
 
 			foreach($scorecards as $scorecard)
 			{
-				if($scorecard->JanuaryTarget != 0)
-				{
+				
 					$january[$i] = ($scorecard->JanuaryAccomplishment / $scorecard->JanuaryTarget) * 100;
-				}
-				else
-				{
-					$january[$i] = 0;
-				}
-
-				if($scorecard->FebruaryTarget != 0)
-				{
 					$february[$i] = ($scorecard->FebruaryAccomplishment / $scorecard->FebruaryTarget) * 100;
-				}
-				else
-				{
-					$february[$i] = 0;
-				}
-
-				if($scorecard->MarchTarget != 0)
-				{
 					$march[$i] = ($scorecard->MarchAccomplishment / $scorecard->MarchTarget) * 100;
-				}
-				else
-				{
-					$march[$i] = 0;
-				}
-
-				if($scorecard->AprilTarget != 0)
-				{
 					$april[$i] = ($scorecard->AprilAccomplishment / $scorecard->AprilTarget) * 100;
-				}
-				else
-				{
-					$april[$i] = 0;
-				}
-
-				if($scorecard->MayTarget != 0)
-				{
 					$may[$i] = ($scorecard->MayAccomplishment / $scorecard->MayTarget) * 100;
-				}
-				else
-				{
-					$may[$i] = 0;
-				}
-
-				if($scorecard->JuneTarget != 0)
-				{
 					$june[$i] = ($scorecard->JuneAccomplishment / $scorecard->JuneTarget) * 100;
-				}
-				else
-				{
-					$june[$i] = 0;
-				}
-
-				if($scorecard->JulyTarget != 0)
-				{
 					$july[$i] = ($scorecard->JulyAccomplishment / $scorecard->JulyTarget) * 100;
-				}
-				else
-				{
-					$july[$i] = 0;
-				}
-
-				if($scorecard->AugustTarget != 0)
-				{
 					$august[$i] = ($scorecard->AugustAccomplishment / $scorecard->AugustTarget) * 100;
-				}
-				else
-				{
-					$august[$i] = 0;
-				}
-
-				if($scorecard->SeptemberTarget != 0)
-				{
 					$september[$i] = ($scorecard->SeptemberAccomplishment / $scorecard->SeptemberTarget) * 100;
-				}
-				else
-				{
-					$september[$i] = 0;
-				}
-
-				if($scorecard->OctoberTarget != 0)
-				{
 					$october[$i] = ($scorecard->OctoberAccomplishment / $scorecard->OctoberTarget) * 100;
-				}
-				else
-				{
-					$october[$i] = 0;
-				}
-
-				if($scorecard->NovemberTarget != 0)
-				{
 					$november[$i] = ($scorecard->NovemberAccomplishment / $scorecard->NovemberTarget) * 100;
-				}
-				else
-				{
-					$november[$i] = 0;
-				}
-
-				if($scorecard->DecemberTarget != 0)
-				{
 					$december[$i] = ($scorecard->DecemberAccomplishment / $scorecard->DecemberTarget) * 100;
-				}
-				else
-				{
-					$december[$i] = 0;
-				}
-				
-				
-
+			
 				$i = $i + 1;
 			}
 
