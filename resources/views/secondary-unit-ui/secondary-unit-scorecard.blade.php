@@ -11,7 +11,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
-    <script src="{{ asset('js/stickyheader.js') }}"></script>
+    <!-- <script src="{{ asset('js/stickyheader.js') }}"></script> -->
 
     <script src="{{ asset('js/debounce.min.js') }}"></script>
 
@@ -24,6 +24,8 @@
 
     <script src="{{ asset('js/showtabledata.js') }}"></script>
 
+    <script src="{{ asset('js/floatingscrollbar.js') }}"></script>
+
         <div id="wrap">
             <div class="row">
                 <div class="panel panel-info scorecard-custom-panel">
@@ -33,7 +35,7 @@
                             <h2 class="heading scorecard-custom-heading">
                                 <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Scorecard for {{ date("Y") }}</b>
                                 <div class="col-md-5 pull-right">
-                                    <form method="get" action="{{ url('report/currentYearSecondaryUnitScorecard') }}" target="_blank">
+                                    <form method="get" id="tableinfo" action="{{ url('report/currentYearSecondaryUnitScorecard') }}" target="_blank">
                                         <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
                                         <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
                                     </form>
@@ -58,9 +60,9 @@
                             <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
                            
 
-                            <div class="table-responsive tabledata" id="tabledata">
+                            <div class="table-responsive tabledata" id="floating-scrollbar">
 
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="tabledata">
                                     <thead>
                                     <tr>
                                         <th rowspan="2" >
@@ -670,6 +672,11 @@
             </div>
         </div>
     </div>
+
+     <script type="text/javascript">
+       
+
+    </script>
 <script>
 // Get the modal
 var modal = document.getElementById('janModal');

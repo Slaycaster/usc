@@ -10,7 +10,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
-    <script src="{{ asset('js/stickyheader.js') }}"></script>
+    <!-- <script src="{{ asset('js/stickyheader.js') }}"></script> -->
 
     <script src="{{ asset('js/debounce.min.js') }}"></script>
 
@@ -20,6 +20,8 @@
     <script src="{{ asset('app/controllers/tertiary_unit_scorecard.js') }}"></script>
 
     <script src="{{ asset('js/showtabledata.js') }}"></script>
+
+    <script src="{{ asset('js/floatingscrollbar.js') }}"></script>
     
     <div ng-app="unitScorecardApp" ng-controller="APITertiaryUnitScorecardController">
         <div id="wrap">
@@ -35,7 +37,7 @@
                             
 
                                 <div class="col-md-3 pull-right">
-                                    <form method="get" action="{{ url('report/currentYearTertiaryUnitScorecard') }}" target="_blank">
+                                    <form method="get" id="tableinfo" action="{{ url('report/currentYearTertiaryUnitScorecard') }}" target="_blank">
                                         <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
                                         <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
                                     </form>
@@ -60,8 +62,8 @@
 
 
                         <div class="panel-body">
-                            <div class="table-responsive tabledata" id="tabledata">
-                                <table class="table table-bordered floatThead-table">
+                            <div class="table-responsive tabledata" id="floating-scrollbar">
+                                <table class="table table-bordered" id="tabledata">
                                     <thead>
                                         <tr>
                                             <th rowspan="2">
@@ -228,5 +230,12 @@
             </div>
         </div>
     </div>
+
+     <script type="text/javascript">
+        $(document).ready(function () {
+            $("#floating-scrollbar").floatingScrollbar();
+        });
+
+    </script>
 
 @endsection

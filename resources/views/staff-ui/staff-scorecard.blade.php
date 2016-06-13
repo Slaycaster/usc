@@ -10,7 +10,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
-    <script src="{{ asset('js/stickyheader.js') }}"></script>
+    <!-- <script src="{{ asset('js/stickyheader.js') }}"></script> -->
 
     <script src="{{ asset('js/debounce.min.js') }}"></script>
 
@@ -18,6 +18,8 @@
     
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/controllers/staff_scorecard.js') }}"></script>
+
+    <script src="{{ asset('js/floatingscrollbar.js') }}"></script>
 
     <div ng-app="unitScorecardApp" ng-controller="APIStaffScorecardController">
         <div id="wrap">
@@ -29,7 +31,7 @@
                             <h2 class="heading scorecard-custom-heading">
                                 <b>{{ $staff_user->staff->StaffAbbreviation }} Scorecard for {{ date("Y") }}</b>
                                 <div class="col-md-5 pull-right">
-                                    <form method="get" action="{{ url('report/currentYearStaffScorecard') }}" target="_blank">
+                                    <form method="get" id="tableinfo" action="{{ url('report/currentYearStaffScorecard') }}" target="_blank">
                                         <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
                                         <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
                                     </form>
@@ -54,9 +56,9 @@
                             <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
                            
 
-                            <div class="table-responsive tabledata" id="tabledata">
+                            <div class="table-responsive tabledata" id="floating-scrollbar">
 
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="tabledata">
                                     <thead>
                                     <tr>
                                         <th rowspan="2" >
@@ -667,6 +669,12 @@
             </div>
         </div>
     </div>
+     <script type="text/javascript">
+        $(document).ready(function () {
+            $("#floating-scrollbar").floatingScrollbar();
+        });
+
+    </script>
 
 <script>
 // Get the modal
