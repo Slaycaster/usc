@@ -49,7 +49,13 @@
                                                 @endforeach
                                             </select>
                                             <br>
-                                            <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save">Generate PDF</button>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-total" name="total" value="total">Generate PDF (Total)</button>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success btn-sm btn-block" id="btn-save-quarterlytotal" name="quarterlytotal" value="quarterlytotal">Generate PDF Quarterly (Total)</button>
+                                            </div>
                                             <br>
                                         </div>
                                     </form>

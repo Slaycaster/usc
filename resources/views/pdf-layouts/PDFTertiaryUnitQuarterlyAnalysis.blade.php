@@ -30,6 +30,7 @@ use App\TertiaryUnitFunding;
                         ->join('tertiary_unit_measures', 'tertiary_unit_objectives.TertiaryUnitObjectiveID', '=', 'tertiary_unit_measures.TertiaryUnitObjectiveID')
                         ->where('tertiary_unit_objectives.TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)
                         ->orderBy('tertiary_unit_objectives.TertiaryUnitObjectiveName', 'asc')
+                        ->orderBy('tertiary_unit_measures.TertiaryUnitMeasureID', 'asc')
                         ->get();//dd($sortByObjective);
     $checkAccomplishment = 0;
     foreach($sortByObjective as $measure)
@@ -101,7 +102,7 @@ use App\TertiaryUnitFunding;
     }
     .label-primary 
     {
-        background-color: #d9534f;
+        background-color: #337ab7;
     }
     .unitlogo
     {
