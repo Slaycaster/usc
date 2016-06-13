@@ -137,31 +137,31 @@ use App\UnitAccomplishment;
     <p style="font-size: 14;font-family: helvetica;font-weight: 600;text-align: center;">{{ $staff->StaffAbbreviation }} Scorecard for {{ $selectedYear }}</p>
     <table border="1">
         @if($checkAccomplishment != 0)
-            <thead style="font-weight: bold;font-family: arial,helvetica;">
+            <thead style="font-weight: bold;font-family: arial,helvetica">
                 <tr>
-                    <td width="53" rowspan="2">OBJECTIVES</td>
+                    <td width="11.5%" rowspan="2">OBJECTIVES</td>
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
                     <td width="68" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
                     <td colspan="12" height="12">TARGET/ACCOMPLISHMENT</td>
-                    <td width="65" rowspan="2" style="text-align: left;padding-left: 3px;">INITIATIVES</td>
+                    <td width="68" rowspan="2" style="text-align: left;">INITIATIVES</td>
                     <td colspan="3">FUNDING</td>
                 </tr>
                 <tr>
-                    <td width="70" style="text-align: left;padding-left: 3px;">Name</td>
+                    <td width="80" style="text-align: left;padding-left: 3px;">Name</td>
                     <td width="15">LG</td>
                     <td width="15">LD</td>
-                    <td width="33">Jan</td>
-                    <td width="33">Feb</td>
-                    <td width="33">Mar</td>
-                    <td width="33">Apr</td>
-                    <td width="33">May</td>
-                    <td width="33">Jun</td>
-                    <td width="33">Jul</td>
-                    <td width="33">Aug</td>
-                    <td width="33">Sep</td>
-                    <td width="33">Oct</td>
-                    <td width="33">Nov</td>
-                    <td width="33">Dec</td>
+                    <td width="32">Jan</td>
+                    <td width="32">Feb</td>
+                    <td width="32">Mar</td>
+                    <td width="32">Apr</td>
+                    <td width="32">May</td>
+                    <td width="32">Jun</td>
+                    <td width="32">Jul</td>
+                    <td width="32">Aug</td>
+                    <td width="32">Sep</td>
+                    <td width="32">Oct</td>
+                    <td width="32">Nov</td>
+                    <td width="32">Dec</td>
                     <td width="32">Estimate</td>
                     <td width="28">Actual</td>
                     <td width="32">Variance</td>
