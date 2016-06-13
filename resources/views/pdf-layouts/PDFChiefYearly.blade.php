@@ -69,35 +69,35 @@ use App\StaffAccomplishment;
 <head>
     <title>Report | PNP</title>
     <style type="text/css">
-    table
+     table
     {
-    	font-size: 10;
-    	text-align: center;
-    	width: 875;
-    	border-collapse: collapse;
-    	page-break-inside: auto;
+        font-size: 10;
+        text-align: center;
+        width: 875;
+        border-collapse: collapse;
+        page-break-inside: auto;
     }
     tr
     { 
-    	page-break-inside: avoid;
-    	page-break-after: auto; 
+        page-break-inside: avoid;
+        page-break-after: auto; 
     }
     p, strong
     {
-    	font-family: helvetica;
+        font-family: helvetica;
     }
     img 
     {
-    	position: absolute;
-    	left: 70px;
-    	top: 5px;
-	}
-	.unitlogo
-	{
-    	position: absolute;
-    	left: 960px;
-    	top: 16px;
-	}
+        position: absolute;
+        left: 70px;
+        top: 5px;
+    }
+    .unitlogo
+    {
+        position: absolute;
+        left: 960px;
+        top: 16px;
+    }
     .label 
     {
         display: inline;
@@ -108,18 +108,6 @@ use App\StaffAccomplishment;
         color: #fff;
         text-align: center;
         white-space: nowrap;
-        vertical-align: baseline;
-        border-radius: .25em;
-    }
-    .labelC
-    {   
-        display: inline;
-        font-size: 60%;
-        font-family: helvetica;
-        font-weight: bold;
-        line-height: 1;
-        color: #000;
-        text-align: center;
         vertical-align: baseline;
         border-radius: .25em;
     }
@@ -141,12 +129,10 @@ use App\StaffAccomplishment;
         content: "Page " counter(page);
     }
     </style>
+    </style>
 </head>
 
 <body>
-    {{-- <div class="footer">
-        <span class="pagenum"></span>
-    </div> --}}
     <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 122px;">
     @if($chief->ChiefAbbreviation != "C, PNP")
         <img class="unitlogo" src="{{URL::asset($chieflogoPath)}}" style="height: 120px;width: 120px;">
@@ -347,7 +333,7 @@ use App\StaffAccomplishment;
                                                     @endforeach
                                                 @endforeach 
                                                 <normal>
-                                                    @if($staffJanuaryCounter == 1)(@endif{{ round(($contributory->JanuaryAccomplishment+$unitJanuaryContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffJanuaryCounter != count($contributor->staff_accomplishments)),@endif
+                                                    @if($staffJanuaryCounter == 1)(@endif{{ round(($contributory->JanuaryAccomplishment+$unitJanuaryContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffJanuaryCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -455,7 +441,7 @@ use App\StaffAccomplishment;
                                                     @if($staffFebruaryCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->FebruaryAccomplishment+$unitFebruaryContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffFebruaryCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->FebruaryAccomplishment+$unitFebruaryContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffFebruaryCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -563,7 +549,7 @@ use App\StaffAccomplishment;
                                                     @if($staffMarchCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->MarchAccomplishment+$unitMarchContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffMarchCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->MarchAccomplishment+$unitMarchContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffMarchCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -671,7 +657,7 @@ use App\StaffAccomplishment;
                                                     @if($staffAprilCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->AprilAccomplishment+$unitAprilContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffAprilCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->AprilAccomplishment+$unitAprilContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffAprilCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -779,7 +765,7 @@ use App\StaffAccomplishment;
                                                     @if($staffMayCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->MayAccomplishment+$unitMayContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffMayCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->MayAccomplishment+$unitMayContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffMayCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -887,7 +873,7 @@ use App\StaffAccomplishment;
                                                     @if($staffJuneCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->JuneAccomplishment+$unitJuneContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffJuneCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->JuneAccomplishment+$unitJuneContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffJuneCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -995,7 +981,7 @@ use App\StaffAccomplishment;
                                                     @if($staffJulyCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->JulyAccomplishment+$unitJulyContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffJulyCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->JulyAccomplishment+$unitJulyContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffJulyCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -1103,7 +1089,7 @@ use App\StaffAccomplishment;
                                                     @if($staffAugustCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->AugustAccomplishment+$unitAugustContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffAugustCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->AugustAccomplishment+$unitAugustContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffAugustCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -1211,7 +1197,7 @@ use App\StaffAccomplishment;
                                                     @if($staffSeptemberCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->SeptemberAccomplishment+$unitSeptemberContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffSeptemberCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->SeptemberAccomplishment+$unitSeptemberContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffSeptemberCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -1319,7 +1305,7 @@ use App\StaffAccomplishment;
                                                     @if($staffOctoberCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->OctoberAccomplishment+$unitOctoberContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffOctoberCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->OctoberAccomplishment+$unitOctoberContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffOctoberCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -1427,7 +1413,7 @@ use App\StaffAccomplishment;
                                                     @if($staffNovemberCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->NovemberAccomplishment+$unitNovemberContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffNovemberCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->NovemberAccomplishment+$unitNovemberContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffNovemberCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
@@ -1535,7 +1521,7 @@ use App\StaffAccomplishment;
                                                     @if($staffDecemberCounter == 1)
                                                         (
                                                     @endif
-                                                    {{ round(($contributory->DecemberAccomplishment+$unitDecemberContribution), 2) }}-<span class="labelC">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffDecemberCounter != count($contributor->staff_accomplishments)),@endif
+                                                    {{ round(($contributory->DecemberAccomplishment+$unitDecemberContribution), 2) }}-<span class="labelc">{{ $contributory->staff->StaffAbbreviation }}</span></span>@if($staffDecemberCounter != count($contributor->staff_accomplishments)),@endif
                                                 </normal>
                                             @endforeach
                                         @endforeach
