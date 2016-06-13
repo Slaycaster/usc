@@ -30,7 +30,7 @@
 								<div class="col-lg-2">
 									<button id="btn-add" class="btn btn-primary btn-block btn-md" ng-click="toggle('add', 0)">Add New Measure</button>
 								</div>
-								<div class="col-lg-6 pull-right">
+								<div class="col-lg-5 pull-right">
 									<form>
 								        <div class="form-group">
 								        	<div class="input-group">

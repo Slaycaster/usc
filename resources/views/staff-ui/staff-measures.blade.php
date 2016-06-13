@@ -50,8 +50,8 @@
                             </div>
 							<!--./div class row-->
 
-                            <div class="table-responsive" ng-show="info" id="tabledata">
-    							<table class="table table-bordered">
+                            <div class="table-responsive" ng-show="info">
+    							<table class="table table-bordered" id="tabledata">
     								<thead>
     									<td class="staff_measure-name">
                                             Measure Name
