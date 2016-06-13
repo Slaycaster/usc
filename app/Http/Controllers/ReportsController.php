@@ -297,7 +297,7 @@ class ReportsController extends Controller
 		elseif(Input::get('total'))
 		{
 			Session::put('reportType', 'total');
-			$pdf = PDF::loadView('pdf-layouts.PDFChiefYearlyTotal')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf = PDF::loadView('pdf-layouts.PDFChiefYearly')->setPaper('Folio')->setOrientation('Landscape');
 			$pdf->output();
 			$dom_pdf = $pdf->getDomPDF();
 			$canvas = $dom_pdf ->get_canvas();

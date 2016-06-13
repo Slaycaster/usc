@@ -207,7 +207,7 @@ use App\StaffAccomplishment;
                                                 ->with('user_chief')
                                                 ->with('user_chief.rank')
                                                 ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                                ->where('ChiefID', '=', $chief_id)
+                                                ->where('ChiefID', '=', $chief_user->ChiefID)
                                                 ->where('ChiefMeasureID', '=', $measure->ChiefMeasureID)
                                                 ->get();
                 foreach ($accomplishments as $accomplishment)
@@ -295,7 +295,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalJanuaryContribution = $unitJanuaryContribution + $contributory->JanuaryAccomplishment+$unitJanuaryContribution;
+                                            $totalJanuaryContribution = $unitJanuaryContribution + $contributory->JanuaryAccomplishment;
                                             $staff_Januarychecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -343,7 +343,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffJanuaryCounter == 1)
                                                         (
@@ -404,7 +403,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalFebruaryContribution = $unitFebruaryContribution + $contributory->FebruaryAccomplishment+$unitFebruaryContribution;
+                                            $totalFebruaryContribution = $unitFebruaryContribution + $contributory->FebruaryAccomplishment;
                                             $staff_Februarychecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -452,7 +451,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffFebruaryCounter == 1)
                                                         (
@@ -513,7 +511,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalMarchContribution = $unitMarchContribution + $contributory->MarchAccomplishment+$unitMarchContribution;
+                                            $totalMarchContribution = $unitMarchContribution + $contributory->MarchAccomplishment;
                                             $staff_Marchchecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -561,7 +559,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffMarchCounter == 1)
                                                         (
@@ -622,7 +619,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalAprilContribution = $unitAprilContribution + $contributory->AprilAccomplishment+$unitAprilContribution;
+                                            $totalAprilContribution = $unitAprilContribution + $contributory->AprilAccomplishment;
                                             $staff_Aprilchecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -670,7 +667,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffAprilCounter == 1)
                                                         (
@@ -731,7 +727,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalMayContribution = $unitMayContribution + $contributory->MayAccomplishment+$unitMayContribution;
+                                            $totalMayContribution = $unitMayContribution + $contributory->MayAccomplishment;
                                             $staff_Maychecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -779,7 +775,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffMayCounter == 1)
                                                         (
@@ -840,7 +835,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalJuneContribution = $unitJuneContribution + $contributory->JuneAccomplishment+$unitJuneContribution;
+                                            $totalJuneContribution = $unitJuneContribution + $contributory->JuneAccomplishment;
                                             $staff_Junechecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -888,7 +883,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffJuneCounter == 1)
                                                         (
@@ -949,7 +943,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalJulyContribution = $unitJulyContribution + $contributory->JulyAccomplishment+$unitJulyContribution;
+                                            $totalJulyContribution = $unitJulyContribution + $contributory->JulyAccomplishment;
                                             $staff_Julychecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -997,7 +991,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffJulyCounter == 1)
                                                         (
@@ -1058,7 +1051,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalAugustContribution = $unitAugustContribution + $contributory->AugustAccomplishment+$unitAugustContribution;
+                                            $totalAugustContribution = $unitAugustContribution + $contributory->AugustAccomplishment;
                                             $staff_Augustchecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -1106,7 +1099,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffAugustCounter == 1)
                                                         (
@@ -1167,7 +1159,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalSeptemberContribution = $unitSeptemberContribution + $contributory->SeptemberAccomplishment+$unitSeptemberContribution;
+                                            $totalSeptemberContribution = $unitSeptemberContribution + $contributory->SeptemberAccomplishment;
                                             $staff_Septemberchecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -1215,7 +1207,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffSeptemberCounter == 1)
                                                         (
@@ -1276,7 +1267,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalOctoberContribution = $unitOctoberContribution + $contributory->OctoberAccomplishment+$unitOctoberContribution;
+                                            $totalOctoberContribution = $unitOctoberContribution + $contributory->OctoberAccomplishment;
                                             $staff_Octoberchecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -1324,7 +1315,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffOctoberCounter == 1)
                                                         (
@@ -1385,7 +1375,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalNovemberContribution = $unitNovemberContribution + $contributory->NovemberAccomplishment+$unitNovemberContribution;
+                                            $totalNovemberContribution = $unitNovemberContribution + $contributory->NovemberAccomplishment;
                                             $staff_Novemberchecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -1433,7 +1423,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffNovemberCounter == 1)
                                                         (
@@ -1494,7 +1483,7 @@ use App\StaffAccomplishment;
                                             @endforeach
                                         @endforeach 
                                         <?php
-                                            $totalDecemberContribution = $unitDecemberContribution + $contributory->DecemberAccomplishment+$unitDecemberContribution;
+                                            $totalDecemberContribution = $unitDecemberContribution + $contributory->DecemberAccomplishment;
                                             $staff_Decemberchecker = $contributory->staff->StaffAbbreviation;
                                         ?> 
                                     @endforeach
@@ -1542,7 +1531,6 @@ use App\StaffAccomplishment;
                                                         </normal>
                                                     @endforeach
                                                 @endforeach 
-                                                <br>
                                                 <normal>
                                                     @if($staffDecemberCounter == 1)
                                                         (
