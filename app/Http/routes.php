@@ -126,6 +126,10 @@ Route::get('staff/analysis_reports','ReportsAnalysisController@staffIndex');
 
 //Route::post('staff/ajaxchiefmeasure', 'APIStaffMeasuresController@ajaxchiefmeasure');
 Route::get('staff/angularchiefmeasure/{measureID}', 'APIStaffMeasuresController@angularchiefmeasure');
+Route::post('staff/ifhascontributory/{measureID}', 'APIStaffMeasuresController@ifhascontributory');
+Route::post('unit/ifhascontributory/{measureID}', 'APIUnitMeasuresController@ifhascontributory');
+Route::post('secondaryunit/ifhascontributory/{measureID}', 'APISecondaryUnitMeasuresController@ifhascontributory');
+Route::post('tertiaryunit/ifhascontributory/{measureID}', 'APITertiaryUnitMeasuresController@ifhascontributory');
 Route::get('unit/angularstaffmeasure/{measureID}', 'APIUnitMeasuresController@angularstaffmeasure');
 Route::get('secondary_unit/angularunitmeasure/{measureID}', 'APISecondaryUnitMeasuresController@angularunitmeasure');
 /*CHIEF USER ROUTES*/
@@ -214,6 +218,7 @@ Route::get('api/staff/measures/chiefmeasures', 'APIStaffMeasuresController@chief
 Route::get('api/staff/measures/staffobjectives', 'APIStaffMeasuresController@staff_objectives');
 Route::get('api/unit/measures/unitobjectives', 'APIUnitMeasuresController@unit_objectives');
 Route::get('api/staff/measures/staffmeasures', 'APIUnitMeasuresController@staff_measures');
+Route::get('api/staff_measures/find/{mesid}', 'APIStaffMeasuresController@findmeasure');
 
 Route::get('api/unit_scorecard/lastupdatedby', 'APIUnitScorecardController@LastUpdatedBy');
 Route::get('api/staff_scorecard/lastupdatedby', 'APIStaffScorecardController@LastUpdatedBy');

@@ -1,5 +1,4 @@
 app.controller('APITertiaryUnitTargetController', function($scope, $http, $interval) {
-
 	$scope.tertiary_unit_targets = [];
 	$scope.loading = true;
     $scope.info = false;
@@ -11,7 +10,6 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
 		success(function(data, status, headers, config) {
 			$scope.tertiary_unit_targets = data;
 				$scope.loading = false;
-            console.log($scope.tertiary_unit_targets);
             $scope.date = new Date();
 
 		});	
@@ -27,7 +25,6 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
 
         }).success(function(data, status, headers, config, response) {
 
-            console.log(data);
             if(data == "Password Correct")
             {
                 $scope.istrue = "true";
@@ -125,8 +122,13 @@ app.controller('APITertiaryUnitTargetController', function($scope, $http, $inter
                 
                 $scope.id = id;
                 $http.get(public + 'api/tertiary_unit_targets/' + id)
-                .success(function(response) {            
+                .success(function(response) { 
+
                     $scope.tertiary_unit_target = response;
+                    $scope.quarter1 = parseFloat($scope.tertiary_unit_target.JanuaryTarget + $scope.tertiary_unit_target.FebruaryTarget + $scope.tertiary_unit_target.MarchTarget).toFixed(2);
+                    $scope.quarter2 = parseFloat($scope.tertiary_unit_target.AprilTarget + $scope.tertiary_unit_target.MayTarget + $scope.tertiary_unit_target.JuneTarget).toFixed(2);
+                    $scope.quarter3 = parseFloat($scope.tertiary_unit_target.JulyTarget + $scope.tertiary_unit_target.AugustTarget + $scope.tertiary_unit_target.SeptemberTarget).toFixed(2);
+                    $scope.quarter4 = parseFloat($scope.tertiary_unit_target.OctoberTarget + $scope.tertiary_unit_target.NovemberTarget + $scope.tertiary_unit_target.DecemberTarget).toFixed(2);           
                     console.log("SHOW" + $scope.tertiary_unit_target.TargetPeriod);
                     if($scope.tertiary_unit_target.TargetPeriod === 'Monthly' || $scope.tertiary_unit_target.TargetPeriod === 'Quarterly')
                     {

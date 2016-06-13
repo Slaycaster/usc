@@ -44,7 +44,7 @@
 								</div>
 							</div>
 							<!--/.div class row-->
-							<div class="row">
+							<div class="row" id="tableinfo">
                                 <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Staff Measures of {{ $staff_user->staff->StaffName }}.</div>
                                 <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Staff Measures of {{ $staff_user->staff->StaffAbbreviation }}.</div>
                             </div>
@@ -161,6 +161,9 @@
                                     <td class="col-md-4 mod">
                                         <label for="chief_measure" class="control">Contributory to Chief's Measure:</label>
                                     </td>
+                                    <div ng-if="hascontribute =='true'" class="alert alert-danger">
+                            <i class="fa fa-warning  fa-fw">&nbsp;&nbsp;</i>  A Staff Measure was already assigned to the selected Chief Measure as contributory. Please pick another Chief Measure (if possible) or edit the said Staff Measure.<br />
+                            </div>
                                     <td class="col-md-8">
                                         
 

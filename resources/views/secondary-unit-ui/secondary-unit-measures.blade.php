@@ -44,7 +44,7 @@
 								</div>
 							</div>
 							<!--/.div class row-->
-							<div class="row">
+							<div class="row" id="tableinfo">
                                 <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->secondary_unit->SecondaryUnitName }}.</div>
                                  <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->secondary_unit->SecondaryUnitAbbreviation }}.</div>
                             </div>
@@ -58,29 +58,29 @@
     							<table class="table table-bordered">
     								<thead>
                                         <tr>
-        									<td class="unit_measure-name">
+        									<td class="secondary_measure-name">
                                                 Measure Name
         									</td>
         							
-        									<td class="unit_measure-type">
+        									<td class="secondary_measure-type">
                                                 Type
         									</td>
 
-                                             <td class="unit_measure-formula">
+                                             <td class="secondary_measure-formula">
                                                 Formula
                                             </td>
 
-                                            <td class="unit_measure-objective">
+                                            <td class="secondary_measure-objective">
                                                 Objective
                                             </td>
 
-                                            <td class="unit_measure-contributory">
+                                            <td class="secondary_measure-contributory">
                                                 Contributory to {{ $unit->unit->UnitAbbreviation }}'s Measure
                                             </td>
-        									<td class="unit_measure-encoder">
+        									<td class="secondary_measure-encoder">
                                                 Last Encoded by
         									</td>
-        									<td class="unit_measure-edit"></td>
+        									<td class="secondary_measure-edit"></td>
                                         </tr>
     								</thead>
     								<tr dir-paginate='unit_measure in secondary_unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
@@ -172,6 +172,9 @@
                                     <td class="col-md-4 mod">
                                         <label for="staff_measure" class="control">Contributory to {{ $unit->unit->UnitAbbreviation }}'s Measure:</label>
                                     </td>
+                                    <div ng-if="hascontribute =='true'" class="alert alert-danger">
+                            <i class="fa fa-warning  fa-fw">&nbsp;&nbsp;</i>  A Secondary Unit Measure was already assigned to the selected Unit Measure as contributory. Please pick another Unit Measure (if possible) or edit the said Secondary Unit Measure.<br />
+                            </div>
                                     <td class="col-md-8">
                                         
 

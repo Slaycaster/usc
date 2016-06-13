@@ -55,7 +55,7 @@
 								</div>
 							</div>
 							<!--/.div class row-->
-							<div class="row">
+							<div class="row" id="tableinfo">
 								<div ng-show="info" class="alert alert-info objective-info-name">
                                     <i class="fa fa-info-circle fa-fw"></i>Chief Objectives of {{ $chief_user->chief->ChiefName }}.
                                 </div>

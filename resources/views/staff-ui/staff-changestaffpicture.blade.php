@@ -8,14 +8,11 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
-    <!-- AngularJS Application Scripts -->
-    
-
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
     <br>
-    <div ng-app="unitScorecardApp" >
+    <div ng-app="unitScorecardApp">
 	    <form action="{{url('change_picture')}}" method="post" enctype="multipart/form-data">
             <div class="wrap">
     		    <div class="row">			
@@ -37,7 +34,7 @@
                                     <center>
                                         <h4> Current Unit Picture:</h4>
                                         <br />
-                                            <img class="img-responsive" height="300px;" width="300px;" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
+                                        <img class="img-responsive" height="300px;" width="300px;" src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
                                     </center>
                                 </div>
                                 <hr>

@@ -70,9 +70,10 @@ class APITertiaryUnitMeasuresController extends Controller {
 
 		$tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $user->TertiaryUnitID)->with('secondary_unit')->first();
 
-		$hascontributory = TertiaryUnitMeasure::where('TertiaryUnitID', '=', $user->TertiaryUnitID)->select('SecondaryUnitMeasureID')->lists('SecondaryUnitMeasureID');
+	//	$hascontributory = TertiaryUnitMeasure::where('TertiaryUnitID', '=', $user->TertiaryUnitID)->select('SecondaryUnitMeasureID')->lists('SecondaryUnitMeasureID');
 
-		return SecondaryUnitMeasure::where('SecondaryUnitID','=',$tertiary_unit->SecondaryUnitID)->whereNotIn('SecondaryUnitMeasureID',$hascontributory)->get();
+		//return SecondaryUnitMeasure::where('SecondaryUnitID','=',$tertiary_unit->SecondaryUnitID)->whereNotIn('SecondaryUnitMeasureID',$hascontributory)->get();
+		return SecondaryUnitMeasure::where('SecondaryUnitID','=',$tertiary_unit->SecondaryUnitID)->get();
 	}
 
 	public function tertiary_unit_objectives()
@@ -94,6 +95,24 @@ class APITertiaryUnitMeasuresController extends Controller {
 		
 			
 		return $secondaryunitmeasureformula;
+	}
+
+	public function ifhascontributory($measureID)
+	{
+			$id = Session::get('tertiary_user_id', 'default');
+		$user = UserTertiaryUnit::where('UserTertiaryUnitID', $id)
+				->first();
+		
+		$mescontribute = TertiaryUnitMeasure::where('SecondaryUnitMeasureID','=',$measureID)->where('TertiaryUnitID','=',$user->TertiaryUnitID)->first();
+		if($mescontribute == null)
+		{
+			return "none";
+		}
+		else
+		{
+			return "true";
+		}
+
 	}
 
 	/**

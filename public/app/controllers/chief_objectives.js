@@ -26,13 +26,16 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
     };
  
-    $scope.save = function(modalstate, id) {
+    $scope.save = function(modalstate, id) 
+    {
         $scope.loading = true;
         var url = public + 'api/chief_objectives';
 
         //append Unit Objective ID to the URL if the form is in edit mode
-        if (modalstate === 'edit'){
+        if (modalstate === 'edit')
+        {
             url += "/" + id; 
+            console.log(document.getElementById('unit_id').value);
             $http.put(url, {
                 ChiefObjectiveName: $scope.chief_objective.ChiefObjectiveName,
                 PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
@@ -40,13 +43,15 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
                 UserChiefID: document.getElementById('user_chief_id').value
 
             }).success(function(data, status, headers, config, response) {
+                console.log(response);
                 $('#myModal').modal('hide');
                 $scope.chief_objective = '';
                 $scope.init();
                 $scope.loading = false;
             });
         }
-        else if (modalstate === 'add'){
+        else if (modalstate === 'add')
+        {
             $http.post(url, {
                 ChiefObjectiveName: $scope.chief_objective.ChiefObjectiveName,
                 PerspectiveID: $scope.selectedUserProfile.PerspectiveID,
@@ -54,6 +59,7 @@ app.controller('APIChiefObjectiveController', function($scope, $http, $interval)
                 UserChiefID: document.getElementById('user_chief_id').value
 
             }).success(function(data, status, headers, config, response) {
+                console.log(response);
                 $('#myModal').modal('hide');
                 $scope.chief_objective = '';
                 $scope.init();

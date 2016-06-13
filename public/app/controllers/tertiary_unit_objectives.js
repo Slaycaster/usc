@@ -18,7 +18,7 @@ app.controller('APITertiaryUnitObjectiveController', function($scope, $http, $in
                 $scope.selectedUserProfile = $scope.perspective[0];
             });
 
-            $http.get(public + 'api/tertiary_unit/tertiary_unit_objectives/secondary_unit_objectives').
+            $http.get(public + 'api/tertiary_unit_objectives').
                 success(function(data, status, headers, config)
                 {   
                        

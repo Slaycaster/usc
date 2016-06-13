@@ -911,6 +911,16 @@ class ChiefLoginController extends Controller {
 
 		if($search != '')
 		{
+			$tertiaryresults = DB::table('tertiary_units')
+			->where('TertiaryUnitName', 'like','%'.$search.'%')
+			->orWhere('TertiaryUnitAbbreviation', 'like','%'.$search.'%')
+			->get();
+
+			$secondaryresults = DB::table('secondary_units')
+			->where('SecondaryUnitName', 'like','%'.$search.'%')
+			->orWhere('SecondaryUnitAbbreviation', 'like','%'.$search.'%')
+			->get();
+
 			$unitresults = DB::table('units')
 			->where('UnitName', 'like','%'.$search.'%')
 			->orWhere('UnitAbbreviation', 'like','%'.$search.'%')
@@ -928,7 +938,7 @@ class ChiefLoginController extends Controller {
 		}
 		
 
-		return Response::json(array("u" => $unitresults, "s" => $staffresults));
+		return Response::json(array("u" => $unitresults, "s" => $staffresults, "su" => $secondaryresults, "tu" => $tertiaryresults));
 		
 	}
 

@@ -59,6 +59,8 @@
     <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
      <script src="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+     <script src="{{ asset('js/servertime.js') }}"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -142,16 +144,17 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                            <div>
+                                <div id="pst"></div>
+                                <div id="clockbox"></div>
+                                <div id="datebox"></div>                              
                             </div>
-                            <!-- /input-group -->
+                            <div><hr width="100%" color="white"></div>
                         </li>
+                        <!-- <li class="standard" style="border:1px green solid;">
+                            <iframe id="blockrandom" name="Philippine Standard Time" src="http://oras.pagasa.dost.gov.ph/widget.shtml" width="100%" height="95" scrolling="no" frameborder="0" class="wrapper">
+                            No Iframes</iframe>
+                        </li> -->
                         <li>
                             <a href="{{ url('secondary_unit/dashboard') }}">
                                 <i class="fa fa-dashboard fa-fw"></i>         
@@ -197,7 +200,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('secondary_unit/changeunitpicture') }}">Change Secondary Unit Picture</a>
+                                    <a href="{{ url('secondary_unit/changesecondaryunitpicture') }}">Change Secondary Unit Picture</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

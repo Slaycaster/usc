@@ -43,7 +43,7 @@
 								</div>
 							</div>
 							<!--/.div class row-->
-							<div class="row">
+							<div class="row" id="tableinfo">
                                 <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>Scorecard Target of {{ $staff_user->staff->StaffName }}.</div>
                             </div>
 							<!--./div class row-->
@@ -124,9 +124,7 @@
                     
                     <div class="modal-body">
                         <form name="frmShowTarget" class="form-horizontal" novalidate="">
-                        <div ng-if="istrue =='true'" class="alert alert-warning">
-                            <i class="fa fa-unlock  fa-fw">&nbsp;&nbsp;</i>Please don't input 0 value for targets!<br />
-                        </div>
+                         
                             <h4 class="alert alert-success">
                                 <b><% staff_measurename %></b>
                             </h4>
@@ -263,7 +261,8 @@
                                     </tr>
                                     <tr style="background-color:transparent;">
                                         <td colspan="24">
-                                            <div ng-show="info" class="alert alert-danger container-fluid"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you Add Target, it can no longer be updated until next year.</div>
+                                            <br />
+                                            <div ng-show="info" class="alert alert-warning container-fluid" ng-if="staff_target.JanuaryTarget != 0 && staff_target.FebruaryTarget != 0 && staff_target.MarchTarget != 0 && staff_target.AprilTarget != 0 && staff_target.MayTarget != 0 && staff_target.JuneTarget != 0 && staff_target.JulyTarget != 0 && staff_target.AugustTarget != 0 && staff_target.SeptemberTarget != 0 && staff_target.OctoberTarget != 0 && staff_target.NovemberTarget != 0 && staff_target.DecemberTarget != 0"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you "Add Target", you can no longer update it until next year.</div>
                                         </td>
                                         <td>
                                             <input type="hidden" id="target_date" name="date" value="<% date | date : 'yyyy-MM-dd' %>" />
@@ -271,9 +270,9 @@
                                     </tr>
                                 </table>   
 
-                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em; margin-top:-1em;">
                                     <button class="btn btn-success btn-sm btn-block pull-right"
-                                     data-toggle="modal" data-target="#confirmSubmit">Add Target</button> 
+                                     data-toggle="modal" ng-if="staff_target.JanuaryTarget != 0 && staff_target.FebruaryTarget != 0 && staff_target.MarchTarget != 0 && staff_target.AprilTarget != 0 && staff_target.MayTarget != 0 && staff_target.JuneTarget != 0 && staff_target.JulyTarget != 0 && staff_target.AugustTarget != 0 && staff_target.SeptemberTarget != 0 && staff_target.OctoberTarget != 0 && staff_target.NovemberTarget != 0 && staff_target.DecemberTarget != 0" data-target="#confirmSubmit">Add Target</button> 
                                 </div> 
                             </div>
 
@@ -286,7 +285,7 @@
                                         <label for="quarterlyform" class="control-label">First Quarter:</label>
                                     </td>
                                     <td>
-                                        <input type='text' id="id_firstquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched/>
+                                        <input type='text' id="id_firstquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" ng-model="quarter1" required ng-touched/>
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for First Quarter is required.</span>
                                     </td>
 
@@ -294,7 +293,7 @@
                                         <label for="quarterlyform" class="control-label">Second Quarter:</label>
                                     </td>
                                     <td>
-                                        <input type='text' id="id_secondquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched/>
+                                        <input type='text' id="id_secondquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" ng-model="quarter2" required ng-touched/>
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Second Quarter is required.</span>
                                     </td>
 
@@ -302,7 +301,7 @@
                                         <label for="quarterlyform" class="control-label">Third Quarter:</label>
                                     </td>
                                     <td>
-                                        <input type='text' id="id_thirdquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched/>
+                                        <input type='text' id="id_thirdquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" ng-model="quarter3" required ng-touched/>
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Third Quarter is required.</span>
                                     </td>
 
@@ -311,19 +310,20 @@
                                     </td>
                                     <td>
 
-                                        <input type='text' id="id_fourthquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" required ng-touched/>
+                                        <input type='text' id="id_fourthquarter_target" valid-number name="quarterlyform" autocomplete="off" class="form-control target-month" ng-model="quarter4" required ng-touched/>
                                         <span class="help-inline" ng-show="userForm.quarterlyform.$invalid && !userForm.quarterlyform.$pristine">Target for Fourth Quarter is required.</span>
                                     </td>
                                     <tr style="background-color:transparent;">
                                         <td colspan="8">
-                                            <div ng-show="info" class="alert alert-danger"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once submitted you can no longer update it until next year.</div>
+                                            <br />
+                                            <div ng-show="info" class="alert alert-warning" ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0"><i class="fa fa-warning  fa-fw"></i> Please make sure that your input is correct. Once you "Add Target", you can no longer update it until next year.</div>
                                         </td>
                                     </tr>
                                 </table>
                                     
                                                           
-                                <div class="col-md-3 pull-right" style="margin-bottom:1em;">
-                                    <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
+                                <div class="col-md-3 pull-right" style="margin-bottom:1em; margin-top:-1em;">
+                                    <button type="button" class="btn btn-success btn-sm btn-block" id="btn-save"  data-toggle="modal"  ng-if="quarter1 != 0 &&  quarter2 != 0 && quarter3 != 0 && quarter4 != 0" data-target="#confirmSubmit" ng-disabled="frmEditTarget.$invalid">Add Target</button>
                                 </div>
                             </div>
                                  <!-- ng-click="save(modalstate, id)" -->
@@ -340,8 +340,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <i class="fa fa-question fa-3x"></i>
                         <center>
-                            <br />
                             <h4 class="modal-title">
                             Are you sure about this?</h4>
                         </center>
@@ -513,7 +513,7 @@
                         <i class="fa fa-circle-o-notch fa-4x"></i>
                         <h4 class="modal-title" id="myModalLabel"><b><% form_title %></b></h4>
                     </div>
-                    <p class="control-label alert alert-info">Quarterly Targets for the Measure: <% chief_measurename %> </p>
+                    <p class="control-label alert alert-info">Quarterly Targets for the Measure: <% staff_measurename %> </p>
                     
                     <div class="modal-body table-responsive">
                         <form name="frmEditTarget" novalidate="">

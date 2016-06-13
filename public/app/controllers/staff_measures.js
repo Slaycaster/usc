@@ -56,8 +56,12 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
     $scope.getChiefMeasureID = function(mes) 
     {
                 
-        
+
         var measureID = $scope.selectedChiefMeasure.ChiefMeasureID;
+
+
+
+
 
         if(measureID != 0)
         {
@@ -72,16 +76,38 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                 $scope.selectedMeasureFormula = $scope.measureformula[0]; 
 
             });
+
+            $http.post(public + 'staff/ifhascontributory/' + measureID).
+            success(function(data)
+            {
+                if(data == "true")
+                {
+                    $scope.hascontribute = "true";                    
+                }
+                if(data == "none")
+                {
+                    $scope.hascontribute = "false";
+                }
+            });
+
             
         }
         else
         {
+
+            $scope.hascontribute = "false";
+
              $scope.measureformula = [
                                     {StaffMeasureFormula: "Summation"},
                                     {StaffMeasureFormula: "Average"},
                                 ];
             $scope.selectedMeasureFormula = $scope.measureformula[0]; 
+
+
+            
         }
+
+        
 
                  
                 
@@ -172,11 +198,11 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             
                             $scope.staff_measure = response;
-                            $scope.selectedStaffObjective = $scope.staffobjective[response.StaffObjectiveID-1];
-                            $scope.selectedChiefMeasure = $scope.chiefmeasure[response.ChiefMeasureID];
+                            //$scope.selectedStaffObjective = $scope.staffobjective[response.StaffObjectiveID];
+                            //$scope.selectedChiefMeasure = $scope.chiefmeasure[response.ChiefMeasureID];
 
                             angular.forEach($scope.measureformula, function(item){
-                              console.log(item.StaffMeasureFormula);
+                              
 
                                     if(item.StaffMeasureFormula == response.StaffMeasureFormula)
                                     {
@@ -187,8 +213,41 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
                                         $scope.selectedMeasureFormula = $scope.measureformula[0];
                                     }  
                                 })
+                            var x=0;
+                            angular.forEach($scope.staffobjective, function(item){
+                                    
+                                    if(item.StaffObjectiveID == response.StaffObjectiveID)
+                                    {
+                                        $scope.selectedStaffObjective = $scope.staffobjective[x];
+                                    }
+                                    x++;
+                            })
 
+                             var y=0;
 
+                            angular.forEach($scope.chiefmeasure, function(item){
+                                     
+                                    if(item.ChiefMeasureID == response.ChiefMeasureID)
+                                    {
+                                        $scope.selectedChiefMeasure = $scope.chiefmeasure[y];
+                                    }
+                                    y++;
+                            })
+                            
+                            // var mesid = response.ChiefMeasureID;
+                            // $http.get(public + 'api/staff_measures/find/' + mesid)
+                            //     .success(function(data){
+                                
+                                        
+                            //         $scope.none2 = {ChiefMeasureID : data.ChiefMeasureID, ChiefMeasureName: data.ChiefMeasureName};
+                                    
+                            //         $scope.chiefmeasure.unshift($scope.none2);
+            
+                            //         $scope.selectedChiefMeasure = $scope.chiefmeasure[0];
+                                   
+
+                            //     });
+                            console.log($scope.staffobjective.length);
 
                             
                         });
@@ -196,7 +255,7 @@ app.controller('APIStaffMeasureController', function($scope, $http, $interval) {
             default:
                 break;
         }
-        console.log(id);
+        
         $('#myModal').modal('show');
     };
 

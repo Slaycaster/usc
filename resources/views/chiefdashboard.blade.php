@@ -108,31 +108,6 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-8">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <i class="fa fa-line-chart fa-4x pull-right"></i> 
-                    <h3><b>ACCOMPLISHMENT - MONTHLY ACCUMULATION SUMMARY</b></h3>
-                    <div class="pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                Actions
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><a href="#"><i class="fa fa-list fa-fw"></i> Hide/Show</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-file-text fa-fw"></i> Export to PDF</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="fa fa-calendar fa-fw"></i> Choose date...</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <!-- /.panel -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-success">
@@ -214,7 +189,7 @@
                     <center><i ng-show="loading" class="fa fa-spinner fa-spin"></i></center>
                 </div>
 
-                <div class="list-group" dir-paginate='audit_trail_dash in chief_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5'>
+                <div class="list-group" dir-paginate='audit_trail_dash in chief_audit_trails_dash|orderBy:"updated_at":true:sortKey:reverse|itemsPerPage:5' ng-show="info">
                     <!-- <a href="{{ url('staff/audit_trails') }}" class="list-group-item"> -->
                     <a href="{{ url('chief/audit_trails') }}" class="list-group-item" style="font-size:12px;">
                     <span class="pull-right"><img ng-src="../uploads/userpictures/unit/cropped/<%audit_trail_dash.user_chief.UserChiefPicturePath%>" height="30px;">
@@ -547,6 +522,8 @@ function up()
                     $("#searchresults").empty();
                     var unit = response.u ;
                     var staff = response.s ;
+                    var secondary = response.su ;
+                    var tertiary = response.tu ;
                     var i;
                     var div = document.getElementById("searchresults");
                     for(i = 0; i < unit.length; i++) 
@@ -616,6 +593,88 @@ function up()
                             //Append StaffName/StaffAbbreviation
                             h4.setAttribute("class", "list-group-item-heading");
                             h4.appendChild(document.createTextNode(staff[i].StaffAbbreviation+' - '+staff[i].StaffName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+
+                    for(i = 0; i < secondary.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(secondary[i].SecondaryUnitName != null)
+                        {   
+                            var id = secondary[i].SecondaryUnitID;
+                            var picture = secondary[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/secondaryunitpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentSecondaryUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(secondary[i].SecondaryUnitAbbreviation+' - '+secondary[i].SecondaryUnitName));
+
+                            p.setAttribute("class", "list-group-item-text");
+                            p.appendChild(document.createTextNode("Scorecard Report"));
+
+                            span.setAttribute("class", "pull-right");
+                            span.appendChild(img);
+
+                            a.appendChild(span);
+                            a.appendChild(h4);
+                            a.appendChild(p);
+
+                            div.appendChild(a);      
+                        }
+                    }
+
+                    for(i = 0; i < tertiary.length; i++) 
+                    {
+                        var a = document.createElement('a');
+                        var img = document.createElement('img');
+                        var h4 = document.createElement('h4');
+                        var p = document.createElement('p');
+                        var span = document.createElement('span');
+
+                        if(tertiary[i].TertiaryUnitName != null)
+                        {   
+                            var id = tertiary[i].TertiaryUnitID;
+                            var picture = tertiary[i].PicturePath;
+                            var picture_path = "{{ asset('uploads/tertiaryunitpictures/cropped') }}"+"/"+picture;
+
+                            a.setAttribute("href", "{{ url('report/currentTertriaryUnitScorecard') }}"+'/'+id);
+                            a.setAttribute("class", "list-group-item clearfix");
+                            a.target = "_blank";
+
+                            /*SET PICTURE THUMBNAIL*/
+                            img.setAttribute("src", picture_path);
+                            img.style.width = "32px";
+                            img.style.height = "32px";
+
+                            //Append chiefName/chiefAbbreviation
+                            h4.setAttribute("class", "list-group-item-heading");
+                            h4.appendChild(document.createTextNode(tertiary[i].TertiaryUnitAbbreviation+' - '+tertiary[i].TertiaryUnitName));
 
                             p.setAttribute("class", "list-group-item-text");
                             p.appendChild(document.createTextNode("Scorecard Report"));

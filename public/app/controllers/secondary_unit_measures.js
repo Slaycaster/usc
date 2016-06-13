@@ -56,10 +56,24 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
                 $scope.selectedMeasureFormula = $scope.measureformula[0]; 
 
             });
+
+            $http.post(public + 'secondaryunit/ifhascontributory/' + measureID).
+            success(function(data)
+            {
+                if(data == "true")
+                {
+                    $scope.hascontribute = "true";                    
+                }
+                if(data == "none")
+                {
+                    $scope.hascontribute = "false";
+                }
+            });
             
         }
         else
         {
+            $scope.hascontribute = "false";
             $scope.measureformula = [
                 {UnitMeasureFormula: "Summation"},
                 {UnitMeasureFormula: "Average"},
@@ -157,8 +171,8 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;
-                            $scope.selectedUnitObjective = $scope.unitobjective[response.SecondaryUnitObjectiveID-1];
-                            $scope.selectedStaffMeasure = $scope.staffmeasure[response.UnitMeasureID];
+                            //$scope.selectedUnitObjective = $scope.unitobjective[response.SecondaryUnitObjectiveID-1];
+                            //$scope.selectedStaffMeasure = $scope.staffmeasure[response.UnitMeasureID];
 
                             angular.forEach($scope.measureformula, function(item){
                             
@@ -171,6 +185,28 @@ app.controller('APISecondaryUnitMeasureController', function($scope, $http, $int
                                     $scope.selectedMeasureFormula = $scope.measureformula[0];
                                 }  
                                 })
+
+                             var x=0;
+                            angular.forEach($scope.unitobjective, function(item){
+                                    
+                                    if(item.SecondaryUnitObjectiveID == response.SecondaryUnitObjectiveID)
+                                    {
+                                        $scope.selectedUnitObjective = $scope.unitobjective[x];
+                                    }
+                                    x++;
+                            })
+
+                             var y=0;
+
+                            angular.forEach($scope.staffmeasure, function(item){
+                                     
+                                    if(item.UnitMeasureID == response.UnitMeasureID)
+                                    {
+                                        $scope.selectedStaffMeasure = $scope.staffmeasure[y];
+                                    }
+                                    y++;
+                            })
+
                         });
                 break;
             default:

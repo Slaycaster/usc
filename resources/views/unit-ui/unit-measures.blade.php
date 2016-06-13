@@ -44,7 +44,7 @@
 								</div>
 							</div>
 							<!--/.div class row-->
-							<div class="row">
+							<div class="row" id="tableinfo">
                                 <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitName }}.</div>
                                  <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Unit Measures of {{ $user->unit->UnitAbbreviation }}.</div>
                             </div>
@@ -75,7 +75,7 @@
                                             </td>
 
                                             <td class="unit_measure-contributory">
-                                                Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure
+                                                Contributory to Staff Measure
                                             </td>
         									<td class="unit_measure-encoder">
                                                 Last Encoded by
@@ -170,8 +170,11 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4 mod">
-                                        <label for="staff_measure" class="control">Contributory to {{ $unit->staff->StaffAbbreviation }}'s Measure:</label>
+                                        <label for="staff_measure" class="control">Contributory to Staff Measure:</label>
                                     </td>
+                                    <div ng-if="hascontribute =='true'" class="alert alert-danger">
+                            <i class="fa fa-warning  fa-fw">&nbsp;&nbsp;</i>  A Unit Measure was already assigned to the selected Staff Measure as contributory. Please pick another Staff Measure (if possible) or edit the said Unit Measure.<br />
+                            </div>
                                     <td class="col-md-8">
                                         
 

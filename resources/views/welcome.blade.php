@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="refresh" content="60">
+    <meta http-equiv="refresh" content="120">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#363636 ">
     <meta name="msapplication-navbutton-color" content="#363636 ">
@@ -42,7 +42,7 @@
         <div class="col-md-12 text-vertical-center" id="firstScreen">
             <br /><br />
             <h1 class="welcome-stylish-title">PNP UNIT SCORECARD</h1>
-            <div class="container">
+            <div class="container image_big">
                 <div class ="col-md-6">
                     <img class="welcome-stylish-logo-one" src="{{ asset('img/pnp_logo.png') }}">
                 </div>
@@ -50,6 +50,14 @@
                     <img class="welcome-stylish-logo-two" src="{{ asset('img/pp_logo.png') }}">
                 </div>
             </div>
+
+            <div class="col-md-6 image_small">
+                <div class ="col-md-6">
+                    <img class="welcome-stylish-logo-one" src="{{ asset('img/pnp_logo.png') }}">
+                    <img class="welcome-stylish-logo-two" src="{{ asset('img/pp_logo.png') }}">
+                </div>
+            </div>
+
             <div class="col-md-6 col-md-offset-3">
                 @if (Session::has('message2'))
                     <div class="alert alert-success">{{ Session::get('message2') }}</div>

@@ -44,7 +44,7 @@
 								</div>
 							</div>
 							<!--/.div class row-->
-							<div class="row">
+							<div class="row" id="tableinfo">
                                 <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Tertiary Unit Measures of {{ $user->tertiary_unit->TertiaryUnitName }}.</div>
                                  <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Tertiary Unit Measures of {{ $user->tertiary_unit->TertiaryUnitAbbreviation }}.</div>
                             </div>
@@ -58,29 +58,29 @@
     							<table class="table table-bordered">
     								<thead>
                                         <tr>
-        									<td class="unit_measure-name">
+        									<td class="tertiary_measure-name">
                                                 Measure Name
         									</td>
         							
-        									<td class="unit_measure-type">
+        									<td class="tertiary_measure-type">
                                                 Type
         									</td>
 
-                                             <td class="unit_measure-formula">
+                                             <td class="tertiary_measure-formula">
                                                 Formula
                                             </td>
 
-                                            <td class="unit_measure-objective">
+                                            <td class="tertiary_measure-objective">
                                                 Objective
                                             </td>
 
-                                            <td class="unit_measure-contributory">
+                                            <td class="tertiary_measure-contributory">
                                                 Contributory to {{ $tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}'s Measure
                                             </td>
-        									<td class="unit_measure-encoder">
+        									<td class="tertiary_measure-encoder">
                                                 Last Encoded by
         									</td>
-        									<td class="unit_measure-edit"></td>
+        									<td class="tertiary_measure-edit"></td>
                                         </tr>
     								</thead>
     								<tr dir-paginate='tertiary_unit_measure in tertiary_unit_measures|orderBy:"updated_at":true:sortKey:reverse|filter:search|itemsPerPage:5'>
@@ -169,6 +169,9 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <div ng-if="hascontribute =='true'" class="alert alert-danger">
+                            <i class="fa fa-warning  fa-fw">&nbsp;&nbsp;</i>  A Tertiary Unit Measure was already assigned to the selected Secondary Unit Measure as contributory. Please pick another Secondary Unit Measure (if possible) or edit the said Tertiary Unit Measure.<br />
+                            </div>
                                     <td class="col-md-4 mod">
                                         <label for="secondary_unit_measure" class="control">Contributory to {{ $tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}'s Measure:</label>
                                     </td>

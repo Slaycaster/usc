@@ -14,8 +14,6 @@
     <!-- Angular Utils Pagination -->
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
-    <script src="{{ asset('js/showtabledata.js') }}"></script>
-
     <br>
 	<div ng-app="unitScorecardApp" ng-controller="APISecondaryUnitObjectiveController">
 	    <div class="wrap">

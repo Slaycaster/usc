@@ -17,11 +17,23 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
 	};
 
     $http.get(public + 'api/staff/measures/staffmeasures').
-        success(function(data, status, headers, config)
+        success(function(response, status, headers, config)
         {   
            
-            $scope.staffmeasure = data;
-            
+            //$scope.staffmeasure = data;
+            console.log(response);
+            $scope.staffmeasure = response.array1;
+            if(response.array2 == "true")
+            {
+                
+             angular.forEach($scope.staffmeasure, function(item){
+                            
+                                item.StaffMeasureName = item.StaffMeasureName + ' | ' +item.staff.StaffAbbreviation;                                    
+                                  
+                                })
+            }
+
+
             
             $scope.none = {StaffMeasureID : 0, StaffMeasureName: "None/No Contributory"};
           
@@ -30,7 +42,10 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
             $scope.selectedStaffMeasure = $scope.staffmeasure[0];
 
 
+
+
         });
+
 
      $scope.measureformula = [
                                     {StaffMeasureFormula: "Summation"},
@@ -70,10 +85,27 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                 $scope.selectedMeasureFormula = $scope.measureformula[0]; 
 
             });
+
+
+             $http.post(public + 'unit/ifhascontributory/' + measureID).
+            success(function(data)
+            {
+                if(data == "true")
+                {
+                    $scope.hascontribute = "true";                    
+                }
+                if(data == "none")
+                {
+                    $scope.hascontribute = "false";
+                }
+            });
             
         }
         else
         {
+
+             $scope.hascontribute = "false";
+
              $scope.measureformula = [
                                     {StaffMeasureFormula: "Summation"},
                                     {StaffMeasureFormula: "Average"},
@@ -171,8 +203,8 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                         .success(function(response) {
                             console.log(response);
                             $scope.unit_measure = response;
-                            $scope.selectedUnitObjective = $scope.unitobjective[response.UnitObjectiveID-1];
-                            $scope.selectedStaffMeasure = $scope.staffmeasure[response.StaffMeasureID];
+                            //$scope.selectedUnitObjective = $scope.unitobjective[response.UnitObjectiveID-1];
+                            //$scope.selectedStaffMeasure = $scope.staffmeasure[response.StaffMeasureID];
 
                             angular.forEach($scope.measureformula, function(item){
                             
@@ -186,6 +218,28 @@ app.controller('APIUnitMeasureController', function($scope, $http, $interval) {
                                         $scope.selectedMeasureFormula = $scope.measureformula[0];
                                     }  
                                 })
+
+                             var x=0;
+                            angular.forEach($scope.unitobjective, function(item){
+                                    
+                                    if(item.UnitObjectiveID == response.UnitObjectiveID)
+                                    {
+                                        $scope.selectedUnitObjective = $scope.unitobjective[x];
+                                    }
+                                    x++;
+                            })
+
+                             var y=0;
+
+                            angular.forEach($scope.staffmeasure, function(item){
+                                     
+                                    if(item.StaffMeasureID == response.StaffMeasureID)
+                                    {
+                                        $scope.selectedStaffMeasure = $scope.staffmeasure[y];
+                                    }
+                                    y++;
+                            })
+
                         });
                 break;
             default:

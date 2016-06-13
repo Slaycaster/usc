@@ -17,8 +17,6 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
 		});	
 	};
 
-    
-
 	$scope.sort = function(keyname)
     {
         $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -124,6 +122,10 @@ app.controller('APIStaffTargetController', function($scope, $http, $interval) {
                 $http.get(public + 'api/staff_targets/' + id)
                 .success(function(response) {            
                     $scope.staff_target = response;
+                    $scope.quarter1 = parseFloat($scope.staff_target.JanuaryTarget + $scope.staff_target.FebruaryTarget + $scope.staff_target.MarchTarget).toFixed(2);
+                    $scope.quarter2 = parseFloat($scope.staff_target.AprilTarget + $scope.staff_target.MayTarget + $scope.staff_target.JuneTarget).toFixed(2);
+                    $scope.quarter3 = parseFloat($scope.staff_target.JulyTarget + $scope.staff_target.AugustTarget + $scope.staff_target.SeptemberTarget).toFixed(2);
+                    $scope.quarter4 = parseFloat($scope.staff_target.OctoberTarget + $scope.staff_target.NovemberTarget + $scope.staff_target.DecemberTarget).toFixed(2);
                     console.log("SHOW" + $scope.staff_target.TargetPeriod);
                     if($scope.staff_target.TargetPeriod === 'Monthly' || $scope.staff_target.TargetPeriod === 'Quarterly')
                     {

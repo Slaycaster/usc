@@ -22,7 +22,7 @@ $(document).ready(function(){
       }
     });
 
-    $( '#targetModal' )
+    $('#targetModal')
         .on('hidden.bs.modal', function() {
             console.log("Set Target Closed");
             $("#monthlyform").hide();
@@ -30,4 +30,10 @@ $(document).ready(function(){
             document.getElementById('id_target_period').value = "";
         }
     );
+    // $('#confirmSubmit')
+    //     .on('hidden.bs.modal', function() {
+    //         console.log("Confirm Closed");
+    //         document.getElementById('getPassword').value = "";
+    //     }
+    // );
 });
