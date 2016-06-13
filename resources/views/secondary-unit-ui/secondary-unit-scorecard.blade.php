@@ -11,7 +11,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
-    <!-- <script src="{{ asset('js/stickyheader.js') }}"></script> -->
+    <script src="{{ asset('js/stickyheader.js') }}"></script>
 
     <script src="{{ asset('js/debounce.min.js') }}"></script>
 
@@ -60,7 +60,7 @@
                             <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
                            
 
-                            <div class="table-responsive tabledata" id="floating-scrollbar">
+                            <div class="table-responsive">
 
                                 <table class="table table-bordered" id="tabledata">
                                     <thead>
@@ -674,7 +674,9 @@
     </div>
 
      <script type="text/javascript">
-       
+        $(document).ready(function () {
+            $(".sticky-wrap").floatingScrollbar();
+        });
 
     </script>
 <script>
