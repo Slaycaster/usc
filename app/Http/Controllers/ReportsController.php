@@ -170,51 +170,6 @@ class ReportsController extends Controller
 		}
 	}
 
-	public function quarterlyUnit()
-	{	
-		$year = Input::get('year');
-		$quarter = Input::get('quarter');
-		Session::put('year', $year);
-		Session::put('quarter', $quarter);
-
-		$pdf = PDF::loadView('pdf-layouts.PDFUnitQuarterlyAnalysis')->setPaper('Folio')->setOrientation('Landscape');
-		$pdf->output();
-		$dom_pdf = $pdf->getDomPDF();
-		$canvas = $dom_pdf ->get_canvas();
-		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    return $pdf->stream();
-	}
-
-	public function quarterlyTertiaryUnit()
-	{	
-		$year = Input::get('year');
-		$quarter = Input::get('quarter');
-		Session::put('year', $year);
-		Session::put('quarter', $quarter);
-
-		$pdf = PDF::loadView('pdf-layouts.PDFTertiaryUnitQuarterlyAnalysis')->setPaper('Folio')->setOrientation('Landscape');
-		$pdf->output();
-		$dom_pdf = $pdf->getDomPDF();
-		$canvas = $dom_pdf ->get_canvas();
-		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    return $pdf->stream();
-	}
-
-	public function quarterlyStaff()
-	{	
-		$year = Input::get('year');
-		$quarter = Input::get('quarter');
-		Session::put('year', $year);
-		Session::put('quarter', $quarter);
-
-		$pdf = PDF::loadView('pdf-layouts.PDFStaffQuarterlyAnalysis')->setPaper('Folio')->setOrientation('Landscape');
-		$pdf->output();
-		$dom_pdf = $pdf->getDomPDF();
-		$canvas = $dom_pdf ->get_canvas();
-		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    return $pdf->stream();
-	}
-
 	public function quarterlyChief()
 	{	
 		$year = Input::get('year');
@@ -486,7 +441,7 @@ class ReportsController extends Controller
 		{
 			Session::put('reportType', 'breakdown');
 			$pdf = PDF::loadView('pdf-layouts.PDFStaffYearlybyQuarter')->setPaper('Folio')->setOrientation('Landscape');
-			$pdf->output(); 	
+			$pdf->output();
 			$dom_pdf = $pdf->getDomPDF();
 			$canvas = $dom_pdf ->get_canvas();
 			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
@@ -583,7 +538,6 @@ class ReportsController extends Controller
 		Session::put('tertiary_unit_id', $id);
 		Session::put('year', $year);
 
-			Session::put('reportType', 'breakdown');
 			$pdf = PDF::loadView('pdf-layouts.PDFTertiaryCurrentYear')->setPaper('Folio')->setOrientation('Landscape');
 			$pdf->output();
 			$dom_pdf = $pdf->getDomPDF();
@@ -598,12 +552,13 @@ class ReportsController extends Controller
 		Session::put('staff_id', $id);
 		Session::put('year', $year);
 
-		$pdf = PDF::loadView('pdf-layouts.PDFChiefStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
-		$pdf->output();
-		$dom_pdf = $pdf->getDomPDF();
-		$canvas = $dom_pdf ->get_canvas();
-		$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
-  	    return $pdf->stream();
+			Session::put('reportType', 'breakdown');
+			$pdf = PDF::loadView('pdf-layouts.PDFChiefStaffYearly')->setPaper('Folio')->setOrientation('Landscape');
+			$pdf->output();
+			$dom_pdf = $pdf->getDomPDF();
+			$canvas = $dom_pdf ->get_canvas();
+			$canvas->page_text(808, 580, "usc.pulis.net - Page {PAGE_NUM} of {PAGE_COUNT}", null, 10, array(0, 0, 0));
+	  	    return $pdf->stream();
 	}
 
 	public function currentYearStaffChiefScorecard($id)

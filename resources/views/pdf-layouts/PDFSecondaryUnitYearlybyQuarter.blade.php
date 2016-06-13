@@ -35,6 +35,7 @@ use App\SecondaryUnitInitiative;
                         ->join('secondary_unit_measures', 'secondary_unit_objectives.SecondaryUnitObjectiveID', '=', 'secondary_unit_measures.SecondaryUnitObjectiveID')
                         ->where('secondary_unit_objectives.SecondaryUnitID', '=', $secondary_unit->SecondaryUnitID)
                         ->orderBy('secondary_unit_objectives.SecondaryUnitObjectiveName', 'asc')
+                        ->orderBy('secondary_unit_measures.SecondaryUnitMeasureID', 'asc')
                         ->get();//dd($sortByObjective);
     $checkAccomplishment = 0;
     foreach($sortByObjective as $measure)
@@ -156,7 +157,7 @@ use App\SecondaryUnitInitiative;
                 <tr>
                     <td width="11.5%" rowspan="2">OBJECTIVES</td>
                     <td colspan="3" style="text-align: left;padding-left: 3px;">MEASURES</td>
-                    <td width="68" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
+                    <td width="73" rowspan="2" style="text-align: left;padding-left: 3px;">OWNER</td>
                     <td colspan="4" height="12">TARGET/ACCOMPLISHMENT</td>
                     <td width="68" rowspan="2" style="text-align: left;">INITIATIVES</td>
                     <td colspan="3">FUNDING</td>

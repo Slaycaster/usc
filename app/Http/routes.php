@@ -20,6 +20,7 @@ Route::get('report/currentYearUnitScorecard', 'ReportsController@currentYearUnit
 Route::get('report/currentYearSecondaryUnitScorecard', 'ReportsController@currentYearSecondaryUnitScorecard');
 Route::get('report/currentYearStaffScorecard', 'ReportsController@currentYearStaffScorecard');
 Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChiefScorecard');
+
 Route::get('report/yearlyUnitScorecard', 'ReportsController@yearlyUnitScorecard');
 Route::get('report/yearlyTertiaryUnitScorecard', 'ReportsController@yearlyTertiaryUnitScorecard');
 Route::get('report/yearlySecondaryUnitScorecard', 'ReportsController@yearlySecondaryUnitScorecard');
@@ -27,18 +28,15 @@ Route::get('report/yearlyStaffScorecard', 'ReportsController@yearlyStaffScorecar
 Route::get('report/yearlyChiefScorecard', 'ReportsController@yearlyChiefScorecard');
 
 Route::get('report/currentUnitScorecard/{id}', 'ReportsController@currentYearChiefUnitScorecard');
-Route::get('report/currentStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
-Route::get('report/currentChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
 Route::get('report/currentSecondaryUnitScorecard/{id}', 'ReportsController@currentYearSearchableSecondaryUnitScorecard');
 Route::get('report/currentTertriaryUnitScorecard/{id}', 'ReportsController@currentYearSearchableTertiaryUnitScorecard');
+Route::get('report/currentStaffScorecard/{id}', 'ReportsController@currentYearChiefStaffScorecard');
+Route::get('report/currentChiefScorecard/{id}', 'ReportsController@currentYearStaffChiefScorecard');
 
-Route::get('report/quarterlyUnit', 'ReportsController@quarterlyUnit');
-Route::get('report/quarterlyStaff', 'ReportsController@quarterlyStaff');
-Route::get('report/quarterlyChief', 'ReportsController@quarterlyChief');
 #analysis
 Route::get('report/quarterlyUnitAnalysis', 'ReportsAnalysisController@quarterlyUnitAnalysis');
-Route::get('report/quarterlyTertiaryUnitAnalysis', 'ReportsAnalysisController@quarterlyTertiaryUnitAnalysis');
 Route::get('report/quarterlySecondaryUnitAnalysis', 'ReportsAnalysisController@quarterlySecondaryUnitAnalysis');
+Route::get('report/quarterlyTertiaryUnitAnalysis', 'ReportsAnalysisController@quarterlyTertiaryUnitAnalysis');
 Route::get('report/quarterlyStaffAnalysis', 'ReportsAnalysisController@quarterlyStaffAnalysis');
 Route::get('report/quarterlyChiefAnalysis', 'ReportsAnalysisController@quarterlyChiefAnalysis');
 

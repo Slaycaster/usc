@@ -11,8 +11,10 @@ use App\StaffOwner;
 use App\StaffInitiative;
 use App\StaffFunding;
 
+use App\UnitAccomplishment;
+
     $selectedYear = Session::get('year', 'default');
-    $selectedQuarter = Session::get('quarter', 'default');      
+    $selectedQuarter = Session::get('quarter', 'default');  
 
     $staff_id = Session::get('staff_user_id', 'default');
     $staff_user = UserStaff::where('UserStaffID', '=', $staff_id)
@@ -34,24 +36,27 @@ use App\StaffFunding;
                         ->join('staff_measures', 'staff_objectives.StaffObjectiveID', '=', 'staff_measures.StaffObjectiveID')
                         ->where('staff_objectives.StaffID', '=', $staff->StaffID)
                         ->orderBy('staff_objectives.StaffObjectiveName', 'asc')
-                        ->get();//dd($sortByObjective);
+                        ->orderBy('staff_measures.StaffMeasureID' , 'asc')
+                        ->get();//dd($staff->StaffID);
     $checkAccomplishment = 0;
     foreach($sortByObjective as $measure)
     {
         $accomplishments = StaffTarget::with('staff_measure')
-                                        ->with('staff_measure.staff_objective')
-                                        ->with('staff_measure.unit_measures.unit_accomplishments')
-                                        ->with('staff_measure.unit_measures.unit_accomplishments.unit')
-                                        ->with('staff_owner')
-                                        ->with('staff_funding')
-                                        ->with('staff_initiative')
-                                        ->with('staff_accomplishment')
-                                        ->with('user_staff')
-                                        ->with('user_staff.rank')
-                                        ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                        ->where('StaffID', '=', $staff->StaffID)
-                                        ->where('StaffMeasureID', '=', $measure->StaffMeasureID)
-                                        ->get();
+                                    ->with('staff_measure.staff_objective')
+                                    ->with('staff_measure.unit_measures.unit_accomplishments')
+                                    ->with('staff_measure.unit_measures.unit_accomplishments.unit')
+                                    ->with('staff_measure.unit_measures.secondary_unit_measures.secondary_unit_accomplishments')
+                                    ->with('staff_measure.unit_measures.secondary_unit_measures.tertiary_unit_measures.tertiary_unit_accomplishments')
+                                    ->with('staff_owner')
+                                    ->with('staff_funding')
+                                    ->with('staff_initiative')
+                                    ->with('staff_accomplishment')
+                                    ->with('user_staff')
+                                    ->with('user_staff.rank')
+                                    ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                    ->where('StaffID', '=', $staff->StaffID)
+                                    ->where('StaffMeasureID', '=', $measure->StaffMeasureID)
+                                    ->get();
         if(count($accomplishments) != 0)
         {
             $checkAccomplishment = $checkAccomplishment + 1;
@@ -194,19 +199,21 @@ use App\StaffFunding;
             @foreach($sortByObjective as $measure)
             <?php
                 $accomplishments = StaffTarget::with('staff_measure')
-                                        ->with('staff_measure.staff_objective')
-                                        ->with('staff_measure.unit_measures.unit_accomplishments')
-                                        ->with('staff_measure.unit_measures.unit_accomplishments.unit')
-                                        ->with('staff_owner')
-                                        ->with('staff_funding')
-                                        ->with('staff_initiative')
-                                        ->with('staff_accomplishment')
-                                        ->with('user_staff')
-                                        ->with('user_staff.rank')
-                                        ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
-                                        ->where('StaffID', '=', $staff->StaffID)
-                                        ->where('StaffMeasureID', '=', $measure->StaffMeasureID)
-                                        ->get();
+                                    ->with('staff_measure.staff_objective')
+                                    ->with('staff_measure.unit_measures.unit_accomplishments')
+                                    ->with('staff_measure.unit_measures.unit_accomplishments.unit')
+                                    ->with('staff_measure.unit_measures.secondary_unit_measures.secondary_unit_accomplishments')
+                                    ->with('staff_measure.unit_measures.secondary_unit_measures.tertiary_unit_measures.tertiary_unit_accomplishments')
+                                    ->with('staff_owner')
+                                    ->with('staff_funding')
+                                    ->with('staff_initiative')
+                                    ->with('staff_accomplishment')
+                                    ->with('user_staff')
+                                    ->with('user_staff.rank')
+                                    ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                    ->where('StaffID', '=', $staff->StaffID)
+                                    ->where('StaffMeasureID', '=', $measure->StaffMeasureID)
+                                    ->get();
                 foreach ($accomplishments as $accomplishment)
                 {
                     //dd($accomplishment);
@@ -244,7 +251,7 @@ use App\StaffFunding;
                             {{ $accomplishment->staff_measure->StaffMeasureFormula }}
                         </td>
                         @if($selectedQuarter == '1')
-                            {{-- JANUARY --}}
+                            {{-- January --}}
                             <td>
                                 {{ round($accomplishment->JanuaryTarget, 2) }}
                             </td>
@@ -254,11 +261,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryJanuaryTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalJanuaryContribution = $totalJanuaryContribution + $contributory->JanuaryAccomplishment;
+                                                $secondaryJanuaryAccomplishment = 0;
+                                                $tertiaryJanuaryAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryJanuaryAccomplishment = $secondaryJanuaryAccomplishment + $secondaryunitContributeAcc->JanuaryAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryJanuaryAccomplishment = $tertiaryJanuaryAccomplishment + $tertiaryunitContributeAcc->JanuaryAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryJanuaryTotalAccomplishment = $secondaryJanuaryAccomplishment + $tertiaryJanuaryAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalJanuaryContribution = $contributory->JanuaryAccomplishment + $secondaryJanuaryTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -278,7 +309,7 @@ use App\StaffFunding;
                                 ?>
                                 {{ round($JanuaryPerformance, 2) }}%
                             </td>
-                            {{-- FEBRUARY --}}
+                            {{-- February --}}
                             <td>
                                 {{ round($accomplishment->FebruaryTarget, 2) }}
                             </td>
@@ -288,11 +319,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryFebruaryTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalFebruaryContribution = $totalFebruaryContribution + $contributory->FebruaryAccomplishment;
+                                                $secondaryFebruaryAccomplishment = 0;
+                                                $tertiaryFebruaryAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryFebruaryAccomplishment = $secondaryFebruaryAccomplishment + $secondaryunitContributeAcc->FebruaryAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryFebruaryAccomplishment = $tertiaryFebruaryAccomplishment + $tertiaryunitContributeAcc->FebruaryAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryFebruaryTotalAccomplishment = $secondaryFebruaryAccomplishment + $tertiaryFebruaryAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalFebruaryContribution = $contributory->FebruaryAccomplishment + $secondaryFebruaryTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -312,7 +367,7 @@ use App\StaffFunding;
                                 ?>
                                 {{ round($FebruaryPerformance, 2) }}%
                             </td>
-                            {{-- MARCH --}}
+                            {{-- March --}}
                             <td>
                                 {{ round($accomplishment->MarchTarget, 2) }}
                             </td>
@@ -322,11 +377,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryMarchTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalMarchContribution = $totalMarchContribution + $contributory->MarchAccomplishment;
+                                                $secondaryMarchAccomplishment = 0;
+                                                $tertiaryMarchAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryMarchAccomplishment = $secondaryMarchAccomplishment + $secondaryunitContributeAcc->MarchAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryMarchAccomplishment = $tertiaryMarchAccomplishment + $tertiaryunitContributeAcc->MarchAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryMarchTotalAccomplishment = $secondaryMarchAccomplishment + $tertiaryMarchAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalMarchContribution = $contributory->MarchAccomplishment + $secondaryMarchTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -348,7 +427,7 @@ use App\StaffFunding;
                             </td>
                         @endif
                         @if($selectedQuarter == '2')
-                            {{-- APRIL --}}
+                            {{-- April --}}
                             <td>
                                 {{ round($accomplishment->AprilTarget, 2) }}
                             </td>
@@ -358,11 +437,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryAprilTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalAprilContribution = $totalAprilContribution + $contributory->AprilAccomplishment;
+                                                $secondaryAprilAccomplishment = 0;
+                                                $tertiaryAprilAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryAprilAccomplishment = $secondaryAprilAccomplishment + $secondaryunitContributeAcc->AprilAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryAprilAccomplishment = $tertiaryAprilAccomplishment + $tertiaryunitContributeAcc->AprilAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryAprilTotalAccomplishment = $secondaryAprilAccomplishment + $tertiaryAprilAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalAprilContribution = $contributory->AprilAccomplishment + $secondaryAprilTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -382,7 +485,7 @@ use App\StaffFunding;
                                 ?>
                                 {{ round($AprilPerformance, 2) }}%
                             </td>
-                            {{-- MAY --}}
+                            {{-- May --}}
                             <td>
                                 {{ round($accomplishment->MayTarget, 2) }}
                             </td>
@@ -392,11 +495,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryMayTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalMayContribution = $totalMayContribution + $contributory->MayAccomplishment;
+                                                $secondaryMayAccomplishment = 0;
+                                                $tertiaryMayAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryMayAccomplishment = $secondaryMayAccomplishment + $secondaryunitContributeAcc->MayAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryMayAccomplishment = $tertiaryMayAccomplishment + $tertiaryunitContributeAcc->MayAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryMayTotalAccomplishment = $secondaryMayAccomplishment + $tertiaryMayAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalMayContribution = $contributory->MayAccomplishment + $secondaryMayTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -416,7 +543,7 @@ use App\StaffFunding;
                                 ?>
                                 {{ round($MayPerformance, 2) }}%
                             </td>
-                            {{-- JUNE --}}
+                            {{-- June --}}
                             <td>
                                 {{ round($accomplishment->JuneTarget, 2) }}
                             </td>
@@ -426,11 +553,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryJuneTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalJuneContribution = $totalJuneContribution + $contributory->JuneAccomplishment;
+                                                $secondaryJuneAccomplishment = 0;
+                                                $tertiaryJuneAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryJuneAccomplishment = $secondaryJuneAccomplishment + $secondaryunitContributeAcc->JuneAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryJuneAccomplishment = $tertiaryJuneAccomplishment + $tertiaryunitContributeAcc->JuneAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryJuneTotalAccomplishment = $secondaryJuneAccomplishment + $tertiaryJuneAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalJuneContribution = $contributory->JuneAccomplishment + $secondaryJuneTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -452,7 +603,7 @@ use App\StaffFunding;
                             </td>
                         @endif
                         @if($selectedQuarter == '3')
-                            {{-- JULY --}}
+                            {{-- July --}}
                             <td>
                                 {{ round($accomplishment->JulyTarget, 2) }}
                             </td>
@@ -462,11 +613,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryJulyTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalJulyContribution = $totalJulyContribution + $contributory->JulyAccomplishment;
+                                                $secondaryJulyAccomplishment = 0;
+                                                $tertiaryJulyAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryJulyAccomplishment = $secondaryJulyAccomplishment + $secondaryunitContributeAcc->JulyAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryJulyAccomplishment = $tertiaryJulyAccomplishment + $tertiaryunitContributeAcc->JulyAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryJulyTotalAccomplishment = $secondaryJulyAccomplishment + $tertiaryJulyAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalJulyContribution = $contributory->JulyAccomplishment + $secondaryJulyTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -486,7 +661,7 @@ use App\StaffFunding;
                                 ?>
                                 {{ round($JulyPerformance, 2) }}%
                             </td>
-                            {{-- AUGUST --}}
+                            {{-- August --}}
                             <td>
                                 {{ round($accomplishment->AugustTarget, 2) }}
                             </td>
@@ -496,11 +671,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryAugustTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalAugustContribution = $totalAugustContribution + $contributory->AugustAccomplishment;
+                                                $secondaryAugustAccomplishment = 0;
+                                                $tertiaryAugustAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryAugustAccomplishment = $secondaryAugustAccomplishment + $secondaryunitContributeAcc->AugustAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryAugustAccomplishment = $tertiaryAugustAccomplishment + $tertiaryunitContributeAcc->AugustAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryAugustTotalAccomplishment = $secondaryAugustAccomplishment + $tertiaryAugustAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalAugustContribution = $contributory->AugustAccomplishment + $secondaryAugustTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -520,7 +719,7 @@ use App\StaffFunding;
                                 ?>
                                 {{ round($AugustPerformance, 2) }}%
                             </td>
-                            {{-- SEPTEMBER --}}
+                            {{-- September --}}
                             <td>
                                 {{ round($accomplishment->SeptemberTarget, 2) }}
                             </td>
@@ -530,11 +729,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondarySeptemberTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalSeptemberContribution = $totalSeptemberContribution + $contributory->SeptemberAccomplishment;
+                                                $secondarySeptemberAccomplishment = 0;
+                                                $tertiarySeptemberAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondarySeptemberAccomplishment = $secondarySeptemberAccomplishment + $secondaryunitContributeAcc->SeptemberAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiarySeptemberAccomplishment = $tertiarySeptemberAccomplishment + $tertiaryunitContributeAcc->SeptemberAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondarySeptemberTotalAccomplishment = $secondarySeptemberAccomplishment + $tertiarySeptemberAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalSeptemberContribution = $contributory->SeptemberAccomplishment + $secondarySeptemberTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -556,7 +779,7 @@ use App\StaffFunding;
                             </td>
                         @endif
                         @if($selectedQuarter == '4')
-                            {{-- OCTOBER --}}
+                            {{-- October --}}
                             <td>
                                 {{ round($accomplishment->OctoberTarget, 2) }}
                             </td>
@@ -566,11 +789,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryOctoberTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalOctoberContribution = $totalOctoberContribution + $contributory->OctoberAccomplishment;
+                                                $secondaryOctoberAccomplishment = 0;
+                                                $tertiaryOctoberAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryOctoberAccomplishment = $secondaryOctoberAccomplishment + $secondaryunitContributeAcc->OctoberAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryOctoberAccomplishment = $tertiaryOctoberAccomplishment + $tertiaryunitContributeAcc->OctoberAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryOctoberTotalAccomplishment = $secondaryOctoberAccomplishment + $tertiaryOctoberAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalOctoberContribution = $contributory->OctoberAccomplishment + $secondaryOctoberTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -590,7 +837,7 @@ use App\StaffFunding;
                                 ?>
                                 {{ round($OctoberPerformance, 2) }}%
                             </td>
-                            {{-- NOVEMBER --}}
+                            {{-- November --}}
                             <td>
                                 {{ round($accomplishment->NovemberTarget, 2) }}
                             </td>
@@ -600,11 +847,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryNovemberTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalNovemberContribution = $totalNovemberContribution + $contributory->NovemberAccomplishment;
+                                                $secondaryNovemberAccomplishment = 0;
+                                                $tertiaryNovemberAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryNovemberAccomplishment = $secondaryNovemberAccomplishment + $secondaryunitContributeAcc->NovemberAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryNovemberAccomplishment = $tertiaryNovemberAccomplishment + $tertiaryunitContributeAcc->NovemberAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryNovemberTotalAccomplishment = $secondaryNovemberAccomplishment + $tertiaryNovemberAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalNovemberContribution = $contributory->NovemberAccomplishment + $secondaryNovemberTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -624,7 +895,7 @@ use App\StaffFunding;
                                 ?>
                                 {{ round($NovemberPerformance, 2) }}%
                             </td>
-                            {{-- DECEMBER --}}
+                            {{-- December --}}
                             <td>
                                 {{ round($accomplishment->DecemberTarget, 2) }}
                             </td>
@@ -634,11 +905,35 @@ use App\StaffFunding;
                                 ?>
                                 @foreach($accomplishment->staff_measure->unit_measures as $contributor)
                                     @foreach($contributor->unit_accomplishments as $contributory)
-                                        <div>
+                                        <?php
+                                            $secondaryDecemberTotalAccomplishment = 0;
+                                        ?>
+                                        @foreach($contributor->secondary_unit_measures as $secondaryContributory)
                                             <?php
-                                                $totalDecemberContribution = $totalDecemberContribution + $contributory->DecemberAccomplishment;
+                                                $secondaryDecemberAccomplishment = 0;
+                                                $tertiaryDecemberAccomplishment = 0;
+                                            ?>           
+                                            @foreach($secondaryContributory->secondary_unit_accomplishments as $secondaryunitContributeAcc)
+                                                <?php
+                                                    $secondaryDecemberAccomplishment = $secondaryDecemberAccomplishment + $secondaryunitContributeAcc->DecemberAccomplishment;
+                                                ?>
+                                            @endforeach
+                                            @foreach($secondaryContributory->tertiary_unit_measures as $tertiaryContributory)           
+                                                @foreach($tertiaryContributory->tertiary_unit_accomplishments as $tertiaryunitContributeAcc)
+                                                    <?php
+                                                        $tertiaryDecemberAccomplishment = $tertiaryDecemberAccomplishment + $tertiaryunitContributeAcc->DecemberAccomplishment;
+                                                    ?>
+                                                @endforeach
+                                            @endforeach
+                                            <?php
+                                                $secondaryDecemberTotalAccomplishment = $secondaryDecemberAccomplishment + $tertiaryDecemberAccomplishment;
                                             ?>
-                                        </div>
+                                        @endforeach
+                                        <normal>
+                                            <?php
+                                                $totalDecemberContribution = $contributory->DecemberAccomplishment + $secondaryDecemberTotalAccomplishment;
+                                            ?>
+                                        </normal>
                                     @endforeach
                                 @endforeach
                                 <?php
@@ -659,6 +954,9 @@ use App\StaffFunding;
                                 {{ round($DecemberPerformance, 2) }}%
                             </td>
                         @endif
+
+
+
                         @if($accomplishment->staff_measure->StaffMeasureFormula == 'Summation')
                             <?php
                                 $performance = round(($overallAccomplishment/$overallTarget)* 100, 2);

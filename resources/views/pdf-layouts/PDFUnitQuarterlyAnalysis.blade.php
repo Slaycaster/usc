@@ -35,6 +35,7 @@ use App\SecondaryUnitAccomplishment;
                         ->join('unit_measures', 'unit_objectives.UnitObjectiveID', '=', 'unit_measures.UnitObjectiveID')
                         ->where('unit_objectives.UnitID', '=', $unit->UnitID)
                         ->orderBy('unit_objectives.UnitObjectiveName', 'asc')
+                        ->orderBy('unit_measures.UnitMeasureID', 'asc')
                         ->get();//dd($unit->UnitID);
     $checkAccomplishment = 0;
     foreach($sortByObjective as $measure)
