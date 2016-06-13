@@ -10,7 +10,7 @@
     <!-- AngularJS Application Scripts -->
     <script src="{{ asset('app/app.js') }}"></script>
 
-    <!-- <script src="{{ asset('js/stickyheader.js') }}"></script> -->
+    <script src="{{ asset('js/stickyheader.js') }}"></script>
 
     <script src="{{ asset('js/debounce.min.js') }}"></script>
 
@@ -48,8 +48,8 @@
 
 
                     <div class="panel-body">
-                        <div class="table-responsive" id="floating-scrollbar">
-                            <table class="table table-bordered stickyhead" id="tabledata">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="tabledata">
                                 <thead>
 
                                     <tr>
@@ -656,7 +656,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#floating-scrollbar").floatingScrollbar();
+            $(".sticky-wrap").floatingScrollbar();
         });
 
     </script>
