@@ -80,33 +80,13 @@ $(function(){
               });
             }
           } else {
-            // $(window).on('resize', function(event){
-            //   var windowSize = $(window).width(); // Could've done $(this).width()
-            //     if(windowSize < 300){
-            //       $('html').css('background-color', 'red');
-            //     } else if(windowSize < 768){
-            //       $('html').css('background-color', 'yellow');
-            //     } else {
-            //       $('html').css('background-color', 'blue');
-            //     }
-            // });
-
-
-            if($w.scrollTop() > $t.offset().top && $w.scrollTop() < $t.offset().top + $t.outerHeight() - allowance) {
+              if($w.scrollTop() > $t.offset().top && $w.scrollTop() < $t.offset().top + $t.outerHeight() - allowance) {
               // When top of viewport is in the table itself
               $stickyHead.add($stickyInsct).css({
                 opacity: 1,
                 top: $w.scrollTop() - $t.offset().top + 80
               });
             } 
-            // If it is not overflowing (basic layout)
-            // Position sticky header based on viewport scrollTop
-            // else if($w.scrollTop() > $t.offset().top && $w.scrollTop() < $t.offset().top + $t.outerHeight() - allowance) {
-            //   // When top of viewport is in the table itself
-            //   $stickyHead.add($stickyInsct).css({
-            //     opacity: 1,
-            //     top: $w.scrollTop() - $t.offset().top + 50
-            //   });} 
             else {
               // When top of viewport is above or below table
               $stickyHead.add($stickyInsct).css({
