@@ -803,6 +803,72 @@ use App\SecondaryUnitAccomplishment;
             </tbody>
         @endforeach
     </table>
+    @if($checkAccomplishment == 0)
+        <p>No Accomplisments found for the year {{ $selectedYear }}</p>
+    @endif
+    <?php
+
+            $maxid = TertiaryUnitAccomplishment::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)
+                                        ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                        ->max('updated_at');
+            $maxid2 = TertiaryUnitOwner::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)
+                                ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                ->max('updated_at');
+            $maxid3 = TertiaryUnitInitiative::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)
+                                    ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                    ->max('updated_at');
+            $maxid4 = TertiaryUnitFunding::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)
+                                ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
+                                ->max('updated_at');
+
+
+            $updatedby = TertiaryUnitAccomplishment::where('updated_at','=',$maxid)
+                ->with('user_tertiary_unit')
+                ->with('user_tertiary_unit.rank')
+                ->first();
+
+            $updatedby2 = TertiaryUnitOwner::where('updated_at','=',$maxid2)
+                ->with('user_tertiary_unit')
+                ->with('user_tertiary_unit.rank')
+                ->first(); 
+
+            $updatedby3 = TertiaryUnitInitiative::where('updated_at','=',$maxid3)
+                ->with('user_tertiary_unit')
+                ->with('user_tertiary_unit.rank')
+                ->first();
+
+            $updatedby4 = TertiaryUnitFunding::where('updated_at','=',$maxid4)
+                ->with('user_tertiary_unit')
+                ->with('user_tertiary_unit.rank')
+                ->first(); 
+
+        //dd($updatedby);
+    ?>
+    <br>
+    @if($checkAccomplishment != 0)
+        <div>
+            <i>
+                Accomplishment last updated by: 
+                <b>{{ $updatedby->user_tertiary_unit->rank->RankCode }} {{ $updatedby->user_tertiary_unit->UserTertiaryUnitLastName }}, {{ $updatedby->user_tertiary_unit->UserTertiaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby->updated_at)) }}</b>
+            </i>
+            <br>
+            <i>
+                Owner last updated by:  
+                <b>{{ $updatedby2->user_tertiary_unit->rank->RankCode }} {{ $updatedby2->user_tertiary_unit->UserTertiaryUnitLastName }}, {{ $updatedby2->user_tertiary_unit->UserTertiaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby2->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby2->updated_at)) }}</b>
+            </i>
+            <br>
+            <i>
+                Initiative last updated by:  
+                <b>{{ $updatedby3->user_tertiary_unit->rank->RankCode }} {{ $updatedby3->user_tertiary_unit->UserTertiaryUnitLastName }}, {{ $updatedby3->user_tertiary_unit->UserTertiaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby3->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby3->updated_at)) }}</b>
+            </i>
+            <br>
+            <i>
+                Funding last updated by:  
+                <b>{{ $updatedby4->user_tertiary_unit->rank->RankCode }} {{ $updatedby4->user_tertiary_unit->UserTertiaryUnitLastName }}, {{ $updatedby4->user_tertiary_unit->UserTertiaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby4->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby4->updated_at)) }}</b>
+            </i>
+
+        </div>
+    @endif
     @if(count($accomplishments) == 0)
         <p>No Accomplisments found for the year {{ $selectedYear }}</p>
     @endif

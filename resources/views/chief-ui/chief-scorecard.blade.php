@@ -27,6 +27,7 @@
         <div id="wrap">
             <div class="row">
                 <div class="panel panel-info scorecard-custom-panel">
+
                     <div class="panel-heading scorecard-custom-heading">
                         <img class="img-responsive unitdashboard-custom-picabb" src="{{ asset('uploads/chiefpictures/cropped/'.''.$chief_user->chief->PicturePath.'') }}">
                       
@@ -50,6 +51,7 @@
                         <div class="table-responsive" id="floating-scrollbar">
                             <table class="table table-bordered stickyhead" id="tabledata">
                                 <thead>
+
                                     <tr>
                                         <th rowspan="2">
                                             <input type="text" class="scorecard-objectives" value="OBJECTIVES" disabled/>

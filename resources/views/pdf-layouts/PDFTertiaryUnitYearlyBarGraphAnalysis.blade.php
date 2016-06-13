@@ -226,7 +226,7 @@ use App\TertiaryUnitFunding;
 
           $.ajax({
               type: "POST",
-              url: "../bargraphunit",
+              url: "../bargraphtertiaryunit",
               headers: { 'X-CSRF-Token': $('input[name="_token"]').val() },
               data: {'year' : year, 'tertiary_id' : tertiary_id},
               success: function(response){

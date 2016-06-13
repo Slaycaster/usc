@@ -20,7 +20,8 @@ use App\TertiaryUnitInitiative;
     $user = UserTertiaryUnit::where('UserTertiaryUnitID', $tertiary_unit_id)
                 ->with('tertiary_unit')
                 ->first();//dd($user);
-    $tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $user->TertiaryUnitID)->first();
+    $tertiary_unit = TertiaryUnit::where('TertiaryUnitID', '=', $tertiary_unit_id)->first();
+ 
 
     $user = UserTertiaryUnit::where('UserTertiaryUnitID', $tertiary_unit_id)
                     ->first();
@@ -33,6 +34,7 @@ use App\TertiaryUnitInitiative;
                         ->join('tertiary_unit_measures', 'tertiary_unit_objectives.TertiaryUnitObjectiveID', '=', 'tertiary_unit_measures.TertiaryUnitObjectiveID')
                         ->where('tertiary_unit_objectives.TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)
                         ->orderBy('Tertiary_unit_objectives.TertiaryUnitObjectiveName', 'asc')
+                        ->orderBy('tertiary_unit_measures.TertiaryUnitMeasureID', 'asc')
                         ->get();//dd($sortByObjective);
     $checkAccomplishment = 0;
     foreach($sortByObjective as $measure)
@@ -45,8 +47,8 @@ use App\TertiaryUnitInitiative;
                                 ->with('tertiary_unit_owner')
                                 ->with('tertiary_unit_initiative')
                                 ->with('tertiary_unit_funding')
-                                ->with('user')
-                                ->with('user.rank')
+                                ->with('user_tertiary_unit')
+                                ->with('user_tertiary_unit.rank')
                                 ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
                                 ->where('TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)
                                 ->where('TertiaryUnitMeasureID', '=', $measure->TertiaryUnitMeasureID)
@@ -190,8 +192,8 @@ use App\TertiaryUnitInitiative;
                                 ->with('tertiary_unit_owner')
                                 ->with('tertiary_unit_initiative')
                                 ->with('tertiary_unit_funding')
-                                ->with('user')
-                                ->with('user.rank')
+                                ->with('user_tertiary_unit')
+                                ->with('user_tertiary_unit.rank')
                                 ->whereBetween('TargetDate', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
                                 ->where('TertiaryUnitID', '=', $tertiary_unit->TertiaryUnitID)
                                 ->where('TertiaryUnitMeasureID', '=', $measure->TertiaryUnitMeasureID)
@@ -211,25 +213,20 @@ use App\TertiaryUnitInitiative;
                             ?>
                             <td style="vertical-align: top;text-align: left;">
                                 {{ $accomplishment->tertiary_unit_measure->tertiary_unit_objective->TertiaryUnitObjectiveName }}
+                                
                             </td>
                         @else
                             <td></td>
                         @endif
                         <td style="vertical-align: top;text-align: left;">
                             {{ $accomplishment->tertiary_unit_measure->TertiaryUnitMeasureName }}
-                            @if($accomplishment->tertiary_unit_measure->UnitMeasureID > 0)
-                                <span class="labelc label-primary">Contributory {{ $user->tertiary_unit->UnitAbbreviation }}</span>
+                            @if($accomplishment->tertiary_unit_measure->SecondaryUnitMeasureID > 0)
+                                <br>
+                                <span class="label label-primary">Contributory to {{ $tertiary_unit->secondary_unit->SecondaryUnitAbbreviation }}</span>
                             @endif
-                            <div style="font-size: 9px;font-style: italic;">Contributory to this Measure</div>
-                            @foreach($accomplishment->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                    <div style="font-size: 9px;">
-                                        <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                    </div>
-                                @endforeach
-                            @endforeach
+                            
                         </td>
-                        @if($accomplishment->secondary_unit_measure->SecondaryUnitMeasureType == 'LG')
+                        @if($accomplishment->tertiary_unit_measure->TertiaryUnitMeasureType == 'LG')
                             <td style="background-color: #5cb85c;"></td>
                             <td></td>
                         @else
@@ -237,487 +234,273 @@ use App\TertiaryUnitInitiative;
                             <td style="background-color: #5cb85c;"></td>
                         @endif
                         <td style="vertical-align: top;text-align: left;">
-                            {{ $accomplishment->secondary_unit_owner->SecondaryUnitOwnerContent }}
+                            {{ $accomplishment->tertiary_unit_owner->TertiaryUnitOwnerContent }}
                         </td>
                         <td>
                             {{ round($accomplishment->JanuaryTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->JanuaryAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->JanuaryAccomplishment }}
                             <br>
                             <?php
                                 $JanuaryTertiaryTotalContribution = 0;
                                 $tertiary_unit_Januarychecker = null;
-                                $secondaryUnitJanuaryCounter = 0;
+                                $TertiaryUnitJanuaryCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $JanuaryTertiaryTotalContribution = $JanuaryTertiaryTotalContribution + $tertiary_unit_accomplishment->JanuaryAccomplishment;
                                         $tertiary_unit_Januarychecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Januarychecker != null)
-                                <b>+{{ $JanuaryTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitJanuaryCounter = $secondaryUnitJanuaryCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitJanuaryCounter == 1)(@endif{{ $tertiary_unit_accomplishment->JanuaryAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Januarychecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                        
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->FebruaryTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->FebruaryAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->FebruaryAccomplishment }}
                             <br>
                             <?php
                                 $FebruaryTertiaryTotalContribution = 0;
                                 $tertiary_unit_Februarychecker = null;
-                                $secondaryUnitFebruaryCounter = 0;
+                                $TertiaryUnitFebruaryCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $FebruaryTertiaryTotalContribution = $FebruaryTertiaryTotalContribution + $tertiary_unit_accomplishment->FebruaryAccomplishment;
                                         $tertiary_unit_Februarychecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Februarychecker != null)
-                                <b>+{{ $FebruaryTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitFebruaryCounter = $secondaryUnitFebruaryCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitFebruaryCounter == 1)(@endif{{ $tertiary_unit_accomplishment->FebruaryAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Februarychecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                            
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->MarchTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->MarchAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->MarchAccomplishment }}
                             <br>
                             <?php
                                 $MarchTertiaryTotalContribution = 0;
                                 $tertiary_unit_Marchchecker = null;
-                                $secondaryUnitMarchCounter = 0;
+                                $TertiaryUnitMarchCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $MarchTertiaryTotalContribution = $MarchTertiaryTotalContribution + $tertiary_unit_accomplishment->MarchAccomplishment;
                                         $tertiary_unit_Marchchecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Marchchecker != null)
-                                <b>+{{ $MarchTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitMarchCounter = $secondaryUnitMarchCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitMarchCounter == 1)(@endif{{ $tertiary_unit_accomplishment->MarchAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Marchchecker != null)
-                                    )
-                                @endif
-                            @endif
+                           
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->AprilTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->AprilAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->AprilAccomplishment }}
                             <br>
                             <?php
                                 $AprilTertiaryTotalContribution = 0;
                                 $tertiary_unit_Aprilchecker = null;
-                                $secondaryUnitAprilCounter = 0;
+                                $TertiaryUnitAprilCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $AprilTertiaryTotalContribution = $AprilTertiaryTotalContribution + $tertiary_unit_accomplishment->AprilAccomplishment;
                                         $tertiary_unit_Aprilchecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Aprilchecker != null)
-                                <b>+{{ $AprilTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitAprilCounter = $secondaryUnitAprilCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitAprilCounter == 1)(@endif{{ $tertiary_unit_accomplishment->AprilAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Aprilchecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                           
                         </td>
                         <td>
                             {{ round($accomplishment->MayTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->MayAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->MayAccomplishment }}
                             <br>
                             <?php
                                 $MayTertiaryTotalContribution = 0;
                                 $tertiary_unit_Maychecker = null;
-                                $secondaryUnitMayCounter = 0;
+                                $TertiaryUnitMayCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $MayTertiaryTotalContribution = $MayTertiaryTotalContribution + $tertiary_unit_accomplishment->MayAccomplishment;
                                         $tertiary_unit_Maychecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Maychecker != null)
-                                <b>+{{ $MayTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitMayCounter = $secondaryUnitMayCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitMayCounter == 1)(@endif{{ $tertiary_unit_accomplishment->MayAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Maychecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->JuneTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->JuneAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->JuneAccomplishment }}
                             <br>
                             <?php
                                 $JuneTertiaryTotalContribution = 0;
                                 $tertiary_unit_Junechecker = null;
-                                $secondaryUnitJuneCounter = 0;
+                                $TertiaryUnitJuneCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $JuneTertiaryTotalContribution = $JuneTertiaryTotalContribution + $tertiary_unit_accomplishment->JuneAccomplishment;
                                         $tertiary_unit_Junechecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Junechecker != null)
-                                <b>+{{ $JuneTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitJuneCounter = $secondaryUnitJuneCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitJuneCounter == 1)(@endif{{ $tertiary_unit_accomplishment->JuneAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Junechecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->JulyTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->JulyAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->JulyAccomplishment }}
                             <br>
                             <?php
                                 $JulyTertiaryTotalContribution = 0;
                                 $tertiary_unit_Julychecker = null;
-                                $secondaryUnitJulyCounter = 0;
+                                $TertiaryUnitJulyCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $JulyTertiaryTotalContribution = $JulyTertiaryTotalContribution + $tertiary_unit_accomplishment->JulyAccomplishment;
                                         $tertiary_unit_Julychecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Julychecker != null)
-                                <b>+{{ $JulyTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitJulyCounter = $secondaryUnitJulyCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitJulyCounter == 1)(@endif{{ $tertiary_unit_accomplishment->JulyAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Julychecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->AugustTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->AugustAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->AugustAccomplishment }}
                             <br>
                             <?php
                                 $AugustTertiaryTotalContribution = 0;
                                 $tertiary_unit_Augustchecker = null;
-                                $secondaryUnitAugustCounter = 0;
+                                $TertiaryUnitAugustCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $AugustTertiaryTotalContribution = $AugustTertiaryTotalContribution + $tertiary_unit_accomplishment->AugustAccomplishment;
                                         $tertiary_unit_Augustchecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Augustchecker != null)
-                                <b>+{{ $AugustTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitAugustCounter = $secondaryUnitAugustCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitAugustCounter == 1)(@endif{{ $tertiary_unit_accomplishment->AugustAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Augustchecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                           
                         </td>
                         <td>
                             {{ round($accomplishment->SeptemberTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->SeptemberAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->SeptemberAccomplishment }}
                             <br>
                             <?php
                                 $SeptemberTertiaryTotalContribution = 0;
                                 $tertiary_unit_Septemberchecker = null;
-                                $secondaryUnitSeptemberCounter = 0;
+                                $TertiaryUnitSeptemberCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $SeptemberTertiaryTotalContribution = $SeptemberTertiaryTotalContribution + $tertiary_unit_accomplishment->SeptemberAccomplishment;
                                         $tertiary_unit_Septemberchecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Septemberchecker != null)
-                                <b>+{{ $SeptemberTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitSeptemberCounter = $secondaryUnitSeptemberCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitSeptemberCounter == 1)(@endif{{ $tertiary_unit_accomplishment->SeptemberAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Septemberchecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->OctoberTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->OctoberAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->OctoberAccomplishment }}
                             <br>
                             <?php
                                 $OctoberTertiaryTotalContribution = 0;
                                 $tertiary_unit_Octoberchecker = null;
-                                $secondaryUnitOctoberCounter = 0;
+                                $TertiaryUnitOctoberCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $OctoberTertiaryTotalContribution = $OctoberTertiaryTotalContribution + $tertiary_unit_accomplishment->OctoberAccomplishment;
                                         $tertiary_unit_Octoberchecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Octoberchecker != null)
-                                <b>+{{ $OctoberTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitOctoberCounter = $secondaryUnitOctoberCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitOctoberCounter == 1)(@endif{{ $tertiary_unit_accomplishment->OctoberAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Octoberchecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->NovemberTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->NovemberAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->NovemberAccomplishment }}
                             <br>
                             <?php
                                 $NovemberTertiaryTotalContribution = 0;
                                 $tertiary_unit_Novemberchecker = null;
-                                $secondaryUnitNovemberCounter = 0;
+                                $TertiaryUnitNovemberCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $NovemberTertiaryTotalContribution = $NovemberTertiaryTotalContribution + $tertiary_unit_accomplishment->NovemberAccomplishment;
                                         $tertiary_unit_Novemberchecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Novemberchecker != null)
-                                <b>+{{ $NovemberTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitNovemberCounter = $secondaryUnitNovemberCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitNovemberCounter == 1)(@endif{{ $tertiary_unit_accomplishment->NovemberAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Novemberchecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                            
                         </td>
                         <td>
                             {{ round($accomplishment->DecemberTarget, 2) }}<b>/ </b>
                             <br>
-                            {{ $accomplishment->secondary_unit_accomplishment->DecemberAccomplishment }}
+                            {{ $accomplishment->tertiary_unit_accomplishment->DecemberAccomplishment }}
                             <br>
                             <?php
                                 $DecemberTertiaryTotalContribution = 0;
                                 $tertiary_unit_Decemberchecker = null;
-                                $secondaryUnitDecemberCounter = 0;
+                                $TertiaryUnitDecemberCounter = 0;
                             ?>
-                            @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
+                            @foreach($accomplishments as $accomplishment)
+                                @foreach($accomplishment->tertiary_unit_measure->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <?php
                                         $DecemberTertiaryTotalContribution = $DecemberTertiaryTotalContribution + $tertiary_unit_accomplishment->DecemberAccomplishment;
                                         $tertiary_unit_Decemberchecker = $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation;
                                     ?>
                                 @endforeach
                             @endforeach
-                            @if($tertiary_unit_Decemberchecker != null)
-                                <b>+{{ $DecemberTertiaryTotalContribution }}</b>
-                            @endif
-                            @if($reportType == 'breakdown')
-                                <br>
-                                @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
-                                    @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
-                                        <?php
-                                            $secondaryUnitDecemberCounter = $secondaryUnitDecemberCounter + 1;
-                                        ?>
-                                        <normal>
-                                            @if($secondaryUnitDecemberCounter == 1)(@endif{{ $tertiary_unit_accomplishment->DecemberAccomplishment }}
-                                            <span class="label label-default">{{ $tertiary_unit_accomplishment->tertiary_unit->TertiaryUnitAbbreviation }}</span>
-                                        <normal>
-                                    @endforeach
-                                @endforeach
-                                @if($tertiary_unit_Decemberchecker != null)
-                                    )
-                                @endif
-                            @endif
+                            
+                           
                         </td>
                         <td style="vertical-align: top;text-align: left;">
-                            {{ $accomplishment->secondary_unit_initiative->SecondaryUnitInitiativeContent }}
+                            {{ $accomplishment->tertiary_unit_initiative->TertiaryUnitInitiativeContent }}
                         </td>
                         <td style="text-align: right;">
-                            {{ round($accomplishment->secondary_unit_funding->SecondaryUnitFundingEstimate, 2) }}
+                            {{ round($accomplishment->tertiary_unit_funding->TertiaryUnitFundingEstimate, 2) }}
                         </td>
                         <td style="text-align: right;">
-                            {{ round($accomplishment->secondary_unit_funding->SecondaryUnitFundingActual, 2) }}
+                            {{ round($accomplishment->tertiary_unit_funding->TertiaryUnitFundingActual, 2) }}
                         </td>
                         <td style="text-align: right;">
-                            {{ round(($accomplishment->secondary_unit_funding->SecondaryUnitFundingEstimate - $accomplishment->secondary_unit_funding->SecondaryUnitFundingActual), 2) }}
+                            {{ round(($accomplishment->tertiary_unit_funding->TertiaryUnitFundingEstimate - $accomplishment->tertiary_unit_funding->TertiaryUnitFundingActual), 2) }}
                         </td>
                     </tr>
                 @endforeach
@@ -729,38 +512,38 @@ use App\TertiaryUnitInitiative;
     @endif
     <?php
 
-            $maxid = SecondaryUnitAccomplishment::where('SecondaryUnitID','=',$secondary_unit->SecondaryUnitID)
+            $maxid = TertiaryUnitAccomplishment::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)
                                         ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
                                         ->max('updated_at');
-            $maxid2 = SecondaryUnitOwner::where('SecondaryUnitID','=',$secondary_unit->SecondaryUnitID)
+            $maxid2 = TertiaryUnitOwner::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)
                                 ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
                                 ->max('updated_at');
-            $maxid3 = SecondaryUnitInitiative::where('SecondaryUnitID','=',$secondary_unit->SecondaryUnitID)
+            $maxid3 = TertiaryUnitInitiative::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)
                                     ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
                                     ->max('updated_at');
-            $maxid4 = SecondaryUnitFunding::where('SecondaryUnitID','=',$secondary_unit->SecondaryUnitID)
+            $maxid4 = TertiaryUnitFunding::where('TertiaryUnitID','=',$tertiary_unit->TertiaryUnitID)
                                 ->whereBetween('updated_at', array($selectedYear.'-01-01', $selectedYear.'-12-31'))
                                 ->max('updated_at');
 
 
-            $updatedby = SecondaryUnitAccomplishment::where('updated_at','=',$maxid)
-                ->with('user_secondary_unit')
-                ->with('user_secondary_unit.rank')
+            $updatedby = TertiaryUnitAccomplishment::where('updated_at','=',$maxid)
+                ->with('user_tertiary_unit')
+                ->with('user_tertiary_unit.rank')
                 ->first();
 
-            $updatedby2 = SecondaryUnitOwner::where('updated_at','=',$maxid2)
-                ->with('user_secondary_unit')
-                ->with('user_secondary_unit.rank')
+            $updatedby2 = TertiaryUnitOwner::where('updated_at','=',$maxid2)
+                ->with('user_tertiary_unit')
+                ->with('user_tertiary_unit.rank')
                 ->first(); 
 
-            $updatedby3 = SecondaryUnitInitiative::where('updated_at','=',$maxid3)
-                ->with('user_secondary_unit')
-                ->with('user_secondary_unit.rank')
+            $updatedby3 = TertiaryUnitInitiative::where('updated_at','=',$maxid3)
+                ->with('user_tertiary_unit')
+                ->with('user_tertiary_unit.rank')
                 ->first();
 
-            $updatedby4 = SecondaryUnitFunding::where('updated_at','=',$maxid4)
-                ->with('user_secondary_unit')
-                ->with('user_secondary_unit.rank')
+            $updatedby4 = TertiaryUnitFunding::where('updated_at','=',$maxid4)
+                ->with('user_tertiary_unit')
+                ->with('user_tertiary_unit.rank')
                 ->first(); 
 
         //dd($updatedby);
@@ -770,22 +553,22 @@ use App\TertiaryUnitInitiative;
         <div>
             <i>
                 Accomplishment last updated by: 
-                <b>{{ $updatedby->user_secondary_unit->rank->RankCode }} {{ $updatedby->user_secondary_unit->UserSecondaryUnitLastName }}, {{ $updatedby->user_secondary_unit->UserSecondaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby->updated_at)) }}</b>
+                <b>{{ $updatedby->user_tertiary_unit->rank->RankCode }} {{ $updatedby->user_tertiary_unit->UserTertiaryUnitLastName }}, {{ $updatedby->user_tertiary_unit->UserTertiaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby->updated_at)) }}</b>
             </i>
             <br>
             <i>
                 Owner last updated by:  
-                <b>{{ $updatedby2->user_secondary_unit->rank->RankCode }} {{ $updatedby2->user_secondary_unit->UserSecondaryUnitLastName }}, {{ $updatedby2->user_secondary_unit->UserSecondaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby2->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby2->updated_at)) }}</b>
+                <b>{{ $updatedby2->user_tertiary_unit->rank->RankCode }} {{ $updatedby2->user_tertiary_unit->UserTertiaryUnitLastName }}, {{ $updatedby2->user_tertiary_unit->UserTertiaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby2->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby2->updated_at)) }}</b>
             </i>
             <br>
             <i>
                 Initiative last updated by:  
-                <b>{{ $updatedby3->user_secondary_unit->rank->RankCode }} {{ $updatedby3->user_secondary_unit->UserSecondaryUnitLastName }}, {{ $updatedby3->user_secondary_unit->UserSecondaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby3->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby3->updated_at)) }}</b>
+                <b>{{ $updatedby3->user_tertiary_unit->rank->RankCode }} {{ $updatedby3->user_tertiary_unit->UserTertiaryUnitLastName }}, {{ $updatedby3->user_tertiary_unit->UserTertiaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby3->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby3->updated_at)) }}</b>
             </i>
             <br>
             <i>
                 Funding last updated by:  
-                <b>{{ $updatedby4->user_secondary_unit->rank->RankCode }} {{ $updatedby4->user_secondary_unit->UserSecondaryUnitLastName }}, {{ $updatedby4->user_secondary_unit->UserSecondaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby4->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby4->updated_at)) }}</b>
+                <b>{{ $updatedby4->user_tertiary_unit->rank->RankCode }} {{ $updatedby4->user_tertiary_unit->UserTertiaryUnitLastName }}, {{ $updatedby4->user_tertiary_unit->UserTertiaryUnitFirstName }} {{ date('F d, Y', strtotime($updatedby4->updated_at)) }} at {{ date('g:i:s A', strtotime($updatedby4->updated_at)) }}</b>
             </i>
 
         </div>

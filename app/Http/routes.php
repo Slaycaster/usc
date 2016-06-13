@@ -18,6 +18,7 @@ Route::get('home', 'HomeController@index');
 #scorecard
 Route::get('report/currentYearUnitScorecard', 'ReportsController@currentYearUnitScorecard');
 Route::get('report/currentYearSecondaryUnitScorecard', 'ReportsController@currentYearSecondaryUnitScorecard');
+Route::get('report/currentYearTertiaryUnitScorecard', 'ReportsController@currentYearTertiaryUnitScorecard');
 Route::get('report/currentYearStaffScorecard', 'ReportsController@currentYearStaffScorecard');
 Route::get('report/currentYearChiefScorecard', 'ReportsController@currentYearChiefScorecard');
 
