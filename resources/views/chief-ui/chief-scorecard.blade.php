@@ -33,8 +33,8 @@
                                 </b>
                                 <div class="col-md-5 pull-right">
                                     <form method="get" action="{{ url('report/currentYearChiefScorecard') }}" target="_blank">
-                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
                                         <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
+                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
                                     </form>
                                 </div>
 

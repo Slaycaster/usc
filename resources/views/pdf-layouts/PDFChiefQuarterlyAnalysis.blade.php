@@ -132,9 +132,6 @@ use App\StaffAccomplishment;
 </head>
 
 <body>
-    {{-- <div class="footer">
-        <span class="pagenum"></span>
-    </div> --}}
     <img src="{{URL::asset($logoPath)}}" style="height: 155px;width: 122px;">
     @if($chief->ChiefAbbreviation != "C, PNP")
         <img class="unitlogo" src="{{URL::asset($chieflogoPath)}}" style="height: 120px;width: 120px;">
