@@ -52,12 +52,8 @@
                         </div><!--div panel-heading-->
 
                         <div class="panel-body">
-
-                            <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
-                           
-
                             <div class="table-responsive">
-
+                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
                                 <table class="table table-bordered" id="tabledata">
                                     <thead>
                                     <tr>
