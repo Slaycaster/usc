@@ -11,7 +11,6 @@ use App\TertiaryUnit;
 use App\SecondaryUnitOwner;
 use App\SecondaryUnitAccomplishment;
 use App\SecondaryUnitFunding;
-
 use App\SecondaryUnitInitiative;
 
 
@@ -223,7 +222,7 @@ use App\SecondaryUnitInitiative;
                             @if($accomplishment->secondary_unit_measure->UnitMeasureID > 0)
                                 <span class="labelc label-primary">Contributory {{ $user->secondary_unit->unit->UnitAbbreviation }}</span>
                             @endif
-                            <div style="font-size: 9px;font-style: italic;">Contributory/ies to this Measure</div>
+                            <div style="font-size: 9px;font-style: italic;">Contributory to this Measure</div>
                             @foreach($accomplishment->secondary_unit_measure->tertiary_unit_measures as $tertiary_contributions)
                                 @foreach($tertiary_contributions->tertiary_unit_accomplishments as $tertiary_unit_accomplishment)
                                     <div style="font-size: 9px;">
