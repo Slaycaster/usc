@@ -97,7 +97,8 @@
                             <dir-pagination-controls
                                max-size="7"
                                direction-links="true"
-                               boundary-links="true" >
+                               boundary-links="true"
+                               id="pagina" >
                             </dir-pagination-controls>
                             <!--./dir-pagination-controls-->
                         </center>
@@ -106,5 +107,16 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function showTableData() {
+          // var reportbutton = document.getElementById("reportbutton").style.display = "block";
+          var tableinfo = document.getElementById("tableinfo").style.display = "block";
+          var tabledata = document.getElementById("tabledata").style.display = "block";
+          var pagina = document.getElementById("pagina").style.display = "block";
+        }
+        setTimeout("showTableData()", 700);
+
+    </script>
      
 @endsection
