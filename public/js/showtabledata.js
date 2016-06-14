@@ -1,16 +1,3 @@
-function showTableData() {
-  var tabledata = document.getElementById("tabledata").style.display = "block";
-  var information = document.getElementById("information").style.display = "block";
-}
-setTimeout("showTableData()", 700);
-
-
-// function showTableInfo() {
-//     var tableinfo = document.getElementById("tableinfo").style.display = "block";
-// }
-// setTimeout("showTableInfo()", 700);
-
-
 $(document).ready(function(){
 
 

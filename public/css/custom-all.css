@@ -59,6 +59,12 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 #information{
     display: none;
 }
+#tableinfo{
+    display: none;
+}
+#reportbutton{
+    display: none;
+}
 
 
 /* layout css */
@@ -86,6 +92,9 @@ a.navbar-brand.layout-custom-pnpabb:visited{
     }
     .alert-info{
         text-align: left !important;
+    }
+    .emptyspace{
+        display: none;
     }
 }
 

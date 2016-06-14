@@ -37,12 +37,11 @@
                             
 
                                 <div class="col-md-3 pull-right">
-                                    <form method="get" id="tableinfo" action="{{ url('report/currentYearTertiaryUnitScorecard') }}" target="_blank">
-                                        <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
-                                       
+                                    <form method="get" id="reportbutton" action="{{ url('report/currentYearTertiaryUnitScorecard') }}" target="_blank">
+                                        <button type="submit" style="width:17em;" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
+                                        <p class="emptyspace">&nbsp;</p>
                                     </form>
                                 </div>
-
                             </h2>
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                             <div class="custom_scorecard-info" id="information">
@@ -230,6 +229,13 @@
     </div>
 
     <script type="text/javascript">
+        function showTableData() {
+          var reportbutton = document.getElementById("reportbutton").style.display = "block";
+          var information = document.getElementById("information").style.display = "block";
+          var tabledata = document.getElementById("tabledata").style.display = "block";        
+        }
+        setTimeout("showTableData()", 700);
+
         $(document).ready(function () {
             $(".sticky-wrap").floatingScrollbar();
         });

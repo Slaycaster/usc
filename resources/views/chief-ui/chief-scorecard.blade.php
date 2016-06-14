@@ -35,10 +35,15 @@
                             <b>{{ $chief_user->chief->ChiefAbbreviation }} Scorecard for {{ date("Y") }}
                             </b>
                             <div class="col-md-5 pull-right">
-                                <form method="get" id="tableinfo" action="{{ url('report/currentYearChiefScorecard') }}" target="_blank">
-                                    <button type="submit" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
-                                    <button type="submit" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
+                                <form method="get" id="reportbutton" action="{{ url('report/currentYearChiefScorecard') }}" target="_blank">
+                                    <button type="submit" style="width:17em;" class="btn btn-warning btn-sm pull-right" name="total" value="total"><i class="fa fa-save fa-fw"></i>Generate Report (Total)</button>
+                                    <p class="emptyspace">&nbsp;</p>
+                                    <button type="submit" style="width:17em;" class="btn btn-warning btn-sm pull-right" name="breakdown" value="breakdown"><i class="fa fa-save fa-fw"></i>Generate Report (Breakdown)</button>
+
                                 </form>
+                            </div>
+                            <div id="information" style="margin-bottom:2.6em;" >
+                                   
                             </div>
 
                         </h2>   
@@ -655,6 +660,13 @@
     </div>
 
     <script type="text/javascript">
+        function showTableData() {
+          var reportbutton = document.getElementById("reportbutton").style.display = "block";
+          var information = document.getElementById("information").style.display = "block";
+          var tabledata = document.getElementById("tabledata").style.display = "block";
+        }
+        setTimeout("showTableData()", 700);
+
         $(document).ready(function () {
             $(".sticky-wrap").floatingScrollbar();
         });
