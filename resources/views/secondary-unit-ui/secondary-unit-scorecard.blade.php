@@ -42,7 +42,7 @@
                                 </div>
                             </h2>  
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
-                            <div class="custom_scorecard-info" id="tableinfo">
+                            <div class="custom_scorecard-info" id="information">
                                 <i><span class="fa fa-list fa-fw"></span> Accomplishment last updated by: <b><% updatedby.user_secondary_unit.rank.RankCode %> <% updatedby.user_secondary_unit.UserSecondaryUnitLastName %>, <% updatedby.user_secondary_unit.UserSecondaryUnitFirstName %> on 
                                     <% updatedby.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
                                 <i><span class="fa fa-user fa-fw"></span> Owner last updated by: <b><% updatedby2.user_secondary_unit.rank.RankCode %> <% updatedby2.user_secondary_unit.UserSecondaryUnitLastName %>, <% updatedby2.user_secondary_unit.UserSecondaryUnitFirstName %> on 
@@ -55,14 +55,11 @@
                             </div>
                         </div><!--div panel-heading-->
 
-                        <div class="panel-body">
+                        <div class="panel-body">                         
 
-                            <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
-                           
-
-                            <div class="table-responsive">
-
-                                <table class="table table-bordered" id="tabledata">
+                            <div class="table-responsive" id="tabledata">
+                                <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
+                                <table class="table table-bordered">
                                     <thead>
                                     <tr>
                                         <th rowspan="2" >

@@ -38,7 +38,7 @@
                                 </div>
                             </h2>  
                             <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
-                            <div class="custom_scorecard-info" id="tableinfo">
+                            <div class="custom_scorecard-info" id="information">
                                 <i><span class="fa fa-list fa-fw"></span> Accomplishment last updated by: <b><% updatedby.user_staff.rank.RankCode %> <% updatedby.user_staff.UserStaffLastName %>, <% updatedby.user_staff.UserStaffFirstName %> on 
                                     <% updatedby.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
                                 <i><span class="fa fa-user fa-fw"></span> Owner last updated by: <b><% updatedby2.user_staff.rank.RankCode %> <% updatedby2.user_staff.UserStaffLastName %>, <% updatedby2.user_staff.UserStaffFirstName %> on 
@@ -47,14 +47,13 @@
                                     <% updatedby3.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i><br> 
                                 <i><span class="fa fa-money fa-fw"></span> Funding last updated by: <b><% updatedby4.user_staff.rank.RankCode %> <% updatedby4.user_staff.UserStaffLastName %>, <% updatedby4.user_staff.UserStaffFirstName %> on 
                                     <% updatedby4.updated_at | date:"MMM d, y 'at' h:mm:ss a" %> </b></i>  
-                                <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div><!--div panel-heading-->
 
                         <div class="panel-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="tabledata">
                                 <div ng-show="info" class="alert alert-info"><i class="fa fa-info-circle fa-fw"></i>To see the contributory breakdown of the measure's accomplishment, just click at the number around grey box.</div>
-                                <table class="table table-bordered" id="tabledata">
+                                <table class="table table-bordered">
                                     <thead>
                                     <tr>
                                         <th rowspan="2" >
