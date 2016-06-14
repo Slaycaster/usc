@@ -65,6 +65,10 @@ a.navbar-brand.layout-custom-pnpabb:visited{
 #reportbutton{
     display: none;
 }
+#pagina{
+    display: none;
+}
+
 
 
 /* layout css */

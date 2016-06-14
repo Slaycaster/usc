@@ -55,8 +55,7 @@
 								</div>
 							</div>
 							<!--/.div class row-->
-                            <div id="tableinfo">this</div>
-							<div class="row" >
+							<div class="row" id="tableinfo">
 								<div ng-show="info" class="alert alert-info objective-info-name">
                                     <i class="fa fa-info-circle fa-fw"></i>Chief Objectives of {{ $chief_user->chief->ChiefName }}.
                                 </div>
@@ -105,7 +104,8 @@
 								<dir-pagination-controls
 							         max-size="7"
 							         direction-links="true"
-							         boundary-links="true" >
+							         boundary-links="true" 
+                                     id="pagina">
 							    </dir-pagination-controls>
 							    <!--./dir-pagination-controls-->
 							</center>
@@ -221,6 +221,17 @@
             </div>
         </div>
 	</div>
+
+    <script type="text/javascript">
+        function showTableData() {
+          // var reportbutton = document.getElementById("reportbutton").style.display = "block";
+          var tableinfo = document.getElementById("tableinfo").style.display = "block";
+          var tabledata = document.getElementById("tabledata").style.display = "block";
+          var pagina = document.getElementById("pagina").style.display = "block";
+        }
+        setTimeout("showTableData()", 700);
+
+    </script>
 
   
 @endsection
