@@ -250,9 +250,11 @@ class ChangePasswordController extends Controller {
 							
 							$userchief = DB::table('user_chiefs')->where('UserChiefID' ,'=', $id)->first();
 
-							Session::flash('message2', 'Change password success! Your new password is:  '.$userchief->UserChiefPassword);
+							// Session::flash('message2', 'Your password has been changed successfully');
 
-							return Redirect::to('chief/changepassword');	
+							Session::flush();
+							Session::flash('message2', 'Your password has been changed successfully. Please login to continue');
+							return Redirect::to('/');	
 
 						}
 
