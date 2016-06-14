@@ -77,16 +77,16 @@ class ChangePasswordController extends Controller {
 							
 							$usertertiary = DB::table('user_tertiary_units')->where('UserTertiaryUnitID' ,'=', $id)->first();
 
-							Session::flash('message2', 'Change password success! Your new password is:  '.$usertertiary->UserTertiaryUnitPassword);
-
-							return Redirect::to('tertiary_unit/changepassword');	
+							Session::flush();
+							Session::flash('message2', 'Your password has been changed successfully. Please login to continue');
+							return Redirect::to('/');	
 
 						}
 
 						else
 						{
 
-							Session::flash('message', 'Invalid old password!');
+							Session::flash('message', 'Error changing password. Please make sure that your old password is correct!');
 
 							return Redirect::to('tertiary_unit/changepassword');
 
@@ -120,17 +120,16 @@ class ChangePasswordController extends Controller {
 
 							$usersecondaryunit = DB::table('user_secondary_units')->where('UserSecondaryUnitID' ,'=', $id)->first();
 
-							Session::flash('message2', 'Change password success! Your new password is:  '.$usersecondaryunit->UserSecondaryUnitPassword);
-
-							return Redirect::to('secondary_unit/changepassword');	
+							Session::flush();
+							Session::flash('message2', 'Your password has been changed successfully. Please login to continue');
+							return Redirect::to('/');		
 
 						}
 
 						else
 						{
 
-							Session::flash('message', 'Invalid old password!');
-
+							Session::flash('message', 'Error changing password. Please make sure that your old password is correct!');
 							return Redirect::to('secondary_unit/changepassword');
 
 						}
@@ -161,17 +160,17 @@ class ChangePasswordController extends Controller {
 
 							$userunit = DB::table('user_units')->where('UserUnitID' ,'=', $id)->first();
 
-							Session::flash('message2', 'Change password success! Your new password is:  '.$userunit->UserUnitPassword);
 
-							return Redirect::to('unit/changepassword');	
+							Session::flush();
+							Session::flash('message2', 'Your password has been changed successfully. Please login to continue');
+							return Redirect::to('/');	
 
 						}
 
 						else
 						{
 
-							Session::flash('message', 'Invalid old password!');
-
+							Session::flash('message', 'Error changing password. Please make sure that your old password is correct!');
 							return Redirect::to('unit/changepassword');
 
 						}
@@ -206,17 +205,16 @@ class ChangePasswordController extends Controller {
 							
 							$userstaff = DB::table('user_staffs')->where('UserStaffID' ,'=', $id)->first();
 
-							Session::flash('message2', 'Change password success! Your new password is:  '.$userstaff->UserStaffPassword);
-
-							return Redirect::to('staff/changepassword');	
+							Session::flush();
+							Session::flash('message2', 'Your password has been changed successfully. Please login to continue');
+							return Redirect::to('/');	
 
 						}
 
 						else
 						{
 
-							Session::flash('message', 'Invalid old password!');
-
+							Session::flash('message', 'Error changing password. Please make sure that your old password is correct!');
 							return Redirect::to('staff/changepassword');
 
 						}
@@ -228,46 +226,40 @@ class ChangePasswordController extends Controller {
 
 			if($chief_user != null)
 		    {
-							
-					if($validator->fails()) 
+				if($validator->fails()) 
+				{
+					return Redirect::to('chief/changepassword')
+					->withErrors($validator);
+				} 
+
+				$id = Session::get('chief_user_id', 'default');
+				
+				$old_password = DB::table('user_chiefs')->select('UserChiefPassword as old_password')->where('UserChiefID', '=', $id)->get();		
+
+				$chiefs = DB::table('user_chiefs')->where('UserChiefID' ,'=', $id)->get();
+
+				foreach ($old_password as $value) {
+
+					if (Input::get('old_password') == $value->old_password) 
 					{
-						return Redirect::to('chief/changepassword')
-						->withErrors($validator);
-					} 
+						DB::table('user_chiefs')->where('UserChiefID', '=', $id)->update(array('UserChiefPassword' => Input::get('new_password')));
+						
+						$userchief = DB::table('user_chiefs')->where('UserChiefID' ,'=', $id)->first();
 
-					$id = Session::get('chief_user_id', 'default');
+						// Session::flash('message2', 'Your password has been changed successfully');
 
-					$old_password = DB::table('user_chiefs')->select('UserChiefPassword as old_password')->where('UserChiefID', '=', $id)->get();		
+						Session::flush();
+						Session::flash('message2', 'Your password has been changed successfully. Please login to continue');
+						return Redirect::to('/');	
+					}
+					else
+					{
 
-					$chiefs = DB::table('user_chiefs')->where('UserChiefID' ,'=', $id)->get();
-
-					foreach ($old_password as $value) {
-
-						if (Input::get('old_password') == $value->old_password) 
-						{
-
-							DB::table('user_chiefs')->where('UserChiefID', '=', $id)->update(array('UserChiefPassword' => Input::get('new_password')));
-							
-							$userchief = DB::table('user_chiefs')->where('UserChiefID' ,'=', $id)->first();
-
-							// Session::flash('message2', 'Your password has been changed successfully');
-
-							Session::flush();
-							Session::flash('message2', 'Your password has been changed successfully. Please login to continue');
-							return Redirect::to('/');	
-
-						}
-
-						else
-						{
-
-							Session::flash('message', 'Invalid old password!');
-
-							return Redirect::to('chief/changepassword');
-
-						}
+						Session::flash('message', 'Error changing password. Please make sure that your old password is correct!');
+						return Redirect::to('chief/changepassword');
 
 					}
+				}
 
 			}
 	}
