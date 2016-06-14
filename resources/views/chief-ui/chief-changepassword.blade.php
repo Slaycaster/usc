@@ -9,7 +9,7 @@
     <script src="{{ asset('app/app.js') }}"></script>
 
     <!-- AngularJS Application Scripts -->
-    <script src="{{ asset('app/controllers/unit_measures.js') }}"></script>
+    <script src="{{ asset('app/controllers/password.js') }}"></script>
 
     <script src="{{ asset('js/validatepassword.js') }}"></script>
 
@@ -17,7 +17,7 @@
     <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 
     <br>
-    <div ng-app="unitScorecardApp" ng-controller="APIUnitMeasureController">
+    <div ng-app="unitScorecardApp" ng-controller="APIChiefPasswordController">
        <form action="{{url('change_password')}}" name="passwordform" method="post">
             <div class="wrap">
                 <div class="row">           
@@ -33,12 +33,17 @@
                             <div class="panel-body">
                                 <!--/.div class row-->
                                 <div class="row">
-                                    <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>Change password for 
+                                    <div ng-show="info" class="alert alert-info objective-info-name"><i class="fa fa-info-circle fa-fw"></i>
+                                    Hi
                                     {{ $chief_user->rank->RankCode }} 
                                     {{ $chief_user->UserChiefFirstName }} 
-                                    {{ $chief_user->UserChiefLastName }}.
-                                    <br> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Change your password by filling up the form below.&nbsp;<strong style="color:red"><i>Special characters like /,!,@,# are not allowed.</i> </strong> </strong></div>
-                                     <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>Change password for {{ $chief_user->chief->ChiefAbbreviation }}.</div>
+                                    {{ $chief_user->UserChiefLastName }}!&nbsp;
+                                    Change your password by filling up the form below.&nbsp;</div>
+                                     <div ng-show="info" class="alert alert-info objective-info-abb"><i class="fa fa-info-circle fa-fw"></i>
+                                    {{ $chief_user->rank->RankCode }} 
+                                    {{ $chief_user->UserChiefFirstName }} 
+                                    {{ $chief_user->UserChiefLastName }}!&nbsp;
+                                    Change your password by filling up the form below.</div>
 
                                 </div>
                                  @if (Session::has('message'))
