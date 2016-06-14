@@ -74,7 +74,10 @@ class APIUnitMeasuresController extends Controller {
 
 			if($unit->StaffID == null)
 			{
-				$staff = StaffMeasure::with('Staff')->get();
+				$staff = StaffMeasure::with(array('staff' => function($q)
+					{
+						$q->where('StaffHasUnit', '=', 1);
+					}))->get();
 				$istrue = "true";
 
 				$staffmeasure = array(

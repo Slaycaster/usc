@@ -16,7 +16,7 @@ class Staff extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['StaffName', 'StaffAbbreviation', 'StaffPermission', 'PicturePath', 'ChiefID'];
+	protected $fillable = ['StaffName', 'StaffAbbreviation', 'StaffPermission', 'PicturePath', 'ChiefID', 'StaffHasUnit'];
 
 	/**
 	 * The attribute that used as primary key. //Slaycaster

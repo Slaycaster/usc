@@ -42,6 +42,10 @@ return array(
 	    	'title' => 'Chief',
 	    	'relationship' => 'Chief',
 	    	'select' => "CONCAT((:table).ChiefAbbreviation, ' - ', (:table).ChiefName)"
+	    ),
+	    'StaffHasUnit' => array(
+	    	'title' => 'Staff has Supporting Units?',
+	    	'select' => "IF((:table).StaffHasUnit, 'Yes', 'No')",
 	    )
 	),
 
@@ -73,6 +77,11 @@ return array(
 	    	'title' => 'Chief',
 	    	'type' => 'relationship',
 	    	'name_field' => 'ChiefName'
+	    ),
+	    'StaffHasUnit' => array(
+	    	'title' => 'Staff has Supporting Units?',
+	    	'type' => 'bool',
+	    	'value' => '1'
 	    )
 	),
 

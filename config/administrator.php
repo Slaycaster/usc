@@ -69,18 +69,18 @@ return array(
 	 */
 	'menu' => array(
 					'perspectives',
-					'units', 
-					'staffs',
-					'Chiefs',
 					'ranks',
+					'Chiefs',
+					'staffs',
+					'units', 
 					'secondary_unit',
 					'tertiary_unit',
 					'Users' => array(
+						'user_tertiary',
+						'user_secondary',
 						'user_units',
 						'user_staffs',
-						'user_chiefs',
-						'user_secondary',
-						'user_tertiary'
+						'user_chiefs'
 					)
 		),
 
