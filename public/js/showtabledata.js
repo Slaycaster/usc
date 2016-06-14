@@ -1,7 +1,4 @@
 $(document).ready(function(){
-
-
-
     $('#id_target_period').on('change', function() {
       if ( this.value == 'Monthly')
       {
