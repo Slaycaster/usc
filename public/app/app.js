@@ -3,7 +3,7 @@ var app = angular.module('unitScorecardApp', ['angularUtils.directives.dirPagina
 	$interpolateProvider.endSymbol('%>');
 });
 
-var public = 'http://' + location.host + '/usc/public/';
+var public = 'http://' + location.host + '/';
 
 app.directive('validNumber', function() {
       return {
