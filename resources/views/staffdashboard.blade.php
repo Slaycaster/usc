@@ -28,7 +28,7 @@
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashname">
-            <p><b>{{ $staff_user->staff->StaffName }} Staff Dashboard</b></p>
+            <p><b>{{ $staff_user->staff->StaffName }} Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
     </div>
@@ -38,7 +38,7 @@
             <img class="img-responsive dashboard-custom-pictureabb" 
                 src="{{ asset('uploads/staffpictures/cropped/'.''.$staff_user->staff->PicturePath.'') }}">
             <p>
-                <b>{{ $staff_user->staff->StaffAbbreviation }} Staff Dashboard</b>
+                <b>{{ $staff_user->staff->StaffAbbreviation }} Dashboard</b>
             </p>
         </div>
         <div class="col-md-12"><br /></div>

@@ -28,7 +28,7 @@
     
     <div class="row">
         <div class="col-lg-12 dashboard-custom-dashname">
-            <p><b>{{ $user->secondary_unit->SecondaryUnitName }} Secondary Unit Dashboard</b></p>
+            <p><b>{{ $user->secondary_unit->SecondaryUnitName }} Dashboard</b></p>
         </div>
         <div class="col-md-12"><br /></div>
     </div>
@@ -38,7 +38,7 @@
             <img class="img-responsive dashboard-custom-pictureabb" 
                 src="{{ asset('uploads/secondaryunitpictures/cropped/'.''.$user->secondary_unit->PicturePath.'') }}">
             <p>
-                <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Secondary Unit Dashboard</b>
+                <b>{{ $user->secondary_unit->SecondaryUnitAbbreviation }} Dashboard</b>
             </p>
         </div>
         <div class="col-md-12"><br /></div>
