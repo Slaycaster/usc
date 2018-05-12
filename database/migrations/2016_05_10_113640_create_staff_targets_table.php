@@ -29,6 +29,7 @@ class CreateStaffTargetsTable extends Migration {
 			$table->float('DecemberTarget');
 			$table->date('TargetDate');
 			$table->string('TargetPeriod');
+			$table->string('Termination');
 			$table->integer('StaffMeasureID');
 			$table->integer('StaffID');
 			$table->integer('UserStaffID');

@@ -18,7 +18,7 @@ class StaffTarget extends Model {
 	 */
 	protected $fillable = ['JanuaryTarget', 'FebruaryTarget', 'MarchTarget', 'AprilTarget', 'MayTarget', 'JuneTarget', 
 						   'JulyTarget', 'AugustTarget', 'SeptemberTarget', 'OctoberTarget', 'NovemberTarget', 'DecemberTarget',
-						   'TargetDate', 'TargetPeriod', 'StaffMeasureID', 'StaffID','UserStaffID',];
+						   'TargetDate', 'TargetPeriod', 'Termination','StaffMeasureID', 'StaffID','UserStaffID',];
 	/**
 	 * The attribute that used as primary key. //Slaycaster
 	 *

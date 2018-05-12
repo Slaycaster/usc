@@ -29,6 +29,7 @@ class CreateChiefTargetsTable extends Migration {
 			$table->float('DecemberTarget');
 			$table->date('TargetDate');
 			$table->string('TargetPeriod');
+			$table->string('Termination');
 			$table->integer('ChiefMeasureID');
 			$table->integer('ChiefID');
 			$table->integer('UserChiefID');
